@@ -1,0 +1,220 @@
+import xml.etree.ElementTree as ET
+import logging
+
+logger = logging.getLogger(__name__)
+
+class ViewParser:
+    """
+    Parses Dataverse SavedQuery XML definitions (LayoutXML and FetchXML)
+    based on the official Microsoft FormXml and Fetch schemas.
+    """
+
+    @staticmethod
+    def parse_layoutxml(xml_string: str) -> list[dict]:
+        """
+        Parses LayoutXML to extract grid column definitions.
+        According to FormXml.xsd (lines 288-333), LayoutXML contains:
+        <grid>
+            <row>
+                <cell name="logicalname" width="100" label="Display Name" />
+            </row>
+        </grid>
+        """
+        columns = []
+        if not xml_string:
+            return columns
+
+        try:
+            root = ET.fromstring(xml_string)
+            
+            # The schema defines <grid> as the root of layoutxml
+            if root.tag != "grid":
+                logger.warning(f"Expected root tag <grid> in LayoutXML, found <{root.tag}>")
+                return columns
+
+            # Find the first <row> element (which defines the schema)
+            row_elem = root.find("row")
+            if row_elem is not None:
+                for cell_elem in row_elem.findall("cell"):
+                    # Required attribute according to XSD
+                    name = cell_elem.get("name") 
+                    
+                    if name:
+                        col_def = {
+                            "name": name,
+                            # Width is technically optional in XSD, default to 100
+                            "width": int(cell_elem.get("width", 100)),
+                            # Label is optional
+                            "label": cell_elem.get("label", name),
+                            "ishidden": cell_elem.get("ishidden") == "1",
+                            "disableSorting": cell_elem.get("disableSorting") == "1"
+                        }
+                        columns.append(col_def)
+
+        except ET.ParseError as e:
+            logger.error(f"Failed to parse LayoutXML: {e}")
+            
+        return columns
+
+    @staticmethod
+    def parse_fetchxml(xml_string: str) -> dict:
+        """
+        Parses FetchXML to extract query parameters.
+        Based on Fetch.xsd.
+        """
+        query_def = {
+            "entity": None,
+            "attributes": [],
+            "filters": [],
+            "orders": []
+        }
+        
+        if not xml_string:
+            return query_def
+
+        try:
+            root = ET.fromstring(xml_string)
+            
+            if root.tag != "fetch":
+                logger.warning(f"Expected root tag <fetch>, found <{root.tag}>")
+                return query_def
+
+            entity_elem = root.find("entity")
+            if entity_elem is not None:
+                query_def["entity"] = entity_elem.get("name")
+                
+                # Parse attributes to select
+                for attr_elem in entity_elem.findall("attribute"):
+                    attr_name = attr_elem.get("name")
+                    if attr_name:
+                        query_def["attributes"].append(attr_name)
+                        
+                # Parse sort orders
+                for order_elem in entity_elem.findall("order"):
+                    attr_name = order_elem.get("attribute")
+                    descending = order_elem.get("descending", "false").lower() == "true"
+                    if attr_name:
+                        query_def["orders"].append({
+                            "attribute": attr_name,
+                            "descending": descending
+                        })
+                        
+                # Parse basic filters (MVP implementation)
+                filter_elem = entity_elem.find("filter")
+                if filter_elem is not None:
+                    filter_type = filter_elem.get("type", "and") # defaults to "and" in XSD
+                    
+                    conditions = []
+                    for cond_elem in filter_elem.findall("condition"):
+                        conditions.append({
+                            "attribute": cond_elem.get("attribute"),
+                            "operator": cond_elem.get("operator"),
+                            "value": cond_elem.get("value")
+                        })
+                        
+                    if conditions:
+                        query_def["filters"].append({
+                            "type": filter_type,
+                            "conditions": conditions
+                        })
+
+        except ET.ParseError as e:
+            logger.error(f"Failed to parse FetchXML: {e}")
+
+        return query_def
+
+    @staticmethod
+    def fetchxml_to_sql(query_def: dict, table_prefix: str = "", search_string: str = None, additional_filters: dict = None) -> tuple[str, list]:
+        """
+        Converts a parsed FetchXML dictionary into a basic SQLite SQL query string and parameters.
+        Returns (sql_string, params_list)
+        """
+        if not query_def["entity"]:
+            raise ValueError("Invalid FetchXML: No target entity defined.")
+            
+        entity_name = query_def["entity"]
+        table_name = f"{table_prefix}{entity_name}" if table_prefix else entity_name
+        
+        # SELECT
+        if query_def["attributes"]:
+            cols = ", ".join(query_def["attributes"])
+        else:
+            cols = "*"
+            
+        sql = f"SELECT {cols} FROM {table_name}"
+        params = []
+        where_clauses = []
+        
+        # WHERE (Basic implementation supporting only a single top-level filter group)
+        if query_def["filters"]:
+            primary_filter = query_def["filters"][0]
+            logical_op = " AND " if primary_filter["type"] == "and" else " OR "
+            
+            filter_clauses = []
+            for cond in primary_filter["conditions"]:
+                attr = cond["attribute"]
+                op = cond["operator"]
+                val = cond["value"]
+                
+                if not attr or not op:
+                    continue
+                    
+                # Inject Quick Find search string
+                if search_string and val and "{0}" in val:
+                    val = val.replace("{0}", f"%{search_string}%")
+                elif search_string and op == "like" and not val:
+                    # Fallback if value was empty but operator is like
+                    val = f"%{search_string}%"
+                    
+                # Map FetchXML operators to SQL
+                if op == "eq":
+                    filter_clauses.append(f"{attr} = ?")
+                    params.append(val)
+                elif op == "neq" or op == "ne":
+                    filter_clauses.append(f"{attr} != ?")
+                    params.append(val)
+                elif op == "gt":
+                    filter_clauses.append(f"{attr} > ?")
+                    params.append(val)
+                elif op == "ge":
+                    filter_clauses.append(f"{attr} >= ?")
+                    params.append(val)
+                elif op == "lt":
+                    filter_clauses.append(f"{attr} < ?")
+                    params.append(val)
+                elif op == "le":
+                    filter_clauses.append(f"{attr} <= ?")
+                    params.append(val)
+                elif op == "like":
+                    filter_clauses.append(f"{attr} LIKE ?")
+                    params.append(val.replace('*', '%') if val else "") # Convert FetchXML wildcard to SQL wildcard
+                elif op == "null":
+                    filter_clauses.append(f"{attr} IS NULL")
+                elif op == "not-null":
+                    filter_clauses.append(f"{attr} IS NOT NULL")
+                else:
+                    logger.warning(f"Unsupported FetchXML operator: {op}")
+                    
+            if filter_clauses:
+                # Wrap the FetchXML filters in parentheses to protect them from additional ANDs
+                where_clauses.append("(" + logical_op.join(filter_clauses) + ")")
+                
+        # Inject additional filters (e.g. for Associated View foreign keys)
+        if additional_filters:
+            for k, v in additional_filters.items():
+                where_clauses.append(f"{k} = ?")
+                params.append(v)
+                
+        if where_clauses:
+            sql += " WHERE " + " AND ".join(where_clauses)
+                
+        # ORDER BY
+        if query_def["orders"]:
+            order_clauses = []
+            for order in query_def["orders"]:
+                direction = "DESC" if order["descending"] else "ASC"
+                order_clauses.append(f"{order['attribute']} {direction}")
+                
+            sql += " ORDER BY " + ", ".join(order_clauses)
+            
+        return sql, params

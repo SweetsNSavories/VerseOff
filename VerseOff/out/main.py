@@ -1,0 +1,602 @@
+import os
+import sys
+import logging
+import json
+from PyQt6.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QPushButton, 
+    QLabel, QListWidget, QListWidgetItem, QHBoxLayout,
+    QSplitter, QComboBox, QTableWidget, QTableWidgetItem, QLineEdit,
+    QTreeWidget, QTreeWidgetItem
+)
+from PyQt6.QtCore import QTimer, QThread, pyqtSignal, Qt
+from db import LocalDatabase
+from sync_engine import SyncEngine
+
+# Import Dynamic XRM Engine
+from xrm_form_renderer import XrmFormRenderer
+
+logger = logging.getLogger(__name__)
+
+class SyncWorker(QThread):
+    finished = pyqtSignal()
+    error = pyqtSignal(str)
+
+    def run(self):
+        try:
+            sync = SyncEngine()
+            sync.sync_all()
+            self.finished.emit()
+        except Exception as e:
+            self.error.emit(str(e))
+
+class OfflineApp(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.db = LocalDatabase()
+        manifest_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "manifest.json")
+        with open(manifest_path, "r", encoding="utf-8") as f:
+            self.config = json.load(f)
+            
+        self.setWindowTitle(f"{self.config.get('app_name', 'Dynamics 365')} - Offline Client")
+        self.resize(1280, 800)
+        self.setMinimumSize(950, 650)
+        
+        # Build Entity Display Name Map
+        self.display_names = {}
+        for ent in self.config.get("entities", []):
+            lname = ent.get("LogicalName", "")
+            dname = ent.get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or lname.replace("_", " ").title()
+            self.display_names[lname] = dname
+            
+        # Apply Microsoft Fluent 2 Theme
+        self.setStyleSheet("""
+            QMainWindow {
+                background-color: #f3f2f1;
+            }
+            QWidget {
+                font-family: 'Segoe UI', 'Aptos', sans-serif;
+                font-size: 13px;
+                color: #201f1e;
+            }
+            QTreeWidget {
+                background-color: #ffffff;
+                border: 1px solid #e1dfdd;
+                border-radius: 6px;
+                padding: 6px;
+            }
+            QTreeWidget::item {
+                padding: 6px 8px;
+                border-radius: 4px;
+            }
+            QTreeWidget::item:selected {
+                background-color: #e0eef9;
+                color: #0f6cbd;
+                font-weight: bold;
+            }
+            QTreeWidget::item:hover {
+                background-color: #f8f9fa;
+            }
+            QTableWidget {
+                background-color: #ffffff;
+                border: 1px solid #e1dfdd;
+                border-radius: 6px;
+                gridline-color: #edebe9;
+                selection-background-color: #cce4f7;
+                selection-color: #000000;
+            }
+            QTableWidget::item {
+                padding: 6px;
+            }
+            QHeaderView::section {
+                background-color: #faf9f8;
+                color: #323130;
+                font-weight: bold;
+                padding: 8px 6px;
+                border: none;
+                border-bottom: 2px solid #edebe9;
+            }
+            QPushButton {
+                background-color: #ffffff;
+                border: 1px solid #d1d1d1;
+                border-radius: 4px;
+                padding: 6px 12px;
+            }
+            QPushButton:hover {
+                background-color: #f3f2f1;
+                border-color: #8a8886;
+            }
+            QPushButton:pressed {
+                background-color: #edebe9;
+            }
+            QComboBox, QLineEdit {
+                background-color: #ffffff;
+                border: 1px solid #d1d1d1;
+                border-radius: 4px;
+                padding: 5px 8px;
+            }
+            QComboBox:focus, QLineEdit:focus {
+                border: 2px solid #0f6cbd;
+            }
+            QSplitter::handle {
+                background-color: #e1dfdd;
+                width: 2px;
+            }
+        """)
+        
+        self.init_ui()
+        self.init_background_sync()
+
+    def init_background_sync(self):
+        # Configured sync interval (default 1800 seconds = 30 minutes)
+        interval_sec = self.config.get("sync_interval", 1800)
+        self.sync_timer = QTimer(self)
+        self.sync_timer.timeout.connect(self.trigger_sync)
+        self.sync_timer.start(interval_sec * 1000)
+        logger.info(f"Background sync started. Interval: {interval_sec} seconds.")
+
+    def init_ui(self):
+        central = QWidget()
+        layout = QVBoxLayout(central)
+        layout.setContentsMargins(10, 10, 10, 10)
+        layout.setSpacing(8)
+        
+        # Header (Dynamics 365 Brand Header)
+        header_layout = QHBoxLayout()
+        header_layout.setContentsMargins(4, 4, 4, 4)
+        title = QLabel(f"<span style='color: #0f6cbd; font-size: 16px; font-weight: bold;'>Dynamics 365</span> | <span style='font-size: 15px; color: #323130;'>{self.config.get('app_name')}</span>")
+        self.sync_btn = QPushButton("Sync with Cloud")
+        self.sync_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 14px; border-radius: 4px;")
+        self.sync_btn.clicked.connect(self.trigger_sync)
+        
+        header_layout.addWidget(title)
+        header_layout.addStretch()
+        header_layout.addWidget(self.sync_btn)
+        layout.addLayout(header_layout)
+        
+        # Splitter for Navigation & Content
+        splitter = QSplitter(Qt.Orientation.Horizontal)
+        
+        # Left pane (SiteMap Navigation)
+        self.nav_tree = QTreeWidget()
+        self.nav_tree.setHeaderHidden(True)
+        self.nav_tree.setMinimumWidth(240)
+        
+        area_item = QTreeWidgetItem(["📁 "])
+        area_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
+        group_item = QTreeWidgetItem([""])
+        group_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
+        sub_title = self.display_names.get("msdyn_dataanalyticsreport_csrmanager", "Msdyn_dataanalyticsreport_csrmanager")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_csrmanager")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_dataanalyticsreport_mc", "Msdyn_dataanalyticsreport_mc")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_mc")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_dataanalyticsreport_ksinsights", "Msdyn_dataanalyticsreport_ksinsights")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_ksinsights")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("incident", "Incident")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "incident")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_swarm", "Msdyn_swarm")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_swarm")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_dataanalyticsreport_copilot", "Msdyn_dataanalyticsreport_copilot")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_copilot")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_dataanalyticsreport_ocmodern", "Msdyn_dataanalyticsreport_ocmodern")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_ocmodern")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_dataanalyticsreport_oc", "Msdyn_dataanalyticsreport_oc")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_oc")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_dataanalyticsreport_ur_recordrouting_rt", "Msdyn_dataanalyticsreport_ur_recordrouting_rt")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_ur_recordrouting_rt")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("socialprofile", "Socialprofile")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "socialprofile")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_ocliveworkitem", "Msdyn_ocliveworkitem")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_ocliveworkitem")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_dataanalyticsreport_oc_rt", "Msdyn_dataanalyticsreport_oc_rt")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_oc_rt")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("queueitem", "Queueitem")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "queueitem")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("activitypointer", "Activitypointer")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "activitypointer")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("contact", "Contact")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "contact")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_dataanalyticsreport_email", "Msdyn_dataanalyticsreport_email")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_email")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("account", "Account")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "account")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("knowledgearticle", "Knowledgearticle")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "knowledgearticle")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("template", "Template")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "template")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("emailsignature", "Emailsignature")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "emailsignature")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_evaluation", "Msdyn_evaluation")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_evaluation")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_evaluationcriteria", "Msdyn_evaluationcriteria")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_evaluationcriteria")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_evaluationplan", "Msdyn_evaluationplan")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_evaluationplan")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_iotalert", "Msdyn_iotalert")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_iotalert")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_customerasset", "Msdyn_customerasset")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_customerasset")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("serviceappointment", "Serviceappointment")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "serviceappointment")
+        group_item.addChild(subarea_item)
+        sub_title = self.display_names.get("msdyn_screenrecording", "Msdyn_screenrecording")
+        subarea_item = QTreeWidgetItem([sub_title])
+        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_screenrecording")
+        group_item.addChild(subarea_item)
+        area_item.addChild(group_item)
+        self.nav_tree.addTopLevelItem(area_item)
+        area_item.setExpanded(True)
+        
+        self.nav_tree.itemSelectionChanged.connect(self.on_nav_changed)
+        splitter.addWidget(self.nav_tree)
+        
+        # Right pane (Views + HomepageGrid Command Bar + Grid)
+        right_widget = QWidget()
+        right_layout = QVBoxLayout(right_widget)
+        right_layout.setContentsMargins(6, 0, 6, 6)
+        right_layout.setSpacing(6)
+        
+        # HomepageGrid Ribbon Command Bar (dynamically populated on nav selection)
+        self.grid_command_bar = QHBoxLayout()
+        self.grid_command_bar.setContentsMargins(0, 4, 0, 6)
+        self.grid_command_bar.setSpacing(6)
+        right_layout.addLayout(self.grid_command_bar)
+        
+        # View Selector & Search Toolbar
+        toolbar_layout = QHBoxLayout()
+        toolbar_layout.setContentsMargins(0, 2, 0, 6)
+        toolbar_layout.setSpacing(10)
+        
+        self.view_combo = QComboBox()
+        self.view_combo.setMinimumWidth(240)
+        self.view_combo.currentIndexChanged.connect(self.refresh_grid)
+        
+        self.search_bar = QLineEdit()
+        self.search_bar.setPlaceholderText("🔍 Quick Find Search...")
+        self.search_bar.setMinimumWidth(220)
+        self.search_bar.returnPressed.connect(self.do_quick_find)
+        
+        toolbar_layout.addWidget(self.view_combo)
+        toolbar_layout.addStretch()
+        toolbar_layout.addWidget(self.search_bar)
+        right_layout.addLayout(toolbar_layout)
+        
+        self.data_grid = QTableWidget()
+        self.data_grid.itemDoubleClicked.connect(self.open_record_from_grid)
+        self.data_grid.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        self.data_grid.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
+        self.data_grid.setAlternatingRowColors(True)
+        self.data_grid.horizontalHeader().setStretchLastSection(True)
+        
+        right_layout.addWidget(self.data_grid)
+        
+        splitter.addWidget(right_widget)
+        splitter.setStretchFactor(1, 4)
+        
+        layout.addWidget(splitter)
+        self.setCentralWidget(central)
+        
+        # Select first valid nav item to trigger load
+        def select_first_leaf(item):
+            if item.data(0, Qt.ItemDataRole.UserRole):
+                self.nav_tree.setCurrentItem(item)
+                return True
+            for i in range(item.childCount()):
+                if select_first_leaf(item.child(i)):
+                    return True
+            return False
+            
+        for i in range(self.nav_tree.topLevelItemCount()):
+            if select_first_leaf(self.nav_tree.topLevelItem(i)):
+                break
+
+    def on_nav_changed(self):
+        selected = self.nav_tree.selectedItems()
+        if not selected: return
+        entity_name = selected[0].data(0, Qt.ItemDataRole.UserRole)
+        if not entity_name: return # Group/Area node clicked
+        
+        # Rebuild HomepageGrid Command Bar for the selected entity
+        self.rebuild_homepage_ribbon(entity_name)
+        
+        self.view_combo.clear()
+        
+        with self.db.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT savedqueryid, name FROM saved_queries WHERE returnedtypecode = ?", (entity_name,))
+            views = cursor.fetchall()
+            
+            for v in views:
+                self.view_combo.addItem(v['name'], v['savedqueryid'])
+
+    def rebuild_homepage_ribbon(self, entity_name: str):
+        # Clear existing buttons in command bar
+        while self.grid_command_bar.count():
+            item = self.grid_command_bar.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.deleteLater()
+                
+        ent_def = next((e for e in self.config.get("entities", []) if e.get("LogicalName") == entity_name), None)
+        disp_name = self.display_names.get(entity_name, entity_name)
+        
+        # Standard primary "+ New" button
+        new_btn = QPushButton(f"+ New {disp_name}")
+        new_btn.setStyleSheet("background-color: #0f6cbd; color: white; font-weight: bold; padding: 6px 14px; border-radius: 4px;")
+        new_btn.clicked.connect(lambda: self.open_form(entity_name, None))
+        self.grid_command_bar.addWidget(new_btn)
+        
+        # Standard "Delete" button
+        delete_btn = QPushButton("Delete")
+        delete_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; padding: 6px 12px; border-radius: 4px;")
+        delete_btn.clicked.connect(self.on_delete_record_clicked)
+        self.grid_command_bar.addWidget(delete_btn)
+        
+        # Standard "Refresh" button
+        refresh_btn = QPushButton("Refresh")
+        refresh_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; padding: 6px 12px; border-radius: 4px;")
+        refresh_btn.clicked.connect(lambda: self.refresh_grid())
+        self.grid_command_bar.addWidget(refresh_btn)
+        
+        # Extract HomepageGrid Ribbon Buttons if defined in metadata
+        if ent_def:
+            ribbon_buttons = ent_def.get("ribbon_buttons", [])
+            seen = {"New", "Delete", "Refresh", f"+ New {disp_name}"}
+            for btn in ribbon_buttons:
+                if btn.get("location_type") == "homepage_grid":
+                    lbl = btn.get("label", "")
+                    if not lbl or lbl in seen: continue
+                    seen.add(lbl)
+                    
+                    cmd_btn = QPushButton(lbl)
+                    cmd_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; padding: 6px 10px; border-radius: 4px;")
+                    cmd_btn.clicked.connect(lambda _, cmd=btn.get("command"): logger.info(f"Executed Homepage command: {cmd}"))
+                    self.grid_command_bar.addWidget(cmd_btn)
+                    
+        self.grid_command_bar.addStretch()
+
+    def on_delete_record_clicked(self):
+        selected_nav = self.nav_tree.selectedItems()
+        if not selected_nav: return
+        entity_name = selected_nav[0].data(0, Qt.ItemDataRole.UserRole)
+        if not entity_name: return
+
+        selected_items = self.data_grid.selectedItems()
+        if not selected_items: return
+        row = selected_items[0].row()
+        first_cell = self.data_grid.item(row, 0)
+        if not first_cell: return
+        record_id = first_cell.data(Qt.ItemDataRole.UserRole)
+        if not record_id: return
+
+        from PyQt6.QtWidgets import QMessageBox
+        disp_name = self.display_names.get(entity_name, entity_name)
+        reply = QMessageBox.question(
+            self, 
+            "Confirm Delete", 
+            f"Are you sure you want to delete this {disp_name} record offline?",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+        )
+        if reply == QMessageBox.StandardButton.Yes:
+            with self.db.get_connection() as conn:
+                cursor = conn.cursor()
+                cursor.execute(f"DELETE FROM {entity_name} WHERE {entity_name}id = ?", (record_id,))
+                conn.commit()
+            self.refresh_grid()
+
+    def do_quick_find(self):
+        search_text = self.search_bar.text().strip()
+        self.refresh_grid(search_string=search_text)
+
+    def refresh_grid(self, search_string=None):
+        selected_nav = self.nav_tree.selectedItems()
+        if not selected_nav: return
+        entity_name = selected_nav[0].data(0, Qt.ItemDataRole.UserRole)
+        if not entity_name: return
+        
+        view_id = self.view_combo.currentData()
+        if not view_id and not search_string:
+            self.data_grid.setRowCount(0)
+            self.data_grid.setColumnCount(0)
+            return
+            
+        try:
+            from view_parser import ViewParser
+            with self.db.get_connection() as conn:
+                cursor = conn.cursor()
+                
+                if search_string:
+                    # Query the Quick Find View (querytype = 4)
+                    cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE returnedtypecode = ? AND querytype = 4", (entity_name,))
+                    view_row = cursor.fetchone()
+                    if not view_row:
+                        # Fallback to current view if no quick find view exists
+                        cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE savedqueryid = ?", (view_id,))
+                        view_row = cursor.fetchone()
+                else:
+                    # Normal view execution
+                    cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE savedqueryid = ?", (view_id,))
+                    view_row = cursor.fetchone()
+                
+                if not view_row: return
+                
+                columns = ViewParser.parse_layoutxml(view_row['layoutxml'])
+                query_def = ViewParser.parse_fetchxml(view_row['fetchxml'])
+                
+                if not columns:
+                    columns = [{'name': f'{entity_name}id', 'label': 'ID'}, {'name': 'sync_status', 'label': 'Status'}]
+                
+                primary_id_col = f"{entity_name}id"
+                
+                self.data_grid.setColumnCount(len(columns))
+                self.data_grid.setHorizontalHeaderLabels([c.get('label', c['name']) for c in columns])
+                
+                if query_def and query_def.get("entity") == entity_name:
+                    sql, params = ViewParser.fetchxml_to_sql(query_def, search_string=search_string)
+                    cursor.execute(sql, params)
+                else:
+                    cursor.execute(f"SELECT * FROM {entity_name}")
+                    
+                rows = cursor.fetchall()
+                self.data_grid.setRowCount(len(rows))
+                
+                for i, row in enumerate(rows):
+                    row_dict = dict(row)
+                    rec_id = row_dict.get(primary_id_col, "")
+                    for j, col in enumerate(columns):
+                        val = str(row_dict.get(col['name'], ''))
+                        item = QTableWidgetItem(val)
+                        if j == 0:
+                            item.setData(Qt.ItemDataRole.UserRole, rec_id)
+                        self.data_grid.setItem(i, j, item)
+        except Exception as e:
+            logger.error(f"Error rendering grid: {e}")
+
+    def open_record_from_grid(self, item):
+        row = item.row()
+        first_cell = self.data_grid.item(row, 0)
+        if not first_cell: return
+        
+        record_id = first_cell.data(Qt.ItemDataRole.UserRole)
+        
+        selected_nav = self.nav_tree.selectedItems()
+        if not selected_nav: return
+        entity_name = selected_nav[0].data(0, Qt.ItemDataRole.UserRole)
+        
+        if record_id:
+            self.open_form(entity_name, record_id)
+
+    def open_form(self, entity_name, record_id):
+        self.current_form = XrmFormRenderer(self.config, entity_name, record_id)
+        self.current_form.show()
+        self.current_form.raise_()
+        self.current_form.activateWindow()
+
+    def trigger_sync(self):
+        if hasattr(self, 'worker') and self.worker.isRunning():
+            return # Already syncing
+            
+        self.sync_btn.setText("Syncing...")
+        self.sync_btn.setDisabled(True)
+        
+        self.worker = SyncWorker()
+        self.worker.finished.connect(self.on_sync_finished)
+        self.worker.error.connect(self.on_sync_error)
+        self.worker.start()
+
+    def on_sync_finished(self):
+        self.refresh_grid()
+        self.sync_btn.setText("Sync Now")
+        self.sync_btn.setDisabled(False)
+        logger.info("Autonomous sync cycle completed.")
+
+    def on_sync_error(self, error_msg):
+        logger.error(f"Sync failed: {error_msg}")
+        self.sync_btn.setText("Sync Error")
+        self.sync_btn.setDisabled(False)
+
+def global_exception_handler(exc_type, exc_value, exc_traceback):
+    import traceback
+    from PyQt6.QtWidgets import QMessageBox
+    error_msg = "".join(traceback.format_exception(exc_type, exc_value, exc_traceback))
+    logging.error(f"CRASH: {error_msg}")
+    try:
+        msg_box = QMessageBox()
+        msg_box.setIcon(QMessageBox.Icon.Critical)
+        msg_box.setWindowTitle("Critical Application Error")
+        msg_box.setText("An unexpected error occurred!")
+        msg_box.setDetailedText(error_msg)
+        msg_box.exec()
+    except Exception:
+        pass
+
+
+class SafeApplication(QApplication):
+    def notify(self, receiver, event):
+        try:
+            return super().notify(receiver, event)
+        except Exception as e:
+            import traceback
+            from PyQt6.QtWidgets import QMessageBox
+            import logging
+            error_msg = "".join(traceback.format_exception(type(e), e, e.__traceback__))
+            logging.error(f"CRASH PREVENTED: {error_msg}")
+            try:
+                msg_box = QMessageBox()
+                msg_box.setIcon(QMessageBox.Icon.Critical)
+                msg_box.setWindowTitle("Application Error")
+                msg_box.setText("An unexpected error occurred, but the application was kept alive.")
+                msg_box.setDetailedText(error_msg)
+                msg_box.exec()
+            except:
+                pass
+            return False
+
+def main():
+    try:
+        import ctypes
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("verseoff.dynamics.offline.app")
+    except Exception:
+        pass
+    sys.excepthook = global_exception_handler
+    logging.basicConfig(level=logging.INFO)
+    app = SafeApplication(sys.argv)
+    window = OfflineApp()
+    window.resize(1280, 800)
+    window.show()
+    window.raise_()
+    window.activateWindow()
+    sys.exit(app.exec())
+
+if __name__ == "__main__":
+    main()

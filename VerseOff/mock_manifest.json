@@ -1,0 +1,112 @@
+{
+    "app_name": "VerseOff Offline CRM",
+    "org_url": "https://mockorg.crm.dynamics.com",
+    "client_id": "mock-client-id",
+    "sync_interval": 300,
+    "sitemap": {
+        "areas": [
+            {
+                "id": "Area_Sales",
+                "title": "Sales",
+                "groups": [
+                    {
+                        "id": "Group_Customers",
+                        "title": "Customers",
+                        "subareas": [
+                            {"id": "SubArea_Accounts", "entity": "account", "title": "Accounts"},
+                            {"id": "SubArea_Contacts", "entity": "contact", "title": "Contacts"}
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "entities": [
+        {
+            "LogicalName": "account",
+            "DisplayName": "Account",
+            "PrimaryIdAttribute": "accountid",
+            "PrimaryNameAttribute": "name",
+            "attributes": [
+                {"LogicalName": "accountid", "AttributeType": "Uniqueidentifier"},
+                {"LogicalName": "name", "AttributeType": "String"},
+                {"LogicalName": "telephone1", "AttributeType": "String"},
+                {"LogicalName": "primarycontactid", "AttributeType": "Lookup"}
+            ],
+            "lookup_targets": {
+                "primarycontactid": ["contact"]
+            },
+            "saved_queries": [
+                {
+                    "savedqueryid": "1111",
+                    "name": "Active Accounts",
+                    "querytype": 0,
+                    "fetchxml": "<fetch><entity name='account'><attribute name='name'/><attribute name='telephone1'/></entity></fetch>",
+                    "layoutxml": "<grid name='resultset' object='1' jump='name' select='1' icon='1' preview='1'><row name='result' id='accountid'><cell name='name' width='150'/><cell name='telephone1' width='100'/></row></grid>"
+                },
+                {
+                    "savedqueryid": "2222",
+                    "name": "Account Quick Find",
+                    "querytype": 4,
+                    "fetchxml": "<fetch><entity name='account'><attribute name='name'/><attribute name='telephone1'/><filter type='or'><condition attribute='name' operator='like' value='{0}'/></filter></entity></fetch>",
+                    "layoutxml": "<grid name='resultset' object='1' jump='name' select='1' icon='1' preview='1'><row name='result' id='accountid'><cell name='name' width='150'/><cell name='telephone1' width='100'/></row></grid>"
+                }
+            ],
+            "forms": [
+                {
+                    "formid": "3333",
+                    "name": "Account Main Form",
+                    "type": 2,
+                    "formxml": "<form><tabs><tab name='general' id='{tab1}'><labels><label description='General' languagecode='1033'/></labels><columns><column width='100%'><sections><section name='info' id='{sec1}'><labels><label description='Account Information' languagecode='1033'/></labels><rows><row><cell id='{c1}'><labels><label description='Account Name' languagecode='1033'/></labels><control id='name' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='name'/></cell></row><row><cell id='{c2}'><labels><label description='Phone' languagecode='1033'/></labels><control id='telephone1' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='telephone1'/></cell></row></rows></section></sections></column></columns></tab></tabs></form>"
+                }
+            ],
+            "relationships": {
+                "one_to_many": [
+                    {
+                        "ReferencingEntity": "contact",
+                        "ReferencingAttribute": "parentcustomerid",
+                        "RelationshipName": "account_contacts"
+                    }
+                ]
+            }
+        },
+        {
+            "LogicalName": "contact",
+            "DisplayName": "Contact",
+            "PrimaryIdAttribute": "contactid",
+            "PrimaryNameAttribute": "fullname",
+            "attributes": [
+                {"LogicalName": "contactid", "AttributeType": "Uniqueidentifier"},
+                {"LogicalName": "fullname", "AttributeType": "String"},
+                {"LogicalName": "parentcustomerid", "AttributeType": "Lookup"}
+            ],
+            "lookup_targets": {
+                "parentcustomerid": ["account"]
+            },
+            "saved_queries": [
+                {
+                    "savedqueryid": "4444",
+                    "name": "Active Contacts",
+                    "querytype": 0,
+                    "fetchxml": "<fetch><entity name='contact'><attribute name='fullname'/></entity></fetch>",
+                    "layoutxml": "<grid name='resultset' object='2' jump='fullname' select='1' icon='1' preview='1'><row name='result' id='contactid'><cell name='fullname' width='150'/></row></grid>"
+                },
+                {
+                    "savedqueryid": "5555",
+                    "name": "Associated Contacts",
+                    "querytype": 2,
+                    "fetchxml": "<fetch><entity name='contact'><attribute name='fullname'/></entity></fetch>",
+                    "layoutxml": "<grid name='resultset' object='2' jump='fullname' select='1' icon='1' preview='1'><row name='result' id='contactid'><cell name='fullname' width='150'/></row></grid>"
+                }
+            ],
+            "forms": [
+                {
+                    "formid": "6666",
+                    "name": "Contact Main Form",
+                    "type": 2,
+                    "formxml": "<form><tabs><tab name='general' id='{tab2}'><labels><label description='General' languagecode='1033'/></labels><columns><column width='100%'><sections><section name='info' id='{sec2}'><labels><label description='Contact Information' languagecode='1033'/></labels><rows><row><cell id='{c3}'><labels><label description='Full Name' languagecode='1033'/></labels><control id='fullname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='fullname'/></cell></row><row><cell id='{c4}'><labels><label description='Account' languagecode='1033'/></labels><control id='parentcustomerid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='parentcustomerid'/></cell></row></rows></section></sections></column></columns></tab></tabs></form>"
+                }
+            ]
+        }
+    ]
+}

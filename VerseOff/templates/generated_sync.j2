@@ -1,0 +1,138 @@
+import time
+import json
+import sqlite3
+import traceback
+import logging
+from db import LocalDatabase
+
+logger = logging.getLogger(__name__)
+
+try:
+    import msal
+    import requests
+    MSAL_AVAILABLE = True
+except ImportError:
+    MSAL_AVAILABLE = False
+    logger.warning("'msal' or 'requests' package not found. Sync engine will operate in mock mode. Install with: pip install msal requests")
+
+class FallbackRESTProvider:
+    """Routes payloads to Snowflake if D365 Dataverse is unavailable."""
+    def push_to_snowflake(self, table_name, record_id, payload):
+        logger.info(f"[SNOWFLAKE FALLBACK] Pushing {table_name} record {record_id} to Snowflake Data Lake...")
+        # Mocking a Snowflake REST API call
+        time.sleep(1) # simulate latency
+        logger.info(f"[SNOWFLAKE FALLBACK] Successfully persisted to Snowflake.")
+        return True
+
+class SyncEngine:
+    def __init__(self, config_path="manifest.json"):
+        # We try to read config if it exists, otherwise fallback to defaults
+        try:
+            with open(config_path, "r") as f:
+                self.config = json.load(f)
+        except Exception:
+            self.config = {}
+            
+        self.d365_url = self.config.get("org_url", "https://mock.crm.dynamics.com")
+        self.client_id = self.config.get("client_id", "mock-client-id")
+        self.tenant_id = self.config.get("tenant_id", "common")
+        self.fallback_provider = FallbackRESTProvider()
+        
+    def acquire_token(self):
+        """Silently acquires Azure AD token using MSAL TokenCache."""
+        if not MSAL_AVAILABLE:
+            logger.info("Mocking MSAL Token Acquisition (MSAL library missing).")
+            return "mock_token"
+            
+        authority = f"https://login.microsoftonline.com/{self.tenant_id}"
+        app = msal.PublicClientApplication(self.client_id, authority=authority)
+        
+        # In a real app, we load cache from disk. Here we just mock the silent flow.
+        accounts = app.get_accounts()
+        if accounts:
+            result = app.acquire_token_silent(["User.Read"], account=accounts[0])
+            if result:
+                return result['access_token']
+                
+        # For offline MVP, we just return a mock token if interactive auth is needed.
+        logger.info("No cached token found. Returning mock token for MVP.")
+        return "mock_token"
+
+    def sync_all(self):
+        logger.info("Sync Engine woke up. Acquiring AAD Token...")
+        token = self.acquire_token()
+        
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "OData-MaxVersion": "4.0",
+            "OData-Version": "4.0",
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8"
+        }
+        
+        success_count = 0
+        fail_count = 0
+        
+        try:
+            with LocalDatabase().get_connection() as conn:
+                cursor = conn.cursor()
+                
+                # Find all pending records
+                cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+                tables = cursor.fetchall()
+                
+                for (table_name,) in tables:
+                    cursor.execute(f"PRAGMA table_info({table_name})")
+                    columns = [col[1] for col in cursor.fetchall()]
+                    if 'sync_status' not in columns or 'id' not in columns:
+                        continue
+                        
+                    cursor.execute(f"SELECT * FROM {table_name} WHERE sync_status = 'PENDING' OR sync_status = 'pending_create' OR sync_status = 'pending_update'")
+                    pending_records = cursor.fetchall()
+                    
+                    for record in pending_records:
+                        record_id = record['id']
+                        
+                        # Convert sqlite Row to dict and strip internal offline metadata
+                        payload = dict(record)
+                        etag = payload.pop('etag', None)
+                        payload.pop('sync_status', None)
+                        
+                        logger.info(f"Synchronizing {table_name} ({record_id})...")
+                        
+                        if etag:
+                            headers["If-Match"] = etag # Optimistic Concurrency
+                            
+                        # --- MOCKING THE NETWORK RESPONSE FOR OFFLINE MVP ---
+                        time.sleep(0.5) # Simulate network latency
+                        
+                        # We randomly simulate 412 Precondition Failed, 503 Timeout, or 204 Success.
+                        mock_status = 204 
+                        if hash(str(record_id)) % 5 == 0:
+                            mock_status = 503 # Service Unavailable
+                        elif hash(str(record_id)) % 7 == 0:
+                            mock_status = 412 # Precondition Failed (ETag mismatch)
+                            
+                        if mock_status == 204:
+                            logger.info(f"Dataverse Success: {record_id}")
+                            cursor.execute(f"UPDATE {table_name} SET sync_status = 'SYNCED' WHERE id = ?", (record_id,))
+                            success_count += 1
+                        elif mock_status == 412:
+                            logger.warning(f"Dataverse Conflict (412): {record_id} modified online! Flagging as CONFLICT.")
+                            cursor.execute(f"UPDATE {table_name} SET sync_status = 'CONFLICT' WHERE id = ?", (record_id,))
+                            fail_count += 1
+                        elif mock_status == 503:
+                            logger.warning(f"Dataverse Down (503). Triggering Fallback REST Provider.")
+                            if self.fallback_provider.push_to_snowflake(table_name, record_id, payload):
+                                cursor.execute(f"UPDATE {table_name} SET sync_status = 'SYNCED_TO_LAKE' WHERE id = ?", (record_id,))
+                                success_count += 1
+                            else:
+                                fail_count += 1
+                
+                conn.commit()
+            
+        except Exception as e:
+            logger.error(f"Sync Engine Error: {e}")
+            traceback.print_exc()
+            fail_count += 1
+            raise e

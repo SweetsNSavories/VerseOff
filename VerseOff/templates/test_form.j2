@@ -1,0 +1,73 @@
+import pytest
+from PyQt6.QtCore import Qt
+import sys
+
+# Ensure generated app is in path
+sys.path.insert(0, ".")
+
+from forms.{{ entity.LogicalName }}_form import {{ entity.LogicalName | capitalize }}Form
+
+@pytest.fixture
+def form(qtbot):
+    """Fixture to create the form and register it with pytest-qt qtbot."""
+    # We pass None for record_id to test the 'Create' scenario
+    widget = {{ entity.LogicalName | capitalize }}Form(record_id=None)
+    qtbot.addWidget(widget)
+    return widget
+
+def test_form_initialization(form):
+    """Test that the form initializes without crashing and JS engine loads."""
+    assert form is not None
+    assert form.js_engine is not None
+    assert form.windowTitle() == "{{ entity.DisplayName }} Form"
+
+# Generate basic tests for each control to ensure they exist and can be modified
+{% for tab in form.tabs %}
+{% for section in tab.sections %}
+{% for control in section.controls %}
+def test_control_{{ control.attribute }}_exists(form, qtbot):
+    assert "{{ control.attribute }}" in form.widgets
+    assert "{{ control.attribute }}" in form.mock_attrs
+    
+    widget = form.widgets["{{ control.attribute }}"]
+    
+    {% if control.type == 'text' %}
+    qtbot.keyClicks(widget, "Test Value")
+    assert form.mock_attrs["{{ control.attribute }}"].getValue() == "Test Value"
+    {% elif control.type == 'boolean' %}
+    qtbot.mouseClick(widget, Qt.MouseButton.LeftButton)
+    # Check if checkbox state changed
+    {% endif %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+
+# Generate tests for OnLoad and OnChange events to catch JS errors
+def test_javascript_event_execution(form, qtbot):
+    """
+    If the downloaded JS has unsupported DOM manipulations, 
+    triggering the events will throw exceptions or log errors.
+    """
+    # Trigger OnLoad
+    try:
+        form.trigger_onload()
+    except Exception as e:
+        pytest.fail(f"OnLoad JS execution failed: {e}")
+        
+    # Trigger OnChange for fields that have them
+    {% for tab in form.tabs %}
+    {% for section in tab.sections %}
+    {% for control in section.controls %}
+    {% if control.events %}
+    try:
+        {% if control.type == 'text' %}
+        widget = form.widgets["{{ control.attribute }}"]
+        qtbot.keyClicks(widget, "Trigger")
+        widget.editingFinished.emit() # Force trigger
+        {% endif %}
+    except Exception as e:
+        pytest.fail(f"OnChange JS execution for {{ control.attribute }} failed: {e}")
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}

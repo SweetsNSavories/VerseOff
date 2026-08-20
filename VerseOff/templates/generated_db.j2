@@ -1,0 +1,98 @@
+import os
+import sqlite3
+import json
+import logging
+
+logger = logging.getLogger(__name__)
+
+class LocalDatabase:
+    def __init__(self, db_path=None):
+        if db_path is None:
+            self.db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "verseoff_local.db")
+        else:
+            self.db_path = db_path
+        self._init_db()
+
+    def get_connection(self):
+        return sqlite3.connect(self.db_path)
+
+    def _init_db(self):
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            
+            # Entities generated from manifest
+            {% for entity in manifest.entities %}
+            # Table: {{ entity.LogicalName }}
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS {{ entity.LogicalName }} (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            {% endfor %}
+            
+            # System tables
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS _sync_state (
+                    entity_name TEXT PRIMARY KEY,
+                    last_sync_time TEXT
+                )
+            ''')
+            
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS saved_queries (
+                    savedqueryid TEXT PRIMARY KEY,
+                    name TEXT,
+                    returnedtypecode TEXT,
+                    fetchxml TEXT,
+                    layoutxml TEXT
+                )
+            ''')
+            
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS sync_queue (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    entity_name TEXT,
+                    record_id TEXT,
+                    operation TEXT,
+                    data_json TEXT,
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            conn.commit()
+
+    def get_record(self, entity_name, record_id):
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT data_json, sync_status, sync_error FROM {entity_name} WHERE id = ?", (record_id,))
+            row = cursor.fetchone()
+            if row:
+                data = json.loads(row[0])
+                data['_sync_status'] = row[1]
+                data['_sync_error'] = row[2]
+                return data
+            return None
+
+    def upsert_record(self, entity_name, record_id, data, sync_status='synced', sync_error=None):
+        data_json = json.dumps(data)
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(f'''
+                INSERT INTO {entity_name} (id, data_json, sync_status, sync_error)
+                VALUES (?, ?, ?, ?)
+                ON CONFLICT(id) DO UPDATE SET
+                    data_json=excluded.data_json,
+                    sync_status=excluded.sync_status,
+                    sync_error=excluded.sync_error
+            ''', (record_id, data_json, sync_status, sync_error))
+            conn.commit()
+
+    def get_pending_records(self, entity_name):
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT id, data_json, sync_status FROM {entity_name} WHERE sync_status IN ('pending_update', 'pending_create')")
+            return [{"id": row[0], "data": json.loads(row[1]), "status": row[2]} for row in cursor.fetchall()]

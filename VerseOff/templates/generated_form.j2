@@ -1,0 +1,246 @@
+import sys
+import os
+import json
+from PyQt6.QtWidgets import (
+    QWidget, QVBoxLayout, QFormLayout, QLineEdit, QComboBox, 
+    QCheckBox, QDateTimeEdit, QPushButton, QLabel, QMessageBox, QScrollArea, QGroupBox
+)
+from PyQt6.QtCore import Qt, QDate
+from PyQt6.QtQml import QJSEngine
+
+from mock_xrm import MockAttribute, MockControl, MockFormContext, MockExecutionContext, XrmMock
+from db import LocalDatabase
+try:
+    import custom_events
+except ImportError:
+    custom_events = None
+
+class {{ entity.LogicalName | capitalize }}Form(QWidget):
+    def __init__(self, record_id=None):
+        super().__init__()
+        self.record_id = record_id
+        self.db = LocalDatabase()
+        self.widgets = {}       # { attribute_name: widget }
+        self.mock_attrs = {}    # { attribute_name: MockAttribute }
+        self.mock_ctrls = {}    # { attribute_name: MockControl }
+        
+        self.init_ui()
+        self.init_js_engine()
+        
+        if self.record_id:
+            self.load_data()
+            
+        self.trigger_onload()
+
+    def init_ui(self):
+        self.setWindowTitle("{{ entity.DisplayName }} Form")
+        main_layout = QVBoxLayout()
+        
+        # Sync Status Banner
+        self.status_banner = QLabel("")
+        self.status_banner.setStyleSheet("background-color: yellow; padding: 5px;")
+        self.status_banner.setVisible(False)
+        main_layout.addWidget(self.status_banner)
+        
+        # Scroll area for form
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        form_container = QWidget()
+        form_layout = QVBoxLayout(form_container)
+        
+        {% for tab in form.tabs %}
+        # Tab: {{ tab.label }}
+        tab_box = QGroupBox("{{ tab.label }}")
+        tab_layout = QVBoxLayout()
+        
+        {% for section in tab.sections %}
+        # Section: {{ section.label }}
+        sec_layout = QFormLayout()
+        
+        {% for control in section.controls %}
+        {% set attr = control.attribute %}
+        
+        {% if control.type == 'text' or control.type == 'memo' %}
+        widget_{{ attr }} = QLineEdit()
+        {% elif control.type == 'picklist' %}
+        widget_{{ attr }} = QComboBox()
+        {% for opt in control.options %}
+        widget_{{ attr }}.addItem("{{ opt.label }}", {{ opt.value }})
+        {% endfor %}
+        {% elif control.type == 'boolean' %}
+        widget_{{ attr }} = QCheckBox()
+        {% elif control.type == 'datetime' %}
+        widget_{{ attr }} = QDateTimeEdit()
+        widget_{{ attr }}.setCalendarPopup(True)
+        {% else %}
+        widget_{{ attr }} = QLineEdit() # fallback
+        {% endif %}
+        
+        sec_layout.addRow("{{ control.label }}", widget_{{ attr }})
+        self.widgets["{{ attr }}"] = widget_{{ attr }}
+        
+        # Create Mock XRM objects
+        self.mock_attrs["{{ attr }}"] = MockAttribute("{{ attr }}", widget_{{ attr }}, "{{ control.type }}")
+        self.mock_ctrls["{{ attr }}"] = MockControl("{{ attr }}", widget_{{ attr }})
+        
+        # Hook up OnChange events
+        {% for event in control.events %}
+        {% if event.event == 'onchange' %}
+        # Bind {{ event.function }} from {{ event.library }}
+        def onchange_{{ attr }}(*args):
+            self.trigger_event("{{ event.function }}", {{ event.pass_context | lower }})
+        
+        {% if control.type == 'text' %}
+        widget_{{ attr }}.editingFinished.connect(onchange_{{ attr }})
+        {% elif control.type == 'picklist' %}
+        widget_{{ attr }}.currentIndexChanged.connect(onchange_{{ attr }})
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        
+        {% endfor %}
+        
+        tab_layout.addLayout(sec_layout)
+        {% endfor %}
+        
+        tab_box.setLayout(tab_layout)
+        form_layout.addWidget(tab_box)
+        {% endfor %}
+        
+        scroll.setWidget(form_container)
+        main_layout.addWidget(scroll)
+        
+        # --- Command Bar (Ribbon) ---
+        cmd_layout = QHBoxLayout()
+        cmd_layout.addWidget(QLabel("<b>Command Bar:</b>"))
+        
+        {% if entity.ribbon_buttons and entity.ribbon_buttons|length > 0 %}
+        {% for btn in entity.ribbon_buttons %}
+        # Button: {{ btn.label }}
+        self.btn_{{ btn.id | replace('.', '_') | lower }} = QPushButton("{{ btn.label }}")
+        self.btn_{{ btn.id | replace('.', '_') | lower }}.clicked.connect(lambda _, cmd="{{ btn.command }}": self.execute_ribbon_command(cmd))
+        cmd_layout.addWidget(self.btn_{{ btn.id | replace('.', '_') | lower }})
+        {% endfor %}
+        {% else %}
+        # Fallback generic buttons if ribbon extraction failed or is empty
+        self.save_btn = QPushButton("Save")
+        self.save_btn.clicked.connect(self.save_record)
+        cmd_layout.addWidget(self.save_btn)
+        
+        self.close_btn = QPushButton("Close")
+        self.close_btn.clicked.connect(self.close)
+        cmd_layout.addWidget(self.close_btn)
+        {% endif %}
+        
+        cmd_layout.addStretch()
+        main_layout.addLayout(cmd_layout)
+        
+        self.setLayout(main_layout)
+
+    def init_js_engine(self):
+        self.js_engine = QJSEngine()
+        
+        # Build Mock Context
+        self.form_context = MockFormContext(self.mock_attrs, self.mock_ctrls)
+        self.exec_context = MockExecutionContext(self.form_context)
+        self.xrm = XrmMock(self.form_context)
+        
+        # Inject Xrm into global scope
+        xrm_val = self.js_engine.newQObject(self.xrm)
+        self.js_engine.globalObject().setProperty("Xrm", xrm_val)
+        
+        # Load WebResources
+        webres_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "webresources")
+        if os.path.exists(webres_dir):
+            for file in os.listdir(webres_dir):
+                if file.endswith(".js"):
+                    with open(os.path.join(webres_dir, file), "r", encoding="utf-8") as f:
+                        script = f.read()
+                        res = self.js_engine.evaluate(script, file)
+                        if res.isError():
+                            print(f"JS Load Error in {file}: {res.toString()}")
+
+    def trigger_event(self, function_name, pass_context=False):
+        """ Calls a JS function from the engine. """
+        js_func = self.js_engine.evaluate(function_name)
+        if js_func.isCallable():
+            if pass_context:
+                exec_val = self.js_engine.newQObject(self.exec_context)
+                res = js_func.call([exec_val])
+            else:
+                res = js_func.call()
+                
+            if res.isError():
+                print(f"JS Runtime Error in {function_name}: {res.toString()}")
+        else:
+            print(f"JS Warning: Function {function_name} not found or not callable.")
+
+    def trigger_onload(self):
+        {% for event in form.events %}
+        {% if event.event == 'onload' %}
+        self.trigger_event("{{ event.function }}", {{ event.pass_context | lower }})
+        {% endif %}
+        {% endfor %}
+
+    def load_data(self):
+        data = self.db.get_record("{{ entity.LogicalName }}", self.record_id)
+        if not data:
+            return
+            
+        status = data.get("_sync_status")
+        error = data.get("_sync_error")
+        if status == "rejected":
+            self.status_banner.setText(f"Sync Failed: {error}")
+            self.status_banner.setVisible(True)
+            self.status_banner.setStyleSheet("background-color: #ffcccc; padding: 5px; border: 1px solid red;")
+            
+        for attr, val in data.items():
+            if attr in self.mock_attrs:
+                self.mock_attrs[attr].setValue(val)
+                
+        # Trigger Extensibility Hook
+        if custom_events and hasattr(custom_events, 'post_load'):
+            try:
+                custom_events.post_load("{{ entity.LogicalName }}", self.form_context)
+            except Exception as e:
+                print(f"Custom Event Error in post_load: {e}")
+
+    def execute_ribbon_command(self, command_name):
+        # Stub for Ribbon Command Execution
+        # If the command is standard save
+        if "Save" in command_name or command_name == "Mscrm.SavePrimary":
+            self.save_record()
+        elif "Close" in command_name:
+            self.close()
+        else:
+            QMessageBox.information(self, "Command", f"Ribbon Command executed: {command_name}\n(Custom JS not fully mocked in offline MVP)")
+
+    def save_record(self):
+        # Trigger OnSave
+        {% for event in form.events %}
+        {% if event.event == 'onsave' %}
+        self.trigger_event("{{ event.function }}", {{ event.pass_context | lower }})
+        {% endif %}
+        {% endfor %}
+        
+        data = {}
+        for attr, mock in self.mock_attrs.items():
+            data[attr] = mock.getValue()
+            
+        # Trigger Extensibility Hook
+        if custom_events and hasattr(custom_events, 'pre_save'):
+            try:
+                data = custom_events.pre_save("{{ entity.LogicalName }}", data)
+            except Exception as e:
+                QMessageBox.critical(self, "Save Blocked", str(e))
+                return
+            
+        if not self.record_id:
+            import uuid
+            self.record_id = str(uuid.uuid4())
+            
+        status = "pending_update" if self.record_id else "pending_create"
+        self.db.upsert_record("{{ entity.LogicalName }}", self.record_id, data, sync_status=status)
+        
+        QMessageBox.information(self, "Saved", "Record saved locally. Will sync when online.")
+        self.close()
