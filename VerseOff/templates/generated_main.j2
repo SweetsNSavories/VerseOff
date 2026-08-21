@@ -38,8 +38,8 @@ class OfflineApp(QMainWindow):
             self.config = json.load(f)
             
         self.setWindowTitle(f"{self.config.get('app_name', 'Dynamics 365')} - Offline Client")
-        self.resize(1280, 800)
-        self.setMinimumSize(950, 650)
+        self.resize(1380, 860)
+        self.setMinimumSize(1020, 700)
         
         # Build Entity Display Name Map
         self.display_names = {}
@@ -47,66 +47,119 @@ class OfflineApp(QMainWindow):
             lname = ent.get("LogicalName", "")
             dname = ent.get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or lname.replace("_", " ").title()
             self.display_names[lname] = dname
+
+        # Current active Area (D365 SiteMap displays only ONE area at a time)
+        self.current_area_id = "area_service"
+        self.sitemap_structure = self._define_sitemap_structure()
             
-        # Apply Microsoft Fluent 2 Theme
+        # Apply Modern Microsoft Dynamics 365 / Fluent 2 Theme
         self.setStyleSheet("""
             QMainWindow {
-                background-color: #f3f2f1;
+                background-color: #f8f9fa;
             }
             QWidget {
                 font-family: 'Segoe UI', 'Aptos', sans-serif;
                 font-size: 13px;
                 color: #201f1e;
             }
+            /* Top App Header */
+            #AppHeader {
+                background-color: #002050;
+                color: #ffffff;
+                padding: 4px 12px;
+            }
+            #AppHeader QLabel {
+                color: #ffffff;
+            }
+            /* Left Navigation Rail */
+            #NavRail {
+                background-color: #ffffff;
+                border-right: 1px solid #e1dfdd;
+            }
             QTreeWidget {
                 background-color: #ffffff;
-                border: 1px solid #e1dfdd;
-                border-radius: 6px;
-                padding: 6px;
+                border: none;
+                padding: 8px 4px;
             }
             QTreeWidget::item {
-                padding: 6px 8px;
+                padding: 7px 10px;
                 border-radius: 4px;
+                margin: 1px 4px;
+                color: #323130;
             }
             QTreeWidget::item:selected {
                 background-color: #e0eef9;
                 color: #0f6cbd;
-                font-weight: bold;
+                font-weight: 600;
+                border-left: 3px solid #0f6cbd;
             }
-            QTreeWidget::item:hover {
-                background-color: #f8f9fa;
+            QTreeWidget::item:hover:!selected {
+                background-color: #f3f2f1;
             }
-            QTableWidget {
-                background-color: #ffffff;
-                border: 1px solid #e1dfdd;
-                border-radius: 6px;
-                gridline-color: #edebe9;
-                selection-background-color: #cce4f7;
-                selection-color: #000000;
-            }
-            QTableWidget::item {
-                padding: 6px;
-            }
-            QHeaderView::section {
+            /* Area Switcher Button */
+            #AreaSwitcher {
                 background-color: #faf9f8;
+                border: 1px solid #e1dfdd;
+                border-radius: 4px;
+                padding: 8px 12px;
+                text-align: left;
+                font-weight: 600;
                 color: #323130;
-                font-weight: bold;
-                padding: 8px 6px;
-                border: none;
-                border-bottom: 2px solid #edebe9;
             }
-            QPushButton {
+            #AreaSwitcher:hover {
+                background-color: #edebe9;
+                border-color: #0f6cbd;
+            }
+            /* HomepageGrid Command Bar */
+            #CommandBar {
+                background-color: #ffffff;
+                border-bottom: 1px solid #e1dfdd;
+                padding: 4px 8px;
+            }
+            #PrimaryCmdBtn {
+                background-color: #0f6cbd;
+                color: #ffffff;
+                font-weight: 600;
+                border: 1px solid #0f6cbd;
+                border-radius: 4px;
+                padding: 6px 16px;
+            }
+            #PrimaryCmdBtn:hover {
+                background-color: #115ea3;
+            }
+            #CmdBtn {
                 background-color: #ffffff;
                 border: 1px solid #d1d1d1;
                 border-radius: 4px;
                 padding: 6px 12px;
+                font-weight: 500;
+                color: #323130;
             }
-            QPushButton:hover {
+            #CmdBtn:hover {
                 background-color: #f3f2f1;
                 border-color: #8a8886;
             }
-            QPushButton:pressed {
-                background-color: #edebe9;
+            /* Table Grid */
+            QTableWidget {
+                background-color: #ffffff;
+                border: 1px solid #e1dfdd;
+                border-radius: 6px;
+                gridline-color: #f3f2f1;
+                selection-background-color: #cce4f7;
+                selection-color: #000000;
+            }
+            QTableWidget::item {
+                padding: 8px 10px;
+                border-bottom: 1px solid #f3f2f1;
+            }
+            QHeaderView::section {
+                background-color: #faf9f8;
+                color: #323130;
+                font-weight: 600;
+                font-size: 12px;
+                padding: 9px 10px;
+                border: none;
+                border-bottom: 2px solid #edebe9;
             }
             QComboBox, QLineEdit {
                 background-color: #ffffff;
@@ -118,8 +171,8 @@ class OfflineApp(QMainWindow):
                 border: 2px solid #0f6cbd;
             }
             QSplitter::handle {
-                background-color: #e1dfdd;
-                width: 2px;
+                background-color: #edebe9;
+                width: 1px;
             }
         """)
         
@@ -134,54 +187,212 @@ class OfflineApp(QMainWindow):
         self.sync_timer.start(interval_sec * 1000)
         logger.info(f"Background sync started. Interval: {interval_sec} seconds.")
 
+    def _define_sitemap_structure(self):
+        """Constructs Model-Driven SiteMap Areas and Groups compliant with D365 SiteMap.xsd."""
+        return [
+            {
+                "id": "area_service",
+                "title": "Service",
+                "icon": "🎧",
+                "groups": [
+                    {
+                        "name": "CUSTOMERS",
+                        "subareas": [
+                            {"entity": "contact", "icon": "👤"},
+                            {"entity": "account", "icon": "🏢"}
+                        ]
+                    },
+                    {
+                        "name": "SERVICE & OPERATIONS",
+                        "subareas": [
+                            {"entity": "incident", "icon": "📋"},
+                            {"entity": "msdyn_swarm", "icon": "🤝"},
+                            {"entity": "msdyn_ocliveworkitem", "icon": "💬"},
+                            {"entity": "queueitem", "icon": "📥"},
+                            {"entity": "activitypointer", "icon": "📅"},
+                            {"entity": "socialprofile", "icon": "🌐"},
+                            {"entity": "serviceappointment", "icon": "⏱️"},
+                            {"entity": "msdyn_customerasset", "icon": "📦"},
+                            {"entity": "msdyn_iotalert", "icon": "🔔"}
+                        ]
+                    },
+                    {
+                        "name": "KNOWLEDGE MANAGEMENT",
+                        "subareas": [
+                            {"entity": "knowledgearticle", "icon": "📚"},
+                            {"entity": "template", "icon": "📑"},
+                            {"entity": "emailsignature", "icon": "✍️"}
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "area_analytics",
+                "title": "Analytics & Insights",
+                "icon": "📊",
+                "groups": [
+                    {
+                        "name": "HISTORICAL & COPILOT ANALYTICS",
+                        "subareas": [
+                            {"entity": "msdyn_dataanalyticsreport_csrmanager", "icon": "📈"},
+                            {"entity": "msdyn_dataanalyticsreport_copilot", "icon": "✨"},
+                            {"entity": "msdyn_dataanalyticsreport_ksinsights", "icon": "💡"},
+                            {"entity": "msdyn_dataanalyticsreport_oc", "icon": "📊"},
+                            {"entity": "msdyn_dataanalyticsreport_ocmodern", "icon": "📉"},
+                            {"entity": "msdyn_dataanalyticsreport_email", "icon": "✉️"},
+                            {"entity": "msdyn_dataanalyticsreport_mc", "icon": "⚙️"}
+                        ]
+                    },
+                    {
+                        "name": "REAL-TIME ROUTING",
+                        "subareas": [
+                            {"entity": "msdyn_dataanalyticsreport_oc_rt", "icon": "⚡"},
+                            {"entity": "msdyn_dataanalyticsreport_ur_recordrouting_rt", "icon": "🔀"}
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "area_management",
+                "title": "Service Management",
+                "icon": "⚙️",
+                "groups": [
+                    {
+                        "name": "SERVICE LEVEL AGREEMENTS (SLAS)",
+                        "subareas": [
+                            {"entity": "sla", "icon": "⏱️"},
+                            {"entity": "slaitem", "icon": "📌"},
+                            {"entity": "slakpiinstance", "icon": "🎯"}
+                        ]
+                    },
+                    {
+                        "name": "ROUTING & CASE CREATION",
+                        "subareas": [
+                            {"entity": "routingrule", "icon": "🔀"},
+                            {"entity": "routingruleitem", "icon": "🏷️"},
+                            {"entity": "convertrule", "icon": "🔄"},
+                            {"entity": "convertruleitem", "icon": "📋"}
+                        ]
+                    },
+                    {
+                        "name": "ENTITLEMENTS",
+                        "subareas": [
+                            {"entity": "entitlement", "icon": "📜"},
+                            {"entity": "entitlementchannel", "icon": "📡"},
+                            {"entity": "entitlementtemplate", "icon": "📑"}
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "area_quality",
+                "title": "Quality & Evaluation",
+                "icon": "⭐",
+                "groups": [
+                    {
+                        "name": "AGENT EVALUATIONS",
+                        "subareas": [
+                            {"entity": "msdyn_evaluation", "icon": "📝"},
+                            {"entity": "msdyn_evaluationplan", "icon": "📋"},
+                            {"entity": "msdyn_evaluationcriteria", "icon": "✔️"},
+                            {"entity": "msdyn_screenrecording", "icon": "🎥"}
+                        ]
+                    }
+                ]
+            }
+        ]
+
     def init_ui(self):
         central = QWidget()
         layout = QVBoxLayout(central)
-        layout.setContentsMargins(10, 10, 10, 10)
-        layout.setSpacing(8)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
         
-        # Header (Dynamics 365 Brand Header)
-        header_layout = QHBoxLayout()
-        header_layout.setContentsMargins(4, 4, 4, 4)
-        title = QLabel(f"<span style='color: #0f6cbd; font-size: 16px; font-weight: bold;'>Dynamics 365</span> | <span style='font-size: 15px; color: #323130;'>{self.config.get('app_name')}</span>")
-        self.sync_btn = QPushButton("Sync with Cloud")
-        self.sync_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 14px; border-radius: 4px;")
-        self.sync_btn.clicked.connect(self.trigger_sync)
+        # 1. Top Global D365 Brand Header
+        header_widget = QWidget()
+        header_widget.setObjectName("AppHeader")
+        header_widget.setFixedHeight(48)
+        header_layout = QHBoxLayout(header_widget)
+        header_layout.setContentsMargins(16, 0, 16, 0)
+        header_layout.setSpacing(12)
         
-        header_layout.addWidget(title)
+        waffle_icon = QLabel("<b>:::</b>")
+        waffle_icon.setStyleSheet("font-size: 18px; color: #ffffff;")
+        
+        title_label = QLabel(f"<b>Dynamics 365</b> &nbsp;|&nbsp; <span style='color: #cce4f7;'>{self.config.get('app_name', 'Customer Service workspace')}</span>")
+        title_label.setStyleSheet("font-size: 14px;")
+        
+        header_layout.addWidget(waffle_icon)
+        header_layout.addWidget(title_label)
         header_layout.addStretch()
-        header_layout.addWidget(self.sync_btn)
-        layout.addLayout(header_layout)
         
-        # Splitter for Navigation & Content
+        # Global Quick Find Search in Top Header
+        top_search = QLineEdit()
+        top_search.setPlaceholderText("🔍 Search this app...")
+        top_search.setFixedWidth(280)
+        top_search.setStyleSheet("background-color: #ffffff; color: #201f1e; border: none; border-radius: 4px; padding: 4px 10px;")
+        header_layout.addWidget(top_search)
+        
+        # Sync Action
+        self.sync_btn = QPushButton("⚡ Sync with Cloud")
+        self.sync_btn.setStyleSheet("background-color: #0f6cbd; color: #ffffff; font-weight: 600; border: none; border-radius: 4px; padding: 5px 14px;")
+        self.sync_btn.clicked.connect(self.trigger_sync)
+        header_layout.addWidget(self.sync_btn)
+        
+        # User profile badge
+        user_badge = QLabel("👤 Offline User")
+        user_badge.setStyleSheet("color: #ffffff; font-weight: 500; padding-left: 8px;")
+        header_layout.addWidget(user_badge)
+        
+        layout.addWidget(header_widget)
+        
+        # 2. Main Content Splitter (Left SiteMap Rail + Right HomepageGrid)
         splitter = QSplitter(Qt.Orientation.Horizontal)
         
-        # Left pane (SiteMap Navigation)
+        # --- Left Navigation Rail Container (Tree + Bottom Area Switcher) ---
+        nav_container = QWidget()
+        nav_container.setObjectName("NavRail")
+        nav_layout = QVBoxLayout(nav_container)
+        nav_layout.setContentsMargins(0, 0, 0, 0)
+        nav_layout.setSpacing(0)
+        
         self.nav_tree = QTreeWidget()
         self.nav_tree.setHeaderHidden(True)
         self.nav_tree.setMinimumWidth(260)
-        
-        self.build_sitemap_navigation()
-        
         self.nav_tree.itemSelectionChanged.connect(self.on_nav_changed)
-        splitter.addWidget(self.nav_tree)
+        nav_layout.addWidget(self.nav_tree)
         
-        # Right pane (Views + HomepageGrid Command Bar + Grid)
+        # Bottom Area Switcher (D365 Model-Driven Pattern)
+        area_switcher_box = QWidget()
+        area_switcher_box.setStyleSheet("background-color: #faf9f8; border-top: 1px solid #e1dfdd; padding: 8px;")
+        area_switcher_layout = QVBoxLayout(area_switcher_box)
+        area_switcher_layout.setContentsMargins(0, 0, 0, 0)
+        
+        area_label = QLabel("<small style='color: #605e5c; font-weight: bold;'>CHANGE AREA</small>")
+        self.area_combo = QComboBox()
+        self.area_combo.setObjectName("AreaSwitcher")
+        for area in self.sitemap_structure:
+            self.area_combo.addItem(f"{area.get('icon', '📁')}  {area.get('title')}", area.get('id'))
+            
+        self.area_combo.currentIndexChanged.connect(self.on_area_switched)
+        area_switcher_layout.addWidget(area_label)
+        area_switcher_layout.addWidget(self.area_combo)
+        
+        nav_layout.addWidget(area_switcher_box)
+        splitter.addWidget(nav_container)
+        
+        # --- Right Content Pane (Views + HomepageGrid Command Bar + Table) ---
         right_widget = QWidget()
         right_layout = QVBoxLayout(right_widget)
-        right_layout.setContentsMargins(6, 0, 6, 6)
-        right_layout.setSpacing(6)
+        right_layout.setContentsMargins(12, 10, 12, 12)
+        right_layout.setSpacing(8)
         
-        # HomepageGrid Ribbon Command Bar (dynamically populated on nav selection)
-        self.grid_command_bar = QHBoxLayout()
-        self.grid_command_bar.setContentsMargins(0, 4, 0, 6)
-        self.grid_command_bar.setSpacing(6)
-        right_layout.addLayout(self.grid_command_bar)
+        # Top Entity Header & View Selector Bar
+        top_view_bar = QHBoxLayout()
+        top_view_bar.setContentsMargins(0, 0, 0, 4)
         
-        # View Selector & Search Toolbar
-        toolbar_layout = QHBoxLayout()
-        toolbar_layout.setContentsMargins(0, 2, 0, 6)
-        toolbar_layout.setSpacing(10)
+        self.entity_header_label = QLabel("<b>Contacts</b>")
+        self.entity_header_label.setStyleSheet("font-size: 18px; color: #201f1e; font-weight: 600;")
         
         self.view_combo = QComboBox()
         self.view_combo.setMinimumWidth(260)
@@ -189,186 +400,106 @@ class OfflineApp(QMainWindow):
         
         self.search_bar = QLineEdit()
         self.search_bar.setPlaceholderText("🔍 Quick Find Search...")
-        self.search_bar.setMinimumWidth(220)
+        self.search_bar.setMinimumWidth(240)
         self.search_bar.returnPressed.connect(self.do_quick_find)
         
-        toolbar_layout.addWidget(self.view_combo)
-        toolbar_layout.addStretch()
-        toolbar_layout.addWidget(self.search_bar)
-        right_layout.addLayout(toolbar_layout)
+        top_view_bar.addWidget(self.entity_header_label)
+        top_view_bar.addWidget(self.view_combo)
+        top_view_bar.addStretch()
+        top_view_bar.addWidget(self.search_bar)
+        right_layout.addLayout(top_view_bar)
         
+        # HomepageGrid Ribbon Command Bar (dynamically populated)
+        self.grid_command_bar = QHBoxLayout()
+        self.grid_command_bar.setContentsMargins(0, 0, 0, 4)
+        self.grid_command_bar.setSpacing(6)
+        right_layout.addLayout(self.grid_command_bar)
+        
+        # Homepage Data Grid
         self.data_grid = QTableWidget()
         self.data_grid.itemDoubleClicked.connect(self.open_record_from_grid)
         self.data_grid.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.data_grid.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         self.data_grid.setAlternatingRowColors(True)
         self.data_grid.horizontalHeader().setStretchLastSection(True)
-        
         right_layout.addWidget(self.data_grid)
+        
+        # Footer (Record Count & Status)
+        self.footer_label = QLabel("Showing 0 records")
+        self.footer_label.setStyleSheet("color: #605e5c; font-size: 12px; padding: 2px 4px;")
+        right_layout.addWidget(self.footer_label)
         
         splitter.addWidget(right_widget)
         splitter.setStretchFactor(1, 4)
-        
         layout.addWidget(splitter)
+        
         self.setCentralWidget(central)
         
-        # Select first valid nav item to trigger initial load
+        # Initial Render for Default Area (Service)
+        self.render_active_area_sitemap("area_service")
+
+    def on_area_switched(self):
+        area_id = self.area_combo.currentData()
+        if area_id:
+            self.render_active_area_sitemap(area_id)
+
+    def render_active_area_sitemap(self, area_id: str):
+        """Renders ONLY the groups and subareas belonging to the active selected Area."""
+        self.current_area_id = area_id
+        self.nav_tree.clear()
+        
+        area_def = next((a for a in self.sitemap_structure if a.get("id") == area_id), None)
+        if not area_def:
+            return
+            
+        all_manifest_entities = {e.get("LogicalName"): e for e in self.config.get("entities", [])}
+        
+        for grp in area_def.get("groups", []):
+            # Group Header (Category label in uppercase)
+            grp_item = QTreeWidgetItem([grp.get("name")])
+            grp_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
+            font = grp_item.font(0)
+            font.setBold(True)
+            font.setPointSize(10)
+            grp_item.setFont(0, font)
+            grp_item.setForeground(0, Qt.GlobalColor.darkGray)
+            
+            for sub in grp.get("subareas", []):
+                ent_name = sub.get("entity")
+                if ent_name in all_manifest_entities:
+                    disp_name = self.display_names.get(ent_name, ent_name.replace("_", " ").title())
+                    sub_icon = sub.get("icon", "📄")
+                    sub_item = QTreeWidgetItem([f"{sub_icon}  {disp_name}"])
+                    sub_item.setData(0, Qt.ItemDataRole.UserRole, ent_name)
+                    grp_item.addChild(sub_item)
+                    
+            if grp_item.childCount() > 0:
+                self.nav_tree.addTopLevelItem(grp_item)
+                grp_item.setExpanded(True)
+                
+        # Select first valid subarea to trigger grid load
         self.select_default_nav_item()
 
-    def build_sitemap_navigation(self):
-        """Constructs Model-Driven App SiteMap with Areas, Groups, and SubAreas."""
-        # Standard Dynamics 365 Customer Service categorization map
-        GROUP_MAPPINGS = [
-            {
-                "area": "Service",
-                "area_icon": "📁",
-                "groups": [
-                    {
-                        "name": "📊 Analytics & Reports",
-                        "entities": [
-                            "msdyn_dataanalyticsreport_csrmanager",
-                            "msdyn_dataanalyticsreport_copilot",
-                            "msdyn_dataanalyticsreport_ksinsights",
-                            "msdyn_dataanalyticsreport_oc",
-                            "msdyn_dataanalyticsreport_ocmodern",
-                            "msdyn_dataanalyticsreport_oc_rt",
-                            "msdyn_dataanalyticsreport_ur_recordrouting_rt",
-                            "msdyn_dataanalyticsreport_mc",
-                            "msdyn_dataanalyticsreport_email"
-                        ]
-                    },
-                    {
-                        "name": "🎧 Service & Operations",
-                        "entities": [
-                            "incident",
-                            "msdyn_swarm",
-                            "msdyn_ocliveworkitem",
-                            "queueitem",
-                            "activitypointer",
-                            "socialprofile",
-                            "serviceappointment",
-                            "msdyn_customerasset",
-                            "msdyn_iotalert"
-                        ]
-                    },
-                    {
-                        "name": "👥 Customers",
-                        "entities": [
-                            "contact",
-                            "account"
-                        ]
-                    },
-                    {
-                        "name": "📚 Knowledge Management",
-                        "entities": [
-                            "knowledgearticle",
-                            "template",
-                            "emailsignature"
-                        ]
-                    },
-                    {
-                        "name": "⭐ Quality & Evaluation",
-                        "entities": [
-                            "msdyn_evaluation",
-                            "msdyn_evaluationplan",
-                            "msdyn_evaluationcriteria",
-                            "msdyn_screenrecording"
-                        ]
-                    },
-                    {
-                        "name": "⚙️ Service Management & SLAs",
-                        "entities": [
-                            "routingrule",
-                            "routingruleitem",
-                            "sla",
-                            "slaitem",
-                            "slakpiinstance",
-                            "entitlement",
-                            "entitlementchannel",
-                            "entitlementtemplate",
-                            "convertrule",
-                            "convertruleitem"
-                        ]
-                    }
-                ]
-            }
-        ]
-
-        all_manifest_entities = {e.get("LogicalName"): e for e in self.config.get("entities", [])}
-        placed_entities = set()
-
-        for area_def in GROUP_MAPPINGS:
-            area_title = f"{area_def.get('area_icon', '📁')} {area_def.get('area', 'Service')}"
-            area_item = QTreeWidgetItem([area_title])
-            area_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
-            font = area_item.font(0)
-            font.setBold(True)
-            area_item.setFont(0, font)
-
-            for grp_def in area_def.get("groups", []):
-                grp_name = grp_def.get("name", "Group")
-                grp_item = QTreeWidgetItem([grp_name])
-                grp_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
-
-                for ent_name in grp_def.get("entities", []):
-                    if ent_name in all_manifest_entities:
-                        placed_entities.add(ent_name)
-                        disp_name = self.display_names.get(ent_name, ent_name.replace("_", " ").title())
-                        sub_item = QTreeWidgetItem([disp_name])
-                        sub_item.setData(0, Qt.ItemDataRole.UserRole, ent_name)
-                        grp_item.addChild(sub_item)
-
-                if grp_item.childCount() > 0:
-                    area_item.addChild(grp_item)
-
-            if area_item.childCount() > 0:
-                self.nav_tree.addTopLevelItem(area_item)
-                area_item.setExpanded(True)
-
-        # Catch any remaining entities not explicitly categorized
-        remaining = [e for e in all_manifest_entities if e not in placed_entities]
-        if remaining:
-            other_grp = QTreeWidgetItem(["📦 Other Entities"])
-            other_grp.setFlags(Qt.ItemFlag.ItemIsEnabled)
-            for ent_name in remaining:
-                disp_name = self.display_names.get(ent_name, ent_name.replace("_", " ").title())
-                sub_item = QTreeWidgetItem([disp_name])
-                sub_item.setData(0, Qt.ItemDataRole.UserRole, ent_name)
-                other_grp.addChild(sub_item)
-            
-            if self.nav_tree.topLevelItemCount() > 0:
-                self.nav_tree.topLevelItem(0).addChild(other_grp)
-            else:
-                self.nav_tree.addTopLevelItem(other_grp)
-
-        # Expand all groups
-        self.nav_tree.expandAll()
-
     def select_default_nav_item(self):
-        def select_first_leaf(item):
-            if item.data(0, Qt.ItemDataRole.UserRole):
-                self.nav_tree.setCurrentItem(item)
-                return True
-            for i in range(item.childCount()):
-                if select_first_leaf(item.child(i)):
-                    return True
-            return False
-            
         for i in range(self.nav_tree.topLevelItemCount()):
-            if select_first_leaf(self.nav_tree.topLevelItem(i)):
+            grp_item = self.nav_tree.topLevelItem(i)
+            if grp_item.childCount() > 0:
+                self.nav_tree.setCurrentItem(grp_item.child(0))
                 break
 
     def on_nav_changed(self):
         selected = self.nav_tree.selectedItems()
         if not selected: return
         entity_name = selected[0].data(0, Qt.ItemDataRole.UserRole)
-        if not entity_name: return # Group/Area node clicked
-        
-        # Rebuild HomepageGrid Command Bar for the selected entity
-        self.rebuild_homepage_ribbon(entity_name)
+        if not entity_name: return # Group clicked
         
         disp_name = self.display_names.get(entity_name, entity_name)
+        self.entity_header_label.setText(f"<b>{disp_name}</b>")
         
+        # Rebuild HomepageGrid Command Bar
+        self.rebuild_homepage_ribbon(entity_name)
+        
+        # Populate View Selector
         self.view_combo.blockSignals(True)
         self.view_combo.clear()
         
@@ -378,14 +509,13 @@ class OfflineApp(QMainWindow):
                 cursor = conn.cursor()
                 cursor.execute("SELECT savedqueryid, name FROM saved_queries WHERE returnedtypecode = ?", (entity_name,))
                 views = cursor.fetchall()
-                
                 for v in views:
                     self.view_combo.addItem(v[1], v[0])
                     views_found += 1
         except Exception as e:
             logger.debug(f"Could not query saved_queries: {e}")
 
-        # Always add standard fallback views if no saved queries exist
+        # Fallback Standard D365 System Views
         if views_found == 0:
             self.view_combo.addItem(f"Active {disp_name}s", "active_records")
             self.view_combo.addItem(f"All {disp_name}s", "all_records")
@@ -395,38 +525,47 @@ class OfflineApp(QMainWindow):
         self.refresh_grid()
 
     def rebuild_homepage_ribbon(self, entity_name: str):
-        # Clear existing buttons in command bar
         while self.grid_command_bar.count():
             item = self.grid_command_bar.takeAt(0)
             widget = item.widget()
-            if widget:
-                widget.deleteLater()
+            if widget: widget.deleteLater()
                 
         ent_def = next((e for e in self.config.get("entities", []) if e.get("LogicalName") == entity_name), None)
         disp_name = self.display_names.get(entity_name, entity_name)
         
-        # Standard primary "+ New" button
-        new_btn = QPushButton(f"+ New {disp_name}")
-        new_btn.setStyleSheet("background-color: #0f6cbd; color: white; font-weight: bold; padding: 6px 14px; border-radius: 4px;")
+        # 1. Primary + New Button
+        new_btn = QPushButton(f"＋  New {disp_name}")
+        new_btn.setObjectName("PrimaryCmdBtn")
         new_btn.clicked.connect(lambda: self.open_form(entity_name, None))
         self.grid_command_bar.addWidget(new_btn)
         
-        # Standard "Delete" button
-        delete_btn = QPushButton("Delete")
-        delete_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; padding: 6px 12px; border-radius: 4px;")
+        # 2. Delete Button
+        delete_btn = QPushButton("🗑  Delete")
+        delete_btn.setObjectName("CmdBtn")
         delete_btn.clicked.connect(self.on_delete_record_clicked)
         self.grid_command_bar.addWidget(delete_btn)
         
-        # Standard "Refresh" button
-        refresh_btn = QPushButton("Refresh")
-        refresh_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; padding: 6px 12px; border-radius: 4px;")
+        # 3. Refresh Button
+        refresh_btn = QPushButton("↻  Refresh")
+        refresh_btn.setObjectName("CmdBtn")
         refresh_btn.clicked.connect(lambda: self.refresh_grid())
         self.grid_command_bar.addWidget(refresh_btn)
         
-        # Extract HomepageGrid Ribbon Buttons if defined in metadata
+        # 4. Standard D365 Homepage Grid actions
+        assign_btn = QPushButton("👥  Assign")
+        assign_btn.setObjectName("CmdBtn")
+        assign_btn.clicked.connect(lambda: logger.info("Assign action triggered"))
+        self.grid_command_bar.addWidget(assign_btn)
+        
+        export_btn = QPushButton("📤  Export to Excel")
+        export_btn.setObjectName("CmdBtn")
+        export_btn.clicked.connect(lambda: logger.info("Export action triggered"))
+        self.grid_command_bar.addWidget(export_btn)
+        
+        # Custom Homepage Ribbon buttons if defined in metadata
         if ent_def:
             ribbon_buttons = ent_def.get("ribbon_buttons", [])
-            seen = {"New", "Delete", "Refresh", f"+ New {disp_name}"}
+            seen = {"New", "Delete", "Refresh", "Assign", "Export", f"New {disp_name}"}
             for btn in ribbon_buttons:
                 if btn.get("location_type") == "homepage_grid":
                     lbl = btn.get("label", "")
@@ -434,8 +573,8 @@ class OfflineApp(QMainWindow):
                     seen.add(lbl)
                     
                     cmd_btn = QPushButton(lbl)
-                    cmd_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; padding: 6px 10px; border-radius: 4px;")
-                    cmd_btn.clicked.connect(lambda _, cmd=btn.get("command"): logger.info(f"Executed Homepage command: {cmd}"))
+                    cmd_btn.setObjectName("CmdBtn")
+                    cmd_btn.clicked.connect(lambda _, cmd=btn.get("command"): logger.info(f"Executed command: {cmd}"))
                     self.grid_command_bar.addWidget(cmd_btn)
                     
         self.grid_command_bar.addStretch()
@@ -479,8 +618,6 @@ class OfflineApp(QMainWindow):
         entity_name = selected_nav[0].data(0, Qt.ItemDataRole.UserRole)
         if not entity_name: return
         
-        view_id = self.view_combo.currentData()
-        
         ent_def = next((e for e in self.config.get("entities", []) if e.get("LogicalName") == entity_name), None)
         primary_id_attr = (ent_def.get("PrimaryIdAttribute") if ent_def else None) or f"{entity_name}id"
         primary_name_attr = (ent_def.get("PrimaryNameAttribute") if ent_def else None) or "name"
@@ -491,7 +628,6 @@ class OfflineApp(QMainWindow):
             attrs = ent_def.get("attributes", [])
             attr_map = {a.get("LogicalName"): a for a in attrs if isinstance(a, dict)}
             
-            # Prioritize standard D365 columns
             candidate_names = [primary_name_attr, "emailaddress1", "telephone1", "jobtitle", "statecode", "statuscode", "createdon", "modifiedon"]
             seen_cols = set()
             for col_name in candidate_names:
@@ -500,7 +636,6 @@ class OfflineApp(QMainWindow):
                     lbl = attr_map[col_name].get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or col_name.replace("_", " ").title()
                     columns.append({"name": col_name, "label": lbl})
                     
-            # Ensure at least primary name & status are present
             if not columns:
                 columns = [
                     {"name": primary_name_attr, "label": primary_name_attr.replace("_", " ").title()},
@@ -517,8 +652,6 @@ class OfflineApp(QMainWindow):
         try:
             with self.db.get_connection() as conn:
                 cursor = conn.cursor()
-                
-                # Check table structure in SQLite
                 cursor.execute(f"PRAGMA table_info({entity_name})")
                 table_cols = [r[1] for r in cursor.fetchall()]
                 
@@ -542,7 +675,6 @@ class OfflineApp(QMainWindow):
                     for rec in cursor.fetchall():
                         rows_data.append(dict(zip(col_names, rec)))
 
-                # Apply search filter if provided
                 if search_string:
                     s_lower = search_string.lower()
                     filtered = []
@@ -565,6 +697,8 @@ class OfflineApp(QMainWindow):
                         if j == 0:
                             item.setData(Qt.ItemDataRole.UserRole, rec_id)
                         self.data_grid.setItem(i, j, item)
+                        
+                self.footer_label.setText(f"Showing {len(rows_data)} record{'s' if len(rows_data) != 1 else ''}")
                         
         except Exception as e:
             logger.error(f"Error loading homepage grid: {e}")
