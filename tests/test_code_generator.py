@@ -57,7 +57,7 @@ def test_code_generator_success(tmp_path, dummy_manifest):
     assert os.path.exists(os.path.join(out_dir, "manifest.json"))
     
     # Check main.py content
-    with open(os.path.join(out_dir, "main.py"), "r") as f:
+    with open(os.path.join(out_dir, "main.py"), "r", encoding="utf-8") as f:
         content = f.read()
         assert "class OfflineApp(QMainWindow)" in content
-        assert "Accounts" in content
+        assert "XrmFormRenderer" in content

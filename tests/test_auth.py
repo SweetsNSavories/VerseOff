@@ -57,5 +57,5 @@ def test_auth_interactive_fail(tmp_path):
         auth = MsalAuth("https://org.crm.dynamics.com")
         auth.cache_file = str(mock_cache)
         
-        with pytest.raises(Exception, match="Failed to acquire token interactively: user_cancelled"):
+        with pytest.raises(Exception, match=r"Authentication failed \(user_cancelled\)"):
             auth.get_token()
