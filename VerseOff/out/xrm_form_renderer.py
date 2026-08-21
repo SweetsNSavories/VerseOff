@@ -147,19 +147,88 @@ class AssociatedGridWidget(QWidget):
         self.parent_renderer = parent_renderer
         
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setContentsMargins(4, 6, 4, 6)
+        layout.setSpacing(6)
+        
+        # Action Toolbar
+        toolbar = QHBoxLayout()
+        toolbar.setSpacing(8)
+        
+        disp_name = target_entity.replace("_", " ").title()
+        if hasattr(parent_renderer, "config") and parent_renderer.config:
+            ent_meta = next((e for e in parent_renderer.config.get("entities", []) if e.get("LogicalName") == target_entity), None)
+            if ent_meta:
+                disp_name = ent_meta.get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or ent_meta.get("DisplayName") or disp_name
+
+        self.add_btn = QPushButton(f"＋  New {disp_name}")
+        self.add_btn.setStyleSheet("background-color: #0f6cbd; color: white; font-weight: 600; font-size: 12px; padding: 4px 12px; border-radius: 4px; border: none;")
+        self.add_btn.clicked.connect(self.on_add_new)
+        toolbar.addWidget(self.add_btn)
+        
+        self.refresh_btn = QPushButton("↻  Refresh")
+        self.refresh_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; font-size: 12px; padding: 4px 10px; border-radius: 4px;")
+        self.refresh_btn.clicked.connect(self.refresh_data)
+        toolbar.addWidget(self.refresh_btn)
+        
+        self.search_filter = QLineEdit()
+        self.search_filter.setPlaceholderText(f"Filter {disp_name}s...")
+        self.search_filter.setStyleSheet("padding: 4px 8px; border: 1px solid #d1d1d1; border-radius: 4px; font-size: 12px; max-width: 250px;")
+        self.search_filter.textChanged.connect(self.on_filter_changed)
+        toolbar.addWidget(self.search_filter)
+        
+        toolbar.addStretch()
+        layout.addLayout(toolbar)
         
         self.table = QTableWidget()
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
-        
+        self.table.setAlternatingRowColors(True)
+        self.table.setStyleSheet("""
+            QTableWidget {
+                background-color: #ffffff;
+                border: 1px solid #e1dfdd;
+                border-radius: 4px;
+                gridline-color: #f3f2f1;
+            }
+            QHeaderView::section {
+                background-color: #f8f9fa;
+                font-weight: 600;
+                font-size: 12px;
+                color: #323130;
+                padding: 6px 10px;
+                border: none;
+                border-bottom: 1px solid #e1dfdd;
+            }
+        """)
+        self.table.cellDoubleClicked.connect(self.on_row_double_clicked)
         layout.addWidget(self.table)
+        
+    def on_add_new(self):
+        if hasattr(self.parent_renderer, "window") and self.parent_renderer.window:
+            self.parent_renderer.window.open_form(self.target_entity, None)
+            
+    def on_row_double_clicked(self, row, col):
+        item = self.table.item(row, 0)
+        if item:
+            rec_id = item.data(Qt.ItemDataRole.UserRole)
+            if rec_id and hasattr(self.parent_renderer, "window") and self.parent_renderer.window:
+                self.parent_renderer.window.open_form(self.target_entity, rec_id)
+                
+    def on_filter_changed(self, text):
+        query = text.strip().lower()
+        for i in range(self.table.rowCount()):
+            match = False
+            for j in range(self.table.columnCount()):
+                cell_item = self.table.item(i, j)
+                if cell_item and query in cell_item.text().lower():
+                    match = True
+                    break
+            self.table.setRowHidden(i, not match if query else False)
         
     def refresh_data(self):
         parent_id = self.parent_renderer.record_id
-        if not parent_id:
-            return
-            
+        
+        columns = [{'name': f'{self.target_entity}id', 'label': 'ID'}, {'name': 'title', 'label': 'Title / Name'}, {'name': 'sync_status', 'label': 'Status'}]
         try:
             from view_parser import ViewParser
             from db import LocalDatabase
@@ -172,35 +241,46 @@ class AssociatedGridWidget(QWidget):
                 except Exception:
                     pass
                 
-                columns = []
-                query_def = None
-                
-                if view_row:
-                    columns = ViewParser.parse_layoutxml(view_row['layoutxml'])
-                    query_def = ViewParser.parse_fetchxml(view_row['fetchxml'])
-                
-                if not columns:
-                    columns = [{'name': f'{self.target_entity}id', 'label': 'ID'}, {'name': 'sync_status', 'label': 'Status'}]
-                
+                if view_row and view_row['layoutxml']:
+                    parsed_cols = ViewParser.parse_layoutxml(view_row['layoutxml'])
+                    if parsed_cols:
+                        columns = parsed_cols
+                        
                 self.table.setColumnCount(len(columns))
                 self.table.setHorizontalHeaderLabels([c.get('label', c['name']) for c in columns])
                 
-                if query_def and query_def.get("entity") == self.target_entity:
-                    sql, params = ViewParser.fetchxml_to_sql(query_def, additional_filters={self.referencing_attribute: parent_id})
-                    cursor.execute(sql, params)
-                else:
-                    cursor.execute(f"SELECT * FROM {self.target_entity} WHERE {self.referencing_attribute} = ?", (parent_id,))
-                    
-                rows = cursor.fetchall()
-                self.table.setRowCount(len(rows))
+                if not parent_id:
+                    # New unsaved parent record -> display empty state
+                    self.table.setRowCount(1)
+                    empty_item = QTableWidgetItem("Save this record first to associate related items.")
+                    empty_item.setForeground(Qt.GlobalColor.darkGray)
+                    self.table.setItem(0, 0, empty_item)
+                    return
                 
+                cursor.execute(f"SELECT * FROM {self.target_entity} WHERE {self.referencing_attribute} = ?", (parent_id,))
+                rows = cursor.fetchall()
+                
+                if not rows:
+                    self.table.setRowCount(1)
+                    empty_item = QTableWidgetItem("No related records found.")
+                    empty_item.setForeground(Qt.GlobalColor.darkGray)
+                    self.table.setItem(0, 0, empty_item)
+                    return
+                    
+                self.table.setRowCount(len(rows))
                 for i, row in enumerate(rows):
                     row_dict = dict(row)
                     for j, col in enumerate(columns):
                         val = str(row_dict.get(col['name'], ''))
-                        self.table.setItem(i, j, QTableWidgetItem(val))
+                        item = QTableWidgetItem(val)
+                        if j == 0:
+                            item.setData(Qt.ItemDataRole.UserRole, row_dict.get(f"{self.target_entity}id") or row_dict.get("id"))
+                        self.table.setItem(i, j, item)
         except Exception as e:
-            print(f"Associated Grid error: {e}")
+            self.table.setColumnCount(1)
+            self.table.setRowCount(1)
+            self.table.setHorizontalHeaderLabels(["Status"])
+            self.table.setItem(0, 0, QTableWidgetItem(f"No related data available"))
 
 class XrmNavigation:
     @staticmethod
@@ -1854,6 +1934,32 @@ class XrmFormRenderer(QWidget):
         refresh_btn.clicked.connect(lambda: self.load_data() if self.record_id else None)
         cmd_layout.addWidget(refresh_btn)
         
+        # Form Selector dropdown (LTRDisplay inspired)
+        forms = self.entity_def.get("forms", [])
+        main_forms = [f for f in forms if f.get("type") == 2 or f.get("formactivation") == 1]
+        if not main_forms:
+            main_forms = forms
+            
+        if len(main_forms) > 1:
+            form_lbl = QLabel("📋 Form:")
+            form_lbl.setStyleSheet("font-size: 12px; color: #605e5c; margin-left: 8px;")
+            self.form_combo = QComboBox()
+            self.form_combo.setStyleSheet("background-color: #f3f2f1; border: 1px solid #d1d1d1; border-radius: 4px; padding: 4px 8px; font-weight: 500; font-size: 12px;")
+            for f in main_forms:
+                fname = f.get("name") or "Main Form"
+                fid = f.get("formid") or f.get("formidunique")
+                self.form_combo.addItem(f"📋 {fname}", fid)
+                
+            active_f = self._get_active_form_def()
+            if active_f:
+                for idx in range(self.form_combo.count()):
+                    if self.form_combo.itemData(idx) == active_f.get("formid"):
+                        self.form_combo.setCurrentIndex(idx)
+                        break
+            self.form_combo.currentIndexChanged.connect(self._on_form_selector_changed)
+            cmd_layout.addWidget(form_lbl)
+            cmd_layout.addWidget(self.form_combo)
+        
         cmd_layout.addStretch()
         top_bar_layout.addLayout(cmd_layout)
         main_layout.addWidget(top_bar)
@@ -1873,19 +1979,17 @@ class XrmFormRenderer(QWidget):
         main_layout.addLayout(self.header_layout)
 
         # --- Form Body ---
-        scroll = QScrollArea()
-        scroll.setWidgetResizable(True)
-        form_container = QWidget()
+        self.scroll_area = QScrollArea()
+        self.scroll_area.setWidgetResizable(True)
+        self.form_container = QWidget()
         self.form_layout = QVBoxLayout()
 
-        # Parse FormXML
-        forms = self.entity_def.get("forms", [])
-        if forms and forms[0].get("formxml"):
-            # Try to parse the raw FormXML string if available
-            self._render_from_xml(forms[0].get("formxml"))
-        else:
-            # Fallback to the pre-parsed JSON structure if formxml isn't raw
-            self._render_from_json(forms[0])
+        # Parse FormXML from selected active form
+        active_form = self._get_active_form_def()
+        if active_form and active_form.get("formxml"):
+            self._render_from_xml(active_form.get("formxml"))
+        elif active_form:
+            self._render_from_json(active_form)
             
         # Hook Ribbon ValueRules to widget signals for real-time evaluation
         for item in self.ribbon_widgets:
@@ -1904,11 +2008,62 @@ class XrmFormRenderer(QWidget):
                         elif isinstance(ctrl, QSpinBox) or isinstance(ctrl, QDoubleSpinBox):
                             ctrl.valueChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
 
-        form_container.setLayout(self.form_layout)
-        scroll.setWidget(form_container)
-        main_layout.addWidget(scroll)
+        self.form_container.setLayout(self.form_layout)
+        self.scroll_area.setWidget(self.form_container)
+        main_layout.addWidget(self.scroll_area)
 
         self.setLayout(main_layout)
+
+    def _get_active_form_def(self):
+        forms = self.entity_def.get("forms", [])
+        if not forms:
+            return None
+        if self.form_id:
+            f = next((f for f in forms if f.get("formid") == self.form_id), None)
+            if f: return f
+            
+        main_forms = [f for f in forms if f.get("type") == 2 or f.get("formactivation") == 1]
+        if not main_forms:
+            main_forms = forms
+            
+        # Prefer interactive / multisession main forms or forms with the most tabs
+        interactive = next((f for f in main_forms if "interactive" in (f.get("name") or "").lower() or "multisession" in (f.get("name") or "").lower()), None)
+        if interactive:
+            return interactive
+            
+        # Select form with richest FormXml
+        best_form = main_forms[0]
+        max_tabs = 0
+        for f in main_forms:
+            xml_str = f.get("formxml", "")
+            if xml_str:
+                tab_count = xml_str.count("<tab ")
+                if tab_count > max_tabs:
+                    max_tabs = tab_count
+                    best_form = f
+        return best_form
+
+    def _on_form_selector_changed(self, idx):
+        if hasattr(self, "form_combo"):
+            fid = self.form_combo.itemData(idx)
+            if fid:
+                self.form_id = fid
+                # Clear current form layout widgets
+                while self.form_layout.count():
+                    item = self.form_layout.takeAt(0)
+                    w = item.widget()
+                    if w: w.deleteLater()
+                self.controls.clear()
+                self.control_labels.clear()
+                
+                active_f = self._get_active_form_def()
+                if active_f and active_f.get("formxml"):
+                    self._render_from_xml(active_f.get("formxml"))
+                elif active_f:
+                    self._render_from_json(active_f)
+                
+                if self.record_id:
+                    self.load_data()
 
     def _render_from_xml(self, formxml_str: str):
         """Parses D365 FormXML at runtime to build the UI."""
@@ -1956,20 +2111,6 @@ class XrmFormRenderer(QWidget):
                 self.form_layout.addWidget(QLabel("No body tabs found in FormXML"))
                 return
 
-            # Fetch form metadata (if form_id is specified, try to find that specific form, otherwise fallback to main)
-            forms = self.entity_def.get("forms", [])
-            form_def = None
-            if self.form_id:
-                form_def = next((f for f in forms if f["formid"] == self.form_id), None)
-            
-            if not form_def:
-                form_def = forms[0] if forms else None
-                
-            if not form_def:
-                self.form_layout.addWidget(QLabel(f"No forms defined for entity {self.logical_name}."))
-                return
-
-            xml_content = form_def.get("formxmlmanaged") or form_def.get("formxml")
             self.tab_widget = QTabWidget()
             self.tab_widget.setStyleSheet("""
                 QTabWidget::pane {
@@ -2097,8 +2238,8 @@ class XrmFormRenderer(QWidget):
                                                                 except: pass
                                                         
                                                         if not target_entity and data_field:
-                                                            targets = self.entity_def.get("lookup_targets", {}).get(data_field, [])
-                                                            if targets: target_entity = targets[0]
+                                                             targets = self.entity_def.get("lookup_targets", {}).get(data_field, [])
+                                                             if targets: target_entity = targets[0]
 
                                                     widget = self._create_widget_for_field(data_field, class_id, target_entity=target_entity, view_id=view_id, quick_form_id=quick_form_id, control_elem=control_elem)
                                                     self.controls[data_field] = widget
@@ -2114,19 +2255,44 @@ class XrmFormRenderer(QWidget):
                 self.tab_widget.addTab(tab_page, tab_label)
                 tab_index_counter += 1
                 
-            # Add "Related" tab
+            # Add "Related" tab (Filtered to real App Entities, excluding system internal tables)
+            SYSTEM_EXCLUSIONS = {
+                "activityparty", "duplicaterecord", "asyncoperation", "bulkdeletefailure", 
+                "userentityinstancedata", "processsession", "principalobjectattributeaccess",
+                "mailboxtrackingfolder", "syncerror", "postfollow", "postregarding",
+                "workflowwaitsubscription", "subscriptiontrackingexml"
+            }
+            
+            all_manifest_entities = {e.get("LogicalName") for e in self.config.get("entities", [])} if hasattr(self, "config") and self.config else set()
+            display_map = {}
+            if hasattr(self, "config") and self.config:
+                for e in self.config.get("entities", []):
+                    ln = e.get("LogicalName")
+                    dn = e.get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or e.get("DisplayName") or ln.replace("_", " ").title()
+                    display_map[ln] = dn
+            
             related_tab = QWidget()
             related_layout = QVBoxLayout(related_tab)
             
             related_tabs = QTabWidget()
+            related_tabs.setStyleSheet("""
+                QTabBar::tab {
+                    padding: 6px 14px;
+                    font-weight: 500;
+                    font-size: 12px;
+                }
+            """)
             relationships = self.entity_def.get("relationships", {}).get("one_to_many", [])
             
             self.associated_grids = []
+            valid_rel_count = 0
             if relationships:
                 for rel in relationships:
-                    target_entity = rel.get("ReferencingEntity")
+                    target_entity = (rel.get("ReferencingEntity") or "").lower()
                     ref_attr = rel.get("ReferencingAttribute")
                     if not target_entity or not ref_attr: continue
+                    if target_entity in SYSTEM_EXCLUSIONS: continue
+                    if all_manifest_entities and target_entity not in all_manifest_entities: continue
                     
                     sub_tab = QWidget()
                     sub_layout = QVBoxLayout(sub_tab)
@@ -2135,10 +2301,14 @@ class XrmFormRenderer(QWidget):
                     self.associated_grids.append(grid)
                     sub_layout.addWidget(grid)
                     
-                    related_tabs.addTab(sub_tab, target_entity.capitalize())
+                    tab_title = display_map.get(target_entity, target_entity.replace("_", " ").title())
+                    related_tabs.addTab(sub_tab, tab_title)
+                    valid_rel_count += 1
                     
-                related_layout.addWidget(related_tabs)
-                self.tab_widget.addTab(related_tab, "Related")
+                if valid_rel_count > 0:
+                    related_tabs.currentChanged.connect(lambda idx: self.associated_grids[idx].refresh_data() if idx < len(self.associated_grids) else None)
+                    related_layout.addWidget(related_tabs)
+                    self.tab_widget.addTab(related_tab, "Related")
                 
             self.tab_widget.currentChanged.connect(self._on_tab_changed)
             self.form_layout.addWidget(self.tab_widget)
