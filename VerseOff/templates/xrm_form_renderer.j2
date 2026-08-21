@@ -1690,7 +1690,7 @@ class VerseOffBridge(QObject):
         QMessageBox.information(self.renderer, "Xrm.Navigation", f"Mocking navigation to {page_type}: {entity_name}")
 
 class XrmFormRenderer(QWidget):
-    def __init__(self, manifest_data: dict, logical_name: str, record_id: str = None, parent=None, form_id: str = None, is_quick_view: bool = False):
+    def __init__(self, manifest_data: dict, logical_name: str, record_id: str = None, parent=None, form_id: str = None, is_quick_view: bool = False, on_close=None):
         super().__init__(parent)
         self.manifest = manifest_data
         self.logical_name = logical_name
@@ -1698,6 +1698,7 @@ class XrmFormRenderer(QWidget):
         self.form_events = custom_events
         self.form_id = form_id
         self.is_quick_view = is_quick_view
+        self.on_close = on_close
         
         self.entity_def = next((e for e in self.manifest.get("entities", []) if e.get("LogicalName") == logical_name), None)
         if not self.entity_def:
@@ -1760,159 +1761,102 @@ class XrmFormRenderer(QWidget):
         <body>VerseOff Invisible Bridge Engine</body>
         </html>
         """
-        # Ensure path format is correct for file URI (forward slashes)
         bridge_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "verseoff_bridge.js")).replace("\\", "/")
-        
         fd, temp_path = tempfile.mkstemp(suffix=".html")
         with os.fdopen(fd, "w") as f:
             f.write(html_content.replace("{bridge_path}", bridge_path))
             
         self.browser.setUrl(QUrl.fromLocalFile(temp_path))
 
-    def set_form_notification(self, message, level, uniqueId):
-        """Native emulation of formContext.ui.setFormNotification"""
-        if uniqueId in self.notifications:
-            self.clear_form_notification(uniqueId)
-            
-        lbl = QLabel(message)
-        lbl.setWordWrap(True)
-        lbl.setMargin(10)
-        
-        # Styling based on D365 notification levels
-        if level == "ERROR":
-            lbl.setStyleSheet("background-color: #fde7e9; border-left: 5px solid #a4262c; color: #323130;")
-        elif level == "WARNING":
-            lbl.setStyleSheet("background-color: #fff4ce; border-left: 5px solid #8a8886; color: #323130;")
-        else: # INFO
-            lbl.setStyleSheet("background-color: #f3f2f1; border-left: 5px solid #0078d4; color: #323130;")
-            
-        self.notifications[uniqueId] = lbl
-        self.notifications_layout.addWidget(lbl)
+    def handle_close(self):
+        if self.on_close:
+            self.on_close()
+        else:
+            self.close()
 
-    def clear_form_notification(self, uniqueId):
-        """Native emulation of formContext.ui.clearFormNotification"""
-        if uniqueId in self.notifications:
-            lbl = self.notifications.pop(uniqueId)
-            self.notifications_layout.removeWidget(lbl)
-            lbl.deleteLater()
+    def save_and_close(self):
+        self.save_record()
+        self.handle_close()
 
-    def _resolve_ribbon_label(self, label: str, btn_id: str = "") -> str:
-        if not label:
-            return "Action"
-        if not label.startswith("$"):
-            return label
-               # Resolve from button ID first (more reliable than raw label tokens)
-        btn_id_lower = btn_id.lower()
-        
-        # ID-based mapping (highest priority - most specific)
-        id_map = {
-            ".saveascomp": "Complete",
-            ".saveandclose": "Save & Close",
-            ".saveandnew": "Save & New",
-            ".save": "Save",
-            ".newrecord": "New",
-            ".activate": "Activate",
-            ".deactivate": "Deactivate",
-            ".delete": "Delete",
-            ".assign": "Assign",
-            ".share": "Share",
-            ".refresh": "Refresh",
-            "openrecordonweb": "Open in Web",
-            "setregarding": "Set Regarding",
-            "queueitemdetail": "Queue Details",
-            "vieworgchart": "View Org Chart",
-            "showhierarchyviewer": "Show Hierarchy",
-            "addconnection": "Add Connection",
-            "merge": "Merge",
-            "runworkflow": "Run Workflow",
-            "runreport": "Run Report",
-            "emailalink": "Email a Link",
-            "addtoqueue": "Add to Queue",
-        }
-        # Check ID from most specific to least (longest match first)
-        for suffix, resolved in sorted(id_map.items(), key=lambda x: -len(x[0])):
-            if suffix in btn_id_lower:
-                return resolved
-        
-        # Fallback: clean the label token
-        label_clean = label
-        if label_clean.startswith("$Resources:"):
-            label_clean = label_clean[len("$Resources:"):]
-        if label_clean.startswith("$LocLabels:"):
-            label_clean = label_clean[len("$LocLabels:"):]
-        
-        parts = label_clean.split(".")
-        candidates = [p for p in parts if p not in ("Button", "Label", "Title", "MainTab", "Form", "Ribbon", "HomepageGrid", "Record", "Actions", "Status")]
-        if candidates:
-            target = candidates[-1]
-            import re
-            words = re.findall(r'[A-Z]?[a-z]+|[A-Z]+(?=[A-Z][a-z]|\d|\W|$)|\d+', target)
-            if words:
-                return " ".join(words).title()
-            return target.title()
-        return label
+    def save_and_new(self):
+        self.save_record()
+        # Reset form for new record
+        self.record_id = None
+        for name, widget in self.controls.items():
+            if hasattr(widget, "clear"):
+                widget.clear()
+            elif isinstance(widget, QCheckBox):
+                widget.setChecked(False)
 
     def init_ui(self):
-        main_layout = QVBoxLayout()
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setSpacing(6)
+        
         disp_name = self.entity_def.get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or self.entity_def.get("display_name") or self.logical_name.capitalize()
         self.setWindowTitle(f"{disp_name} - Dynamics 365")
-        self.setMinimumSize(1000, 720)
+        
+        # --- Top Breadcrumb / Record Title & Command Bar Container ---
+        top_bar = QWidget()
+        top_bar.setStyleSheet("background-color: #ffffff; border-bottom: 1px solid #e1dfdd; padding: 6px 10px;")
+        top_bar_layout = QVBoxLayout(top_bar)
+        top_bar_layout.setContentsMargins(0, 0, 0, 0)
+        top_bar_layout.setSpacing(4)
+        
+        # Breadcrumb row
+        breadcrumb_row = QHBoxLayout()
+        back_btn = QPushButton(f"←  Back to {disp_name}s")
+        back_btn.setStyleSheet("background: transparent; border: none; color: #0f6cbd; font-weight: 600; font-size: 13px; padding: 2px 6px;")
+        back_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        back_btn.clicked.connect(self.handle_close)
+        
+        rec_title = QLabel(f"<b>{disp_name}</b>: <span style='color: #605e5c;'>{'New Record' if not self.record_id else self.record_id[:8] + '...'}</span>")
+        rec_title.setStyleSheet("font-size: 14px; color: #201f1e;")
+        
+        breadcrumb_row.addWidget(back_btn)
+        breadcrumb_row.addWidget(QLabel("|"))
+        breadcrumb_row.addWidget(rec_title)
+        breadcrumb_row.addStretch()
+        top_bar_layout.addLayout(breadcrumb_row)
+        
+        # Command Bar (Ribbon)
+        cmd_layout = QHBoxLayout()
+        cmd_layout.setContentsMargins(0, 4, 0, 0)
+        cmd_layout.setSpacing(6)
+        
+        # Standard primary buttons
+        save_btn = QPushButton("💾  Save")
+        save_btn.setStyleSheet("background-color: #0f6cbd; color: white; font-weight: 600; padding: 6px 14px; border-radius: 4px; border: 1px solid #0f6cbd;")
+        save_btn.clicked.connect(self.save_record)
+        cmd_layout.addWidget(save_btn)
+        
+        save_close_btn = QPushButton("💾  Save & Close")
+        save_close_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 12px; border-radius: 4px;")
+        save_close_btn.clicked.connect(self.save_and_close)
+        cmd_layout.addWidget(save_close_btn)
+        
+        save_new_btn = QPushButton("＋  Save & New")
+        save_new_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 12px; border-radius: 4px;")
+        save_new_btn.clicked.connect(self.save_and_new)
+        cmd_layout.addWidget(save_new_btn)
+        
+        delete_btn = QPushButton("🗑  Delete")
+        delete_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 12px; border-radius: 4px;")
+        delete_btn.clicked.connect(self.handle_close)
+        cmd_layout.addWidget(delete_btn)
+        
+        refresh_btn = QPushButton("↻  Refresh")
+        refresh_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 12px; border-radius: 4px;")
+        refresh_btn.clicked.connect(lambda: self.load_data() if self.record_id else None)
+        cmd_layout.addWidget(refresh_btn)
+        
+        cmd_layout.addStretch()
+        top_bar_layout.addLayout(cmd_layout)
+        main_layout.addWidget(top_bar)
 
         # --- Notifications Bar ---
         self.notifications_layout = QVBoxLayout()
         main_layout.addLayout(self.notifications_layout)
-
-        # --- Command Bar (Ribbon) ---
-        cmd_layout = QHBoxLayout()
-        cmd_layout.setContentsMargins(10, 8, 10, 8)
-        cmd_layout.setSpacing(6)
-        
-        ribbon_buttons = self.entity_def.get("ribbon_buttons", [])
-        # Filter to form-context buttons only (exclude homepage_grid/subgrid)
-        form_buttons = [b for b in ribbon_buttons if b.get("location_type", "form") == "form"]
-        if form_buttons:
-            seen_labels = set()
-            # Define the ideal order of form buttons
-            priority_order = ["Save", "Save & Close", "Save & New", "Complete", "Delete", "Activate", "Deactivate", "Assign"]
-            
-            def sort_key(btn):
-                lbl = self._resolve_ribbon_label(btn.get("label", ""), btn.get("id", ""))
-                try:
-                    return priority_order.index(lbl)
-                except ValueError:
-                    return 100
-            
-            form_buttons.sort(key=sort_key)
-            
-            for btn in form_buttons:
-                raw_label = btn.get("label", "Button")
-                clean_lbl = self._resolve_ribbon_label(raw_label, btn.get("id", ""))
-                if clean_lbl in seen_labels:
-                    continue
-                seen_labels.add(clean_lbl)
-
-                btn_widget = QPushButton(clean_lbl)
-                if clean_lbl in ("Save", "Save & Close"):
-                    btn_widget.setStyleSheet("background-color: #0f6cbd; color: white; font-weight: bold; padding: 5px 14px; border-radius: 4px;")
-                else:
-                    btn_widget.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; padding: 5px 10px; border-radius: 4px;")
-                    
-                btn_widget.clicked.connect(lambda _, cmd=btn.get("command", ""): self.execute_ribbon_command(cmd))
-                cmd_layout.addWidget(btn_widget)
-                self.ribbon_widgets.append({"widget": btn_widget, "data": btn})
-        else:
-            # Fallback
-            save_btn = QPushButton("Save")
-            save_btn.setStyleSheet("background-color: #0f6cbd; color: white; font-weight: bold; padding: 5px 14px; border-radius: 4px;")
-            save_btn.clicked.connect(self.save_record)
-            close_btn = QPushButton("Close")
-            close_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; padding: 5px 10px; border-radius: 4px;")
-            close_btn.clicked.connect(self.close)
-            cmd_layout.addWidget(save_btn)
-            cmd_layout.addWidget(close_btn)
-            
-        cmd_layout.addStretch()
-        main_layout.addLayout(cmd_layout)
 
         # --- Business Process Flow (BPF) ---
         bpf_layout = self._create_bpf_ui()

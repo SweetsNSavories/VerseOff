@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QPushButton, 
     QLabel, QListWidget, QListWidgetItem, QHBoxLayout,
     QSplitter, QComboBox, QTableWidget, QTableWidgetItem, QLineEdit,
-    QTreeWidget, QTreeWidgetItem
+    QTreeWidget, QTreeWidgetItem, QStackedWidget
 )
 from PyQt6.QtCore import QTimer, QThread, pyqtSignal, Qt
 from db import LocalDatabase
@@ -381,11 +381,14 @@ class OfflineApp(QMainWindow):
         nav_layout.addWidget(area_switcher_box)
         splitter.addWidget(nav_container)
         
-        # --- Right Content Pane (Views + HomepageGrid Command Bar + Table) ---
-        right_widget = QWidget()
-        right_layout = QVBoxLayout(right_widget)
-        right_layout.setContentsMargins(12, 10, 12, 12)
-        right_layout.setSpacing(8)
+        # --- Right Content Pane: Single Document Interface (SDI) with QStackedWidget ---
+        self.main_stack = QStackedWidget()
+        
+        # Page 0: HomepageGrid View
+        self.grid_page = QWidget()
+        grid_layout = QVBoxLayout(self.grid_page)
+        grid_layout.setContentsMargins(12, 10, 12, 12)
+        grid_layout.setSpacing(8)
         
         # Top Entity Header & View Selector Bar
         top_view_bar = QHBoxLayout()
@@ -407,13 +410,13 @@ class OfflineApp(QMainWindow):
         top_view_bar.addWidget(self.view_combo)
         top_view_bar.addStretch()
         top_view_bar.addWidget(self.search_bar)
-        right_layout.addLayout(top_view_bar)
+        grid_layout.addLayout(top_view_bar)
         
         # HomepageGrid Ribbon Command Bar (dynamically populated)
         self.grid_command_bar = QHBoxLayout()
         self.grid_command_bar.setContentsMargins(0, 0, 0, 4)
         self.grid_command_bar.setSpacing(6)
-        right_layout.addLayout(self.grid_command_bar)
+        grid_layout.addLayout(self.grid_command_bar)
         
         # Homepage Data Grid
         self.data_grid = QTableWidget()
@@ -422,14 +425,22 @@ class OfflineApp(QMainWindow):
         self.data_grid.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         self.data_grid.setAlternatingRowColors(True)
         self.data_grid.horizontalHeader().setStretchLastSection(True)
-        right_layout.addWidget(self.data_grid)
+        grid_layout.addWidget(self.data_grid)
         
         # Footer (Record Count & Status)
         self.footer_label = QLabel("Showing 0 records")
         self.footer_label.setStyleSheet("color: #605e5c; font-size: 12px; padding: 2px 4px;")
-        right_layout.addWidget(self.footer_label)
+        grid_layout.addWidget(self.footer_label)
         
-        splitter.addWidget(right_widget)
+        self.main_stack.addWidget(self.grid_page)
+        
+        # Page 1: Inline Form View Container
+        self.form_page = QWidget()
+        self.form_page_layout = QVBoxLayout(self.form_page)
+        self.form_page_layout.setContentsMargins(0, 0, 0, 0)
+        self.main_stack.addWidget(self.form_page)
+        
+        splitter.addWidget(self.main_stack)
         splitter.setStretchFactor(1, 4)
         layout.addWidget(splitter)
         
@@ -492,6 +503,9 @@ class OfflineApp(QMainWindow):
         if not selected: return
         entity_name = selected[0].data(0, Qt.ItemDataRole.UserRole)
         if not entity_name: return # Group clicked
+        
+        # Switch back to HomepageGrid if currently viewing a record
+        self.main_stack.setCurrentIndex(0)
         
         disp_name = self.display_names.get(entity_name, entity_name)
         self.entity_header_label.setText(f"<b>{disp_name}</b>")
@@ -718,10 +732,20 @@ class OfflineApp(QMainWindow):
             self.open_form(entity_name, record_id)
 
     def open_form(self, entity_name, record_id):
-        self.current_form = XrmFormRenderer(self.config, entity_name, record_id)
-        self.current_form.show()
-        self.current_form.raise_()
-        self.current_form.activateWindow()
+        # Clear existing form from form_page_layout
+        while self.form_page_layout.count():
+            item = self.form_page_layout.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.deleteLater()
+                
+        self.current_form = XrmFormRenderer(self.config, entity_name, record_id, parent=self, on_close=self.close_form_view)
+        self.form_page_layout.addWidget(self.current_form)
+        self.main_stack.setCurrentIndex(1) # Inline transition to Form View
+
+    def close_form_view(self):
+        self.main_stack.setCurrentIndex(0) # Return to HomepageGrid
+        self.refresh_grid()
 
     def trigger_sync(self):
         if hasattr(self, 'worker') and self.worker.isRunning():
