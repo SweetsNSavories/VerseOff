@@ -103,14 +103,14 @@ class MetadataFetcher:
     # Internal helpers
     # ------------------------------------------------------------------
 
-    def _get(self, endpoint: str, params: dict = None) -> dict:
+    def _get(self, endpoint: str, params: dict = None, timeout: int = 30) -> dict:
         """GET request against the Dataverse Web API."""
         cached_data = self._read_cache(endpoint, params)
         if cached_data is not None:
             return cached_data
             
         url = f"{self.base_url}{endpoint}"
-        resp = requests.get(url, headers=self.headers, params=params, timeout=30)
+        resp = requests.get(url, headers=self.headers, params=params, timeout=timeout)
         try:
             resp.raise_for_status()
         except requests.exceptions.HTTPError as e:
@@ -338,7 +338,7 @@ class MetadataFetcher:
         try:
             # RibbonLocationFilters.All = 1
             url = f"/RetrieveEntityRibbon(EntityName='{logical_name}',RibbonLocationFilter=Microsoft.Dynamics.CRM.RibbonLocationFilters'1')"
-            data = self._get(url)
+            data = self._get(url, timeout=6)
             
             base64_zip = data.get("CompressedEntityXml")
             if not base64_zip:

@@ -21,9 +21,9 @@ class LocalDatabase:
             cursor = conn.cursor()
             
             # Entities generated from manifest
-            # Table: msdyn_dataanalyticsreport_ksinsights
+            # Table: msdyn_ocliveworkitem
             cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_ksinsights (
+                CREATE TABLE IF NOT EXISTS msdyn_ocliveworkitem (
                     id TEXT PRIMARY KEY,
                     data_json TEXT,
                     sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
@@ -31,9 +31,79 @@ class LocalDatabase:
                     last_modified TEXT
                 )
             ''')
-            # Table: queueitem
+            # Table: msdyn_liveconversation
             cursor.execute('''
-                CREATE TABLE IF NOT EXISTS queueitem (
+                CREATE TABLE IF NOT EXISTS msdyn_liveconversation (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: socialprofile
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS socialprofile (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_evaluation
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_evaluation (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_evaluationcriteria
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_evaluationcriteria (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_evaluationplan
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_evaluationplan (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_screenrecording
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_screenrecording (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_screenrecordinglink
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_screenrecordinglink (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_unifiedroutingrun
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_unifiedroutingrun (
                     id TEXT PRIMARY KEY,
                     data_json TEXT,
                     sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
@@ -51,9 +121,9 @@ class LocalDatabase:
                     last_modified TEXT
                 )
             ''')
-            # Table: msdyn_ocliveworkitem
+            # Table: account
             cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_ocliveworkitem (
+                CREATE TABLE IF NOT EXISTS account (
                     id TEXT PRIMARY KEY,
                     data_json TEXT,
                     sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
@@ -61,9 +131,289 @@ class LocalDatabase:
                     last_modified TEXT
                 )
             ''')
-            # Table: msdyn_evaluationplan
+            # Table: activitymimeattachment
             cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_evaluationplan (
+                CREATE TABLE IF NOT EXISTS activitymimeattachment (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: activitypointer
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS activitypointer (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: appointment
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS appointment (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: category
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS category (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: contact
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS contact (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: email
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS email (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: emailsignature
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS emailsignature (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: entitlement
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS entitlement (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: expiredprocess
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS expiredprocess (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: fax
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS fax (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: incident
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS incident (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: incidentresolution
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS incidentresolution (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: knowledgearticle
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS knowledgearticle (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: letter
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS letter (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_iotalert
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_iotalert (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: newprocess
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS newprocess (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: knowledgearticleincident
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS knowledgearticleincident (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: knowledgebaserecord
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS knowledgebaserecord (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: phonecall
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS phonecall (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: queueitem
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS queueitem (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: slakpiinstance
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS slakpiinstance (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: task
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS task (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: template
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS template (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: translationprocess
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS translationprocess (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: serviceappointment
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS serviceappointment (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_dataanalyticsreport_forecast
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_forecast (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_dataanalyticsreport_ksinsights
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_ksinsights (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_dataanalyticsreport_csrmanager
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_csrmanager (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT,
+                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            ''')
+            # Table: msdyn_dataanalyticsreport_mc
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_mc (
                     id TEXT PRIMARY KEY,
                     data_json TEXT,
                     sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
@@ -91,29 +441,9 @@ class LocalDatabase:
                     last_modified TEXT
                 )
             ''')
-            # Table: msdyn_dataanalyticsreport_csrmanager
+            # Table: msdyn_dataanalyticsreport_oc
             cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_csrmanager (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: knowledgearticle
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS knowledgearticle (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: template
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS template (
+                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_oc (
                     id TEXT PRIMARY KEY,
                     data_json TEXT,
                     sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
@@ -131,259 +461,9 @@ class LocalDatabase:
                     last_modified TEXT
                 )
             ''')
-            # Table: msdyn_evaluationcriteria
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_evaluationcriteria (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: msdyn_evaluation
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_evaluation (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: serviceappointment
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS serviceappointment (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: msdyn_dataanalyticsreport_ocmodern
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_ocmodern (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
             # Table: msdyn_dataanalyticsreport_copilot
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_copilot (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: account
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS account (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: emailsignature
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS emailsignature (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: socialprofile
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS socialprofile (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: msdyn_dataanalyticsreport_mc
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_mc (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: msdyn_dataanalyticsreport_oc
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_oc (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: activitypointer
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS activitypointer (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: msdyn_customerasset
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_customerasset (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: contact
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS contact (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: msdyn_screenrecording
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_screenrecording (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: incident
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS incident (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: msdyn_iotalert
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS msdyn_iotalert (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: routingrule
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS routingrule (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: routingruleitem
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS routingruleitem (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: convertrule
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS convertrule (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: convertruleitem
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS convertruleitem (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: sla
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS sla (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: slaitem
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS slaitem (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: slakpiinstance
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS slakpiinstance (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: entitlement
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS entitlement (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: entitlementchannel
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS entitlementchannel (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT,
-                    sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            ''')
-            # Table: entitlementtemplate
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS entitlementtemplate (
                     id TEXT PRIMARY KEY,
                     data_json TEXT,
                     sync_status TEXT DEFAULT 'synced',  -- 'synced', 'pending_update', 'pending_create', 'rejected', 'conflict'
