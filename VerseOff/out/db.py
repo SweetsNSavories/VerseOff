@@ -405,6 +405,8 @@ class LocalDatabase:
                     savedqueryid TEXT PRIMARY KEY,
                     name TEXT,
                     returnedtypecode TEXT,
+                    querytype INTEGER,
+                    isdefault INTEGER,
                     fetchxml TEXT,
                     layoutxml TEXT
                 )

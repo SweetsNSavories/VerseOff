@@ -165,8 +165,12 @@ class AssociatedGridWidget(QWidget):
             from db import LocalDatabase
             with LocalDatabase().get_connection() as conn:
                 cursor = conn.cursor()
-                cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE returnedtypecode = ? AND querytype = 2", (self.target_entity,))
-                view_row = cursor.fetchone()
+                view_row = None
+                try:
+                    cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE returnedtypecode = ? AND querytype = 2", (self.target_entity,))
+                    view_row = cursor.fetchone()
+                except Exception:
+                    pass
                 
                 columns = []
                 query_def = None
