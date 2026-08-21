@@ -1967,6 +1967,30 @@ class XrmFormRenderer(QWidget):
 
             xml_content = form_def.get("formxmlmanaged") or form_def.get("formxml")
             self.tab_widget = QTabWidget()
+            self.tab_widget.setStyleSheet("""
+                QTabWidget::pane {
+                    border: none;
+                    background-color: transparent;
+                }
+                QTabBar::tab {
+                    background: transparent;
+                    border: none;
+                    border-bottom: 3px solid transparent;
+                    padding: 8px 18px;
+                    font-weight: 600;
+                    font-size: 13px;
+                    color: #605e5c;
+                }
+                QTabBar::tab:selected {
+                    color: #0f6cbd;
+                    border-bottom: 3px solid #0f6cbd;
+                }
+                QTabBar::tab:hover:!selected {
+                    color: #201f1e;
+                    background-color: #f3f2f1;
+                    border-radius: 4px 4px 0 0;
+                }
+            """)
             tab_index_counter = 0
             
             for tab_elem in body_node.findall("tab"):
@@ -1974,6 +1998,8 @@ class XrmFormRenderer(QWidget):
                 tab_label = self._get_label_from_xml(tab_elem.find("labels")) or tab_name
                 tab_page = QWidget()
                 tab_layout = QVBoxLayout(tab_page)
+                tab_layout.setContentsMargins(6, 10, 6, 10)
+                tab_layout.setSpacing(12)
                 
                 self.ui_hierarchy["tabs"][tab_name] = {
                     "label": tab_label,
@@ -1990,8 +2016,29 @@ class XrmFormRenderer(QWidget):
                             for section_elem in sections_node.findall("section"):
                                 sec_name = section_elem.get("name", "section_auto")
                                 sec_label = self._get_label_from_xml(section_elem.find("labels")) or sec_name
-                                group_box = QGroupBox(sec_label)
+                                group_box = QGroupBox(sec_label.upper())
+                                group_box.setStyleSheet("""
+                                    QGroupBox {
+                                        background-color: #ffffff;
+                                        border: 1px solid #e1dfdd;
+                                        border-radius: 6px;
+                                        margin-top: 14px;
+                                        font-weight: 700;
+                                        font-size: 11px;
+                                        color: #605e5c;
+                                        padding: 14px 12px 10px 12px;
+                                    }
+                                    QGroupBox::title {
+                                        subcontrol-origin: margin;
+                                        subcontrol-position: top left;
+                                        padding: 0 6px;
+                                        left: 12px;
+                                        background-color: #f8f9fa;
+                                    }
+                                """)
                                 group_layout = QVBoxLayout()
+                                group_layout.setContentsMargins(8, 8, 8, 8)
+                                group_layout.setSpacing(8)
                                 
                                 sec_controls_list = []
                                 self.ui_hierarchy["tabs"][tab_name]["sections"][sec_name] = {
@@ -2004,6 +2051,7 @@ class XrmFormRenderer(QWidget):
                                 if rows_node is not None:
                                     for row_elem in rows_node.findall("row"):
                                         row_layout = QHBoxLayout()
+                                        row_layout.setSpacing(10)
                                         for cell_elem in row_elem.findall("cell"):
                                             control_elem = cell_elem.find("control")
                                             if control_elem is not None:
@@ -2012,7 +2060,9 @@ class XrmFormRenderer(QWidget):
                                                 ctrl_label = self._get_label_from_xml(cell_elem.find("labels")) or data_field
                                                 
                                                 if data_field:
-                                                    lbl_widget = QLabel(f"{ctrl_label}:")
+                                                    lbl_widget = QLabel(ctrl_label)
+                                                    lbl_widget.setFixedWidth(130)
+                                                    lbl_widget.setStyleSheet("color: #605e5c; font-weight: 500;")
                                                     row_layout.addWidget(lbl_widget)
                                                     self.control_labels[data_field] = lbl_widget
                                                     
