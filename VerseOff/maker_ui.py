@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import (
     QLabel, QLineEdit, QPushButton, QListWidget, QListWidgetItem,
     QMessageBox, QProgressBar, QComboBox
 )
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QThread, pyqtSignal
 
 # Import VerseOff internals
 try:
@@ -23,6 +23,26 @@ except ImportError:
     from code_generator import CodeGenerator
 
 logger = logging.getLogger(__name__)
+
+class AuthWorker(QThread):
+    authenticated = pyqtSignal(str)
+    error = pyqtSignal(str)
+
+    def __init__(self, org_url: str, client_id: str = None):
+        super().__init__()
+        self.org_url = org_url
+        self.client_id = client_id
+
+    def run(self):
+        try:
+            auth = MsalAuth(org_url=self.org_url, client_id=self.client_id if self.client_id else None)
+            token = auth.get_token()
+            if token:
+                self.authenticated.emit(token)
+            else:
+                self.error.emit("Authentication failed: No access token returned.")
+        except Exception as e:
+            self.error.emit(str(e))
 
 class ConnectionPage(QWizardPage):
     def __init__(self, parent=None):
@@ -61,6 +81,7 @@ class ConnectionPage(QWizardPage):
         self.registerField("client_id", self.client_id_input)
         
         self.auth_token = None
+        self.worker = None
 
     def _validate_input(self, text):
         url = text.strip()
@@ -73,23 +94,28 @@ class ConnectionPage(QWizardPage):
             QMessageBox.warning(self, "Error", "Dataverse URL is required.")
             return
             
-        self.status_label.setText("Authenticating...")
-        QApplication.processEvents()
+        self.connect_btn.setEnabled(False)
+        self.status_label.setText("⏳ Authenticating in browser... Please complete sign-in.")
         
-        try:
-            auth = MsalAuth(org_url=url, client_id=client_id if client_id else None)
-            self.auth_token = auth.get_token()
-            if self.auth_token:
-                self.status_label.setText("Connected successfully!")
-                self.wizard().setProperty("auth_token", self.auth_token)
-                self.completeChanged.emit()
-                # Advance to app selection
-                if self.wizard():
-                    self.wizard().next()
-            else:
-                self.status_label.setText("Authentication failed.")
-        except Exception as e:
-            self.status_label.setText(f"Error: {e}")
+        self.worker = AuthWorker(url, client_id)
+        self.worker.authenticated.connect(self._on_authenticated)
+        self.worker.error.connect(self._on_auth_error)
+        self.worker.start()
+
+    def _on_authenticated(self, token: str):
+        self.auth_token = token
+        self.status_label.setText("✅ Connected successfully!")
+        self.connect_btn.setEnabled(True)
+        if self.wizard():
+            self.wizard().setProperty("auth_token", self.auth_token)
+            self.wizard().setProperty("org_url", self.url_input.text().strip())
+            self.completeChanged.emit()
+            self.wizard().next()
+
+    def _on_auth_error(self, err_msg: str):
+        self.connect_btn.setEnabled(True)
+        self.status_label.setText(f"❌ {err_msg}")
+        QMessageBox.critical(self, "Authentication Error", f"Failed to authenticate with Dataverse:\n\n{err_msg}")
 
     def isComplete(self):
         return self.auth_token is not None

@@ -39,7 +39,10 @@ class MsalAuth:
         cache = msal.SerializableTokenCache()
         if os.path.exists(self.cache_file):
             with open(self.cache_file, "r") as f:
-                cache.deserialize(f.read())
+                try:
+                    cache.deserialize(f.read())
+                except Exception as e:
+                    print(f"Warning: Could not read token cache: {e}")
 
         if self.client_secret:
             app = msal.ConfidentialClientApplication(
@@ -50,7 +53,7 @@ class MsalAuth:
             )
             result = app.acquire_token_silent(self.scopes, account=None)
             if not result:
-                print("Acquiring token via Client Credentials...")
+                print(f"[MSAL] Acquiring token via Client Credentials for {self.org_url}...")
                 result = app.acquire_token_for_client(scopes=self.scopes)
         else:
             app = msal.PublicClientApplication(
@@ -59,14 +62,20 @@ class MsalAuth:
             accounts = app.get_accounts()
             result = None
             if accounts:
+                print(f"[MSAL] Found cached account: {accounts[0].get('username')}. Attempting silent token renewal...")
                 result = app.acquire_token_silent(self.scopes, account=accounts[0])
     
             if not result:
-                print("No valid cached token found. Opening interactive login...")
+                print(f"[MSAL] No valid cached token found. Opening browser for interactive login to {self.org_url}...")
                 result = app.acquire_token_interactive(scopes=self.scopes)
 
-        if "access_token" in result:
+        if result and "access_token" in result:
             self._save_cache(cache)
+            username = result.get("id_token_claims", {}).get("preferred_username") or "User"
+            print(f"[MSAL] Authentication successful for: {username}")
             return result["access_token"]
         else:
-            raise Exception(f"Authentication failed. {result.get('error')}: {result.get('error_description')}")
+            error_desc = result.get('error_description') if result else 'No response from MSAL'
+            error_code = result.get('error') if result else 'Unknown'
+            print(f"[MSAL Error] {error_code}: {error_desc}")
+            raise Exception(f"Authentication failed ({error_code}): {error_desc}")
