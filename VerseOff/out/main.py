@@ -159,123 +159,9 @@ class OfflineApp(QMainWindow):
         # Left pane (SiteMap Navigation)
         self.nav_tree = QTreeWidget()
         self.nav_tree.setHeaderHidden(True)
-        self.nav_tree.setMinimumWidth(240)
+        self.nav_tree.setMinimumWidth(260)
         
-        area_item = QTreeWidgetItem(["📁 "])
-        area_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
-        group_item = QTreeWidgetItem([""])
-        group_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
-        sub_title = self.display_names.get("msdyn_dataanalyticsreport_csrmanager", "Msdyn_dataanalyticsreport_csrmanager")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_csrmanager")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_dataanalyticsreport_mc", "Msdyn_dataanalyticsreport_mc")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_mc")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_dataanalyticsreport_ksinsights", "Msdyn_dataanalyticsreport_ksinsights")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_ksinsights")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("incident", "Incident")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "incident")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_swarm", "Msdyn_swarm")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_swarm")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_dataanalyticsreport_copilot", "Msdyn_dataanalyticsreport_copilot")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_copilot")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_dataanalyticsreport_ocmodern", "Msdyn_dataanalyticsreport_ocmodern")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_ocmodern")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_dataanalyticsreport_oc", "Msdyn_dataanalyticsreport_oc")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_oc")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_dataanalyticsreport_ur_recordrouting_rt", "Msdyn_dataanalyticsreport_ur_recordrouting_rt")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_ur_recordrouting_rt")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("socialprofile", "Socialprofile")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "socialprofile")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_ocliveworkitem", "Msdyn_ocliveworkitem")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_ocliveworkitem")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_dataanalyticsreport_oc_rt", "Msdyn_dataanalyticsreport_oc_rt")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_oc_rt")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("queueitem", "Queueitem")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "queueitem")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("activitypointer", "Activitypointer")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "activitypointer")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("contact", "Contact")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "contact")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_dataanalyticsreport_email", "Msdyn_dataanalyticsreport_email")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_dataanalyticsreport_email")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("account", "Account")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "account")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("knowledgearticle", "Knowledgearticle")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "knowledgearticle")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("template", "Template")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "template")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("emailsignature", "Emailsignature")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "emailsignature")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_evaluation", "Msdyn_evaluation")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_evaluation")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_evaluationcriteria", "Msdyn_evaluationcriteria")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_evaluationcriteria")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_evaluationplan", "Msdyn_evaluationplan")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_evaluationplan")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_iotalert", "Msdyn_iotalert")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_iotalert")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_customerasset", "Msdyn_customerasset")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_customerasset")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("serviceappointment", "Serviceappointment")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "serviceappointment")
-        group_item.addChild(subarea_item)
-        sub_title = self.display_names.get("msdyn_screenrecording", "Msdyn_screenrecording")
-        subarea_item = QTreeWidgetItem([sub_title])
-        subarea_item.setData(0, Qt.ItemDataRole.UserRole, "msdyn_screenrecording")
-        group_item.addChild(subarea_item)
-        area_item.addChild(group_item)
-        self.nav_tree.addTopLevelItem(area_item)
-        area_item.setExpanded(True)
+        self.build_sitemap_navigation()
         
         self.nav_tree.itemSelectionChanged.connect(self.on_nav_changed)
         splitter.addWidget(self.nav_tree)
@@ -298,7 +184,7 @@ class OfflineApp(QMainWindow):
         toolbar_layout.setSpacing(10)
         
         self.view_combo = QComboBox()
-        self.view_combo.setMinimumWidth(240)
+        self.view_combo.setMinimumWidth(260)
         self.view_combo.currentIndexChanged.connect(self.refresh_grid)
         
         self.search_bar = QLineEdit()
@@ -326,7 +212,139 @@ class OfflineApp(QMainWindow):
         layout.addWidget(splitter)
         self.setCentralWidget(central)
         
-        # Select first valid nav item to trigger load
+        # Select first valid nav item to trigger initial load
+        self.select_default_nav_item()
+
+    def build_sitemap_navigation(self):
+        """Constructs Model-Driven App SiteMap with Areas, Groups, and SubAreas."""
+        # Standard Dynamics 365 Customer Service categorization map
+        GROUP_MAPPINGS = [
+            {
+                "area": "Service",
+                "area_icon": "📁",
+                "groups": [
+                    {
+                        "name": "📊 Analytics & Reports",
+                        "entities": [
+                            "msdyn_dataanalyticsreport_csrmanager",
+                            "msdyn_dataanalyticsreport_copilot",
+                            "msdyn_dataanalyticsreport_ksinsights",
+                            "msdyn_dataanalyticsreport_oc",
+                            "msdyn_dataanalyticsreport_ocmodern",
+                            "msdyn_dataanalyticsreport_oc_rt",
+                            "msdyn_dataanalyticsreport_ur_recordrouting_rt",
+                            "msdyn_dataanalyticsreport_mc",
+                            "msdyn_dataanalyticsreport_email"
+                        ]
+                    },
+                    {
+                        "name": "🎧 Service & Operations",
+                        "entities": [
+                            "incident",
+                            "msdyn_swarm",
+                            "msdyn_ocliveworkitem",
+                            "queueitem",
+                            "activitypointer",
+                            "socialprofile",
+                            "serviceappointment",
+                            "msdyn_customerasset",
+                            "msdyn_iotalert"
+                        ]
+                    },
+                    {
+                        "name": "👥 Customers",
+                        "entities": [
+                            "contact",
+                            "account"
+                        ]
+                    },
+                    {
+                        "name": "📚 Knowledge Management",
+                        "entities": [
+                            "knowledgearticle",
+                            "template",
+                            "emailsignature"
+                        ]
+                    },
+                    {
+                        "name": "⭐ Quality & Evaluation",
+                        "entities": [
+                            "msdyn_evaluation",
+                            "msdyn_evaluationplan",
+                            "msdyn_evaluationcriteria",
+                            "msdyn_screenrecording"
+                        ]
+                    },
+                    {
+                        "name": "⚙️ Service Management & SLAs",
+                        "entities": [
+                            "routingrule",
+                            "routingruleitem",
+                            "sla",
+                            "slaitem",
+                            "slakpiinstance",
+                            "entitlement",
+                            "entitlementchannel",
+                            "entitlementtemplate",
+                            "convertrule",
+                            "convertruleitem"
+                        ]
+                    }
+                ]
+            }
+        ]
+
+        all_manifest_entities = {e.get("LogicalName"): e for e in self.config.get("entities", [])}
+        placed_entities = set()
+
+        for area_def in GROUP_MAPPINGS:
+            area_title = f"{area_def.get('area_icon', '📁')} {area_def.get('area', 'Service')}"
+            area_item = QTreeWidgetItem([area_title])
+            area_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
+            font = area_item.font(0)
+            font.setBold(True)
+            area_item.setFont(0, font)
+
+            for grp_def in area_def.get("groups", []):
+                grp_name = grp_def.get("name", "Group")
+                grp_item = QTreeWidgetItem([grp_name])
+                grp_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
+
+                for ent_name in grp_def.get("entities", []):
+                    if ent_name in all_manifest_entities:
+                        placed_entities.add(ent_name)
+                        disp_name = self.display_names.get(ent_name, ent_name.replace("_", " ").title())
+                        sub_item = QTreeWidgetItem([disp_name])
+                        sub_item.setData(0, Qt.ItemDataRole.UserRole, ent_name)
+                        grp_item.addChild(sub_item)
+
+                if grp_item.childCount() > 0:
+                    area_item.addChild(grp_item)
+
+            if area_item.childCount() > 0:
+                self.nav_tree.addTopLevelItem(area_item)
+                area_item.setExpanded(True)
+
+        # Catch any remaining entities not explicitly categorized
+        remaining = [e for e in all_manifest_entities if e not in placed_entities]
+        if remaining:
+            other_grp = QTreeWidgetItem(["📦 Other Entities"])
+            other_grp.setFlags(Qt.ItemFlag.ItemIsEnabled)
+            for ent_name in remaining:
+                disp_name = self.display_names.get(ent_name, ent_name.replace("_", " ").title())
+                sub_item = QTreeWidgetItem([disp_name])
+                sub_item.setData(0, Qt.ItemDataRole.UserRole, ent_name)
+                other_grp.addChild(sub_item)
+            
+            if self.nav_tree.topLevelItemCount() > 0:
+                self.nav_tree.topLevelItem(0).addChild(other_grp)
+            else:
+                self.nav_tree.addTopLevelItem(other_grp)
+
+        # Expand all groups
+        self.nav_tree.expandAll()
+
+    def select_default_nav_item(self):
         def select_first_leaf(item):
             if item.data(0, Qt.ItemDataRole.UserRole):
                 self.nav_tree.setCurrentItem(item)
@@ -349,15 +367,32 @@ class OfflineApp(QMainWindow):
         # Rebuild HomepageGrid Command Bar for the selected entity
         self.rebuild_homepage_ribbon(entity_name)
         
+        disp_name = self.display_names.get(entity_name, entity_name)
+        
+        self.view_combo.blockSignals(True)
         self.view_combo.clear()
         
-        with self.db.get_connection() as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT savedqueryid, name FROM saved_queries WHERE returnedtypecode = ?", (entity_name,))
-            views = cursor.fetchall()
+        views_found = 0
+        try:
+            with self.db.get_connection() as conn:
+                cursor = conn.cursor()
+                cursor.execute("SELECT savedqueryid, name FROM saved_queries WHERE returnedtypecode = ?", (entity_name,))
+                views = cursor.fetchall()
+                
+                for v in views:
+                    self.view_combo.addItem(v[1], v[0])
+                    views_found += 1
+        except Exception as e:
+            logger.debug(f"Could not query saved_queries: {e}")
+
+        # Always add standard fallback views if no saved queries exist
+        if views_found == 0:
+            self.view_combo.addItem(f"Active {disp_name}s", "active_records")
+            self.view_combo.addItem(f"All {disp_name}s", "all_records")
+            self.view_combo.addItem(f"Inactive {disp_name}s", "inactive_records")
             
-            for v in views:
-                self.view_combo.addItem(v['name'], v['savedqueryid'])
+        self.view_combo.blockSignals(False)
+        self.refresh_grid()
 
     def rebuild_homepage_ribbon(self, entity_name: str):
         # Clear existing buttons in command bar
@@ -430,7 +465,7 @@ class OfflineApp(QMainWindow):
         if reply == QMessageBox.StandardButton.Yes:
             with self.db.get_connection() as conn:
                 cursor = conn.cursor()
-                cursor.execute(f"DELETE FROM {entity_name} WHERE {entity_name}id = ?", (record_id,))
+                cursor.execute(f"DELETE FROM {entity_name} WHERE id = ?", (record_id,))
                 conn.commit()
             self.refresh_grid()
 
@@ -445,62 +480,94 @@ class OfflineApp(QMainWindow):
         if not entity_name: return
         
         view_id = self.view_combo.currentData()
-        if not view_id and not search_string:
-            self.data_grid.setRowCount(0)
-            self.data_grid.setColumnCount(0)
-            return
+        
+        ent_def = next((e for e in self.config.get("entities", []) if e.get("LogicalName") == entity_name), None)
+        primary_id_attr = (ent_def.get("PrimaryIdAttribute") if ent_def else None) or f"{entity_name}id"
+        primary_name_attr = (ent_def.get("PrimaryNameAttribute") if ent_def else None) or "name"
+        
+        # Build intelligent default columns for the entity
+        columns = []
+        if ent_def and ent_def.get("attributes"):
+            attrs = ent_def.get("attributes", [])
+            attr_map = {a.get("LogicalName"): a for a in attrs if isinstance(a, dict)}
             
+            # Prioritize standard D365 columns
+            candidate_names = [primary_name_attr, "emailaddress1", "telephone1", "jobtitle", "statecode", "statuscode", "createdon", "modifiedon"]
+            seen_cols = set()
+            for col_name in candidate_names:
+                if col_name in attr_map and col_name not in seen_cols:
+                    seen_cols.add(col_name)
+                    lbl = attr_map[col_name].get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or col_name.replace("_", " ").title()
+                    columns.append({"name": col_name, "label": lbl})
+                    
+            # Ensure at least primary name & status are present
+            if not columns:
+                columns = [
+                    {"name": primary_name_attr, "label": primary_name_attr.replace("_", " ").title()},
+                    {"name": "sync_status", "label": "Sync Status"},
+                    {"name": "last_modified", "label": "Modified On"}
+                ]
+        else:
+            columns = [
+                {"name": primary_name_attr, "label": "Name"},
+                {"name": "sync_status", "label": "Sync Status"},
+                {"name": "last_modified", "label": "Modified On"}
+            ]
+
         try:
-            from view_parser import ViewParser
             with self.db.get_connection() as conn:
                 cursor = conn.cursor()
                 
-                if search_string:
-                    # Query the Quick Find View (querytype = 4)
-                    cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE returnedtypecode = ? AND querytype = 4", (entity_name,))
-                    view_row = cursor.fetchone()
-                    if not view_row:
-                        # Fallback to current view if no quick find view exists
-                        cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE savedqueryid = ?", (view_id,))
-                        view_row = cursor.fetchone()
-                else:
-                    # Normal view execution
-                    cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE savedqueryid = ?", (view_id,))
-                    view_row = cursor.fetchone()
+                # Check table structure in SQLite
+                cursor.execute(f"PRAGMA table_info({entity_name})")
+                table_cols = [r[1] for r in cursor.fetchall()]
                 
-                if not view_row: return
-                
-                columns = ViewParser.parse_layoutxml(view_row['layoutxml'])
-                query_def = ViewParser.parse_fetchxml(view_row['fetchxml'])
-                
-                if not columns:
-                    columns = [{'name': f'{entity_name}id', 'label': 'ID'}, {'name': 'sync_status', 'label': 'Status'}]
-                
-                primary_id_col = f"{entity_name}id"
-                
-                self.data_grid.setColumnCount(len(columns))
-                self.data_grid.setHorizontalHeaderLabels([c.get('label', c['name']) for c in columns])
-                
-                if query_def and query_def.get("entity") == entity_name:
-                    sql, params = ViewParser.fetchxml_to_sql(query_def, search_string=search_string)
-                    cursor.execute(sql, params)
-                else:
+                rows_data = []
+                if "data_json" in table_cols:
+                    cursor.execute(f"SELECT id, data_json, sync_status, last_modified FROM {entity_name}")
+                    for rec in cursor.fetchall():
+                        rec_id, data_str, status, mod_on = rec
+                        try:
+                            item_data = json.loads(data_str) if data_str else {}
+                        except Exception:
+                            item_data = {}
+                        item_data["id"] = rec_id
+                        item_data[primary_id_attr] = rec_id
+                        item_data["sync_status"] = status
+                        item_data["last_modified"] = mod_on
+                        rows_data.append(item_data)
+                elif table_cols:
                     cursor.execute(f"SELECT * FROM {entity_name}")
-                    
-                rows = cursor.fetchall()
-                self.data_grid.setRowCount(len(rows))
-                
-                for i, row in enumerate(rows):
-                    row_dict = dict(row)
-                    rec_id = row_dict.get(primary_id_col, "")
+                    col_names = [description[0] for description in cursor.description]
+                    for rec in cursor.fetchall():
+                        rows_data.append(dict(zip(col_names, rec)))
+
+                # Apply search filter if provided
+                if search_string:
+                    s_lower = search_string.lower()
+                    filtered = []
+                    for r in rows_data:
+                        if any(s_lower in str(v).lower() for v in r.values()):
+                            filtered.append(r)
+                    rows_data = filtered
+
+                # Populate QTableWidget
+                self.data_grid.setColumnCount(len(columns))
+                self.data_grid.setHorizontalHeaderLabels([c.get("label", c["name"]) for c in columns])
+                self.data_grid.setRowCount(len(rows_data))
+
+                for i, row in enumerate(rows_data):
+                    rec_id = row.get(primary_id_attr) or row.get("id") or ""
                     for j, col in enumerate(columns):
-                        val = str(row_dict.get(col['name'], ''))
+                        val = str(row.get(col["name"], ""))
+                        if val == "None": val = ""
                         item = QTableWidgetItem(val)
                         if j == 0:
                             item.setData(Qt.ItemDataRole.UserRole, rec_id)
                         self.data_grid.setItem(i, j, item)
+                        
         except Exception as e:
-            logger.error(f"Error rendering grid: {e}")
+            logger.error(f"Error loading homepage grid: {e}")
 
     def open_record_from_grid(self, item):
         row = item.row()
