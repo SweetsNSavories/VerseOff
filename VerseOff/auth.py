@@ -7,7 +7,7 @@ import atexit
 CLIENT_ID = os.getenv("VERSEOFF_CLIENT_ID", "your-client-id-here")
 TENANT_ID = os.getenv("VERSEOFF_TENANT_ID", "common") # Or your specific tenant ID
 AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID}"
-DATAVERSE_URL = os.getenv("DATAVERSE_URL", "https://your-org.crm.dynamics.com")
+DATAVERSE_URL = os.getenv("DATAVERSE_URL", "https://orgb7c4e2ec.crm8.dynamics.com/")
 SCOPES = [f"{DATAVERSE_URL}/user_impersonation"]
 
 CACHE_FILE = "verseoff_token_cache.bin"

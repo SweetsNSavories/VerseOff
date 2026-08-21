@@ -52,9 +52,9 @@ class ConnectionPage(QWizardPage):
 
         layout = QVBoxLayout()
         
-        self.url_label = QLabel("Dataverse URL (e.g. https://org.crm.dynamics.com):")
+        self.url_label = QLabel("Dataverse URL:")
         self.url_input = QLineEdit()
-        self.url_input.setPlaceholderText("https://org.crm.dynamics.com")
+        self.url_input.setText("https://orgb7c4e2ec.crm8.dynamics.com/")
         self.url_input.textChanged.connect(self._validate_input)
         
         self.client_id_label = QLabel("Entra ID Client ID (Optional):")
@@ -62,7 +62,7 @@ class ConnectionPage(QWizardPage):
         self.client_id_input.setPlaceholderText("Leave blank for standard Dynamics CRM Public Client ID")
         
         self.connect_btn = QPushButton("Connect & Authenticate")
-        self.connect_btn.setEnabled(False)
+        self.connect_btn.setEnabled(True)
         self.connect_btn.clicked.connect(self.authenticate)
         
         self.status_label = QLabel("Not connected.")

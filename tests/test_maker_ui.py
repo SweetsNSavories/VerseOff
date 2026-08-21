@@ -21,11 +21,12 @@ def test_maker_wizard_headless_navigation(qtbot):
     # 2. Test input validation on the Welcome Page
     welcome_page = wizard.page(0)
     
-    # The 'Connect' (Next) button should be disabled initially
+    # Clearing the URL disables the button
+    welcome_page.url_input.clear()
     assert not welcome_page.connect_btn.isEnabled()
     
     # Type into the URL box using qtbot
-    qtbot.keyClicks(welcome_page.url_input, "https://mock.crm.dynamics.com")
+    qtbot.keyClicks(welcome_page.url_input, "https://orgb7c4e2ec.crm8.dynamics.com/")
     
     # The button should now be enabled
     assert welcome_page.connect_btn.isEnabled()
