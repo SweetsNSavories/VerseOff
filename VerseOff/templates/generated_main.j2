@@ -1044,7 +1044,7 @@ class OfflineApp(QMainWindow):
                 # Populate QTableWidget
                 self.data_grid.setColumnCount(len(columns))
                 
-                attr_meta = {a["LogicalName"]: a for a in entity_def.get("attributes", [])}
+                attr_meta = {a["LogicalName"]: a for a in (ent_def or {}).get("attributes", []) if isinstance(a, dict)}
                 headers = []
                 for j, c in enumerate(columns):
                     lbl = c.get("label")

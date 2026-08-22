@@ -361,8 +361,25 @@ class OfflineApp(QMainWindow):
         header_widget.setObjectName("AppHeader")
         header_widget.setFixedHeight(48)
         header_layout = QHBoxLayout(header_widget)
-        header_layout.setContentsMargins(16, 0, 16, 0)
-        header_layout.setSpacing(12)
+        header_layout.setContentsMargins(16, 8, 16, 8)
+        
+        # Hamburger button
+        self.hamburger_btn = QPushButton("≡")
+        self.hamburger_btn.setToolTip("Collapse Menu")
+        self.hamburger_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.hamburger_btn.setStyleSheet("""
+            QPushButton {
+                background: transparent;
+                border: none;
+                color: white;
+                font-size: 24px;
+                font-weight: bold;
+                padding-right: 16px;
+            }
+            QPushButton:hover { color: #cccccc; }
+        """)
+        self.hamburger_btn.clicked.connect(self.toggle_sitemap)
+        header_layout.addWidget(self.hamburger_btn)
         
         waffle_icon = QLabel("<b>:::</b>")
         waffle_icon.setStyleSheet("font-size: 18px; color: #ffffff;")
@@ -407,14 +424,17 @@ class OfflineApp(QMainWindow):
         self.nav_tree = QTreeWidget()
         self.nav_tree.setHeaderHidden(True)
         self.nav_tree.setMinimumWidth(260)
+        self.nav_tree.setMaximumWidth(260)
+        self.nav_tree.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.nav_tree.setIconSize(QSize(20, 20))
         self.nav_tree.setRootIsDecorated(False)
         self.nav_tree.itemSelectionChanged.connect(self.on_nav_changed)
         nav_layout.addWidget(self.nav_tree)
         
         # Bottom Area Switcher (D365 Model-Driven Pattern)
-        area_switcher_box = QWidget()
-        area_switcher_box.setStyleSheet("background-color: #faf9f8; border-top: 1px solid #e1dfdd; padding: 8px;")
-        area_switcher_layout = QVBoxLayout(area_switcher_box)
+        self.area_switcher_box = QWidget()
+        self.area_switcher_box.setStyleSheet("background-color: #faf9f8; border-top: 1px solid #e1dfdd; padding: 8px;")
+        area_switcher_layout = QVBoxLayout(self.area_switcher_box)
         area_switcher_layout.setContentsMargins(0, 0, 0, 0)
         
         area_label = QLabel("<small style='color: #605e5c; font-weight: bold;'>CHANGE AREA</small>")
@@ -427,7 +447,7 @@ class OfflineApp(QMainWindow):
         area_switcher_layout.addWidget(area_label)
         area_switcher_layout.addWidget(self.area_combo)
         
-        nav_layout.addWidget(area_switcher_box)
+        nav_layout.addWidget(self.area_switcher_box)
         splitter.addWidget(nav_container)
         
         # --- Right Content Pane: Single Document Interface (SDI) with QStackedWidget ---
@@ -558,6 +578,21 @@ class OfflineApp(QMainWindow):
                     )
                     sub_item = QTreeWidgetItem([disp_name])
                     sub_item.setData(0, Qt.ItemDataRole.UserRole, ent_name)
+                    
+                    # Resolve Icon
+                    icon_name = sub.get("vector_icon") or sub.get("icon") or ""
+                    if icon_name.startswith("$webresource:"):
+                        icon_name = icon_name.split(":", 1)[1]
+                    elif icon_name.startswith("/WebResources/"):
+                        icon_name = icon_name.split("/", 2)[-1]
+                        
+                    if icon_name:
+                        icon_path = os.path.abspath(os.path.join(
+                            os.path.dirname(__file__), "webresources", "webresources", icon_name
+                        ))
+                        if os.path.exists(icon_path):
+                            sub_item.setIcon(0, QIcon(icon_path))
+                    
                     grp_item.addChild(sub_item)
                 elif not ent_name:
                     sub_item = QTreeWidgetItem([
@@ -578,6 +613,16 @@ class OfflineApp(QMainWindow):
                 
         # Select first valid subarea to trigger grid load
         self.select_default_nav_item()
+
+    def toggle_sitemap(self):
+        self.nav_expanded = getattr(self, "nav_expanded", True)
+        self.nav_expanded = not self.nav_expanded
+        
+        target_width = 260 if self.nav_expanded else 48
+        self.nav_tree.setMinimumWidth(target_width)
+        self.nav_tree.setMaximumWidth(target_width)
+        self.area_switcher_box.setVisible(self.nav_expanded)
+        self.hamburger_btn.setToolTip("Collapse Menu" if self.nav_expanded else "Expand Menu")
 
     def select_default_nav_item(self):
         for i in range(self.nav_tree.topLevelItemCount()):
@@ -999,7 +1044,7 @@ class OfflineApp(QMainWindow):
                 # Populate QTableWidget
                 self.data_grid.setColumnCount(len(columns))
                 
-                attr_meta = {a["LogicalName"]: a for a in entity_def.get("attributes", [])}
+                attr_meta = {a["LogicalName"]: a for a in (ent_def or {}).get("attributes", []) if isinstance(a, dict)}
                 headers = []
                 for j, c in enumerate(columns):
                     lbl = c.get("label")

@@ -6202,8 +6202,6 @@ class XrmFormRenderer(QWidget):
                         self.form_combo.setCurrentIndex(idx)
                         break
             self.form_combo.currentIndexChanged.connect(self._on_form_selector_changed)
-            cmd_layout.addWidget(form_lbl)
-            cmd_layout.addWidget(self.form_combo)
         
         cmd_layout.addStretch()
         top_bar_layout.addLayout(cmd_layout)
@@ -6223,10 +6221,21 @@ class XrmFormRenderer(QWidget):
         if bpf_layout:
             main_layout.addLayout(bpf_layout)
             
-        # --- Form Header (Metrics) ---
-        self.header_layout = QHBoxLayout()
+        # --- Form Header (Metrics & Form Selector) ---
+        self.header_widget = QWidget()
+        self.header_widget.setStyleSheet("background-color: #ffffff; border-bottom: 1px solid #e1dfdd; padding: 4px 16px;")
+        self.header_layout = QHBoxLayout(self.header_widget)
+        self.header_layout.setContentsMargins(0, 4, 0, 4)
+        self.header_layout.setSpacing(16)
+        
+        if hasattr(self, "form_combo"):
+            form_lbl = QLabel("📋 Form:")
+            form_lbl.setStyleSheet("font-size: 12px; color: #605e5c; font-weight: bold;")
+            self.header_layout.addWidget(form_lbl)
+            self.header_layout.addWidget(self.form_combo)
+            
         self.header_layout.addStretch() # Right-align the header fields
-        main_layout.addLayout(self.header_layout)
+        main_layout.addWidget(self.header_widget)
 
         # --- Form Body ---
         self.scroll_area = QScrollArea()
@@ -6652,12 +6661,18 @@ class XrmFormRenderer(QWidget):
                     item = self.form_layout.takeAt(0)
                     w = item.widget()
                     if w: w.deleteLater()
-                while self.header_layout.count():
-                    item = self.header_layout.takeAt(0)
-                    widget = item.widget()
-                    if widget:
-                        widget.deleteLater()
-                self.header_layout.addStretch()
+                if hasattr(self, "header_layout"):
+                    # Clear existing header fields (keep form_combo which is first 2 items + stretch)
+                    while self.header_layout.count() > 3:
+                        item = self.header_layout.takeAt(self.header_layout.count() - 1)
+                        if item.widget():
+                            item.widget().deleteLater()
+                        elif item.layout():
+                            while item.layout().count():
+                                child = item.layout().takeAt(0)
+                                if child.widget(): child.widget().deleteLater()
+                            item.layout().deleteLater()
+                    self.header_layout.addStretch()
                 self.controls.clear()
                 self.control_instances.clear()
                 self.control_labels.clear()
@@ -7130,26 +7145,17 @@ class XrmFormRenderer(QWidget):
                         ctrl_label = self._get_label_from_xml(cell.find("labels")) or data_field
                         
                         if data_field:
-                            # Header fields are stacked vertically (Label over Value)
+                            # Header fields
                             field_layout = QVBoxLayout()
                             lbl = QLabel(f"<small style='color: #605e5c;'>{ctrl_label}</small>")
-                            widget = self._create_widget_for_field(data_field, class_id, control_elem=control_elem)
-                            widget.setEnabled(False) # Header fields read-only for MVP
-                            widget.setStyleSheet("border: none; background: transparent; font-weight: bold; font-size: 14px;")
+                            widget = QLineEdit()
+                            widget.setReadOnly(True)
+                            widget.setStyleSheet("border: none; background: transparent; font-weight: bold;")
                             self.controls.setdefault(data_field, widget)
-                            self.control_instances.setdefault(
-                                data_field,
-                                [],
-                            ).append(widget)
                             
                             field_layout.addWidget(lbl)
                             field_layout.addWidget(widget)
-                            self.header_layout.addLayout(field_layout)
-                            
-                            # Add vertical separator line
-                            vline = QLabel("|")
-                            vline.setStyleSheet("color: #c8c6c4; margin-left: 10px; margin-right: 10px;")
-                            self.header_layout.addWidget(vline)
+                            self.form_header_layout.addLayout(field_layout)
 
             # --- Render Body ---
             # D365 FormXML stores tabs directly under <form>, NOT under a <body> wrapper
