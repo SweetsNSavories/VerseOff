@@ -5,41 +5,78 @@ import json
 from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QPushButton, 
     QLabel, QListWidget, QListWidgetItem, QHBoxLayout,
-    QSplitter, QComboBox, QTableWidget, QTableWidgetItem, QLineEdit,
-    QTreeWidget, QTreeWidgetItem, QStackedWidget
+    QSplitter, QTableWidget, QTableWidgetItem, QLineEdit,
+    QTreeWidget, QTreeWidgetItem, QTreeWidgetItemIterator,
+    QStackedWidget, QMessageBox,
+    QToolButton, QMenu
 )
 from PyQt6.QtCore import QTimer, QThread, pyqtSignal, Qt
 from db import LocalDatabase
 from sync_engine import SyncEngine
+from ui_components import FluentComboBox as QComboBox
+from view_parser import ViewParser
 
 # Import Dynamic XRM Engine
 from xrm_form_renderer import XrmFormRenderer
 
 logger = logging.getLogger(__name__)
+SITEMAP_ROUTE_ROLE = int(Qt.ItemDataRole.UserRole) + 1
 
 class SyncWorker(QThread):
-    finished = pyqtSignal()
+    succeeded = pyqtSignal(object)
     error = pyqtSignal(str)
+
+    def __init__(self, config_path, parent=None):
+        super().__init__(parent)
+        self.config_path = config_path
 
     def run(self):
         try:
-            sync = SyncEngine()
-            sync.sync_all()
-            self.finished.emit()
+            summary = SyncEngine(self.config_path).sync_all()
+            self.succeeded.emit(summary)
         except Exception as e:
             self.error.emit(str(e))
 
 class OfflineApp(QMainWindow):
     def __init__(self):
         super().__init__()
+        self._close_after_sync = False
+        self.setWindowTitle("Dynamics 365 - Offline Client")
+        self.resize(1380, 860)
+        self.setMinimumSize(1020, 700)
+        
+        try:
+            self._initialize_core_components()
+        except Exception as e:
+            logger.critical(f"Fail-Close triggered during initialization: {e}")
+            self.show_critical_error(str(e))
+            return
+
+    def show_critical_error(self, message):
+        msg = QMessageBox(self)
+        msg.setIcon(QMessageBox.Icon.Critical)
+        msg.setWindowTitle("Critical Initialization Error")
+        msg.setText("The application failed to start securely and will close.")
+        msg.setInformativeText(message)
+        msg.setStandardButtons(QMessageBox.StandardButton.Close)
+        msg.exec()
+        sys.exit(1)
+            
+    def _initialize_core_components(self):
         self.db = LocalDatabase()
-        manifest_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "manifest.json")
-        with open(manifest_path, "r", encoding="utf-8") as f:
+        resource_dir = getattr(
+            sys,
+            "_MEIPASS",
+            os.path.dirname(os.path.abspath(__file__)),
+        )
+        self.manifest_path = os.path.join(resource_dir, "manifest.json")
+        if not os.path.exists(self.manifest_path):
+            raise RuntimeError("Missing required manifest.json file. Application cannot start securely without manifest.")
+            
+        with open(self.manifest_path, "r", encoding="utf-8") as f:
             self.config = json.load(f)
             
         self.setWindowTitle(f"{self.config.get('app_name', 'Dynamics 365')} - Offline Client")
-        self.resize(1380, 860)
-        self.setMinimumSize(1020, 700)
         
         # Build Entity Display Name Map
         self.display_names = {}
@@ -48,9 +85,13 @@ class OfflineApp(QMainWindow):
             dname = ent.get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or lname.replace("_", " ").title()
             self.display_names[lname] = dname
 
-        # Current active Area (D365 SiteMap displays only ONE area at a time)
-        self.current_area_id = "area_service"
         self.sitemap_structure = self._define_sitemap_structure()
+        self.grid_ribbon_widgets = []
+        self.current_area_id = (
+            self.sitemap_structure[0]["id"]
+            if self.sitemap_structure
+            else ""
+        )
             
         # Apply Modern Microsoft Dynamics 365 / Fluent 2 Theme
         self.setStyleSheet("""
@@ -84,7 +125,7 @@ class OfflineApp(QMainWindow):
             QTreeWidget::item {
                 padding: 7px 10px;
                 border-radius: 4px;
-                margin: 1px 4px;
+                margin: 1px 0px;
                 color: #323130;
             }
             QTreeWidget::item:selected {
@@ -180,127 +221,134 @@ class OfflineApp(QMainWindow):
         self.init_background_sync()
 
     def init_background_sync(self):
-        # Configured sync interval (default 1800 seconds = 30 minutes)
-        interval_sec = self.config.get("sync_interval", 1800)
+        interval_sec = max(60, int(self.config.get("sync_interval", 300)))
         self.sync_timer = QTimer(self)
         self.sync_timer.timeout.connect(self.trigger_sync)
         self.sync_timer.start(interval_sec * 1000)
         logger.info(f"Background sync started. Interval: {interval_sec} seconds.")
+        if self.config.get("auto_sync_on_start", True):
+            QTimer.singleShot(750, self.trigger_sync)
 
     def _define_sitemap_structure(self):
-        """Constructs Model-Driven SiteMap Areas and Groups compliant with D365 SiteMap.xsd."""
-        return [
-            {
-                "id": "area_service",
-                "title": "Service",
-                "icon": "🎧",
-                "groups": [
-                    {
-                        "name": "CUSTOMERS",
-                        "subareas": [
-                            {"entity": "contact", "icon": "👤"},
-                            {"entity": "account", "icon": "🏢"}
-                        ]
-                    },
-                    {
-                        "name": "SERVICE & OPERATIONS",
-                        "subareas": [
-                            {"entity": "incident", "icon": "📋"},
-                            {"entity": "msdyn_swarm", "icon": "🤝"},
-                            {"entity": "msdyn_ocliveworkitem", "icon": "💬"},
-                            {"entity": "queueitem", "icon": "📥"},
-                            {"entity": "activitypointer", "icon": "📅"},
-                            {"entity": "socialprofile", "icon": "🌐"},
-                            {"entity": "serviceappointment", "icon": "⏱️"},
-                            {"entity": "msdyn_customerasset", "icon": "📦"},
-                            {"entity": "msdyn_iotalert", "icon": "🔔"}
-                        ]
-                    },
-                    {
-                        "name": "KNOWLEDGE MANAGEMENT",
-                        "subareas": [
-                            {"entity": "knowledgearticle", "icon": "📚"},
-                            {"entity": "template", "icon": "📑"},
-                            {"entity": "emailsignature", "icon": "✍️"}
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "area_analytics",
-                "title": "Analytics & Insights",
-                "icon": "📊",
-                "groups": [
-                    {
-                        "name": "HISTORICAL & COPILOT ANALYTICS",
-                        "subareas": [
-                            {"entity": "msdyn_dataanalyticsreport_csrmanager", "icon": "📈"},
-                            {"entity": "msdyn_dataanalyticsreport_copilot", "icon": "✨"},
-                            {"entity": "msdyn_dataanalyticsreport_ksinsights", "icon": "💡"},
-                            {"entity": "msdyn_dataanalyticsreport_oc", "icon": "📊"},
-                            {"entity": "msdyn_dataanalyticsreport_ocmodern", "icon": "📉"},
-                            {"entity": "msdyn_dataanalyticsreport_email", "icon": "✉️"},
-                            {"entity": "msdyn_dataanalyticsreport_mc", "icon": "⚙️"}
-                        ]
-                    },
-                    {
-                        "name": "REAL-TIME ROUTING",
-                        "subareas": [
-                            {"entity": "msdyn_dataanalyticsreport_oc_rt", "icon": "⚡"},
-                            {"entity": "msdyn_dataanalyticsreport_ur_recordrouting_rt", "icon": "🔀"}
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "area_management",
-                "title": "Service Management",
-                "icon": "⚙️",
-                "groups": [
-                    {
-                        "name": "SERVICE LEVEL AGREEMENTS (SLAS)",
-                        "subareas": [
-                            {"entity": "sla", "icon": "⏱️"},
-                            {"entity": "slaitem", "icon": "📌"},
-                            {"entity": "slakpiinstance", "icon": "🎯"}
-                        ]
-                    },
-                    {
-                        "name": "ROUTING & CASE CREATION",
-                        "subareas": [
-                            {"entity": "routingrule", "icon": "🔀"},
-                            {"entity": "routingruleitem", "icon": "🏷️"},
-                            {"entity": "convertrule", "icon": "🔄"},
-                            {"entity": "convertruleitem", "icon": "📋"}
-                        ]
-                    },
-                    {
-                        "name": "ENTITLEMENTS",
-                        "subareas": [
-                            {"entity": "entitlement", "icon": "📜"},
-                            {"entity": "entitlementchannel", "icon": "📡"},
-                            {"entity": "entitlementtemplate", "icon": "📑"}
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "area_quality",
-                "title": "Quality & Evaluation",
-                "icon": "⭐",
-                "groups": [
-                    {
-                        "name": "AGENT EVALUATIONS",
-                        "subareas": [
-                            {"entity": "msdyn_evaluation", "icon": "📝"},
-                            {"entity": "msdyn_evaluationplan", "icon": "📋"},
-                            {"entity": "msdyn_evaluationcriteria", "icon": "✔️"},
-                            {"entity": "msdyn_screenrecording", "icon": "🎥"}
-                        ]
-                    }
-                ]
-            }
+        """Build navigation from the selected app SiteMap in manifest.json."""
+        entity_order = [
+            entity.get("LogicalName")
+            for entity in self.config.get("entities", [])
+            if entity.get("LogicalName")
+            and not entity.get("_verseoff_dependency_only")
         ]
+        included_entities = {
+            entity.get("LogicalName")
+            for entity in self.config.get("entities", [])
+            if entity.get("LogicalName")
+        }
+        mapped_entities = set()
+        areas = []
+
+        def title_or_fallback(value, fallback, raw_id=None):
+            value = str(value or "").strip()
+            if not value or value.startswith("$"):
+                return fallback
+            if raw_id and value.lower() == str(raw_id).lower() and fallback:
+                return fallback
+            if value.islower() and "_" not in value and " " not in value and fallback:
+                return fallback
+            return value
+
+        for area_index, source_area in enumerate(
+            self.config.get("sitemap", {}).get("areas", [])
+        ):
+            area_id = source_area.get("id") or f"area_{area_index + 1}"
+            area = {
+                "id": area_id,
+                "title": title_or_fallback(
+                    source_area.get("title"),
+                    area_id.replace("_", " ").title(),
+                    area_id,
+                ),
+                "groups": [],
+            }
+            for group_index, source_group in enumerate(
+                source_area.get("groups", [])
+            ):
+                group_id = (
+                    source_group.get("id")
+                    or f"group_{group_index + 1}"
+                )
+                group = {
+                    "id": group_id,
+                    "title": title_or_fallback(
+                        source_group.get("title"),
+                        group_id.replace("_", " ").title(),
+                        group_id,
+                    ),
+                    "subareas": [],
+                }
+                for source_subarea in source_group.get("subareas", []):
+                    logical_name = source_subarea.get("entity")
+                    if logical_name and logical_name not in included_entities:
+                        continue
+                    subarea = {
+                        "id": source_subarea.get("id") or logical_name,
+                        "entity": logical_name,
+                        "title": title_or_fallback(
+                            source_subarea.get("title"),
+                            self.display_names.get(
+                                logical_name,
+                                source_subarea.get("id") or "Navigation item",
+                            ),
+                            source_subarea.get("id") or logical_name,
+                        ),
+                        "destination_type": source_subarea.get(
+                            "destination_type",
+                            "entity" if logical_name else "unsupported",
+                        ),
+                        "url": source_subarea.get("url", ""),
+                        "default_dashboard": source_subarea.get(
+                            "default_dashboard",
+                            "",
+                        ),
+                        "available_offline": source_subarea.get(
+                            "available_offline",
+                            False,
+                        ),
+                    }
+                    group["subareas"].append(subarea)
+                    if logical_name:
+                        mapped_entities.add(logical_name)
+                if group["subareas"]:
+                    area["groups"].append(group)
+            if area["groups"]:
+                areas.append(area)
+
+        additional_entities = [
+            logical_name
+            for logical_name in entity_order
+            if logical_name not in mapped_entities
+        ]
+        if not areas:
+            areas.append({
+                "id": "area_tables",
+                "title": self.config.get("app_name", "App tables"),
+                "groups": [],
+            })
+        if additional_entities:
+            areas[0]["groups"].append({
+                "id": "group_additional",
+                "title": "Additional tables",
+                "subareas": [
+                    {
+                        "id": logical_name,
+                        "entity": logical_name,
+                        "title": self.display_names.get(
+                            logical_name,
+                            logical_name.replace("_", " ").title(),
+                        ),
+                    }
+                    for logical_name in additional_entities
+                ],
+            })
+        return areas
 
     def init_ui(self):
         central = QWidget()
@@ -319,7 +367,7 @@ class OfflineApp(QMainWindow):
         waffle_icon = QLabel("<b>:::</b>")
         waffle_icon.setStyleSheet("font-size: 18px; color: #ffffff;")
         
-        title_label = QLabel(f"<b>Dynamics 365</b> &nbsp;|&nbsp; <span style='color: #cce4f7;'>{self.config.get('app_name', 'Customer Service workspace')}</span>")
+        title_label = QLabel(f"<b>Dynamics 365</b> &nbsp;|&nbsp; <span style='color: #cce4f7;'>{self.config.get('app_name', 'VerseOff App')}</span>")
         title_label.setStyleSheet("font-size: 14px;")
         
         header_layout.addWidget(waffle_icon)
@@ -359,6 +407,7 @@ class OfflineApp(QMainWindow):
         self.nav_tree = QTreeWidget()
         self.nav_tree.setHeaderHidden(True)
         self.nav_tree.setMinimumWidth(260)
+        self.nav_tree.setRootIsDecorated(False)
         self.nav_tree.itemSelectionChanged.connect(self.on_nav_changed)
         nav_layout.addWidget(self.nav_tree)
         
@@ -372,7 +421,7 @@ class OfflineApp(QMainWindow):
         self.area_combo = QComboBox()
         self.area_combo.setObjectName("AreaSwitcher")
         for area in self.sitemap_structure:
-            self.area_combo.addItem(f"{area.get('icon', '📁')}  {area.get('title')}", area.get('id'))
+            self.area_combo.addItem(area.get("title"), area.get("id"))
             
         self.area_combo.currentIndexChanged.connect(self.on_area_switched)
         area_switcher_layout.addWidget(area_label)
@@ -394,7 +443,7 @@ class OfflineApp(QMainWindow):
         top_view_bar = QHBoxLayout()
         top_view_bar.setContentsMargins(0, 0, 0, 4)
         
-        self.entity_header_label = QLabel("<b>Contacts</b>")
+        self.entity_header_label = QLabel("<b>Select a table</b>")
         self.entity_header_label.setStyleSheet("font-size: 18px; color: #201f1e; font-weight: 600;")
         
         self.view_combo = QComboBox()
@@ -421,6 +470,9 @@ class OfflineApp(QMainWindow):
         # Homepage Data Grid
         self.data_grid = QTableWidget()
         self.data_grid.itemDoubleClicked.connect(self.open_record_from_grid)
+        self.data_grid.itemSelectionChanged.connect(
+            self.evaluate_homepage_ribbon_rules
+        )
         self.data_grid.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.data_grid.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         self.data_grid.setAlternatingRowColors(True)
@@ -439,6 +491,24 @@ class OfflineApp(QMainWindow):
         self.form_page_layout = QVBoxLayout(self.form_page)
         self.form_page_layout.setContentsMargins(0, 0, 0, 0)
         self.main_stack.addWidget(self.form_page)
+
+        # Page 2: Preserved online-only SiteMap destination
+        self.route_page = QWidget()
+        route_layout = QVBoxLayout(self.route_page)
+        route_layout.setContentsMargins(32, 32, 32, 32)
+        self.route_title = QLabel()
+        self.route_title.setStyleSheet(
+            "font-size: 20px; font-weight: 600; color: #201f1e;"
+        )
+        self.route_message = QLabel()
+        self.route_message.setWordWrap(True)
+        self.route_message.setStyleSheet(
+            "font-size: 13px; color: #605e5c; padding-top: 8px;"
+        )
+        route_layout.addWidget(self.route_title)
+        route_layout.addWidget(self.route_message)
+        route_layout.addStretch()
+        self.main_stack.addWidget(self.route_page)
         
         splitter.addWidget(self.main_stack)
         splitter.setStretchFactor(1, 4)
@@ -446,8 +516,8 @@ class OfflineApp(QMainWindow):
         
         self.setCentralWidget(central)
         
-        # Initial Render for Default Area (Service)
-        self.render_active_area_sitemap("area_service")
+        if self.current_area_id:
+            self.render_active_area_sitemap(self.current_area_id)
 
     def on_area_switched(self):
         area_id = self.area_combo.currentData()
@@ -467,7 +537,8 @@ class OfflineApp(QMainWindow):
         
         for grp in area_def.get("groups", []):
             # Group Header (Category label in uppercase)
-            grp_item = QTreeWidgetItem([grp.get("name")])
+            group_title = grp.get("title") or grp.get("id") or "Tables"
+            grp_item = QTreeWidgetItem([group_title.upper()])
             grp_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
             font = grp_item.font(0)
             font.setBold(True)
@@ -478,10 +549,27 @@ class OfflineApp(QMainWindow):
             for sub in grp.get("subareas", []):
                 ent_name = sub.get("entity")
                 if ent_name in all_manifest_entities:
-                    disp_name = self.display_names.get(ent_name, ent_name.replace("_", " ").title())
-                    sub_icon = sub.get("icon", "📄")
-                    sub_item = QTreeWidgetItem([f"{sub_icon}  {disp_name}"])
+                    disp_name = (
+                        sub.get("title")
+                        or self.display_names.get(
+                            ent_name,
+                            ent_name.replace("_", " ").title(),
+                        )
+                    )
+                    sub_item = QTreeWidgetItem([disp_name])
                     sub_item.setData(0, Qt.ItemDataRole.UserRole, ent_name)
+                    grp_item.addChild(sub_item)
+                elif not ent_name:
+                    sub_item = QTreeWidgetItem([
+                        sub.get("title") or sub.get("id") or "Online item"
+                    ])
+                    sub_item.setData(0, SITEMAP_ROUTE_ROLE, sub)
+                    sub_item.setToolTip(
+                        0,
+                        "This SiteMap destination requires the online "
+                        "model-driven app.",
+                    )
+                    sub_item.setForeground(0, Qt.GlobalColor.darkGray)
                     grp_item.addChild(sub_item)
                     
             if grp_item.childCount() > 0:
@@ -502,7 +590,23 @@ class OfflineApp(QMainWindow):
         selected = self.nav_tree.selectedItems()
         if not selected: return
         entity_name = selected[0].data(0, Qt.ItemDataRole.UserRole)
-        if not entity_name: return # Group clicked
+        if not entity_name:
+            route = selected[0].data(0, SITEMAP_ROUTE_ROLE)
+            if route:
+                title = route.get("title", "Online destination")
+                self.route_title.setText(title)
+                destination_type = route.get(
+                    "destination_type",
+                    "online",
+                )
+                self.route_message.setText(
+                    "This "
+                    f"{destination_type.replace('_', ' ')} SiteMap item is "
+                    "preserved from Dataverse, but it requires the online "
+                    "model-driven app and is not interactive offline."
+                )
+                self.main_stack.setCurrentWidget(self.route_page)
+            return
         
         # Switch back to HomepageGrid if currently viewing a record
         self.main_stack.setCurrentIndex(0)
@@ -517,17 +621,31 @@ class OfflineApp(QMainWindow):
         self.view_combo.blockSignals(True)
         self.view_combo.clear()
         
-        views_found = 0
-        try:
-            with self.db.get_connection() as conn:
-                cursor = conn.cursor()
-                cursor.execute("SELECT savedqueryid, name FROM saved_queries WHERE returnedtypecode = ?", (entity_name,))
-                views = cursor.fetchall()
-                for v in views:
-                    self.view_combo.addItem(v[1], v[0])
-                    views_found += 1
-        except Exception as e:
-            logger.debug(f"Could not query saved_queries: {e}")
+        entity_definition = next(
+            (
+                entity
+                for entity in self.config.get("entities", [])
+                if entity.get("LogicalName") == entity_name
+            ),
+            {},
+        )
+        views = [
+            view
+            for view in entity_definition.get("saved_queries", [])
+            if view.get("querytype") == 0
+        ]
+        views.sort(
+            key=lambda view: (
+                not bool(view.get("isdefault")),
+                str(view.get("name") or "").casefold(),
+            )
+        )
+        for view in views:
+            self.view_combo.addItem(
+                view.get("name") or "Unnamed view",
+                view.get("savedqueryid"),
+            )
+        views_found = len(views)
 
         # Fallback Standard D365 System Views
         if views_found == 0:
@@ -539,6 +657,7 @@ class OfflineApp(QMainWindow):
         self.refresh_grid()
 
     def rebuild_homepage_ribbon(self, entity_name: str):
+        self.grid_ribbon_widgets = []
         while self.grid_command_bar.count():
             item = self.grid_command_bar.takeAt(0)
             widget = item.widget()
@@ -565,33 +684,140 @@ class OfflineApp(QMainWindow):
         refresh_btn.clicked.connect(lambda: self.refresh_grid())
         self.grid_command_bar.addWidget(refresh_btn)
         
-        # 4. Standard D365 Homepage Grid actions
-        assign_btn = QPushButton("👥  Assign")
-        assign_btn.setObjectName("CmdBtn")
-        assign_btn.clicked.connect(lambda: logger.info("Assign action triggered"))
-        self.grid_command_bar.addWidget(assign_btn)
-        
-        export_btn = QPushButton("📤  Export to Excel")
-        export_btn.setObjectName("CmdBtn")
-        export_btn.clicked.connect(lambda: logger.info("Export action triggered"))
-        self.grid_command_bar.addWidget(export_btn)
-        
-        # Custom Homepage Ribbon buttons if defined in metadata
+        # Additional HomepageGrid commands from Ribbon XML
         if ent_def:
-            ribbon_buttons = ent_def.get("ribbon_buttons", [])
-            seen = {"New", "Delete", "Refresh", "Assign", "Export", f"New {disp_name}"}
+            ribbon = ent_def.get("ribbon") or {}
+            ribbon_buttons = (
+                ribbon.get("buttons")
+                or ent_def.get("ribbon_buttons", [])
+            )
+            
+            child_buttons_by_parent = {}
+            seen = {"New", "Delete", "Refresh", f"New {disp_name}"}
             for btn in ribbon_buttons:
                 if btn.get("location_type") == "homepage_grid":
+                    pid = btn.get("parent_id", "")
                     lbl = btn.get("label", "")
-                    if not lbl or lbl in seen: continue
-                    seen.add(lbl)
-                    
-                    cmd_btn = QPushButton(lbl)
-                    cmd_btn.setObjectName("CmdBtn")
-                    cmd_btn.clicked.connect(lambda _, cmd=btn.get("command"): logger.info(f"Executed command: {cmd}"))
-                    self.grid_command_bar.addWidget(cmd_btn)
-                    
+                    if not lbl: continue
+                    if pid == "" and lbl in seen:
+                        continue
+                    if pid == "": seen.add(lbl)
+                    child_buttons_by_parent.setdefault(pid, []).append(btn)
+
+            if child_buttons_by_parent.get(""):
+                more_menu = QMenu(self)
+                
+                def add_menu_items(menu, parent_id):
+                    children = sorted(child_buttons_by_parent.get(parent_id, []), key=lambda b: b.get("sequence", 0))
+                    for btn in children:
+                        lbl = btn.get("label", "")
+                        if btn.get("control_type") in ("FlyoutAnchor", "SplitButton"):
+                            submenu = menu.addMenu(lbl)
+                            submenu.setToolTip(btn.get("tooltip") or "")
+                            self.grid_ribbon_widgets.append({"widget": submenu.menuAction(), "data": btn})
+                            add_menu_items(submenu, btn["id"])
+                        else:
+                            action = menu.addAction(lbl)
+                            action.setToolTip(btn.get("tooltip") or "")
+                            action.triggered.connect(
+                                lambda _, data=btn: self.execute_homepage_command(data)
+                            )
+                            self.grid_ribbon_widgets.append({
+                                "widget": action,
+                                "data": btn,
+                            })
+                            
+                add_menu_items(more_menu, "")
+                
+                more_button = QToolButton()
+                more_button.setText("More commands")
+                more_button.setPopupMode(
+                    QToolButton.ToolButtonPopupMode.InstantPopup
+                )
+                more_button.setMenu(more_menu)
+                more_button.setObjectName("CmdBtn")
+                self.grid_command_bar.addWidget(more_button)
+
         self.grid_command_bar.addStretch()
+        self.evaluate_homepage_ribbon_rules()
+
+    def _homepage_rule_matches(self, rule):
+        rule_type = rule.get("type")
+        result = False
+        if rule_type == "OrRule":
+            result = any(
+                self._homepage_rule_matches(child)
+                for child in rule.get("children", [])
+            )
+        elif rule_type in {"AndRule", "And", "Or"}:
+            result = all(
+                self._homepage_rule_matches(child)
+                for child in rule.get("children", [])
+            )
+        elif rule_type == "SelectionCountRule":
+            selected_rows = {
+                item.row()
+                for item in self.data_grid.selectedItems()
+            }
+            count = len(selected_rows)
+            try:
+                minimum = int(rule.get("minimum", 0))
+                maximum = int(rule.get("maximum", count))
+                result = minimum <= count <= maximum
+            except (TypeError, ValueError):
+                result = True
+        if str(rule.get("invert_result", "false")).lower() == "true":
+            return not result
+        return result
+
+    def evaluate_homepage_ribbon_rules(self):
+        for item in self.grid_ribbon_widgets:
+            button = item["widget"]
+            metadata = item["data"]
+            visible = all(
+                self._homepage_rule_matches(rule)
+                for rule in metadata.get("display_rules", [])
+            )
+            enabled = all(
+                self._homepage_rule_matches(rule)
+                for rule in metadata.get("enable_rules", [])
+            )
+            button.setVisible(visible)
+            button.setEnabled(enabled)
+
+    def execute_homepage_command(self, button_data):
+        command_name = str(button_data.get("command") or "")
+        if command_name in {
+            "Mscrm.HomepageGrid.NewRecord",
+            "Mscrm.NewRecordFromGrid",
+        }:
+            selected = self.nav_tree.selectedItems()
+            entity_name = (
+                selected[0].data(0, Qt.ItemDataRole.UserRole)
+                if selected
+                else None
+            )
+            if entity_name:
+                self.open_form(entity_name, None)
+            return
+        if command_name in {
+            "Mscrm.DeleteSelectedRecords",
+            "Mscrm.HomepageGrid.Delete",
+        }:
+            self.on_delete_record_clicked()
+            return
+        if command_name in {
+            "Mscrm.HomepageGrid.Refresh",
+            "Mscrm.RefreshGrid",
+        }:
+            self.refresh_grid()
+            return
+        QMessageBox.information(
+            self,
+            "Offline command",
+            f"{button_data.get('label') or command_name} is preserved from "
+            "Ribbon XML, but its online action is not available offline.",
+        )
 
     def on_delete_record_clicked(self):
         selected_nav = self.nav_tree.selectedItems()
@@ -616,10 +842,7 @@ class OfflineApp(QMainWindow):
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
         )
         if reply == QMessageBox.StandardButton.Yes:
-            with self.db.get_connection() as conn:
-                cursor = conn.cursor()
-                cursor.execute(f"DELETE FROM {entity_name} WHERE id = ?", (record_id,))
-                conn.commit()
+            self.db.queue_delete(entity_name, record_id)
             self.refresh_grid()
 
     def do_quick_find(self):
@@ -635,20 +858,69 @@ class OfflineApp(QMainWindow):
         ent_def = next((e for e in self.config.get("entities", []) if e.get("LogicalName") == entity_name), None)
         primary_id_attr = (ent_def.get("PrimaryIdAttribute") if ent_def else None) or f"{entity_name}id"
         primary_name_attr = (ent_def.get("PrimaryNameAttribute") if ent_def else None) or "name"
-        
-        # Build intelligent default columns for the entity
-        columns = []
+
+        selected_view_id = str(self.view_combo.currentData() or "")
+        selected_view = next(
+            (
+                view
+                for view in (ent_def or {}).get("saved_queries", [])
+                if str(view.get("savedqueryid") or "").strip("{}").lower()
+                == selected_view_id.strip("{}").lower()
+            ),
+            None,
+        )
+        query_definition = ViewParser.parse_fetchxml(
+            selected_view.get("fetchxml") if selected_view else ""
+        )
+        columns = ViewParser.parse_layoutxml(
+            selected_view.get("layoutxml") if selected_view else ""
+        )
+        columns = [
+            column
+            for column in columns
+            if not column.get("ishidden")
+        ]
+
+        # Build intelligent columns when the selected view has no layout.
         if ent_def and ent_def.get("attributes"):
             attrs = ent_def.get("attributes", [])
             attr_map = {a.get("LogicalName"): a for a in attrs if isinstance(a, dict)}
-            
-            candidate_names = [primary_name_attr, "emailaddress1", "telephone1", "jobtitle", "statecode", "statuscode", "createdon", "modifiedon"]
-            seen_cols = set()
-            for col_name in candidate_names:
-                if col_name in attr_map and col_name not in seen_cols:
-                    seen_cols.add(col_name)
-                    lbl = attr_map[col_name].get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or col_name.replace("_", " ").title()
-                    columns.append({"name": col_name, "label": lbl})
+            if columns:
+                for column in columns:
+                    attribute = attr_map.get(column["name"], {})
+                    if (
+                        not column.get("label")
+                        or column.get("label") == column["name"]
+                    ):
+                        column["label"] = (
+                            attribute.get("DisplayName", {})
+                            .get("UserLocalizedLabel", {})
+                            .get("Label")
+                            or column["name"].replace("_", " ").title()
+                        )
+            else:
+                candidate_names = [
+                    primary_name_attr,
+                    "emailaddress1",
+                    "telephone1",
+                    "jobtitle",
+                    "statecode",
+                    "statuscode",
+                    "createdon",
+                    "modifiedon",
+                ]
+                seen_cols = set()
+                for col_name in candidate_names:
+                    if col_name in attr_map and col_name not in seen_cols:
+                        seen_cols.add(col_name)
+                        lbl = (
+                            attr_map[col_name]
+                            .get("DisplayName", {})
+                            .get("UserLocalizedLabel", {})
+                            .get("Label")
+                            or col_name.replace("_", " ").title()
+                        )
+                        columns.append({"name": col_name, "label": lbl})
                     
             if not columns:
                 columns = [
@@ -671,7 +943,13 @@ class OfflineApp(QMainWindow):
                 
                 rows_data = []
                 if "data_json" in table_cols:
-                    cursor.execute(f"SELECT id, data_json, sync_status, last_modified FROM {entity_name}")
+                    cursor.execute(
+                        f"""
+                        SELECT id, data_json, sync_status, last_modified
+                        FROM {entity_name}
+                        WHERE sync_status != 'pending_delete'
+                        """
+                    )
                     for rec in cursor.fetchall():
                         rec_id, data_str, status, mod_on = rec
                         try:
@@ -689,23 +967,77 @@ class OfflineApp(QMainWindow):
                     for rec in cursor.fetchall():
                         rows_data.append(dict(zip(col_names, rec)))
 
-                if search_string:
-                    s_lower = search_string.lower()
-                    filtered = []
-                    for r in rows_data:
-                        if any(s_lower in str(v).lower() for v in r.values()):
-                            filtered.append(r)
-                    rows_data = filtered
+                if selected_view:
+                    rows_data = ViewParser.apply_to_records(
+                        query_definition,
+                        rows_data,
+                        search_string=search_string,
+                    )
+                elif search_string:
+                    search_value = search_string.casefold()
+                    rows_data = [
+                        record
+                        for record in rows_data
+                        if any(
+                            search_value in str(value or "").casefold()
+                            for value in record.values()
+                        )
+                    ]
+                elif selected_view_id == "active_records":
+                    rows_data = [
+                        record
+                        for record in rows_data
+                        if record.get("statecode") in (None, 0, "0")
+                    ]
+                elif selected_view_id == "inactive_records":
+                    rows_data = [
+                        record
+                        for record in rows_data
+                        if record.get("statecode") not in (None, 0, "0")
+                    ]
 
                 # Populate QTableWidget
                 self.data_grid.setColumnCount(len(columns))
-                self.data_grid.setHorizontalHeaderLabels([c.get("label", c["name"]) for c in columns])
+                
+                attr_meta = {a["LogicalName"]: a for a in entity_def.get("attributes", [])}
+                headers = []
+                for j, c in enumerate(columns):
+                    lbl = c.get("label")
+                    if not lbl or lbl == c["name"]:
+                        a = attr_meta.get(c["name"])
+                        part = c["name"].split(".")[-1]
+                        if a and a.get("DisplayName"):
+                            disp = a.get("DisplayName", {})
+                            ul = disp.get("UserLocalizedLabel")
+                            if ul and ul.get("Label"):
+                                lbl = ul["Label"]
+                            elif disp.get("LocalizedLabels") and disp["LocalizedLabels"][0].get("Label"):
+                                lbl = disp["LocalizedLabels"][0]["Label"]
+                            else:
+                                lbl = part.replace("_", " ").title()
+                        else:
+                            lbl = part.replace("_", " ").title()
+                    headers.append(str(lbl))
+                    
+                    # Apply column width
+                    width = c.get("width")
+                    if width:
+                        self.data_grid.setColumnWidth(j, int(width) + 20)
+                
+                self.data_grid.setHorizontalHeaderLabels(headers)
+                self.data_grid.horizontalHeader().setStretchLastSection(True)
                 self.data_grid.setRowCount(len(rows_data))
 
                 for i, row in enumerate(rows_data):
                     rec_id = row.get(primary_id_attr) or row.get("id") or ""
                     for j, col in enumerate(columns):
                         val = str(row.get(col["name"], ""))
+                        formatted_key = (
+                            f"{col['name']}@"
+                            "OData.Community.Display.V1.FormattedValue"
+                        )
+                        if formatted_key in row:
+                            val = str(row[formatted_key])
                         if val == "None": val = ""
                         item = QTableWidgetItem(val)
                         if j == 0:
@@ -743,6 +1075,35 @@ class OfflineApp(QMainWindow):
         self.form_page_layout.addWidget(self.current_form)
         self.main_stack.setCurrentIndex(1) # Inline transition to Form View
 
+    def navigate_to_entity(self, entity_name, view_id=None):
+        iterator = QTreeWidgetItemIterator(self.nav_tree)
+        target = None
+        while iterator.value():
+            item = iterator.value()
+            if item.data(0, Qt.ItemDataRole.UserRole) == entity_name:
+                target = item
+                break
+            iterator += 1
+        if target is None:
+            raise ValueError(
+                f"Table {entity_name!r} is not present in the SiteMap."
+            )
+        self.nav_tree.setCurrentItem(target)
+        self.main_stack.setCurrentIndex(0)
+        if view_id and hasattr(self, "view_combo"):
+            normalized = str(view_id).strip().strip("{}").lower()
+            for index in range(self.view_combo.count()):
+                if (
+                    str(self.view_combo.itemData(index) or "")
+                    .strip()
+                    .strip("{}")
+                    .lower()
+                    == normalized
+                ):
+                    self.view_combo.setCurrentIndex(index)
+                    break
+        self.refresh_grid()
+
     def close_form_view(self):
         self.main_stack.setCurrentIndex(0) # Return to HomepageGrid
         self.refresh_grid()
@@ -754,21 +1115,35 @@ class OfflineApp(QMainWindow):
         self.sync_btn.setText("Syncing...")
         self.sync_btn.setDisabled(True)
         
-        self.worker = SyncWorker()
-        self.worker.finished.connect(self.on_sync_finished)
+        self.worker = SyncWorker(self.manifest_path, self)
+        self.worker.succeeded.connect(self.on_sync_finished)
         self.worker.error.connect(self.on_sync_error)
         self.worker.start()
 
-    def on_sync_finished(self):
+    def on_sync_finished(self, summary):
         self.refresh_grid()
         self.sync_btn.setText("Sync Now")
         self.sync_btn.setDisabled(False)
-        logger.info("Autonomous sync cycle completed.")
+        logger.info("Autonomous sync cycle completed: %s", summary)
+        if self._close_after_sync:
+            QTimer.singleShot(0, self.close)
 
     def on_sync_error(self, error_msg):
         logger.error(f"Sync failed: {error_msg}")
         self.sync_btn.setText("Sync Error")
         self.sync_btn.setDisabled(False)
+        if self._close_after_sync:
+            QTimer.singleShot(0, self.close)
+
+    def closeEvent(self, event):
+        self.sync_timer.stop()
+        if hasattr(self, "worker") and self.worker.isRunning():
+            self._close_after_sync = True
+            self.sync_btn.setText("Closing after sync...")
+            self.sync_btn.setDisabled(True)
+            event.ignore()
+            return
+        super().closeEvent(event)
 
 def global_exception_handler(exc_type, exc_value, exc_traceback):
     import traceback

@@ -185,6 +185,93 @@ def create_entity_table(entity_def: dict, db_path: str = None):
         logger.error(f"Failed to create table for '{logical_name}': {e}")
 
 
+def persist_entity_metadata(entity_def: dict, db_path: str = None):
+    """Stores the fetched Dataverse entity metadata and relationship graph in SQLite."""
+    path = db_path or DB_PATH
+    logical_name = entity_def.get("LogicalName") or entity_def.get("logical_name")
+    if not logical_name:
+        return
+
+    conn = sqlite3.connect(path)
+    try:
+        cursor = conn.cursor()
+        cursor.execute(
+            "CREATE TABLE IF NOT EXISTS entity_metadata (logical_name TEXT PRIMARY KEY, metadata TEXT NOT NULL)"
+        )
+        cursor.execute(
+            "CREATE TABLE IF NOT EXISTS entity_relationships ("
+            "relationship_name TEXT PRIMARY KEY, "
+            "relationship_type TEXT NOT NULL, "
+            "referenced_entity TEXT NOT NULL, "
+            "referencing_entity TEXT NOT NULL, "
+            "referenced_attribute TEXT, "
+            "referencing_attribute TEXT, "
+            "relationship_role TEXT, "
+            "cascade_assign TEXT, "
+            "cascade_delete TEXT, "
+            "cascade_merge TEXT, "
+            "cascade_reparent TEXT, "
+            "cascade_share TEXT, "
+            "cascade_unshare TEXT, "
+            "metadata_json TEXT)"
+        )
+        cursor.execute(
+            "INSERT OR REPLACE INTO entity_metadata (logical_name, metadata) VALUES (?, ?)",
+            (logical_name, json.dumps(entity_def, default=str, sort_keys=True)),
+        )
+
+        relationships = entity_def.get("relationships", {}) or {}
+        for rel_type, rels in relationships.items():
+            for rel in rels or []:
+                if not isinstance(rel, dict):
+                    continue
+                relationship_name = (
+                    rel.get("SchemaName")
+                    or rel.get("schema_name")
+                    or rel.get("RelationshipName")
+                    or f"{logical_name}_{rel_type}_{len(rels)}"
+                )
+                cursor.execute(
+                    """
+                    INSERT OR REPLACE INTO entity_relationships (
+                        relationship_name,
+                        relationship_type,
+                        referenced_entity,
+                        referencing_entity,
+                        referenced_attribute,
+                        referencing_attribute,
+                        relationship_role,
+                        cascade_assign,
+                        cascade_delete,
+                        cascade_merge,
+                        cascade_reparent,
+                        cascade_share,
+                        cascade_unshare,
+                        metadata_json
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        relationship_name,
+                        rel_type,
+                        rel.get("ReferencedEntity") or rel.get("referenced_entity") or "",
+                        rel.get("ReferencingEntity") or rel.get("referencing_entity") or "",
+                        rel.get("ReferencedAttribute") or rel.get("referenced_attribute"),
+                        rel.get("ReferencingAttribute") or rel.get("referencing_attribute"),
+                        rel.get("RelationshipType") or rel.get("relationship_role") or rel.get("role"),
+                        (rel.get("CascadeConfiguration") or {}).get("Assign") if isinstance(rel.get("CascadeConfiguration"), dict) else None,
+                        (rel.get("CascadeConfiguration") or {}).get("Delete") if isinstance(rel.get("CascadeConfiguration"), dict) else None,
+                        (rel.get("CascadeConfiguration") or {}).get("Merge") if isinstance(rel.get("CascadeConfiguration"), dict) else None,
+                        (rel.get("CascadeConfiguration") or {}).get("Reparent") if isinstance(rel.get("CascadeConfiguration"), dict) else None,
+                        (rel.get("CascadeConfiguration") or {}).get("Share") if isinstance(rel.get("CascadeConfiguration"), dict) else None,
+                        (rel.get("CascadeConfiguration") or {}).get("Unshare") if isinstance(rel.get("CascadeConfiguration"), dict) else None,
+                        json.dumps(rel, default=str, sort_keys=True),
+                    ),
+                )
+        conn.commit()
+    finally:
+        conn.close()
+
+
 def create_all_entity_tables(db_path: str = None):
     """
     Reads all entity metadata from the entity_metadata SQLite table

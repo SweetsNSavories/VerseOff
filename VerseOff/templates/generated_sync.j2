@@ -1,138 +1,471 @@
-import time
 import json
-import sqlite3
-import traceback
 import logging
-from db import LocalDatabase
+import os
+from pathlib import Path
+
+import msal
+import requests
+
+from db import LocalDatabase, _default_data_dir, _resource_path
+
 
 logger = logging.getLogger(__name__)
+LOOKUP_ATTRIBUTE_TYPES = {"Lookup", "Customer", "Owner"}
+LOOKUP_LOGICAL_NAME_ANNOTATION = (
+    "Microsoft.Dynamics.CRM.lookuplogicalname"
+)
+FORMATTED_VALUE_ANNOTATION = (
+    "OData.Community.Display.V1.FormattedValue"
+)
 
-try:
-    import msal
-    import requests
-    MSAL_AVAILABLE = True
-except ImportError:
-    MSAL_AVAILABLE = False
-    logger.warning("'msal' or 'requests' package not found. Sync engine will operate in mock mode. Install with: pip install msal requests")
-
-class FallbackRESTProvider:
-    """Routes payloads to Snowflake if D365 Dataverse is unavailable."""
-    def push_to_snowflake(self, table_name, record_id, payload):
-        logger.info(f"[SNOWFLAKE FALLBACK] Pushing {table_name} record {record_id} to Snowflake Data Lake...")
-        # Mocking a Snowflake REST API call
-        time.sleep(1) # simulate latency
-        logger.info(f"[SNOWFLAKE FALLBACK] Successfully persisted to Snowflake.")
-        return True
 
 class SyncEngine:
-    def __init__(self, config_path="manifest.json"):
-        # We try to read config if it exists, otherwise fallback to defaults
-        try:
-            with open(config_path, "r") as f:
-                self.config = json.load(f)
-        except Exception:
-            self.config = {}
-            
-        self.d365_url = self.config.get("org_url", "https://mock.crm.dynamics.com")
-        self.client_id = self.config.get("client_id", "mock-client-id")
-        self.tenant_id = self.config.get("tenant_id", "common")
-        self.fallback_provider = FallbackRESTProvider()
-        
-    def acquire_token(self):
-        """Silently acquires Azure AD token using MSAL TokenCache."""
-        if not MSAL_AVAILABLE:
-            logger.info("Mocking MSAL Token Acquisition (MSAL library missing).")
-            return "mock_token"
-            
-        authority = f"https://login.microsoftonline.com/{self.tenant_id}"
-        app = msal.PublicClientApplication(self.client_id, authority=authority)
-        
-        # In a real app, we load cache from disk. Here we just mock the silent flow.
-        accounts = app.get_accounts()
-        if accounts:
-            result = app.acquire_token_silent(["User.Read"], account=accounts[0])
-            if result:
-                return result['access_token']
-                
-        # For offline MVP, we just return a mock token if interactive auth is needed.
-        logger.info("No cached token found. Returning mock token for MVP.")
-        return "mock_token"
+    def __init__(
+        self,
+        config_path=None,
+        database=None,
+        session=None,
+        token_provider=None,
+    ):
+        self.config_path = config_path or _resource_path("manifest.json")
+        with open(self.config_path, "r", encoding="utf-8") as config_file:
+            self.config = json.load(config_file)
 
-    def sync_all(self):
-        logger.info("Sync Engine woke up. Acquiring AAD Token...")
-        token = self.acquire_token()
-        
+        self.org_url = str(self.config.get("org_url") or "").rstrip("/")
+        self.client_id = str(self.config.get("client_id") or "").strip()
+        self.tenant_id = str(self.config.get("tenant_id") or "common").strip()
+        if not self.org_url.startswith("https://"):
+            raise ValueError("manifest.json contains an invalid Dataverse URL.")
+        if not self.client_id:
+            raise ValueError("manifest.json does not contain an Entra client ID.")
+
+        self.api_url = f"{self.org_url}/api/data/v9.2"
+        self.db = database or LocalDatabase()
+        self.session = session or requests.Session()
+        self.token_provider = token_provider
+        self.request_timeout = int(self.config.get("request_timeout", 60))
+        self.entities = {
+            entity["LogicalName"]: entity
+            for entity in self.config.get("entities", [])
+            if entity.get("LogicalName")
+        }
+        self.cache_path = Path(_default_data_dir()) / "verseoff_token_cache.bin"
+
+    def _load_token_cache(self):
+        cache = msal.SerializableTokenCache()
+        if self.cache_path.exists():
+            try:
+                cache.deserialize(
+                    self.cache_path.read_text(encoding="utf-8")
+                )
+            except (OSError, ValueError) as exc:
+                raise RuntimeError(
+                    f"Could not read the Microsoft token cache: {exc}"
+                ) from exc
+        return cache
+
+    def _save_token_cache(self, cache):
+        if not cache.has_state_changed:
+            return
+        self.cache_path.parent.mkdir(parents=True, exist_ok=True)
+        self.cache_path.write_text(cache.serialize(), encoding="utf-8")
+
+    def acquire_token(self):
+        if self.token_provider:
+            token = self.token_provider()
+            if not token:
+                raise RuntimeError("The configured token provider returned no token.")
+            return token
+
+        cache = self._load_token_cache()
+        app = msal.PublicClientApplication(
+            self.client_id,
+            authority=f"https://login.microsoftonline.com/{self.tenant_id}",
+            token_cache=cache,
+        )
+        scopes = [f"{self.org_url}/user_impersonation"]
+        accounts = app.get_accounts()
+        result = None
+        if accounts:
+            result = app.acquire_token_silent(scopes, account=accounts[0])
+        if not result:
+            result = app.acquire_token_interactive(scopes=scopes)
+
+        if not result or "access_token" not in result:
+            description = (
+                result.get("error_description")
+                if isinstance(result, dict)
+                else "No response from Microsoft identity."
+            )
+            raise RuntimeError(f"Dataverse sign-in failed: {description}")
+        self._save_token_cache(cache)
+        return result["access_token"]
+
+    @staticmethod
+    def _headers(token, prefer=None):
         headers = {
             "Authorization": f"Bearer {token}",
+            "Accept": "application/json",
+            "Content-Type": "application/json; charset=utf-8",
             "OData-MaxVersion": "4.0",
             "OData-Version": "4.0",
-            "Accept": "application/json",
-            "Content-Type": "application/json; charset=utf-8"
         }
-        
-        success_count = 0
-        fail_count = 0
-        
+        if prefer:
+            headers["Prefer"] = prefer
+        return headers
+
+    @staticmethod
+    def _error_text(response):
         try:
-            with LocalDatabase().get_connection() as conn:
-                cursor = conn.cursor()
-                
-                # Find all pending records
-                cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
-                tables = cursor.fetchall()
-                
-                for (table_name,) in tables:
-                    cursor.execute(f"PRAGMA table_info({table_name})")
-                    columns = [col[1] for col in cursor.fetchall()]
-                    if 'sync_status' not in columns or 'id' not in columns:
-                        continue
-                        
-                    cursor.execute(f"SELECT * FROM {table_name} WHERE sync_status = 'PENDING' OR sync_status = 'pending_create' OR sync_status = 'pending_update'")
-                    pending_records = cursor.fetchall()
-                    
-                    for record in pending_records:
-                        record_id = record['id']
-                        
-                        # Convert sqlite Row to dict and strip internal offline metadata
-                        payload = dict(record)
-                        etag = payload.pop('etag', None)
-                        payload.pop('sync_status', None)
-                        
-                        logger.info(f"Synchronizing {table_name} ({record_id})...")
-                        
-                        if etag:
-                            headers["If-Match"] = etag # Optimistic Concurrency
-                            
-                        # --- MOCKING THE NETWORK RESPONSE FOR OFFLINE MVP ---
-                        time.sleep(0.5) # Simulate network latency
-                        
-                        # We randomly simulate 412 Precondition Failed, 503 Timeout, or 204 Success.
-                        mock_status = 204 
-                        if hash(str(record_id)) % 5 == 0:
-                            mock_status = 503 # Service Unavailable
-                        elif hash(str(record_id)) % 7 == 0:
-                            mock_status = 412 # Precondition Failed (ETag mismatch)
-                            
-                        if mock_status == 204:
-                            logger.info(f"Dataverse Success: {record_id}")
-                            cursor.execute(f"UPDATE {table_name} SET sync_status = 'SYNCED' WHERE id = ?", (record_id,))
-                            success_count += 1
-                        elif mock_status == 412:
-                            logger.warning(f"Dataverse Conflict (412): {record_id} modified online! Flagging as CONFLICT.")
-                            cursor.execute(f"UPDATE {table_name} SET sync_status = 'CONFLICT' WHERE id = ?", (record_id,))
-                            fail_count += 1
-                        elif mock_status == 503:
-                            logger.warning(f"Dataverse Down (503). Triggering Fallback REST Provider.")
-                            if self.fallback_provider.push_to_snowflake(table_name, record_id, payload):
-                                cursor.execute(f"UPDATE {table_name} SET sync_status = 'SYNCED_TO_LAKE' WHERE id = ?", (record_id,))
-                                success_count += 1
-                            else:
-                                fail_count += 1
-                
-                conn.commit()
-            
-        except Exception as e:
-            logger.error(f"Sync Engine Error: {e}")
-            traceback.print_exc()
-            fail_count += 1
-            raise e
+            error = response.json().get("error", {})
+            return error.get("message") or response.text[:1000]
+        except (ValueError, AttributeError):
+            return response.text[:1000]
+
+    @staticmethod
+    def _is_lookup_attribute(attribute):
+        return attribute.get("AttributeType") in LOOKUP_ATTRIBUTE_TYPES
+
+    @classmethod
+    def _writable_payload(cls, entity, data, operation):
+        flag = (
+            "IsValidForCreate"
+            if operation == "pending_create"
+            else "IsValidForUpdate"
+        )
+        payload = {}
+        lookup_bindings = entity.get("lookup_bindings", {})
+        for attribute in entity.get("attributes", []):
+            logical_name = attribute.get("LogicalName")
+            if not logical_name or not attribute.get(flag):
+                continue
+            if not cls._is_lookup_attribute(attribute):
+                if logical_name in data:
+                    payload[logical_name] = data[logical_name]
+                continue
+
+            raw_lookup_key = f"_{logical_name}_value"
+            if logical_name not in data and raw_lookup_key not in data:
+                continue
+            value = data.get(logical_name, data.get(raw_lookup_key))
+            target = data.get(
+                f"{raw_lookup_key}@{LOOKUP_LOGICAL_NAME_ANNOTATION}"
+            )
+            bindings = lookup_bindings.get(logical_name, {})
+            if not target and len(bindings) == 1:
+                target = next(iter(bindings))
+            binding = bindings.get(target)
+            if not binding:
+                raise ValueError(
+                    f"Cannot bind lookup {logical_name}: target table "
+                    f"{target or 'is unknown'}."
+                )
+            navigation_property = binding.get("navigation_property")
+            entity_set_name = binding.get("entity_set_name")
+            if not navigation_property or not entity_set_name:
+                raise ValueError(
+                    f"Lookup binding metadata is incomplete for "
+                    f"{logical_name} -> {target}."
+                )
+            payload[f"{navigation_property}@odata.bind"] = (
+                None
+                if value is None
+                else f"/{entity_set_name}({str(value).strip('{}')})"
+            )
+        return payload
+
+    @classmethod
+    def _normalize_remote_record(cls, entity, record):
+        normalized = dict(record)
+        for attribute in entity.get("attributes", []):
+            if not cls._is_lookup_attribute(attribute):
+                continue
+            logical_name = attribute.get("LogicalName")
+            raw_lookup_key = f"_{logical_name}_value"
+            if raw_lookup_key in normalized:
+                normalized[logical_name] = normalized[raw_lookup_key]
+        return normalized
+
+    def _push_entity(self, logical_name, entity, token):
+        entity_set = entity.get("EntitySetName")
+        if not entity_set:
+            raise ValueError(f"{logical_name} has no EntitySetName metadata.")
+
+        summary = {
+            "pushed": 0,
+            "deleted": 0,
+            "conflicts": 0,
+            "failed": 0,
+        }
+        for pending in self.db.get_pending_records(logical_name):
+            record_id = pending["id"].strip("{}")
+            status = pending["status"]
+            original_data = pending["data"]
+            if status == "pending_delete":
+                try:
+                    response = self.session.delete(
+                        f"{self.api_url}/{entity_set}({record_id})",
+                        headers=self._headers(token),
+                        timeout=self.request_timeout,
+                    )
+                except requests.RequestException as exc:
+                    self.db.set_record_sync_status(
+                        logical_name,
+                        pending["id"],
+                        status,
+                        str(exc),
+                    )
+                    summary["failed"] += 1
+                    continue
+                if response.ok or response.status_code == 404:
+                    self.db.remove_record(logical_name, pending["id"])
+                    summary["deleted"] = summary.get("deleted", 0) + 1
+                else:
+                    self.db.set_record_sync_status(
+                        logical_name,
+                        pending["id"],
+                        status,
+                        self._error_text(response),
+                    )
+                    summary["failed"] += 1
+                continue
+
+            try:
+                payload = self._writable_payload(
+                    entity,
+                    original_data,
+                    status,
+                )
+            except ValueError as exc:
+                self.db.set_record_sync_status(
+                    logical_name,
+                    pending["id"],
+                    "rejected",
+                    str(exc),
+                )
+                summary["failed"] += 1
+                continue
+            etag = original_data.get("@odata.etag")
+            try:
+                if status == "pending_create":
+                    response = self.session.post(
+                        f"{self.api_url}/{entity_set}",
+                        headers=self._headers(token, "return=representation"),
+                        json=payload,
+                        timeout=self.request_timeout,
+                    )
+                else:
+                    headers = self._headers(token)
+                    headers["If-Match"] = etag or "*"
+                    response = self.session.patch(
+                        f"{self.api_url}/{entity_set}({record_id})",
+                        headers=headers,
+                        json=payload,
+                        timeout=self.request_timeout,
+                    )
+            except requests.RequestException as exc:
+                self.db.set_record_sync_status(
+                    logical_name,
+                    pending["id"],
+                    status,
+                    str(exc),
+                )
+                summary["failed"] += 1
+                continue
+
+            if response.status_code == 412:
+                self.db.set_record_sync_status(
+                    logical_name,
+                    pending["id"],
+                    "conflict",
+                    "The Dataverse record changed after it was downloaded.",
+                )
+                summary["conflicts"] += 1
+                continue
+            if not response.ok:
+                next_status = (
+                    "rejected"
+                    if 400 <= response.status_code < 500
+                    else status
+                )
+                self.db.set_record_sync_status(
+                    logical_name,
+                    pending["id"],
+                    next_status,
+                    self._error_text(response),
+                )
+                summary["failed"] += 1
+                continue
+
+            remote_data = response.json() if response.content else original_data
+            remote_id = (
+                remote_data.get(entity.get("PrimaryIdAttribute"))
+                or pending["id"]
+            )
+            self.db.upsert_record(
+                logical_name,
+                remote_id,
+                remote_data,
+                sync_status="synced",
+            )
+            if remote_id != pending["id"]:
+                self.db.set_record_sync_status(
+                    logical_name,
+                    pending["id"],
+                    "synced",
+                )
+                self.db.delete_remote_record(logical_name, pending["id"])
+            summary["pushed"] += 1
+        return summary
+
+    def _initial_pull_url(self, entity):
+        entity_set = entity.get("EntitySetName")
+        if not entity_set:
+            raise ValueError(
+                f"{entity.get('LogicalName')} has no EntitySetName metadata."
+            )
+        readable = []
+        for attribute in entity.get("attributes", []):
+            logical_name = attribute.get("LogicalName")
+            if not attribute.get("IsValidForRead") or not logical_name:
+                continue
+            if self._is_lookup_attribute(attribute):
+                readable.append(f"_{logical_name}_value")
+            else:
+                readable.append(logical_name)
+        primary_id = entity.get("PrimaryIdAttribute")
+        if primary_id and primary_id not in readable:
+            readable.append(primary_id)
+        if readable:
+            selected_url = (
+                f"{self.api_url}/{entity_set}?$select={','.join(readable)}"
+            )
+            if len(selected_url) <= 7500:
+                return selected_url
+            logger.info(
+                "The %s column selection exceeds a safe URL length; "
+                "requesting the full record shape.",
+                entity.get("LogicalName"),
+            )
+        return f"{self.api_url}/{entity_set}"
+
+    def _pull_entity(self, logical_name, entity, token):
+        delta_link = self.db.get_delta_link(logical_name)
+        track_changes = bool(entity.get("ChangeTrackingEnabled"))
+        url = delta_link or self._initial_pull_url(entity)
+        preferences = [
+            'odata.include-annotations="'
+            f"{FORMATTED_VALUE_ANNOTATION},"
+            f'{LOOKUP_LOGICAL_NAME_ANNOTATION}"'
+        ]
+        if track_changes and not delta_link:
+            preferences.append("odata.track-changes")
+        prefer = ", ".join(preferences)
+        pulled = 0
+        deleted = 0
+        next_delta_link = None
+
+        while url:
+            response = self.session.get(
+                url,
+                headers=self._headers(token, prefer),
+                timeout=self.request_timeout,
+            )
+            if delta_link and response.status_code in {400, 404, 410}:
+                logger.warning(
+                    "Delta token for %s expired; starting a full refresh.",
+                    logical_name,
+                )
+                self.db.set_delta_link(logical_name, None)
+                return self._pull_entity(logical_name, entity, token)
+            response.raise_for_status()
+            page = response.json()
+
+            primary_id = entity.get("PrimaryIdAttribute")
+            for record in page.get("value", []):
+                is_deleted = (
+                    record.get("reason") == "deleted"
+                    or "@removed" in record
+                )
+                if is_deleted:
+                    record_id = record.get("id")
+                    if record_id and self.db.delete_remote_record(
+                        logical_name,
+                        record_id,
+                    ):
+                        deleted += 1
+                    continue
+
+                record_id = record.get(primary_id)
+                if not record_id:
+                    logger.warning(
+                        "Ignoring %s record with no %s.",
+                        logical_name,
+                        primary_id,
+                    )
+                    continue
+                normalized_record = self._normalize_remote_record(
+                    entity,
+                    record,
+                )
+                if self.db.upsert_remote_record(
+                    logical_name,
+                    record_id,
+                    normalized_record,
+                ):
+                    pulled += 1
+
+            url = page.get("@odata.nextLink")
+            if not url:
+                next_delta_link = page.get("@odata.deltaLink")
+
+        if track_changes and next_delta_link:
+            self.db.set_delta_link(logical_name, next_delta_link)
+        return {"pulled": pulled, "deleted": deleted}
+
+    def sync_all(self):
+        token = self.acquire_token()
+        summary = {
+            "pushed": 0,
+            "pulled": 0,
+            "deleted": 0,
+            "conflicts": 0,
+            "failed": 0,
+        }
+        for logical_name, entity in self.entities.items():
+            push_result = self._push_entity(logical_name, entity, token)
+            pull_result = self._pull_entity(logical_name, entity, token)
+            for result in (push_result, pull_result):
+                for key, value in result.items():
+                    summary[key] += value
+        self._reconcile_timeline_actions()
+        logger.info("Dataverse sync complete: %s", summary)
+        return summary
+
+    def _reconcile_timeline_actions(self):
+        for action in self.db.list_timeline_actions("pending"):
+            entity_name = action["entity_name"]
+            record_id = action["record_id"]
+            record = (
+                self.db.get_record(entity_name, record_id)
+                if record_id
+                else None
+            )
+            if record is None:
+                self.db.set_timeline_action_status(
+                    action["action_id"],
+                    "completed",
+                )
+                continue
+            status = record.get("_sync_status")
+            if status == "synced":
+                self.db.set_timeline_action_status(
+                    action["action_id"],
+                    "completed",
+                )
+            elif status in {"rejected", "conflict"}:
+                self.db.set_timeline_action_status(
+                    action["action_id"],
+                    "failed",
+                    record.get("_sync_error"),
+                )

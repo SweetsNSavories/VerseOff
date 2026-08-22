@@ -1,8 +1,19 @@
 {
-    "app_name": "VerseOff Offline CRM",
+    "manifest_version": 1,
+    "generator": "VerseOff Maker",
+    "app_name": "VerseOff Sample Sales App",
+    "source_app": {
+        "appmoduleid": "00000000-0000-0000-0000-000000000001",
+        "appmoduleidunique": "00000000-0000-0000-0000-000000000002",
+        "name": "VerseOff Sample Sales App",
+        "uniquename": "verseoff_sample_sales",
+        "description": "Sanitized sample used to validate generated source."
+    },
     "org_url": "https://mockorg.crm.dynamics.com",
-    "client_id": "mock-client-id",
+    "client_id": "51f81489-12ee-4a9e-aaae-a2591f45987d",
+    "tenant_id": "common",
     "sync_interval": 300,
+    "auto_sync_on_start": false,
     "sitemap": {
         "areas": [
             {
@@ -18,36 +29,71 @@
                         ]
                     }
                 ]
+            },
+            {
+                "id": "Area_Analytics",
+                "title": "Analytics",
+                "groups": [
+                    {
+                        "id": "Group_Reports",
+                        "title": "Reports",
+                        "subareas": [
+                            {"id": "SubArea_AccountReports", "entity": "account", "title": "Account Reports"},
+                            {
+                                "id": "SubArea_Dashboard",
+                                "entity": "",
+                                "title": "Sales Dashboard",
+                                "destination_type": "dashboard",
+                                "default_dashboard": "00000000-0000-0000-0000-000000000010",
+                                "available_offline": false
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     },
     "entities": [
         {
             "LogicalName": "account",
-            "DisplayName": "Account",
+            "DisplayName": {"UserLocalizedLabel": {"Label": "Account"}},
+            "EntitySetName": "accounts",
             "PrimaryIdAttribute": "accountid",
             "PrimaryNameAttribute": "name",
+            "ChangeTrackingEnabled": true,
             "attributes": [
-                {"LogicalName": "accountid", "AttributeType": "Uniqueidentifier"},
-                {"LogicalName": "name", "AttributeType": "String"},
-                {"LogicalName": "telephone1", "AttributeType": "String"},
-                {"LogicalName": "primarycontactid", "AttributeType": "Lookup"}
+                {"LogicalName": "accountid", "AttributeType": "Uniqueidentifier", "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": false},
+                {"LogicalName": "name", "AttributeType": "String", "DisplayName": {"UserLocalizedLabel": {"Label": "Account Name"}}, "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": true},
+                {"LogicalName": "telephone1", "AttributeType": "String", "DisplayName": {"UserLocalizedLabel": {"Label": "Main Phone"}}, "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": true},
+                {"LogicalName": "primarycontactid", "AttributeType": "Lookup", "DisplayName": {"UserLocalizedLabel": {"Label": "Primary Contact"}}, "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": true}
             ],
             "lookup_targets": {
                 "primarycontactid": ["contact"]
+            },
+            "lookup_bindings": {
+                "primarycontactid": {
+                    "contact": {
+                        "navigation_property": "primarycontactid",
+                        "entity_set_name": "contacts"
+                    }
+                }
             },
             "saved_queries": [
                 {
                     "savedqueryid": "1111",
                     "name": "Active Accounts",
+                    "returnedtypecode": "account",
                     "querytype": 0,
+                    "isdefault": true,
                     "fetchxml": "<fetch><entity name='account'><attribute name='name'/><attribute name='telephone1'/></entity></fetch>",
                     "layoutxml": "<grid name='resultset' object='1' jump='name' select='1' icon='1' preview='1'><row name='result' id='accountid'><cell name='name' width='150'/><cell name='telephone1' width='100'/></row></grid>"
                 },
                 {
                     "savedqueryid": "2222",
                     "name": "Account Quick Find",
+                    "returnedtypecode": "account",
                     "querytype": 4,
+                    "isdefault": false,
                     "fetchxml": "<fetch><entity name='account'><attribute name='name'/><attribute name='telephone1'/><filter type='or'><condition attribute='name' operator='like' value='{0}'/></filter></entity></fetch>",
                     "layoutxml": "<grid name='resultset' object='1' jump='name' select='1' icon='1' preview='1'><row name='result' id='accountid'><cell name='name' width='150'/><cell name='telephone1' width='100'/></row></grid>"
                 }
@@ -72,29 +118,43 @@
         },
         {
             "LogicalName": "contact",
-            "DisplayName": "Contact",
+            "DisplayName": {"UserLocalizedLabel": {"Label": "Contact"}},
+            "EntitySetName": "contacts",
             "PrimaryIdAttribute": "contactid",
             "PrimaryNameAttribute": "fullname",
+            "ChangeTrackingEnabled": true,
             "attributes": [
-                {"LogicalName": "contactid", "AttributeType": "Uniqueidentifier"},
-                {"LogicalName": "fullname", "AttributeType": "String"},
-                {"LogicalName": "parentcustomerid", "AttributeType": "Lookup"}
+                {"LogicalName": "contactid", "AttributeType": "Uniqueidentifier", "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": false},
+                {"LogicalName": "fullname", "AttributeType": "String", "DisplayName": {"UserLocalizedLabel": {"Label": "Full Name"}}, "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": true},
+                {"LogicalName": "parentcustomerid", "AttributeType": "Lookup", "DisplayName": {"UserLocalizedLabel": {"Label": "Parent Customer"}}, "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": true}
             ],
             "lookup_targets": {
                 "parentcustomerid": ["account"]
+            },
+            "lookup_bindings": {
+                "parentcustomerid": {
+                    "account": {
+                        "navigation_property": "parentcustomerid_account",
+                        "entity_set_name": "accounts"
+                    }
+                }
             },
             "saved_queries": [
                 {
                     "savedqueryid": "4444",
                     "name": "Active Contacts",
+                    "returnedtypecode": "contact",
                     "querytype": 0,
+                    "isdefault": true,
                     "fetchxml": "<fetch><entity name='contact'><attribute name='fullname'/></entity></fetch>",
                     "layoutxml": "<grid name='resultset' object='2' jump='fullname' select='1' icon='1' preview='1'><row name='result' id='contactid'><cell name='fullname' width='150'/></row></grid>"
                 },
                 {
                     "savedqueryid": "5555",
                     "name": "Associated Contacts",
+                    "returnedtypecode": "contact",
                     "querytype": 2,
+                    "isdefault": false,
                     "fetchxml": "<fetch><entity name='contact'><attribute name='fullname'/></entity></fetch>",
                     "layoutxml": "<grid name='resultset' object='2' jump='fullname' select='1' icon='1' preview='1'><row name='result' id='contactid'><cell name='fullname' width='150'/></row></grid>"
                 }
@@ -106,7 +166,8 @@
                     "type": 2,
                     "formxml": "<form><tabs><tab name='general' id='{tab2}'><labels><label description='General' languagecode='1033'/></labels><columns><column width='100%'><sections><section name='info' id='{sec2}'><labels><label description='Contact Information' languagecode='1033'/></labels><rows><row><cell id='{c3}'><labels><label description='Full Name' languagecode='1033'/></labels><control id='fullname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='fullname'/></cell></row><row><cell id='{c4}'><labels><label description='Account' languagecode='1033'/></labels><control id='parentcustomerid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='parentcustomerid'/></cell></row></rows></section></sections></column></columns></tab></tabs></form>"
                 }
-            ]
+            ],
+            "bpfs": {}
         }
     ]
 }

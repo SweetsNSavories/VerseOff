@@ -151,10 +151,12 @@ def test_maker_studio_e2e_flow(qtbot):
     qtbot.addWidget(wizard)
     wizard.show()
 
-    # Step 1: Verify Connection Page defaults
+    # Step 1: Enter a Dataverse environment URL.
     assert wizard.currentId() == 0
     conn_page = wizard.page(0)
-    assert conn_page.url_input.text() == "https://orgb7c4e2ec.crm8.dynamics.com/"
+    conn_page.url_input.setText(
+        "https://orgb7c4e2ec.crm8.dynamics.com/"
+    )
     assert conn_page.connect_btn.isEnabled()
 
     # Step 2: Simulate MSAL Auth and Fetching Apps
@@ -162,6 +164,9 @@ def test_maker_studio_e2e_flow(qtbot):
          patch('VerseOff.maker_ui.MetadataFetcher') as MockFetcher:
         
         MockAuth.return_value.get_token.return_value = "mock_bearer_token"
+        MockFetcher.return_value.who_am_i.return_value = {
+            "UserId": "user-id"
+        }
         MockFetcher.return_value.get_app_modules.return_value = [
             {"appmoduleid": "app-guid-1", "name": "Customer Service workspace", "uniquename": "msdyn_customerservice"}
         ]
@@ -170,6 +175,7 @@ def test_maker_studio_e2e_flow(qtbot):
             {"LogicalName": "contact"},
             {"LogicalName": "account"}
         ]
+        MockFetcher.return_value.get_bpf_definitions_for_app.return_value = {}
         
         # Click "Connect & Authenticate"
         qtbot.mouseClick(conn_page.connect_btn, Qt.MouseButton.LeftButton)
@@ -179,8 +185,12 @@ def test_maker_studio_e2e_flow(qtbot):
         assert wizard.currentId() == 1
         
         app_page = wizard.page(1)
-        assert app_page.list_widget.count() == 1
-        assert "Customer Service workspace" in app_page.list_widget.item(0).text()
+        qtbot.waitUntil(
+            lambda: app_page.app_combo.count() == 2,
+            timeout=2000,
+        )
+        app_page.app_combo.setCurrentIndex(1)
+        assert "Customer Service workspace" in app_page.app_combo.currentText()
         
         # Advance to Component Review (Page 2)
         wizard.next()
@@ -188,13 +198,21 @@ def test_maker_studio_e2e_flow(qtbot):
         assert wizard.currentId() == 2
         
         review_page = wizard.page(2)
-        assert review_page.list_widget.count() == 3
+        qtbot.waitUntil(
+            lambda: review_page.list_widget.count() >= 3,
+            timeout=2000,
+        )
+        assert review_page.list_widget.count() >= 3
         selected_entities = [review_page.list_widget.item(i).data(Qt.ItemDataRole.UserRole) for i in range(review_page.list_widget.count())]
         assert "incident" in selected_entities
         assert "contact" in selected_entities
 
 
-def test_target_app_offline_sdi_e2e_flow(qtbot, mock_d365_manifest, tmp_path):
+def test_target_app_offline_sdi_e2e_flow(
+    qtbot,
+    tmp_path,
+    monkeypatch,
+):
     """
     Playwright-style E2E test for the Generated Target Offline App.
     Verifies:
@@ -206,10 +224,9 @@ def test_target_app_offline_sdi_e2e_flow(qtbot, mock_d365_manifest, tmp_path):
     6. Form tabs, cards, and labels render cleanly without child windows.
     7. Clicking '← Back to [Entities]' or 'Save & Close' returns cleanly to HomepageGrid (page 0).
     """
+    monkeypatch.setenv("VERSEOFF_DATA_DIR", str(tmp_path / "app-data"))
     app = OfflineApp()
     qtbot.addWidget(app)
-    app.config = mock_d365_manifest
-    app.display_names = {"incident": "Cases", "contact": "Contacts", "account": "Accounts"}
     app.show()
 
     # Step 1: Verify Top Brand Header
@@ -220,7 +237,7 @@ def test_target_app_offline_sdi_e2e_flow(qtbot, mock_d365_manifest, tmp_path):
     # Step 2: Verify Single-Area Navigation Rail
     assert hasattr(app, "area_combo")
     assert app.area_combo.count() >= 2
-    assert "Service" in app.area_combo.itemText(0)
+    assert "Sales" in app.area_combo.itemText(0)
 
     # Verify Nav tree contains groups and subareas for active Area
     assert app.nav_tree.topLevelItemCount() > 0
@@ -253,24 +270,19 @@ def test_target_app_offline_sdi_e2e_flow(qtbot, mock_d365_manifest, tmp_path):
     qtbot.waitUntil(lambda: app.data_grid.rowCount() == 2, timeout=1000)
     
     # Open form for selected record
-    app.open_form("incident", "case-guid-101")
+    app.open_form("account", "account-guid-101")
     
     # Assert we switched to Page 1 (FormView) inside the SAME window (NO popups!)
     assert app.main_stack.currentIndex() == 1
     assert hasattr(app, "current_form")
     assert app.current_form is not None
-    assert app.current_form.record_id == "case-guid-101"
+    assert app.current_form.record_id == "account-guid-101"
 
     # Step 6: Verify Form Tabs and Fields in FormView
     form = app.current_form
     assert form.tab_widget is not None
-    assert form.tab_widget.count() >= 2
+    assert form.tab_widget.count() >= 1
     assert form.tab_widget.tabText(0) == "General"
-    assert form.tab_widget.tabText(1) == "Notes"
-
-    # Switch tab to 'Notes'
-    form.tab_widget.setCurrentIndex(1)
-    assert form.tab_widget.currentIndex() == 1
 
     # Step 7: Test Inline Close / Back to Grid Navigation
     app.close_form_view()

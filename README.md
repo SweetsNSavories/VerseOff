@@ -42,14 +42,18 @@ VerseOff fetches your Dynamics 365 organization metadata (entities, forms, views
 - **Model-Driven UI Generation**: Reads Dynamics 365 metadata (EntityDefinitions, FormXML, SavedQueries, RibbonXml, SiteMap) and generates a complete native desktop app.
 - **XSD-Compliant Ribbon Parsing**: Parses `RibbonCore.xsd` / `RibbonTypes.xsd` schema-compliant XML, resolves `$LocLabels` and `$Resources` tokens, and separates HomepageGrid vs Form vs SubGrid command bars.
 - **FormXML Runtime Renderer**: Dynamically renders D365 forms with tabs, sections, fields, subgrids, lookups, option sets, and header metrics.
+- **Schema-Faithful Form Layouts**: Preserves FormXML tab columns, percentage widths, section visibility, row/cell spans, label placement, Main vs Quick View form types, and localized labels.
 - **FetchXML → SQL Translation**: Converts Dynamics 365 FetchXML view definitions to SQLite-compatible SQL for offline querying.
-- **PCF Control Translation**: Maps standard PCF controls (`ToggleControl`, `SliderControl`, `OptionSetControl`) to native PyQt6 widgets.
+- **Native Subgrids and Views**: Resolves FormXML subgrid parameters, relationships, saved-query FetchXML filters/order, and LayoutXML columns against local records.
+- **PCF Runtime and Fallbacks**: Extracts `customcontrol` manifests and linked resources, runs self-contained standard PCF bundles in an isolated Chromium host, maps first-party and dataset controls to native widgets, and fails closed for unavailable required features or virtual React controls.
 - **Canvas App Parser**: Unpacks `.msapp` Canvas JSON layouts into PyQt6 widget hierarchies.
 - **Business Process Flow (BPF)**: Renders BPF chevron stage indicators with cross-entity stage support.
-- **Xrm Client API**: Offline JavaScript-compatible `Xrm.Page` mock (`formContext`, `getAttribute`, `getControl`, `data.process`).
-- **Web Resource Hosting**: Embeds HTML web resources via `QWebEngineView` with `QWebChannel` JavaScript bridge.
+- **Xrm Client API**: Loads original form and Ribbon libraries into Chromium/V8 with form, execution, save, grid-row, user, organization, app, process, navigation, utility, and SQLite-backed WebApi contexts.
+- **Web Resource Hosting**: Packages text and binary web resources transitively, provides embedded `parent.Xrm` and standalone `GetGlobalContext`, and supports cross-process `getContentWindow()` function invocation without exposing raw DOM objects.
+- **Fail-Closed Script Boundary**: Blocks direct network access and rejects server-only, device-only, Copilot, or otherwise unsupported calls instead of returning fake success.
 - **Background Delta Sync**: Automatic bidirectional sync with conflict detection and resolution.
 - **Microsoft Fluent 2 UI**: Segoe UI typography, rounded cards, zebra-striped grids, Dynamics blue accents.
+- **Fluent Controls**: Uses a platform-independent Fluent chevron instead of the legacy native Windows combo-box arrow.
 
 ## Quick Start
 
@@ -61,6 +65,29 @@ VerseOff fetches your Dynamics 365 organization metadata (entities, forms, views
 ### Install Dependencies
 ```bash
 pip install PyQt6 PyQt6-WebEngine msal requests jinja2
+```
+
+### Generate from a Model-Driven App
+
+Launch the existing VerseOff Maker:
+
+```bash
+python VerseOff/main.py
+```
+
+On Windows, you can also double-click `run_maker.bat`. This source launcher is
+useful on managed devices that block locally built, unsigned executables.
+
+The wizard authenticates to Dataverse, lists the environment's model-driven
+apps, loads the selected app's tables and business-process dependencies, and
+lets you choose a destination for the generated source project. The target
+folder includes its manifest, Python source, dependency list, VS Code launch
+and build tasks, a README, and a PyInstaller build script.
+
+To package VerseOff Maker itself as a Windows executable:
+
+```bash
+python VerseOff/build.py
 ```
 
 ### Configure & Generate

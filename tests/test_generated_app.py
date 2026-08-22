@@ -11,7 +11,7 @@ sys.path.append(generated_app_dir)
 from main import OfflineApp
 from db import LocalDatabase
 
-def test_generated_app_initialization(qtbot):
+def test_generated_app_initialization(qtbot, tmp_path, monkeypatch):
     """
     Tests that the generated application can initialize successfully,
     create its SQLite database schema from the manifest, and load the UI.
@@ -19,6 +19,7 @@ def test_generated_app_initialization(qtbot):
     # Change directory so OfflineApp finds manifest.json
     os.chdir(generated_app_dir)
     
+    monkeypatch.setenv("VERSEOFF_DATA_DIR", str(tmp_path / "app-data"))
     app = OfflineApp()
     qtbot.addWidget(app)
     
@@ -59,3 +60,17 @@ def test_generated_app_initialization(qtbot):
     
     # Ensure it didn't crash and the data grid exists
     assert app.data_grid is not None
+
+    app.area_combo.setCurrentIndex(1)
+    route_item = None
+    iterator = QTreeWidgetItemIterator(app.nav_tree)
+    while iterator.value():
+        item = iterator.value()
+        if item.data(0, int(Qt.ItemDataRole.UserRole) + 1):
+            route_item = item
+            break
+        iterator += 1
+    if route_item:
+        app.nav_tree.setCurrentItem(route_item)
+        assert app.main_stack.currentWidget() is app.route_page
+        assert "requires the online" in app.route_message.text()

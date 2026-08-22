@@ -1,19 +1,115 @@
+import hashlib
+import html
 import json
+import logging
+import os
+import re
+import sqlite3
+import tempfile
 import xml.etree.ElementTree as ET
+from string import Template
+from urllib.parse import parse_qs, unquote, urlencode, urlparse
 from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QScrollArea, QPushButton,
-    QLabel, QLineEdit, QComboBox, QCheckBox, QGroupBox, QTabWidget,
-    QMessageBox, QDateTimeEdit, QSpinBox, QDoubleSpinBox, QTableWidget, QTableWidgetItem
+    QLabel, QLineEdit, QCheckBox, QGroupBox, QTabWidget, QGridLayout,
+    QMessageBox, QDateTimeEdit, QSpinBox, QDoubleSpinBox, QTableWidget,
+    QTableWidgetItem, QSizePolicy, QTextEdit, QListWidget, QListWidgetItem,
+    QToolButton, QMenu, QFileDialog, QDialog, QDialogButtonBox
 )
-from PyQt6.QtCore import Qt, QDateTime, QObject, pyqtSlot, pyqtSignal, QUrl
+from PyQt6 import sip
+from PyQt6.QtCore import (
+    Qt, QDateTime, QObject, pyqtSlot, pyqtSignal, QUrl, QUrlQuery,
+    QEventLoop, QTimer
+)
 from PyQt6.QtWebEngineWidgets import QWebEngineView
+from PyQt6.QtWebEngineCore import (
+    QWebEnginePage,
+    QWebEngineProfile,
+    QWebEngineUrlRequestInterceptor,
+)
 from PyQt6.QtWebChannel import QWebChannel
 from db import LocalDatabase
+from timeline_metadata import (
+    is_timeline_control,
+    parse_timeline_control,
+)
+from timeline_widget import TimelineWidget
+from ui_components import FluentComboBox as QComboBox
+from client_script_metadata import (
+    form_script_names,
+    normalize_web_resource_name,
+    parse_form_event_handlers,
+    parse_form_parameters,
+)
 import custom_events
 import traceback
 import uuid
 import asyncio
 import inspect
+
+logger = logging.getLogger(__name__)
+
+
+class OfflineRequestInterceptor(QWebEngineUrlRequestInterceptor):
+    ALLOWED_SCHEMES = {"file", "qrc", "data", "blob", "about"}
+
+    def interceptRequest(self, info):
+        if info.requestUrl().scheme().casefold() not in self.ALLOWED_SCHEMES:
+            info.block(True)
+
+
+def configure_offline_browser(browser):
+    profile = QWebEngineProfile(browser)
+    interceptor = OfflineRequestInterceptor(profile)
+    profile.setUrlRequestInterceptor(interceptor)
+    page = QWebEnginePage(profile, browser)
+    browser.setPage(page)
+    browser._verseoff_profile = profile
+    browser._verseoff_interceptor = interceptor
+    return browser
+
+
+class MultiSelectOptionWidget(QListWidget):
+    valueChanged = pyqtSignal()
+
+    def __init__(self, options, parent=None):
+        super().__init__(parent)
+        self.setMaximumHeight(110)
+        for option in options:
+            item = QListWidgetItem(option.get("label", ""))
+            item.setData(Qt.ItemDataRole.UserRole, option.get("value"))
+            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
+            item.setCheckState(Qt.CheckState.Unchecked)
+            self.addItem(item)
+        self.itemChanged.connect(lambda _: self.valueChanged.emit())
+
+    def value(self):
+        return [
+            self.item(index).data(Qt.ItemDataRole.UserRole)
+            for index in range(self.count())
+            if self.item(index).checkState() == Qt.CheckState.Checked
+        ]
+
+    def setValue(self, values):
+        selected = {
+            str(value)
+            for value in (
+                values
+                if isinstance(values, (list, tuple, set))
+                else str(values or "").split(",")
+            )
+            if str(value)
+        }
+        self.blockSignals(True)
+        for index in range(self.count()):
+            item = self.item(index)
+            state = (
+                Qt.CheckState.Checked
+                if str(item.data(Qt.ItemDataRole.UserRole)) in selected
+                else Qt.CheckState.Unchecked
+            )
+            item.setCheckState(state)
+        self.blockSignals(False)
 
 class LookupWidget(QWidget):
     textChanged = pyqtSignal(str)
@@ -24,6 +120,10 @@ class LookupWidget(QWidget):
         self.target_entities = target_entities
         self.current_id = None
         self.current_logical_name = None
+        self.control_name = None
+        self._custom_filters = []
+        self._custom_views = []
+        self._default_view = None
         
         layout = QHBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -47,6 +147,11 @@ class LookupWidget(QWidget):
         
     def open_lookup_dialog(self):
         from PyQt6.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLineEdit, QTableWidget, QTableWidgetItem
+        if self.control_name:
+            self.renderer._fire_events(
+                "presearch",
+                self.control_name,
+            )
         dialog = QDialog(self)
         dialog.setWindowTitle("Lookup Record")
         dialog.setMinimumSize(500, 400)
@@ -65,14 +170,48 @@ class LookupWidget(QWidget):
         target_entity = self.target_entities[0] if self.target_entities else None
         if not target_entity:
             return
-            
+        target_metadata = next(
+            (
+                entity
+                for entity in self.renderer.manifest.get("entities", [])
+                if entity.get("LogicalName") == target_entity
+            ),
+            {},
+        )
+        primary_id_col = (
+            target_metadata.get("PrimaryIdAttribute")
+            or f"{target_entity}id"
+        )
+        primary_name_col = (
+            target_metadata.get("PrimaryNameAttribute")
+            or "name"
+        )
+
         def load_data(search_string=None):
             try:
                 from view_parser import ViewParser
-                with LocalDatabase().get_connection() as conn:
+                database = LocalDatabase()
+                database._validate_entity_name(target_entity)
+                with database.get_connection() as conn:
                     cursor = conn.cursor()
-                    
-                    if search_string:
+                    custom_view = next(
+                        (
+                            view
+                            for view in self._custom_views
+                            if (
+                                view.get("isDefault")
+                                or view.get("viewId")
+                                == self._default_view
+                            )
+                        ),
+                        None,
+                    )
+                    if custom_view:
+                        view_row = {
+                            "fetchxml": custom_view.get("fetchXml") or "",
+                            "layoutxml": custom_view.get("layoutXml") or "",
+                        }
+                    elif search_string:
                         cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE returnedtypecode = ? AND querytype = 4", (target_entity,))
                         view_row = cursor.fetchone()
                         if not view_row:
@@ -90,35 +229,73 @@ class LookupWidget(QWidget):
                         query_def = ViewParser.parse_fetchxml(view_row['fetchxml'])
                     
                     if not columns:
-                        columns = [{'name': f'{target_entity}id', 'label': 'ID'}, {'name': 'name', 'label': 'Name'}]
-                    
-                    primary_id_col = f"{target_entity}id"
-                    
+                        columns = [
+                            {"name": primary_id_col, "label": "ID"},
+                            {"name": primary_name_col, "label": "Name"},
+                        ]
+
                     table.setColumnCount(len(columns))
                     table.setHorizontalHeaderLabels([c.get('label', c['name']) for c in columns])
-                    
-                    if query_def and query_def.get("entity") == target_entity:
-                        sql, params = ViewParser.fetchxml_to_sql(query_def, search_string=search_string)
-                        cursor.execute(sql, params)
-                    else:
-                        cursor.execute(f"SELECT * FROM {target_entity}")
-                        
-                    rows = cursor.fetchall()
+
+                    cursor.execute(
+                        f"SELECT id, data_json FROM {target_entity}"
+                    )
+                    rows = []
+                    search_value = str(search_string or "").casefold()
+                    for stored_row in cursor.fetchall():
+                        record = json.loads(stored_row["data_json"])
+                        record.setdefault(primary_id_col, stored_row["id"])
+                        if search_value and not any(
+                            search_value in str(value or "").casefold()
+                            for value in record.values()
+                        ):
+                            continue
+                        rows.append(record)
+                    for custom_filter in self._custom_filters:
+                        filter_entity = custom_filter.get("entity")
+                        if (
+                            filter_entity
+                            and filter_entity != target_entity
+                        ):
+                            continue
+                        filter_xml = custom_filter.get("filter") or ""
+                        if not filter_xml:
+                            continue
+                        wrapped = (
+                            f"<fetch><entity name='{target_entity}'>"
+                            f"{filter_xml}</entity></fetch>"
+                        )
+                        rows = ViewParser.apply_to_records(
+                            ViewParser.parse_fetchxml(wrapped),
+                            rows,
+                        )
                     table.setRowCount(len(rows))
-                    
+
                     for i, row in enumerate(rows):
-                        row_dict = dict(row)
-                        rec_id = row_dict.get(primary_id_col, "")
+                        rec_id = row.get(primary_id_col, "")
                         for j, col in enumerate(columns):
-                            val = str(row_dict.get(col['name'], ''))
+                            val = str(row.get(col["name"], ""))
                             item = QTableWidgetItem(val)
                             if j == 0:
                                 item.setData(Qt.ItemDataRole.UserRole, rec_id)
-                                display_name = str(row_dict.get('name', rec_id))
+                                display_name = str(
+                                    row.get(primary_name_col, rec_id)
+                                )
                                 item.setData(Qt.ItemDataRole.UserRole + 1, display_name)
                             table.setItem(i, j, item)
-            except Exception as e:
-                print(f"Lookup error: {e}")
+            except (
+                ET.ParseError,
+                KeyError,
+                RuntimeError,
+                sqlite3.Error,
+                TypeError,
+                ValueError,
+            ) as error:
+                self.renderer.set_form_notification(
+                    f"Lookup data could not be loaded: {error}",
+                    "ERROR",
+                    f"verseoff_lookup_{self.control_name or target_entity}",
+                )
                 
         search_bar.returnPressed.connect(lambda: load_data(search_bar.text().strip()))
         layout.addLayout(search_layout)
@@ -138,6 +315,575 @@ class LookupWidget(QWidget):
         
         load_data()
         dialog.exec()
+
+
+class QuickViewWidget(QGroupBox):
+    def __init__(self, renderer, field_name, candidates, parent=None):
+        super().__init__(parent)
+        self.renderer = renderer
+        self.field_name = field_name
+        self.candidates = candidates
+        self.current_key = None
+        self.child_renderer = None
+        self.setTitle("")
+        self.layout = QVBoxLayout(self)
+        self.layout.setContentsMargins(8, 8, 8, 8)
+        self.placeholder = QLabel(
+            "Select the related record to display this Quick View."
+        )
+        self.placeholder.setWordWrap(True)
+        self.placeholder.setStyleSheet("color: #605e5c;")
+        self.layout.addWidget(self.placeholder)
+
+    def _clear_child(self):
+        if self.child_renderer is not None:
+            self.layout.removeWidget(self.child_renderer)
+            self.child_renderer.deleteLater()
+            self.child_renderer = None
+
+    def refresh_from_record(self, record):
+        raw_key = f"_{self.field_name}_value"
+        record_id = record.get(raw_key) or record.get(self.field_name)
+        entity_name = record.get(
+            f"{raw_key}@Microsoft.Dynamics.CRM.lookuplogicalname"
+        )
+        if not entity_name and len(self.candidates) == 1:
+            entity_name = self.candidates[0]["entity"]
+        candidate = next(
+            (
+                item
+                for item in self.candidates
+                if item["entity"] == entity_name
+            ),
+            None,
+        )
+        key = (entity_name, record_id)
+        if key == self.current_key:
+            if self.child_renderer is not None:
+                self.child_renderer.refresh_data()
+            return
+        self.current_key = key
+        self._clear_child()
+
+        if not record_id or not candidate:
+            self.placeholder.setText(
+                "Select the related record to display this Quick View."
+            )
+            self.placeholder.show()
+            return
+        entity_definition = next(
+            (
+                entity
+                for entity in self.renderer.manifest.get("entities", [])
+                if entity.get("LogicalName") == entity_name
+            ),
+            None,
+        )
+        if entity_definition is None:
+            raise ValueError(
+                f"Table {entity_name!r} is not packaged in this app."
+            )
+        if not any(
+            entity.get("LogicalName") == entity_name
+            for entity in self.renderer.manifest.get("entities", [])
+        ):
+            self.placeholder.setText(
+                f"Quick View unavailable offline: {entity_name} is not "
+                "included in this project."
+            )
+            self.placeholder.show()
+            return
+
+        self.placeholder.hide()
+        self.child_renderer = XrmFormRenderer(
+            manifest_data=self.renderer.manifest,
+            logical_name=entity_name,
+            record_id=record_id,
+            parent=self,
+            form_id=candidate["form_id"],
+            is_quick_view=True,
+        )
+        self.child_renderer.setEnabled(False)
+        self.layout.addWidget(self.child_renderer)
+
+    def refresh_from_controls(self):
+        lookup = next(
+            (
+                widget
+                for widget in self.renderer.control_instances.get(
+                    self.field_name,
+                    [],
+                )
+                if isinstance(widget, LookupWidget)
+            ),
+            None,
+        )
+        if lookup is None:
+            return
+        raw_key = f"_{self.field_name}_value"
+        self.refresh_from_record({
+            self.field_name: lookup.current_id,
+            raw_key: lookup.current_id,
+            (
+                f"{raw_key}@"
+                "Microsoft.Dynamics.CRM.lookuplogicalname"
+            ): lookup.current_logical_name,
+        })
+
+
+class SubgridWidget(QWidget):
+    def __init__(
+        self,
+        renderer,
+        target_entity,
+        view_id=None,
+        relationship_name=None,
+        records_per_page=50,
+        enable_quick_find=False,
+        parent=None,
+    ):
+        super().__init__(parent)
+        self.renderer = renderer
+        self.target_entity = str(target_entity or "").lower()
+        self.view_id = self._normalize_id(view_id)
+        self.relationship_name = relationship_name
+        self.records_per_page = max(1, int(records_per_page or 50))
+        self.control_name = None
+        self._records = []
+        self._visible_columns = []
+        self._total_record_count = 0
+        self.target_definition = next(
+            (
+                entity
+                for entity in renderer.manifest.get("entities", [])
+                if entity.get("LogicalName") == self.target_entity
+            ),
+            None,
+        )
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(6)
+
+        toolbar = QHBoxLayout()
+        self.status_label = QLabel()
+        self.status_label.setStyleSheet(
+            "color: #605e5c; font-size: 11px;"
+        )
+        toolbar.addWidget(self.status_label)
+        toolbar.addStretch()
+
+        self.search_box = QLineEdit()
+        self.search_box.setPlaceholderText("Search this grid")
+        self.search_box.setVisible(bool(enable_quick_find))
+        self.search_box.textChanged.connect(self.refresh_data)
+        toolbar.addWidget(self.search_box)
+
+        refresh_button = QPushButton("Refresh")
+        refresh_button.clicked.connect(self.refresh_data)
+        toolbar.addWidget(refresh_button)
+        layout.addLayout(toolbar)
+
+        self.table = QTableWidget()
+        self.table.setSelectionBehavior(
+            QTableWidget.SelectionBehavior.SelectRows
+        )
+        self.table.setEditTriggers(
+            QTableWidget.EditTrigger.NoEditTriggers
+        )
+        self.table.setAlternatingRowColors(True)
+        self.table.horizontalHeader().setStretchLastSection(True)
+        self.table.itemDoubleClicked.connect(self._open_record)
+        layout.addWidget(self.table)
+        self.setMinimumHeight(190)
+        self.refresh_data()
+
+    @staticmethod
+    def _normalize_id(value):
+        return str(value or "").strip().strip("{}").lower()
+
+    def _view_definition(self):
+        if not self.target_definition:
+            return None
+        queries = self.target_definition.get("saved_queries", [])
+        if self.view_id:
+            selected = next(
+                (
+                    query
+                    for query in queries
+                    if self._normalize_id(query.get("savedqueryid"))
+                    == self.view_id
+                ),
+                None,
+            )
+            return selected
+        return next(
+            (
+                query
+                for query in queries
+                if query.get("querytype") in (0, 2)
+                and query.get("isdefault")
+            ),
+            next(
+                (
+                    query
+                    for query in queries
+                    if query.get("querytype") in (0, 2)
+                ),
+                None,
+            ),
+        )
+
+    def _relationship_attribute(self):
+        if not self.relationship_name:
+            return None
+        relationship_name = self.relationship_name.casefold()
+        relationships = self.renderer.entity_def.get(
+            "relationships",
+            {},
+        ).get("one_to_many", [])
+        relationship = next(
+            (
+                item
+                for item in relationships
+                if str(
+                    item.get("SchemaName")
+                    or item.get("RelationshipName")
+                    or ""
+                ).casefold()
+                == relationship_name
+                and str(item.get("ReferencingEntity") or "").casefold()
+                == self.target_entity.casefold()
+            ),
+            None,
+        )
+        return relationship.get("ReferencingAttribute") if relationship else None
+
+    def _columns(self):
+        from view_parser import ViewParser
+
+        view = self._view_definition()
+        columns = ViewParser.parse_layoutxml(
+            view.get("layoutxml") if view else ""
+        )
+        columns = [
+            column
+            for column in columns
+            if not column.get("ishidden")
+        ]
+        if columns:
+            attributes = {
+                attribute.get("LogicalName"): attribute
+                for attribute in self.target_definition.get(
+                    "attributes",
+                    [],
+                )
+            }
+            for column in columns:
+                if (
+                    not column.get("label")
+                    or column["label"] == column["name"]
+                ):
+                    column["label"] = (
+                        attributes.get(column["name"], {})
+                        .get("DisplayName", {})
+                        .get("UserLocalizedLabel", {})
+                        .get("Label")
+                        or column["name"].replace("_", " ").title()
+                    )
+            return columns
+        primary_id = (
+            self.target_definition.get("PrimaryIdAttribute")
+            if self.target_definition
+            else "id"
+        )
+        primary_name = (
+            self.target_definition.get("PrimaryNameAttribute")
+            if self.target_definition
+            else "name"
+        )
+        return [
+            {"name": primary_name, "label": "Name", "width": 220},
+            {"name": primary_id, "label": "ID", "width": 180},
+        ]
+
+    @staticmethod
+    def _display_value(record, attribute_name):
+        formatted_key = (
+            f"{attribute_name}@"
+            "OData.Community.Display.V1.FormattedValue"
+        )
+        if formatted_key in record:
+            return record[formatted_key]
+        raw_lookup_key = f"_{attribute_name}_value"
+        if raw_lookup_key in record:
+            return record[raw_lookup_key]
+        return record.get(attribute_name, "")
+
+    def set_control_name(self, control_name):
+        self.control_name = control_name
+
+    def selected_record_ids(self):
+        selected = []
+        for model_index in self.table.selectionModel().selectedRows():
+            item = self.table.item(model_index.row(), 0)
+            record_id = (
+                item.data(Qt.ItemDataRole.UserRole)
+                if item is not None
+                else None
+            )
+            if record_id is not None:
+                selected.append(str(record_id))
+        return selected
+
+    def selected_record(self):
+        selected_ids = set(self.selected_record_ids())
+        if len(selected_ids) != 1:
+            return None
+        return next(
+            (
+                record
+                for record in self._records
+                if str(record.get(self._primary_id_attribute()))
+                in selected_ids
+            ),
+            None,
+        )
+
+    def _primary_id_attribute(self):
+        return (
+            (self.target_definition or {}).get("PrimaryIdAttribute")
+            or "id"
+        )
+
+    def _primary_name_attribute(self):
+        return (
+            (self.target_definition or {}).get("PrimaryNameAttribute")
+            or "name"
+        )
+
+    def runtime_snapshot(self):
+        primary_id = self._primary_id_attribute()
+        primary_name = self._primary_name_attribute()
+        rows = []
+        for record in self._records:
+            attributes = {}
+            for key, value in record.items():
+                if key.startswith("_") or "@" in key:
+                    continue
+                attributes[key] = {
+                    "value": value,
+                    "initialValue": value,
+                    "submitMode": "dirty",
+                    "requiredLevel": "none",
+                    "dirty": False,
+                }
+            rows.append({
+                "id": str(record.get(primary_id) or ""),
+                "entityName": self.target_entity,
+                "primaryName": str(record.get(primary_name) or ""),
+                "attributes": attributes,
+            })
+        return {
+            "name": self.control_name or "",
+            "entityName": self.target_entity,
+            "primaryIdAttribute": primary_id,
+            "primaryNameAttribute": primary_name,
+            "relationship": (
+                {"name": self.relationship_name}
+                if self.relationship_name
+                else None
+            ),
+            "currentView": (
+                {
+                    "id": self.view_id,
+                    "entityType": "savedquery",
+                    "name": (
+                        (self._view_definition() or {}).get("name")
+                        or ""
+                    ),
+                }
+                if self.view_id
+                else None
+            ),
+            "viewSelectorVisible": True,
+            "fetchXml": (
+                (self._view_definition() or {}).get("fetchxml")
+                or ""
+            ),
+            "gridType": 1,
+            "rows": rows,
+            "selectedIds": self.selected_record_ids(),
+            "totalRecordCount": self._total_record_count,
+        }
+
+    def update_runtime_cell(self, row_id, attribute_name, value):
+        primary_id = self._primary_id_attribute()
+        record = next(
+            (
+                item
+                for item in self._records
+                if str(item.get(primary_id)) == str(row_id)
+            ),
+            None,
+        )
+        if record is None:
+            raise KeyError(
+                f"Grid row {row_id!r} was not found in {self.control_name}."
+            )
+        record[attribute_name] = value
+        column_index = next(
+            (
+                index
+                for index, column in enumerate(self._visible_columns)
+                if column.get("name") == attribute_name
+            ),
+            None,
+        )
+        if column_index is None:
+            return
+        row_index = next(
+            (
+                index
+                for index, item in enumerate(self._records)
+                if str(item.get(primary_id)) == str(row_id)
+            ),
+            None,
+        )
+        if row_index is not None:
+            self.table.setItem(
+                row_index,
+                column_index,
+                QTableWidgetItem("" if value is None else str(value)),
+            )
+
+    def refresh_data(self, *_):
+        from view_parser import ViewParser
+
+        if not self.target_definition:
+            self._records = []
+            self._visible_columns = []
+            self._total_record_count = 0
+            self.table.setRowCount(0)
+            self.table.setColumnCount(1)
+            self.table.setHorizontalHeaderLabels(["Unavailable"])
+            self.status_label.setText(
+                f"{self.target_entity or 'Subgrid'} is not included "
+                "in this offline project."
+            )
+            return
+
+        columns = self._columns()
+        self._visible_columns = columns
+        self.table.setColumnCount(len(columns))
+        self.table.setHorizontalHeaderLabels(
+            [column.get("label") or column["name"] for column in columns]
+        )
+        for index, column in enumerate(columns):
+            width = int(column.get("width") or 120)
+            self.table.setColumnWidth(index, max(70, min(width, 420)))
+
+        database = LocalDatabase()
+        database._validate_entity_name(self.target_entity)
+        relationship_attribute = self._relationship_attribute()
+        relationship_is_resolved = (
+            not self.relationship_name
+            or bool(relationship_attribute)
+        )
+        selected_view = self._view_definition()
+        view_is_resolved = not self.view_id or selected_view is not None
+        parent_id = str(self.renderer.record_id or "").strip("{}").casefold()
+        search_text = self.search_box.text().strip().casefold()
+        records = []
+
+        with database.get_connection() as connection:
+            rows = connection.execute(
+                f"""
+                SELECT id, data_json, sync_status
+                FROM {self.target_entity}
+                WHERE sync_status != 'pending_delete'
+                """
+            ).fetchall()
+        for row in rows:
+            record = json.loads(row["data_json"])
+            primary_id = self.target_definition.get("PrimaryIdAttribute")
+            record.setdefault(primary_id, row["id"])
+            record["_sync_status"] = row["sync_status"]
+            records.append(record)
+
+        if not relationship_is_resolved or not view_is_resolved:
+            records = []
+        elif relationship_attribute and not parent_id:
+            records = []
+        else:
+            query_definition = ViewParser.parse_fetchxml(
+                selected_view.get("fetchxml") if selected_view else ""
+            )
+            records = ViewParser.apply_to_records(
+                query_definition,
+                records,
+                search_string=search_text,
+                additional_filters=(
+                    {relationship_attribute: parent_id}
+                    if relationship_attribute
+                    else None
+                ),
+            )
+        self._total_record_count = len(records)
+        records = records[:self.records_per_page]
+        self._records = records
+
+        self.table.setRowCount(len(records))
+        primary_id = self.target_definition.get("PrimaryIdAttribute")
+        for row_index, record in enumerate(records):
+            for column_index, column in enumerate(columns):
+                value = self._display_value(record, column["name"])
+                item = QTableWidgetItem(
+                    "" if value is None else str(value)
+                )
+                if column_index == 0:
+                    item.setData(
+                        Qt.ItemDataRole.UserRole,
+                        record.get(primary_id),
+                    )
+                self.table.setItem(row_index, column_index, item)
+        self.status_label.setText(
+            (
+                f"Relationship {self.relationship_name} is not available "
+                "in the offline metadata."
+                if not relationship_is_resolved
+                else (
+                    f"View {self.view_id} is not available in the offline "
+                    "metadata."
+                    if not view_is_resolved
+                    else (
+                        f"{len(records)} "
+                        f"record{'s' if len(records) != 1 else ''}"
+                    )
+                )
+            )
+        )
+        if (
+            self.control_name
+            and getattr(self.renderer, "_runtime_ready", False)
+            and not getattr(self.renderer, "_suppress_events", False)
+        ):
+            self.renderer._fire_events(
+                "gridonload",
+                self.control_name,
+            )
+
+    def _open_record(self, item):
+        first_item = self.table.item(item.row(), 0)
+        record_id = (
+            first_item.data(Qt.ItemDataRole.UserRole)
+            if first_item
+            else None
+        )
+        window = self.renderer.window()
+        if record_id and hasattr(window, "open_form"):
+            window.open_form(self.target_entity, record_id)
+
 
 class AssociatedGridWidget(QWidget):
     def __init__(self, target_entity, referencing_attribute, parent_renderer, parent=None):
@@ -227,12 +973,33 @@ class AssociatedGridWidget(QWidget):
         
     def refresh_data(self):
         parent_id = self.parent_renderer.record_id
-        
-        columns = [{'name': f'{self.target_entity}id', 'label': 'ID'}, {'name': 'title', 'label': 'Title / Name'}, {'name': 'sync_status', 'label': 'Status'}]
+        target_metadata = next(
+            (
+                entity
+                for entity in self.parent_renderer.manifest.get("entities", [])
+                if entity.get("LogicalName") == self.target_entity
+            ),
+            {},
+        )
+        primary_id = (
+            target_metadata.get("PrimaryIdAttribute")
+            or f"{self.target_entity}id"
+        )
+        primary_name = (
+            target_metadata.get("PrimaryNameAttribute")
+            or "name"
+        )
+        columns = [
+            {"name": primary_id, "label": "ID"},
+            {"name": primary_name, "label": "Title / Name"},
+            {"name": "_sync_status", "label": "Status"},
+        ]
         try:
             from view_parser import ViewParser
             from db import LocalDatabase
-            with LocalDatabase().get_connection() as conn:
+            database = LocalDatabase()
+            database._validate_entity_name(self.target_entity)
+            with database.get_connection() as conn:
                 cursor = conn.cursor()
                 view_row = None
                 try:
@@ -257,8 +1024,30 @@ class AssociatedGridWidget(QWidget):
                     self.table.setItem(0, 0, empty_item)
                     return
                 
-                cursor.execute(f"SELECT * FROM {self.target_entity} WHERE {self.referencing_attribute} = ?", (parent_id,))
-                rows = cursor.fetchall()
+                cursor.execute(
+                    f"""
+                    SELECT id, data_json, sync_status
+                    FROM {self.target_entity}
+                    """
+                )
+                rows = []
+                normalized_parent_id = str(parent_id).strip("{}").casefold()
+                for stored_row in cursor.fetchall():
+                    record = json.loads(stored_row["data_json"])
+                    related_id = (
+                        record.get(self.referencing_attribute)
+                        or record.get(
+                            f"_{self.referencing_attribute}_value"
+                        )
+                    )
+                    if (
+                        str(related_id or "").strip("{}").casefold()
+                        != normalized_parent_id
+                    ):
+                        continue
+                    record.setdefault(primary_id, stored_row["id"])
+                    record["_sync_status"] = stored_row["sync_status"]
+                    rows.append(record)
                 
                 if not rows:
                     self.table.setRowCount(1)
@@ -269,12 +1058,14 @@ class AssociatedGridWidget(QWidget):
                     
                 self.table.setRowCount(len(rows))
                 for i, row in enumerate(rows):
-                    row_dict = dict(row)
                     for j, col in enumerate(columns):
-                        val = str(row_dict.get(col['name'], ''))
+                        val = str(row.get(col["name"], ""))
                         item = QTableWidgetItem(val)
                         if j == 0:
-                            item.setData(Qt.ItemDataRole.UserRole, row_dict.get(f"{self.target_entity}id") or row_dict.get("id"))
+                            item.setData(
+                                Qt.ItemDataRole.UserRole,
+                                row.get(primary_id),
+                            )
                         self.table.setItem(i, j, item)
         except Exception as e:
             self.table.setColumnCount(1)
@@ -312,17 +1103,18 @@ class XrmNavigation:
 class XrmWebApi:
     @staticmethod
     def retrieveRecord(entity_logical_name, id, options=None):
-        with LocalDatabase().get_connection() as conn:
-            cursor = conn.cursor()
-            cursor.execute(f"SELECT data_json FROM {entity_logical_name} WHERE id = ?", (id,))
-            row = cursor.fetchone()
-            if row:
-                return json.loads(row[0])
-            raise Exception(f"Record {id} not found in {entity_logical_name}.")
+        record = LocalDatabase().get_record(entity_logical_name, id)
+        if record:
+            record.pop("_sync_status", None)
+            record.pop("_sync_error", None)
+            return record
+        raise Exception(f"Record {id} not found in {entity_logical_name}.")
 
     @staticmethod
     def retrieveMultipleRecords(entity_logical_name, options=None):
-        with LocalDatabase().get_connection() as conn:
+        database = LocalDatabase()
+        database._validate_entity_name(entity_logical_name)
+        with database.get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute(f"SELECT data_json FROM {entity_logical_name}")
             rows = cursor.fetchall()
@@ -332,73 +1124,105 @@ class XrmWebApi:
     @staticmethod
     def createRecord(entity_logical_name, data):
         new_id = str(uuid.uuid4())
-        with LocalDatabase().get_connection() as conn:
-            cursor = conn.cursor()
-            cursor.execute(f"INSERT INTO {entity_logical_name} (id, data_json, sync_status) VALUES (?, ?, 'PENDING')",
-                           (new_id, json.dumps(data)))
-            conn.commit()
+        LocalDatabase().upsert_record(
+            entity_logical_name,
+            new_id,
+            data,
+            sync_status="pending_create",
+        )
         return type("CreateResult", (), {"id": new_id, "entityType": entity_logical_name})()
 
     @staticmethod
     def updateRecord(entity_logical_name, id, data):
-        with LocalDatabase().get_connection() as conn:
-            cursor = conn.cursor()
-            cursor.execute(f"SELECT data_json FROM {entity_logical_name} WHERE id = ?", (id,))
-            row = cursor.fetchone()
-            if not row:
-                raise Exception("Record not found.")
-            existing = json.loads(row[0])
-            existing.update(data)
-            
-            cursor.execute(f"UPDATE {entity_logical_name} SET data_json = ?, sync_status = 'PENDING' WHERE id = ?",
-                           (json.dumps(existing), id))
-            conn.commit()
+        database = LocalDatabase()
+        existing = database.get_record(entity_logical_name, id)
+        if not existing:
+            raise Exception("Record not found.")
+        existing.pop("_sync_status", None)
+        existing.pop("_sync_error", None)
+        existing.update(data)
+        database.upsert_record(
+            entity_logical_name,
+            id,
+            existing,
+            sync_status="pending_update",
+        )
         return type("UpdateResult", (), {"id": id, "entityType": entity_logical_name})()
 
 class PythonGlobalContext:
-    def __init__(self):
+    def __init__(self, renderer=None):
+        manifest = renderer.manifest if renderer is not None else {}
+        context = manifest.get("client_context") or {}
+        user = context.get("user") or {}
+        organization = context.get("organization") or {}
+        source_app = manifest.get("source_app") or {}
         self.client = type("Client", (), {
-            "getClient": lambda: "Mobile",
+            "getClient": lambda: "Web",
             "getClientState": lambda: "Offline",
-            "getFormFactor": lambda: 3
+            "getFormFactor": lambda: 1,
+            "isOffline": lambda: True,
+            "isNetworkAvailable": lambda: False,
         })()
         self.userSettings = type("UserSettings", (), {
-            "userId": "{00000000-0000-0000-0000-000000000000}",
-            "userName": "Offline User",
-            "languageId": 1033,
-            "securityRoles": []
+            "userId": user.get("id", ""),
+            "userName": user.get("name", ""),
+            "languageId": int(user.get("languageId") or 1033),
+            "securityRoles": [
+                role.get("id", "")
+                for role in user.get("roles", [])
+            ],
+            "roles": list(user.get("roles", [])),
+            "transactionCurrencyId": user.get(
+                "transactionCurrencyId",
+                "",
+            ),
         })()
         self.organizationSettings = type("OrganizationSettings", (), {
-            "organizationId": "{00000000-0000-0000-0000-000000000000}",
-            "uniqueName": "offline_org",
-            "languageId": 1033,
-            "baseCurrencyId": "{00000000-0000-0000-0000-000000000000}"
+            "organizationId": organization.get("id", ""),
+            "uniqueName": organization.get("uniqueName", ""),
+            "languageId": int(
+                organization.get("languageId") or 1033
+            ),
+            "baseCurrencyId": organization.get("baseCurrencyId", ""),
+            "isAutoSaveEnabled": bool(
+                organization.get("isAutoSaveEnabled")
+            ),
         })()
+        self._manifest = manifest
+        self._source_app = source_app
 
     def getClientUrl(self):
-        return "https://offline.localhost"
+        return self._manifest.get("org_url") or ""
         
     def getCurrentAppName(self):
-        return "VerseOff Offline App"
+        return self._manifest.get("app_name") or ""
+
+    def getCurrentAppProperties(self):
+        return {
+            "appId": (
+                self._source_app.get("appmoduleidunique")
+                or self._source_app.get("appmoduleid")
+                or ""
+            ),
+            "displayName": self.getCurrentAppName(),
+            "uniqueName": self._source_app.get("uniquename") or "",
+        }
         
     def getVersion(self):
-        return "1.0.0"
-        
-    def getIsAdmin(self):
-        return True
+        return "9.2.0.0"
 
 class XrmUtility:
-    def __init__(self):
-        self._global_context = PythonGlobalContext()
+    def __init__(self, renderer=None):
+        self._global_context = PythonGlobalContext(renderer)
         
     def getGlobalContext(self):
         return self._global_context
 
 class GlobalXrm:
-    def __init__(self):
+    def __init__(self, renderer=None):
         self.Navigation = XrmNavigation()
         self.WebApi = XrmWebApi()
-        self.Utility = XrmUtility()
+        self.Utility = XrmUtility(renderer)
 
 # Expose globally so executed scripts can just use `Xrm.Navigation...`
 import builtins
@@ -438,13 +1262,29 @@ class SaveEventArgs:
     def getSaveErrorInfo(self):
         return self._save_error_info
 
+
+class DataLoadEventArgs:
+    def __init__(self, data_load_state):
+        self._data_load_state = int(data_load_state)
+
+    def getDataLoadState(self):
+        return self._data_load_state
+
+
 class PythonExecutionContext:
-    def __init__(self, form_context, event_source=None, event_args=None, shared_vars=None):
+    def __init__(
+        self,
+        form_context,
+        event_source=None,
+        event_args=None,
+        shared_vars=None,
+        depth=0,
+    ):
         self._form_context = form_context
         self._event_source = event_source
         self._event_args = event_args
         self._shared_vars = shared_vars if shared_vars is not None else {}
-        self._depth = 1
+        self._depth = depth
 
     def getFormContext(self):
         return self._form_context
@@ -462,7 +1302,7 @@ class PythonExecutionContext:
         self._shared_vars[key] = value
 
     def getContext(self):
-        return builtins.Xrm.Utility.getGlobalContext()
+        return PythonGlobalContext(self._form_context._renderer)
         
     def getDepth(self):
         return self._depth
@@ -478,6 +1318,12 @@ class PythonCollection:
             return self._list
         if callable(name_or_index):
             return [item for index, item in enumerate(self._list) if name_or_index(item, index)]
+        if isinstance(name_or_index, (list, tuple, set)):
+            return [
+                self._dict[name]
+                for name in name_or_index
+                if name in self._dict
+            ]
         if isinstance(name_or_index, int):
             if 0 <= name_or_index < len(self._list):
                 return self._list[name_or_index]
@@ -522,31 +1368,55 @@ class PythonAttribute:
     def getValue(self):
         if isinstance(self.widget, QLineEdit):
             return self.widget.text()
+        elif isinstance(self.widget, QTextEdit):
+            return self.widget.toPlainText()
         elif isinstance(self.widget, QCheckBox):
             return self.widget.isChecked()
         elif isinstance(self.widget, QComboBox):
             return self.widget.currentData()
+        elif isinstance(self.widget, MultiSelectOptionWidget):
+            return self.widget.value()
+        elif isinstance(self.widget, QDateTimeEdit):
+            return self.widget.dateTime().toString(Qt.DateFormat.ISODate)
         elif isinstance(self.widget, QSpinBox) or isinstance(self.widget, QDoubleSpinBox):
             return self.widget.value()
         elif isinstance(self.widget, LookupWidget):
             if self.widget.current_id:
                 return [{"id": self.widget.current_id, "name": self.widget.text(), "entityType": self.widget.current_logical_name}]
             return None
+        elif isinstance(self.widget, PcfControlWidget):
+            return self.widget.value()
         return None
 
     def setValue(self, val):
         if isinstance(self.widget, QLineEdit):
             self.widget.setText(str(val))
+        elif isinstance(self.widget, QTextEdit):
+            self.widget.setPlainText(str(val or ""))
         elif isinstance(self.widget, QCheckBox):
             self.widget.setChecked(bool(val))
         elif isinstance(self.widget, QComboBox):
             idx = self.widget.findData(val)
             if idx >= 0:
                 self.widget.setCurrentIndex(idx)
-        elif isinstance(self.widget, QSpinBox) or isinstance(self.widget, QDoubleSpinBox):
+        elif isinstance(self.widget, MultiSelectOptionWidget):
+            self.widget.setValue(val)
+        elif isinstance(self.widget, QDateTimeEdit):
+            parsed = QDateTime.fromString(
+                str(val or ""),
+                Qt.DateFormat.ISODate,
+            )
+            if parsed.isValid():
+                self.widget.setDateTime(parsed)
+        elif isinstance(self.widget, QSpinBox):
+            try:
+                self.widget.setValue(int(val))
+            except (TypeError, ValueError):
+                pass
+        elif isinstance(self.widget, QDoubleSpinBox):
             try:
                 self.widget.setValue(float(val))
-            except ValueError:
+            except (TypeError, ValueError):
                 pass
         elif isinstance(self.widget, LookupWidget):
             if val and isinstance(val, list) and len(val) > 0:
@@ -556,16 +1426,37 @@ class PythonAttribute:
             else:
                 self.widget.current_id = None
                 self.widget.setText("")
+        elif isinstance(self.widget, PcfControlWidget):
+            self.widget.setValue(val)
         
         self.widget._is_dirty = True
 
     def getAttributeType(self):
         if isinstance(self.widget, QLineEdit): return "string"
+        elif isinstance(self.widget, QTextEdit): return "memo"
         elif isinstance(self.widget, QCheckBox): return "boolean"
         elif isinstance(self.widget, QComboBox): return "optionset"
+        elif isinstance(self.widget, MultiSelectOptionWidget): return "multiselectoptionset"
+        elif isinstance(self.widget, QDateTimeEdit): return "datetime"
         elif isinstance(self.widget, QSpinBox): return "integer"
         elif isinstance(self.widget, QDoubleSpinBox): return "double"
         elif "Lookup" in type(self.widget).__name__: return "lookup"
+        elif isinstance(self.widget, PcfControlWidget):
+            bound = next(
+                (
+                    item
+                    for item in self.widget.definition.get(
+                        "properties",
+                        [],
+                    )
+                    if item.get("usage") == "bound"
+                ),
+                {},
+            )
+            return (
+                bound.get("of_type")
+                or (bound.get("accepted_types") or ["string"])[0]
+            ).casefold()
         return "string"
 
     def getFormat(self):
@@ -666,6 +1557,56 @@ class PythonAttribute:
     def setSubmitMode(self, mode: str):
         self.widget._submit_mode = mode
 
+
+class PythonFormParameterAttribute:
+    def __init__(self, name, renderer):
+        self.name = name
+        self._renderer = renderer
+
+    @property
+    def controls(self):
+        return PythonCollection(items_list=[])
+
+    def getName(self):
+        return self.name
+
+    def getValue(self):
+        return self._renderer.form_parameters.get(self.name)
+
+    def setValue(self, value):
+        self._renderer.form_parameters[self.name] = value
+
+    def getAttributeType(self):
+        definition = self._renderer.form_parameter_definitions.get(
+            self.name,
+            {},
+        )
+        return str(definition.get("type") or "string").casefold()
+
+    def getFormat(self):
+        return None
+
+    def getIsDirty(self):
+        return False
+
+    def addOnChange(self, func):
+        self._renderer.register_dynamic_event(
+            "onchange",
+            self.name,
+            func,
+        )
+
+    def removeOnChange(self, func):
+        self._renderer.unregister_dynamic_event(
+            "onchange",
+            self.name,
+            func,
+        )
+
+    def fireOnChange(self):
+        self._renderer._fire_events("onchange", self.name)
+
+
 class PythonControl:
     def __init__(self, name, widget, label_widget, renderer):
         self.name = name
@@ -715,6 +1656,11 @@ class PythonControl:
         elif isinstance(self.widget, QDoubleSpinBox): return "standard"
         elif "Lookup" in type(self.widget).__name__: return "lookup"
         elif isinstance(self.widget, QTableWidget): return "subgrid"
+        elif isinstance(self.widget, PcfControlWidget):
+            return "customcontrol:" + self.widget.definition.get(
+                "name",
+                "",
+            )
         return "standard"
 
     def setNotification(self, message, uniqueId):
@@ -753,7 +1699,6 @@ class PythonControl:
 
     def removeOnResultOpened(self, func):
         self._renderer.unregister_dynamic_event("onresultopened", self.name, func)
-
     def addOnSelection(self, func):
         self._renderer.register_dynamic_event("onselection", self.name, func)
 
@@ -834,6 +1779,14 @@ class PythonControl:
             return found_sec
         return None
 
+class PythonTimelineControl(PythonControl):
+    def getControlType(self):
+        return "timelinewall"
+
+    def refresh(self):
+        self.widget.refresh()
+
+
 class PythonProcess:
     def __init__(self, renderer):
         self._renderer = renderer
@@ -868,14 +1821,57 @@ class PythonProcess:
     def removeOnStageSelected(self, func):
         self._renderer.unregister_dynamic_event("onstageselected", None, func)
 
+class PythonGridAttribute:
+    def __init__(self, name, record, grid_widget=None):
+        self.name = name
+        self.record = record
+        self.grid_widget = grid_widget
+
+    def getName(self):
+        return self.name
+
+    def getValue(self):
+        return self.record.get(self.name)
+
+    def setValue(self, value):
+        self.record[self.name] = value
+        if isinstance(self.grid_widget, SubgridWidget):
+            self.grid_widget.update_runtime_cell(
+                self.record.get(
+                    self.grid_widget._primary_id_attribute()
+                ),
+                self.name,
+                value,
+            )
+
+
 class PythonGridEntity:
-    def __init__(self, entity_name, record_id, primary_val):
+    def __init__(
+        self,
+        entity_name,
+        record_id,
+        primary_val,
+        record=None,
+        grid_widget=None,
+    ):
         self.entity_name = entity_name
         self.record_id = record_id
         self.primary_val = primary_val
+        self.record = record if record is not None else {}
+        self.grid_widget = grid_widget
+        self.attributes = PythonCollection(
+            items_dict={
+                name: PythonGridAttribute(name, self.record, grid_widget)
+                for name in self.record
+                if not str(name).startswith("_") and "@" not in str(name)
+            }
+        )
 
     def getEntityName(self):
         return self.entity_name
+
+    def getId(self):
+        return self.record_id
 
     def getEntityReference(self):
         return {
@@ -902,41 +1898,108 @@ class PythonGridRow:
         return self._data
 
 class PythonGrid:
-    def __init__(self, table_widget):
-        self.table_widget = table_widget
-        
-        # Build mock data based on UI (MVP)
-        rows_dict = {}
-        for row_idx in range(self.table_widget.rowCount()):
-            # Mocking extracting data from the table
-            entity_name = "mock_entity"
-            record_id = f"mock-uuid-{row_idx}"
-            primary_val = self.table_widget.item(row_idx, 0).text() if self.table_widget.item(row_idx, 0) else f"Row {row_idx}"
-            
-            ent = PythonGridEntity(entity_name, record_id, primary_val)
-            row_data = PythonGridRowData(ent)
-            rows_dict[str(row_idx)] = PythonGridRow(row_data)
-            
-        self.rows_collection = PythonCollection(items_dict=rows_dict)
+    def __init__(self, grid_widget):
+        self.grid_widget = grid_widget
+
+    def _rows(self, selected_only=False):
+        if isinstance(self.grid_widget, SubgridWidget):
+            selected_ids = set(self.grid_widget.selected_record_ids())
+            primary_id = self.grid_widget._primary_id_attribute()
+            primary_name = self.grid_widget._primary_name_attribute()
+            records = self.grid_widget._records
+            if selected_only:
+                records = [
+                    record
+                    for record in records
+                    if str(record.get(primary_id)) in selected_ids
+                ]
+            return [
+                PythonGridRow(PythonGridRowData(PythonGridEntity(
+                    self.grid_widget.target_entity,
+                    str(record.get(primary_id) or ""),
+                    str(record.get(primary_name) or ""),
+                    record=record,
+                    grid_widget=self.grid_widget,
+                )))
+                for record in records
+            ]
+
+        table_widget = self.grid_widget
+        selected_rows = {
+            index.row()
+            for index in table_widget.selectionModel().selectedRows()
+        }
+        rows = []
+        for row_index in range(table_widget.rowCount()):
+            if selected_only and row_index not in selected_rows:
+                continue
+            first_item = table_widget.item(row_index, 0)
+            record_id = (
+                first_item.data(Qt.ItemDataRole.UserRole)
+                if first_item is not None
+                else ""
+            )
+            primary_value = (
+                first_item.text() if first_item is not None else ""
+            )
+            entity_name = str(
+                table_widget.property("verseoffEntityName") or ""
+            )
+            rows.append(PythonGridRow(PythonGridRowData(PythonGridEntity(
+                entity_name,
+                str(record_id or ""),
+                primary_value,
+            ))))
+        return rows
 
     def getRows(self):
-        return self.rows_collection
+        return PythonCollection(items_list=self._rows())
 
     def getSelectedRows(self):
-        # In a real scenario, map PyQt selectedIndexes to our collection. 
-        # For MVP, return all rows as "selected" if requested
-        return self.rows_collection
+        return PythonCollection(items_list=self._rows(selected_only=True))
 
     def getTotalRecordCount(self):
-        return self.table_widget.rowCount()
+        if isinstance(self.grid_widget, SubgridWidget):
+            return self.grid_widget._total_record_count
+        return self.grid_widget.rowCount()
+
+    def entity_by_id(self, record_id):
+        for row in self._rows():
+            entity = row.getData().getEntity()
+            if str(entity.getId()) == str(record_id):
+                return entity
+        return None
+
+
+class PythonGridRowFormContext:
+    def __init__(self, entity):
+        self.data = type("GridRowDataContext", (), {
+            "entity": entity,
+            "attributes": entity.attributes,
+        })()
+        self.ui = type("GridRowUiContext", (), {
+            "controls": PythonCollection(items_list=[]),
+        })()
+
+    def getAttribute(self, logical_name):
+        return self.data.attributes.get(logical_name)
+
+    def getControl(self, logical_name):
+        return None
 
 class PythonGridControl(PythonControl):
     def __init__(self, name, widget, label_widget, renderer):
         super().__init__(name, widget, label_widget, renderer)
-        self._grid = PythonGrid(self.widget)
 
     def getGrid(self):
-        return self._grid
+        return PythonGrid(self.widget)
+
+    def getControlType(self):
+        return "subgrid"
+
+    def refresh(self):
+        if isinstance(self.widget, SubgridWidget):
+            self.widget.refresh_data()
 
     def addOnChange(self, func):
         self._renderer.register_dynamic_event("onchange", self.name, func)
@@ -1044,33 +2107,61 @@ class PythonIFrameControl(PythonControl):
         self._custom_data = ""
 
     def getContentWindow(self):
-        # In PyQt, QWebEngineView acts as the frame.
-        # We return the page object which allows running javascript natively against the DOM.
+        if isinstance(self.widget, WebResourceWidget):
+            return self.widget.browser.page()
         if "QWebEngineView" in str(type(self.widget)):
             return self.widget.page()
         return None
 
     def getData(self):
+        if isinstance(self.widget, WebResourceWidget):
+            return self.widget.getData()
         return self._custom_data
 
     def setData(self, value: str):
+        if isinstance(self.widget, WebResourceWidget):
+            self.widget.setData(value)
+            return
         self._custom_data = value
 
     def getInitialUrl(self):
+        if isinstance(self.widget, WebResourceWidget):
+            return self.widget.getInitialUrl()
         return getattr(self.widget, "_initial_url", "")
 
     def getObject(self):
+        if isinstance(self.widget, WebResourceWidget):
+            return self.widget.browser
         return self.widget
 
     def getSrc(self):
+        if isinstance(self.widget, WebResourceWidget):
+            return self.widget.getSrc()
         if hasattr(self.widget, "url"):
             return self.widget.url().toString()
         return ""
 
     def setSrc(self, url: str):
+        if isinstance(self.widget, WebResourceWidget):
+            self.widget.setSrc(url)
+            return
         if hasattr(self.widget, "setUrl"):
             from PyQt6.QtCore import QUrl
             self.widget.setUrl(QUrl(url))
+
+    def addOnReadyStateComplete(self, func):
+        self._renderer.register_dynamic_event(
+            "onreadystatecomplete",
+            self.name,
+            func,
+        )
+
+    def removeOnReadyStateComplete(self, func):
+        self._renderer.unregister_dynamic_event(
+            "onreadystatecomplete",
+            self.name,
+            func,
+        )
 
 class PythonSection:
     def __init__(self, name, label, groupbox, controls_dict):
@@ -1167,14 +2258,38 @@ class PythonUIContext:
             
             # Identify Lookup Controls based on metadata
             attr_meta = next((a for a in self._renderer.entity_def.get("attributes", []) if a["LogicalName"] == name), None)
-            is_lookup = attr_meta.get("AttributeType") == "Lookup" if attr_meta else False
 
-            if isinstance(widget, QTableWidget):
+            if isinstance(widget, TimelineWidget):
+                ctrls_dict[name] = PythonTimelineControl(
+                    name,
+                    widget,
+                    lbl,
+                    self._renderer,
+                )
+            elif isinstance(widget, SubgridWidget):
+                ctrls_dict[name] = PythonGridControl(
+                    name,
+                    widget,
+                    lbl,
+                    self._renderer,
+                )
+            elif isinstance(widget, QTableWidget):
                 ctrls_dict[name] = PythonGridControl(name, widget, lbl, self._renderer)
-            elif is_lookup:
+            elif attr_meta and attr_meta.get("AttributeType") in {
+                "Lookup",
+                "Customer",
+                "Owner",
+            }:
                 ctrls_dict[name] = PythonLookupControl(name, widget, lbl, self._renderer)
             elif isinstance(widget, QComboBox):
                 ctrls_dict[name] = PythonOptionSetControl(name, widget, lbl, self._renderer)
+            elif isinstance(widget, WebResourceWidget):
+                ctrls_dict[name] = PythonIFrameControl(
+                    name,
+                    widget,
+                    lbl,
+                    self._renderer,
+                )
             elif "QWebEngineView" in str(type(widget)):
                 ctrls_dict[name] = PythonIFrameControl(name, widget, lbl, self._renderer)
             else:
@@ -1464,7 +2579,24 @@ class PythonFormContext:
         # Build data.entity
         attrs_dict = {}
         for name, widget in self._renderer.controls.items():
+            if isinstance(
+                widget,
+                (
+                    SubgridWidget,
+                    TimelineWidget,
+                    WebResourceWidget,
+                    QTableWidget,
+                ),
+            ):
+                continue
             attrs_dict[name] = PythonAttribute(name, widget, self._renderer)
+        parameter_attrs = {
+            name: PythonFormParameterAttribute(
+                name,
+                self._renderer,
+            )
+            for name in self._renderer.form_parameters
+        }
             
         entity_obj = type("Entity", (), {
             "attributes": PythonCollection(items_dict=attrs_dict),
@@ -1484,7 +2616,9 @@ class PythonFormContext:
         self.data = type("Data", (), {
             "entity": entity_obj,
             "process": PythonProcess(self._renderer),
-            "attributes": PythonCollection(items_dict=attrs_dict), # Shortcut
+            "attributes": PythonCollection(
+                items_dict=parameter_attrs
+            ),
             "addOnLoad": lambda func: self._renderer.register_dynamic_event("dataonload", None, func),
             "removeOnLoad": lambda func: self._renderer.unregister_dynamic_event("dataonload", None, func),
             "refresh": self._renderer.refresh_data,
@@ -1506,29 +2640,265 @@ class PythonFormContext:
         return self.ui.controls.get(logical_name)
 
 class VerseOffBridge(QObject):
+    operationCompleted = pyqtSignal(str, str)
+
     def __init__(self, renderer):
         super().__init__()
         self.renderer = renderer
 
+    @pyqtSlot(str)
+    def runtimeReady(self, runtime_id):
+        self.renderer._on_js_channel_ready(runtime_id)
+
     @pyqtSlot(str, str)
-    def updateFieldFromJS(self, field_name, value):
-        # Update PyQt widget without triggering a loop back to JS
+    def eventDispatchCompleted(self, token, result_json):
+        self.renderer._on_js_event_completed(token, result_json)
+
+    @pyqtSlot(str)
+    def injectWebResourceContextFromJS(self, control_name):
+        self.renderer.inject_web_resource_context(control_name)
+
+    @pyqtSlot(str, str)
+    def updateFieldFromJS(self, field_name, value_json):
+        try:
+            value = json.loads(value_json)
+        except json.JSONDecodeError as error:
+            self.renderer.set_form_notification(
+                f"Client script returned an invalid value for {field_name}: "
+                f"{error}",
+                "ERROR",
+                f"verseoff_invalid_value_{field_name}",
+            )
+            return
         if field_name in self.renderer.controls:
             widget = self.renderer.controls[field_name]
             widget.blockSignals(True)
-            if isinstance(widget, QLineEdit):
-                widget.setText(value)
-            elif isinstance(widget, QComboBox):
-                idx = widget.findData(value)
-                if idx >= 0:
-                    widget.setCurrentIndex(idx)
-            elif isinstance(widget, QCheckBox):
-                widget.setChecked(str(value).lower() == "true")
-            widget.blockSignals(False)
+            try:
+                self.renderer._set_widget_value(
+                    field_name,
+                    widget,
+                    {field_name: value},
+                )
+                widget._is_dirty = True
+            finally:
+                widget.blockSignals(False)
+
+    @pyqtSlot(str, str, str, str)
+    def updateGridCellFromJS(
+        self,
+        control_name,
+        row_id,
+        attribute_name,
+        value_json,
+    ):
+        try:
+            value = json.loads(value_json)
+            control = self.renderer.controls.get(control_name)
+            if not isinstance(control, SubgridWidget):
+                raise TypeError(
+                    f"{control_name!r} is not a grid control."
+                )
+            control.update_runtime_cell(row_id, attribute_name, value)
+        except (json.JSONDecodeError, KeyError, TypeError) as error:
+            self.renderer.set_form_notification(
+                f"Grid script update failed: {error}",
+                "ERROR",
+                "verseoff_grid_update_error",
+            )
+
+    @pyqtSlot(str, int)
+    def requestSaveFromJS(self, request_id, save_mode):
+        def save():
+            try:
+                saved = self.renderer.save_record(
+                    save_mode=save_mode
+                )
+                self.operationCompleted.emit(
+                    request_id,
+                    json.dumps({"saved": bool(saved)}),
+                )
+            except Exception as error:
+                logger.exception("Client API save failed")
+                self.operationCompleted.emit(
+                    request_id,
+                    json.dumps({"error": str(error)}),
+                )
+
+        QTimer.singleShot(0, save)
+
+    @pyqtSlot(str, bool)
+    def requestRefreshFormDataFromJS(self, request_id, save):
+        def refresh():
+            try:
+                if save and not self.renderer.save_record():
+                    raise RuntimeError(
+                        "Save was canceled before data refresh."
+                    )
+                if not save:
+                    self.renderer.refresh_data(save=False)
+                self.operationCompleted.emit(
+                    request_id,
+                    json.dumps({"refreshed": True}),
+                )
+            except Exception as error:
+                logger.exception("Client API refresh failed")
+                self.operationCompleted.emit(
+                    request_id,
+                    json.dumps({"error": str(error)}),
+                )
+
+        QTimer.singleShot(0, refresh)
 
     @pyqtSlot()
-    def triggerSaveFromJS(self):
-        self.renderer.save_record()
+    def refreshRibbonFromJS(self):
+        self.renderer.evaluate_ribbon_rules()
+
+    @pyqtSlot()
+    def closeFormFromJS(self):
+        self.renderer.handle_close()
+
+    @pyqtSlot(str)
+    def setControlFocusFromJS(self, control_name):
+        control = self.renderer.controls.get(control_name)
+        if control is not None:
+            control.setFocus()
+
+    @pyqtSlot(str, bool)
+    def setTabVisibleFromJS(self, tab_name, visible):
+        tab = self.renderer.ui_hierarchy.get("tabs", {}).get(tab_name)
+        if tab is None or self.renderer.tab_widget is None:
+            return
+        index = int(tab.get("index") or 0)
+        self.renderer.tab_widget.setTabVisible(index, visible)
+
+    @pyqtSlot(str, str)
+    def setTabLabelFromJS(self, tab_name, label):
+        tab = self.renderer.ui_hierarchy.get("tabs", {}).get(tab_name)
+        if tab is None or self.renderer.tab_widget is None:
+            return
+        index = int(tab.get("index") or 0)
+        tab["label"] = label
+        self.renderer.tab_widget.setTabText(index, label)
+
+    @pyqtSlot(str, str)
+    def setTabDisplayStateFromJS(self, tab_name, state):
+        if state != "expanded":
+            return
+        tab = self.renderer.ui_hierarchy.get("tabs", {}).get(tab_name)
+        if tab is not None and self.renderer.tab_widget is not None:
+            self.renderer.tab_widget.setCurrentIndex(
+                int(tab.get("index") or 0)
+            )
+
+    @pyqtSlot(str, str, bool)
+    def setSectionVisibleFromJS(
+        self,
+        tab_name,
+        section_name,
+        visible,
+    ):
+        section = (
+            self.renderer.ui_hierarchy.get("tabs", {})
+            .get(tab_name, {})
+            .get("sections", {})
+            .get(section_name)
+        )
+        if section and section.get("groupbox") is not None:
+            section["groupbox"].setVisible(visible)
+
+    @pyqtSlot(str, str, str)
+    def setSectionLabelFromJS(
+        self,
+        tab_name,
+        section_name,
+        label,
+    ):
+        section = (
+            self.renderer.ui_hierarchy.get("tabs", {})
+            .get(tab_name, {})
+            .get("sections", {})
+            .get(section_name)
+        )
+        if section and section.get("groupbox") is not None:
+            section["label"] = label
+            section["groupbox"].setTitle(label)
+
+    @pyqtSlot(str)
+    def navigateFormFromJS(self, form_id):
+        normalized = self.renderer._normalize_form_id(form_id)
+        form = next(
+            (
+                item
+                for item in self.renderer._get_main_form_defs()
+                if normalized in {
+                    self.renderer._normalize_form_id(
+                        item.get("formid")
+                    ),
+                    self.renderer._normalize_form_id(
+                        item.get("formidunique")
+                    ),
+                }
+            ),
+            None,
+        )
+        if form is None:
+            self.renderer.set_form_notification(
+                f"Form {form_id!r} is not packaged.",
+                "ERROR",
+                "verseoff_form_navigation_error",
+            )
+            return
+        if hasattr(self.renderer, "form_combo"):
+            for index in range(self.renderer.form_combo.count()):
+                if self.renderer._normalize_form_id(
+                    self.renderer.form_combo.itemData(index)
+                ) == normalized:
+                    self.renderer.form_combo.setCurrentIndex(index)
+                    return
+        self.renderer.form_id = form_id
+
+    @pyqtSlot(str, result=str)
+    def updateProcessStateFromJS(self, process_state_json):
+        try:
+            state = json.loads(process_state_json or "{}")
+            valid_processes = {
+                process["id"]: {
+                    stage["id"]
+                    for stage in process.get("stages", [])
+                }
+                for process in self.renderer._process_runtime_state().get(
+                    "processes",
+                    [],
+                )
+            }
+            process_id = state.get("activeProcessId") or ""
+            stage_id = state.get("activeStageId") or ""
+            selected_stage_id = state.get("selectedStageId") or stage_id
+            if process_id and process_id not in valid_processes:
+                raise ValueError(
+                    f"Process {process_id!r} is not packaged."
+                )
+            if stage_id and stage_id not in valid_processes.get(
+                process_id,
+                set(),
+            ):
+                raise ValueError(
+                    f"Stage {stage_id!r} is not in process {process_id!r}."
+                )
+            current = self.renderer._process_runtime_state()
+            current["activeProcessId"] = process_id
+            current["activeStageId"] = stage_id
+            current["selectedStageId"] = selected_stage_id
+            self.renderer._client_process_state = current
+            self.renderer._update_bpf_stage_styles()
+            return json.dumps({"updated": True})
+        except (
+            json.JSONDecodeError,
+            TypeError,
+            ValueError,
+        ) as error:
+            return json.dumps({"error": str(error)})
+
 
     @pyqtSlot(str, bool)
     def setControlVisibleFromJS(self, control_name, is_visible):
@@ -1542,6 +2912,62 @@ class VerseOffBridge(QObject):
         if control_name in self.renderer.controls:
             self.renderer.controls[control_name].setDisabled(is_disabled)
 
+    @pyqtSlot(str)
+    def refreshControlFromJS(self, control_name):
+        control = self.renderer.controls.get(control_name)
+        if isinstance(control, TimelineWidget):
+            control.refresh()
+        elif isinstance(control, SubgridWidget):
+            control.refresh_data()
+        elif hasattr(control, "refresh"):
+            control.refresh()
+
+    @pyqtSlot(str, str)
+    def setGridViewFromJS(self, control_name, view_json):
+        control = self.renderer.controls.get(control_name)
+        if not isinstance(control, SubgridWidget):
+            self.renderer.set_form_notification(
+                f"{control_name!r} is not a subgrid.",
+                "ERROR",
+                "verseoff_grid_view_error",
+            )
+            return
+        try:
+            view_reference = json.loads(view_json or "{}")
+            view_id = view_reference.get("id") or view_reference.get(
+                "viewId"
+            )
+            if not view_id:
+                raise ValueError("View reference has no id.")
+            control.view_id = control._normalize_id(view_id)
+            control.refresh_data()
+        except (json.JSONDecodeError, ValueError) as error:
+            self.renderer.set_form_notification(
+                f"Could not change subgrid view: {error}",
+                "ERROR",
+                "verseoff_grid_view_error",
+            )
+
+    @pyqtSlot(str)
+    def openRelatedGridFromJS(self, control_name):
+        control = self.renderer.controls.get(control_name)
+        if not isinstance(control, SubgridWidget):
+            self.renderer.set_form_notification(
+                f"{control_name!r} is not a subgrid.",
+                "ERROR",
+                "verseoff_related_grid_error",
+            )
+            return
+        app_window = self.renderer.window()
+        if hasattr(app_window, "navigate_to_entity"):
+            app_window.navigate_to_entity(control.target_entity)
+            return
+        self.renderer.set_form_notification(
+            "The current host cannot open the related grid.",
+            "ERROR",
+            "verseoff_related_grid_error",
+        )
+
     @pyqtSlot(str, str, str)
     def setFormNotificationFromJS(self, msg, level, id):
         self.renderer.set_form_notification(msg, level, id)
@@ -1549,6 +2975,102 @@ class VerseOffBridge(QObject):
     @pyqtSlot(str)
     def clearFormNotificationFromJS(self, id):
         self.renderer.clear_form_notification(id)
+
+    @pyqtSlot(str, result=str)
+    def addGlobalNotificationFromJS(self, notification_json):
+        try:
+            notification = json.loads(notification_json or "{}")
+            if not isinstance(notification, dict):
+                raise TypeError("notification must be an object.")
+            if notification.get("type") != 2:
+                raise ValueError(
+                    "Only global notification type 2 is supported."
+                )
+            if notification.get("level") not in {1, 2, 3, 4}:
+                raise ValueError(
+                    "Global notification level must be 1, 2, 3, or 4."
+                )
+            unique_id = str(uuid.uuid4())
+            level = {
+                1: "INFO",
+                2: "ERROR",
+                3: "WARNING",
+                4: "INFO",
+            }[notification["level"]]
+            self.renderer.set_form_notification(
+                notification.get("message") or "",
+                level,
+                f"global_{unique_id}",
+            )
+            return json.dumps({"id": unique_id})
+        except (
+            json.JSONDecodeError,
+            TypeError,
+            ValueError,
+        ) as error:
+            return json.dumps({"error": str(error)})
+
+    @pyqtSlot(str, result=str)
+    def clearGlobalNotificationFromJS(self, unique_id):
+        removed = self.renderer.clear_form_notification(
+            f"global_{unique_id}"
+        )
+        if not removed:
+            return json.dumps({
+                "error": f"Global notification {unique_id!r} was not found."
+            })
+        return json.dumps({})
+
+    @pyqtSlot(str, result=str)
+    def pickFileFromJS(self, options_json):
+        try:
+            options = json.loads(options_json or "{}")
+            allow_multiple = bool(
+                options.get("allowMultipleFiles")
+            )
+            if allow_multiple:
+                paths, _ = QFileDialog.getOpenFileNames(
+                    self.renderer,
+                    "Select files",
+                )
+            else:
+                path, _ = QFileDialog.getOpenFileName(
+                    self.renderer,
+                    "Select file",
+                )
+                paths = [path] if path else []
+            import base64
+            import mimetypes
+            maximum = int(
+                options.get("maximumAllowedFileSize") or 0
+            )
+            result = []
+            for path in paths:
+                size = os.path.getsize(path)
+                if maximum and size > maximum:
+                    raise ValueError(
+                        f"{os.path.basename(path)} exceeds the maximum "
+                        "allowed file size."
+                    )
+                with open(path, "rb") as file:
+                    content = base64.b64encode(file.read()).decode("ascii")
+                result.append({
+                    "fileContent": content,
+                    "fileName": os.path.basename(path),
+                    "fileSize": size,
+                    "mimeType": (
+                        mimetypes.guess_type(path)[0]
+                        or "application/octet-stream"
+                    ),
+                })
+            return json.dumps(result)
+        except (
+            json.JSONDecodeError,
+            OSError,
+            TypeError,
+            ValueError,
+        ) as error:
+            return json.dumps({"error": str(error)})
 
     @pyqtSlot(str)
     def showAlertFromJS(self, msg):
@@ -1568,61 +3090,205 @@ class VerseOffBridge(QObject):
 
     @pyqtSlot(str, str)
     def openFileFromJS(self, file_name, file_content_base64):
-        import tempfile
-        import os
         import base64
         import subprocess
         import sys
         
         try:
-            temp_dir = tempfile.gettempdir()
-            file_path = os.path.join(temp_dir, file_name)
-            
+            safe_name = os.path.basename(str(file_name or ""))
+            if not safe_name or safe_name != str(file_name):
+                raise ValueError("The file name is invalid.")
+            temp_dir = tempfile.mkdtemp(prefix="verseoff-file-")
+            file_path = os.path.join(temp_dir, safe_name)
             with open(file_path, "wb") as f:
-                f.write(base64.b64decode(file_content_base64))
+                f.write(
+                    base64.b64decode(
+                        file_content_base64,
+                        validate=True,
+                    )
+                )
                 
             if os.name == 'nt':
                 os.startfile(file_path)
             else:
                 subprocess.call(('open' if sys.platform == 'darwin' else 'xdg-open', file_path))
-        except Exception as e:
-            from PyQt6.QtWidgets import QMessageBox
-            QMessageBox.critical(self.renderer, "File Error", f"Failed to open file natively: {e}")
-
-    @pyqtSlot(str, str)
-    def openFormFromJS(self, entity_name, record_id):
-        try:
-            if not hasattr(self.renderer, "child_forms"):
-                self.renderer.child_forms = []
-                
-            new_form = XrmFormRenderer(
-                manifest_data=self.renderer.manifest_data,
-                logical_name=entity_name,
-                record_id=record_id if record_id else None
+        except (
+            OSError,
+            TypeError,
+            ValueError,
+            subprocess.SubprocessError,
+        ) as error:
+            self.renderer.set_form_notification(
+                f"Could not open file: {error}",
+                "ERROR",
+                "verseoff_file_error",
             )
-            new_form.show()
-            self.renderer.child_forms.append(new_form)
-        except Exception as e:
-            from PyQt6.QtWidgets import QMessageBox
-            QMessageBox.critical(self.renderer, "Error", f"Failed to open form: {e}")
+
+    def _open_entity_form(
+        self,
+        entity_options,
+        form_parameters,
+        navigation_options=None,
+    ):
+        entity_name = str(
+            entity_options.get("entityName") or ""
+        ).strip()
+        if not entity_name:
+            raise ValueError("entityFormOptions.entityName is required.")
+        entity_definition = next(
+            (
+                entity
+                for entity in self.renderer.manifest.get("entities", [])
+                if entity.get("LogicalName") == entity_name
+            ),
+            None,
+        )
+        if entity_definition is None:
+            raise ValueError(
+                f"Table {entity_name!r} is not packaged in this app."
+            )
+        record_id = str(
+            entity_options.get("entityId") or ""
+        ).strip().strip("{}")
+        form_id = entity_options.get("formId")
+        open_in_new_window = bool(
+            entity_options.get("openInNewWindow")
+        )
+        use_quick_create = bool(
+            entity_options.get("useQuickCreateForm")
+        )
+        if use_quick_create and open_in_new_window:
+            raise ValueError(
+                "Quick Create forms cannot open in a new window."
+            )
+        window_only_options = {
+            "cmdbar",
+            "height",
+            "navbar",
+            "width",
+        }
+        invalid_window_options = [
+            name
+            for name in window_only_options
+            if (
+                name in entity_options
+                and not open_in_new_window
+            )
+        ]
+        if invalid_window_options:
+            raise ValueError(
+                "openInNewWindow is required for option(s): "
+                + ", ".join(sorted(invalid_window_options))
+            )
+        expected_type = 7 if use_quick_create else 2
+        candidate_forms = [
+            form
+            for form in entity_definition.get("forms", [])
+            if str(form.get("type") or expected_type)
+            == str(expected_type)
+        ]
+        if use_quick_create and not candidate_forms:
+            raise ValueError(
+                f"No Quick Create form is packaged for {entity_name}."
+            )
+        if form_id:
+            normalized_form_id = str(form_id).strip().strip("{}").lower()
+            if not any(
+                normalized_form_id in {
+                    str(form.get("formid") or "")
+                    .strip()
+                    .strip("{}")
+                    .lower(),
+                    str(form.get("formidunique") or "")
+                    .strip()
+                    .strip("{}")
+                    .lower(),
+                }
+                for form in candidate_forms
+            ):
+                raise ValueError(
+                    f"Form {form_id!r} is not packaged for {entity_name}."
+                )
+        if not hasattr(self.renderer, "child_forms"):
+            self.renderer.child_forms = []
+        new_form = XrmFormRenderer(
+            manifest_data=self.renderer.manifest,
+            logical_name=entity_name,
+            record_id=record_id or None,
+            form_id=form_id,
+            form_parameters=form_parameters,
+            navigation_options=navigation_options,
+            form_type=7 if use_quick_create else None,
+        )
+        if entity_options.get("width") or entity_options.get("height"):
+            new_form.resize(
+                max(320, int(entity_options.get("width") or 900)),
+                max(240, int(entity_options.get("height") or 700)),
+            )
+        new_form.show()
+        self.renderer.child_forms.append(new_form)
+        return new_form
+
+    @pyqtSlot(str, str, result=str)
+    def openFormFromJS(self, options_json, parameters_json):
+        try:
+            options = json.loads(options_json or "{}")
+            parameters = json.loads(parameters_json or "{}")
+            if not isinstance(options, dict) or not isinstance(
+                parameters,
+                dict,
+            ):
+                raise TypeError(
+                    "openForm options and parameters must be objects."
+                )
+            self._open_entity_form(options, parameters)
+            return json.dumps(
+                {"savedEntityReference": []},
+                ensure_ascii=False,
+            )
+        except (json.JSONDecodeError, TypeError, ValueError) as error:
+            return json.dumps({"error": str(error)})
 
     @pyqtSlot(str)
     def openUrlFromJS(self, url):
         import webbrowser
         try:
+            parsed = urlparse(url)
+            if parsed.scheme.casefold() not in {"http", "https", "mailto"}:
+                raise ValueError(
+                    f"URL scheme {parsed.scheme!r} is not allowed."
+                )
             webbrowser.open(url)
-        except Exception as e:
-            from PyQt6.QtWidgets import QMessageBox
-            QMessageBox.critical(self.renderer, "URL Error", f"Failed to open URL natively: {e}")
+        except (OSError, ValueError) as error:
+            self.renderer.set_form_notification(
+                f"Could not open URL: {error}",
+                "ERROR",
+                "verseoff_url_error",
+            )
 
-    @pyqtSlot(str, str)
-    def openWebResourceFromJS(self, web_resource_name, data):
-        from PyQt6.QtWidgets import QMessageBox
-        QMessageBox.information(
-            self.renderer, 
-            "Dataverse Web Resource", 
-            f"Mocking Web Resource Dialog\n\nName: {web_resource_name}\nData: {data}"
-        )
+    @pyqtSlot(str, str, str)
+    def openWebResourceFromJS(
+        self,
+        web_resource_name,
+        options_json,
+        data,
+    ):
+        try:
+            options = json.loads(options_json or "{}")
+            if not isinstance(options, dict):
+                raise TypeError("windowOptions must be an object.")
+            self.renderer.open_web_resource(
+                web_resource_name,
+                data,
+                options,
+                embedded=False,
+            )
+        except (json.JSONDecodeError, TypeError, ValueError) as error:
+            self.renderer.set_form_notification(
+                f"Could not open web resource: {error}",
+                "ERROR",
+                "verseoff_webresource_open_error",
+            )
 
     @pyqtSlot(str, str)
     def loadPanelFromJS(self, url, title):
@@ -1635,222 +3301,2660 @@ class VerseOffBridge(QObject):
 
     @pyqtSlot(str)
     def showProgressFromJS(self, msg):
-        print(f"Xrm.Utility Progress: {msg}")
+        self.renderer.set_form_notification(
+            msg or "Working...",
+            "INFO",
+            "verseoff_progress",
+        )
 
     @pyqtSlot()
     def closeProgressFromJS(self):
-        print("Xrm.Utility Progress Closed")
+        self.renderer.clear_form_notification("verseoff_progress")
+
+    @pyqtSlot(str)
+    def webResourceReadyFromJS(self, control_name):
+        if control_name:
+            control = self.renderer.controls.get(control_name)
+            if isinstance(control, WebResourceWidget):
+                control._runtime_ready = True
+            QTimer.singleShot(
+                0,
+                lambda: self.renderer._fire_events(
+                    "onreadystatecomplete",
+                    control_name,
+                ),
+            )
+
+    @pyqtSlot(str, str)
+    def setWebResourceSourceFromJS(self, control_name, resource_name):
+        control = self.renderer.controls.get(control_name)
+        if not isinstance(control, WebResourceWidget):
+            self.renderer.set_form_notification(
+                f"{control_name!r} is not a web-resource control.",
+                "ERROR",
+                "verseoff_webresource_control_error",
+            )
+            return
+        try:
+            control.setSrc(resource_name)
+        except (FileNotFoundError, ValueError) as error:
+            self.renderer.set_form_notification(
+                f"Could not change web resource: {error}",
+                "ERROR",
+                "verseoff_webresource_control_error",
+            )
+
+    @pyqtSlot(str, str)
+    def setWebResourceDataFromJS(self, control_name, data):
+        control = self.renderer.controls.get(control_name)
+        if not isinstance(control, WebResourceWidget):
+            self.renderer.set_form_notification(
+                f"{control_name!r} is not a web-resource control.",
+                "ERROR",
+                "verseoff_webresource_control_error",
+            )
+            return
+        control.setData(data)
+
+    @pyqtSlot(str, str, str, str)
+    def requestWebResourceInvocationFromJS(
+        self,
+        request_id,
+        control_name,
+        function_name,
+        arguments_json,
+    ):
+        control = self.renderer.controls.get(control_name)
+        if not isinstance(control, WebResourceWidget):
+            self.operationCompleted.emit(
+                request_id,
+                json.dumps({
+                    "error": f"{control_name!r} is not a web resource."
+                }),
+            )
+            return
+        if not control._runtime_ready:
+            self.operationCompleted.emit(
+                request_id,
+                json.dumps({
+                    "error": (
+                        f"Web resource {control_name!r} is not ready."
+                    )
+                }),
+            )
+            return
+        if (
+            function_name != "__postMessage"
+            and not re.fullmatch(
+                r"[A-Za-z_$][A-Za-z0-9_$]*"
+                r"(?:\.[A-Za-z_$][A-Za-z0-9_$]*)*",
+                function_name,
+            )
+        ):
+            self.operationCompleted.emit(
+                request_id,
+                json.dumps({
+                    "error": (
+                        "The web-resource function name is invalid."
+                    )
+                }),
+            )
+            return
+        try:
+            arguments = json.loads(arguments_json or "[]")
+            if not isinstance(arguments, list):
+                raise TypeError("Function arguments must be an array.")
+        except (json.JSONDecodeError, TypeError) as error:
+            self.operationCompleted.emit(
+                request_id,
+                json.dumps({"error": str(error)}),
+            )
+            return
+        invocation_json = json.dumps({
+            "arguments": arguments,
+            "functionName": function_name,
+            "requestId": request_id,
+        }, ensure_ascii=False)
+        script = """
+        (function() {
+          try {
+            var invocation = __INVOCATION__;
+            var frame = document.getElementById('resource-frame');
+            var child = frame.contentWindow;
+            var args = invocation.arguments;
+            var result;
+            if (invocation.functionName === '__postMessage') {
+              child.postMessage(args[0], args[1] || '*');
+              result = null;
+            } else {
+              var owner = child;
+              var parts = invocation.functionName.split('.');
+              for (var index = 0; index < parts.length - 1; index++) {
+                owner = owner[parts[index]];
+              }
+              var fn = owner[parts[parts.length - 1]];
+              if (typeof fn !== 'function') {
+                throw new Error(
+                  'Function was not found: ' + invocation.functionName
+                );
+              }
+              result = fn.apply(owner, args);
+            }
+            Promise.resolve(result).then(function(value) {
+              window.pyBridge.webResourceInvocationCompleted(
+                invocation.requestId,
+                JSON.stringify({value: value === undefined ? null : value})
+              );
+            }).catch(function(error) {
+              window.pyBridge.webResourceInvocationCompleted(
+                invocation.requestId,
+                JSON.stringify({error: String(
+                  error && error.message ? error.message : error
+                )})
+              );
+            });
+          } catch (error) {
+            window.pyBridge.webResourceInvocationCompleted(
+              invocation.requestId,
+              JSON.stringify({error: String(
+                error && error.message ? error.message : error
+              )})
+            );
+          }
+        })();
+        """.replace("__INVOCATION__", invocation_json)
+        control.browser.page().runJavaScript(script)
+
+    @pyqtSlot(str, str)
+    def webResourceInvocationCompleted(
+        self,
+        request_id,
+        result_json,
+    ):
+        self.operationCompleted.emit(request_id, result_json)
+
+    @pyqtSlot(str, str, str)
+    def addLookupFilterFromJS(
+        self,
+        control_name,
+        filter_xml,
+        entity_name,
+    ):
+        control = self.renderer.controls.get(control_name)
+        if not isinstance(control, LookupWidget):
+            self.renderer.set_form_notification(
+                f"{control_name!r} is not a lookup control.",
+                "ERROR",
+                "verseoff_lookup_filter_error",
+            )
+            return
+        try:
+            ET.fromstring(filter_xml)
+        except ET.ParseError as error:
+            self.renderer.set_form_notification(
+                f"Lookup filter XML is invalid: {error}",
+                "ERROR",
+                "verseoff_lookup_filter_error",
+            )
+            return
+        control._custom_filters.append({
+            "filter": filter_xml,
+            "entity": entity_name or None,
+        })
+
+    @pyqtSlot(str, str)
+    def addLookupViewFromJS(self, control_name, view_json):
+        control = self.renderer.controls.get(control_name)
+        if not isinstance(control, LookupWidget):
+            self.renderer.set_form_notification(
+                f"{control_name!r} is not a lookup control.",
+                "ERROR",
+                "verseoff_lookup_view_error",
+            )
+            return
+        try:
+            view = json.loads(view_json or "{}")
+            ET.fromstring(view.get("fetchXml") or "<fetch />")
+            ET.fromstring(view.get("layoutXml") or "<grid />")
+            control._custom_views.append(view)
+            if view.get("isDefault"):
+                control._default_view = view.get("viewId")
+        except (ET.ParseError, json.JSONDecodeError) as error:
+            self.renderer.set_form_notification(
+                f"Lookup view metadata is invalid: {error}",
+                "ERROR",
+                "verseoff_lookup_view_error",
+            )
+
+    @pyqtSlot(str, str)
+    def setLookupEntityTypesFromJS(
+        self,
+        control_name,
+        entity_types_json,
+    ):
+        control = self.renderer.controls.get(control_name)
+        if not isinstance(control, LookupWidget):
+            return
+        try:
+            entity_types = json.loads(entity_types_json or "[]")
+            packaged = {
+                entity.get("LogicalName")
+                for entity in self.renderer.manifest.get("entities", [])
+            }
+            missing = [
+                name for name in entity_types if name not in packaged
+            ]
+            if missing:
+                raise ValueError(
+                    "Lookup table(s) are not packaged: "
+                    + ", ".join(missing)
+                )
+            control.target_entities = list(entity_types)
+        except (json.JSONDecodeError, TypeError, ValueError) as error:
+            self.renderer.set_form_notification(
+                f"Could not set lookup entity types: {error}",
+                "ERROR",
+                "verseoff_lookup_type_error",
+            )
+
+    @pyqtSlot(str, str)
+    def setLookupDefaultViewFromJS(self, control_name, view_id):
+        control = self.renderer.controls.get(control_name)
+        if isinstance(control, LookupWidget):
+            control._default_view = view_id or None
 
     @pyqtSlot(str, result=str)
     def lookupObjectsFromJS(self, entity_types):
-        import json
-        mock_selection = [{"id": "{1234}", "name": "Mock Selection", "entityType": entity_types.split(",")[0] if entity_types else "account"}]
-        return json.dumps(mock_selection)
-
-    @pyqtSlot(str, result=str)
-    def getEntityMetadataFromJS(self, entity_name):
-        import json
-        from db import LocalDatabase
         try:
-            with LocalDatabase().get_connection() as conn:
-                cursor = conn.cursor()
-                cursor.execute("SELECT metadata FROM entity_metadata WHERE logical_name = ?", (entity_name,))
-                row = cursor.fetchone()
-                if row and row[0]:
-                    return row[0]
-        except Exception as e:
-            print(f"Error fetching metadata from JS bridge: {e}")
-        return "{}"
+            requested = [
+                name.strip()
+                for name in str(entity_types or "").split(",")
+                if name.strip()
+            ]
+            if not requested:
+                raise ValueError(
+                    "lookupObjects requires at least one entity type."
+                )
+            definitions = {
+                entity.get("LogicalName"): entity
+                for entity in self.renderer.manifest.get("entities", [])
+            }
+            missing = [
+                name for name in requested if name not in definitions
+            ]
+            if missing:
+                raise ValueError(
+                    "Lookup table(s) are not packaged: "
+                    + ", ".join(missing)
+                )
+            dialog = QDialog(self.renderer)
+            dialog.setWindowTitle("Select records")
+            dialog.resize(720, 460)
+            layout = QVBoxLayout(dialog)
+            table = QTableWidget()
+            table.setColumnCount(3)
+            table.setHorizontalHeaderLabels(
+                ["Table", "Name", "ID"]
+            )
+            table.setSelectionBehavior(
+                QTableWidget.SelectionBehavior.SelectRows
+            )
+            table.setSelectionMode(
+                QTableWidget.SelectionMode.ExtendedSelection
+            )
+            rows = []
+            database = LocalDatabase()
+            for entity_name in requested:
+                definition = definitions[entity_name]
+                primary_id = (
+                    definition.get("PrimaryIdAttribute")
+                    or f"{entity_name}id"
+                )
+                primary_name = (
+                    definition.get("PrimaryNameAttribute") or "name"
+                )
+                for record in database.list_records(entity_name):
+                    rows.append({
+                        "id": (
+                            record.get(primary_id)
+                            or record.get("id")
+                            or ""
+                        ),
+                        "name": record.get(primary_name) or "",
+                        "entityType": entity_name,
+                    })
+            table.setRowCount(len(rows))
+            for row_index, row in enumerate(rows):
+                for column_index, key in enumerate(
+                    ("entityType", "name", "id")
+                ):
+                    item = QTableWidgetItem(str(row[key]))
+                    if column_index == 0:
+                        item.setData(Qt.ItemDataRole.UserRole, row)
+                    table.setItem(row_index, column_index, item)
+            layout.addWidget(table)
+            buttons = QDialogButtonBox(
+                QDialogButtonBox.StandardButton.Ok
+                | QDialogButtonBox.StandardButton.Cancel
+            )
+            buttons.accepted.connect(dialog.accept)
+            buttons.rejected.connect(dialog.reject)
+            layout.addWidget(buttons)
+            if dialog.exec() != QDialog.DialogCode.Accepted:
+                return json.dumps([])
+            selected = []
+            for index in table.selectionModel().selectedRows():
+                item = table.item(index.row(), 0)
+                if item is not None:
+                    selected.append(
+                        item.data(Qt.ItemDataRole.UserRole)
+                    )
+            return json.dumps(selected, ensure_ascii=False)
+        except (TypeError, ValueError) as error:
+            return json.dumps({"error": str(error)})
+
+    @pyqtSlot(str, str, result=str)
+    def getEntityMetadataFromJS(self, entity_name, attributes_json):
+        try:
+            requested_attributes = json.loads(
+                attributes_json or "[]"
+            )
+            if not isinstance(requested_attributes, list):
+                raise TypeError("attributes must be an array.")
+        except (json.JSONDecodeError, TypeError) as error:
+            return json.dumps({"error": str(error)})
+        entity = next(
+            (
+                item
+                for item in self.renderer.manifest.get("entities", [])
+                if item.get("LogicalName") == entity_name
+            ),
+            None,
+        )
+        if entity is None:
+            return json.dumps({
+                "error": f"Table metadata is unavailable for {entity_name}."
+            })
+        result = dict(entity)
+        if requested_attributes:
+            requested = set(requested_attributes)
+            result["attributes"] = [
+                attribute
+                for attribute in entity.get("attributes", [])
+                if attribute.get("LogicalName") in requested
+            ]
+        return json.dumps(result, ensure_ascii=False)
 
     @pyqtSlot(str, str, result=str)
     def getEntityMainFormDescriptorFromJS(self, entity_name, form_id):
-        import json
-        from db import LocalDatabase
-        try:
-            with LocalDatabase().get_connection() as conn:
-                cursor = conn.cursor()
-                if form_id:
-                    cursor.execute("SELECT parsed_ui_hints FROM form_metadata_cache WHERE form_id = ?", (form_id,))
-                else:
-                    cursor.execute("SELECT parsed_ui_hints FROM form_metadata_cache WHERE entity_name = ?", (entity_name,))
-                row = cursor.fetchone()
-                if row and row[0]:
-                    return row[0]
-        except Exception as e:
-            print(f"Error fetching form descriptor from JS bridge: {e}")
-        return "{}"
+        entity = next(
+            (
+                item
+                for item in self.renderer.manifest.get("entities", [])
+                if item.get("LogicalName") == entity_name
+            ),
+            {},
+        )
+        requested = self.renderer._normalize_form_id(form_id)
+        forms = entity.get("forms", [])
+        form = next(
+            (
+                item
+                for item in forms
+                if requested
+                and requested
+                in {
+                    self.renderer._normalize_form_id(item.get("formid")),
+                    self.renderer._normalize_form_id(
+                        item.get("formidunique")
+                    ),
+                }
+            ),
+            next(
+                (
+                    item
+                    for item in forms
+                    if str(item.get("type") or "") == "2"
+                ),
+                None,
+            ),
+        )
+        if form is None:
+            return json.dumps({
+                "error": (
+                    f"Main form {form_id or '<default>'} is unavailable "
+                    f"for {entity_name}."
+                )
+            })
+        return json.dumps(form, ensure_ascii=False)
 
     @pyqtSlot(str)
     def refreshParentGridFromJS(self, options_str):
-        print(f"Xrm.Utility: refreshParentGrid called with options: {options_str}")
+        app_window = self.renderer.window()
+        if hasattr(app_window, "refresh_grid"):
+            app_window.refresh_grid()
+            return
+        self.renderer.set_form_notification(
+            "The parent grid is not available in this host.",
+            "WARNING",
+            "verseoff_parent_grid_unavailable",
+        )
+
+    def _entity_definition(self, entity_name):
+        return next(
+            (
+                item
+                for item in self.renderer.manifest.get("entities", [])
+                if item.get("LogicalName") == entity_name
+            ),
+            None,
+        )
+
+    def _validate_webapi_data(self, entity, data, operation):
+        if not isinstance(data, dict):
+            raise TypeError("WebApi data must be an object.")
+        attributes = {
+            item.get("LogicalName"): item
+            for item in entity.get("attributes", [])
+            if item.get("LogicalName")
+        }
+        navigation_properties = {
+            binding.get("navigation_property")
+            for targets in entity.get("lookup_bindings", {}).values()
+            for binding in targets.values()
+            if binding.get("navigation_property")
+        }
+        for key in data:
+            base_name = key.split("@", 1)[0]
+            if (
+                key.startswith("@")
+                or base_name in navigation_properties
+                or key.endswith("@odata.bind")
+            ):
+                continue
+            attribute = attributes.get(base_name)
+            if attribute is None:
+                raise ValueError(
+                    f"Column {base_name!r} does not exist on "
+                    f"{entity.get('LogicalName')}."
+                )
+            validity_key = (
+                "IsValidForCreate"
+                if operation == "create"
+                else "IsValidForUpdate"
+            )
+            if attribute.get(validity_key) is False:
+                raise ValueError(
+                    f"Column {base_name!r} is not valid for {operation}."
+                )
+
+    @staticmethod
+    def _odata_literal(value):
+        text = unquote(str(value or "")).strip()
+        if text.casefold() == "null":
+            return None
+        if text.casefold() in {"true", "false"}:
+            return text.casefold() == "true"
+        if text.startswith("'") and text.endswith("'"):
+            return text[1:-1].replace("''", "'")
+        try:
+            return int(text)
+        except ValueError:
+            try:
+                return float(text)
+            except ValueError:
+                return text
+
+    @classmethod
+    def _filter_record(cls, record, filter_expression):
+        expression = unquote(filter_expression or "").strip()
+        if not expression:
+            return True
+        if re.search(r"\s+or\s+", expression, re.IGNORECASE):
+            raise ValueError(
+                "Offline WebApi filters currently support conjunctions "
+                "only; OR expressions must use FetchXML."
+            )
+        conditions = re.split(
+            r"\s+and\s+",
+            expression,
+            flags=re.IGNORECASE,
+        )
+        for condition in conditions:
+            function_match = re.fullmatch(
+                r"(contains|startswith|endswith)\("
+                r"([A-Za-z_][A-Za-z0-9_]*),\s*(.+)\)",
+                condition.strip(),
+                re.IGNORECASE,
+            )
+            if function_match:
+                function_name, field, raw_value = (
+                    function_match.groups()
+                )
+                current = str(record.get(field) or "")
+                expected = str(cls._odata_literal(raw_value) or "")
+                comparisons = {
+                    "contains": expected.casefold() in current.casefold(),
+                    "startswith": current.casefold().startswith(
+                        expected.casefold()
+                    ),
+                    "endswith": current.casefold().endswith(
+                        expected.casefold()
+                    ),
+                }
+                if not comparisons[function_name.casefold()]:
+                    return False
+                continue
+            comparison = re.fullmatch(
+                r"([A-Za-z_][A-Za-z0-9_]*)\s+"
+                r"(eq|ne|gt|ge|lt|le)\s+(.+)",
+                condition.strip(),
+                re.IGNORECASE,
+            )
+            if not comparison:
+                raise ValueError(
+                    f"Unsupported offline OData filter: {condition}"
+                )
+            field, operator, raw_value = comparison.groups()
+            current = record.get(field)
+            expected = cls._odata_literal(raw_value)
+            try:
+                result = {
+                    "eq": current == expected,
+                    "ne": current != expected,
+                    "gt": current is not None and current > expected,
+                    "ge": current is not None and current >= expected,
+                    "lt": current is not None and current < expected,
+                    "le": current is not None and current <= expected,
+                }[operator.casefold()]
+            except TypeError:
+                result = False
+            if not result:
+                return False
+        return True
+
+    @classmethod
+    def _apply_odata_options(
+        cls,
+        records,
+        options,
+        max_page_size,
+    ):
+        text = str(options or "")
+        if text.startswith("offline://"):
+            text = urlparse(text).query
+        if text.startswith("?"):
+            text = text[1:]
+        query = parse_qs(text, keep_blank_values=True)
+        fetch_key = next(
+            (
+                key
+                for key in query
+                if key.casefold() == "fetchxml"
+            ),
+            None,
+        )
+        if fetch_key:
+            from view_parser import ViewParser
+            fetch_xml = query[fetch_key][0]
+            records = ViewParser.apply_to_records(
+                ViewParser.parse_fetchxml(fetch_xml),
+                records,
+            )
+            unsupported_options = (
+                set(query) - {fetch_key, "$skip", "$top", "$count"}
+            )
+            if unsupported_options:
+                raise ValueError(
+                    "Unsupported FetchXML paging option(s): "
+                    + ", ".join(sorted(unsupported_options))
+                )
+        else:
+            unsupported_options = (
+                set(query)
+                - {
+                    "$select",
+                    "$filter",
+                    "$orderby",
+                    "$top",
+                    "$skip",
+                    "$count",
+                }
+            )
+            if unsupported_options:
+                raise ValueError(
+                    "Unsupported offline OData option(s): "
+                    + ", ".join(sorted(unsupported_options))
+                )
+            if "$filter" in query:
+                records = [
+                    record
+                    for record in records
+                    if cls._filter_record(
+                        record,
+                        query["$filter"][0],
+                    )
+                ]
+            if "$orderby" in query:
+                orderings = [
+                    item.strip().split()
+                    for item in query["$orderby"][0].split(",")
+                    if item.strip()
+                ]
+                for ordering in reversed(orderings):
+                    field = ordering[0]
+                    descending = (
+                        len(ordering) > 1
+                        and ordering[1].casefold() == "desc"
+                    )
+                    records.sort(
+                        key=lambda record: (
+                            record.get(field) is None,
+                            record.get(field),
+                        ),
+                        reverse=descending,
+                    )
+        skip = int((query.get("$skip") or [0])[0])
+        requested_top = (
+            int(query["$top"][0])
+            if "$top" in query
+            else None
+        )
+        if requested_top is not None:
+            records = records[:requested_top]
+        page_size = int(max_page_size or requested_top or 5000)
+        if requested_top is not None:
+            page_size = min(page_size, requested_top)
+        total = len(records)
+        page = records[skip:skip + page_size]
+        if "$select" in query:
+            selected = {
+                field.strip()
+                for field in query["$select"][0].split(",")
+                if field.strip()
+            }
+            page = [
+                {
+                    key: value
+                    for key, value in record.items()
+                    if (
+                        key in selected
+                        or any(
+                            key.startswith(f"{field}@")
+                            for field in selected
+                        )
+                    )
+                }
+                for record in page
+            ]
+        next_link = None
+        if skip + len(page) < total:
+            next_query = {
+                key: list(values)
+                for key, values in query.items()
+                if key != "$skip"
+            }
+            next_query["$skip"] = [str(skip + len(page))]
+            query_items = [
+                (key, value)
+                for key, values in next_query.items()
+                for value in values
+            ]
+            next_link = (
+                "offline://verseoff/api/data?"
+                + urlencode(query_items)
+            )
+        return page, next_link, total
 
     @pyqtSlot(str, str, result=str)
     def webApiCreateFromJS(self, entity_name, data_json):
-        import uuid
-        import json
-        from db import LocalDatabase
         try:
+            entity = next(
+                item
+                for item in self.renderer.manifest.get("entities", [])
+                if item.get("LogicalName") == entity_name
+            )
             record_id = str(uuid.uuid4())
-            with LocalDatabase().get_connection() as conn:
-                cursor = conn.cursor()
-                cursor.execute(
-                    "INSERT INTO cached_records (id, entity_name, data_json, sync_status) VALUES (?, ?, ?, ?)",
-                    (record_id, entity_name, data_json, 'pending')
-                )
+            data = json.loads(data_json)
+            self._validate_webapi_data(entity, data, "create")
+            primary_id = entity.get("PrimaryIdAttribute")
+            if primary_id:
+                data[primary_id] = record_id
+            LocalDatabase().upsert_record(
+                entity_name,
+                record_id,
+                data,
+                sync_status="pending_create",
+            )
             return json.dumps({"id": record_id, "entityType": entity_name})
-        except Exception as e:
-            print(f"Error in webApiCreate: {e}")
-            return json.dumps({"error": str(e)})
+        except (KeyError, StopIteration, TypeError, ValueError) as error:
+            return json.dumps({"error": str(error)})
 
     @pyqtSlot(str, str, str, result=str)
     def webApiRetrieveFromJS(self, entity_name, record_id, options):
-        import json
-        from db import LocalDatabase
         try:
-            with LocalDatabase().get_connection() as conn:
-                cursor = conn.cursor()
-                cursor.execute("SELECT data_json FROM cached_records WHERE id = ?", (record_id.replace('{', '').replace('}', ''),))
-                row = cursor.fetchone()
-                if row:
-                    return row[0]
+            record = LocalDatabase().get_record(
+                entity_name,
+                record_id.replace("{", "").replace("}", ""),
+            )
+            if record:
+                record.pop("_sync_status", None)
+                record.pop("_sync_error", None)
+                return json.dumps(record, ensure_ascii=False)
             return json.dumps({"error": "Record not found"})
-        except Exception as e:
-            return json.dumps({"error": str(e)})
+        except (TypeError, ValueError) as error:
+            return json.dumps({"error": str(error)})
 
     @pyqtSlot(str, str, str, result=str)
     def webApiUpdateFromJS(self, entity_name, record_id, data_json):
-        import json
-        from db import LocalDatabase
         try:
             clean_id = record_id.replace('{', '').replace('}', '')
-            with LocalDatabase().get_connection() as conn:
-                cursor = conn.cursor()
-                cursor.execute("SELECT data_json FROM cached_records WHERE id = ?", (clean_id,))
-                row = cursor.fetchone()
-                if row:
-                    existing_data = json.loads(row[0])
-                    new_data = json.loads(data_json)
-                    existing_data.update(new_data)
-                    merged_json = json.dumps(existing_data)
-                    cursor.execute(
-                        "UPDATE cached_records SET data_json = ?, sync_status = 'pending' WHERE id = ?",
-                        (merged_json, clean_id)
-                    )
-                    return json.dumps({"id": clean_id, "entityType": entity_name})
-            return json.dumps({"error": "Record not found"})
-        except Exception as e:
-            return json.dumps({"error": str(e)})
+            database = LocalDatabase()
+            existing = database.get_record(entity_name, clean_id)
+            if not existing:
+                return json.dumps({"error": "Record not found"})
+            existing_status = existing.pop("_sync_status", None)
+            existing.pop("_sync_error", None)
+            entity = self._entity_definition(entity_name)
+            if entity is None:
+                return json.dumps({
+                    "error": f"Table {entity_name!r} is not packaged."
+                })
+            data = json.loads(data_json)
+            self._validate_webapi_data(entity, data, "update")
+            existing.update(data)
+            database.upsert_record(
+                entity_name,
+                clean_id,
+                existing,
+                sync_status=(
+                    "pending_create"
+                    if existing_status == "pending_create"
+                    else "pending_update"
+                ),
+            )
+            return json.dumps({"id": clean_id, "entityType": entity_name})
+        except (TypeError, ValueError) as error:
+            return json.dumps({"error": str(error)})
 
     @pyqtSlot(str, str, result=str)
     def webApiDeleteFromJS(self, entity_name, record_id):
-        import json
-        from db import LocalDatabase
         try:
             clean_id = record_id.replace('{', '').replace('}', '')
-            with LocalDatabase().get_connection() as conn:
-                cursor = conn.cursor()
-                cursor.execute("DELETE FROM cached_records WHERE id = ?", (clean_id,))
+            if not LocalDatabase().queue_delete(entity_name, clean_id):
+                return json.dumps({"error": "Record not found"})
             return json.dumps({"id": clean_id, "entityType": entity_name, "deleted": True})
-        except Exception as e:
-            return json.dumps({"error": str(e)})
+        except (TypeError, ValueError) as error:
+            return json.dumps({"error": str(error)})
+
+    @pyqtSlot(str, str, str, result=str)
+    def webApiRetrieveMultipleFromJS(
+        self,
+        entity_name,
+        options,
+        max_page_size,
+    ):
+        try:
+            records = LocalDatabase().list_records(entity_name)
+            for record in records:
+                record.pop("_sync_status", None)
+                record.pop("_sync_error", None)
+                record.pop("_last_modified", None)
+            records, next_link, total = self._apply_odata_options(
+                records,
+                options,
+                int(max_page_size) if max_page_size else None,
+            )
+            return json.dumps(
+                {
+                    "entities": records,
+                    "nextLink": next_link,
+                    "@odata.count": total,
+                },
+                ensure_ascii=False,
+            )
+        except (TypeError, ValueError) as error:
+            return json.dumps({"error": str(error)})
 
     @pyqtSlot(str, str, result=str)
-    def webApiRetrieveMultipleFromJS(self, entity_name, options):
-        import json
-        from db import LocalDatabase
+    def navigateToFromJS(
+        self,
+        page_input_json,
+        navigation_options_json,
+    ):
         try:
-            with LocalDatabase().get_connection() as conn:
-                cursor = conn.cursor()
-                cursor.execute("SELECT data_json FROM cached_records WHERE entity_name = ?", (entity_name,))
-                rows = cursor.fetchall()
-                results = [json.loads(row[0]) for row in rows]
-                return json.dumps({"entities": results})
-        except Exception as e:
-            return json.dumps({"error": str(e)})
+            page_input = json.loads(page_input_json or "{}")
+            navigation_options = json.loads(
+                navigation_options_json or "{}"
+            )
+            if not isinstance(page_input, dict) or not isinstance(
+                navigation_options,
+                dict,
+            ):
+                raise TypeError(
+                    "navigateTo arguments must be objects."
+                )
+            page_type = page_input.get("pageType")
+            if page_type == "entityrecord":
+                self._open_entity_form(
+                    {
+                        "entityName": page_input.get("entityName"),
+                        "entityId": page_input.get("entityId"),
+                        "formId": page_input.get("formId"),
+                    },
+                    page_input.get("data") or {},
+                    navigation_options,
+                )
+                return json.dumps({"savedEntityReference": []})
+            if page_type == "entitylist":
+                app_window = self.renderer.window()
+                entity_name = page_input.get("entityName")
+                if hasattr(app_window, "navigate_to_entity"):
+                    app_window.navigate_to_entity(
+                        entity_name,
+                        page_input.get("viewId"),
+                    )
+                    return json.dumps({})
+                raise RuntimeError(
+                    "The current host cannot navigate to an entity list."
+                )
+            raise RuntimeError(
+                f"navigateTo pageType {page_type!r} is not available "
+                "in this offline host."
+            )
+        except (
+            json.JSONDecodeError,
+            KeyError,
+            RuntimeError,
+            TypeError,
+            ValueError,
+        ) as error:
+            return json.dumps({"error": str(error)})
+
+
+class WebResourceWidget(QWidget):
+    def __init__(
+        self,
+        renderer,
+        control_name,
+        resource_name,
+        data="",
+        embedded=True,
+        window_options=None,
+        parent=None,
+    ):
+        super().__init__(parent)
+        self.renderer = renderer
+        self.control_name = control_name
+        self.resource_name = normalize_web_resource_name(resource_name)
+        self.initial_resource_name = self.resource_name
+        self.data = str(data or "")
+        self.embedded = bool(embedded)
+        self.window_options = dict(window_options or {})
+        self._runtime_ready = False
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        self.error_label = QLabel()
+        self.error_label.setWordWrap(True)
+        self.error_label.setStyleSheet(
+            "color: #a4262c; background: #fde7e9; "
+            "border: 1px solid #a4262c; padding: 6px;"
+        )
+        self.error_label.hide()
+        layout.addWidget(self.error_label)
+        self.browser = configure_offline_browser(QWebEngineView(self))
+        self.browser.setMinimumHeight(160)
+        self.browser.page().setWebChannel(renderer.channel)
+        layout.addWidget(self.browser)
+        self._load()
+
+    def _resource(self):
+        return next(
+            (
+                resource
+                for resource in self.renderer.manifest.get(
+                    "web_resources",
+                    [],
+                )
+                if normalize_web_resource_name(resource.get("name"))
+                == self.resource_name
+            ),
+            None,
+        )
+
+    def _resource_url(self):
+        resource = self._resource()
+        if resource is None:
+            raise FileNotFoundError(
+                f"Web resource {self.resource_name!r} was not packaged."
+            )
+        relative_path = resource.get("relative_path")
+        if not relative_path:
+            raise FileNotFoundError(
+                f"Web resource {self.resource_name!r} has no local path."
+            )
+        path = os.path.abspath(os.path.join(
+            os.path.dirname(__file__),
+            relative_path.replace("/", os.sep),
+        ))
+        if not os.path.isfile(path):
+            raise FileNotFoundError(
+                f"Packaged web resource does not exist: {path}"
+            )
+        expected_hash = resource.get("sha256")
+        if expected_hash:
+            with open(path, "rb") as file:
+                actual_hash = hashlib.sha256(file.read()).hexdigest()
+            if actual_hash != expected_hash:
+                raise RuntimeError(
+                    f"Web resource integrity check failed: "
+                    f"{self.resource_name}"
+                )
+        url = QUrl.fromLocalFile(path)
+        query = QUrlQuery()
+        if self.data:
+            query.addQueryItem("data", self.data)
+        query.addQueryItem("typename", self.renderer.logical_name)
+        query.addQueryItem("id", self.renderer.record_id or "")
+        query.addQueryItem(
+            "orgname",
+            (
+                self.renderer.manifest.get("client_context", {})
+                .get("organization", {})
+                .get("uniqueName", "")
+            ),
+        )
+        query.addQueryItem(
+            "userlcid",
+            str(
+                self.renderer.manifest.get("client_context", {})
+                .get("user", {})
+                .get("languageId", 1033)
+            ),
+        )
+        query.addQueryItem(
+            "orglcid",
+            str(
+                self.renderer.manifest.get("client_context", {})
+                .get("organization", {})
+                .get("languageId", 1033)
+            ),
+        )
+        url.setQuery(query)
+        return url
+
+    def _load(self):
+        try:
+            resource_url = self._resource_url().toString()
+            bridge_path = QUrl.fromLocalFile(os.path.abspath(
+                os.path.join(
+                    os.path.dirname(__file__),
+                    "verseoff_bridge.js",
+                )
+            )).toString()
+            runtime_json = json.dumps({
+                "state": self.renderer._build_js_state(),
+                "standalone": not self.embedded,
+                "control": self.control_name,
+                "resource": resource_url,
+            }, ensure_ascii=False)
+            page = Template("""
+            <!doctype html>
+            <html>
+              <head>
+                <meta charset="utf-8">
+                <meta http-equiv="Content-Security-Policy"
+                      content="default-src 'self' file: qrc: data: blob:;
+                               script-src 'self' file: qrc: 'unsafe-inline';
+                               style-src 'self' file: 'unsafe-inline';
+                               img-src 'self' file: data: blob:;
+                               connect-src 'none';
+                               frame-src 'self' file: data: blob:;">
+                <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+                <script src="$BRIDGE"></script>
+                <style>
+                  html, body, iframe {
+                    border: 0;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                  }
+                </style>
+              </head>
+              <body>
+                <iframe id="resource-frame"
+                        sandbox="allow-scripts allow-forms allow-same-origin
+                                 allow-downloads allow-modals"></iframe>
+                <script>
+                  new QWebChannel(
+                    qt.webChannelTransport,
+                    function(channel) {
+                      var runtime = $RUNTIME;
+                      window.pyBridge = channel.objects.pyBridge;
+                      window.initializeVerseOffState(runtime.state);
+                      window.__verseOffGlobalContext =
+                        window.Xrm.Utility.getGlobalContext();
+                      var standalone = runtime.standalone;
+                      if (standalone) {
+                        window.Xrm = undefined;
+                        window.formContext = undefined;
+                      }
+                      var frame = document.getElementById(
+                        "resource-frame"
+                      );
+                      frame.addEventListener("load", function() {
+                        try {
+                          frame.contentWindow.GetGlobalContext =
+                            function() {
+                              return window.__verseOffGlobalContext;
+                            };
+                        } catch (error) {
+                          console.error(error);
+                        }
+                        window.pyBridge.webResourceReadyFromJS(
+                          runtime.control
+                        );
+                      });
+                      frame.src = runtime.resource;
+                    }
+                  );
+                </script>
+              </body>
+            </html>
+            """).safe_substitute(
+                BRIDGE=html.escape(bridge_path, quote=True),
+                RUNTIME=runtime_json,
+            )
+            fd, page_path = tempfile.mkstemp(suffix=".html")
+            with os.fdopen(
+                fd,
+                "w",
+                encoding="utf-8",
+                newline="\n",
+            ) as file:
+                file.write(page)
+            self.renderer._runtime_temp_files.append(page_path)
+            self.browser.setUrl(QUrl.fromLocalFile(page_path))
+            self.error_label.hide()
+        except (
+            FileNotFoundError,
+            OSError,
+            RuntimeError,
+        ) as error:
+            self.error_label.setText(str(error))
+            self.error_label.show()
+
+    def getSrc(self):
+        try:
+            return self._resource_url().toString()
+        except (FileNotFoundError, OSError, RuntimeError):
+            return ""
+
+    def getInitialUrl(self):
+        return self.initial_resource_name
+
+    def setSrc(self, resource_name):
+        normalized = normalize_web_resource_name(resource_name)
+        if not normalized:
+            raise ValueError(
+                "Web-resource controls can load packaged resources only."
+            )
+        self.resource_name = normalized
+        self._load()
+
+    def getData(self):
+        return self.data
+
+    def setData(self, data):
+        self.data = str(data or "")
+        self._load()
+
+    def refresh(self):
+        self._load()
+
+
+class PcfHostBridge(QObject):
+    def __init__(self, widget):
+        super().__init__(widget)
+        self.widget = widget
+
+    @pyqtSlot()
+    def runtimeReady(self):
+        self.widget._initialize_runtime()
+
+    @pyqtSlot()
+    def initialized(self):
+        self.widget._runtime_ready = True
+        self.widget.error_label.hide()
 
     @pyqtSlot(str, str)
-    def navigateToFromJS(self, page_type, entity_name):
-        from PyQt6.QtWidgets import QMessageBox
-        QMessageBox.information(self.renderer, "Xrm.Navigation", f"Mocking navigation to {page_type}: {entity_name}")
+    def runtimeError(self, message, stack):
+        self.widget._show_error(
+            f"{message}\n{stack}".strip()
+        )
+
+    @pyqtSlot(str)
+    def outputsChanged(self, outputs_json):
+        try:
+            outputs = json.loads(outputs_json or "{}")
+            if not isinstance(outputs, dict):
+                raise TypeError("PCF outputs must be an object.")
+            self.widget._apply_outputs(outputs)
+        except (json.JSONDecodeError, TypeError) as error:
+            self.widget._show_error(
+                f"PCF returned invalid outputs: {error}"
+            )
+
+    @pyqtSlot(str, str)
+    def eventRaised(self, event_name, payload_json):
+        try:
+            payload = json.loads(payload_json or "null")
+        except json.JSONDecodeError as error:
+            self.widget._show_error(
+                f"PCF event {event_name!r} returned invalid JSON: {error}"
+            )
+            return
+        self.widget.renderer._fire_events(
+            str(event_name or "").casefold(),
+            self.widget.field_name,
+            event_payload={"pcfPayload": payload},
+        )
+
+    @pyqtSlot(str)
+    def setControlState(self, state_json):
+        try:
+            state = json.loads(state_json or "{}")
+            if not isinstance(state, dict):
+                raise TypeError("PCF state must be an object.")
+            self.widget._state = state
+        except (json.JSONDecodeError, TypeError) as error:
+            self.widget._show_error(f"Invalid PCF state: {error}")
+
+    @pyqtSlot(bool)
+    def setFullScreen(self, full_screen):
+        self.widget.setWindowState(
+            self.widget.windowState()
+            | Qt.WindowState.WindowFullScreen
+            if full_screen
+            else self.widget.windowState()
+            & ~Qt.WindowState.WindowFullScreen
+        )
+
+    @pyqtSlot(bool)
+    def trackContainerResize(self, enabled):
+        self.widget._track_resize = bool(enabled)
+
+    @pyqtSlot(str)
+    def requestDatasetRefresh(self, dataset_name):
+        self.widget._refresh_dataset(dataset_name)
+
+    @pyqtSlot(str, result=str)
+    def pickFile(self, options_json):
+        try:
+            options = json.loads(options_json or "{}")
+            allow_multiple = bool(
+                options.get("allowMultipleFiles")
+            )
+            if allow_multiple:
+                paths, _ = QFileDialog.getOpenFileNames(
+                    self.widget,
+                    "Select files",
+                )
+            else:
+                path, _ = QFileDialog.getOpenFileName(
+                    self.widget,
+                    "Select file",
+                )
+                paths = [path] if path else []
+            maximum = int(
+                options.get("maximumAllowedFileSize") or 0
+            )
+            files = []
+            import base64
+            import mimetypes
+            for path in paths:
+                size = os.path.getsize(path)
+                if maximum and size > maximum:
+                    raise ValueError(
+                        f"{os.path.basename(path)} exceeds the maximum "
+                        "allowed file size."
+                    )
+                with open(path, "rb") as file:
+                    content = base64.b64encode(file.read()).decode("ascii")
+                files.append({
+                    "fileContent": content,
+                    "fileName": os.path.basename(path),
+                    "fileSize": size,
+                    "mimeType": (
+                        mimetypes.guess_type(path)[0]
+                        or "application/octet-stream"
+                    ),
+                })
+            return json.dumps(files)
+        except (
+            json.JSONDecodeError,
+            OSError,
+            TypeError,
+            ValueError,
+        ) as error:
+            return json.dumps({"error": str(error)})
+
+    @pyqtSlot(str, str, result=str)
+    def navigation(self, action, payload_json):
+        try:
+            payload = json.loads(payload_json or "{}")
+            if action == "openAlertDialog":
+                QMessageBox.information(
+                    self.widget,
+                    "Alert",
+                    payload.get("strings", {}).get("text", ""),
+                )
+                return json.dumps({})
+            if action == "openConfirmDialog":
+                result = QMessageBox.question(
+                    self.widget,
+                    "Confirm",
+                    payload.get("strings", {}).get("text", ""),
+                    (
+                        QMessageBox.StandardButton.Yes
+                        | QMessageBox.StandardButton.No
+                    ),
+                )
+                return json.dumps({
+                    "confirmed": (
+                        result == QMessageBox.StandardButton.Yes
+                    )
+                })
+            if action == "openErrorDialog":
+                QMessageBox.critical(
+                    self.widget,
+                    "Error",
+                    payload.get("message", ""),
+                )
+                return json.dumps({})
+            if action == "openForm":
+                self.widget.renderer.bridge._open_entity_form(
+                    payload.get("options") or {},
+                    payload.get("parameters") or {},
+                )
+                return json.dumps({"savedEntityReference": []})
+            if action == "openUrl":
+                import webbrowser
+                webbrowser.open(payload.get("url") or "")
+                return json.dumps({})
+            if action == "openWebResource":
+                self.widget.renderer.open_web_resource(
+                    payload.get("name") or "",
+                    payload.get("data") or "",
+                    payload.get("options") or {},
+                    embedded=False,
+                )
+                return json.dumps({})
+            raise RuntimeError(
+                f"Unsupported PCF navigation action {action!r}."
+            )
+        except (
+            json.JSONDecodeError,
+            OSError,
+            RuntimeError,
+            TypeError,
+            ValueError,
+        ) as error:
+            return json.dumps({"error": str(error)})
+
+    @pyqtSlot(str, str, result=str)
+    def getEntityMetadata(self, entity_name, attributes_json):
+        return self.widget.renderer.bridge.getEntityMetadataFromJS(
+            entity_name,
+            attributes_json,
+        )
+
+    @pyqtSlot(str, int, int, result=str)
+    def hasEntityPrivilege(
+        self,
+        entity_name,
+        privilege_type,
+        privilege_depth,
+    ):
+        security = (
+            self.widget.renderer.manifest.get("client_context", {})
+            .get("security", {})
+        )
+        privileges = security.get("entity_privileges", {})
+        entity_privileges = privileges.get(entity_name)
+        if entity_privileges is None:
+            return json.dumps({
+                "error": (
+                    f"Security snapshot is unavailable for {entity_name}; "
+                    "access is denied offline."
+                )
+            })
+        return json.dumps(bool(
+            entity_privileges.get(str(privilege_type), False)
+        ))
+
+    @pyqtSlot(str, result=str)
+    def lookupObjects(self, options_json):
+        try:
+            options = json.loads(options_json or "{}")
+            entity_types = options.get("entityTypes") or []
+            return self.widget.renderer.bridge.lookupObjectsFromJS(
+                ",".join(entity_types)
+            )
+        except (json.JSONDecodeError, TypeError) as error:
+            return json.dumps({"error": str(error)})
+
+    @pyqtSlot(str, str, str, str, result=str)
+    def webApi(self, operation, entity_name, record_id, payload):
+        bridge = self.widget.renderer.bridge
+        if operation == "create":
+            return bridge.webApiCreateFromJS(entity_name, payload)
+        if operation == "delete":
+            return bridge.webApiDeleteFromJS(entity_name, record_id)
+        if operation == "retrieve":
+            return bridge.webApiRetrieveFromJS(
+                entity_name,
+                record_id,
+                payload,
+            )
+        if operation == "retrieveMultiple":
+            try:
+                request = json.loads(payload or "{}")
+            except json.JSONDecodeError as error:
+                return json.dumps({"error": str(error)})
+            return bridge.webApiRetrieveMultipleFromJS(
+                entity_name,
+                request.get("options") or "",
+                str(request.get("maxPageSize") or ""),
+            )
+        if operation == "update":
+            return bridge.webApiUpdateFromJS(
+                entity_name,
+                record_id,
+                payload,
+            )
+        return json.dumps({
+            "error": f"Unsupported PCF WebAPI operation {operation!r}."
+        })
+
+
+class PcfControlWidget(QWidget):
+    def __init__(
+        self,
+        renderer,
+        field_name,
+        definition,
+        custom_control,
+        parent=None,
+    ):
+        super().__init__(parent)
+        self.renderer = renderer
+        self.field_name = field_name
+        self.definition = definition
+        self.custom_control = custom_control
+        self._value = None
+        self._pcf_outputs = {}
+        self._state = {}
+        self._runtime_ready = False
+        self._track_resize = False
+        self._initialization_started = False
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        self.error_label = QLabel()
+        self.error_label.setWordWrap(True)
+        self.error_label.setStyleSheet(
+            "color: #a4262c; background: #fde7e9; "
+            "border: 1px solid #a4262c; padding: 6px;"
+        )
+        self.error_label.hide()
+        layout.addWidget(self.error_label)
+        self.browser = configure_offline_browser(QWebEngineView(self))
+        self.browser.setMinimumHeight(80)
+        layout.addWidget(self.browser)
+
+        self.channel = QWebChannel(self.browser.page())
+        self.bridge = PcfHostBridge(self)
+        self.channel.registerObject("pcfBridge", self.bridge)
+        self.browser.page().setWebChannel(self.channel)
+        self._load_runtime_page()
+
+    def _show_error(self, message):
+        logger.error(
+            "PCF %s failed: %s",
+            self.definition.get("name"),
+            message,
+        )
+        self.error_label.setText(
+            f"{self.definition.get('name')}: {message}"
+        )
+        self.error_label.show()
+
+    def _resource_manifest_entry(self, resource_name):
+        return next(
+            (
+                resource
+                for resource in self.renderer.manifest.get(
+                    "web_resources",
+                    [],
+                )
+                if resource.get("name") == resource_name
+            ),
+            None,
+        )
+
+    def _resource_url(self, resource_definition):
+        name = resource_definition.get("web_resource_name")
+        resource = self._resource_manifest_entry(name)
+        if resource is None or not resource.get("relative_path"):
+            raise FileNotFoundError(
+                f"PCF resource {name or resource_definition.get('path')!r} "
+                "was not packaged."
+            )
+        path = os.path.abspath(os.path.join(
+            os.path.dirname(__file__),
+            resource["relative_path"].replace("/", os.sep),
+        ))
+        if not os.path.isfile(path):
+            raise FileNotFoundError(
+                f"Packaged PCF resource does not exist: {path}"
+            )
+        expected_hash = resource.get("sha256")
+        if expected_hash:
+            with open(path, "rb") as file:
+                actual_hash = hashlib.sha256(file.read()).hexdigest()
+            if actual_hash != expected_hash:
+                raise RuntimeError(
+                    f"PCF resource integrity check failed: {name}"
+                )
+        return QUrl.fromLocalFile(path).toString()
+
+    def _load_runtime_page(self):
+        try:
+            host_path = os.path.abspath(os.path.join(
+                os.path.dirname(__file__),
+                "verseoff_pcf_host.js",
+            ))
+            if not os.path.isfile(host_path):
+                raise FileNotFoundError(
+                    f"PCF host runtime not found: {host_path}"
+                )
+            code_resources = sorted(
+                (
+                    resource
+                    for resource in self.definition.get("resources", [])
+                    if resource.get("type", "").casefold() == "code"
+                ),
+                key=lambda item: item.get("order") or 0,
+            )
+            css_resources = [
+                resource
+                for resource in self.definition.get("resources", [])
+                if resource.get("type", "").casefold() == "css"
+            ]
+            if not code_resources:
+                raise RuntimeError("PCF manifest has no code resource.")
+            links = "\n".join(
+                '<link rel="stylesheet" href="'
+                + html.escape(self._resource_url(resource), quote=True)
+                + '">'
+                for resource in css_resources
+            )
+            scripts = "\n".join(
+                '<script src="'
+                + html.escape(self._resource_url(resource), quote=True)
+                + '"></script>'
+                for resource in code_resources
+            )
+            page = Template("""
+            <!doctype html>
+            <html>
+              <head>
+                <meta charset="utf-8">
+                <meta http-equiv="Content-Security-Policy"
+                      content="default-src 'self' file: qrc:;
+                               script-src 'self' file: qrc: 'unsafe-inline';
+                               style-src 'self' file: 'unsafe-inline';
+                               img-src 'self' file: data:;
+                               connect-src 'none';">
+                <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+                $CSS
+                <script src="$HOST"></script>
+                $CODE
+                <script>
+                  new QWebChannel(
+                    qt.webChannelTransport,
+                    function(channel) {
+                      window.connectVerseOffPcfBridge(
+                        channel.objects.pcfBridge
+                      );
+                    }
+                  );
+                </script>
+              </head>
+              <body><div id="pcf-container"></div></body>
+            </html>
+            """).safe_substitute(
+                CSS=links,
+                HOST=html.escape(
+                    QUrl.fromLocalFile(host_path).toString(),
+                    quote=True,
+                ),
+                CODE=scripts,
+            )
+            fd, page_path = tempfile.mkstemp(suffix=".html")
+            with os.fdopen(
+                fd,
+                "w",
+                encoding="utf-8",
+                newline="\n",
+            ) as file:
+                file.write(page)
+            self.renderer._runtime_temp_files.append(page_path)
+            self.browser.setUrl(QUrl.fromLocalFile(page_path))
+        except (FileNotFoundError, OSError, RuntimeError) as error:
+            self._show_error(str(error))
+
+    def _parameter_values(self):
+        values = {}
+        parameters = self.custom_control.find("parameters")
+        if parameters is not None:
+            for node in list(parameters):
+                value = (node.text or "").strip()
+                values[node.tag] = value
+        bound = [
+            property_definition
+            for property_definition in self.definition.get(
+                "properties",
+                [],
+            )
+            if property_definition.get("usage") == "bound"
+        ]
+        if bound:
+            values[bound[0]["name"]] = self._value
+        return values
+
+    def _bound_property_names(self):
+        return [
+            property_definition.get("name")
+            for property_definition in self.definition.get(
+                "properties",
+                [],
+            )
+            if (
+                property_definition.get("usage") == "bound"
+                and property_definition.get("name")
+            )
+        ]
+
+    def _resource_urls(self):
+        urls = {}
+        for resource in self.definition.get("resources", []):
+            if resource.get("web_resource_name"):
+                url = self._resource_url(resource)
+                urls[resource.get("path") or resource["web_resource_name"]] = url
+                urls[resource["web_resource_name"]] = url
+        return urls
+
+    def _resource_contents(self):
+        import base64
+
+        contents = {}
+        text_types = {1, 2, 3, 4, 9, 11, 12}
+        for resource in self.definition.get("resources", []):
+            resource_name = resource.get("web_resource_name")
+            if not resource_name:
+                continue
+            manifest_entry = self._resource_manifest_entry(resource_name)
+            if not manifest_entry:
+                continue
+            path = os.path.join(
+                os.path.dirname(__file__),
+                manifest_entry.get("relative_path", "").replace(
+                    "/",
+                    os.sep,
+                ),
+            )
+            try:
+                resource_type = int(manifest_entry.get("type"))
+            except (TypeError, ValueError):
+                resource_type = None
+            try:
+                if resource_type in text_types:
+                    with open(path, encoding="utf-8-sig") as file:
+                        content = file.read()
+                else:
+                    with open(path, "rb") as file:
+                        content = base64.b64encode(
+                            file.read()
+                        ).decode("ascii")
+            except OSError as error:
+                raise RuntimeError(
+                    f"Could not read PCF resource {resource_name}: {error}"
+                ) from error
+            for key in {
+                resource.get("path"),
+                resource_name,
+            }:
+                if key:
+                    contents[key] = content
+        return contents
+
+    def _resx_strings(self):
+        strings = {}
+        for resource in self.definition.get("resources", []):
+            if resource.get("type", "").casefold() != "resx":
+                continue
+            manifest_entry = self._resource_manifest_entry(
+                resource.get("web_resource_name")
+            )
+            if not manifest_entry:
+                continue
+            path = os.path.join(
+                os.path.dirname(__file__),
+                manifest_entry.get("relative_path", "").replace(
+                    "/",
+                    os.sep,
+                ),
+            )
+            try:
+                root = ET.parse(path).getroot()
+                for data in root.findall(".//data"):
+                    key = data.get("name")
+                    value = data.findtext("value")
+                    if key:
+                        strings[key] = value or ""
+            except (ET.ParseError, OSError):
+                logger.warning(
+                    "Could not parse PCF RESX %s",
+                    path,
+                    exc_info=True,
+                )
+        return strings
+
+    def _configuration(self):
+        client_context = self.renderer.manifest.get(
+            "client_context",
+            {},
+        )
+        return {
+            "definition": self.definition,
+            "values": self._parameter_values(),
+            "datasets": {},
+            "state": self._state,
+            "resourceUrls": self._resource_urls(),
+            "resourceContents": self._resource_contents(),
+            "strings": self._resx_strings(),
+            "height": self.height(),
+            "width": self.width(),
+            "disabled": not self.isEnabled(),
+            "visible": not self.isHidden(),
+            "label": self.field_name,
+            "updatedProperties": [],
+            "userSettings": client_context.get("user") or {},
+        }
+
+    def _initialize_runtime(self):
+        if self._initialization_started:
+            return
+        self._initialization_started = True
+        try:
+            config = json.dumps(
+                self._configuration(),
+                ensure_ascii=False,
+            )
+        except (
+            FileNotFoundError,
+            OSError,
+            RuntimeError,
+            TypeError,
+            ValueError,
+        ) as error:
+            self._show_error(str(error))
+            return
+        self.browser.page().runJavaScript(
+            f"window.initializeVerseOffPcf({config});"
+        )
+
+    def _apply_outputs(self, outputs):
+        self._pcf_outputs = dict(outputs)
+        bound = [
+            property_definition
+            for property_definition in self.definition.get(
+                "properties",
+                [],
+            )
+            if property_definition.get("usage") == "bound"
+        ]
+        if bound and bound[0]["name"] in outputs:
+            self._value = outputs[bound[0]["name"]]
+            self._is_dirty = True
+            if getattr(self.renderer, "_runtime_ready", False):
+                self.renderer._fire_events(
+                    "onchange",
+                    self.field_name,
+                )
+                self.renderer._fire_events(
+                    "onoutputchange",
+                    self.field_name,
+                    event_payload={"outputs": outputs},
+                )
+
+    def value(self):
+        return self._value
+
+    def setValue(self, value):
+        self._value = value
+        if self._runtime_ready:
+            self.browser.page().runJavaScript(
+                "window.updateVerseOffPcf("
+                + json.dumps({
+                    "values": self._parameter_values(),
+                    "updatedProperties": (
+                        self._bound_property_names()
+                    ),
+                    "height": self.height(),
+                    "width": self.width(),
+                }, ensure_ascii=False)
+                + ");"
+            )
+
+    def getOutputs(self):
+        return dict(self._pcf_outputs)
+
+    def refresh(self):
+        self.setValue(self._value)
+
+    def _refresh_dataset(self, dataset_name):
+        self.browser.page().runJavaScript(
+            "window.updateVerseOffPcf("
+            + json.dumps({
+                "updatedProperties": [dataset_name],
+                "height": self.height(),
+                "width": self.width(),
+            })
+            + ");"
+        )
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        if self._runtime_ready and self._track_resize:
+            self.browser.page().runJavaScript(
+                "window.updateVerseOffPcf("
+                + json.dumps({
+                    "updatedProperties": ["layout"],
+                    "height": self.height(),
+                    "width": self.width(),
+                })
+                + ");"
+            )
+
+    def closeEvent(self, event):
+        if self._runtime_ready:
+            self.browser.page().runJavaScript(
+                "window.destroyVerseOffPcf();"
+            )
+        super().closeEvent(event)
+
 
 class XrmFormRenderer(QWidget):
-    def __init__(self, manifest_data: dict, logical_name: str, record_id: str = None, parent=None, form_id: str = None, is_quick_view: bool = False, on_close=None):
+    def __init__(
+        self,
+        manifest_data: dict,
+        logical_name: str,
+        record_id: str = None,
+        parent=None,
+        form_id: str = None,
+        is_quick_view: bool = False,
+        on_close=None,
+        form_parameters: dict = None,
+        navigation_options: dict = None,
+        form_type: int = None,
+    ):
         super().__init__(parent)
         self.manifest = manifest_data
+        builtins.Xrm = GlobalXrm(self)
         self.logical_name = logical_name
         self.record_id = record_id
         self.form_events = custom_events
         self.form_id = form_id
         self.is_quick_view = is_quick_view
         self.on_close = on_close
+        self._raw_form_parameters = dict(form_parameters or {})
+        self.form_parameters = {}
+        self.form_parameter_definitions = {}
+        self.navigation_options = dict(navigation_options or {})
+        self.requested_form_type = form_type
         
         self.entity_def = next((e for e in self.manifest.get("entities", []) if e.get("LogicalName") == logical_name), None)
         if not self.entity_def:
             raise ValueError(f"Entity {logical_name} not found in manifest.")
             
-        self.primary_id_attr = self.entity_def.get("primary_id", "id")
+        self.primary_id_attr = (
+            self.entity_def.get("PrimaryIdAttribute")
+            or self.entity_def.get("primary_id")
+            or "id"
+        )
         
         self.controls = {} # Stores references to the generated PyQt widgets
+        self.control_instances = {}
         self.control_labels = {} # Stores references to the PyQt QLabel widgets
         self.ui_hierarchy = {"tabs": {}} # Stores the tree of Tabs -> Sections -> Controls
         self.tab_widget = None # Will store the QTabWidget
         self.ribbon_widgets = [] # Stores { "widget": QPushButton, "data": btn_data }
+        self.subgrids = []
+        self.quick_views = []
+        self.timelines = []
 
         self.notifications = {} # Stores uniqueId -> QLabel
-        
-        # Event Registries
-        self._form_events_map = {"onload": [], "onsave": [], "onchange": []}
-        self._dynamic_events_map = {"onload": [], "onsave": [], "onchange": {}, "postsave": [], "dataonload": [], "tabstatechange": {}, "formloaded": []}
-        self.shared_variables = {} # For Execution Context shared variables
-
-        # Build UI
-        self.init_ui()
-        
-        # Init QWebEngineView and bridge
-        self.init_browser_bridge()
-        
-        # Evaluate ribbon initial state
-        self.evaluate_ribbon_rules()
-        
-        # Run custom post_load hook
-        self._run_post_load()
-
-    def init_browser_bridge(self):
-        self.browser = QWebEngineView()
+        self._runtime_ready = False
+        self._page_loaded = False
+        self._channel_ready = False
+        self._state_initializing = False
+        self._state_initialized = False
+        self._initial_events_fired = False
+        self._suppress_events = True
+        self._save_in_progress = False
+        self._event_waiters = {}
+        self._initial_event_timer = None
+        self._runtime_temp_files = []
+        self._runtime_generation = 0
+        self._active_runtime_id = ""
+        self._form_event_handlers = []
+        self._active_form = None
+        self._custom_control_bindings = {}
+        self._client_process_state = None
+        self.bpf_stage_buttons = {}
         self.channel = QWebChannel()
         self.bridge = VerseOffBridge(self)
         self.channel.registerObject("pyBridge", self.bridge)
-        self.browser.page().setWebChannel(self.channel)
+
+        # Event Registries
+        self._form_events_map = {}
+        self._dynamic_events_map = {
+            "onload": [],
+            "onsave": [],
+            "onchange": {},
+            "postsave": [],
+            "dataonload": [],
+            "tabstatechange": {},
+            "formloaded": [],
+        }
+
+        # Build UI
+        self.init_ui()
+        self.form_context = PythonFormContext(self)
+        if self.record_id:
+            self._populate_data()
+
+        if not self.is_quick_view:
+            self.init_browser_bridge()
+        else:
+            self._runtime_ready = True
+            self._suppress_events = False
         
-        # Load an empty page with qwebchannel.js and our mock
-        import tempfile
-        import os
+        # Evaluate ribbon initial state
+        self.evaluate_ribbon_rules()
+
+    def init_browser_bridge(self):
+        self.browser = configure_offline_browser(QWebEngineView())
+        self.browser.page().setWebChannel(self.channel)
+        self.browser.loadFinished.connect(
+            self._on_browser_load_finished
+        )
+        self._load_browser_runtime()
+
+    def inject_web_resource_context(self, control_name):
+        for child in self.findChildren(WebResourceWidget):
+            if getattr(child, "control_name", None) == control_name:
+                script = """
+                    var frame = document.getElementById("resource-frame");
+                    if (frame && frame.contentWindow && typeof frame.contentWindow.setClientApiContext === 'function') {
+                        frame.contentWindow.setClientApiContext(window.Xrm, window.formContext);
+                    }
+                """
+                child.browser.page().runJavaScript(script)
+                break
+
+    def _active_client_script_names(self):
+        names = []
+
+        def include(value):
+            normalized = normalize_web_resource_name(value)
+            if normalized and normalized not in names:
+                names.append(normalized)
+
+        if self._active_form:
+            for name in form_script_names(self._active_form):
+                include(name)
+        ribbon = self.entity_def.get("ribbon") or {}
+        for command in ribbon.get("commands", {}).values():
+            for action in command.get("actions", []):
+                if action.get("type") == "JavaScriptFunction":
+                    include(action.get("library"))
+        return names
+
+    def _client_script_urls(self):
+        resources = {
+            normalize_web_resource_name(resource.get("name")): resource
+            for resource in self.manifest.get("web_resources", [])
+            if resource.get("name")
+        }
+        urls = []
+        for name in self._active_client_script_names():
+            resource = resources.get(name)
+            if resource is None:
+                logger.error(
+                    f"Client script {name!r} is referenced by the active "
+                    "form or Ribbon but was not packaged."
+                )
+                continue
+            resource_type = resource.get("type")
+            relative_path = resource.get("relative_path")
+            if resource_type not in (None, 3, "3"):
+                logger.error(
+                    f"Client resource {name!r} is not JavaScript "
+                    f"(web resource type {resource_type!r})."
+                )
+                continue
+            if not relative_path:
+                logger.error(
+                    f"Client script {name!r} has no packaged path."
+                )
+                continue
+            script_path = os.path.abspath(
+                os.path.join(
+                    os.path.join(os.path.dirname(os.path.abspath(__file__)), "webresources"),
+                    relative_path,
+                )
+            )
+            if os.name == "nt" and not script_path.startswith("\\\\?\\"):
+                script_path = "\\\\?\\" + script_path
+
+            if not os.path.exists(script_path):
+                logger.error(
+                    f"Packaged client script does not exist: {script_path}"
+                )
+                continue
+            if self.security_context:
+                expected_hash = resource.get("sha256")
+                if expected_hash:
+                    with open(script_path, "rb") as script_file:
+                        actual_hash = hashlib.sha256(script_file.read()).hexdigest()
+                    if actual_hash != expected_hash:
+                        logger.error(
+                            f"Client script integrity check failed for {name!r}."
+                        )
+                        continue
+            urls.append(QUrl.fromLocalFile(script_path).toString())
+        return urls
+
+    def _load_browser_runtime(self):
+        self._runtime_generation += 1
+        self._active_runtime_id = str(self._runtime_generation)
+        self._runtime_ready = False
+        self._page_loaded = False
+        self._channel_ready = False
+        self._state_initializing = False
+        self._state_initialized = False
+        self._initial_events_fired = False
+        self._suppress_events = True
+        bridge_path = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), "verseoff_bridge.js")
+        )
+        if not os.path.isfile(bridge_path):
+            raise FileNotFoundError(
+                f"VerseOff bridge resource not found: {bridge_path}"
+            )
+        script_tags = [
+            (
+                '<script src="'
+                + html.escape(url, quote=True)
+                + '"></script>'
+            )
+            for url in self._client_script_urls()
+        ]
         html_content = """
         <html>
         <head>
+            <meta charset="utf-8">
             <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
             <script src="file:///{bridge_path}"></script>
+            {client_scripts}
             <script>
                 new QWebChannel(qt.webChannelTransport, function(channel) {
-                    window.pyBridge = channel.objects.pyBridge;
-                    console.log("Bridge connected");
-                    
-                    // Fire OnLoad once connected
-                    if (window.pendingOnLoads) {
-                        window.pendingOnLoads.forEach(f => f());
-                    }
+                    window.connectVerseOffBridge(
+                        channel.objects.pyBridge,
+                        {runtime_id}
+                    );
                 });
             </script>
         </head>
         <body>VerseOff Invisible Bridge Engine</body>
         </html>
         """
-        bridge_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "verseoff_bridge.js")).replace("\\", "/")
         fd, temp_path = tempfile.mkstemp(suffix=".html")
-        with os.fdopen(fd, "w") as f:
-            f.write(html_content.replace("{bridge_path}", bridge_path))
-            
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as file:
+            file.write(
+                html_content.replace(
+                    "{bridge_path}",
+                    html.escape(
+                        QUrl.fromLocalFile(bridge_path).toString()
+                        .removeprefix("file:///"),
+                        quote=True,
+                    ),
+                ).replace(
+                    "{client_scripts}",
+                    "\n".join(script_tags),
+                ).replace(
+                    "{runtime_id}",
+                    json.dumps(self._active_runtime_id),
+                )
+            )
+        self._runtime_temp_files.append(temp_path)
         self.browser.setUrl(QUrl.fromLocalFile(temp_path))
+
+    def _on_browser_load_finished(self, loaded):
+        if sip.isdeleted(self):
+            return
+        if not loaded:
+            self.set_form_notification(
+                "The client-script runtime page did not load.",
+                "ERROR",
+                "verseoff_runtime_load_error",
+            )
+            return
+        self._page_loaded = True
+        self._initialize_js_state()
+
+    def _on_js_channel_ready(self, runtime_id):
+        if sip.isdeleted(self):
+            return
+        if str(runtime_id) != self._active_runtime_id:
+            return
+        self._channel_ready = True
+        self._initialize_js_state()
+
+    def _initialize_js_state(self):
+        if sip.isdeleted(self):
+            return
+        if (
+            not self._page_loaded
+            or not self._channel_ready
+            or self._state_initializing
+            or self._state_initialized
+        ):
+            return
+        self._state_initializing = True
+        state = json.dumps(self._build_js_state(), ensure_ascii=False)
+
+        def initialized(result):
+            if sip.isdeleted(self):
+                return
+            self._state_initializing = False
+            if result is not True:
+                self.set_form_notification(
+                    "The V8 client runtime rejected its initial state.",
+                    "ERROR",
+                    "verseoff_runtime_state_error",
+                )
+                return
+            self._state_initialized = True
+            self._runtime_ready = True
+            self._suppress_events = False
+            self._initial_event_timer = QTimer(self)
+            self._initial_event_timer.setSingleShot(True)
+            self._initial_event_timer.timeout.connect(
+                self._fire_initial_events
+            )
+            self._initial_event_timer.start(0)
+
+        self.browser.page().runJavaScript(
+            (
+                "(function() { return window.initializeVerseOffState("
+                f"{state}"
+                "); })();"
+            ),
+            initialized,
+        )
+
+    def _build_js_state(self):
+        controls = {}
+        for name, widget in self.controls.items():
+            if sip.isdeleted(widget):
+                continue
+            if isinstance(widget, TimelineWidget):
+                control_type = "timelinewall"
+            elif isinstance(widget, SubgridWidget):
+                control_type = "subgrid"
+            elif isinstance(widget, LookupWidget):
+                control_type = "lookup"
+            elif isinstance(widget, PcfControlWidget):
+                control_type = (
+                    "customcontrol:"
+                    + widget.definition.get("name", "")
+                )
+            elif isinstance(widget, WebResourceWidget):
+                control_type = "webresource"
+            elif isinstance(widget, QuickViewWidget):
+                control_type = "quickform"
+            elif isinstance(widget, QComboBox):
+                control_type = "optionset"
+            else:
+                control_type = "standard"
+            controls[name] = {
+                "visible": not widget.isHidden(),
+                "disabled": not widget.isEnabled(),
+                "type": control_type,
+                "label": (
+                    self.control_labels[name].text()
+                    if name in self.control_labels
+                    else name
+                ),
+                "entityTypes": (
+                    list(widget.target_entities)
+                    if isinstance(widget, LookupWidget)
+                    else []
+                ),
+                "defaultView": getattr(
+                    widget,
+                    "_default_view",
+                    None,
+                ),
+                "outputs": getattr(widget, "_pcf_outputs", {}),
+                "src": (
+                    widget.getSrc()
+                    if isinstance(widget, WebResourceWidget)
+                    else ""
+                ),
+                "initialUrl": (
+                    widget.getInitialUrl()
+                    if isinstance(widget, WebResourceWidget)
+                    else ""
+                ),
+                "data": (
+                    widget.getData()
+                    if isinstance(widget, WebResourceWidget)
+                    else ""
+                ),
+                "isLoaded": (
+                    widget.child_renderer is not None
+                    if isinstance(widget, QuickViewWidget)
+                    else True
+                ),
+            }
+        attribute_metadata = {
+            attribute.get("LogicalName"): attribute
+            for attribute in self.entity_def.get("attributes", [])
+            if attribute.get("LogicalName")
+        }
+        option_sets = self.entity_def.get("option_sets") or {}
+        attributes = {}
+        for name, widget in self.controls.items():
+            if sip.isdeleted(widget):
+                continue
+            if isinstance(
+                widget,
+                (
+                    SubgridWidget,
+                    TimelineWidget,
+                    WebResourceWidget,
+                    QTableWidget,
+                ),
+            ):
+                continue
+            metadata = attribute_metadata.get(name, {})
+            value = PythonAttribute(name, widget, self).getValue()
+            required_level = (
+                metadata.get("RequiredLevel", {}).get("Value", "None")
+            )
+            attributes[name] = {
+                "value": value,
+                "initialValue": getattr(widget, "_initial_value", value),
+                "submitMode": getattr(widget, "_submit_mode", "dirty"),
+                "requiredLevel": {
+                    "Required": "required",
+                    "SystemRequired": "required",
+                    "Recommended": "recommended",
+                }.get(required_level, "none"),
+                "type": {
+                    "BigInt": "integer",
+                    "Customer": "lookup",
+                    "Memo": "memo",
+                    "MultiSelectPicklist": "multiselectoptionset",
+                    "Owner": "lookup",
+                    "PartyList": "lookup",
+                    "Picklist": "optionset",
+                    "State": "optionset",
+                    "Status": "optionset",
+                    "Uniqueidentifier": "string",
+                }.get(
+                    metadata.get("AttributeType"),
+                    str(
+                        metadata.get("AttributeType") or "String"
+                    ).casefold(),
+                ),
+                "format": metadata.get("Format") or None,
+                "dirty": bool(getattr(widget, "_is_dirty", False)),
+                "isEntityAttribute": True,
+                "max": metadata.get("MaxValue"),
+                "min": metadata.get("MinValue"),
+                "precision": metadata.get("Precision"),
+                "maxLength": metadata.get("MaxLength"),
+                "isPartyList": bool(
+                    metadata.get("AttributeType") == "PartyList"
+                ),
+                "options": [
+                    {
+                        "text": option.get("label") or "",
+                        "value": option.get("value"),
+                    }
+                    for option in option_sets.get(name, [])
+                ],
+                "userPrivilege": {
+                    "canRead": bool(
+                        metadata.get("IsValidForRead", True)
+                    ),
+                    "canUpdate": bool(
+                        metadata.get("IsValidForUpdate", False)
+                    ),
+                    "canCreate": bool(
+                        metadata.get("IsValidForCreate", False)
+                    ),
+                },
+            }
+        for name, value in self.form_parameters.items():
+            if name in attributes:
+                continue
+            parameter_definition = (
+                self.form_parameter_definitions.get(name) or {}
+            )
+            attributes[name] = {
+                "value": value,
+                "initialValue": value,
+                "submitMode": "never",
+                "requiredLevel": "none",
+                "type": str(
+                    parameter_definition.get("type") or "string"
+                ).casefold(),
+                "format": None,
+                "dirty": False,
+                "isEntityAttribute": False,
+            }
+        grids = {}
+        for name, widget in self.controls.items():
+            if sip.isdeleted(widget):
+                continue
+            if isinstance(widget, SubgridWidget):
+                grids[name] = widget.runtime_snapshot()
+            elif isinstance(widget, QTableWidget):
+                grids[name] = self._table_grid_snapshot(name, widget)
+        primary_name_attribute = (
+            self.entity_def.get("PrimaryNameAttribute") or ""
+        )
+        primary_name = (
+            attributes.get(primary_name_attribute, {}).get("value")
+            if primary_name_attribute
+            else ""
+        )
+        source_app = self.manifest.get("source_app") or {}
+        client_context = self.manifest.get("client_context") or {}
+        app_id = (
+            source_app.get("appmoduleidunique")
+            or source_app.get("appmoduleid")
+            or ""
+        )
+        app_url = (
+            f"offline://verseoff/main.aspx?appid={app_id}"
+            if app_id
+            else "offline://verseoff/main.aspx"
+        )
+        return {
+            "attributes": attributes,
+            "controls": controls,
+            "grids": grids,
+            "entity": {
+                "logicalName": self.logical_name,
+                "id": self.record_id or "",
+                "primaryIdAttribute": self.primary_id_attr,
+                "primaryNameAttribute": primary_name_attribute,
+                "primaryName": primary_name or "",
+            },
+            "formType": 2 if self.record_id else 1,
+            "queryParameters": {
+                **self.form_parameters,
+                "etn": self.logical_name,
+                "id": self.record_id or "",
+                "formid": self._normalize_form_id(
+                    (self._active_form or {}).get("formid")
+                    or (self._active_form or {}).get("formidunique")
+                ),
+            },
+            "context": {
+                "clientUrl": self.manifest.get("org_url") or "",
+                "webResourceBaseUrl": QUrl.fromLocalFile(
+                    os.path.join(
+                        os.path.dirname(__file__),
+                        "webresources",
+                        "",
+                    )
+                ).toString(),
+                "version": client_context.get("version") or "9.2.0.0",
+                "user": client_context.get("user") or {},
+                "organization": client_context.get("organization") or {},
+                "app": {
+                    "id": app_id,
+                    "displayName": self.manifest.get("app_name") or "",
+                    "uniqueName": source_app.get("uniquename") or "",
+                    "url": app_url,
+                },
+                "client": {
+                    "client": "Web",
+                    "state": "Offline",
+                    "formFactor": 1,
+                },
+            },
+            "eventHandlers": [
+                handler
+                for handler in self._form_event_handlers
+                if handler.get("library")
+            ],
+            "availableOfflineEntities": [
+                entity.get("LogicalName")
+                for entity in self.manifest.get("entities", [])
+                if entity.get("LogicalName")
+            ],
+            "webResources": {
+                resource.get("name"): resource.get("relative_path")
+                for resource in self.manifest.get("web_resources", [])
+                if resource.get("name") and resource.get("relative_path")
+            },
+            "webResourceUrls": {
+                resource.get("name"): QUrl.fromLocalFile(
+                    os.path.abspath(os.path.join(
+                        os.path.dirname(__file__),
+                        resource.get("relative_path", "").replace(
+                            "/",
+                            os.sep,
+                        ),
+                    ))
+                ).toString()
+                for resource in self.manifest.get("web_resources", [])
+                if resource.get("name") and resource.get("relative_path")
+            },
+            "localizedResources": {
+                resource.get("name"): resource.get(
+                    "localized_strings",
+                    {},
+                )
+                for resource in self.manifest.get("web_resources", [])
+                if resource.get("name")
+            },
+            "process": self._process_runtime_state(),
+            "ui": self._ui_runtime_state(),
+        }
+
+    def _ui_runtime_state(self):
+        tabs = {}
+        for tab_name, tab in self.ui_hierarchy.get(
+            "tabs",
+            {},
+        ).items():
+            sections = {}
+            for section_name, section in tab.get(
+                "sections",
+                {},
+            ).items():
+                groupbox = section.get("groupbox")
+                sections[section_name] = {
+                    "name": section_name,
+                    "label": section.get("label") or section_name,
+                    "visible": (
+                        not groupbox.isHidden()
+                        if (
+                            groupbox is not None
+                            and not sip.isdeleted(groupbox)
+                        )
+                        else True
+                    ),
+                    "controls": list(section.get("controls", [])),
+                }
+            index = int(tab.get("index") or 0)
+            tab_widget = (
+                self.tab_widget.widget(index)
+                if (
+                    self.tab_widget is not None
+                    and not sip.isdeleted(self.tab_widget)
+                )
+                and 0 <= index < self.tab_widget.count()
+                else None
+            )
+            tabs[tab_name] = {
+                "name": tab_name,
+                "label": tab.get("label") or tab_name,
+                "visible": (
+                    not tab_widget.isHidden()
+                    if (
+                        tab_widget is not None
+                        and not sip.isdeleted(tab_widget)
+                    )
+                    else True
+                ),
+                "displayState": (
+                    "expanded"
+                    if (
+                        self.tab_widget is not None
+                        and not sip.isdeleted(self.tab_widget)
+                    )
+                    and self.tab_widget.currentIndex() == index
+                    else "collapsed"
+                ),
+                "index": index,
+                "sections": sections,
+            }
+        forms = [
+            {
+                "id": (
+                    form.get("formid")
+                    or form.get("formidunique")
+                    or ""
+                ),
+                "label": form.get("name") or "",
+                "visible": True,
+            }
+            for form in self._get_main_form_defs()
+        ]
+        active_form_id = (
+            (self._active_form or {}).get("formid")
+            or (self._active_form or {}).get("formidunique")
+            or ""
+        )
+        return {
+            "tabs": tabs,
+            "forms": forms,
+            "activeFormId": active_form_id,
+            "navigation": [],
+            "headerSection": {
+                "bodyVisible": True,
+                "commandBarVisible": True,
+                "tabNavigatorVisible": True,
+            },
+            "process": {
+                "displayState": "expanded",
+                "visible": True,
+            },
+        }
+
+    def _process_runtime_state(self):
+        if self._client_process_state is not None:
+            return json.loads(json.dumps(self._client_process_state))
+        processes = []
+        for process_id, definition in (
+            self.manifest.get("bpfs") or {}
+        ).items():
+            stages = []
+            for index, stage in enumerate(
+                definition.get("stages", [])
+            ):
+                stage_id = (
+                    stage.get("id")
+                    or stage.get("processstageid")
+                    or f"{process_id}:stage:{index}"
+                )
+                steps = [
+                    {
+                        "name": step.get("name") or "",
+                        "attribute": (
+                            step.get("attribute")
+                            or step.get("attribute_name")
+                            or ""
+                        ),
+                        "required": bool(step.get("required")),
+                        "progress": int(step.get("progress") or 0),
+                    }
+                    for step in stage.get("steps", [])
+                ]
+                stages.append({
+                    "id": stage_id,
+                    "name": stage.get("name") or "",
+                    "entityName": (
+                        stage.get("entity")
+                        or stage.get("entity_name")
+                        or self.logical_name
+                    ),
+                    "category": int(stage.get("category") or 0),
+                    "status": stage.get("status") or "active",
+                    "steps": steps,
+                })
+            processes.append({
+                "id": process_id,
+                "name": definition.get("name") or process_id,
+                "stages": stages,
+                "rendered": True,
+            })
+        active_process = processes[0] if processes else {}
+        active_stage = (
+            (active_process.get("stages") or [None])[0]
+            if active_process
+            else None
+        )
+        self._client_process_state = {
+            "processes": processes,
+            "activeProcessId": active_process.get("id", ""),
+            "activeStageId": (
+                active_stage.get("id", "") if active_stage else ""
+            ),
+            "selectedStageId": (
+                active_stage.get("id", "") if active_stage else ""
+            ),
+        }
+        return json.loads(json.dumps(self._client_process_state))
+
+    @staticmethod
+    def _table_record_id(table, row):
+        first_item = table.item(row, 0)
+        return (
+            str(first_item.data(Qt.ItemDataRole.UserRole) or "")
+            if first_item is not None
+            else ""
+        )
+
+    @staticmethod
+    def _table_attribute_name(table, column):
+        configured = table.property("verseoffColumns")
+        if (
+            isinstance(configured, list)
+            and 0 <= column < len(configured)
+        ):
+            value = configured[column]
+            if isinstance(value, dict):
+                return str(value.get("name") or "")
+            return str(value or "")
+        header = table.horizontalHeaderItem(column)
+        if header is not None:
+            logical_name = header.data(Qt.ItemDataRole.UserRole)
+            return str(logical_name or header.text())
+        return str(column)
+
+    def _table_grid_snapshot(self, name, table):
+        rows = []
+        for row in range(table.rowCount()):
+            attributes = {}
+            for column in range(table.columnCount()):
+                attribute_name = self._table_attribute_name(
+                    table,
+                    column,
+                )
+                item = table.item(row, column)
+                value = item.text() if item is not None else None
+                attributes[attribute_name] = {
+                    "value": value,
+                    "initialValue": value,
+                    "submitMode": "dirty",
+                    "requiredLevel": "none",
+                    "dirty": False,
+                }
+            rows.append({
+                "id": self._table_record_id(table, row),
+                "entityName": str(
+                    table.property("verseoffEntityName") or ""
+                ),
+                "primaryName": (
+                    table.item(row, 0).text()
+                    if table.item(row, 0) is not None
+                    else ""
+                ),
+                "attributes": attributes,
+            })
+        selected_ids = [
+            self._table_record_id(table, index.row())
+            for index in table.selectionModel().selectedRows()
+        ]
+        return {
+            "name": name,
+            "entityName": str(
+                table.property("verseoffEntityName") or ""
+            ),
+            "rows": rows,
+            "selectedIds": selected_ids,
+            "totalRecordCount": table.rowCount(),
+        }
+
+    def _fire_initial_events(self):
+        if (
+            sip.isdeleted(self)
+            or self._initial_events_fired
+            or any(
+                sip.isdeleted(widget)
+                for widget in self.controls.values()
+            )
+            or any(
+                (
+                    section.get("groupbox") is not None
+                    and sip.isdeleted(section["groupbox"])
+                )
+                for tab in self.ui_hierarchy.get("tabs", {}).values()
+                for section in tab.get("sections", {}).values()
+            )
+        ):
+            return
+        self._initial_events_fired = True
+        self._fire_events(
+            "onload",
+            data_load_state=1,
+        )
+        self._fire_events(
+            "dataonload",
+            data_load_state=1,
+        )
+        for name, widget in self.controls.items():
+            if isinstance(widget, SubgridWidget):
+                self._fire_events("gridonload", name)
+        self._fire_events("formloaded")
+        self.evaluate_ribbon_rules()
+        self._run_post_load()
 
     def handle_close(self):
         if self.on_close:
@@ -1858,12 +5962,114 @@ class XrmFormRenderer(QWidget):
         else:
             self.close()
 
+    def get_ui_value(self, attribute_name):
+        widget = self.attribute_widgets.get(attribute_name)
+        if not widget:
+            return None
+        return getattr(widget, "get_value", lambda: None)()
+
+    def open_web_resource(
+        self,
+        resource_name,
+        data="",
+        window_options=None,
+        embedded=False,
+    ):
+        normalized = normalize_web_resource_name(resource_name)
+        if not normalized:
+            raise ValueError(
+                "A packaged web-resource name is required."
+            )
+        widget = WebResourceWidget(
+            renderer=self,
+            control_name=f"webresource:{normalized}",
+            resource_name=normalized,
+            data=data,
+            embedded=embedded,
+            window_options=window_options,
+        )
+        options = dict(window_options or {})
+        width = int(options.get("width") or 800)
+        height = int(options.get("height") or 600)
+        widget.resize(max(320, width), max(240, height))
+        widget.setWindowTitle(normalized)
+        if not hasattr(self, "child_web_resources"):
+            self.child_web_resources = []
+        self.child_web_resources.append(widget)
+        widget.show()
+        return widget
+
+    def set_form_notification(
+        self,
+        message,
+        level,
+        unique_id,
+    ):
+        notification_id = str(unique_id or "")
+        if not notification_id:
+            raise ValueError("Form notification unique_id is required.")
+        self.clear_form_notification(notification_id)
+        label = QLabel(str(message or ""))
+        label.setWordWrap(True)
+        colors = {
+            "ERROR": ("#fde7e9", "#a4262c", "#a4262c"),
+            "WARNING": ("#fff4ce", "#8a6d1d", "#8a6d1d"),
+            "INFO": ("#deecf9", "#005a9e", "#005a9e"),
+        }
+        background, foreground, border = colors.get(
+            str(level or "INFO").upper(),
+            colors["INFO"],
+        )
+        label.setStyleSheet(
+            f"background: {background}; color: {foreground}; "
+            f"border: 1px solid {border}; border-radius: 3px; "
+            "padding: 6px;"
+        )
+        self.notifications[notification_id] = label
+        self.notifications_layout.addWidget(label)
+        return True
+
+    def clear_form_notification(self, unique_id):
+        label = self.notifications.pop(str(unique_id or ""), None)
+        if label is None:
+            return False
+        self.notifications_layout.removeWidget(label)
+        label.deleteLater()
+        return True
+
+    def closeEvent(self, event):
+        for waiter in list(self._event_waiters.values()):
+            try:
+                waiter["timer"].stop()
+            except RuntimeError:
+                pass
+            try:
+                waiter["loop"].quit()
+            except RuntimeError:
+                pass
+        self._event_waiters.clear()
+        if hasattr(self, "browser"):
+            self.browser.deleteLater()
+        for temp_path in self._runtime_temp_files:
+            try:
+                os.unlink(temp_path)
+            except FileNotFoundError:
+                continue
+            except OSError:
+                logger.warning(
+                    "Could not remove runtime page %s",
+                    temp_path,
+                    exc_info=True,
+                )
+        self._runtime_temp_files.clear()
+        super().closeEvent(event)
+
     def save_and_close(self):
-        self.save_record()
-        self.handle_close()
+        self.save_record(save_mode=2)
 
     def save_and_new(self):
-        self.save_record()
+        if not self.save_record(save_mode=1):
+            return
         # Reset form for new record
         self.record_id = None
         for name, widget in self.controls.items():
@@ -1871,6 +6077,39 @@ class XrmFormRenderer(QWidget):
                 widget.clear()
             elif isinstance(widget, QCheckBox):
                 widget.setChecked(False)
+
+    def delete_record(self):
+        if not self.record_id:
+            self.set_form_notification(
+                "This record has not been saved and cannot be deleted.",
+                "WARNING",
+                "verseoff_delete_unsaved",
+            )
+            return False
+        reply = QMessageBox.question(
+            self,
+            "Confirm Delete",
+            "Delete this record from the offline cache and queue the "
+            "deletion for synchronization?",
+            (
+                QMessageBox.StandardButton.Yes
+                | QMessageBox.StandardButton.No
+            ),
+        )
+        if reply != QMessageBox.StandardButton.Yes:
+            return False
+        if not LocalDatabase().queue_delete(
+            self.logical_name,
+            self.record_id,
+        ):
+            self.set_form_notification(
+                "The record could not be found in the offline cache.",
+                "ERROR",
+                "verseoff_delete_missing",
+            )
+            return False
+        self.handle_close()
+        return True
 
     def init_ui(self):
         main_layout = QVBoxLayout(self)
@@ -1926,24 +6165,25 @@ class XrmFormRenderer(QWidget):
         
         delete_btn = QPushButton("🗑  Delete")
         delete_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 12px; border-radius: 4px;")
-        delete_btn.clicked.connect(self.handle_close)
+        delete_btn.clicked.connect(self.delete_record)
         cmd_layout.addWidget(delete_btn)
         
         refresh_btn = QPushButton("↻  Refresh")
         refresh_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 12px; border-radius: 4px;")
         refresh_btn.clicked.connect(lambda: self.load_data() if self.record_id else None)
         cmd_layout.addWidget(refresh_btn)
+
+        self._add_form_ribbon_buttons(cmd_layout)
         
         # Form Selector dropdown (LTRDisplay inspired)
-        forms = self.entity_def.get("forms", [])
-        main_forms = [f for f in forms if f.get("type") == 2 or f.get("formactivation") == 1]
-        if not main_forms:
-            main_forms = forms
+        main_forms = self._get_main_form_defs()
             
-        if len(main_forms) > 1:
+        if not self.is_quick_view and len(main_forms) > 1:
             form_lbl = QLabel("📋 Form:")
             form_lbl.setStyleSheet("font-size: 12px; color: #605e5c; margin-left: 8px;")
             self.form_combo = QComboBox()
+            self.form_combo.setMinimumWidth(210)
+            self.form_combo.setMaximumWidth(300)
             self.form_combo.setStyleSheet("background-color: #f3f2f1; border: 1px solid #d1d1d1; border-radius: 4px; padding: 4px 8px; font-weight: 500; font-size: 12px;")
             for f in main_forms:
                 fname = f.get("name") or "Main Form"
@@ -1953,7 +6193,12 @@ class XrmFormRenderer(QWidget):
             active_f = self._get_active_form_def()
             if active_f:
                 for idx in range(self.form_combo.count()):
-                    if self.form_combo.itemData(idx) == active_f.get("formid"):
+                    if self._normalize_form_id(
+                        self.form_combo.itemData(idx)
+                    ) == self._normalize_form_id(
+                        active_f.get("formid")
+                        or active_f.get("formidunique")
+                    ):
                         self.form_combo.setCurrentIndex(idx)
                         break
             self.form_combo.currentIndexChanged.connect(self._on_form_selector_changed)
@@ -1962,14 +6207,19 @@ class XrmFormRenderer(QWidget):
         
         cmd_layout.addStretch()
         top_bar_layout.addLayout(cmd_layout)
-        main_layout.addWidget(top_bar)
+        if not self.is_quick_view:
+            main_layout.addWidget(top_bar)
 
         # --- Notifications Bar ---
         self.notifications_layout = QVBoxLayout()
         main_layout.addLayout(self.notifications_layout)
 
         # --- Business Process Flow (BPF) ---
-        bpf_layout = self._create_bpf_ui()
+        bpf_layout = (
+            self._create_bpf_ui()
+            if not self.is_quick_view
+            else None
+        )
         if bpf_layout:
             main_layout.addLayout(bpf_layout)
             
@@ -1986,27 +6236,46 @@ class XrmFormRenderer(QWidget):
 
         # Parse FormXML from selected active form
         active_form = self._get_active_form_def()
+        self._active_form = active_form
         if active_form and active_form.get("formxml"):
+            self._configure_form_parameters(
+                active_form.get("formxml")
+            )
+            self._configure_form_event_handlers(
+                active_form.get("formxml")
+            )
             self._render_from_xml(active_form.get("formxml"))
         elif active_form:
+            self._configure_form_parameters("<form />")
             self._render_from_json(active_form)
+        self._apply_form_parameters_to_controls()
             
         # Hook Ribbon ValueRules to widget signals for real-time evaluation
         for item in self.ribbon_widgets:
             rules = item["data"].get("display_rules", []) + item["data"].get("enable_rules", [])
-            for rule in rules:
+            for rule in self._flatten_ribbon_rules(rules):
                 if rule.get("type") == "ValueRule" and rule.get("field"):
                     field = rule.get("field")
                     if field in self.controls:
                         ctrl = self.controls[field]
                         if isinstance(ctrl, QLineEdit):
                             ctrl.textChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
+                        elif isinstance(ctrl, QTextEdit):
+                            ctrl.textChanged.connect(self.evaluate_ribbon_rules)
                         elif isinstance(ctrl, QComboBox):
                             ctrl.currentIndexChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
+                        elif isinstance(ctrl, MultiSelectOptionWidget):
+                            ctrl.valueChanged.connect(
+                                self.evaluate_ribbon_rules
+                            )
                         elif isinstance(ctrl, QCheckBox):
                             ctrl.stateChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
                         elif isinstance(ctrl, QSpinBox) or isinstance(ctrl, QDoubleSpinBox):
                             ctrl.valueChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
+                        elif isinstance(ctrl, QDateTimeEdit):
+                            ctrl.dateTimeChanged.connect(
+                                lambda _: self.evaluate_ribbon_rules()
+                            )
 
         self.form_container.setLayout(self.form_layout)
         self.scroll_area.setWidget(self.form_container)
@@ -2014,34 +6283,364 @@ class XrmFormRenderer(QWidget):
 
         self.setLayout(main_layout)
 
+    def _configure_form_event_handlers(self, form_xml):
+        self._form_event_handlers = parse_form_event_handlers(form_xml)
+        self._form_events_map = {}
+        for handler in self._form_event_handlers:
+            self._form_events_map.setdefault(
+                handler.get("event") or "",
+                [],
+            ).append(handler)
+
+    def _configure_form_parameters(self, form_xml):
+        self.form_parameter_definitions = parse_form_parameters(form_xml)
+        attributes = {
+            attribute.get("LogicalName"): attribute
+            for attribute in self.entity_def.get("attributes", [])
+            if attribute.get("LogicalName")
+        }
+        lookup_companions = {
+            f"{name}{suffix}"
+            for name, attribute in attributes.items()
+            if attribute.get("AttributeType") in {
+                "Lookup",
+                "Customer",
+                "Owner",
+            }
+            for suffix in ("name", "type")
+        }
+        standard = {
+            "cmdbar",
+            "createFromEntity",
+            "etn",
+            "extraqs",
+            "formid",
+            "id",
+            "navbar",
+            "pagetype",
+            "relationship",
+            "selectedStageId",
+        }
+        allowed = (
+            set(attributes)
+            | set(self.form_parameter_definitions)
+            | lookup_companions
+            | standard
+        )
+        unknown = sorted(
+            set(self._raw_form_parameters) - allowed
+        )
+        if unknown:
+            raise ValueError(
+                "The target form does not accept parameter(s): "
+                + ", ".join(unknown)
+            )
+        prohibited = [
+            name
+            for name in self._raw_form_parameters
+            if (
+                attributes.get(name, {}).get("AttributeType")
+                == "PartyList"
+                or name.casefold() == "regardingobjectid"
+            )
+        ]
+        if prohibited:
+            raise ValueError(
+                "Dataverse does not allow these fields as form "
+                "parameters: "
+                + ", ".join(sorted(prohibited))
+            )
+        self.form_parameters = {
+            name: self._coerce_form_parameter(
+                name,
+                value,
+                self.form_parameter_definitions.get(name),
+                attributes.get(name),
+            )
+            for name, value in self._raw_form_parameters.items()
+        }
+
+    @staticmethod
+    def _coerce_form_parameter(
+        name,
+        value,
+        parameter_definition,
+        attribute_definition,
+    ):
+        value_type = str(
+            (parameter_definition or {}).get("type")
+            or (attribute_definition or {}).get("AttributeType")
+            or "SafeString"
+        ).casefold()
+        if value is None:
+            return None
+        if value_type in {"boolean", "bool"}:
+            if isinstance(value, bool):
+                return value
+            lowered = str(value).strip().casefold()
+            if lowered in {"true", "1"}:
+                return True
+            if lowered in {"false", "0"}:
+                return False
+            raise ValueError(
+                f"Form parameter {name!r} is not a Boolean."
+            )
+        if value_type in {
+            "integer",
+            "bigint",
+            "long",
+            "positiveinteger",
+            "unsignedint",
+            "state",
+            "status",
+            "picklist",
+        }:
+            converted = int(value)
+            if value_type in {"positiveinteger", "unsignedint"} and converted < 0:
+                raise ValueError(
+                    f"Form parameter {name!r} cannot be negative."
+                )
+            return converted
+        if value_type in {
+            "decimal",
+            "double",
+            "money",
+        }:
+            return float(value)
+        if value_type in {
+            "multiselectpicklist",
+            "multiselectoptionset",
+            "multiple",
+        }:
+            if isinstance(value, (list, tuple)):
+                return [int(item) for item in value]
+            text = str(value).strip()
+            if text.startswith("[") and text.endswith("]"):
+                parsed = json.loads(text)
+                if not isinstance(parsed, list):
+                    raise ValueError(
+                        f"Form parameter {name!r} must be an array."
+                    )
+                return [int(item) for item in parsed]
+            return [
+                int(item)
+                for item in text.split(",")
+                if item.strip()
+            ]
+        if value_type in {
+            "uniqueid",
+            "uniqueidentifier",
+        }:
+            return str(uuid.UUID(str(value).strip().strip("{}")))
+        return value
+
+    def _apply_form_parameters_to_controls(self):
+        if self.record_id:
+            return
+        for name, value in self.form_parameters.items():
+            for widget in self.control_instances.get(name, []):
+                widget.blockSignals(True)
+                try:
+                    row = {name: value}
+                    if isinstance(widget, LookupWidget):
+                        raw_key = f"_{name}_value"
+                        row[raw_key] = value
+                        row[
+                            f"{raw_key}@"
+                            "Microsoft.Dynamics.CRM.lookuplogicalname"
+                        ] = self.form_parameters.get(f"{name}type")
+                        row[
+                            f"{raw_key}@"
+                            "OData.Community.Display.V1.FormattedValue"
+                        ] = (
+                            self.form_parameters.get(f"{name}name")
+                            or value
+                        )
+                    self._set_widget_value(
+                        name,
+                        widget,
+                        row,
+                    )
+                finally:
+                    widget.blockSignals(False)
+
+    @classmethod
+    def _flatten_ribbon_rules(cls, rules):
+        for rule in rules:
+            yield rule
+            yield from cls._flatten_ribbon_rules(
+                rule.get("children", [])
+            )
+
+    @staticmethod
+    def _is_standard_ribbon_command(command_name):
+        return str(command_name or "") in {
+            "Mscrm.SavePrimary",
+            "Mscrm.SaveAndClosePrimary",
+            "Mscrm.SaveAndNewPrimary",
+            "Mscrm.DeletePrimaryRecord",
+            "Mscrm.RefreshForm",
+        }
+
+    def _add_form_ribbon_buttons(self, command_layout):
+        ribbon = self.entity_def.get("ribbon") or {}
+        buttons = (
+            ribbon.get("buttons")
+            or self.entity_def.get("ribbon_buttons", [])
+        )
+        child_buttons_by_parent = {}
+        for button_data in buttons:
+            if button_data.get("location_type") != "form":
+                continue
+            if button_data.get("control_type", "Button") not in {
+                "Button",
+                "ToggleButton",
+                "SplitButton",
+                "FlyoutAnchor"
+            }:
+                continue
+            command_name = button_data.get("command")
+            if self._is_standard_ribbon_command(command_name):
+                continue
+            pid = button_data.get("parent_id", "")
+            label = button_data.get("label")
+            if not label:
+                continue
+            child_buttons_by_parent.setdefault(pid, []).append(button_data)
+
+        if child_buttons_by_parent.get(""):
+            overflow_menu = QMenu(self)
+            
+            def add_menu_items(menu, parent_id):
+                children = sorted(child_buttons_by_parent.get(parent_id, []), key=lambda b: b.get("sequence", 0))
+                for btn in children:
+                    lbl = btn.get("label", "")
+                    if btn.get("control_type") in ("FlyoutAnchor", "SplitButton"):
+                        submenu = menu.addMenu(lbl)
+                        submenu.setToolTip(btn.get("tooltip") or "")
+                        self.ribbon_widgets.append({"widget": submenu.menuAction(), "data": btn})
+                        add_menu_items(submenu, btn["id"])
+                    else:
+                        action = menu.addAction(lbl)
+                        action.setToolTip(btn.get("tooltip") or "")
+                        action.triggered.connect(
+                            lambda _, data=btn: self.execute_ribbon_command(data)
+                        )
+                        self.ribbon_widgets.append({
+                            "widget": action,
+                            "data": btn,
+                        })
+                        
+            add_menu_items(overflow_menu, "")
+            overflow_button = QToolButton()
+            overflow_button.setText("More commands")
+            overflow_button.setPopupMode(
+                QToolButton.ToolButtonPopupMode.InstantPopup
+            )
+            overflow_button.setMenu(overflow_menu)
+            overflow_button.setStyleSheet(
+                "QToolButton { background-color: #ffffff; "
+                "border: 1px solid #d1d1d1; font-weight: 500; "
+                "padding: 6px 12px; border-radius: 4px; }"
+            )
+            command_layout.addWidget(overflow_button)
+
+    @staticmethod
+    def _normalize_form_id(form_id):
+        return str(form_id or "").strip().strip("{}").lower()
+
+    def _get_main_form_defs(self):
+        forms = self.entity_def.get("forms", [])
+        expected_type = (
+            self.requested_form_type
+            if self.requested_form_type is not None
+            else (6 if self.is_quick_view else 2)
+        )
+        typed_forms = [
+            form
+            for form in forms
+            if str(form.get("type") or "") == str(expected_type)
+        ]
+        if typed_forms:
+            return typed_forms
+        if self.requested_form_type is not None:
+            return []
+        if self.is_quick_view:
+            return []
+        return [
+            form
+            for form in forms
+            if form.get("type") in (None, "", 2, "2")
+        ]
+
     def _get_active_form_def(self):
         forms = self.entity_def.get("forms", [])
         if not forms:
             return None
         if self.form_id:
-            f = next((f for f in forms if f.get("formid") == self.form_id), None)
-            if f: return f
-            
-        main_forms = [f for f in forms if f.get("type") == 2 or f.get("formactivation") == 1]
+            requested_id = self._normalize_form_id(self.form_id)
+            form = next(
+                (
+                    candidate
+                    for candidate in forms
+                    if requested_id
+                    in {
+                        self._normalize_form_id(candidate.get("formid")),
+                        self._normalize_form_id(
+                            candidate.get("formidunique")
+                        ),
+                    }
+                ),
+                None,
+            )
+            if form:
+                return form
+
+        main_forms = self._get_main_form_defs()
         if not main_forms:
-            main_forms = forms
-            
-        # Prefer interactive / multisession main forms or forms with the most tabs
-        interactive = next((f for f in main_forms if "interactive" in (f.get("name") or "").lower() or "multisession" in (f.get("name") or "").lower()), None)
-        if interactive:
-            return interactive
-            
-        # Select form with richest FormXml
-        best_form = main_forms[0]
-        max_tabs = 0
-        for f in main_forms:
-            xml_str = f.get("formxml", "")
-            if xml_str:
-                tab_count = xml_str.count("<tab ")
-                if tab_count > max_tabs:
-                    max_tabs = tab_count
-                    best_form = f
-        return best_form
+            return None
+
+        default_form = next(
+            (form for form in main_forms if form.get("isdefault")),
+            None,
+        )
+        if default_form:
+            return default_form
+
+        def form_score(form):
+            xml_text = form.get("formxml") or ""
+            try:
+                root = ET.fromstring(xml_text)
+                visible_tabs = [
+                    tab
+                    for tab in root.findall("./tabs/tab")
+                    if self._xml_is_visible(tab)
+                ]
+                visible_controls = [
+                    control
+                    for control in root.findall(
+                        "./tabs/tab/columns/column/sections/"
+                        "section/rows/row/cell/control"
+                    )
+                    if self._xml_is_visible(control)
+                ]
+                max_columns = max(
+                    (
+                        len(tab.findall("./columns/column"))
+                        for tab in visible_tabs
+                    ),
+                    default=0,
+                )
+                return (
+                    len(visible_controls),
+                    max_columns,
+                    len(visible_tabs),
+                    len(xml_text),
+                )
+            except ET.ParseError:
+                return (0, 0, 0, len(xml_text))
+
+        return max(main_forms, key=form_score)
 
     def _on_form_selector_changed(self, idx):
         if hasattr(self, "form_combo"):
@@ -2053,22 +6652,472 @@ class XrmFormRenderer(QWidget):
                     item = self.form_layout.takeAt(0)
                     w = item.widget()
                     if w: w.deleteLater()
+                while self.header_layout.count():
+                    item = self.header_layout.takeAt(0)
+                    widget = item.widget()
+                    if widget:
+                        widget.deleteLater()
+                self.header_layout.addStretch()
                 self.controls.clear()
+                self.control_instances.clear()
                 self.control_labels.clear()
-                
+                self.subgrids = []
+                self.quick_views = []
+                self.timelines = []
+                self.ui_hierarchy = {"tabs": {}}
+                self._form_events_map = {}
+                self._form_event_handlers = []
+                 
                 active_f = self._get_active_form_def()
+                self._active_form = active_f
                 if active_f and active_f.get("formxml"):
+                    self._configure_form_parameters(
+                        active_f.get("formxml")
+                    )
+                    self._configure_form_event_handlers(
+                        active_f.get("formxml")
+                    )
                     self._render_from_xml(active_f.get("formxml"))
                 elif active_f:
+                    self._configure_form_parameters("<form />")
                     self._render_from_json(active_f)
-                
+                self._apply_form_parameters_to_controls()
+                self.form_context = PythonFormContext(self)
                 if self.record_id:
-                    self.load_data()
+                    self._populate_data()
+                if not self.is_quick_view:
+                    self._load_browser_runtime()
+
+    @staticmethod
+    def _xml_is_visible(element):
+        if element is None:
+            return False
+        return str(element.get("visible", "true")).lower() not in {
+            "false",
+            "0",
+        }
+
+    @staticmethod
+    def _xml_span(element, attribute):
+        try:
+            return max(1, int(element.get(attribute, "1")))
+        except (TypeError, ValueError):
+            return 1
+
+    @staticmethod
+    def _column_stretch(column_element, column_count):
+        width = str(column_element.get("width") or "").strip()
+        if width.endswith("%"):
+            try:
+                return max(1, int(round(float(width[:-1]) * 10)))
+            except ValueError:
+                pass
+        return max(1, int(round(1000 / max(1, column_count))))
+
+    def _resolve_control_context(self, control_element, class_id):
+        target_entity = None
+        view_id = None
+        quick_form_id = None
+        quick_form_candidates = []
+        relationship_name = None
+        records_per_page = 50
+        enable_quick_find = False
+        class_id = str(class_id or "").lower()
+        parameters = control_element.find("parameters")
+
+        is_subgrid = (
+            class_id == "{e7a81278-8635-4d9e-8d4d-59480b391c5b}"
+            or str(
+                control_element.get("indicationOfSubgrid", "false")
+            ).lower()
+            == "true"
+        )
+        if is_subgrid and parameters is not None:
+            target_node = parameters.find("TargetEntityType")
+            view_node = parameters.find("ViewId")
+            relationship_node = parameters.find("RelationshipName")
+            records_node = parameters.find("RecordsPerPage")
+            quick_find_node = parameters.find("EnableQuickFind")
+            target_entity = (
+                target_node.text.strip().lower()
+                if target_node is not None and target_node.text
+                else None
+            )
+            view_id = (
+                view_node.text.strip()
+                if view_node is not None and view_node.text
+                else None
+            )
+            relationship_name = (
+                relationship_node.text.strip()
+                if relationship_node is not None
+                and relationship_node.text
+                else None
+            )
+            try:
+                records_per_page = int(
+                    records_node.text
+                    if records_node is not None and records_node.text
+                    else 50
+                )
+            except ValueError:
+                records_per_page = 50
+            enable_quick_find = (
+                quick_find_node is not None
+                and str(quick_find_node.text or "").lower() == "true"
+            )
+
+        if (
+            class_id == "{5c5600e0-1d6e-4205-a272-be80da87fd42}"
+            and parameters is not None
+        ):
+            quick_forms_node = parameters.find("QuickForms")
+            candidates = []
+            if quick_forms_node is not None and quick_forms_node.text:
+                try:
+                    quick_forms = ET.fromstring(quick_forms_node.text)
+                    for form_node in quick_forms.findall(".//QuickFormId"):
+                        entity_name = str(
+                            form_node.get("entityname") or ""
+                        ).strip().lower()
+                        form_id = str(form_node.text or "").strip()
+                        if entity_name and form_id:
+                            candidates.append((entity_name, form_id))
+                except ET.ParseError:
+                    candidates = []
+
+            manifest_entities = {
+                entity.get("LogicalName")
+                for entity in self.manifest.get("entities", [])
+            }
+            selected = next(
+                (
+                    candidate
+                    for candidate in candidates
+                    if candidate[0] in manifest_entities
+                ),
+                candidates[0] if candidates else None,
+            )
+            if selected:
+                target_entity, quick_form_id = selected
+            quick_form_candidates = [
+                {"entity": entity_name, "form_id": form_id}
+                for entity_name, form_id in candidates
+            ]
+
+        return (
+            target_entity,
+            view_id,
+            quick_form_id,
+            quick_form_candidates,
+            relationship_name,
+            records_per_page,
+            enable_quick_find,
+        )
+
+    def _build_form_cell(
+        self,
+        cell_element,
+        section_element,
+        section_controls,
+    ):
+        if not self._xml_is_visible(cell_element):
+            return None
+        control_element = cell_element.find("control")
+        if control_element is None or not self._xml_is_visible(control_element):
+            return None
+
+        data_field = (
+            control_element.get("datafieldname")
+            or control_element.get("id")
+        )
+        if not data_field:
+            return None
+
+        class_id = control_element.get("classid")
+        control_label = (
+            self._get_label_from_xml(cell_element.find("labels"))
+            or data_field.replace("_", " ").title()
+        )
+        (
+            target_entity,
+            view_id,
+            quick_form_id,
+            quick_form_candidates,
+            relationship_name,
+            records_per_page,
+            enable_quick_find,
+        ) = (
+            self._resolve_control_context(control_element, class_id)
+        )
+
+        widget = self._create_widget_for_field(
+            data_field,
+            class_id,
+            target_entity=target_entity,
+            view_id=view_id,
+            quick_form_id=quick_form_id,
+            quick_form_candidates=quick_form_candidates,
+            relationship_name=relationship_name,
+            records_per_page=records_per_page,
+            enable_quick_find=enable_quick_find,
+            control_elem=control_element,
+        )
+        if str(control_element.get("disabled", "false")).lower() == "true":
+            widget.setEnabled(False)
+        if isinstance(widget, SubgridWidget):
+            widget.set_control_name(data_field)
+        elif isinstance(widget, LookupWidget):
+            widget.control_name = data_field
+        elif isinstance(widget, QTableWidget):
+            widget.setProperty("verseoffControlName", data_field)
+            widget.setProperty(
+                "verseoffEntityName",
+                target_entity or "",
+            )
+        widget.setSizePolicy(
+            QSizePolicy.Policy.Expanding,
+            widget.sizePolicy().verticalPolicy(),
+        )
+
+        cell_widget = QWidget()
+        label_position = str(
+            section_element.get("celllabelposition") or "Left"
+        ).lower()
+        if label_position == "top":
+            cell_layout = QVBoxLayout(cell_widget)
+        else:
+            cell_layout = QHBoxLayout(cell_widget)
+        cell_layout.setContentsMargins(0, 2, 0, 2)
+        cell_layout.setSpacing(10)
+
+        show_label = (
+            str(cell_element.get("showlabel", "true")).lower() != "false"
+        )
+        if show_label:
+            label_widget = QLabel(control_label)
+            label_widget.setWordWrap(True)
+            label_widget.setStyleSheet(
+                "color: #605e5c; font-weight: 500;"
+            )
+            alignment = str(
+                section_element.get("celllabelalignment") or "Left"
+            ).lower()
+            if alignment == "right":
+                label_widget.setAlignment(
+                    Qt.AlignmentFlag.AlignRight
+                    | Qt.AlignmentFlag.AlignVCenter
+                )
+            elif alignment == "center":
+                label_widget.setAlignment(
+                    Qt.AlignmentFlag.AlignHCenter
+                    | Qt.AlignmentFlag.AlignVCenter
+                )
+            if label_position != "top":
+                try:
+                    label_width = int(
+                        section_element.get("labelwidth", "115")
+                    )
+                except ValueError:
+                    label_width = 115
+                label_widget.setFixedWidth(max(70, label_width))
+            cell_layout.addWidget(label_widget)
+            self.control_labels.setdefault(data_field, label_widget)
+
+        cell_layout.addWidget(widget, 1)
+        self.controls.setdefault(data_field, widget)
+        self.control_instances.setdefault(data_field, []).append(widget)
+        section_controls.append(data_field)
+        return cell_widget
+
+    def _build_form_section(self, section_element, tab_name):
+        if not self._xml_is_visible(section_element):
+            return None
+
+        rows = section_element.findall("./rows/row")
+        if not rows:
+            return None
+
+        section_name = (
+            section_element.get("name")
+            or section_element.get("id")
+            or "section_auto"
+        )
+        section_label = (
+            self._get_label_from_xml(section_element.find("labels"))
+            or section_name.replace("_", " ").title()
+        )
+        show_label = (
+            str(section_element.get("showlabel", "true")).lower()
+            != "false"
+        )
+        show_bar = (
+            str(section_element.get("showbar", "true")).lower()
+            != "false"
+        )
+
+        group_box = QGroupBox(section_label.upper() if show_label else "")
+        group_box.setObjectName("FormSection")
+        group_box.setProperty("showBar", show_bar)
+        try:
+            configured_height = int(section_element.get("height", "0"))
+        except ValueError:
+            configured_height = 0
+        if configured_height > 0:
+            group_box.setMinimumHeight(configured_height)
+        group_box.setStyleSheet("""
+            QGroupBox#FormSection {
+                background-color: #ffffff;
+                border: 1px solid #e1dfdd;
+                border-radius: 6px;
+                margin-top: 14px;
+                padding: 14px 12px 10px 12px;
+                font-weight: 700;
+                font-size: 11px;
+                color: #605e5c;
+            }
+            QGroupBox#FormSection[showBar="false"] {
+                border-color: #edebe9;
+            }
+            QGroupBox#FormSection::title {
+                subcontrol-origin: margin;
+                subcontrol-position: top left;
+                padding: 0 6px;
+                left: 12px;
+                background-color: #f8f9fa;
+            }
+        """)
+
+        grid = QGridLayout(group_box)
+        grid.setContentsMargins(8, 8, 8, 8)
+        grid.setHorizontalSpacing(14)
+        grid.setVerticalSpacing(6)
+        section_controls = []
+        max_grid_columns = 1
+        occupied_cells = set()
+
+        for row_index, row_element in enumerate(rows):
+            try:
+                row_height = int(row_element.get("height", "0"))
+            except ValueError:
+                row_height = 0
+            if row_height > 0:
+                grid.setRowMinimumHeight(row_index, row_height)
+            grid_column = 0
+            for cell_element in row_element.findall("cell"):
+                column_span = self._xml_span(cell_element, "colspan")
+                row_span = self._xml_span(cell_element, "rowspan")
+                while any(
+                    (row_index, grid_column + offset)
+                    in occupied_cells
+                    for offset in range(column_span)
+                ):
+                    grid_column += 1
+                cell_widget = self._build_form_cell(
+                    cell_element,
+                    section_element,
+                    section_controls,
+                )
+                if cell_widget is not None:
+                    grid.addWidget(
+                        cell_widget,
+                        row_index,
+                        grid_column,
+                        row_span,
+                        column_span,
+                    )
+                    for occupied_row in range(
+                        row_index,
+                        row_index + row_span,
+                    ):
+                        for occupied_column in range(
+                            grid_column,
+                            grid_column + column_span,
+                        ):
+                            occupied_cells.add(
+                                (occupied_row, occupied_column)
+                            )
+                grid_column += column_span
+            max_grid_columns = max(max_grid_columns, grid_column)
+
+        if not section_controls:
+            group_box.deleteLater()
+            return None
+        for column_index in range(max_grid_columns):
+            grid.setColumnStretch(column_index, 1)
+
+        self.ui_hierarchy["tabs"][tab_name]["sections"][
+            section_name
+        ] = {
+            "label": section_label,
+            "groupbox": group_box,
+            "controls": section_controls,
+        }
+        return group_box
+
+    def _build_form_tab(self, tab_element, tab_name):
+        tab_page = QWidget()
+        columns_layout = QHBoxLayout(tab_page)
+        columns_layout.setContentsMargins(6, 10, 6, 10)
+        columns_layout.setSpacing(12)
+
+        column_elements = tab_element.findall("./columns/column")
+        if not column_elements:
+            column_elements = [tab_element]
+
+        for column_element in column_elements:
+            column_widget = QWidget()
+            column_widget.setObjectName("FormColumn")
+            column_layout = QVBoxLayout(column_widget)
+            column_layout.setContentsMargins(0, 0, 0, 0)
+            column_layout.setSpacing(10)
+
+            sections = column_element.findall("./sections/section")
+            if column_element is tab_element:
+                sections = tab_element.findall(".//section")
+            for section_element in sections:
+                section_widget = self._build_form_section(
+                    section_element,
+                    tab_name,
+                )
+                if section_widget is not None:
+                    column_layout.addWidget(section_widget)
+            column_layout.addStretch()
+
+            stretch = self._column_stretch(
+                column_element,
+                len(column_elements),
+            )
+            columns_layout.addWidget(column_widget, stretch)
+
+        return tab_page
 
     def _render_from_xml(self, formxml_str: str):
         """Parses D365 FormXML at runtime to build the UI."""
         try:
             root = ET.fromstring(formxml_str)
+            self._custom_control_bindings = {}
+            for description in root.findall(
+                ".//controlDescriptions/controlDescription"
+            ):
+                control_name = description.get("forControl")
+                if not control_name:
+                    continue
+                custom_controls = description.findall("./customControl")
+                selected = next(
+                    (
+                        node
+                        for node in custom_controls
+                        if str(node.get("formFactor") or "") in {
+                            "",
+                            "0",
+                            "1",
+                        }
+                    ),
+                    custom_controls[0] if custom_controls else None,
+                )
+                if selected is not None:
+                    self._custom_control_bindings[control_name] = selected
             
             # --- Render Header ---
             header_node = root.find(".//header/tabs")
@@ -2087,7 +7136,11 @@ class XrmFormRenderer(QWidget):
                             widget = self._create_widget_for_field(data_field, class_id, control_elem=control_elem)
                             widget.setEnabled(False) # Header fields read-only for MVP
                             widget.setStyleSheet("border: none; background: transparent; font-weight: bold; font-size: 14px;")
-                            self.controls[data_field] = widget
+                            self.controls.setdefault(data_field, widget)
+                            self.control_instances.setdefault(
+                                data_field,
+                                [],
+                            ).append(widget)
                             
                             field_layout.addWidget(lbl)
                             field_layout.addWidget(widget)
@@ -2137,125 +7190,31 @@ class XrmFormRenderer(QWidget):
                 }
             """)
             tab_index_counter = 0
-            
+
             for tab_elem in body_node.findall("tab"):
+                if not self._xml_is_visible(tab_elem):
+                    continue
                 tab_name = tab_elem.get("name", f"tab_{tab_index_counter}")
-                tab_label = self._get_label_from_xml(tab_elem.find("labels")) or tab_name
-                tab_page = QWidget()
-                tab_layout = QVBoxLayout(tab_page)
-                tab_layout.setContentsMargins(6, 10, 6, 10)
-                tab_layout.setSpacing(12)
-                
+                tab_label = (
+                    self._get_label_from_xml(tab_elem.find("labels"))
+                    or tab_name
+                )
+                if (
+                    str(tab_elem.get("showlabel", "true")).lower()
+                    == "false"
+                ):
+                    tab_label = ""
+
                 self.ui_hierarchy["tabs"][tab_name] = {
                     "label": tab_label,
                     "index": tab_index_counter,
                     "sections": {}
                 }
-                
-                # Sections
-                columns_node = tab_elem.find("columns")
-                if columns_node is not None:
-                    for column_elem in columns_node.findall("column"):
-                        sections_node = column_elem.find("sections")
-                        if sections_node is not None:
-                            for section_elem in sections_node.findall("section"):
-                                sec_name = section_elem.get("name", "section_auto")
-                                sec_label = self._get_label_from_xml(section_elem.find("labels")) or sec_name
-                                group_box = QGroupBox(sec_label.upper())
-                                group_box.setStyleSheet("""
-                                    QGroupBox {
-                                        background-color: #ffffff;
-                                        border: 1px solid #e1dfdd;
-                                        border-radius: 6px;
-                                        margin-top: 14px;
-                                        font-weight: 700;
-                                        font-size: 11px;
-                                        color: #605e5c;
-                                        padding: 14px 12px 10px 12px;
-                                    }
-                                    QGroupBox::title {
-                                        subcontrol-origin: margin;
-                                        subcontrol-position: top left;
-                                        padding: 0 6px;
-                                        left: 12px;
-                                        background-color: #f8f9fa;
-                                    }
-                                """)
-                                group_layout = QVBoxLayout()
-                                group_layout.setContentsMargins(8, 8, 8, 8)
-                                group_layout.setSpacing(8)
-                                
-                                sec_controls_list = []
-                                self.ui_hierarchy["tabs"][tab_name]["sections"][sec_name] = {
-                                    "label": sec_label,
-                                    "groupbox": group_box,
-                                    "controls": sec_controls_list
-                                }
-                                
-                                rows_node = section_elem.find("rows")
-                                if rows_node is not None:
-                                    for row_elem in rows_node.findall("row"):
-                                        row_layout = QHBoxLayout()
-                                        row_layout.setSpacing(10)
-                                        for cell_elem in row_elem.findall("cell"):
-                                            control_elem = cell_elem.find("control")
-                                            if control_elem is not None:
-                                                data_field = control_elem.get("datafieldname") or control_elem.get("id")
-                                                class_id = control_elem.get("classid")
-                                                ctrl_label = self._get_label_from_xml(cell_elem.find("labels")) or data_field
-                                                
-                                                if data_field:
-                                                    lbl_widget = QLabel(ctrl_label)
-                                                    lbl_widget.setFixedWidth(130)
-                                                    lbl_widget.setStyleSheet("color: #605e5c; font-weight: 500;")
-                                                    row_layout.addWidget(lbl_widget)
-                                                    self.control_labels[data_field] = lbl_widget
-                                                    
-                                                    target_entity = None
-                                                    view_id = None
-                                                    quick_form_id = None
-                                                    if class_id and class_id.lower() == "{e7a81278-8635-4d9e-8d4d-59480b391c5b}":
-                                                        params_node = control_elem.find("parameters")
-                                                        if params_node is not None:
-                                                            target_elem = params_node.find("TargetEntityType")
-                                                            if target_elem is not None:
-                                                                target_entity = target_elem.text
-                                                            view_elem = params_node.find("ViewId")
-                                                            if view_elem is not None:
-                                                                view_id = view_elem.text
-                                                    elif class_id and class_id.lower() == "{5c5600e0-1d6e-4205-a272-be80da87fd42}":
-                                                        # Quick View
-                                                        params_node = control_elem.find("parameters")
-                                                        if params_node is not None:
-                                                            qforms_node = params_node.find("QuickForms")
-                                                            if qforms_node is not None and qforms_node.text:
-                                                                try:
-                                                                    qf_root = ET.fromstring(qforms_node.text)
-                                                                    qf_id_elem = qf_root.find(".//QuickFormId")
-                                                                    if qf_id_elem is not None:
-                                                                        quick_form_id = qf_id_elem.text
-                                                                        target_entity = qf_id_elem.get("entityname")
-                                                                except: pass
-                                                        
-                                                        if not target_entity and data_field:
-                                                             targets = self.entity_def.get("lookup_targets", {}).get(data_field, [])
-                                                             if targets: target_entity = targets[0]
-
-                                                    widget = self._create_widget_for_field(data_field, class_id, target_entity=target_entity, view_id=view_id, quick_form_id=quick_form_id, control_elem=control_elem)
-                                                    self.controls[data_field] = widget
-                                                    row_layout.addWidget(widget)
-                                                    sec_controls_list.append(data_field)
-                                                    
-                                        group_layout.addLayout(row_layout)
-                                        
-                                group_box.setLayout(group_layout)
-                                tab_layout.addWidget(group_box)
-                                
-                tab_layout.addStretch()
+                tab_page = self._build_form_tab(tab_elem, tab_name)
                 self.tab_widget.addTab(tab_page, tab_label)
                 tab_index_counter += 1
                 
-            # Add "Related" tab (Filtered to real App Entities, excluding system internal tables)
+            # Add "Related" tab for full Main forms.
             SYSTEM_EXCLUSIONS = {
                 "activityparty", "duplicaterecord", "asyncoperation", "bulkdeletefailure", 
                 "userentityinstancedata", "processsession", "principalobjectattributeaccess",
@@ -2263,13 +7222,25 @@ class XrmFormRenderer(QWidget):
                 "workflowwaitsubscription", "subscriptiontrackingexml"
             }
             
-            all_manifest_entities = {e.get("LogicalName") for e in self.config.get("entities", [])} if hasattr(self, "config") and self.config else set()
+            all_manifest_entities = {
+                entity.get("LogicalName")
+                for entity in self.manifest.get("entities", [])
+            }
             display_map = {}
-            if hasattr(self, "config") and self.config:
-                for e in self.config.get("entities", []):
-                    ln = e.get("LogicalName")
-                    dn = e.get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or e.get("DisplayName") or ln.replace("_", " ").title()
-                    display_map[ln] = dn
+            for entity in self.manifest.get("entities", []):
+                logical_name = entity.get("LogicalName")
+                if not logical_name:
+                    continue
+                display_name = entity.get("DisplayName")
+                if isinstance(display_name, dict):
+                    display_name = (
+                        display_name.get("UserLocalizedLabel", {})
+                        .get("Label")
+                    )
+                display_map[logical_name] = (
+                    display_name
+                    or logical_name.replace("_", " ").title()
+                )
             
             related_tab = QWidget()
             related_layout = QVBoxLayout(related_tab)
@@ -2286,7 +7257,7 @@ class XrmFormRenderer(QWidget):
             
             self.associated_grids = []
             valid_rel_count = 0
-            if relationships:
+            if relationships and not self.is_quick_view:
                 for rel in relationships:
                     target_entity = (rel.get("ReferencingEntity") or "").lower()
                     ref_attr = rel.get("ReferencingAttribute")
@@ -2312,53 +7283,118 @@ class XrmFormRenderer(QWidget):
                 
             self.tab_widget.currentChanged.connect(self._on_tab_changed)
             self.form_layout.addWidget(self.tab_widget)
-            
-            # --- Parse Form Events (OnLoad, OnSave, OnChange) ---
-            events_node = root.find(".//events")
-            if events_node is not None:
-                for evt in events_node.findall("event"):
-                    evt_name = evt.get("name", "").lower()
-                    for handler in evt.findall(".//Handler"):
-                        self._form_events_map.setdefault(evt_name, []).append({
-                            "function": handler.get("functionName"),
-                            "library": handler.get("libraryName"),
-                            "pass_context": handler.get("passExecutionContext", "false").lower() == "true",
-                            "control": evt.get("attribute") # For OnChange events
-                        })
-            
+            self._wire_quick_view_lookups()
+
             # Wire up PyQt Signals for OnChange events
             for field_name, widget in self.controls.items():
                 if isinstance(widget, QLineEdit):
                     widget.editingFinished.connect(lambda f=field_name: self._fire_events("onchange", f))
+                elif isinstance(widget, QTextEdit):
+                    widget.textChanged.connect(
+                        lambda f=field_name: self._fire_events(
+                            "onchange",
+                            f,
+                        )
+                    )
                 elif isinstance(widget, QComboBox):
                     widget.currentIndexChanged.connect(lambda _, f=field_name: self._fire_events("onchange", f))
+                elif isinstance(widget, MultiSelectOptionWidget):
+                    widget.valueChanged.connect(
+                        lambda f=field_name: self._fire_events(
+                            "onchange",
+                            f,
+                        )
+                    )
                 elif isinstance(widget, QCheckBox):
                     widget.stateChanged.connect(lambda _, f=field_name: self._fire_events("onchange", f))
                 elif isinstance(widget, QSpinBox) or isinstance(widget, QDoubleSpinBox):
                     widget.editingFinished.connect(lambda f=field_name: self._fire_events("onchange", f))
-                elif isinstance(widget, QTableWidget):
-                    widget.cellChanged.connect(lambda r, c, f=field_name: self._fire_events("onchange", f))
-                    widget.itemSelectionChanged.connect(lambda f=field_name: self._fire_events("onrecordselect", f))
-                    widget.currentCellChanged.connect(
-                        lambda curr_r, curr_c, prev_r, prev_c, f=field_name: 
-                            self._fire_events("gridonsave", f) if curr_r != prev_r and prev_r >= 0 else None
+                elif isinstance(widget, QDateTimeEdit):
+                    widget.dateTimeChanged.connect(
+                        lambda _, f=field_name: self._fire_events(
+                            "onchange",
+                            f,
+                        )
                     )
+                elif isinstance(widget, SubgridWidget):
+                    widget.table.itemSelectionChanged.connect(
+                        lambda f=field_name, w=widget:
+                        self._on_subgrid_selection_changed(f, w)
+                    )
+                elif isinstance(widget, QTableWidget):
+                    widget.cellChanged.connect(
+                        lambda row, column, f=field_name, w=widget:
+                        self._on_editable_grid_cell_changed(
+                            f,
+                            w,
+                            row,
+                            column,
+                        )
+                    )
+                    widget.itemSelectionChanged.connect(
+                        lambda f=field_name, w=widget:
+                        self._on_editable_grid_selection_changed(f, w)
+                    )
+                    widget.currentCellChanged.connect(
+                        lambda curr_r, curr_c, prev_r, prev_c,
+                        f=field_name, w=widget:
+                        self._on_editable_grid_row_left(
+                            f,
+                            w,
+                            curr_r,
+                            prev_r,
+                        )
+                    )
+                 
+        except (
+            ET.ParseError,
+            KeyError,
+            TypeError,
+            ValueError,
+            RuntimeError,
+        ) as error:
+            import traceback
+            tb = traceback.format_exc()
+            logger.exception("Could not render FormXML")
+            error_label = QLabel(
+                f"Could not render this form: {error}\n\nTraceback:\n{tb}"
+            )
+            error_label.setWordWrap(True)
+            error_label.setStyleSheet(
+                "color: #a4262c; background: #fde7e9; "
+                "border: 1px solid #f1bbbc; border-radius: 4px; "
+                "padding: 10px;"
+            )
+            self.form_layout.addWidget(error_label)
 
-            # Load Data
-            if self.record_id:
-                self.load_data()
-                
-        except Exception as e:
-            self.form_layout.addWidget(QLabel(f"Error parsing FormXML: {e}"))
+    def _wire_quick_view_lookups(self):
+        for quick_view in self.quick_views:
+            lookup = next(
+                (
+                    widget
+                    for widget in self.control_instances.get(
+                        quick_view.field_name,
+                        [],
+                    )
+                    if isinstance(widget, LookupWidget)
+                ),
+                None,
+            )
+            if lookup is not None:
+                lookup.textChanged.connect(
+                    lambda _, view=quick_view: view.refresh_from_controls()
+                )
 
     def _create_bpf_ui(self) -> QHBoxLayout:
         """Dynamically renders the BPF chevron progress bar if an active BPF exists."""
         # Find if any BPF applies to this entity
         bpfs = self.manifest.get("bpfs", {})
         active_bpf = None
+        active_bpf_id = None
         for bpf_name, bpf_def in bpfs.items():
             if bpf_def.get("primary_entity") == self.logical_name:
                 active_bpf = bpf_def
+                active_bpf_id = bpf_name
                 break
                 
         if not active_bpf:
@@ -2373,6 +7409,11 @@ class XrmFormRenderer(QWidget):
         stages = active_bpf.get("stages", [])
         
         for idx, stage in enumerate(stages):
+            stage_id = (
+                stage.get("id")
+                or stage.get("processstageid")
+                or f"{active_bpf_id}:stage:{idx}"
+            )
             btn = QPushButton(f"{stage.get('name', 'Stage')} ")
             # Styling to simulate a chevron
             btn.setStyleSheet("""
@@ -2393,7 +7434,11 @@ class XrmFormRenderer(QWidget):
                 btn.setText(f"{btn.text()} ({stage.get('entity')})")
                 btn.setStyleSheet(btn.styleSheet().replace("color: #323130;", "color: #0078d4;"))
                 
-            btn.clicked.connect(lambda _, s=stage.get('name'): self._fire_events("onstageselected", s))
+            btn.clicked.connect(
+                lambda _, selected_stage=stage_id:
+                self._request_bpf_stage(selected_stage)
+            )
+            self.bpf_stage_buttons[stage_id] = btn
             bpf_layout.addWidget(btn)
             
             # Add chevron separator except for last item
@@ -2403,250 +7448,806 @@ class XrmFormRenderer(QWidget):
                 bpf_layout.addWidget(sep)
                 
         bpf_layout.addStretch()
+        self._update_bpf_stage_styles()
         return bpf_layout
 
+    def _request_bpf_stage(self, stage_id):
+        if not self._runtime_ready:
+            self.set_form_notification(
+                "The client runtime is still loading.",
+                "WARNING",
+                "verseoff_bpf_runtime",
+            )
+            return
+        self.browser.page().runJavaScript(
+            "formContext.data.process.setActiveStage("
+            + json.dumps(stage_id)
+            + ", function() {});"
+        )
+
+    def _update_bpf_stage_styles(self):
+        state = self._process_runtime_state()
+        active_stage = state.get("activeStageId")
+        selected_stage = state.get("selectedStageId")
+        for stage_id, button in self.bpf_stage_buttons.items():
+            if stage_id == active_stage:
+                background = "#0f6cbd"
+                foreground = "#ffffff"
+            elif stage_id == selected_stage:
+                background = "#deecf9"
+                foreground = "#005a9e"
+            else:
+                background = "#f3f2f1"
+                foreground = "#323130"
+            button.setStyleSheet(
+                "QPushButton {"
+                f"background-color: {background};"
+                "border: 1px solid #c8c6c4;"
+                "padding: 8px 15px; margin: 0px;"
+                "border-radius: 0px; font-weight: bold;"
+                f"color: {foreground};"
+                "}"
+                "QPushButton:hover { background-color: #e1dfdd; }"
+            )
+
     def _render_from_json(self, form_dict: dict):
-        """Fallback to simple JSON structure if XML isn't available."""
-        tab_widget = QTabWidget()
+        """Renders the structured parser fallback while preserving columns."""
+        self.tab_widget = QTabWidget()
         for tab in form_dict.get("tabs", []):
+            if tab.get("visible") is False:
+                continue
             tab_page = QWidget()
-            tab_layout = QVBoxLayout(tab_page)
-            for section in tab.get("sections", []):
-                group_box = QGroupBox(section.get("label", "Section"))
-                group_layout = QVBoxLayout()
-                for control in section.get("controls", []):
-                    attr_name = control.get("attribute")
-                    if not attr_name: continue
-                    
-                    row = QHBoxLayout()
-                    row.addWidget(QLabel(f"{control.get('label')}:"))
-                    widget = self._create_widget_for_field(attr_name, "")
-                    self.controls[attr_name] = widget
-                    row.addWidget(widget)
-                    group_layout.addLayout(row)
-                group_box.setLayout(group_layout)
-                tab_layout.addWidget(group_box)
-            tab_layout.addStretch()
-            tab_widget.addTab(tab_page, tab.get("label", "Tab"))
-        self.form_layout.addWidget(tab_widget)
-        
-        if self.record_id:
-            self.load_data()
+            tab_layout = QHBoxLayout(tab_page)
+            columns = tab.get("columns") or [{
+                "width": "100%",
+                "sections": tab.get("sections", []),
+            }]
+            for column in columns:
+                column_widget = QWidget()
+                column_layout = QVBoxLayout(column_widget)
+                for section in column.get("sections", []):
+                    if section.get("visible") is False:
+                        continue
+                    group_box = QGroupBox(
+                        section.get("label", "Section")
+                        if section.get("show_label", True)
+                        else ""
+                    )
+                    group_layout = QGridLayout(group_box)
+                    rows = section.get("rows", [])
+                    occupied_cells = set()
+                    if not rows:
+                        rows = [
+                            {
+                                "cells": [{
+                                    "visible": True,
+                                    "show_label": True,
+                                    "column_span": 1,
+                                    "row_span": 1,
+                                    "control": control,
+                                }]
+                            }
+                            for control in section.get("controls", [])
+                        ]
+                    for row_index, row_data in enumerate(rows):
+                        if row_data.get("height"):
+                            try:
+                                group_layout.setRowMinimumHeight(
+                                    row_index,
+                                    int(row_data["height"]),
+                                )
+                            except (TypeError, ValueError):
+                                pass
+                        grid_column = 0
+                        for cell in row_data.get("cells", []):
+                            column_span = max(
+                                1,
+                                int(cell.get("column_span", 1)),
+                            )
+                            row_span = max(
+                                1,
+                                int(cell.get("row_span", 1)),
+                            )
+                            while any(
+                                (row_index, grid_column + offset)
+                                in occupied_cells
+                                for offset in range(column_span)
+                            ):
+                                grid_column += 1
+                            control = cell.get("control") or {}
+                            attr_name = control.get("attribute")
+                            if cell.get("visible", True) and attr_name:
+                                container = QWidget()
+                                cell_layout = (
+                                    QVBoxLayout(container)
+                                    if str(
+                                        section.get(
+                                            "label_position",
+                                            "Left",
+                                        )
+                                    ).lower()
+                                    == "top"
+                                    else QHBoxLayout(container)
+                                )
+                                cell_layout.setContentsMargins(0, 2, 0, 2)
+                                if cell.get("show_label", True):
+                                    label = QLabel(
+                                        control.get("label", attr_name)
+                                    )
+                                    if not isinstance(
+                                        cell_layout,
+                                        QVBoxLayout,
+                                    ):
+                                        label.setFixedWidth(
+                                            int(
+                                                section.get(
+                                                    "label_width",
+                                                    115,
+                                                )
+                                            )
+                                        )
+                                    cell_layout.addWidget(label)
+                                    self.control_labels.setdefault(
+                                        attr_name,
+                                        label,
+                                    )
+                                timeline_definition = control.get(
+                                    "timeline_definition"
+                                )
+                                if timeline_definition:
+                                    widget = TimelineWidget(
+                                        self.manifest,
+                                        self.logical_name,
+                                        timeline_definition,
+                                        record_id=self.record_id,
+                                        open_form_callback=(
+                                            self._open_timeline_form
+                                        ),
+                                        parent=self,
+                                    )
+                                    self.timelines.append(widget)
+                                else:
+                                    control_element = None
+                                    raw_control_xml = control.get(
+                                        "raw_control_xml"
+                                    )
+                                    if raw_control_xml:
+                                        control_element = ET.fromstring(
+                                            raw_control_xml
+                                        )
+                                    custom_control_xml = control.get(
+                                        "custom_control_xml"
+                                    )
+                                    if (
+                                        control_element is not None
+                                        and custom_control_xml
+                                        and control_element.find(
+                                            ".//customControl"
+                                        ) is None
+                                    ):
+                                        control_element.append(
+                                            ET.fromstring(
+                                                custom_control_xml
+                                            )
+                                        )
+                                    widget = self._create_widget_for_field(
+                                        attr_name,
+                                        control.get("class_id", ""),
+                                        control_elem=control_element,
+                                    )
+                                widget.setEnabled(
+                                    not control.get("disabled", False)
+                                )
+                                if isinstance(widget, SubgridWidget):
+                                    widget.set_control_name(attr_name)
+                                elif isinstance(widget, LookupWidget):
+                                    widget.control_name = attr_name
+                                self.controls.setdefault(attr_name, widget)
+                                self.control_instances.setdefault(
+                                    attr_name,
+                                    [],
+                                ).append(widget)
+                                cell_layout.addWidget(widget, 1)
+                                group_layout.addWidget(
+                                    container,
+                                    row_index,
+                                    grid_column,
+                                    row_span,
+                                    column_span,
+                                )
+                                for occupied_row in range(
+                                    row_index,
+                                    row_index + row_span,
+                                ):
+                                    for occupied_column in range(
+                                        grid_column,
+                                        grid_column + column_span,
+                                    ):
+                                        occupied_cells.add((
+                                            occupied_row,
+                                            occupied_column,
+                                        ))
+                            grid_column += column_span
+                    column_layout.addWidget(group_box)
+                column_layout.addStretch()
+                width = str(column.get("width") or "")
+                try:
+                    stretch = int(float(width.rstrip("%")) * 10)
+                except ValueError:
+                    stretch = 1000 // max(1, len(columns))
+                tab_layout.addWidget(column_widget, max(1, stretch))
+            self.tab_widget.addTab(
+                tab_page,
+                tab.get("label", "Tab"),
+            )
+        self.form_layout.addWidget(self.tab_widget)
 
     def _get_label_from_xml(self, labels_node):
         if labels_node is not None:
-            label_elem = labels_node.find("label")
+            labels = labels_node.findall("label")
+            language_code = str(
+                self.manifest.get("language_code", 1033)
+            )
+            label_elem = next(
+                (
+                    label
+                    for label in labels
+                    if label.get("languagecode") == language_code
+                ),
+                labels[0] if labels else None,
+            )
             if label_elem is not None:
                 return label_elem.get("description")
         return None
 
-    def _create_widget_for_field(self, field_name: str, class_id: str, target_entity: str = None, view_id: str = None, quick_form_id: str = None, control_elem=None) -> QWidget:
+    def _custom_control_node(self, control_element):
+        if control_element is None:
+            return None
+        inline = control_element.find(".//customControl")
+        if inline is not None:
+            return inline
+        for key in (
+            control_element.get("id"),
+            control_element.get("datafieldname"),
+        ):
+            if key and key in self._custom_control_bindings:
+                return self._custom_control_bindings[key]
+        return None
+
+    def _pcf_definition(self, control_name):
+        return next(
+            (
+                definition
+                for definition in self.entity_def.get(
+                    "pcf_controls",
+                    [],
+                )
+                if definition.get("name") == control_name
+            ),
+            None,
+        )
+
+    @staticmethod
+    def _pcf_attribute_types(attribute_type):
+        return {
+            "Boolean": {"TwoOptions"},
+            "Picklist": {"OptionSet"},
+            "State": {"OptionSet"},
+            "Status": {"OptionSet"},
+            "MultiSelectPicklist": {"MultiSelectOptionSet"},
+            "Integer": {"Whole.None"},
+            "BigInt": {"Whole.None"},
+            "Decimal": {"Decimal", "FP"},
+            "Double": {"FP", "Decimal"},
+            "Money": {"Currency"},
+            "DateTime": {
+                "DateAndTime.DateAndTime",
+                "DateAndTime.DateOnly",
+            },
+            "Lookup": {"Lookup.Simple"},
+            "Memo": {"Multiple", "SingleLine.TextArea"},
+            "String": {
+                "SingleLine.Text",
+                "SingleLine.Email",
+                "SingleLine.Phone",
+                "SingleLine.Ticker",
+                "SingleLine.URL",
+            },
+        }.get(str(attribute_type or ""), set())
+
+    @classmethod
+    def _pcf_is_compatible(cls, definition, attribute_type):
+        declared = set(
+            definition.get("compatible_data_types") or []
+        )
+        if not declared:
+            declared = {
+                accepted_type
+                for property_definition in definition.get(
+                    "properties",
+                    [],
+                )
+                if property_definition.get("usage") == "bound"
+                for accepted_type in property_definition.get(
+                    "accepted_types",
+                    [],
+                )
+            }
+        accepted = cls._pcf_attribute_types(attribute_type)
+        return not declared or not accepted or bool(declared & accepted)
+
+    def _create_widget_for_field(
+        self,
+        field_name: str,
+        class_id: str,
+        target_entity: str = None,
+        view_id: str = None,
+        quick_form_id: str = None,
+        quick_form_candidates: list | None = None,
+        relationship_name: str = None,
+        records_per_page: int = 50,
+        enable_quick_find: bool = False,
+        control_elem=None,
+    ) -> QWidget:
+        if control_elem is not None and is_timeline_control(control_elem):
+            active_form = self._get_active_form_def() or {}
+            active_form_id = self._normalize_form_id(
+                active_form.get("formid")
+                or active_form.get("formidunique")
+            )
+            definition = next(
+                (
+                    timeline
+                    for timeline in self.entity_def.get("timelines", [])
+                    if (
+                        timeline.get("control_id") == control_elem.get("id")
+                        and (
+                            not timeline.get("form_id")
+                            or timeline.get("form_id") == active_form_id
+                        )
+                    )
+                ),
+                None,
+            )
+            if definition is None:
+                definition = parse_timeline_control(
+                    control_elem,
+                    form_id=active_form_id,
+                    form_name=active_form.get("name", ""),
+                    entity_name=self.logical_name,
+                )
+            timeline = TimelineWidget(
+                self.manifest,
+                self.logical_name,
+                definition,
+                record_id=self.record_id,
+                open_form_callback=self._open_timeline_form,
+                parent=self,
+            )
+            self.timelines.append(timeline)
+            return timeline
+
+        is_subgrid = (
+            str(class_id or "").lower()
+            == "{e7a81278-8635-4d9e-8d4d-59480b391c5b}"
+            or (
+                control_elem is not None
+                and str(
+                    control_elem.get("indicationOfSubgrid", "false")
+                ).lower()
+                == "true"
+            )
+        )
+        if is_subgrid:
+            subgrid = SubgridWidget(
+                self,
+                target_entity,
+                view_id=view_id,
+                relationship_name=relationship_name,
+                records_per_page=records_per_page,
+                enable_quick_find=enable_quick_find,
+            )
+            self.subgrids.append(subgrid)
+            return subgrid
+
         # Detect Web Resources
         if class_id and class_id.lower() == "{fd2a7985-3187-444e-a0e2-63b716fbd9d7}":
-            browser = QWebEngineView()
             wr_url = ""
+            data = ""
             if control_elem is not None:
                 params_node = control_elem.find("parameters")
                 if params_node is not None:
                     url_elem = params_node.find("Url")
                     if url_elem is not None and url_elem.text:
                         wr_url = url_elem.text
-                        
-            if wr_url:
-                # Mock local rendering of the web resource. Note: For offline use, 
-                # we would map this to the locally downloaded .js/.html file
-                browser.setHtml(f"<html><body><h4>Web Resource: {wr_url}</h4></body></html>")
-            else:
-                browser.setHtml("<html><body><h4>Web Resource</h4></body></html>")
-            
-            # Mount the Xrm Object!
-            browser.page().setWebChannel(self.channel)
-            return browser
-            
-        # Detect PCF Custom Controls (Translation Registry)
-        if control_elem is not None:
-            custom_ctrl = control_node = control_elem.find(".//customControl")
-            if custom_ctrl is not None:
-                pcf_name = custom_ctrl.get("name", "")
-                PCF_MAP = {
-                    "MscrmControls.FieldControls.ToggleControl": QCheckBox(),
-                    "MscrmControls.Slider.SliderControl": QSpinBox(),
-                    "MscrmControls.OptionSet.OptionSetControl": QComboBox(),
-                    "MscrmControls.FieldControls.RatingControl": QSpinBox()
-                }
-                if pcf_name in PCF_MAP:
-                    widget = PCF_MAP[pcf_name]
-                    if isinstance(widget, QSpinBox):
-                        widget.setRange(-2147483648, 2147483647)
-                    return widget
-                    
-        # Detect Subgrids by D365 class ID
-        if class_id and class_id.lower() == "{e7a81278-8635-4d9e-8d4d-59480b391c5b}":
-            table = QTableWidget()
-            
-            if target_entity:
-                import sqlite3
-                import json
-                try:
-                    from view_parser import ViewParser
-                except ImportError:
-                    ViewParser = None
-
-                try:
-                    cache_db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "verseoff_cache.db")
-                    conn = sqlite3.connect(cache_db_path)
-                    conn.row_factory = sqlite3.Row
-                    cursor = conn.cursor()
-                    
-                    columns = []
-                    query_def = None
-                    
-                    # Try to fetch View metadata
-                    if view_id and ViewParser:
-                        # Clean up GUID format if needed
-                        clean_view_id = view_id.strip("{}").lower()
-                        cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE savedqueryid = ?", (clean_view_id,))
-                        view_row = cursor.fetchone()
-                        
-                        if view_row:
-                            columns = ViewParser.parse_layoutxml(view_row['layoutxml'])
-                            query_def = ViewParser.parse_fetchxml(view_row['fetchxml'])
-                            
-                    # Fallback columns if none parsed
-                    if not columns:
-                        columns = [
-                            {'name': f"{target_entity}id", 'label': 'ID'},
-                            {'name': 'statecode', 'label': 'Status'}
-                        ]
-                        
-                    # Set up table header
-                    table.setColumnCount(len(columns))
-                    table.setHorizontalHeaderLabels([c.get('label', c['name']) for c in columns])
-                    
-                    # Try to query using FetchXML translation
-                    if query_def and query_def.get("entity") == target_entity and ViewParser:
-                        sql, params = ViewParser.fetchxml_to_sql(query_def)
-                        cursor.execute(sql, params)
-                    else:
-                        # Fallback query if no valid view found
-                        cursor.execute(f"SELECT * FROM {target_entity}")
-                        
-                    rows = cursor.fetchall()
-                    table.setRowCount(len(rows))
-                    
-                    for i, row in enumerate(rows):
-                        row_dict = dict(row)
-                        # Ensure we populate the specific columns from the view
-                        for j, col in enumerate(columns):
-                            val = str(row_dict.get(col['name'], ''))
-                            table.setItem(i, j, QTableWidgetItem(val))
-                            
-                    conn.close()
-                except Exception as e:
-                    print(f"Error loading subgrid data for {target_entity} (View {view_id}): {e}")
-                    table.setRowCount(0)
-            else:
-                table.setRowCount(0)
-                
-            table.setMinimumHeight(150)
-            return table
+                    data_elem = params_node.find("Data")
+                    if data_elem is not None and data_elem.text:
+                        data = data_elem.text
+            return WebResourceWidget(
+                renderer=self,
+                control_name=field_name,
+                resource_name=wr_url,
+                data=data,
+                embedded=True,
+                parent=self,
+            )
             
         # Detect Quick View Form by D365 class ID
         if class_id and class_id.lower() == "{5c5600e0-1d6e-4205-a272-be80da87fd42}":
-            if not target_entity:
-                return QLabel("Quick View Error: No target entity specified.")
-                
-            group = QGroupBox(f"Quick View: {target_entity}")
-            layout = QVBoxLayout(group)
-            layout.setContentsMargins(0, 0, 0, 0)
-            
-            nested_form = XrmFormRenderer(
-                manifest_data=self.manifest,
-                logical_name=target_entity,
-                record_id=None, # Loaded later
-                parent=self,
-                form_id=quick_form_id,
-                is_quick_view=True
-            )
-            # Make the nested form non-interactive
-            nested_form.setEnabled(False)
-            
-            # Store reference so we can update its record_id later when the parent's lookup changes
-            # Wait, in VerseOff MVP we just render it. We'll add dynamic update later.
-            layout.addWidget(nested_form)
-            return group
+            candidates = quick_form_candidates or []
+            if not candidates and target_entity and quick_form_id:
+                candidates = [{
+                    "entity": target_entity,
+                    "form_id": quick_form_id,
+                }]
+            quick_view = QuickViewWidget(self, field_name, candidates)
+            self.quick_views.append(quick_view)
+            return quick_view
             
         # Find attribute metadata
-        attr_meta = next((a for a in self.entity_def.get("attributes", []) if a["LogicalName"] == field_name), None)
-        attr_type = attr_meta.get("AttributeType", "String") if attr_meta else "String"
-        
+        attr_meta = next(
+            (
+                attribute
+                for attribute in self.entity_def.get("attributes", [])
+                if attribute.get("LogicalName") == field_name
+            ),
+            None,
+        )
+        attr_type = (
+            attr_meta.get("AttributeType")
+            if attr_meta
+            else "String"
+        ) or "String"
+        type_name = (
+            (attr_meta.get("AttributeTypeName") or {}).get("Value")
+            if attr_meta
+            and isinstance(attr_meta.get("AttributeTypeName"), dict)
+            else ""
+        )
+        if type_name:
+            attr_type = type_name.removesuffix("Type")
+
+        custom_control = self._custom_control_node(control_elem)
+        if custom_control is not None:
+            pcf_name = str(custom_control.get("name") or "").strip()
+            definition = self._pcf_definition(pcf_name)
+            compatible = (
+                definition is None
+                or self._pcf_is_compatible(definition, attr_type)
+            )
+            known_first_party = {
+                "MscrmControls.FieldControls.ToggleControl": QCheckBox,
+                "MscrmControls.Slider.SliderControl": QSpinBox,
+                "MscrmControls.OptionSet.OptionSetControl": QComboBox,
+                "MscrmControls.FieldControls.RatingControl": QSpinBox,
+            }
+            if pcf_name in known_first_party:
+                fallback = known_first_party[pcf_name]()
+                if isinstance(fallback, QSpinBox):
+                    fallback.setRange(-2147483648, 2147483647)
+                fallback.setProperty("verseoffPcfName", pcf_name)
+                fallback.setProperty(
+                    "verseoffPcfMode",
+                    "native-first-party",
+                )
+                if not compatible:
+                    fallback.setProperty(
+                        "verseoffPcfConfigurationError",
+                        True,
+                    )
+                    fallback.setToolTip(
+                        f"{pcf_name} is not declared compatible with "
+                        f"{attr_type}; the native field control is used."
+                    )
+                return fallback
+            if definition and definition.get("is_dataset"):
+                subgrid = SubgridWidget(
+                    self,
+                    target_entity,
+                    view_id=view_id,
+                    relationship_name=relationship_name,
+                    records_per_page=records_per_page,
+                    enable_quick_find=enable_quick_find,
+                )
+                subgrid.setProperty("verseoffPcfName", pcf_name)
+                subgrid.setProperty(
+                    "verseoffPcfMode",
+                    "native-dataset",
+                )
+                self.subgrids.append(subgrid)
+                return subgrid
+            if (
+                definition
+                and definition.get("can_host")
+                and compatible
+                and not pcf_name.startswith("MscrmControls.")
+            ):
+                return PcfControlWidget(
+                    renderer=self,
+                    field_name=field_name,
+                    definition=definition,
+                    custom_control=custom_control,
+                    parent=self,
+                )
+            fallback = self._create_widget_for_field(
+                field_name,
+                "",
+                target_entity=target_entity,
+                view_id=view_id,
+                quick_form_id=quick_form_id,
+                quick_form_candidates=quick_form_candidates,
+                relationship_name=relationship_name,
+                records_per_page=records_per_page,
+                enable_quick_find=enable_quick_find,
+                control_elem=None,
+            )
+            fallback.setProperty("verseoffPcfName", pcf_name)
+            fallback.setProperty(
+                "verseoffPcfMode",
+                (
+                    "native-first-party"
+                    if pcf_name.startswith("MscrmControls.")
+                    else "native-fallback"
+                ),
+            )
+            reasons = []
+            if definition is None:
+                reasons.append("metadata was not packaged")
+            else:
+                if not compatible:
+                    reasons.append(
+                        f"not compatible with {attr_type}"
+                    )
+                reasons.extend(
+                    definition.get("missing_resources", [])
+                )
+                reasons.extend(
+                    definition.get(
+                        "unsupported_required_features",
+                        [],
+                    )
+                )
+                if definition.get("is_virtual"):
+                    reasons.append(
+                        "virtual React/Fluent platform controls are "
+                        "not self-contained"
+                    )
+            if reasons:
+                fallback.setToolTip(
+                    f"{pcf_name}: native offline fallback; "
+                    + ", ".join(str(reason) for reason in reasons)
+                )
+            return fallback
+
         if attr_type == "Boolean":
             return QCheckBox()
         elif attr_type in ["Picklist", "State", "Status"]:
             combo = QComboBox()
-            # Populate options
             options = self.entity_def.get("option_sets", {}).get(field_name, [])
             for opt in options:
                 combo.addItem(opt["label"], opt["value"])
             return combo
+        elif attr_type == "MultiSelectPicklist":
+            options = self.entity_def.get("option_sets", {}).get(
+                field_name,
+                [],
+            )
+            return MultiSelectOptionWidget(options)
         elif attr_type == "Integer":
             spin = QSpinBox()
-            spin.setRange(-2147483648, 2147483647)
+            minimum = (
+                attr_meta.get("MinValue", -2147483648)
+                if attr_meta
+                else -2147483648
+            )
+            maximum = (
+                attr_meta.get("MaxValue", 2147483647)
+                if attr_meta
+                else 2147483647
+            )
+            spin.setRange(int(minimum), int(maximum))
             return spin
+        elif attr_type == "BigInt":
+            field = QLineEdit()
+            field.setPlaceholderText("Whole number")
+            return field
         elif attr_type in ["Decimal", "Double", "Money"]:
             spin = QDoubleSpinBox()
-            spin.setRange(-999999999, 999999999)
+            minimum = (
+                attr_meta.get("MinValue", -999999999)
+                if attr_meta
+                else -999999999
+            )
+            maximum = (
+                attr_meta.get("MaxValue", 999999999)
+                if attr_meta
+                else 999999999
+            )
+            precision = (
+                attr_meta.get("Precision", 2)
+                if attr_meta
+                else 2
+            )
+            spin.setRange(float(minimum), float(maximum))
+            spin.setDecimals(max(0, min(int(precision or 2), 10)))
             return spin
         elif attr_type == "DateTime":
-            return QDateTimeEdit(QDateTime.currentDateTime())
+            editor = QDateTimeEdit(QDateTime.currentDateTime())
+            editor.setCalendarPopup(True)
+            editor.setDisplayFormat("yyyy-MM-dd HH:mm")
+            return editor
         elif attr_type in ["Lookup", "Customer", "Owner"]:
             targets = self.entity_def.get("lookup_targets", {}).get(field_name, [])
             return LookupWidget(self, targets)
+        elif attr_type == "Memo":
+            editor = QTextEdit()
+            editor.setAcceptRichText(False)
+            editor.setMinimumHeight(84)
+            return editor
+        elif attr_type == "PartyList":
+            editor = QLineEdit()
+            editor.setPlaceholderText(
+                "Semicolon-separated offline party references"
+            )
+            editor._is_party_list = True
+            return editor
+        elif attr_type in {
+            "Uniqueidentifier",
+            "EntityName",
+            "ManagedProperty",
+            "Virtual",
+        }:
+            editor = QLineEdit()
+            editor.setReadOnly(True)
+            return editor
         else:
+            if (
+                attr_meta is None
+                and control_elem is not None
+                and not control_elem.get("datafieldname")
+            ):
+                placeholder = QLabel(
+                    f"Unsupported offline control: "
+                    f"{control_elem.get('id') or class_id or 'unknown'}"
+                )
+                placeholder.setWordWrap(True)
+                placeholder.setStyleSheet(
+                    "color: #605e5c; background: #f3f2f1; "
+                    "border: 1px dashed #c8c6c4; border-radius: 4px; "
+                    "padding: 8px;"
+                )
+                return placeholder
             return QLineEdit()
 
-    def _populate_data(self):
-        conn = LocalDatabase().get_connection()
-        cursor = conn.cursor()
-        cursor.execute(f"SELECT * FROM {self.logical_name} WHERE id = ?", (self.record_id,))
-        row = cursor.fetchone()
-        conn.close()
+    def _set_widget_value(self, field, widget, row):
+        if field not in row:
+            return
+        value = row[field]
+        if value is None:
+            if isinstance(widget, QLineEdit):
+                widget.clear()
+            elif isinstance(widget, QTextEdit):
+                widget.clear()
+            elif isinstance(widget, QCheckBox):
+                widget.setChecked(False)
+            elif isinstance(widget, QComboBox):
+                widget.setCurrentIndex(-1)
+            elif isinstance(widget, MultiSelectOptionWidget):
+                widget.setValue([])
+            elif isinstance(widget, LookupWidget):
+                widget.current_id = None
+                widget.current_logical_name = None
+                widget.setText("")
+            elif isinstance(widget, PcfControlWidget):
+                widget.setValue(None)
+            return
+        if isinstance(widget, QLineEdit):
+            widget.setText(str(value))
+        elif isinstance(widget, QTextEdit):
+            widget.setPlainText(str(value))
+        elif isinstance(widget, QCheckBox):
+            widget.setChecked(bool(value))
+        elif isinstance(widget, QComboBox):
+            index = widget.findData(value)
+            if index >= 0:
+                widget.setCurrentIndex(index)
+        elif isinstance(widget, MultiSelectOptionWidget):
+            widget.setValue(value)
+        elif isinstance(widget, QDateTimeEdit):
+            parsed = QDateTime.fromString(
+                str(value),
+                Qt.DateFormat.ISODate,
+            )
+            if parsed.isValid():
+                widget.setDateTime(parsed)
+        elif isinstance(widget, QSpinBox):
+            try:
+                widget.setValue(int(value))
+            except (TypeError, ValueError):
+                pass
+        elif isinstance(widget, QDoubleSpinBox):
+            try:
+                widget.setValue(float(value))
+            except (TypeError, ValueError):
+                pass
+        elif isinstance(widget, LookupWidget):
+            raw_lookup_key = f"_{field}_value"
+            if isinstance(value, list):
+                reference = value[0] if value else {}
+                widget.current_id = reference.get("id")
+                widget.current_logical_name = reference.get(
+                    "entityType"
+                )
+                widget.setText(reference.get("name") or "")
+                return
+            lookup_id = row.get(raw_lookup_key, value)
+            widget.current_id = str(lookup_id)
+            widget.current_logical_name = row.get(
+                f"{raw_lookup_key}@"
+                "Microsoft.Dynamics.CRM.lookuplogicalname"
+            )
+            display_value = row.get(
+                f"{raw_lookup_key}@"
+                "OData.Community.Display.V1.FormattedValue",
+                lookup_id,
+            )
+            widget.setText(str(display_value))
+        elif isinstance(widget, PcfControlWidget):
+            widget.setValue(value)
 
+    def _populate_data(self):
+        previous = self._suppress_events
+        self._suppress_events = True
+        try:
+            self._populate_data_impl()
+        finally:
+            self._suppress_events = previous
+
+    def _populate_data_impl(self):
+        row = (
+            LocalDatabase().get_record(
+                self.logical_name,
+                self.record_id,
+            )
+            if self.record_id
+            else None
+        )
         if row:
-            for field, widget in self.controls.items():
-                if field in row.keys():
-                    val = row[field]
-                    if val is None:
-                        continue
-                    if isinstance(widget, QLineEdit):
-                        widget.setText(str(val))
-                    elif isinstance(widget, QCheckBox):
-                        widget.setChecked(bool(val))
-                    elif isinstance(widget, QComboBox):
-                        idx = widget.findData(val)
-                        if idx >= 0:
-                            widget.setCurrentIndex(idx)
-                    elif isinstance(widget, QSpinBox) or isinstance(widget, QDoubleSpinBox):
-                        try:
-                            widget.setValue(float(val))
-                        except ValueError:
-                            pass
+            for field, widgets in self.control_instances.items():
+                for widget in widgets:
+                    self._set_widget_value(field, widget, row)
                             
         # Refresh any associated grids in the Related tab
         if hasattr(self, 'associated_grids'):
             for grid in self.associated_grids:
                 grid.refresh_data()
+        for subgrid in self.subgrids:
+            subgrid.refresh_data()
+        for quick_view in self.quick_views:
+            quick_view.refresh_from_record(row or {})
+        for timeline in self.timelines:
+            timeline.set_record_id(self.record_id)
                             
         # Snapshot initial values and reset dirty flags
         for field, widget in self.controls.items():
             widget._is_dirty = False
             if isinstance(widget, QLineEdit):
                 widget._initial_value = widget.text()
+            elif isinstance(widget, QTextEdit):
+                widget._initial_value = widget.toPlainText()
             elif isinstance(widget, QCheckBox):
                 widget._initial_value = widget.isChecked()
             elif isinstance(widget, QComboBox):
                 widget._initial_value = widget.currentData()
+            elif isinstance(widget, MultiSelectOptionWidget):
+                widget._initial_value = widget.value()
+            elif isinstance(widget, QDateTimeEdit):
+                widget._initial_value = widget.dateTime().toString(
+                    Qt.DateFormat.ISODate
+                )
             elif isinstance(widget, QSpinBox) or isinstance(widget, QDoubleSpinBox):
+                widget._initial_value = widget.value()
+            elif isinstance(widget, PcfControlWidget):
                 widget._initial_value = widget.value()
                             
         # Re-evaluate rules after data load
@@ -2654,15 +8255,8 @@ class XrmFormRenderer(QWidget):
 
     def load_data(self):
         self._populate_data()
-        
-        # Fire OnLoad events from FormXML
-        self._fire_events("onload")
-        
-        # Fire Data OnLoad dynamic events
-        self._fire_events("dataonload")
-        
-        # Fire Form Loaded event (post-load)
-        self._fire_events("formloaded")
+        if self._runtime_ready:
+            self._fire_events("dataonload", data_load_state=3)
 
     def refresh_data(self, save=False):
         """Programmatically fetches latest database values and fires dataonload."""
@@ -2670,205 +8264,1130 @@ class XrmFormRenderer(QWidget):
             self.save_record()
         else:
             self._populate_data()
-            self._fire_events("dataonload")
+            if self._runtime_ready:
+                self._fire_events("dataonload", data_load_state=3)
 
     def _on_tab_changed(self, index):
         tab_name = self.tab_widget.tabText(index) # Simplistic lookup for MVP
         self._fire_events("tabstatechange", tab_name)
 
+    def _on_subgrid_selection_changed(self, control_name, grid):
+        selected_ids = grid.selected_record_ids()
+        if len(selected_ids) != 1:
+            return
+        self._fire_events(
+            "onrecordselect",
+            control_name,
+            event_payload={"rowId": selected_ids[0]},
+        )
+
+    def _on_editable_grid_cell_changed(
+        self,
+        control_name,
+        table,
+        row,
+        column,
+    ):
+        self._fire_events(
+            "gridonchange",
+            control_name,
+            event_payload={
+                "rowId": self._table_record_id(table, row),
+                "attributeName": self._table_attribute_name(
+                    table,
+                    column,
+                ),
+            },
+        )
+
+    def _on_editable_grid_selection_changed(
+        self,
+        control_name,
+        table,
+    ):
+        selected_rows = table.selectionModel().selectedRows()
+        if len(selected_rows) != 1:
+            return
+        self._fire_events(
+            "onrecordselect",
+            control_name,
+            event_payload={
+                "rowId": self._table_record_id(
+                    table,
+                    selected_rows[0].row(),
+                ),
+            },
+        )
+
+    def _on_editable_grid_row_left(
+        self,
+        control_name,
+        table,
+        current_row,
+        previous_row,
+    ):
+        if previous_row < 0 or previous_row == current_row:
+            return
+        self._fire_events(
+            "gridonsave",
+            control_name,
+            event_payload={
+                "rowId": self._table_record_id(
+                    table,
+                    previous_row,
+                ),
+                "saveMode": 1,
+            },
+        )
+
     def register_dynamic_event(self, event_name: str, key: str, func):
-        if event_name in ["onchange", "tabstatechange", "onrecordselect", "gridonsave", "onlookuptagclick", "presearch", "onoutputchange", "onprocessstatuschange", "onstagechange", "onstageselected", "onpreprocessstatuschange", "onprestagechange", "onreadystatecomplete", "onresultopened", "onselection", "onpostsearch", "gridonload"]:
-            self._dynamic_events_map.setdefault(event_name, {}).setdefault(key, []).append(func)
+        keyed_events = {
+            "onchange",
+            "gridonchange",
+            "tabstatechange",
+            "onrecordselect",
+            "gridonsave",
+            "onlookuptagclick",
+            "presearch",
+            "onoutputchange",
+            "onprocessstatuschange",
+            "onstagechange",
+            "onstageselected",
+            "onpreprocessstatuschange",
+            "onprestagechange",
+            "onreadystatecomplete",
+            "onresultopened",
+            "onselection",
+            "onpostsearch",
+            "gridonload",
+        }
+        if event_name in keyed_events:
+            self._dynamic_events_map.setdefault(
+                event_name,
+                {},
+            ).setdefault(key, []).append(func)
         else:
             self._dynamic_events_map.setdefault(event_name, []).append(func)
 
     def unregister_dynamic_event(self, event_name: str, key: str, func):
+        keyed_events = {
+            "onchange",
+            "gridonchange",
+            "tabstatechange",
+            "onrecordselect",
+            "gridonsave",
+            "onlookuptagclick",
+            "presearch",
+            "onoutputchange",
+            "onprocessstatuschange",
+            "onstagechange",
+            "onstageselected",
+            "onpreprocessstatuschange",
+            "onprestagechange",
+            "onreadystatecomplete",
+            "onresultopened",
+            "onselection",
+            "onpostsearch",
+            "gridonload",
+        }
         try:
-            if event_name in ["onchange", "tabstatechange", "onrecordselect", "gridonsave", "onlookuptagclick", "presearch", "onoutputchange", "onprocessstatuschange", "onstagechange", "onstageselected", "onpreprocessstatuschange", "onprestagechange", "onreadystatecomplete", "onresultopened", "onselection", "onpostsearch", "gridonload"]:
+            if event_name in keyed_events:
                 self._dynamic_events_map[event_name][key].remove(func)
             else:
                 self._dynamic_events_map[event_name].remove(func)
         except (ValueError, KeyError):
             pass
 
-    def _fire_events(self, event_name: str, control_name: str = None, save_mode: int = 1, is_save_success: bool = False, save_error_info: dict = None) -> bool:
-        """Executes custom Python logic mapped from D365 FormXML events. 
-        Returns True if preventDefault() was called during an onsave event."""
-        
-        # Helper to run event handlers
-        def event_runner(handlers):
-            for evt in handlers:
-                if hasattr(self.form_events, evt.get("function", "")):
-                    try:
-                        func = getattr(self.form_events, evt["function"])
-                        # Handle async and context
-                        res = func(exec_context) if evt.get("pass_context") else func()
-                        if inspect.isawaitable(res):
-                            asyncio.run(res)
-                    except Exception as e:
-                        traceback.print_exc()
-
-        handlers = self._form_events_map.get(event_name, [])
-        if control_name:
-            handlers = [e for e in handlers if e.get("control") == control_name]
-        
-        # Run bridge JS if exists
-        if hasattr(self, "browser"):
-             self.browser.page().runJavaScript(f"if(window.executeJsEvent) window.executeJsEvent('{event_name}', '{control_name}');")
-
-        event_runner(handlers)
-        
-        # Execute registered Python dynamics
+    def _python_event_subject(
+        self,
+        event_name,
+        control_name,
+        event_payload,
+    ):
         context = PythonFormContext(self)
-        prevented = False
-        
-        # Setup event args/source based on event type
-        event_args = None
-        if event_name == "onsave":
-            entity_ref = {
-                "entityType": getattr(self, "logical_name", ""), 
-                "id": getattr(self, "record_id", ""), 
-                "name": "Offline Record"
-            }
-            event_args = SaveEventArgs(save_mode=save_mode, entity_reference=entity_ref)
-        elif event_name == "postsave":
-            event_args = SaveEventArgs(save_mode=save_mode, is_save_success=is_save_success, save_error_info=save_error_info)
-            
-        event_source = None
-        if control_name and event_name != "tabstatechange":
-            event_source = context.getAttribute(control_name) or context.getControl(control_name)
-            
-        exec_context = PythonExecutionContext(
-            form_context=context,
-            event_source=event_source,
-            event_args=event_args,
-            shared_vars=self.shared_variables
+        if event_name == "onload" or event_name == "formloaded":
+            return context, context.ui
+        if event_name in {"dataonload", "onsave"}:
+            return context, context.data.entity
+        if event_name == "postsave":
+            return context, None
+        if event_name == "onchange":
+            return context, context.getAttribute(control_name)
+        if event_name == "gridonload":
+            return context, context.getControl(control_name)
+        if event_name in {
+            "gridonchange",
+            "onrecordselect",
+            "gridonsave",
+        }:
+            grid_control = context.getControl(control_name)
+            if not isinstance(grid_control, PythonGridControl):
+                raise TypeError(
+                    f"{control_name!r} is not a grid control."
+                )
+            entity = grid_control.getGrid().entity_by_id(
+                event_payload.get("rowId")
+            )
+            if entity is None:
+                raise KeyError(
+                    f"Grid row {event_payload.get('rowId')!r} was not "
+                    f"found in {control_name!r}."
+                )
+            row_context = PythonGridRowFormContext(entity)
+            if event_name == "gridonchange":
+                source = row_context.getAttribute(
+                    event_payload.get("attributeName")
+                )
+                if source is None:
+                    raise KeyError(
+                        "Editable-grid OnChange could not resolve "
+                        f"{event_payload.get('attributeName')!r}."
+                    )
+                return row_context, source
+            return row_context, entity
+        return context, (
+            context.getControl(control_name)
+            if control_name
+            else None
         )
-        
-        return prevented
+
+    def _event_arguments(
+        self,
+        event_name,
+        save_mode,
+        data_load_state,
+        is_save_success,
+        save_error_info,
+    ):
+        if event_name in {"onsave", "gridonsave"}:
+            return SaveEventArgs(
+                save_mode=save_mode,
+                entity_reference={
+                    "entityType": self.logical_name,
+                    "id": self.record_id or "",
+                    "name": "",
+                },
+            )
+        if event_name == "postsave":
+            return SaveEventArgs(
+                save_mode=save_mode,
+                entity_reference={
+                    "entityType": self.logical_name,
+                    "id": self.record_id or "",
+                    "name": "",
+                },
+                is_save_success=is_save_success,
+                save_error_info=save_error_info,
+            )
+        if event_name in {"onload", "dataonload"}:
+            return DataLoadEventArgs(data_load_state)
+        return None
+
+    def _on_js_event_completed(self, token, result_json):
+        waiter = self._event_waiters.get(token)
+        if waiter is None:
+            return
+        try:
+            waiter["result"] = json.loads(result_json)
+        except json.JSONDecodeError as error:
+            waiter["result"] = {
+                "prevented": True,
+                "errors": [{
+                    "function": "<runtime>",
+                    "message": (
+                        "The V8 runtime returned invalid event JSON: "
+                        f"{error}"
+                    ),
+                }],
+            }
+        try:
+            waiter["timer"].stop()
+        except RuntimeError:
+            pass
+        try:
+            waiter["loop"].quit()
+        except RuntimeError:
+            pass
+
+    def _dispatch_js_event(
+        self,
+        event_name,
+        control_name,
+        event_payload,
+    ):
+        if not hasattr(self, "browser"):
+            return {"prevented": False, "errors": [], "handlerCount": 0}
+        if not self._runtime_ready:
+            return {
+                "prevented": event_name in {"onsave", "gridonsave"},
+                "errors": [{
+                    "function": "<runtime>",
+                    "message": "The V8 client runtime is not ready.",
+                }],
+                "handlerCount": 0,
+            }
+        state = self._build_js_state()
+        handler_count = sum(
+            1
+            for handler in self._form_event_handlers
+            if (
+                handler.get("enabled", True)
+                and handler.get("event") == event_name
+                and (handler.get("control") or None)
+                == (control_name or None)
+            )
+        )
+        result = self._dispatch_js_event_page(
+            self.browser.page(),
+            state,
+            event_name,
+            control_name,
+            event_payload,
+            handler_count,
+        )
+        for widget in self.controls.values():
+            if (
+                not isinstance(widget, WebResourceWidget)
+                or not widget._runtime_ready
+            ):
+                continue
+            auxiliary_state = dict(state)
+            auxiliary_state["eventHandlers"] = []
+            auxiliary_result = self._dispatch_js_event_page(
+                widget.browser.page(),
+                auxiliary_state,
+                event_name,
+                control_name,
+                event_payload,
+                0,
+            )
+            result["prevented"] = bool(
+                result.get("prevented")
+                or auxiliary_result.get("prevented")
+            )
+            result.setdefault("errors", []).extend(
+                auxiliary_result.get("errors") or []
+            )
+            result["handlerCount"] = int(
+                result.get("handlerCount") or 0
+            ) + int(auxiliary_result.get("handlerCount") or 0)
+        return result
+
+    def _dispatch_js_event_page(
+        self,
+        page,
+        state,
+        event_name,
+        control_name,
+        event_payload,
+        handler_count,
+    ):
+        token = str(uuid.uuid4())
+        arguments_json = json.dumps({
+            "state": state,
+            "event": event_name,
+            "control": control_name,
+            "payload": event_payload,
+            "token": token,
+            "preventOnFailure": event_name in {
+                "onsave",
+                "gridonsave",
+            },
+        }, ensure_ascii=False)
+        loop = QEventLoop()
+        try:
+            timer = QTimer(self)
+        except RuntimeError:
+            # Form deleted during teardown, bypass execution safely
+            return {"prevented": False}
+            
+        timer.setSingleShot(True)
+        waiter = {
+            "loop": loop,
+            "timer": timer,
+            "result": None,
+        }
+        self._event_waiters[token] = waiter
+
+        def timed_out():
+            if waiter["result"] is None:
+                waiter["result"] = {
+                    "prevented": event_name in {
+                        "onsave",
+                        "gridonsave",
+                    },
+                    "errors": [{
+                        "function": "<runtime>",
+                        "message": (
+                            "The V8 event pipeline did not complete before "
+                            "its host timeout."
+                        ),
+                    }],
+                    "handlerCount": 0,
+                }
+            loop.quit()
+
+        timer.timeout.connect(timed_out)
+        timeout_ms = max(15000, min(50, handler_count + 1) * 10000)
+        timer.start(timeout_ms)
+        script = """
+        (function() {
+            var args = __ARGUMENTS__;
+            try {
+                window.initializeVerseOffState(args.state);
+                Promise.resolve(
+                    window.executeJsEvent(
+                        args.event,
+                        args.control,
+                        args.payload
+                    )
+                ).then(function(result) {
+                    window.pyBridge.eventDispatchCompleted(
+                        args.token,
+                        JSON.stringify(result)
+                    );
+                }).catch(function(error) {
+                    window.pyBridge.eventDispatchCompleted(
+                        args.token,
+                        JSON.stringify({
+                            prevented: args.preventOnFailure,
+                            errors: [{
+                                function: "<runtime>",
+                                message: String(
+                                    error && error.message
+                                        ? error.message
+                                        : error
+                                )
+                            }],
+                            handlerCount: 0
+                        })
+                    );
+                });
+            } catch (error) {
+                window.pyBridge.eventDispatchCompleted(
+                    args.token,
+                    JSON.stringify({
+                        prevented: args.preventOnFailure,
+                        errors: [{
+                            function: "<runtime>",
+                            message: String(
+                                error && error.message
+                                    ? error.message
+                                    : error
+                            )
+                        }],
+                        handlerCount: 0
+                    })
+                );
+            }
+        })();
+        """.replace("__ARGUMENTS__", arguments_json)
+        page.runJavaScript(script)
+        loop.exec()
+        result = waiter["result"]
+        self._event_waiters.pop(token, None)
+        return result
+
+    def _report_client_event_errors(self, event_name, result):
+        errors = result.get("errors") or []
+        if not errors:
+            return
+        message = "\n".join(
+            f"{error.get('function') or '<handler>'}: "
+            f"{error.get('message') or 'Unknown client script error'}"
+            for error in errors
+        )
+        logger.error(
+            "Client event %s failed:\n%s",
+            event_name,
+            message,
+        )
+        self.set_form_notification(
+            f"Client event {event_name} failed: {message}",
+            "ERROR",
+            f"verseoff_client_event_{event_name}",
+        )
+
+    def _fire_events(
+        self,
+        event_name: str,
+        control_name: str = None,
+        save_mode: int = 1,
+        data_load_state: int = 1,
+        is_save_success: bool = False,
+        save_error_info: dict = None,
+        event_payload: dict = None,
+    ) -> bool:
+        if self._suppress_events:
+            return str(event_name or "").casefold() in {
+                "onsave",
+                "gridonsave",
+            }
+        event_name = str(event_name or "").casefold()
+        payload = dict(event_payload or {})
+        payload.setdefault("saveMode", save_mode)
+        payload.setdefault("dataLoadState", data_load_state)
+        payload.setdefault("isSaveSuccess", is_save_success)
+        payload.setdefault("saveErrorInfo", save_error_info)
+        payload.setdefault("entityReference", {
+            "entityType": self.logical_name,
+            "id": self.record_id or "",
+            "name": "",
+        })
+
+        try:
+            form_context, event_source = self._python_event_subject(
+                event_name,
+                control_name,
+                payload,
+            )
+        except (KeyError, TypeError) as error:
+            self.set_form_notification(
+                f"Could not construct {event_name} context: {error}",
+                "ERROR",
+                f"verseoff_context_{event_name}",
+            )
+            return event_name in {"onsave", "gridonsave"}
+
+        event_args = None
+        event_args = self._event_arguments(
+            event_name,
+            save_mode,
+            data_load_state,
+            is_save_success,
+            save_error_info,
+        )
+        shared_variables = {}
+        prevented = False
+        depth = 0
+
+        configured = [
+            handler
+            for handler in self._form_events_map.get(event_name, [])
+            if (
+                handler.get("enabled", True)
+                and (handler.get("control") or None)
+                == (control_name or None)
+                and not handler.get("library")
+            )
+        ]
+        for handler in configured:
+            function_name = str(handler.get("function") or "")
+            python_name = function_name.split(".")[-1]
+            if not python_name or not hasattr(
+                self.form_events,
+                python_name,
+            ):
+                continue
+            execution_context = PythonExecutionContext(
+                form_context=form_context,
+                event_source=event_source,
+                event_args=event_args,
+                shared_vars=shared_variables,
+                depth=depth,
+            )
+            try:
+                function = getattr(self.form_events, python_name)
+                arguments = []
+                if handler.get("pass_context"):
+                    arguments.append(execution_context)
+                arguments.extend(handler.get("parameters") or [])
+                result = function(*arguments)
+                if inspect.isawaitable(result):
+                    if event_name not in {"onload", "onsave"}:
+                        raise RuntimeError(
+                            f"{event_name} does not support async handlers."
+                        )
+                    asyncio.run(result)
+            except Exception as error:
+                logger.exception(
+                    "Python client event handler %s failed",
+                    function_name,
+                )
+                self.set_form_notification(
+                    f"Client handler {function_name} failed: {error}",
+                    "ERROR",
+                    f"verseoff_python_event_{depth}",
+                )
+                if event_name in {"onsave", "gridonsave"}:
+                    prevented = True
+            depth += 1
+
+        keyed_events = {
+            "onchange",
+            "gridonchange",
+            "tabstatechange",
+            "onrecordselect",
+            "gridonsave",
+            "onlookuptagclick",
+            "presearch",
+            "onoutputchange",
+            "onprocessstatuschange",
+            "onstagechange",
+            "onstageselected",
+            "onpreprocessstatuschange",
+            "onprestagechange",
+            "onreadystatecomplete",
+            "onresultopened",
+            "onselection",
+            "onpostsearch",
+            "gridonload",
+        }
+        if event_name in keyed_events:
+            dynamic_handlers = list(
+                self._dynamic_events_map
+                .get(event_name, {})
+                .get(control_name, [])
+            )
+        else:
+            dynamic_handlers = list(
+                self._dynamic_events_map.get(event_name, [])
+            )
+        for function in dynamic_handlers:
+            execution_context = PythonExecutionContext(
+                form_context=form_context,
+                event_source=event_source,
+                event_args=event_args,
+                shared_vars=shared_variables,
+                depth=depth,
+            )
+            try:
+                result = function(execution_context)
+                if inspect.isawaitable(result):
+                    if event_name not in {"onload", "onsave"}:
+                        raise RuntimeError(
+                            f"{event_name} does not support async handlers."
+                        )
+                    asyncio.run(result)
+            except Exception as error:
+                logger.exception(
+                    "Code-added Python event handler failed"
+                )
+                self.set_form_notification(
+                    f"Code-added {event_name} handler failed: {error}",
+                    "ERROR",
+                    f"verseoff_python_dynamic_{depth}",
+                )
+                if event_name in {"onsave", "gridonsave"}:
+                    prevented = True
+            depth += 1
+
+        if (
+            event_args is not None
+            and hasattr(event_args, "isDefaultPrevented")
+            and event_args.isDefaultPrevented()
+        ):
+            prevented = True
+        js_result = self._dispatch_js_event(
+            event_name,
+            control_name,
+            payload,
+        )
+        self._report_client_event_errors(event_name, js_result)
+        return prevented or bool(js_result.get("prevented"))
+
+    def _control_value(self, field_name):
+        widget = self.controls.get(field_name)
+        if isinstance(widget, QLineEdit):
+            return widget.text()
+        if isinstance(widget, QTextEdit):
+            return widget.toPlainText()
+        if isinstance(widget, QCheckBox):
+            return widget.isChecked()
+        if isinstance(widget, QComboBox):
+            return widget.currentData()
+        if isinstance(widget, MultiSelectOptionWidget):
+            return widget.value()
+        if isinstance(widget, QSpinBox) or isinstance(
+            widget,
+            QDoubleSpinBox,
+        ):
+            return widget.value()
+        if isinstance(widget, QDateTimeEdit):
+            return widget.dateTime().toString(Qt.DateFormat.ISODate)
+        if isinstance(widget, LookupWidget):
+            return widget.current_id
+        if isinstance(widget, PcfControlWidget):
+            return widget.value()
+        return None
+
+    @staticmethod
+    def _rule_boolean(value, default=False):
+        if value is None:
+            return default
+        return str(value).lower() in {"true", "1"}
+
+    def _evaluate_ribbon_rule(self, rule):
+        rule_type = rule.get("type")
+        result = False
+        if rule_type == "OrRule":
+            result = any(
+                self._evaluate_ribbon_rule(child)
+                for child in rule.get("children", [])
+            )
+        elif rule_type in {"AndRule", "And", "Or"}:
+            result = all(
+                self._evaluate_ribbon_rule(child)
+                for child in rule.get("children", [])
+            )
+        elif rule_type == "FormStateRule":
+            expected = str(rule.get("state") or "")
+            current = "Existing" if self.record_id else "Create"
+            result = expected.casefold() == current.casefold()
+        elif rule_type == "ValueRule":
+            current = self._control_value(rule.get("field"))
+            expected = rule.get("value")
+            result = str(current) == str(expected)
+        elif rule_type == "SelectionCountRule":
+            selection_count = 1 if self.record_id else 0
+            try:
+                minimum = int(rule.get("minimum", 0))
+                maximum = int(rule.get("maximum", selection_count))
+                result = minimum <= selection_count <= maximum
+            except (TypeError, ValueError):
+                result = True
+        elif rule_type == "EntityPropertyRule":
+            property_name = rule.get("property_name")
+            if property_name:
+                expected = rule.get("property_value")
+                actual = self.entity_def.get(property_name)
+                result = str(actual).casefold() == str(expected).casefold()
+        elif rule_type in {
+            "EntityPrivilegeRule",
+            "RecordPrivilegeRule",
+        }:
+            security = (
+                self.manifest.get("client_context", {})
+                .get("security", {})
+                .get("entity_privileges", {})
+            )
+            entity_name = (
+                rule.get("entity_name") or self.logical_name
+            )
+            privilege_name = (
+                rule.get("privilege_type")
+                or rule.get("privilege")
+                or ""
+            )
+            entity_privileges = security.get(entity_name)
+            result = bool(
+                entity_privileges
+                and (
+                    entity_privileges.get(privilege_name)
+                    or entity_privileges.get(
+                        str(privilege_name).casefold()
+                    )
+                )
+            )
+        elif rule_type == "OfflineStateRule":
+            expected = str(
+                rule.get("state") or "Offline"
+            ).casefold()
+            result = expected in {"offline", "1", "true"}
+        elif rule_type == "CustomRule":
+            function_name = rule.get("function_name")
+            if rule.get("library"):
+                result = self._dispatch_js_ribbon_rule(rule)
+            else:
+                python_name = str(function_name or "").split(".")[-1]
+                result = bool(
+                    python_name
+                    and hasattr(self.form_events, python_name)
+                    and getattr(self.form_events, python_name)(
+                        PythonFormContext(self)
+                    )
+                )
+
+        if self._rule_boolean(rule.get("invert_result")):
+            return not result
+        return result
 
     def evaluate_ribbon_rules(self):
-        """Evaluates DisplayRules and EnableRules against the current form state."""
-        current_state = "Existing" if self.record_id else "Create"
-        
+        """Evaluates parsed Ribbon display and enable rules."""
         for item in self.ribbon_widgets:
             widget = item["widget"]
-            btn_data = item["data"]
-            
-            # Default to true unless a rule explicitly fails
-            should_display = True
-            should_enable = True
-            
-            # Evaluate Display Rules
-            for rule in btn_data.get("display_rules", []):
-                if rule["type"] == "FormStateRule":
-                    if rule.get("state") != current_state:
-                        should_display = False
-                        break
-                elif rule["type"] == "ValueRule":
-                    field = rule.get("field")
-                    target_val = rule.get("value")
-                    if field in self.controls:
-                        ctrl = self.controls[field]
-                        current_val = None
-                        if isinstance(ctrl, QLineEdit):
-                            current_val = ctrl.text()
-                        elif isinstance(ctrl, QComboBox):
-                            current_val = str(ctrl.currentData())
-                        if current_val != target_val:
-                            should_display = False
-                            break
-                            
-            # Evaluate Enable Rules
-            for rule in btn_data.get("enable_rules", []):
-                if rule["type"] == "FormStateRule":
-                    if rule.get("state") != current_state:
-                        should_enable = False
-                        break
-                elif rule["type"] == "ValueRule":
-                    field = rule.get("field")
-                    target_val = rule.get("value")
-                    if field in self.controls:
-                        ctrl = self.controls[field]
-                        current_val = None
-                        if isinstance(ctrl, QLineEdit):
-                            current_val = ctrl.text()
-                        elif isinstance(ctrl, QComboBox):
-                            current_val = str(ctrl.currentData())
-                        if current_val != target_val:
-                            should_enable = False
-                            break
-
+            button_data = item["data"]
+            should_display = all(
+                self._evaluate_ribbon_rule(rule)
+                for rule in button_data.get("display_rules", [])
+            )
+            should_enable = all(
+                self._evaluate_ribbon_rule(rule)
+                for rule in button_data.get("enable_rules", [])
+            )
             widget.setVisible(should_display)
             widget.setEnabled(should_enable)
 
-    def execute_ribbon_command(self, command_name: str):
-        if "SaveAndClose" in command_name or command_name == "Mscrm.SaveAndClosePrimary":
+    def _dispatch_js_ribbon_rule(self, rule):
+        if not self._runtime_ready:
+            return False
+        token = str(uuid.uuid4())
+        loop = QEventLoop()
+        timer = QTimer(self)
+        timer.setSingleShot(True)
+        waiter = {
+            "loop": loop,
+            "timer": timer,
+            "result": None,
+        }
+        self._event_waiters[token] = waiter
+
+        def timed_out():
+            waiter["result"] = {
+                "value": False,
+                "errors": [{
+                    "function": (
+                        rule.get("function_name") or "<custom rule>"
+                    ),
+                    "message": "Ribbon custom rule timed out.",
+                }],
+            }
+            loop.quit()
+
+        timer.timeout.connect(timed_out)
+        timer.start(15000)
+        arguments_json = json.dumps({
+            "state": self._build_js_state(),
+            "rule": rule,
+            "context": {
+                "controlName": "",
+                "commandProperties": {},
+            },
+            "token": token,
+        }, ensure_ascii=False)
+        script = """
+        (function() {
+          var args = __ARGUMENTS__;
+          window.initializeVerseOffState(args.state);
+          Promise.resolve(
+            window.evaluateRibbonRule(args.rule, args.context)
+          ).then(function(result) {
+            window.pyBridge.eventDispatchCompleted(
+              args.token,
+              JSON.stringify(result)
+            );
+          }).catch(function(error) {
+            window.pyBridge.eventDispatchCompleted(
+              args.token,
+              JSON.stringify({
+                value: false,
+                errors: [{
+                  function: "<custom rule>",
+                  message: String(
+                    error && error.message ? error.message : error
+                  )
+                }]
+              })
+            );
+          });
+        })();
+        """.replace("__ARGUMENTS__", arguments_json)
+        self.browser.page().runJavaScript(script)
+        loop.exec()
+        result = waiter["result"] or {
+            "value": False,
+            "errors": [{
+                "function": rule.get("function_name") or "<custom rule>",
+                "message": "Ribbon custom rule returned no result.",
+            }],
+        }
+        self._event_waiters.pop(token, None)
+        if result.get("errors"):
+            self._report_client_event_errors("ribbon-rule", result)
+        return bool(result.get("value"))
+
+    def _dispatch_js_ribbon_action(self, action, button_data):
+        if not self._runtime_ready:
+            return {
+                "executed": False,
+                "errors": [{
+                    "function": action.get("function_name") or "<ribbon>",
+                    "message": "The V8 client runtime is not ready.",
+                }],
+            }
+        token = str(uuid.uuid4())
+        arguments_json = json.dumps({
+            "state": self._build_js_state(),
+            "action": action,
+            "context": {
+                "controlName": button_data.get("control_name") or "",
+                "commandProperties": {
+                    "SourceControlId": button_data.get("id") or "",
+                    "CommandValueId": button_data.get("command") or "",
+                    "MenuItemId": button_data.get("menu_item_id") or "",
+                },
+            },
+            "token": token,
+        }, ensure_ascii=False)
+        loop = QEventLoop()
+        timer = QTimer(self)
+        timer.setSingleShot(True)
+        waiter = {
+            "loop": loop,
+            "timer": timer,
+            "result": None,
+        }
+        self._event_waiters[token] = waiter
+
+        def timed_out():
+            if waiter["result"] is None:
+                waiter["result"] = {
+                    "executed": False,
+                    "errors": [{
+                        "function": (
+                            action.get("function_name") or "<ribbon>"
+                        ),
+                        "message": (
+                            "The Ribbon JavaScript action did not complete "
+                            "before its host timeout."
+                        ),
+                    }],
+                }
+            loop.quit()
+
+        timer.timeout.connect(timed_out)
+        timer.start(15000)
+        script = """
+        (function() {
+            var args = __ARGUMENTS__;
+            window.initializeVerseOffState(args.state);
+            Promise.resolve(
+                window.executeRibbonAction(args.action, args.context)
+            ).then(function(result) {
+                window.pyBridge.eventDispatchCompleted(
+                    args.token,
+                    JSON.stringify(result)
+                );
+            }).catch(function(error) {
+                window.pyBridge.eventDispatchCompleted(
+                    args.token,
+                    JSON.stringify({
+                        executed: false,
+                        errors: [{
+                            function: "<ribbon>",
+                            message: String(
+                                error && error.message
+                                    ? error.message
+                                    : error
+                            )
+                        }]
+                    })
+                );
+            });
+        })();
+        """.replace("__ARGUMENTS__", arguments_json)
+        self.browser.page().runJavaScript(script)
+        loop.exec()
+        result = waiter["result"]
+        self._event_waiters.pop(token, None)
+        return result
+
+    def execute_ribbon_command(self, command):
+        button_data = command if isinstance(command, dict) else {}
+        command_name = (
+            button_data.get("command")
+            if button_data
+            else str(command or "")
+        )
+        if command_name == "Mscrm.SaveAndClosePrimary":
             self.save_record(save_mode=2)
-        elif "Save" in command_name or command_name == "Mscrm.SavePrimary":
+        elif command_name in {
+            "Mscrm.SavePrimary",
+            "Mscrm.SaveAndNewPrimary",
+        }:
             self.save_record(save_mode=1)
+        elif command_name == "Mscrm.RefreshForm":
+            self.refresh_data()
+        elif command_name == "Mscrm.DeletePrimaryRecord":
+            self.delete_record()
         else:
-            QMessageBox.information(self, "Command", f"Ribbon Command executed: {command_name}")
+            executed = False
+            for action in button_data.get("actions", []):
+                if action.get("type") != "JavaScriptFunction":
+                    continue
+                if action.get("library"):
+                    result = self._dispatch_js_ribbon_action(
+                        action,
+                        button_data,
+                    )
+                    if result.get("errors"):
+                        self._report_client_event_errors(
+                            "ribbon",
+                            result,
+                        )
+                    executed = executed or bool(result.get("executed"))
+                    continue
+                function_name = action.get("function_name")
+                python_name = str(function_name or "").split(".")[-1]
+                if python_name and hasattr(self.form_events, python_name):
+                    getattr(self.form_events, python_name)(
+                        PythonFormContext(self)
+                    )
+                    executed = True
+            if not executed:
+                self.set_form_notification(
+                    f"{button_data.get('label') or command_name} could not "
+                    "run because it has no supported offline action.",
+                    "ERROR",
+                    "verseoff_unsupported_ribbon_command",
+                )
 
     def save_record(self, save_mode: int = 1):
-        # Fire OnSave events passing the explicit save mode
+        if self._save_in_progress:
+            self.set_form_notification(
+                "A save operation is already in progress.",
+                "ERROR",
+                "verseoff_recursive_save",
+            )
+            return False
+        self._save_in_progress = True
+        try:
+            return self._save_record_impl(save_mode)
+        finally:
+            self._save_in_progress = False
+
+    def _save_record_impl(self, save_mode: int = 1):
+        if not self.is_quick_view and not self._runtime_ready:
+            self.set_form_notification(
+                "The client-script runtime is still loading; save was "
+                "blocked so OnSave handlers cannot be skipped.",
+                "ERROR",
+                "verseoff_save_runtime_not_ready",
+            )
+            return False
         is_prevented = self._fire_events("onsave", save_mode=save_mode)
         if is_prevented:
-            return
+            return False
+        was_new_record = not self.record_id
             
         data_to_save = {}
         for field, widget in self.controls.items():
             if isinstance(widget, QLineEdit):
                 data_to_save[field] = widget.text()
+            elif isinstance(widget, QTextEdit):
+                data_to_save[field] = widget.toPlainText()
             elif isinstance(widget, QCheckBox):
                 data_to_save[field] = widget.isChecked()
             elif isinstance(widget, QComboBox):
                 data_to_save[field] = widget.currentData()
+            elif isinstance(widget, MultiSelectOptionWidget):
+                data_to_save[field] = widget.value()
             elif isinstance(widget, QSpinBox) or isinstance(widget, QDoubleSpinBox):
+                data_to_save[field] = widget.value()
+            elif isinstance(widget, QDateTimeEdit):
+                data_to_save[field] = widget.dateTime().toString(
+                    Qt.DateFormat.ISODate
+                )
+            elif isinstance(widget, LookupWidget):
+                data_to_save[field] = widget.current_id
+                raw_lookup_key = f"_{field}_value"
+                data_to_save[raw_lookup_key] = widget.current_id
+                if widget.current_logical_name:
+                    data_to_save[
+                        f"{raw_lookup_key}@"
+                        "Microsoft.Dynamics.CRM.lookuplogicalname"
+                    ] = widget.current_logical_name
+            elif isinstance(widget, PcfControlWidget):
                 data_to_save[field] = widget.value()
 
         save_success = False
         try:
-            with LocalDatabase().get_connection() as conn:
-                cursor = conn.cursor()
-                if self.record_id:
-                    cursor.execute(
-                        f"UPDATE {self.logical_name} SET data_json = ?, sync_status = 'PENDING' WHERE {self.primary_id_attr} = ?",
-                        (json.dumps(data_to_save), self.record_id)
-                    )
-                else:
-                    new_id = str(uuid.uuid4())
-                    cursor.execute(
-                        f"INSERT INTO {self.logical_name} ({self.primary_id_attr}, data_json, sync_status) VALUES (?, ?, 'PENDING')",
-                        (new_id, json.dumps(data_to_save))
-                    )
-                    self.record_id = new_id
-                conn.commit()
-            
+            database = LocalDatabase()
+            if self.record_id:
+                existing = database.get_record(
+                    self.logical_name,
+                    self.record_id,
+                ) or {}
+                existing_status = existing.pop("_sync_status", None)
+                existing.pop("_sync_error", None)
+                existing.update(data_to_save)
+                database.upsert_record(
+                    self.logical_name,
+                    self.record_id,
+                    existing,
+                    sync_status=(
+                        "pending_create"
+                        if existing_status == "pending_create"
+                        else "pending_update"
+                    ),
+                )
+            else:
+                self.record_id = str(uuid.uuid4())
+                data_to_save[self.primary_id_attr] = self.record_id
+                database.upsert_record(
+                    self.logical_name,
+                    self.record_id,
+                    data_to_save,
+                    sync_status="pending_create",
+                )
+            for timeline in self.timelines:
+                timeline.set_record_id(self.record_id)
+
             save_success = True
-            QMessageBox.information(self, "Success", "Record saved to local cache (Sync Pending).")
-            
-            if save_mode == 2:
-                self.close()
-                
-        except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to save record locally:\n{e}")
-            self._fire_events("postsave", save_mode=save_mode, is_save_success=False, save_error_info={"errorCode": -1, "message": str(e)})
-            return
-            
+        except Exception as error:
+            QMessageBox.critical(
+                self,
+                "Error",
+                f"Failed to save record locally:\n{error}",
+            )
+            self._fire_events(
+                "postsave",
+                save_mode=save_mode,
+                is_save_success=False,
+                save_error_info={
+                    "errorCode": -1,
+                    "message": str(error),
+                },
+            )
+            return False
+             
         try:
             self.form_events.post_save(self.logical_name, self.record_id)
-        except Exception as e:
-            print(f"Post-save hook error: {e}")
-            
+        except Exception as error:
+            logger.exception("Custom post_save hook failed")
+            self.set_form_notification(
+                f"Custom post-save hook failed: {error}",
+                "ERROR",
+                "verseoff_post_save_hook",
+            )
+
+        self._fire_events(
+            "postsave",
+            save_mode=save_mode,
+            is_save_success=save_success,
+        )
         self._populate_data()
-        self._fire_events("dataonload")
-        
-        # Fire custom PostSave event
-        self._fire_events("postsave", save_mode=save_mode, is_save_success=save_success)
+        if was_new_record:
+            self._fire_events("onload", data_load_state=2)
+            self._fire_events("formloaded")
+        self._fire_events("dataonload", data_load_state=2)
+        QMessageBox.information(
+            self,
+            "Success",
+            "Record saved to local cache (Sync Pending).",
+        )
+        if save_mode == 2:
+            self.handle_close()
+        return True
 
     def _run_post_load(self):
         try:
             self.form_events.post_load(self.logical_name, self.controls)
-        except Exception as e:
-            print(f"Custom Event Error in post_load: {e}")
+        except Exception as error:
+            logger.exception("Custom post_load hook failed")
+            self.set_form_notification(
+                f"Custom post-load hook failed: {error}",
+                "ERROR",
+                "verseoff_post_load_hook",
+            )
+
+    def _open_timeline_form(self, entity_name, record_id):
+        app_window = self.window()
+        if hasattr(app_window, "open_form"):
+            app_window.open_form(entity_name, record_id)
+            return
+        QMessageBox.information(
+            self,
+            "Timeline record",
+            f"Open {entity_name} {record_id or ''}".strip(),
+        )

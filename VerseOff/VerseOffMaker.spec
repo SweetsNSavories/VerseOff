@@ -1,11 +1,18 @@
 # -*- mode: python ; coding: utf-8 -*-
+from pathlib import Path
 
+
+project_dir = Path(SPECPATH)
 
 a = Analysis(
-    ['main.py'],
-    pathex=[],
+    [str(project_dir / "main.py")],
+    pathex=[str(project_dir)],
     binaries=[],
-    datas=[('C:/Users/prave/.gemini/antigravity/brain/2a3045b3-521e-4996-afd9-7b47cf3fed78/VerseOff/templates', 'templates')],
+    datas=[
+        (str(project_dir / "templates"), "templates"),
+        (str(project_dir / "verseoff_bridge.js"), "."),
+        (str(project_dir / "verseoff_pcf_host.js"), "."),
+    ],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -22,11 +29,11 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='VerseOffMaker',
+    name="VerseOffMaker",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=True,
+    upx=False,
     upx_exclude=[],
     runtime_tmpdir=None,
     console=False,

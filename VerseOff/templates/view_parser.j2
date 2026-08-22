@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import logging
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -37,13 +38,18 @@ class ViewParser:
             if row_elem is not None:
                 for cell_elem in row_elem.findall("cell"):
                     # Required attribute according to XSD
-                    name = cell_elem.get("name") 
-                    
+                    name = cell_elem.get("name")
+
                     if name:
+                        try:
+                            width = int(
+                                float(cell_elem.get("width", 100))
+                            )
+                        except (TypeError, ValueError):
+                            width = 100
                         col_def = {
                             "name": name,
-                            # Width is technically optional in XSD, default to 100
-                            "width": int(cell_elem.get("width", 100)),
+                            "width": width,
                             # Label is optional
                             "label": cell_elem.get("label", name),
                             "ishidden": cell_elem.get("ishidden") == "1",
@@ -66,7 +72,9 @@ class ViewParser:
             "entity": None,
             "attributes": [],
             "filters": [],
-            "orders": []
+            "orders": [],
+            "links": [],
+            "supported": True,
         }
         
         if not xml_string:
@@ -77,6 +85,7 @@ class ViewParser:
             
             if root.tag != "fetch":
                 logger.warning(f"Expected root tag <fetch>, found <{root.tag}>")
+                query_def["supported"] = False
                 return query_def
 
             entity_elem = root.find("entity")
@@ -99,29 +108,227 @@ class ViewParser:
                             "descending": descending
                         })
                         
-                # Parse basic filters (MVP implementation)
-                filter_elem = entity_elem.find("filter")
-                if filter_elem is not None:
-                    filter_type = filter_elem.get("type", "and") # defaults to "and" in XSD
-                    
+                def parse_filter(filter_element):
                     conditions = []
-                    for cond_elem in filter_elem.findall("condition"):
+                    for condition in filter_element.findall(
+                        "./condition"
+                    ):
+                        values = [
+                            value.text
+                            for value in condition.findall("./value")
+                        ]
                         conditions.append({
-                            "attribute": cond_elem.get("attribute"),
-                            "operator": cond_elem.get("operator"),
-                            "value": cond_elem.get("value")
+                            "attribute": condition.get("attribute"),
+                            "operator": condition.get("operator"),
+                            "value": condition.get("value"),
+                            "values": values,
+                            "entityname": condition.get("entityname"),
                         })
-                        
-                    if conditions:
-                        query_def["filters"].append({
-                            "type": filter_type,
-                            "conditions": conditions
-                        })
+                    return {
+                        "type": filter_element.get("type", "and"),
+                        "conditions": conditions,
+                        "filters": [
+                            parse_filter(child)
+                            for child in filter_element.findall("./filter")
+                        ],
+                    }
+
+                query_def["filters"] = [
+                    parse_filter(filter_element)
+                    for filter_element in entity_elem.findall("./filter")
+                ]
+                query_def["links"] = [
+                    {
+                        "name": link.get("name"),
+                        "from": link.get("from"),
+                        "to": link.get("to"),
+                        "alias": link.get("alias"),
+                        "link_type": link.get("link-type", "inner"),
+                    }
+                    for link in entity_elem.findall("./link-entity")
+                ]
 
         except ET.ParseError as e:
             logger.error(f"Failed to parse FetchXML: {e}")
+            query_def["supported"] = False
 
         return query_def
+
+    @staticmethod
+    def _record_value(record, attribute):
+        if attribute in record:
+            return record[attribute]
+        lookup_key = f"_{attribute}_value"
+        if lookup_key in record:
+            return record[lookup_key]
+        return None
+
+    @staticmethod
+    def _comparable(value):
+        if value is None:
+            return None
+        if isinstance(value, (int, float, bool)):
+            return value
+        text = str(value)
+        try:
+            return float(text)
+        except ValueError:
+            return text.casefold()
+
+    @classmethod
+    def _values_equal(cls, left, right):
+        if isinstance(left, str) or isinstance(right, str):
+            left_text = "" if left is None else str(left)
+            right_text = "" if right is None else str(right)
+            return left_text.strip("{}").casefold() == right_text.strip(
+                "{}"
+            ).casefold()
+        return cls._comparable(left) == cls._comparable(right)
+
+    @classmethod
+    def _condition_matches(cls, condition, record):
+        attribute = condition.get("attribute")
+        operator = str(condition.get("operator") or "eq").lower()
+        actual = cls._record_value(record, attribute)
+        expected = condition.get("value")
+        values = condition.get("values") or []
+
+        if operator == "null":
+            return actual in (None, "")
+        if operator == "not-null":
+            return actual not in (None, "")
+        if operator in {"in", "not-in"}:
+            result = str(actual) in {str(value) for value in values}
+            return not result if operator == "not-in" else result
+        if operator in {"contain-values", "not-contain-values"}:
+            actual_tokens = {
+                str(value).strip()
+                for value in (
+                    actual
+                    if isinstance(actual, (list, tuple, set))
+                    else str(actual or "").split(",")
+                )
+                if str(value).strip()
+            }
+            expected_tokens = {
+                str(value).strip()
+                for value in (values or [expected])
+                if value is not None and str(value).strip()
+            }
+            contains_all = expected_tokens.issubset(actual_tokens)
+            return (
+                not contains_all
+                if operator == "not-contain-values"
+                else contains_all
+            )
+
+        actual_value = cls._comparable(actual)
+        expected_value = cls._comparable(expected)
+        if operator == "eq":
+            return cls._values_equal(actual, expected)
+        if operator in {"ne", "neq"}:
+            return not cls._values_equal(actual, expected)
+        if operator == "gt":
+            return actual_value is not None and actual_value > expected_value
+        if operator == "ge":
+            return actual_value is not None and actual_value >= expected_value
+        if operator == "lt":
+            return actual_value is not None and actual_value < expected_value
+        if operator == "le":
+            return actual_value is not None and actual_value <= expected_value
+
+        actual_text = str(actual or "")
+        expected_text = str(expected or "")
+        if operator == "like":
+            pattern = re.escape(expected_text)
+            pattern = pattern.replace(r"\*", ".*").replace("%", ".*")
+            return re.fullmatch(pattern, actual_text, re.IGNORECASE) is not None
+        if operator == "contains":
+            return expected_text.casefold() in actual_text.casefold()
+        if operator == "begins-with":
+            return actual_text.casefold().startswith(expected_text.casefold())
+        if operator == "ends-with":
+            return actual_text.casefold().endswith(expected_text.casefold())
+
+        logger.warning(
+            "Unsupported local FetchXML operator %s on %s; "
+            "excluding the record to avoid broadening the view.",
+            operator,
+            attribute,
+        )
+        return False
+
+    @classmethod
+    def _filter_matches(cls, filter_definition, record):
+        results = [
+            cls._condition_matches(condition, record)
+            for condition in filter_definition.get("conditions", [])
+        ]
+        results.extend(
+            cls._filter_matches(child, record)
+            for child in filter_definition.get("filters", [])
+        )
+        if not results:
+            return True
+        if filter_definition.get("type", "and").lower() == "or":
+            return any(results)
+        return all(results)
+
+    @classmethod
+    def apply_to_records(
+        cls,
+        query_definition,
+        records,
+        search_string=None,
+        additional_filters=None,
+    ):
+        additional_filters = additional_filters or {}
+        if not query_definition.get("supported", True):
+            logger.warning(
+                "FetchXML is malformed or unsupported; excluding records."
+            )
+            return []
+        if query_definition.get("links"):
+            logger.warning(
+                "FetchXML link-entity joins are not available in the local "
+                "JSON store; excluding records to avoid broadening the view."
+            )
+            return []
+        filtered = []
+        search_value = str(search_string or "").casefold()
+        for record in records:
+            if not all(
+                cls._filter_matches(filter_definition, record)
+                for filter_definition in query_definition.get("filters", [])
+            ):
+                continue
+            if any(
+                not cls._values_equal(
+                    cls._record_value(record, key),
+                    value,
+                )
+                for key, value in additional_filters.items()
+            ):
+                continue
+            if search_value and not any(
+                search_value in str(value or "").casefold()
+                for value in record.values()
+            ):
+                continue
+            filtered.append(record)
+
+        for order in reversed(query_definition.get("orders", [])):
+            attribute = order.get("attribute")
+            filtered.sort(
+                key=lambda record: (
+                    cls._record_value(record, attribute) is None,
+                    cls._comparable(
+                        cls._record_value(record, attribute)
+                    ),
+                ),
+                reverse=bool(order.get("descending")),
+            )
+        return filtered
 
     @staticmethod
     def fetchxml_to_sql(query_def: dict, table_prefix: str = "", search_string: str = None, additional_filters: dict = None) -> tuple[str, list]:

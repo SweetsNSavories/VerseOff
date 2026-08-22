@@ -12,17 +12,57 @@ import zipfile
 import io
 import xml.etree.ElementTree as ET
 import os
-import json
+import re
 import requests
+import tempfile
+import time
 from typing import Optional
+from urllib.parse import urlparse
+
+try:
+    from VerseOff.client_script_metadata import (
+        normalize_web_resource_name,
+    )
+    from VerseOff.pcf_metadata import (
+        bind_pcf_resources,
+        custom_control_names_from_form,
+        parse_pcf_manifest,
+    )
+    from VerseOff.timeline_metadata import (
+        extract_card_forms,
+        extract_timeline_definitions,
+    )
+except ImportError:
+    from client_script_metadata import normalize_web_resource_name
+    from pcf_metadata import (
+        bind_pcf_resources,
+        custom_control_names_from_form,
+        parse_pcf_manifest,
+    )
+    from timeline_metadata import (
+        extract_card_forms,
+        extract_timeline_definitions,
+    )
 
 logger = logging.getLogger(__name__)
 
 
 class MetadataFetcher:
-    def __init__(self, dataverse_url: str, auth_token: str, use_cache: bool = True):
-        from urllib.parse import urlparse
+    def __init__(
+        self,
+        dataverse_url: str,
+        auth_token: str,
+        use_cache: bool = True,
+        cache_ttl_seconds: int = 3600,
+    ):
         parsed = urlparse(dataverse_url.rstrip("/"))
+        if parsed.scheme != "https" or not parsed.netloc:
+            raise ValueError(
+                "Dataverse URL must be a complete HTTPS environment URL."
+            )
+        if not auth_token:
+            raise ValueError("A Dataverse access token is required.")
+
         self.org_url = f"{parsed.scheme}://{parsed.netloc}"
         self.base_url = self.org_url + "/api/data/v9.2"
         self.headers = {
@@ -32,12 +72,30 @@ class MetadataFetcher:
             "OData-Version": "4.0",
             "Prefer": "odata.include-annotations=OData.Community.Display.V1.FormattedValue",
         }
+        self.session = requests.Session()
+        self.session.headers.update(self.headers)
         
         self.use_cache = use_cache
-        from urllib.parse import urlparse
+        self.cache_ttl_seconds = cache_ttl_seconds
+        self._entity_set_name_cache = {}
         parsed = urlparse(self.base_url)
         org_domain = parsed.netloc.split('.')[0] if parsed.netloc else "default_org"
-        self.cache_dir = os.path.join("metadata_cache", org_domain)
+        cache_root = os.getenv("VERSEOFF_METADATA_CACHE_DIR")
+        if not cache_root:
+            local_app_data = os.getenv("LOCALAPPDATA")
+            if local_app_data:
+                cache_root = os.path.join(
+                    local_app_data,
+                    "VerseOff",
+                    "metadata_cache",
+                )
+            else:
+                cache_root = os.path.join(
+                    os.path.expanduser("~"),
+                    ".cache",
+                    "verseoff",
+                )
+        self.cache_dir = os.path.join(cache_root, org_domain)
         
         if self.use_cache:
             os.makedirs(self.cache_dir, exist_ok=True)
@@ -64,7 +122,10 @@ class MetadataFetcher:
         clean_endpoint = re.sub(r"\((?:LogicalName|EntityName)='[^']+'\)", "", endpoint)
         clean_endpoint = re.sub(r'[^\w\-\.]', '_', clean_endpoint).strip("_")
         if len(clean_endpoint) > 50:
-            clean_endpoint = clean_endpoint[:50]
+            endpoint_hash = hashlib.sha256(
+                endpoint.encode("utf-8")
+            ).hexdigest()[:8]
+            clean_endpoint = f"{clean_endpoint[:41]}_{endpoint_hash}"
         
         # Hash params to ensure unique filenames for different queries
         param_hash = ""
@@ -82,6 +143,9 @@ class MetadataFetcher:
             return None
         path = self._get_cache_path(endpoint, params)
         if os.path.exists(path):
+            age_seconds = time.time() - os.path.getmtime(path)
+            if age_seconds > self.cache_ttl_seconds:
+                return None
             try:
                 with open(path, "r", encoding="utf-8") as f:
                     return json.load(f)
@@ -93,15 +157,91 @@ class MetadataFetcher:
         if not self.use_cache:
             return
         path = self._get_cache_path(endpoint, params)
+        temp_path = None
         try:
-            with open(path, "w", encoding="utf-8") as f:
-                json.dump(data, f, indent=2)
-        except Exception as e:
-            logger.warning(f"Failed to write cache {path}: {e}")
+            with tempfile.NamedTemporaryFile(
+                mode="w",
+                encoding="utf-8",
+                dir=os.path.dirname(path),
+                prefix=".verseoff-",
+                suffix=".tmp",
+                delete=False,
+            ) as cache_file:
+                temp_path = cache_file.name
+                json.dump(data, cache_file, indent=2)
+            os.replace(temp_path, path)
+        except (OSError, TypeError, ValueError) as exc:
+            logger.warning("Failed to write cache %s: %s", path, exc)
+            if temp_path and os.path.exists(temp_path):
+                try:
+                    os.remove(temp_path)
+                except OSError:
+                    pass
 
     # ------------------------------------------------------------------
     # Internal helpers
     # ------------------------------------------------------------------
+
+    def _request_json(
+        self,
+        url,
+        *,
+        params=None,
+        timeout=30,
+        max_attempts=4,
+    ):
+        last_error = None
+        for attempt in range(max_attempts):
+            try:
+                response = self.session.get(
+                    url,
+                    params=params,
+                    timeout=timeout,
+                )
+            except (
+                requests.exceptions.ConnectionError,
+                requests.exceptions.Timeout,
+            ) as exc:
+                last_error = exc
+                if attempt + 1 >= max_attempts:
+                    break
+                time.sleep(min(2 ** attempt, 8))
+                continue
+
+            if response.status_code in {429, 502, 503, 504}:
+                if attempt + 1 >= max_attempts:
+                    last_error = RuntimeError(
+                        f"HTTP {response.status_code}: {response.text}"
+                    )
+                    break
+                retry_after = response.headers.get("Retry-After")
+                try:
+                    delay = float(retry_after)
+                except (TypeError, ValueError):
+                    delay = 2 ** attempt
+                logger.warning(
+                    "Dataverse returned HTTP %s; retrying in %.1fs",
+                    response.status_code,
+                    min(delay, 30),
+                )
+                time.sleep(min(delay, 30))
+                continue
+            try:
+                response.raise_for_status()
+            except requests.exceptions.HTTPError as exc:
+                raise RuntimeError(
+                    f"HTTP Error: {exc}\nResponse: {response.text}"
+                ) from exc
+            try:
+                return response.json()
+            except requests.exceptions.JSONDecodeError as exc:
+                raise RuntimeError(
+                    f"Dataverse returned invalid JSON from {url}"
+                ) from exc
+        raise RuntimeError(
+            f"Dataverse request failed after {max_attempts} attempts: "
+            f"{last_error}"
+        ) from last_error
 
     def _get(self, endpoint: str, params: dict = None, timeout: int = 30) -> dict:
         """GET request against the Dataverse Web API."""
@@ -110,13 +250,11 @@ class MetadataFetcher:
             return cached_data
             
         url = f"{self.base_url}{endpoint}"
-        resp = requests.get(url, headers=self.headers, params=params, timeout=timeout)
-        try:
-            resp.raise_for_status()
-        except requests.exceptions.HTTPError as e:
-            raise Exception(f"HTTP Error: {e}\nResponse: {resp.text}") from e
-            
-        data = resp.json()
+        data = self._request_json(
+            url,
+            params=params,
+            timeout=timeout,
+        )
         self._write_cache(endpoint, params, data)
         return data
 
@@ -131,13 +269,11 @@ class MetadataFetcher:
         url = f"{self.base_url}{endpoint}"
         current_params = params
         while url:
-            resp = requests.get(url, headers=self.headers, params=current_params, timeout=30)
-            try:
-                resp.raise_for_status()
-            except requests.exceptions.HTTPError as e:
-                raise Exception(f"HTTP Error: {e}\nResponse: {resp.text}") from e
-                
-            data = resp.json()
+            data = self._request_json(
+                url,
+                params=current_params,
+                timeout=30,
+            )
             results.extend(data.get("value", []))
             
             # Next link is usually absolute
@@ -155,6 +291,102 @@ class MetadataFetcher:
         """Validates the connection and returns the current user's info."""
         return self._get("/WhoAmI")
 
+    def get_client_context(self) -> dict:
+        """Fetches the source user and organization context for Client API."""
+        identity = self.who_am_i()
+        user_id = str(identity.get("UserId") or "").strip("{}")
+        organization_id = str(
+            identity.get("OrganizationId") or ""
+        ).strip("{}")
+        if not user_id or not organization_id:
+            raise RuntimeError(
+                "WhoAmI did not return both UserId and OrganizationId."
+            )
+
+        user = self._get(
+            f"/systemusers({user_id})",
+            params={
+                "$select": (
+                    "systemuserid,fullname,domainname,"
+                    "internalemailaddress,_transactioncurrencyid_value"
+                )
+            },
+        )
+        organization = self._get(
+            f"/organizations({organization_id})",
+            params={
+                "$select": (
+                    "organizationid,name,languagecode,"
+                    "_basecurrencyid_value,isautosaveenabled"
+                )
+            },
+        )
+        settings = self._get_all_pages(
+            "/usersettingscollection",
+            params={
+                "$filter": f"systemuserid eq {user_id}",
+                "$select": (
+                    "uilanguageid,localeid,timezonecode,"
+                    "isdefaultcountrycodecheckenabled"
+                ),
+                "$top": "1",
+            },
+        )
+        if not settings:
+            raise RuntimeError(
+                f"User settings were not found for {user_id}."
+            )
+        roles = self._get_all_pages(
+            f"/systemusers({user_id})/systemuserroles_association",
+            params={"$select": "roleid,name"},
+        )
+        user_settings = settings[0]
+        return {
+            "version": "9.2.0.0",
+            "user": {
+                "id": user.get("systemuserid") or user_id,
+                "name": user.get("fullname") or "",
+                "domainName": user.get("domainname") or "",
+                "email": user.get("internalemailaddress") or "",
+                "languageId": int(
+                    user_settings.get("uilanguageid")
+                    or organization.get("languagecode")
+                    or 1033
+                ),
+                "localeId": int(
+                    user_settings.get("localeid") or 1033
+                ),
+                "timeZoneCode": user_settings.get("timezonecode"),
+                "transactionCurrencyId": (
+                    user.get("_transactioncurrencyid_value") or ""
+                ),
+                "roles": [
+                    {
+                        "id": role.get("roleid") or "",
+                        "name": role.get("name") or "",
+                    }
+                    for role in roles
+                ],
+            },
+            "organization": {
+                "id": (
+                    organization.get("organizationid")
+                    or organization_id
+                ),
+                "uniqueName": organization.get("uniquename") or "",
+                "name": organization.get("name") or "",
+                "languageId": int(
+                    organization.get("languagecode") or 1033
+                ),
+                "baseCurrencyId": (
+                    organization.get("_basecurrencyid_value") or ""
+                ),
+                "isAutoSaveEnabled": bool(
+                    organization.get("isautosaveenabled")
+                ),
+            },
+        }
+
     # ------------------------------------------------------------------
     # App Modules
     # ------------------------------------------------------------------
@@ -171,31 +403,36 @@ class MetadataFetcher:
     # ------------------------------------------------------------------
 
     def _get_sitemap_xml(self, app_module_id: str) -> str:
-        try:
-            app_data = self._get(
-                f"/appmodules({app_module_id})",
-                params={"$select": "appmoduleidunique"}
+        app_data = self._get(
+            f"/appmodules({app_module_id})",
+            params={"$select": "appmoduleidunique"}
+        )
+        uid = app_data.get("appmoduleidunique")
+        if not uid:
+            raise RuntimeError(
+                "Could not resolve appmoduleidunique for the selected app."
             )
-            uid = app_data.get("appmoduleidunique")
-            if not uid:
-                return ""
 
-            components = self._get_all_pages(
-                "/appmodulecomponents",
-                params={
-                    "$filter": f"_appmoduleidunique_value eq {uid} and componenttype eq 62",
-                    "$select": "objectid"
-                }
-            )
-            if not components:
-                return ""
-                
-            sitemap_id = components[0]["objectid"]
-            sitemap = self._get(f"/sitemaps({sitemap_id})", params={"$select": "sitemapxml"})
-            return sitemap.get("sitemapxml", "")
-        except Exception as e:
-            logger.warning(f"Could not fetch sitemap for app {app_module_id}: {e}")
+        components = self._get_all_pages(
+            "/appmodulecomponents",
+            params={
+                "$filter": f"_appmoduleidunique_value eq {uid} and componenttype eq 62",
+                "$select": "objectid"
+            }
+        )
+        if not components:
             return ""
+
+        sitemap_id = components[0].get("objectid")
+        if not sitemap_id:
+            raise RuntimeError(
+                "The selected app's SiteMap component has no object ID."
+            )
+        sitemap = self._get(
+            f"/sitemaps({sitemap_id})",
+            params={"$select": "sitemapxml"},
+        )
+        return sitemap.get("sitemapxml", "")
 
     def get_sitemap_entities(self, app_module_id: str) -> list[dict]:
         """
@@ -271,7 +508,9 @@ class MetadataFetcher:
                     continue
                 entities.append(meta)
             except Exception as e:
-                logger.warning(f"Could not fetch entity {eid}: {e}")
+                raise RuntimeError(
+                    f"Could not fetch metadata for app entity {eid}: {e}"
+                ) from e
 
         return entities
 
@@ -317,175 +556,103 @@ class MetadataFetcher:
                 "$select": (
                     "LogicalName,DisplayName,EntitySetName,PrimaryIdAttribute,"
                     "PrimaryNameAttribute,IsAvailableOffline,IsActivity,"
-                    "ObjectTypeCode,OwnershipType,DataProviderId"
+                    "ObjectTypeCode,OwnershipType,DataProviderId,"
+                    "ChangeTrackingEnabled"
                 )
             }
         )
+        if entity_def.get("EntitySetName"):
+            self._entity_set_name_cache[logical_name] = entity_def[
+                "EntitySetName"
+            ]
         
         entity_def["attributes"] = self.get_entity_attributes(logical_name)
         entity_def["option_sets"] = self.get_entity_option_sets(logical_name)
         entity_def["forms"] = self.get_main_and_quick_forms(logical_name)
+        entity_def["pcf_controls"] = self.get_custom_controls_for_forms(
+            entity_def["forms"]
+        )
+        entity_def["timelines"] = extract_timeline_definitions(
+            entity_def["forms"],
+            logical_name,
+        )
+        entity_def["card_forms"] = extract_card_forms(
+            entity_def["forms"]
+        )
         entity_def["saved_queries"] = self.get_saved_queries_for_entity(logical_name)
-        entity_def["ribbon_buttons"] = self._fetch_ribbon_buttons(logical_name)
-        entity_def["relationships"] = self.get_all_relationships_for_entity(logical_name)
+        ribbon = self._fetch_ribbon_metadata(logical_name)
+        entity_def["ribbon"] = ribbon
+        entity_def["ribbon_buttons"] = ribbon["buttons"]
+        relationships = self.get_all_relationships_for_entity(logical_name)
+        entity_def["relationships"] = relationships
         entity_def["lookup_targets"] = self.get_lookup_targets(logical_name)
-        
+        entity_def["lookup_bindings"] = self.get_lookup_bindings(
+            relationships.get("many_to_one", [])
+        )
+
+        try:
+            from VerseOff.schema_builder import persist_entity_metadata
+            persist_entity_metadata(entity_def)
+        except ImportError:
+            from schema_builder import persist_entity_metadata
+            persist_entity_metadata(entity_def)
+        except Exception:
+            logger.debug("Relationship metadata persistence skipped for %s.", logical_name, exc_info=True)
+
         return entity_def
 
-    def _fetch_ribbon_buttons(self, logical_name: str) -> list[dict]:
-        logger.info(f"Extracting Ribbon XML for {logical_name}...")
-        buttons = []
+    def _fetch_ribbon_metadata(self, logical_name: str) -> dict:
+        logger.info("Extracting Ribbon XML for %s...", logical_name)
         try:
-            # RibbonLocationFilters.All = 1
-            url = f"/RetrieveEntityRibbon(EntityName='{logical_name}',RibbonLocationFilter=Microsoft.Dynamics.CRM.RibbonLocationFilters'1')"
+            url = (
+                "/RetrieveEntityRibbon("
+                f"EntityName='{logical_name}',"
+                "RibbonLocationFilter="
+                "Microsoft.Dynamics.CRM.RibbonLocationFilters'All')"
+            )
             data = self._get(url, timeout=6)
-            
             base64_zip = data.get("CompressedEntityXml")
             if not base64_zip:
-                logger.warning(f"No CompressedEntityXml returned for {logical_name}")
-                return buttons
-                
-            # Unzip in memory
+                logger.warning(
+                    "No CompressedEntityXml returned for %s",
+                    logical_name,
+                )
+                return _empty_ribbon_metadata()
+
             zip_bytes = base64.b64decode(base64_zip)
-            with zipfile.ZipFile(io.BytesIO(zip_bytes)) as z:
-                if "RibbonXml.xml" in z.namelist():
-                    xml_content = z.read("RibbonXml.xml")
-                    root = ET.fromstring(xml_content)
-                    
-                    # 0. Parse LocLabels
-                    loc_labels_map = {}
-                    loc_labels_elem = root.find(".//LocLabels")
-                    if loc_labels_elem is not None:
-                        for loc in loc_labels_elem.findall(".//LocLabel"):
-                            loc_id = loc.get("Id")
-                            if not loc_id: continue
-                            title_elem = loc.find(".//Titles/Title")
-                            if title_elem is not None:
-                                loc_labels_map[loc_id] = title_elem.get("description") or title_elem.get("Title") or ""
+            with zipfile.ZipFile(io.BytesIO(zip_bytes)) as archive:
+                ribbon_name = next(
+                    (
+                        name
+                        for name in archive.namelist()
+                        if name.lower().endswith("ribbonxml.xml")
+                    ),
+                    None,
+                )
+                if not ribbon_name:
+                    logger.warning(
+                        "Ribbon archive for %s contains no RibbonXml.xml",
+                        logical_name,
+                    )
+                    return _empty_ribbon_metadata()
+                return _parse_ribbon_xml(archive.read(ribbon_name))
+        except (
+            ValueError,
+            zipfile.BadZipFile,
+            ET.ParseError,
+            requests.RequestException,
+            RuntimeError,
+        ) as exc:
+            logger.warning(
+                "Failed to extract ribbon for %s: %s",
+                logical_name,
+                exc,
+            )
+            return _empty_ribbon_metadata()
 
-                    # Helper to resolve raw token
-                    def resolve_label(raw_lbl: str, btn_id_str: str) -> str:
-                        if not raw_lbl:
-                            return ""
-                        if raw_lbl.startswith("$LocLabels:"):
-                            key = raw_lbl.replace("$LocLabels:", "")
-                            if key in loc_labels_map and loc_labels_map[key]:
-                                return loc_labels_map[key]
-                        
-                        clean_tok = raw_lbl.replace("$Resources:", "").replace("$LocLabels:", "")
-                        std_map = {
-                            "Save.Save": "Save",
-                            "Save.SaveAndClose": "Save & Close",
-                            "Save.SaveAndNew": "Save & New",
-                            "Save.SaveAsComplete": "Complete",
-                            "HomepageGrid.MainTab.New": "New",
-                            "Form.MainTab.New": "New",
-                            "Actions.Delete": "Delete",
-                            "Actions.Refresh": "Refresh",
-                            "Actions.Deactivate": "Deactivate",
-                            "Status.Activate": "Activate",
-                            "Actions.Assign": "Assign",
-                            "Actions.Share": "Share",
-                            "OpenRecordOnWeb": "Open in Web",
-                            "SetRegarding": "Set Regarding",
-                            "QueueItemDetail": "Queue Details"
-                        }
-                        for k, v in std_map.items():
-                            if k.lower() in clean_tok.lower():
-                                return v
-                        parts = clean_tok.split(".")
-                        candidates = [p for p in parts if p not in ("Button", "Label", "Title", "MainTab", "Form", "Ribbon", "HomepageGrid", "Record", "Actions", "Status")]
-                        if candidates:
-                            import re
-                            words = re.findall(r'[A-Z]?[a-z]+|[A-Z]+(?=[A-Z][a-z]|\d|\W|$)|\d+', candidates[-1])
-                            if words:
-                                return " ".join(words).title()
-                            return candidates[-1].title()
-                        return raw_lbl
-
-                    # 1. Parse Rule Definitions
-                    rules_map = {} # id -> list of rule conditions
-                    rule_defs = root.find(".//RuleDefinitions")
-                    if rule_defs is not None:
-                        for rule_type in ['DisplayRules', 'EnableRules']:
-                            container = rule_defs.find(f".//{rule_type}")
-                            if container is not None:
-                                for rule in container:
-                                    rule_id = rule.get('Id')
-                                    conditions = []
-                                    # Extract FormStateRule
-                                    for fs_rule in rule.findall(".//FormStateRule"):
-                                        conditions.append({"type": "FormStateRule", "state": fs_rule.get("State")})
-                                    # Extract ValueRule
-                                    for v_rule in rule.findall(".//ValueRule"):
-                                        conditions.append({
-                                            "type": "ValueRule", 
-                                            "field": v_rule.get("Field"), 
-                                            "value": v_rule.get("Value")
-                                        })
-                                    if rule_id and conditions:
-                                        rules_map[rule_id] = conditions
-
-                    # 2. Parse Command Definitions
-                    commands_map = {} # command_id -> { "display_rules": [], "enable_rules": [] }
-                    cmd_defs = root.find(".//CommandDefinitions")
-                    if cmd_defs is not None:
-                        for cmd in cmd_defs.findall(".//CommandDefinition"):
-                            cmd_id = cmd.get("Id")
-                            if not cmd_id: continue
-                            
-                            c_data = {"display_rules": [], "enable_rules": []}
-                            for d_ref in cmd.findall(".//DisplayRule"):
-                                ref_id = d_ref.get("Id")
-                                if ref_id in rules_map:
-                                    c_data["display_rules"].extend(rules_map[ref_id])
-                            for e_ref in cmd.findall(".//EnableRule"):
-                                ref_id = e_ref.get("Id")
-                                if ref_id in rules_map:
-                                    c_data["enable_rules"].extend(rules_map[ref_id])
-                            commands_map[cmd_id] = c_data
-                    
-                    # 3. Search for Buttons in the XML
-                    for elem in root.iter():
-                        if elem.tag.endswith('Button'):
-                            btn_id = elem.get('Id', '')
-                            raw_label = elem.get('LabelText', elem.get('ToolTipTitle', ''))
-                            command_id = elem.get('Command', '')
-                            
-                            if btn_id and raw_label:
-                                resolved_lbl = resolve_label(raw_label, btn_id)
-                                
-                                # Determine location type (homepage_grid vs form vs subgrid)
-                                loc_type = "form"
-                                if "HomepageGrid" in btn_id:
-                                    loc_type = "homepage_grid"
-                                elif "SubGrid" in btn_id:
-                                    loc_type = "subgrid"
-                                elif "Form" in btn_id:
-                                    loc_type = "form"
-                                
-                                btn_data = {
-                                    "id": btn_id,
-                                    "raw_label": raw_label,
-                                    "label": resolved_lbl,
-                                    "command": command_id,
-                                    "location_type": loc_type,
-                                    "display_rules": [],
-                                    "enable_rules": []
-                                }
-                                if command_id in commands_map:
-                                    btn_data["display_rules"] = commands_map[command_id]["display_rules"]
-                                    btn_data["enable_rules"] = commands_map[command_id]["enable_rules"]
-                                    
-                                buttons.append(btn_data)
-            
-            # Deduplicate by ID
-            unique_buttons = {b["id"]: b for b in buttons}.values()
-            return list(unique_buttons)
-            
-        except Exception as e:
-            logger.error(f"Failed to extract ribbon for {logical_name}: {e}")
-            return buttons
+    def _fetch_ribbon_buttons(self, logical_name: str) -> list[dict]:
+        """Backward-compatible button-only Ribbon metadata accessor."""
+        return self._fetch_ribbon_metadata(logical_name)["buttons"]
 
     # ------------------------------------------------------------------
     # Attribute Metadata
@@ -493,10 +660,10 @@ class MetadataFetcher:
 
     def get_entity_attributes(self, logical_name: str) -> list[dict]:
         """
-        Returns ALL attributes for an entity — including those added by managed
-        3rd-party solutions. Filters to attributes valid for create or update.
+        Returns every readable or writable attribute, including attributes
+        added by managed third-party solutions.
         """
-        return self._get_all_pages(
+        attributes = self._get_all_pages(
             f"/EntityDefinitions(LogicalName='{logical_name}')/Attributes",
             params={
                 "$select": (
@@ -505,9 +672,98 @@ class MetadataFetcher:
                     "IsSecured,ColumnNumber,Description,"
                     "IsPrimaryId,IsPrimaryName"
                 ),
-                "$filter": "IsValidForCreate eq true or IsValidForUpdate eq true"
+                "$filter": (
+                    "IsValidForRead eq true or IsValidForCreate eq true "
+                    "or IsValidForUpdate eq true"
+                )
             }
         )
+        by_name = {
+            attribute.get("LogicalName"): attribute
+            for attribute in attributes
+            if attribute.get("LogicalName")
+        }
+        type_requests = {
+            "String": (
+                "StringAttributeMetadata",
+                "LogicalName,MaxLength,Format,FormatName",
+            ),
+            "Memo": (
+                "MemoAttributeMetadata",
+                "LogicalName,MaxLength,Format,FormatName",
+            ),
+            "Integer": (
+                "IntegerAttributeMetadata",
+                "LogicalName,MinValue,MaxValue,Format",
+            ),
+            "BigInt": (
+                "BigIntAttributeMetadata",
+                "LogicalName,MinValue,MaxValue",
+            ),
+            "Decimal": (
+                "DecimalAttributeMetadata",
+                "LogicalName,MinValue,MaxValue,Precision",
+            ),
+            "Double": (
+                "DoubleAttributeMetadata",
+                "LogicalName,MinValue,MaxValue,Precision",
+            ),
+            "Money": (
+                "MoneyAttributeMetadata",
+                "LogicalName,MinValue,MaxValue,Precision,"
+                "PrecisionSource,CalculationOf",
+            ),
+            "DateTime": (
+                "DateTimeAttributeMetadata",
+                "LogicalName,Format,DateTimeBehavior",
+            ),
+            "Lookup": (
+                "LookupAttributeMetadata",
+                "LogicalName,Targets",
+            ),
+            "Customer": (
+                "LookupAttributeMetadata",
+                "LogicalName,Targets",
+            ),
+            "Owner": (
+                "LookupAttributeMetadata",
+                "LogicalName,Targets",
+            ),
+            "Boolean": (
+                "BooleanAttributeMetadata",
+                "LogicalName,DefaultValue,FormulaDefinition",
+            ),
+            "File": (
+                "FileAttributeMetadata",
+                "LogicalName,MaxSizeInKB",
+            ),
+            "Image": (
+                "ImageAttributeMetadata",
+                "LogicalName,MaxHeight,MaxWidth,CanStoreFullImage,"
+                "IsPrimaryImage",
+            ),
+        }
+        present_types = {
+            attribute.get("AttributeType")
+            for attribute in attributes
+        }
+        requested_casts = set()
+        for attribute_type in present_types:
+            request = type_requests.get(attribute_type)
+            if request is None or request[0] in requested_casts:
+                continue
+            cast_name, select = request
+            requested_casts.add(cast_name)
+            typed_attributes = self._get_all_pages(
+                f"/EntityDefinitions(LogicalName='{logical_name}')"
+                f"/Attributes/Microsoft.Dynamics.CRM.{cast_name}",
+                params={"$select": select},
+            )
+            for typed_attribute in typed_attributes:
+                logical_name_key = typed_attribute.get("LogicalName")
+                if logical_name_key in by_name:
+                    by_name[logical_name_key].update(typed_attribute)
+        return attributes
 
     def get_entity_option_sets(self, logical_name: str) -> dict[str, list]:
         """
@@ -594,7 +850,7 @@ class MetadataFetcher:
         return self._get_all_pages(
             "/savedqueries",
             params={
-                "$filter": f"returnedtypecode eq '{logical_name}' and iscustomizable/Value eq true",
+                "$filter": f"returnedtypecode eq '{logical_name}'",
                 "$select": "name,savedqueryid,querytype,fetchxml,layoutxml,isdefault,isquickfindquery,description,returnedtypecode"
             }
         )
@@ -618,18 +874,24 @@ class MetadataFetcher:
         )
 
     def get_main_and_quick_forms(self, logical_name: str) -> list[dict]:
-        """Returns Main Forms (type 2) and Quick View Forms (type 6) for the entity."""
+        """Returns forms required by forms and Timeline.
+
+        Types: Main=2, Quick View=6, Quick Create=7, Card=11.
+        """
         forms = self._get_all_pages(
             "/systemforms",
             params={
-                "$filter": f"objecttypecode eq '{logical_name}' and (type eq 2 or type eq 6)",
+                "$filter": (
+                    f"objecttypecode eq '{logical_name}' and "
+                    "(type eq 2 or type eq 6 or type eq 7 or type eq 11)"
+                ),
                 "$select": "name,formid,formxmlmanaged,formxml,description,isdefault,type"
             }
         )
         return forms
 
     def get_mobile_forms(self, logical_name: str) -> list[dict]:
-        """Returns mobile forms (type=11) as fallback for simpler layouts."""
+        """Returns Card forms (type=11), retained for compatibility."""
         return self._get_all_pages(
             "/systemforms",
             params={
@@ -637,6 +899,256 @@ class MetadataFetcher:
                 "$select": "name,formid,formxml,isdefault"
             }
         )
+
+    def get_timeline_organization_settings(self) -> dict:
+        """Returns attachment limits used by generated Timeline controls."""
+        try:
+            organizations = self._get_all_pages(
+                "/organizations",
+                params={
+                    "$select": (
+                        "organizationid,maxuploadfilesize,"
+                        "blockedattachments"
+                    )
+                },
+            )
+        except RuntimeError as exc:
+            logger.warning(
+                "Could not read Timeline organization settings: %s",
+                exc,
+            )
+            return {
+                "max_upload_file_size": 94371840,
+                "blocked_extensions": [],
+            }
+        organization = organizations[0] if organizations else {}
+        blocked = [
+            extension.strip().lower().lstrip(".")
+            for extension in str(
+                organization.get("blockedattachments") or ""
+            ).split(";")
+            if extension.strip()
+        ]
+        return {
+            "max_upload_file_size": int(
+                organization.get("maxuploadfilesize") or 94371840
+            ),
+            "blocked_extensions": blocked,
+        }
+
+    def get_web_resource(self, name: str) -> dict | None:
+        """Returns a web resource without corrupting binary content."""
+        normalized = normalize_web_resource_name(name)
+        if not normalized:
+            return None
+        escaped = normalized.replace("'", "''")
+        resources = self._get_all_pages(
+            "/webresourceset",
+            params={
+                "$filter": f"name eq '{escaped}'",
+                "$select": (
+                    "webresourceid,name,displayname,"
+                    "webresourcetype,content,dependencyxml,"
+                    "description,languagecode"
+                ),
+            },
+        )
+        if not resources:
+            logger.warning("Web resource not found: %s", normalized)
+            return None
+        return self._web_resource_payload(resources[0], normalized)
+
+    def _web_resource_payload(
+        self,
+        resource: dict,
+        fallback_name: str = "",
+    ) -> dict:
+        normalized = normalize_web_resource_name(
+            resource.get("name") or fallback_name
+        )
+        if not normalized:
+            raise RuntimeError("Web resource metadata has no valid name.")
+        content_base64 = resource.get("content") or ""
+        resource_type = resource.get("webresourcetype")
+        text_types = {1, 2, 3, 4, 9, 11, 12}
+        try:
+            numeric_type = int(resource_type)
+        except (TypeError, ValueError):
+            numeric_type = None
+        if numeric_type is None and normalized.casefold().endswith(
+            (
+                ".htm",
+                ".html",
+                ".css",
+                ".js",
+                ".json",
+                ".xml",
+                ".xsl",
+                ".svg",
+                ".resx",
+                ".txt",
+            )
+        ):
+            numeric_type = 3
+        result = {
+            "id": resource.get("webresourceid"),
+            "name": normalized,
+            "display_name": resource.get("displayname") or normalized,
+            "description": resource.get("description") or "",
+            "language_code": resource.get("languagecode"),
+            "type": resource_type,
+            "dependency_xml": resource.get("dependencyxml") or "",
+        }
+        if numeric_type not in text_types:
+            try:
+                base64.b64decode(content_base64, validate=True)
+            except ValueError as exc:
+                raise RuntimeError(
+                    f"Web resource {normalized} contains invalid Base64: "
+                    f"{exc}"
+                ) from exc
+            result["content_base64"] = content_base64
+            return result
+        try:
+            decoded = base64.b64decode(content_base64).decode("utf-8-sig")
+        except (ValueError, UnicodeDecodeError) as exc:
+            raise RuntimeError(
+                f"Web resource {normalized} is not UTF-8 text: {exc}"
+            ) from exc
+        result["content"] = decoded
+        return result
+
+    def get_web_resource_by_id(self, web_resource_id: str) -> dict:
+        resource_id = str(web_resource_id or "").strip().strip("{}")
+        if not resource_id:
+            raise ValueError("Web resource ID is required.")
+        resource = self._get(
+            f"/webresourceset({resource_id})",
+            params={
+                "$select": (
+                    "webresourceid,name,displayname,"
+                    "webresourcetype,content,dependencyxml,"
+                    "description,languagecode"
+                ),
+            },
+        )
+        return self._web_resource_payload(resource)
+
+    def get_custom_control(self, control_name: str) -> dict | None:
+        name = str(control_name or "").strip()
+        if not name:
+            return None
+        escaped = name.replace("'", "''")
+        controls = self._get_all_pages(
+            "/customcontrols",
+            params={
+                "$filter": f"name eq '{escaped}'",
+                "$select": (
+                    "customcontrolid,name,manifest,authoringmanifest,"
+                    "clientjson,compatibledatatypes,supportedplatform,"
+                    "version,introducedversion"
+                ),
+            },
+        )
+        if not controls:
+            logger.warning("Custom control metadata not found: %s", name)
+            return {
+                "name": name,
+                "metadata_available": False,
+                "can_host": False,
+                "missing_resources": [],
+                "resources": [],
+            }
+        control = controls[0]
+        control_id = str(
+            control.get("customcontrolid") or ""
+        ).strip().strip("{}")
+        definition = parse_pcf_manifest(control.get("manifest") or "")
+        common_metadata = {
+            "id": control_id,
+            "name": control.get("name") or definition["name"],
+            "metadata_available": True,
+            "manifest_xml": control.get("manifest") or "",
+            "authoring_manifest_xml": (
+                control.get("authoringmanifest") or ""
+            ),
+            "client_json": control.get("clientjson") or "",
+            "compatible_data_types": [
+                value.strip()
+                for value in str(
+                    control.get("compatibledatatypes") or ""
+                ).replace(";", ",").split(",")
+                if value.strip()
+            ],
+            "supported_platform": (
+                control.get("supportedplatform") or ""
+            ),
+            "runtime_version": control.get("version") or "",
+            "introduced_version": (
+                control.get("introducedversion") or ""
+            ),
+        }
+        if name.startswith("MscrmControls."):
+            definition.update(common_metadata)
+            definition["can_host"] = False
+            definition["native_first_party"] = True
+            definition["missing_resources"] = []
+            definition["resource_links"] = []
+            return definition
+        resources = self._get_all_pages(
+            "/customcontrolresources",
+            params={
+                "$filter": f"customcontrolid eq {control_id}",
+                "$select": (
+                    "customcontrolresourceid,customcontrolid,"
+                    "webresourceid,name,version,versionrequirement"
+                ),
+            },
+        )
+        resource_rows = [
+            {
+                "id": resource.get("customcontrolresourceid"),
+                "path": resource.get("name") or "",
+                "name": resource.get("name") or "",
+                "web_resource_id": (
+                    resource.get("webresourceid")
+                    or resource.get("_webresourceid_value")
+                ),
+                "version": resource.get("version") or "",
+                "version_requirement": (
+                    resource.get("versionrequirement") or ""
+                ),
+            }
+            for resource in resources
+        ]
+        for resource in resource_rows:
+            web_resource_id = resource.get("web_resource_id")
+            if not web_resource_id:
+                continue
+            web_resource = self.get_web_resource_by_id(web_resource_id)
+            resource["web_resource_name"] = web_resource["name"]
+            resource["web_resource_type"] = web_resource["type"]
+        definition = bind_pcf_resources(definition, resource_rows)
+        definition.update({
+            **common_metadata,
+            "resource_links": resource_rows,
+        })
+        return definition
+
+    def get_custom_controls_for_forms(self, forms: list[dict]) -> list[dict]:
+        names = []
+        for form in forms or []:
+            for name in custom_control_names_from_form(
+                form.get("formxml") or ""
+            ):
+                if name not in names:
+                    names.append(name)
+        definitions = []
+        for name in names:
+            definition = self.get_custom_control(name)
+            if definition:
+                definitions.append(definition)
+        return definitions
 
     # ------------------------------------------------------------------
     # Business Rules (reference only — server enforces on sync)
@@ -712,7 +1224,10 @@ class MetadataFetcher:
                         "/processstages",
                         params={
                             "$filter": f"_processid_value eq {wf_id}",
-                            "$select": "stagename,primaryentitytypecode,stagecategory"
+                            "$select": (
+                                "processstageid,stagename,"
+                                "primaryentitytypecode,stagecategory"
+                            )
                         }
                     )
                     
@@ -731,8 +1246,27 @@ class MetadataFetcher:
             return bpf_defs
 
         except Exception as e:
-            logger.error(f"Failed to resolve BPF dependencies: {e}")
-            return {}
+            raise RuntimeError(
+                f"Failed to resolve business process dependencies: {e}"
+            ) from e
+
+    def get_bpf_entities_for_app(self, app_module_id: str) -> list[str]:
+        """Returns every table used by a business process in the app."""
+        definitions = self.get_bpf_definitions_for_app(app_module_id)
+        entity_names = []
+        seen = set()
+        for definition in definitions.values():
+            candidates = [definition.get("primary_entity")]
+            candidates.extend(
+                stage.get("entity")
+                for stage in definition.get("stages", [])
+            )
+            for candidate in candidates:
+                logical_name = str(candidate or "").strip().lower()
+                if logical_name and logical_name not in seen:
+                    seen.add(logical_name)
+                    entity_names.append(logical_name)
+        return entity_names
 
     # ------------------------------------------------------------------
     # Lookup targets (for generating lookup search widgets)
@@ -754,6 +1288,41 @@ class MetadataFetcher:
             logger.warning(f"Could not fetch lookup targets for {logical_name}: {e}")
             return {}
 
+    def get_entity_set_name(self, logical_name: str) -> str:
+        """Returns and caches the Web API entity-set name for a table."""
+        if logical_name not in self._entity_set_name_cache:
+            metadata = self._get(
+                f"/EntityDefinitions(LogicalName='{logical_name}')",
+                params={"$select": "EntitySetName"},
+            )
+            entity_set_name = metadata.get("EntitySetName")
+            if not entity_set_name:
+                raise RuntimeError(
+                    f"Dataverse returned no EntitySetName for {logical_name}."
+                )
+            self._entity_set_name_cache[logical_name] = entity_set_name
+        return self._entity_set_name_cache[logical_name]
+
+    def get_lookup_bindings(
+        self,
+        many_to_one_relationships: list[dict],
+    ) -> dict[str, dict[str, dict[str, str]]]:
+        """Maps lookup fields and targets to their Web API bind properties."""
+        bindings = {}
+        for relationship in many_to_one_relationships:
+            attribute = relationship.get("ReferencingAttribute")
+            target = relationship.get("ReferencedEntity")
+            navigation_property = relationship.get(
+                "ReferencingEntityNavigationPropertyName"
+            )
+            if not attribute or not target or not navigation_property:
+                continue
+            bindings.setdefault(attribute, {})[target] = {
+                "navigation_property": navigation_property,
+                "entity_set_name": self.get_entity_set_name(target),
+            }
+        return bindings
+
     # ------------------------------------------------------------------
     # Entity Relationships (1:N and N:1)
     # ------------------------------------------------------------------
@@ -771,6 +1340,8 @@ class MetadataFetcher:
                     "$select": (
                         "SchemaName,ReferencedEntity,ReferencedAttribute,"
                         "ReferencingEntity,ReferencingAttribute,"
+                        "ReferencedEntityNavigationPropertyName,"
+                        "ReferencingEntityNavigationPropertyName,"
                         "RelationshipType,CascadeConfiguration,"
                         "IsValidForAdvancedFind,IsCustomRelationship"
                     )
@@ -793,6 +1364,8 @@ class MetadataFetcher:
                     "$select": (
                         "SchemaName,ReferencedEntity,ReferencedAttribute,"
                         "ReferencingEntity,ReferencingAttribute,"
+                        "ReferencedEntityNavigationPropertyName,"
+                        "ReferencingEntityNavigationPropertyName,"
                         "RelationshipType,CascadeConfiguration,"
                         "IsValidForAdvancedFind,IsCustomRelationship"
                     )
@@ -901,6 +1474,293 @@ class MetadataFetcher:
 # Module-level helpers
 # ------------------------------------------------------------------
 
+
+def _xml_local_name(tag: str) -> str:
+    return tag.rsplit("}", 1)[-1]
+
+
+def _snake_case(value: str) -> str:
+    return re.sub(r"(?<!^)(?=[A-Z])", "_", value).lower()
+
+
+def _empty_ribbon_metadata() -> dict:
+    return {
+        "buttons": [],
+        "commands": {},
+        "display_rules": {},
+        "enable_rules": {},
+        "hidden_actions": [],
+    }
+
+
+def _serialize_ribbon_node(node) -> dict:
+    data = {
+        "type": _xml_local_name(node.tag),
+        **{
+            _snake_case(name): value
+            for name, value in node.attrib.items()
+        },
+    }
+    children = [
+        _serialize_ribbon_node(child)
+        for child in list(node)
+    ]
+    if children:
+        data["children"] = children
+    text = (node.text or "").strip()
+    if text:
+        data["text"] = text
+    return data
+
+
+def _ribbon_location_type(value: str) -> str:
+    lowered = str(value or "").lower()
+    if "homepagegrid" in lowered:
+        return "homepage_grid"
+    if "subgrid" in lowered:
+        return "subgrid"
+    return "form"
+
+
+def _parse_ribbon_xml(xml_content) -> dict:
+    root = ET.fromstring(xml_content)
+    metadata = _empty_ribbon_metadata()
+
+    localized_labels = {}
+    for label in root.findall(".//LocLabels/LocLabel"):
+        label_id = label.get("Id")
+        titles = label.findall("./Titles/Title")
+        preferred = next(
+            (
+                title
+                for title in titles
+                if title.get("languagecode") == "1033"
+            ),
+            titles[0] if titles else None,
+        )
+        if label_id and preferred is not None:
+            localized_labels[label_id] = (
+                preferred.get("description")
+                or preferred.get("Title")
+                or (preferred.text or "").strip()
+            )
+
+    resource_labels = {
+        "Save.Save": "Save",
+        "Save.SaveAndClose": "Save & Close",
+        "Save.SaveAndNew": "Save & New",
+        "Save.SaveAsComplete": "Complete",
+        "HomepageGrid.MainTab.New": "New",
+        "Form.MainTab.New": "New",
+        "Actions.Delete": "Delete",
+        "Actions.Refresh": "Refresh",
+        "Actions.Deactivate": "Deactivate",
+        "Status.Activate": "Activate",
+        "Actions.Assign": "Assign",
+        "Actions.Share": "Share",
+        "OpenRecordOnWeb": "Open in Web",
+        "SetRegarding": "Set Regarding",
+    }
+
+    def resolve_label(token, fallback):
+        token = str(token or "")
+        if token.startswith("$LocLabels:"):
+            resolved = localized_labels.get(
+                token.removeprefix("$LocLabels:")
+            )
+            if resolved:
+                return resolved
+        clean_token = (
+            token.removeprefix("$Resources:")
+            .removeprefix("$LocLabels:")
+        )
+        for resource_name, label in resource_labels.items():
+            if resource_name.casefold() in clean_token.casefold():
+                return label
+        words = re.findall(
+            r"[A-Z]?[a-z]+|[A-Z]+(?=[A-Z][a-z]|\d|\W|$)|\d+",
+            clean_token.split(".")[-1],
+        )
+        return " ".join(words) if words else fallback
+
+    rule_definitions = root.find(".//RuleDefinitions")
+    if rule_definitions is not None:
+        for container_name, destination in (
+            ("DisplayRules", metadata["display_rules"]),
+            ("EnableRules", metadata["enable_rules"]),
+        ):
+            container = rule_definitions.find(f"./{container_name}")
+            if container is None:
+                continue
+            for rule in list(container):
+                rule_id = rule.get("Id")
+                if rule_id:
+                    destination[rule_id] = [
+                        _serialize_ribbon_node(condition)
+                        for condition in list(rule)
+                    ]
+
+    command_definitions = root.find(".//CommandDefinitions")
+    if command_definitions is not None:
+        for command in command_definitions.findall(
+            "./CommandDefinition"
+        ):
+            command_id = command.get("Id")
+            if not command_id:
+                continue
+            display_rule_ids = [
+                reference.get("Id")
+                for reference in command.findall(
+                    "./DisplayRules/DisplayRule"
+                )
+                if reference.get("Id")
+            ]
+            enable_rule_ids = [
+                reference.get("Id")
+                for reference in command.findall(
+                    "./EnableRules/EnableRule"
+                )
+                if reference.get("Id")
+            ]
+            metadata["commands"][command_id] = {
+                "id": command_id,
+                "display_rule_ids": display_rule_ids,
+                "enable_rule_ids": enable_rule_ids,
+                "display_rules": [
+                    condition
+                    for rule_id in display_rule_ids
+                    for condition in metadata["display_rules"].get(
+                        rule_id,
+                        [],
+                    )
+                ],
+                "enable_rules": [
+                    condition
+                    for rule_id in enable_rule_ids
+                    for condition in metadata["enable_rules"].get(
+                        rule_id,
+                        [],
+                    )
+                ],
+                "actions": [
+                    _serialize_ribbon_node(action)
+                    for action in command.findall("./Actions/*")
+                ],
+            }
+
+    metadata["hidden_actions"] = [
+        {
+            "id": (
+                action.get("HideActionId")
+                or action.get("Id")
+                or ""
+            ),
+            "location": action.get("Location", ""),
+        }
+        for action in root.findall(".//HideCustomAction")
+    ]
+
+    buttons = []
+    control_names = {
+        "Button",
+        "ToggleButton",
+        "SplitButton",
+        "FlyoutAnchor",
+    }
+
+    def walk(element, location="", inherited_sequence=0, parent_id=""):
+        element_name = _xml_local_name(element.tag)
+        next_location = location
+        next_sequence = inherited_sequence
+        next_parent = parent_id
+        if element_name == "CustomAction":
+            next_location = element.get("Location", location)
+            try:
+                next_sequence = int(
+                    element.get("Sequence", inherited_sequence or 0)
+                )
+            except ValueError:
+                next_sequence = inherited_sequence
+
+        if element_name in control_names:
+            button_id = element.get("Id", "")
+            command_id = element.get("Command", "")
+            
+            if element_name in ("FlyoutAnchor", "SplitButton") and button_id:
+                next_parent = button_id
+                
+            command = metadata["commands"].get(command_id, {})
+            raw_label = (
+                element.get("LabelText")
+                or element.get("ToolTipTitle")
+                or element.get("Alt")
+                or ""
+            )
+            try:
+                sequence = int(
+                    element.get("Sequence", next_sequence or 0)
+                )
+            except ValueError:
+                sequence = next_sequence or 0
+            if button_id and command_id:
+                buttons.append({
+                    "id": button_id,
+                    "parent_id": parent_id,
+                    "control_type": element_name,
+                    "raw_label": raw_label,
+                    "label": resolve_label(raw_label, button_id),
+                    "tooltip": resolve_label(
+                        element.get("ToolTipDescription")
+                        or element.get("ToolTipTitle"),
+                        "",
+                    ),
+                    "command": command_id,
+                    "location": next_location,
+                    "location_type": _ribbon_location_type(
+                        f"{next_location}.{button_id}"
+                    ),
+                    "sequence": sequence,
+                    "template_alias": element.get(
+                        "TemplateAlias",
+                        "",
+                    ),
+                    "image_16": element.get("Image16by16", ""),
+                    "image_32": element.get("Image32by32", ""),
+                    "display_rules": command.get(
+                        "display_rules",
+                        [],
+                    ),
+                    "enable_rules": command.get("enable_rules", []),
+                    "actions": command.get("actions", []),
+                })
+        for child in list(element):
+            walk(child, next_location, next_sequence, next_parent)
+
+    walk(root)
+    unique_buttons = {}
+    hidden_locations = {
+        action["location"]
+        for action in metadata["hidden_actions"]
+        if action["location"]
+    }
+    for button in buttons:
+        if (
+            button["id"] in hidden_locations
+            or button["location"] in hidden_locations
+        ):
+            continue
+        unique_buttons.setdefault(button["id"], button)
+    metadata["buttons"] = sorted(
+        unique_buttons.values(),
+        key=lambda button: (
+            button["location_type"],
+            button["sequence"],
+            button["label"],
+        ),
+    )
+    return metadata
+
+
 def _get_label(option_node: dict) -> str:
     """Safely extracts UserLocalizedLabel from an option metadata node."""
     return (
@@ -936,7 +1796,7 @@ def _parse_sitemap_entities(sitemap_xml: str) -> list[dict]:
             if not entity:
                 continue
             available_offline = subarea.get("AvailableOffline", "false").lower() == "true"
-            title = subarea.get("Title", entity)
+            title = _sitemap_label(subarea, entity)
             results.append({
                 "entity": entity,
                 "title": title,
@@ -946,7 +1806,45 @@ def _parse_sitemap_entities(sitemap_xml: str) -> list[dict]:
     except Exception as e:
         logger.warning(f"SiteMap XML parse error: {e}")
         return []
-        
+
+
+def _sitemap_localized_values(node, container_name, child_name):
+    values = []
+    for child in node.findall(f"./{container_name}/{child_name}"):
+        text = (
+            child.get("Title")
+            or child.get("Description")
+            or child.get("description")
+            or (child.text or "").strip()
+        )
+        if text:
+            values.append({
+                "language_code": (
+                    child.get("LCID")
+                    or child.get("languagecode")
+                    or ""
+                ),
+                "text": text,
+            })
+    return values
+
+
+def _sitemap_label(node, fallback):
+    explicit = node.get("Title")
+    if explicit:
+        return explicit
+    titles = _sitemap_localized_values(node, "Titles", "Title")
+    english = next(
+        (
+            title["text"]
+            for title in titles
+            if title["language_code"] == "1033"
+        ),
+        None,
+    )
+    return english or (titles[0]["text"] if titles else fallback)
+
+
 def _parse_sitemap_hierarchy(sitemap_xml: str) -> dict:
     if not sitemap_xml:
         return {"areas": []}
@@ -956,32 +1854,114 @@ def _parse_sitemap_hierarchy(sitemap_xml: str) -> dict:
         root = etree.fromstring(sitemap_xml.encode())
         
         sitemap = {"areas": []}
-        for area in root.findall(".//Area"):
+        for area in root.findall("./Area"):
+            area_id = area.get("Id", "")
             area_data = {
-                "id": area.get("Id", ""),
-                "title": area.get("Title", ""),
+                "id": area_id,
+                "title": _sitemap_label(area, area_id),
                 "icon": area.get("Icon", ""),
+                "resource_id": area.get("ResourceId", ""),
+                "description_resource_id": area.get(
+                    "DescriptionResourceId",
+                    "",
+                ),
+                "show_groups": area.get("ShowGroups", "true").lower()
+                != "false",
+                "titles": _sitemap_localized_values(
+                    area,
+                    "Titles",
+                    "Title",
+                ),
+                "descriptions": _sitemap_localized_values(
+                    area,
+                    "Descriptions",
+                    "Description",
+                ),
                 "groups": []
             }
-            
-            for group in area.findall(".//Group"):
+
+            for group in area.findall("./Group"):
+                group_id = group.get("Id", "")
                 group_data = {
-                    "id": group.get("Id", ""),
-                    "title": group.get("Title", ""),
+                    "id": group_id,
+                    "title": _sitemap_label(group, group_id),
                     "icon": group.get("Icon", ""),
+                    "resource_id": group.get("ResourceId", ""),
+                    "description_resource_id": group.get(
+                        "DescriptionResourceId",
+                        "",
+                    ),
+                    "titles": _sitemap_localized_values(
+                        group,
+                        "Titles",
+                        "Title",
+                    ),
+                    "descriptions": _sitemap_localized_values(
+                        group,
+                        "Descriptions",
+                        "Description",
+                    ),
                     "subareas": []
                 }
-                
-                for subarea in group.findall(".//SubArea"):
+
+                for subarea in group.findall("./SubArea"):
                     entity = subarea.get("Entity", "").lower()
-                    if not entity:
-                        continue
+                    subarea_id = subarea.get("Id", "")
+                    url = subarea.get("Url", "")
+                    dashboard_id = subarea.get("DefaultDashboard", "")
+                    if entity:
+                        destination_type = "entity"
+                    elif dashboard_id:
+                        destination_type = "dashboard"
+                    elif url:
+                        destination_type = "url"
+                    else:
+                        destination_type = "unsupported"
                     group_data["subareas"].append({
-                        "id": subarea.get("Id", ""),
+                        "id": subarea_id,
                         "entity": entity,
-                        "title": subarea.get("Title", entity)
+                        "title": _sitemap_label(
+                            subarea,
+                            entity or subarea_id,
+                        ),
+                        "destination_type": destination_type,
+                        "url": url,
+                        "default_dashboard": dashboard_id,
+                        "icon": subarea.get("Icon", ""),
+                        "vector_icon": subarea.get("VectorIcon", ""),
+                        "resource_id": subarea.get("ResourceId", ""),
+                        "description_resource_id": subarea.get(
+                            "DescriptionResourceId",
+                            "",
+                        ),
+                        "available_offline": subarea.get(
+                            "AvailableOffline",
+                            "false",
+                        ).lower()
+                        == "true",
+                        "pass_params": subarea.get(
+                            "PassParams",
+                            "false",
+                        ).lower()
+                        == "true",
+                        "client": subarea.get("Client", ""),
+                        "sku": subarea.get("Sku", ""),
+                        "titles": _sitemap_localized_values(
+                            subarea,
+                            "Titles",
+                            "Title",
+                        ),
+                        "descriptions": _sitemap_localized_values(
+                            subarea,
+                            "Descriptions",
+                            "Description",
+                        ),
+                        "privileges": [
+                            dict(privilege.attrib)
+                            for privilege in subarea.findall("./Privilege")
+                        ],
                     })
-                    
+
                 if group_data["subareas"]:
                     area_data["groups"].append(group_data)
                     
