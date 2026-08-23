@@ -70,18 +70,16 @@ class SiteMapEditorPage(QWizardPage):
         self.add_subarea_btn.setToolTip("Add a Subarea / Table under selected Group")
         self.add_subarea_btn.clicked.connect(self._add_subarea)
 
-        self.move_up_btn = QPushButton("▲")
-        self.move_up_btn.setFixedWidth(32)
+        self.move_up_btn = QPushButton("▲ Up")
         self.move_up_btn.setToolTip("Move selected item up")
         self.move_up_btn.clicked.connect(self._move_up)
 
-        self.move_down_btn = QPushButton("▼")
-        self.move_down_btn.setFixedWidth(32)
+        self.move_down_btn = QPushButton("▼ Down")
         self.move_down_btn.setToolTip("Move selected item down")
         self.move_down_btn.clicked.connect(self._move_down)
 
-        self.delete_btn = QPushButton("🗑")
-        self.delete_btn.setFixedWidth(32)
+        self.delete_btn = QPushButton("✕ Delete")
+        self.delete_btn.setStyleSheet("color: #d13438; font-weight: 500;")
         self.delete_btn.setToolTip("Delete selected item")
         self.delete_btn.clicked.connect(self._delete_item)
 
@@ -183,19 +181,51 @@ class SiteMapEditorPage(QWizardPage):
         self.tree.clear()
 
         # Fetch entities for dropdown
-        self.available_entities = getattr(wizard, "available_entities_list", [])
+        self.available_entities = getattr(wizard, "available_entities_list", None)
+        if not self.available_entities and wizard and getattr(wizard, "selected_app", None):
+            try:
+                from VerseOff.metadata_fetcher import MetadataFetcher
+            except ImportError:
+                from metadata_fetcher import MetadataFetcher
+            try:
+                org_url = wizard.field("org_url") or getattr(wizard, "org_url", "")
+                token = getattr(wizard, "auth_token", "")
+                fetcher = MetadataFetcher(org_url, token)
+                app_id = wizard.selected_app.app_module_id
+                self.available_entities = fetcher.get_entities_for_app(app_id)
+                wizard.available_entities_list = self.available_entities
+            except Exception as exc:
+                logger.warning(f"Could not load entities for sitemap dropdown: {exc}")
+                self.available_entities = []
+
         self.entity_combo.blockSignals(True)
         self.entity_combo.clear()
         self.entity_combo.addItem("(None / Online URL)", "")
-        for ent in sorted(self.available_entities, key=lambda e: e.get("LogicalName", "")):
+        for ent in sorted(self.available_entities or [], key=lambda e: e.get("LogicalName", "")):
             lname = ent.get("LogicalName")
             disp = ent.get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or lname
             self.entity_combo.addItem(f"{disp} ({lname})", lname)
         self.entity_combo.blockSignals(False)
 
-        # Load SiteMap from wizard or fetch
-        self.raw_sitemap = copy.deepcopy(getattr(wizard, "sitemap_data", {}))
-        self._populate_tree_from_sitemap(self.raw_sitemap)
+        # Load SiteMap from wizard or fetch actual sitemap live/cache
+        self.raw_sitemap = copy.deepcopy(getattr(wizard, "sitemap_data", None))
+        if not self.raw_sitemap and wizard and getattr(wizard, "selected_app", None):
+            try:
+                from VerseOff.metadata_fetcher import MetadataFetcher
+            except ImportError:
+                from metadata_fetcher import MetadataFetcher
+            try:
+                org_url = wizard.field("org_url") or getattr(wizard, "org_url", "")
+                token = getattr(wizard, "auth_token", "")
+                fetcher = MetadataFetcher(org_url, token)
+                app_id = wizard.selected_app.app_module_id
+                self.raw_sitemap = fetcher.get_app_sitemap(app_id)
+                wizard.sitemap_data = self.raw_sitemap
+            except Exception as exc:
+                logger.error(f"Could not fetch sitemap for app: {exc}")
+                self.raw_sitemap = {"areas": []}
+
+        self._populate_tree_from_sitemap(self.raw_sitemap or {})
         self._on_tree_selection_changed()
 
     def _populate_tree_from_sitemap(self, sitemap_data: dict):

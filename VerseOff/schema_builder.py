@@ -157,8 +157,9 @@ def create_entity_table(entity_def: dict, db_path: str = None):
 
     logical_name = entity_def.get("LogicalName", "unknown")
     try:
-        conn = sqlite3.connect(path)
+        conn = sqlite3.connect(path, timeout=60.0)
         cursor = conn.cursor()
+        cursor.execute("PRAGMA journal_mode=WAL;")
         cursor.execute(sql)
 
         # Schema evolution: check for new columns not yet in the table
@@ -192,9 +193,10 @@ def persist_entity_metadata(entity_def: dict, db_path: str = None):
     if not logical_name:
         return
 
-    conn = sqlite3.connect(path)
+    conn = sqlite3.connect(path, timeout=60.0)
     try:
         cursor = conn.cursor()
+        cursor.execute("PRAGMA journal_mode=WAL;")
         cursor.execute(
             "CREATE TABLE IF NOT EXISTS entity_metadata (logical_name TEXT PRIMARY KEY, metadata TEXT NOT NULL)"
         )
@@ -305,8 +307,9 @@ def create_intersect_entity_table(intersect_rel: dict, db_path: str = None):
     idx2 = f"CREATE INDEX IF NOT EXISTS idx_{table_name}_{col2} ON {table_name} ({col2});"
 
     try:
-        conn = sqlite3.connect(path)
+        conn = sqlite3.connect(path, timeout=60.0)
         cursor = conn.cursor()
+        cursor.execute("PRAGMA journal_mode=WAL;")
         cursor.execute(sql)
         cursor.execute(idx1)
         cursor.execute(idx2)
@@ -331,8 +334,9 @@ def create_all_entity_tables(db_path: str = None):
         return
 
     try:
-        conn = sqlite3.connect(path)
+        conn = sqlite3.connect(path, timeout=60.0)
         cursor = conn.cursor()
+        cursor.execute("PRAGMA journal_mode=WAL;")
 
         # Check if entity_metadata table exists
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='entity_metadata'")
