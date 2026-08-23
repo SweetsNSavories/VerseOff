@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+							<xsd:attribute ref="xml:space"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string"/>
+							<xsd:attribute name="name" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+							<xsd:attribute ref="xml:space"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Brand_Name" xml:space="preserve">
+    <value>Dynamics 365</value>
+    <comment>Branding for CRM.</comment>
+  </data>
+	<data name="APPOINTMENT_ACTIVITY_DELETION" xml:space="preserve">
+    <value>A találkozót a(z) Dynamics 365 rendszerében is törli, vagy csak megszünteti a követését és megtartja a találkozót?</value>
+    <comment>Confirmation dialog message is shown when try to untrack event.</comment>
+  </data>
+	<data name="CONFIRM_TEMPLATE_REGARDINGS_RECHECK" xml:space="preserve">
+    <value>Az e-mail-sablon használatához állítsa be az e-mailhez kapcsolódó elemet, vagy vegyen fel címzettként legalább egy kapcsolattartót, érdeklődőt vagy felhasználót, majd kattintson az Újra lehetőségre.</value>
+    <comment>Confirmation dialog message is shown when try to add email template.</comment>
+  </data>
+	<data name="EMAIL_ACTIVITY_DELETION" xml:space="preserve">
+    <value>Törli az e-mail-tevékenységet a(z) Dynamics 365 rendszerében is?</value>
+    <comment>Confirmation dialog message is shown when try to untrack email.</comment>
+  </data>
+	<data name="EMAIL_TO_BE_DELETED" xml:space="preserve">
+    <value>A rendszer törölni fogja az e-mailt</value>
+    <comment>Popup message shown after success untrack of email</comment>
+  </data>
+	<data name="APPT_TO_BE_DELETED" xml:space="preserve">
+    <value>A rendszer törölni fogja a találkozót a Dynamics 365-ben</value>
+    <comment>Popup message shown after success untrack of event</comment>
+  </data>
+	<data name="UNTRACK_EMAIL_FAILURE" xml:space="preserve">
+    <value>Nem állítható le az e-mail nyomon követése</value>
+    <comment>Text displayed to the user when the app is unable to set the untracked state in Exchange.</comment>
+  </data>
+	<data name="UNTRACK_APPOINTMENT_FAILURE" xml:space="preserve">
+    <value>Nem állítható le a találkozó nyomon követése</value>
+    <comment>Text displayed to the user when the app is unable to set the tracked state in Exchange.</comment>
+  </data>
+	<data name="PENDING_UNTRACK" xml:space="preserve">
+    <value>Ennél az elemnél a nyomkövetés leállítását kérték, ami jelenleg függőben van</value>
+    <comment>Text displayed to the user when untracking is in pending untracked state.</comment>
+  </data>
+	<data name="SUCCESS_UNTRACK" xml:space="preserve">
+    <value>Ez az elem már nincs nyomon követve</value>
+    <comment>Text displayed to the user when untracking is in success untracked state.</comment>
+  </data>
+	<data name="PENDING_UNTRACK_AND_DELETE" xml:space="preserve">
+    <value>Nyomon követés leállítása és a törlés függőben</value>
+    <comment>Text displayed to the user when untracking is in pending untracked+delete state.</comment>
+  </data>
+	<data name="FUTURE_APPPOINTMENT_DELETION" xml:space="preserve">
+    <value>Törli a sorozat jövőbeni találkozóit is, vagy csak megszünteti a követését és megtartja a találkozót?</value>
+    <comment>Confirmation dialog message is shown when try to untrack recurrent event.</comment>
+  </data>
+	<data name="UNFOLLOW_CONFIRMATION" xml:space="preserve">
+    <value>Biztosan leállítja az e-mail követését?</value>
+    <comment>Confirmation dialog message is shown when try to unfollow email.</comment>
+  </data>
+	<data name="NO" xml:space="preserve">
+    <value>Nem</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="RETRY" xml:space="preserve">
+    <value>Újra</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="TRACK_FAILED" xml:space="preserve">
+    <value>Nem sikerült a(z) {0} nyomkövetése</value>
+    <comment>Popup message shown after fail track</comment>
+  </data>
+	<data name="TRACK_SUCCEEDED" xml:space="preserve">
+    <value>A nyomkövetés sikeres</value>
+    <comment>Popup message shown after success track</comment>
+  </data>
+	<data name="UNFOLLOW_SUCCEEDED" xml:space="preserve">
+    <value>A követés leállítása sikeres</value>
+    <comment>Popup message shown after success unfollow</comment>
+  </data>
+	<data name="UNTRACK_FOLLOWED" xml:space="preserve">
+    <value>A rendszer követi ezt az e-mailt. Ha leállítja a követést, akkor nem fogja követni. Biztosan leállítja az e-mail követését?</value>
+    <comment>Confirmation dialog message is shown when try to untrack already followed email</comment>
+  </data>
+	<data name="YES" xml:space="preserve">
+    <value>Igen</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="UNTRACK" xml:space="preserve">
+    <value>Nyomon követés megszüntetése</value>
+    <comment>Text used for appointment untrack button.</comment>
+  </data>
+	<data name="INSUFFICIENT_RECORD_PERMISSIONS" xml:space="preserve">
+    <value>Nem rendelkezik engedéllyel ahhoz, hogy megtekintse ezeket a rekordokat. Forduljon Dynamic 365-rendszergazdájához.</value>
+    <comment>Message that being displayed if user don't have permissions for record deletion</comment>
+  </data>
+	<data name="EWS_FAILURE" xml:space="preserve">
+    <value>Nem lehet csatlakozni az Exchange-kiszolgálóhoz</value>
+    <comment>Message that being displayed if we were not able to perform ews operation.</comment>
+  </data>
+	<data name="DELETE" xml:space="preserve">
+    <value>Törlés</value>
+    <comment>Confirm button label for deleted in Dynamics 365 action</comment>
+  </data>
+	<data name="EMAIL_IS_NOT_FOLLOWED" xml:space="preserve">
+    <value>A rendszer nem követi ezt az e-mailt</value>
+    <comment>Status text used for email engagement follow tab page when email is not followed.</comment>
+  </data>
+	<data name="FOLLOW_RIGHT_BEFORE_SEND" xml:space="preserve">
+    <value>Azt javasoljuk, hogy közvetlenül az e-mail küldése előtt kattintson a Követés parancsra.</value>
+    <comment>Recommendation text used for email engagement follow tab page when email is not follow.</comment>
+  </data>
+	<data name="EMAIL_CANNOT_BE_FOLLOWED" xml:space="preserve">
+    <value>Ez az e-mail nem követhető</value>
+    <comment>Message that displayed when email connot be followed.</comment>
+  </data>
+	<data name="TRACK_BEFORE_FOLLOWING" xml:space="preserve">
+    <value>Nyomon kell követnie az e-mailt, mielőtt követni kezdené.</value>
+    <comment>Message that explanes that email should be tracked before following.</comment>
+  </data>
+	<data name="FOLLOW_IN_PROCESS_MESSAGE" xml:space="preserve">
+    <value>Kérjük, ne zárja be az ablakot, amíg folyamatban van a...</value>
+    <comment>Status message that displayed on the follow MDD while following is in process.</comment>
+  </data>
+	<data name="EMAIL_WILL_BE_FOLLOWED" xml:space="preserve">
+    <value>A rendszer követni fogja ezt az e-mailt</value>
+    <comment>Email will be followed message.</comment>
+  </data>
+	<data name="DONT_EDIT_AFTER_FOLLOW" xml:space="preserve">
+    <value>Javasoljuk, hogy ne szerkessze az e-mailt, és ne módosítsa a címzetteket az e-mail követésének megkezdése után.</value>
+    <comment>Message that displayed after followed succeeded.</comment>
+  </data>
+	<data name="FOLLOW_ERROR" xml:space="preserve">
+    <value>Nem sikerült követni az e-mailt. Próbálja újra követni. Ha a probléma továbbra is fennáll, forduljon a rendszergazdához.</value>
+    <comment>Message that displayed if message follow failed.</comment>
+  </data>
+	<data name="UNFOLLOW_ERROR" xml:space="preserve">
+    <value>Nem sikerült leállítani az e-mail követését. Próbálja újra leállítani. Ha a probléma továbbra is fennáll, törölje az e-mailt, hogy ne lehessen követett e-mailként elküldeni.</value>
+    <comment>Message that displayed if message unfollow failed.</comment>
+  </data>
+	<data name="FOLLOW_HELP_LINK_URL_1">
+		<value>https://go.microsoft.com/fwlink/p/?linkid=867623</value>
+		<comment>Recommendation link used for email engagement follow tab page.[Category="MoCA OWA"]</comment>
+	</data>
+	<data name="ADD_TEMPLATE_FAILED" xml:space="preserve">
+    <value>Hiba történt a Sablon hozzáadása parancs végrehajtása során</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_SALES_LITERATURE_FAILED" xml:space="preserve">
+    <value>Hiba történt a Termékleírások hozzáadása parancs végrehajtása során</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_KNOWLEDGE_ARTICLE_FAILED" xml:space="preserve">
+    <value>Hiba történt a Tudásbáziscikk hozzáadása parancs végrehajtása során</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="VIEW_ACTIVITY_FAILED" xml:space="preserve">
+    <value>Hiba történt a Tevékenység megtekintése parancs végrehajtása során</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_TASK_FAILED" xml:space="preserve">
+    <value>Hiba történt a Feladat hozzáadása parancs végrehajtása során</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_APPOINTMENT_FAILED" xml:space="preserve">
+    <value>Hiba történt a Találkozó hozzáadása parancs végrehajtása során</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_PHONE_CALL_FAILED" xml:space="preserve">
+    <value>Hiba történt a Telefonhívás hozzáadása parancs végrehajtása során</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="FOLLOW_FAILED" xml:space="preserve">
+    <value>Hiba történt a Követés parancs végrehajtása során</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="EMAIL" xml:space="preserve">
+    <value>E-mail-cím</value>
+    <comment>Track item type name</comment>
+  </data>
+	<data name="APPOINTMENT" xml:space="preserve">
+     <value>Találkozó</value>
+     <comment>Track item type name</comment>
+  </data>
+</root>

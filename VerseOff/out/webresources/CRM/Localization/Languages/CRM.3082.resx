@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DynamicProperty_OverrideDialog_SubTitle" xml:space="preserve">
+    <value>¿Desea invalidar esta propiedad?</value>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Text" xml:space="preserve">
+    <value>Esto le permitirá realizar cambios en la versión heredada de esta propiedad. También se conservará la versión heredada original de la propiedad.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to override the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Title" xml:space="preserve">
+    <value>Confirmar reemplazo</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_SubTitle" xml:space="preserve">
+    <value>¿Desea sobrescribir esta propiedad?</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Text" xml:space="preserve">
+    <value>Esto le permitirá realizar cambios adicionales en la versión publicada anteriormente de esta propiedad. También se conservará la versión anterior de la propiedad.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to overwrite the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Title" xml:space="preserve">
+    <value>Confirmar sobrescritura</value>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_39" xml:space="preserve">
+    <value>Escriba un valor de {0} a {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_9" xml:space="preserve">
+    <value>Debe escribir un número entero entre {0} y {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvaluestring.warning" xml:space="preserve">
+    <value>La longitud de la cadena de valor predeterminado debe ser inferior o igual a la longitud máxima permitida.</value>
+    <comment>Warning message for Default Value string lenght of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.defaultvalue.warning" xml:space="preserve">
+    <value>El valor predeterminado debe ser superior o igual al valor mínimo e inferior o igual al valor máximo.</value>
+    <comment>Warning message for Default value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.minvalue.warning" xml:space="preserve">
+    <value>El valor mínimo no puede ser mayor que el valor máximo.</value>
+    <comment>Warning message for Minimum value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.optionset.warning" xml:space="preserve">
+    <value>No puede establecer una propiedad de conjunto de opciones como obligatoria y de solo lectura hasta que no haya agregado los elementos del conjunto de opciones y haya especificado un valor predeterminado.</value>
+    <comment>Warning message for Dynamic Property of type Option Set.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.readonlyrequired.warning" xml:space="preserve">
+    <value>Debe especificar un valor predeterminado ya que esta propiedad es obligatoria y de solo lectura.</value>
+    <comment>Warning message for Default Value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.products.ValidToEarlierThanValidFromDate" xml:space="preserve">
+    <value>La fecha de Válido hasta no puede ser anterior a la fecha de Válido desde.</value>
+    <comment>Error message to display if the valid to date supplied  is earlier than the valid from date.</comment>
+  </data>
+  <data name="Kit_Products_Section_Name" xml:space="preserve">
+    <value>PRODUCTOS DE KIT</value>
+    <comment>Kit Products section name in product kit form.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Product_Family_Hierarchy_Label_Value" xml:space="preserve">
+    <value>Jerarquía de familia</value>
+    <comment>Label text for Product Family Hierarchy Control.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Product_Bundle_Form_Title" xml:space="preserve">
+    <value>Nueva agrupación</value>
+    <comment>Title text for Product Bundle Form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="ProductFamilyQuickCreate.DisplayName" xml:space="preserve">
+    <value>Nueva familia de productos</value>
+    <comment></comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Kit" xml:space="preserve">
+    <value>Kit</value>
+    <comment>Singular Name of Product Kit.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Bundle" xml:space="preserve">
+    <value>Agrupación</value>
+    <comment>Singular Name of Product Bundle.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Product_Family" xml:space="preserve">
+    <value>Familia de productos</value>
+    <comment>Singular Name of Product Family.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Product" xml:space="preserve">
+    <value>Producto</value>
+    <comment>Singular Name of Product.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_90" xml:space="preserve">
+    <value>Advertencia:</value>
+    <comment>Label that is prefixed to a warning message.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_91" xml:space="preserve">
+    <value>No se ha definido la lista de precios predeterminada.</value>
+    <comment>Error message that is displayed to the user in the product form when the default price list for the product is not specified.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_12" xml:space="preserve">
+    <value>Primero debe seleccionar un producto.</value>
+    <comment>Error message displayed in the price list form if the user tries to choose the unit without choosing the product.</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_153" xml:space="preserve">
+    <value>El porcentaje del método de cálculo de precios de porcentaje de lista debe ser entre el {0} y el {1} por ciento. Especifique un nuevo porcentaje.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent of List". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_157" xml:space="preserve">
+    <value>El porcentaje del método de cálculo de precios de porcentaje de margen de beneficio debe ser entre el {0} y el {1} por ciento. Especifique un nuevo porcentaje.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Markup". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_161" xml:space="preserve">
+    <value>El porcentaje del método de cálculo de precios de porcentaje de margen debe ser entre el {0} y el {1} por ciento. Especifique un nuevo porcentaje.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Margin". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_113" xml:space="preserve">
+    <value>La cantidad de redondeo de la opción de redondeo Termina en debe estar entre {0} y {1}. Especifique una nueva cantidad de redondeo.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Ends in". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_106" xml:space="preserve">
+    <value>La cantidad de redondeo de la opción del múltiplo de redondeo debe ser entre {0} y {1}. Especifique una nueva cantidad de redondeo.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Multiple of". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifying minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Kit_Products_Form_Title" xml:space="preserve">
+    <value>Productos de kit</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Bundle_Product_Form_Value" xml:space="preserve">
+    <value>Producto de agrupación</value>
+    <comment>Bundle Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Kit_Product_Label_Value" xml:space="preserve">
+    <value>Kit</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>Error. Vuelva a la página principal e inténtelo de nuevo.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Para poder realizar esta acción, debe seleccionar uno o más registros.</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Error. La acción seleccionada no se completó para uno o varios registros.</value>
+    <comment></comment>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleArticle_DialogText" xml:space="preserve">
+    <value>Debe seleccionar un artículo.</value>
+    <comment>select an article to associate.[Category="KnowledgeArticle"]</comment>
+    <ObjectReferences>
+      <ObjectType>9953</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleProduct_DialogText" xml:space="preserve">
+    <value>Debe seleccionar un producto.</value>
+    <comment>select a product to associate.[Category="KnowledgeArticle"]</comment>
+    <ObjectReferences>
+      <ObjectType>9953</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>No se puede procesar esta solicitud ya que este cliente está desconectado.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Web.products.pricelevel.EndDateEarlierThanStartDate" xml:space="preserve">
+    <value>La fecha de finalización no puede ser anterior a la fecha de inicio.</value>
+    <comment>Error message to display if the end date supplied in the price list form is earlier than the start date.</comment>
+  </data>
+  <data name="Web.Products.UoM.edit.aspx_71" xml:space="preserve">
+    <value>Esta es la unidad principal.</value>
+    <comment>Informational message displayed to the user in the primary unit form.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>Título de caso</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>Cliente</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>Prioridad</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>Fecha de creación</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>Procesando...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="Error_Title_0x80042f0a">
+    <value>Error de roles de equipo</value>
+    <comment>TeamNotAssignedRoles.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Error_Message_0x80042f0a">
+    <value>El equipo seleccionado no tiene privilegios suficientes para realizar esta acción. Asigne un rol de seguridad con los privilegios necesarios a este equipo e inténtelo de nuevo.</value>
+    <comment>TeamNotAssignedRoles.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Error_Message_0x8003f452">
+    <value>No puede resolver el caso principal porque tiene casos secundarios activos.</value>
+    <comment>Error message that will be shown to user when  cases with active childs cannot be closed.</comment>
+    <ObjectReferences>
+      <ObjectType Singular="case" Plural="cases">112</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Title_0x8003f452">
+    <value>Cierre el caso secundario activo antes de cerrar el caso principal.</value>
+    <comment>Cases with active childs cannot be closed[Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="case" Plural="cases">112</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Brand_CRM" xml:space="preserve">
+		<value>Microsoft Dynamics 365</value>
+		<comment>Branding for CRM.</comment>
+	</data>
+  <data name="Error_Title_0x80048306">
+    <value>Acceso denegado</value>
+    <comment>IDS_ACCESSDENIED</comment>
+  </data>
+  <data name="Error_Message_0x80048306">
+    <value>No tiene privilegios suficientes para obtener acceso al objeto de {0} o para realizar la operación solicitada. Para obtener más información, póngase en contacto con el administrador de {0}.</value>
+    <comment>Message displayed to a user when they have insufficient privileges to perform an action.</comment>
+  </data>
+  <data name="Web.cs.socialprofile.saveNotSupported">
+    <value>No se puede crear ni cambiar un perfil social a través de la IU</value>
+    <comment>Error message for saving changes in Social Profile through UI. [Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="SocialProfile" Plural="SocialProfiles">99</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.cs.createNotSupported" xml:space="preserve">
+      <value>No se puede crear ni cambiar una {0} a través de la IU</value>
+      <comment>Error message for saving changes through UI for unsupported entities. {0} is the name of the entity. [Category="Servicing"]</comment>
+    </data>
+  <data name="SocialActivity_EntityName" xml:space="preserve">
+      <value>Actividad social</value>
+      <comment>Localized display name for Social Activity Entity</comment>
+    </data>
+  <data name="SocialProfile_EntityName" xml:space="preserve">
+      <value>Perfil social</value>
+      <comment>Localized display name for Social Profile Entity</comment>
+    </data>
+  <data name="Error_Message_Generic_Error_Occured" xml:space="preserve">
+		<value>Se produjo un error. Intente realizar de nuevo esta acción. Si el problema persiste, póngase en contacto con el administrador de su organización.</value>
+		<comment>Generic error message for bad response</comment>
+	</data>
+  <data name="Error_Title_0x80040265">
+    <value>Error de proceso de negocio</value>
+    <comment>IsvAborted[Category="Plug-in/Workflow Assembly Registration Tool"]</comment>
+  </data>
+  <data name="Error_Message_0x80040265">
+    <value>La operación se anuló debido al código ISV.</value>
+    <comment>IsvAborted[Category="Plug-in/Workflow Assembly Registration Tool"].</comment>
+  </data>
+  <data name="OCV.Feedback.DisclamerText" xml:space="preserve">
+		<value>No incluya información personal o confidencial. Si proporciona su dirección de correo electrónico, Microsoft puede ponerse en contacto con usted para obtener más información sobre sus comentarios.</value>
+		<comment>Disclaimer text for OCV</comment>
+	</data>
+  <data name="IFRAME.OCV.Widget.Title" xml:space="preserve">
+		<value>Contenido de los comentarios</value>
+		<comment>Title text for OCV iframe</comment>
+	</data>
+  <data name="Merge_success_message" xml:space="preserve">
+        <value>Los registros seleccionados se han combinado y el registro subordinado se ha desactivado.</value>
+        <comment>When merge operation is successful this message is displayed.</comment>
+	</data>
+  <data name="UpdateRecod_success_message" xml:space="preserve">
+        <value>El registro seleccionado se actualizó correctamente.</value>
+        <comment>When update record operation is successful this message is displayed.</comment>
+    </data>
+  <data name="merge_loading_message" xml:space="preserve">
+    <value>Combinando registros</value>
+    <comment>Label to show progress indicator</comment>
+   </data>
+  <data name="back_button_label" xml:space="preserve">
+    <value>Volver</value>
+    <comment>Label to back button in merge dialog</comment>
+   </data>
+  <data name="share_chart_title" xml:space="preserve">
+    <value>Compartir gráfico de usuario</value>
+   </data>
+  <data name="share_dashboard_title" xml:space="preserve">
+    <value>Compartir panel de usuario</value>
+   </data>
+  <data name="import_chart_header" xml:space="preserve">
+    <value>Importar gráfico</value>
+   </data>
+  <data name="import_chart_labelVal" xml:space="preserve">
+    <value>Seleccione un archivo de definición del gráfico (.xml) para importarlo.</value>
+   </data>
+  <data name="import_error_invalid" xml:space="preserve">
+    <value>El archivo XML no se ajusta al esquema del gráfico</value>
+   </data>
+  <data name="import_error_typeHeader" xml:space="preserve">
+    <value>Archivo no válido</value>
+   </data>
+  <data name="import_error_filetype" xml:space="preserve">
+    <value>No es un tipo de archivo válido</value>
+   </data>
+  <data name="import_error_parameters" xml:space="preserve">
+    <value>Parámetros no válidos</value>
+   </data>
+  <data name="import_error_nodesHeader" xml:space="preserve">
+    <value>Faltan nodos necesarios</value>
+   </data>
+  <data name="import_error_nodes" xml:space="preserve">
+    <value>No se pueden capturar nodos necesarios</value>
+   </data>
+  <data name="import_duplicate_suffix" xml:space="preserve">
+    <value> - Copia</value>
+   </data>
+  <data name="import_duplicate_found" xml:space="preserve">
+    <value> de </value>
+   </data>
+  <data name="import_missing_child" xml:space="preserve">
+    <value>Faltan nodos secundarios</value>
+   </data>
+  <data name="import_missing_parent" xml:space="preserve">
+    <value>Faltan nodos principales</value>
+   </data>
+  <data name="accountsLabel" xml:space="preserve">
+    <value>Combinar cuentas</value>
+    <comment>Label merge dialog header for account entity</comment>
+   </data>
+  <data name="contactsLabel" xml:space="preserve">
+    <value>Combinar contactos</value>
+    <comment>Label merge dialog header for contacts entity</comment>
+   </data>
+  <data name="leadsLabel" xml:space="preserve">
+    <value>Combinar clientes potenciales</value>
+    <comment>Label merge dialog header for lead entity</comment>
+   </data>
+  <data name="merge_records_dialog_title" xml:space="preserve">
+    <value>Combinar {0}</value>
+    <comment>Label for merge dialog. {0} contains the entity display name (for example, Merge Accounts, Merge Contacts, etc.)</comment>
+   </data>
+  <data name="async_merge_success_message" xml:space="preserve">
+    <value>Los registros seleccionados se combinarán en segundo plano mientras trabaja.</value>
+    <comment>Success message when async request is completed</comment>
+   </data>
+  <data name="SurveyTitle" xml:space="preserve">
+        <value>Enviar comentarios a Microsoft</value>
+    </data>
+  <data name="SurveyRatingTitle" xml:space="preserve">
+        <value>¿Cuál es su grado de satisfacción con esta característica?</value>
+    </data>
+  <data name="SurveyCommentTitle" xml:space="preserve">
+        <value>¿Qué comentarios adicionales desea compartir con nosotros?</value>
+    </data>
+  <data name="SurveyCommentsPlaceholder" xml:space="preserve">
+        <value>Proporcionar detalles sin incluir información personal</value>
+    </data>
+  <data name="SubmittingSurvey" xml:space="preserve">
+        <value>Enviando comentarios</value>
+    </data>
+  <data name="VerySatisfied" xml:space="preserve">
+        <value>Muy satisfecho</value>
+    </data>
+  <data name="Satisfied" xml:space="preserve">
+        <value>Un poco satisfecho</value>
+    </data>
+  <data name="Dissatisfied" xml:space="preserve">
+        <value>Un poco insatisfecho</value>
+    </data>
+  <data name="VeryDissatisfied" xml:space="preserve">
+        <value>Muy insatisfecho</value>
+    </data>
+  <data name="Submit" xml:space="preserve">
+        <value>Enviar</value>
+    </data>
+  <data name="Cancel" xml:space="preserve">
+        <value>Cancelar</value>
+    </data>
+  <data name="PrivacyStatement" xml:space="preserve">
+        <value>Sus comentarios se usarán para mejorar los productos y servicios de Microsoft. Los administradores de TI de su organización podrán ver y administrar sus datos de comentarios.</value>
+    </data>
+  <data name="PrivacyStatementLink" xml:space="preserve">
+        <value>Declaración de privacidad.</value>
+    </data>
+  <data name="SurveySuccessMessage" xml:space="preserve">
+        <value>Gracias por sus comentarios.</value>
+    </data>
+  <data name="SurveyFailureMessage" xml:space="preserve">
+        <value>Se ha producido un error con estos comentarios. Inténtelo de nuevo más tarde.</value>
+    </data>
+</root>

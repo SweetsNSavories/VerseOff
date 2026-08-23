@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+	
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+  <data name="SLA_DefaultSLASelectionConfirmDialogText">
+    <value>Are you sure you want to set this service level agreement (SLA) record as the default for the specified entity?</value>
+  </data>
+  <data name="SLA_DefaultSLASelectionConfirmDialogTitle">
+    <value>Confirm Set as Default</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogText">
+    <value>You have another service level agreement (SLA) record set as the default for the {0} entity. Do you want to mark the selected SLA as the default instead?</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogTitle">
+    <value>Change default SLA</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertText">
+    <value>You cannot set an inactive SLA as the default.</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertTitle">
+    <value>Cannot set as default</value>
+  </data>
+  <data name="SLA_DefaultSLAWarning">
+    <value>Selected SLA is already default</value>
+  </data>
+  <data name="SLA_DefaultSLASetttingInProgress">
+    <value>Setting the default SLA</value>
+  </data>
+  <data name="SLA_ErrorResettingDefaultSLA">
+    <value>Something went wrong during the update of default SLA</value>
+  </data>
+  <data name="SLA_ErrorSettingNewSLA">
+    <value>Something went wrong on setting the new Default SLA</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsGeneralNotification">
+    <value>Click on Configure Action to set up success, warning and failure actions.</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsSetupNotification">
+    <value>Success, warning and failure actions are not set up. Click on Configure Action to set up.</value>
+  </data>
+  <data name="SLAItem_WarningTimeHigherThanFailureTimeAlert">
+	<value>The warn after duration should not be greater than failure after duration</value>
+  </data>
+  <data name="SLAItem_SuccessConditionsEmptyAlert">
+    <value>Success conditions cannot be empty</value>
+  </data>
+  <data name="SLAItem_PauseConditionsEmptyAlert">
+    <value>Pause condition cannot be empty when override pause configuration toggle is on</value>
+  </data>
+  <data name="SLAItem_KPIEmptyAlert">
+    <value>KPI cannot be empty</value>
+  </data>
+  <data name="SLAItem_Notification_SLA_ActivatedState">
+    <value>Deactivate SLA in order to edit SLA item </value>
+  </data>
+  <data name="SLAKPI_Activate">
+    <value>Activate</value>
+  </data>
+  <data name="SLAKPI_Deactivate">
+    <value>Deactivate</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Message">
+    <value>Do you want to deactivate the selected {0} entity KPI?</value>
+  </data>
+  <data name="SLAKPI_Activate_Message">
+    <value>Do you want to activate the selected {0} entity KPI?</value>
+  </data>
+  <data name="Progress_Message">
+    <value>Updating KPI</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Title">
+    <value>Confirm Deactivation</value>
+  </data>
+  <data name="SLAKPI_Activate_Title">
+    <value>Confirm Activation</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_UC">
+    <value>This is a legacy record. To edit this record, please visit legacy web client.</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_WC">
+    <value>This record cannot be edited here. Please go to unified interface app to edit the same.</value>
+  </data>
+  <data name="SLA_UC_Preview_Text">
+    <value>Actions are used to perform set of tasks, depending on whether criteria are met. Before actions can be defined, the SLA item must be saved. Click {0} for more information.</value>
+  </data>
+  <data name="SLA_AdvancedPauseConfig_Text">
+    <value>Configure pause conditions in this section to override entity-level pause configuration defined in Service Configuration and KPI-level pause configuration. {0}.</value>
+  </data>
+  <data name="SLA_KPIAdvancedPauseConfig_Text">
+    <value>Configure pause conditions in this section to override entity-level pause configuration defined in Service Configuration. {0}.</value>
+  </data>
+  <data name="SLA_UC_Preview_FeatureDocumentation_Hyperlink_Label">
+    <value>feature documentation</value>
+  </data>
+  <data name="SLA_AdavncedPauseConfig_Hyperlink_Label" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="SLAKPI_LearnMoreLink_Text">
+  	<value>Entity needs to be enabled for SLA. {0}.</value>
+  	<comment>{Placeholder='{0}'} Placeholder '0' is the Learn More link.</comment>
+  </data>
+  <data name="SLAKPI_Hyperlink_Label" xml:space="preserve">
+    <value>Learn More</value>
+  </data>
+  <data name="SLAItem_ConditionControl_Notification_Text">
+	<value>We recommend that you avoid configuring the applicable when and success criteria on the same attribute.</value>
+  </data>
+  <data name="SLAItem_ConditionOnSameAttributeAlert">
+	<value>We recommend that you avoid configuring the applicable when and success criteria on the same attribute. Do you want to continue?</value>
+  </data>
+  <data name="SLAKPI_BusinessProcessError_Title" xml:space="preserve">
+    <value>Business Process Error</value>
+  </data>
+  <data name="SDKMessagingStepNotInActiveState" xml:space="preserve">
+    <value>Some associated SDK message step {0} may not be in active state. Please activate the SDK message Step before activating the SLA.</value>
+    <comment>Error message when dependent SDK Message Step is not enabled. step Id.</comment>
+  </data>
+  <data name="SLAIsDisabledInSetting" xml:space="preserve">
+    <value>Associated setting 'Disable SLAs' is enabled in service configuration settings. Please deactivate the setting before activating the SLA.</value>
+    <comment>Error message when SLA is not enabled in Service Configuration Settings.</comment>
+  </data>
+  <data name="WorkflowNotInActiveState" xml:space="preserve">
+    <value>Some associated workflow {0} may not be in active state. Please activate the workflow before activating the SLA.</value>
+    <comment>Error message when dependent Workflow/CustomAction is not enabled.</comment>
+  </data>
+  <data name="SLAItem_ApplicableAndSuccessSameAttribute" xml:space="preserve">
+    <value>We recommend that you avoid configuring the applicable when and success criteria on the same attribute</value>
+    <comment>Warning message when SLA Applicable and Success conditions are configured on the same attribute</comment>
+  </data>
+  <data name="WorkflowOwnerIsDisabled" xml:space="preserve">
+    <value>Owners in the following SLA Workflows : {0} need to be updated with the active users.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is a workflow name which is owned by disabled user.</comment>
+  </data>
+  <data name="NoSLASetAsDefault" xml:space="preserve">
+    <value>Default SLA is not maintained for the entity {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is an SLA's primary entity name.</comment>
+  </data>
+  <data name="OpenLearnMoreForSetAsDefaultSLA" xml:space="preserve">
+    <value>Learn more</value>
+  </data>    
+  <data name="SLAKPI_Recommendation_Entityname" xml:space="preserve">
+    <value>Entity needs to be enabled for SLA.</value>
+    <comment>Recommendation message for EntityName field.</comment>
+  </data>  
+  <data name="SLAKPI_Recommendation_KPIField" xml:space="preserve">
+    <value>KPIs are based on the Entity selected.</value>
+    <comment>Recommendation message for KPI field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_PrimaryEntity" xml:space="preserve">
+    <value>Entity needs to be enabled for SLA.</value>
+    <comment>Recommendation message for Primary Entity field.</comment>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>Effective April 01, 2023, the legacy Service Level Agreements (SLAs) on web client that were deprecated earlier, have passed End of Support (EoS). It is crucial to migrate your legacy SLAs that were created on web client to the Unified Interface experience immediately to avoid functionality loss. For more information on how to migrate the items, see {0}</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>I acknowledge</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SLAKPI_Activation_Error_Message" xml:space="preserve">
+    <value>Failed to activate SLAKPI, please acivate it from manage SLAKPIs.</value>
+    <comment>Error message when it fails to activate SLAKPI from quick create form.</comment>
+  </data>
+  <data name="SLAKPI_Performance_Indicator_Notification" xml:space="preserve">
+    <value>SLA KPIs are performance indicators</value>
+    <comment>Header notification in SLA KPI form.</comment>
+  </data>
+  <data name="SLA_ChangedAttribiteNullNotification" xml:space="preserve">
+    <value>You need to reactive the SLA {0} to fix the issues identified with the conditions in it. For more information, see {1}</value>
+    <comment>Notification message when SLA item's 'ChangedAttributeList" field value is NULL and SLA is active. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_RelatedEntitiesNotification" xml:space="preserve">
+    <value>Related entities configured in the conditions for SLA Item {{0}} are not fully supported. For more information, see – {1}</value>
+    <comment>Notification message when SLA item has related entities in the applicable when or success or pause conditions. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>  
+  <data name="SLA_DisableLegacyCreateSLADialogDepreciationText" xml:space="preserve">
+    <value>Effective October 1, 2020, SLAs are deprecated in the web client. For more information, go to - {0}</value>
+    <comment>Depreciation Message when user try to create new Legacy SLA and ask customer to move to UCI to create new SLAs.{Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogConfirmationText" xml:space="preserve">
+    <value>Select ‘OK’ to continue creating the new SLA in Unified Interface.</value>
+    <comment>Confirmation to direct user to UCI to create new SLAs.</comment>
+  </data>
+  <data name="SLAWorkingHoursEmptyNotification" xml:space="preserve">
+    <value>Business Calendar associated with SLA {0} have empty working hours.</value>
+    <comment>Notification message when SLA item has business calendar with empty working hours. {Placeholder='{0}'} refers SLA items.</comment>
+  </data>
+</root>

@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OC_LimitQuestions_AlertDialogConfirmButton" xml:space="preserve">
+    <value>U redu</value>
+  </data>
+  <data name="OC_RecordPermissions_AlertDialogText" xml:space="preserve">
+    <value>Nemate dozvole za izvršavanje te akcije.</value>
+  </data>
+  <data name="OC_LimitQuestions_AlertDialogText" xml:space="preserve">
+    <value>Ne možete dodati više od pet pitanja. Izbrišite nekoliko pitanja da biste dodali više.</value>
+  </data>
+  <data name="OC_PickAuthFailed" xml:space="preserve">
+    <value>Odabir nije uspio zbog neuspjeha provjere autentičnosti. Pokušajte ponovno kasnije. Radna stavka: {0}</value>
+  </data>
+  <data name="OC_PickedByAnotherAgent" xml:space="preserve">
+    <value>Odabir nije uspio. Stavku je odabrao drugi agent. Radna stavka: {0}</value>
+  </data>
+  <data name="OC_PickInternalError" xml:space="preserve">
+    <value>Odabir nije uspio. Pokušajte ponovno odabrati stavku. Radna stavka: {0}</value>
+  </data>
+  <data name="OC_PickMaxCapacityReached" xml:space="preserve">
+    <value>Odabir nije uspio. Dosegnuli ste maksimalni kapacitet. Radna stavka: {0}</value>
+  </data>
+  <data name="OC_PickMaxConcurrencyReached" xml:space="preserve">
+    <value>Odabir nije uspio. Dosegnuli ste ograničenje maksimalnog istovremenog rada. Radna stavka: {0}</value>
+  </data>
+  <data name="OC_PickNotAvailable" xml:space="preserve">
+    <value>Odabir nije uspio. Stavka nije dostupna. Radna stavka: {0}</value>
+  </data>
+  <data name="OC_PickPresenceError" xml:space="preserve">
+    <value>Odabir nije uspio zbog statusa prisutnosti. Radna stavka: {0}</value>
+  </data>
+  <data name="OC_PickSuccess" xml:space="preserve">
+    <value>Radna stavka uspješno odabrana. Radna stavka: {0}</value>
+  </data>
+  <data name="OC_OpenFormFail" xml:space="preserve">
+    <value>Otvaranje obrasca nije uspjelo. Pokušajte ponovno otvoriti obrazac. Ako se problem ne riješi, obratite se svojem administratoru.</value>
+  </data>
+  <data name="OC_OpenSessionFail" xml:space="preserve">
+    <value>Otvaranje sesije nije uspjelo. Pokušajte ponovno otvoriti sesiju. Ako se problem ne riješi, obratite se svojem administratoru.</value>
+  </data>
+  <data name="OC_InputTimeFormat" xml:space="preserve">
+    <value>Unesite vrijeme u ispravnom 24-satnom obliku (HH:mm).</value>
+  </data>
+  <data name="OC_InputTimesDifferenceValidation" xml:space="preserve">
+    <value>Vrijeme završetka ne može biti ranije ili manje od {0} min od vremena početka.</value>
+  </data>
+  <data name="OC_SendMessageToConversationSuccessMessage" xml:space="preserve">
+    <value>Gotovo! Ova je poruka poslana u razgovor.</value>
+  </data>
+  <data name="OC_SendMessageToConversationFailureMessage" xml:space="preserve">
+    <value>Nešto je pošlo po krivu. Pokušajte ponovo poslati poruku u razgovor.</value>
+  </data>
+  <data name="OC_SupervisorOpenRecord" xml:space="preserve">
+    <value>Zapisi razgovora samo su za prikaz i ne mogu se otvoriti.</value>
+  </data>
+  <data name="OC_LinkToConversationSuccessMessage" xml:space="preserve">
+    <value>Gotovo! Ovaj {0} povezan je s razgovorom.</value>
+  </data>
+  <data name="OC_LinkToConversationFailureMessage" xml:space="preserve">
+    <value>Nešto je pošlo po krivu. Pokušajte se ponovo povezati s razgovorom.</value>
+  </data>
+  <data name="OC_LinkToConversationUpdatedMessage" xml:space="preserve">
+    <value>Ažurirano! Ovaj {0} zamijenio je prethodni {0} povezan s tim razgovorom.</value>
+  </data>
+  <data name="OC_Presence_Available" xml:space="preserve">
+    <value>Dostupan</value>
+  </data>
+  <data name="OC_Presence_Busy" xml:space="preserve">
+    <value>Zauzet</value>
+  </data>
+  <data name="OC_Presence_DoNotDisturb" xml:space="preserve">
+    <value>Ne smetaj</value>
+  </data>
+  <data name="OC_Presence_Away" xml:space="preserve">
+    <value>Odsutan</value>
+  </data>
+  <data name="OC_Presence_Offline" xml:space="preserve">
+    <value>Izvan mreže</value>
+  </data>
+  <data name="MaskingRule.LimitReached" xml:space="preserve">
+    <value>Nemate dopuštenje za izradu više od {0} pravila maskiranja; izbrišite pravila kako biste ukupan broj ograničili na {0}.</value>
+  </data>
+  <data name="MaskingRule.PluginError" xml:space="preserve">
+    <value>Pojavila se pogreška u dodatku PreValidationMaskingRuleLimitPlugin.</value>
+  </data>
+  <data name="MaskingRule.RegexException.InvalidEscape" xml:space="preserve">
+    <value>Pogreška sintakse: nevaljan regularni izraz: /{0}/: nevaljan prekidni znak</value>
+  </data>
+  <data name="MaskingRule.RegexException.EndOfPattern" xml:space="preserve">
+    <value>Pogreška sintakse: nevaljan regularni izraz: /{0}/: \ na kraju uzorka</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedCharacterClass" xml:space="preserve">
+    <value>Pogreška sintakse: nevaljan regularni izraz: /{0}/: neprekinuta klasa znakova</value>
+  </data>
+  <data name="MaskingRule.RegexException.IncompleteQuantifier" xml:space="preserve">
+    <value>Pogreška sintakse: nevaljan regularni izraz: /{0}/: nepotpun kvantifikator</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedGroup" xml:space="preserve">
+    <value>Pogreška sintakse: nevaljan regularni izraz: /{0}/: neprekinuta grupa</value>
+  </data>
+  <data name="MaskingRule.RegexException.LoneQuantifierBrackets" xml:space="preserve">
+    <value>Pogreška sintakse: nevaljan regularni izraz: /{0}/: nezatvorene zagrade kvantifikatora</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnmatchedParen" xml:space="preserve">
+    <value>Pogreška sintakse: nevaljan regularni izraz: /{0}/: neusklađena „)”</value>
+  </data>
+  <data name="MaskingRule.RegexException.NothingToRepeat" xml:space="preserve">
+    <value>Pogreška sintakse: nevaljan regularni izraz: /{0}/: nema ničega za ponavljanje</value>
+  </data>
+  <data name="MaskingRule.RegexException.Timeout" xml:space="preserve">
+    <value>TimeoutError: procjena regularnog izraza potrajala je predugo: /{0}/: okončano nakon {1} ms.</value>
+  </data>
+  <data name="MaskingRule.MaskingInProgress" xml:space="preserve">
+    <value>Maskiranje podataka o testiranju uz regularni izraz.</value>
+  </data>
+  <data name="SentimentAnalysis.WrongName" xml:space="preserve">
+    <value>Naziv zapisa mora biti {0}.</value>
+  </data>
+  <data name="SentimentAnalysis.DeleteNotAllowed" xml:space="preserve">
+    <value>Brisanje zapisa nije dopušteno.</value>
+  </data>
+  <data name="Entity.OnlyOneAllowed" xml:space="preserve">
+    <value>Dopušten je samo jedan zapis ove vrste.</value>
+  </data>
+  <data name="Entity.DeleteNotAllowed" xml:space="preserve">
+    <value>Brisanje zapisa nije dopušteno.</value>
+  </data>
+  <data name="DefaultQueue.DeleteNotAllowed" xml:space="preserve">
+    <value>Ne možete izbrisati Zadani red čekanja jer je red čekanja samo za čitanje.</value>
+  </data>
+  <data name="DefaultQueue.UpdateNotAllowed" xml:space="preserve">
+    <value>Ne možete urediti Zadani red čekanja jer je red čekanja samo za čitanje.</value>
+  </data>
+  <data name="Queue.IncorrectEntityError" xml:space="preserve">
+    <value>Pogreška registracije dodatka: logički naziv entiteta nije Queue.</value>
+  </data>
+  <data name="Queue.QueueTypeUpdateError" xml:space="preserve">
+    <value>Ne možete ažurirati vrstu reda čekanja.</value>
+  </data>
+  <data name="Queue.NonEntityQueueSelected" xml:space="preserve">
+    <value>Stavka pravila usmjeravanja ne može se stvoriti zato što odabrani red čekanja nije vrste entitet. Usmjeravati možete samo na redove čekanja vrste Entitet.</value>
+  </data>
+  <data name="RoutingRuleItem.NonEntityQueueSelected" xml:space="preserve">
+    <value>Ne može se dodati zapis u odabrani red čekanja zato što odabrani red čekanja nije vrste entitet. Odaberite red čekanja entiteta i pokušajte ponovno.</value>
+  </data>
+  <data name="OC_Refresh_Grid" xml:space="preserve">
+    <value>Nije moguće premjestiti zapis jer je rešetka u načinu sortiranja. Osvježite rešetku i pokušajte ponovno.</value>
+  </data>
+  <data name="GeoLocationProvider.IncorrectEntityError" xml:space="preserve">
+    <value>Pogreška registracije dodatka: logički naziv entiteta nije GeoLocationProvider.</value>
+  </data>
+  <data name="GeoLocationProvider.PluginError" xml:space="preserve">
+    <value>Došlo je do pogreške u dodatku GeoLocationProviderPlugin.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelsNotSupported" xml:space="preserve">
+    <value>Kanali entiteta nisu podržani u ovom izdanju. Više informacija potražite u datoteci ReadMe.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelTypeNotSupported" xml:space="preserve">
+    <value>Kanal entiteta nije podržan u ovom izdanju. Odaberite druge vrste kanala. Više informacija potražite u datoteci ReadMe.</value>
+  </data>
+  <data name="EntityRouting.EntityWorkStreamsNotSupported" xml:space="preserve">
+    <value>Tijekovi rada entiteta nisu podržani u ovom izdanju. Više informacija potražite u datoteci ReadMe.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForDSF" xml:space="preserve">
+    <value>Može potrajati do 15 minuta da se prikažu promjene konfiguracije stavke Svi kanali.</value>
+  </data>
+  <data name="OC_CaseRoutingFormNotificationMessage" xml:space="preserve">
+    <value>U ovom izdanju podržava se samo usmjeravanje slučaja. Ostali zapisi entiteta bit će podržani u budućem izdanju.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForRoutingSolutionDep" xml:space="preserve">
+    <value>Za upotrebu usmjeravanja entiteta Case morate instalirati Pravila usmjeravanja – Pretpregled. Da biste saznali više, pogledajte {0}</value>
+  </data>
+  <data name="OC_Preview_Message" xml:space="preserve">
+    <value>Omogućavanjem ove značajke prihvaćate da je ta značajka u pretpregledu i prihvaćate {0}. {1}</value>
+    <comment>Template Preview Text for all features</comment>
+  </data>
+  <data name="OC_Preview_Link_Label" xml:space="preserve">
+    <value>Uvjeti pretpregleda</value>
+    <comment>Preview Terms label to point to the relevant Preview Terms</comment>
+  </data>
+  <data name="OC_LearnMore_Link_Label" xml:space="preserve">
+    <value>Saznajte više</value>
+    <comment>Hyperlink label to point to the relevant feature documentation</comment>
+  </data>
+  <data name="AutomaticQueueName" xml:space="preserve">
+    <value>Red čekanja za automatsku distribuciju</value>
+  </data>
+  <data name="AutomaticQueueSelectionRecommendation" xml:space="preserve">
+    <value>Odaberite red čekanja za automatsku distribuciju i dodjeljivanje radnih stavki agentima.</value>
+  </data>
+  <data name="ConfigureRoutingRulesAtERCNotification" xml:space="preserve">
+    <value>Pravila usmjeravanja radnih tijekova zapisa entiteta konfiguriraju se na razini kanala. Za konfiguraciju idite na Kanali &gt; Zapisi entiteta &gt; {0} &gt; Pravila usmjeravanja.</value>
+  </data>
+  <data name="isOmnichannelQueueGuidanceNotification" xml:space="preserve">
+    <value>Postavite Da kako biste omogućili red za automatsku distribuciju rada značajke Svi kanali. Da biste saznali više, pogledajte {0}</value>
+  </data>
+  <data name="ManualQueueName" xml:space="preserve">
+    <value>Ručni red čekanja</value>
+  </data>
+  <data name="ManualQueueSelectionRecommendation" xml:space="preserve">
+    <value>Odaberite Red čekanja za automatsku raspodjelu rada da biste automatski dodijelili zapise entiteta agentima.</value>
+  </data>
+  <data name="ERCDeletionWarningMessage" xml:space="preserve">
+    <value>Brisanje {0} zapis će onemogućiti usmjeravanje entitetskih zapisa za {1} entitet. Jeste li sigurni da želite izbrisati?</value>
+  </data>
+  <data name="InstallRoutingRuleForERCNotification" xml:space="preserve">
+    <value>Za usmjeravanje zapisa entiteta morate instalirati rješenje Pravila usmjeravanja. Da biste saznali više, pogledajte {0}.</value>
+  </data>
+  <data name="EntityRoutingPlugins.GenericError" xml:space="preserve">
+    <value>Nije moguće dovršiti radnju zbog pogreške. Pokušajte ponovno kasnije. Ako se problem nastavi pojavljivati, obratite se Microsoftovoj podršci.</value>
+  </data>
+  <data name="EntityRoutingPlugins.CreateError" xml:space="preserve">
+    <value>Nije moguće stvoriti {0}. Pokušajte ponovno kasnije. Ako se problem nastavi pojavljivati, obratite se Microsoftovoj podršci.</value>
+  </data>
+  <data name="EntityRoutingPlugins.SaveError" xml:space="preserve">
+    <value>Nije moguće spremiti {0}. Pokušajte ponovno kasnije. Ako se problem nastavi pojavljivati, obratite se Microsoftovoj podršci.</value>
+  </data>
+  <data name="EntityRoutingPlugins.DeleteError" xml:space="preserve">
+    <value>Nije moguće izbrisati {0}. Pokušajte ponovno kasnije. Ako se problem nastavi pojavljivati, obratite se Microsoftovoj podršci.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityMissing" xml:space="preserve">
+    <value>Polje entiteta prazno je. Odaberite vrijednost za polje entiteta i pokušajte ponovno.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityNotRequired" xml:space="preserve">
+    <value>Polje entiteta ima vrijednost. Ostavite polje entiteta prazno i pokušajte ponovno.</value>
+  </data>
+  <data name="EntityRoutingPlugins.BothEntityConfigurationsNotRequired" xml:space="preserve">
+    <value>Oba polja za konfiguraciju entiteta sadržavaju vrijednost. Ostavite bilo koje polje za konfiguraciju entiteta praznim i pokušajte ponovno.</value>
+    <comment>Liveworkstream has ercId and mercId fields, and only one can have value</comment>
+  </data>
+  <data name="EntityRoutingPlugins.DefaultWorkStreamName" xml:space="preserve">
+    <value>{0} tijek rada</value>
+  </data>
+  <data name="EntityRoutingPlugins.FlowConfigurationError" xml:space="preserve">
+    <value>Postupak nije uspio zbog pogrešne konfiguracije u tijeku raspodjele zapisa entiteta. Pobrinite se da {0} nije izbrisan ili preimenovan.</value>
+  </data>
+  <data name="EntityRoutingPlugins.TroubleshootingLearnMore" xml:space="preserve">
+    <value>Da biste saznali više, pogledajte temu Rješavanje problema značajke Više kanala – {0}</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>Potvrdi</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Izbriši</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="OC_IncidentQueueItemWarningNessage" xml:space="preserve">
+    <value>Ovaj je zapis prenesen u red čekanja za Svi kanali i više ga nije moguće vidjeti ovdje. Da biste vidjeli taj zapis, otvorite ga na nadzornoj ploči Svi kanali.</value>
+  </data>
+  <data name="OC_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsoftova izjava o zaštiti privatnosti</value>
+  </data>
+  <data name="OC_ChannelPreviewDisclaimer" xml:space="preserve">
+    <value>Uporabom ovog kanala prihvaćate da je ta značajka u pretpregledu i prihvaćate Uvjete pretpregleda.</value>
+  </data>
+  <data name="OC_SeePreviewTerms" xml:space="preserve">
+    <value>Pogledajte Uvjete pretpregleda</value>
+  </data>
+  <data name="OC_ThirdPartyChannelPrivacyDisclaimer" xml:space="preserve">
+    <value>Omogućivanjem ovog kanala pristajete na dijeljenje svojih podataka sa sustavima trećih strana i njihov protok izvan granica usklađenosti i geografskih granica vaše tvrtke ili ustanove (uključujući okruženja Government Cloud). Saznajte više ovdje: {0}.</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_FeatureDocumentation" xml:space="preserve">
+    <value>prijevod u stvarnom vremenu</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsoftovu izjavu o zaštiti privatnosti</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_Text" xml:space="preserve">
+    <value>Omogućavanjem ove značajke prihvaćate da vaši podaci mogu teći izvan granica sukladnosti i geografskih granica vaše tvrtke ili ustanove. To uključuje okruženja Government Cloud. Saznajte više o {0} i {1}.</value>
+    <comment>DO NOT CHANGE {0} and {1}, as they will be replaced with OC_LanguageTranslation_Disclaimer_FeatureDocumentation and OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement respectively.</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_DocumentFeature_Text" xml:space="preserve">
+    <value>Kliknite ovdje da biste pogledali dokumentaciju o značajci</value>
+    <comment>Indicates this is the link for feature documentation</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Link" xml:space="preserve">
+    <value>konfiguracija web-resursa</value>
+    <comment>  This is the link for real time translation webresource documentation </comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Text" xml:space="preserve">
+    <value>Konfigurirajte web-resurs za generiranje URL-a. Zatim taj URL kopirajte i zalijepite u nastavku. Saznajte više o {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder "0" will be replaced by a OC_LanguageTranslation_Webresource_Disclaimer_Link. Link text is "here".</comment>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_Text" xml:space="preserve">
+    <value>Uključivanjem ove značajke prihvaćate da je ta značajka u pretpregledu i prihvaćate </value>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_LinkText" xml:space="preserve">
+    <value>Uvjeti pretpregleda</value>
+  </data>
+  <data name="LanguageTranslation_Invalid_webresource_url" xml:space="preserve">
+    <value>URL koji ste unijeli ne podudara se s vašim web-resursom. Pokušajte ponovno kopirati i zalijepiti URL web-resursa.</value>
+  </data>
+  <data name="DeprecationBanner" xml:space="preserve">
+    <value>Od srpnja 2022. godine ova aplikacija više neće biti dostupna za uporabu. Migrirajte svoje tokove rada u centar za administratore usluge Svi kanali kako biste nastavili koristiti uslugu Svi kanali za Customer Service.</value>
+  </data>
+  <data name="OC_Deprecation_Title_Text" xml:space="preserve">
+    <value>Administracija za značajku Svi kanali više nije podržana</value>
+  </data>
+  <data name="OC_Deprecation_Description_Text" xml:space="preserve">
+    <value>Podrška za aplikaciju Administracija za značajku Svi kanali završila je 30. travnja 2022. Da biste konfigurirali Customer Service, počnite upotrebljavati centar za administratore usluge Customer Service. Odmah migrirajte sve definicije tijekova rada s aplikacije Administracija za značajku Svi kanali na centar za administratore usluge Customer Service. {0}</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More" xml:space="preserve">
+    <value>Saznajte više</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More_Aria_Label" xml:space="preserve">
+    <value>Saznajte više o zastarijevanju Administracije značajke Svi kanali</value>
+  </data>
+  <data name="OC_Deprecation_Acknowledge_Checkbox_Label" xml:space="preserve">
+    <value>Razumijem da aplikacija Administracija za značajku Svi kanali više nije podržana.</value>
+  </data>
+  <data name="OC_Deprecation_Redirect_Button_Text" xml:space="preserve">
+    <value>Otvori Centar za administratore usluge Customer Service</value>
+  </data>
+  <data name="OC_Deprecation_Dismiss_Button_Text" xml:space="preserve">
+    <value>Nastavi u aplikaciji Administracija značajke Svi kanali</value>
+  </data>
+  <data name="PostConversationSurveyMessage" xml:space="preserve">
+    <value>Kakvo je bilo vaše iskustvo? Podijelite povratne informacije u ovom upitniku.</value>
+  </data>
+  <data name="OC_FormsProSurvey_Disclaimer" xml:space="preserve">
+    <value>Time će upravljati Microsoft Dynamics 365 Customer Voice.</value>
+  </data>
+  <data name="Presence.InactivePresenceUpdateNotAllowed" xml:space="preserve">
+    <value>Ažuriranja ovog polja za taj zapis onemogućena su.</value>
+  </data>
+  <data name="Presence.IncorrectEntityError" xml:space="preserve">
+    <value>Pogreška registracije dodatka: logički naziv entiteta nije msdyn_presence.</value>
+  </data>
+  <data name="OperatingHours.Hours" xml:space="preserve">
+    <value> h</value>
+  </data>
+  <data name="OperatingHours.Minutes" xml:space="preserve">
+    <value> min</value>
+  </data>
+  <data name="OperatingHours.TotalOperatingHours" xml:space="preserve">
+    <value>Ukupno radno vrijeme: </value>
+  </data>
+  <data name="Presence.DefaultDeletePlugin" xml:space="preserve">
+    <value>Nije moguće izbrisati Zadanu prisutnost</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Nisu pronađeni problemi.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>Pojavila se pogreška u {0}.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Kapacitet agenta nije valjan. Vrijednost mora biti veća od 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Pronađen je agent koji nije ispravno konfiguriran. Kapacitet agenta mora se postaviti na vrijednost koja je veća od 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Pronađen je sljedeći broj nepravilno konfiguriranih agenata: {0}. Kapacitet agenta mora biti veći od 0.</value>
+    <comment>The error message for OcAgentsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Kapacitet bota nije valjan. Vrijednost mora biti veća od 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Pronađen je bot koji nije ispravno konfiguriran. Kapacitet bota mora se postaviti na vrijednost koja je veća od 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Postoji sljedeći broj nepravilno konfiguriranih botova: {0}. Kapacitet bota mora biti veći od 0.</value>
+    <comment>The error message for OcBotsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Postoji 1 red čekanja bez agenata.</value>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Postoji sljedeći broj redova čekanja bez agenata: {0}.</value>
+    <comment>The error message for OcQueuesShouldHaveAgentsRule rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ErrorMessage" xml:space="preserve">
+    <value>Svi anali nisu u potpunosti funkcionalni, neki koraci obrade poruka su onemogućeni.</value>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ResultEntityMessage" xml:space="preserve">
+    <value>Korak obrade poruka mora biti omogućen kako bi se osigurao ispravan rad za Sve kanale.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointIsNotConfigured" xml:space="preserve">
+    <value>Krajnja točka usluge OC nije konfigurirana.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointPathIsEmpty" xml:space="preserve">
+    <value>Put krajnje točke za uslugu OC je prazan.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.ResultEntityMessage" xml:space="preserve">
+    <value>Agenti: {0} (id: {1})</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is agent name and {1} is agent Id</comment>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Postoji 1 tok rada s kapacitetom većim od njegova agenta.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Postoji sljedeći broj tokova rada s kapacitetom većim od njihovih agenata {0}.</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.ResultEntityMessage" xml:space="preserve">
+    <value>Radni tok nema postavljene neke od predložaka obavijesti.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Postoji 1 tijek rada bez predloška obavijesti.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Postoji sljedeći broj tijekova rada bez predložaka obavijesti: {0}.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoSessionTemplates" xml:space="preserve">
+    <value>Radni tok {0} ima scenarije bez predloška sesije.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoScenarios" xml:space="preserve">
+    <value>Radni tok {0} nema scenarije.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Postoji 1 tok rada bez predloška sesije.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Postoji sljedeći broj tokova rada bez predloška sesije: {0}.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.ResultEntityMessage" xml:space="preserve">
+    <value>Radni tok ima duplicirane varijable konteksta: {0}</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is duplicated context names</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Postoji 1 tok rada s duplikatom varijabli konteksta.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Postoji sljedeći broj tokova rada s duplikatom varijabli konteksta: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.ResultEntityMessage" xml:space="preserve">
+    <value>Pravila usmjeravanja bez uvjeta: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities list</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Postoji sljedeći broj radnih tokova s praznim pravilima usmjeravanja iznad pravila s uvjetima: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Postoji 1 radni tok s praznim pravilima usmjeravanja iznad pravila s uvjetima.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Postoji 1 radni tok s načinom automatskih obavijesti koji omogućava izvanmrežni način rada.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Postoji sljedeći broj radnih tokova s načinom automatskih obavijesti koji omogućuju izvanmrežni način rada: {0}.</value>
+    <comment>The error message for WorkstreamWithPushModeShouldNotAllowOfflineMode rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Bot ima potencijalno mali kapacitet.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Postoji 1 bot koji ima potencijalno mali kapacitet.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Postoji sljedeći broj botova koji imaju potencijalno mali kapacitet: {0}.</value>
+    <comment>The error message for OcBotsShouldNotHavePotentiallyLowCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.EntityMessage" xml:space="preserve">
+    <value>Duplikat konfiguracije davatelja kanala.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultDuplicatedChannel" xml:space="preserve">
+    <value>Pronađeni su duplikati konfiguracija davatelja kanala.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ProviderNotFound" xml:space="preserve">
+    <value>Davatelj usluge kanala Svi kanali nije pronađen.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsEmpty" xml:space="preserve">
+    <value>Polje URL-a kanala je prazno</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsInvalid" xml:space="preserve">
+    <value>Polje URL-a kanala nije valjano</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.UnifiedInterfaceAppsFieldNoOCApp" xml:space="preserve">
+    <value>Polje aplikacija Objedinjenog sučelja ne sadrži aplikaciju Svi kanali</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AgentRoleNotAssigned" xml:space="preserve">
+    <value>Uloga agenta za Sve kanale nije dodijeljena</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.SupervisorRoleNotAssigned" xml:space="preserve">
+    <value>Uloga nadzornika za Sve kanale nije dodijeljena</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AdministratorRoleNotAssigned" xml:space="preserve">
+    <value>Uloga administratora za Sve kanale nije dodijeljena.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultImproperlyConfigured" xml:space="preserve">
+    <value>Pružatelj kanala za Sve kanale nije pravilno konfiguriran.</value>
+  </data>
+  <data name="OC_OH_Preview_Message" xml:space="preserve">
+    <value>Upotrebom ove značajke prihvaćate da je ta značajka u pretpregledu i prihvaćate {0}. {1}</value>
+    <comment>Template Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_OH_Preview_Notification" xml:space="preserve">
+    <value>Uporabom ove značajke prihvaćate da je ta značajka u pretpregledu i prihvaćate Uvjete pretpregleda.</value>
+    <comment>Notification Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_InstanceLevelBanner" xml:space="preserve">
+    <value>Primijenjene su vaše postavke automatske poruke za {0}. Za stvaranje automatske poruke za {1} odaberite „Novo”.</value>
+  </data>
+  <data name="OC_CustomSystemMessage_ConfirmDelete" xml:space="preserve">
+    <value>Jeste li sigurni da želite izbrisati ovu poruku? Ako je izbrišete, vratit će se vaše postavke automatiziranih poruka za {0}.</value>
+  </data>
+  <data name="OC_Channel_Chat" xml:space="preserve">
+    <value>Čavrljanje</value>
+    <comment>Messaging channel chat</comment>
+  </data>
+  <data name="OC_Channel_Custom" xml:space="preserve">
+    <value>Prilagođeno</value>
+    <comment>Messaging channel Custom</comment>
+  </data>
+  <data name="OC_Channel_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>Messaging channel Facebook</comment>
+  </data>
+  <data name="OC_Channel_LINE" xml:space="preserve">
+    <value>LINE</value>
+    <comment>Messaging channel LINE</comment>
+  </data>
+  <data name="OC_Channel_SMS" xml:space="preserve">
+    <value>SMS</value>
+    <comment>Messaging channel SMS</comment>
+  </data>
+  <data name="OC_Channel_Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+    <comment>Messaging channel Microsoft Teams</comment>
+  </data>
+  <data name="OC_Channel_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Messaging channel Twitter</comment>
+  </data>
+  <data name="OC_Channel_unknown" xml:space="preserve">
+    <value>Nepoznati kanal</value>
+    <comment>Messaging channel unknown channel</comment>
+  </data>
+  <data name="OC_Channel_WeChat" xml:space="preserve">
+    <value>WeChat</value>
+    <comment>Messaging channel WeChat</comment>
+  </data>
+  <data name="OC_Channel_WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+    <comment>Messaging channel WhatsApp</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_DuplicateNameMessage" xml:space="preserve">
+    <value>Automatizirana poruka ili predložak poruke istog naziva je već stvoren.</value>
+  </data>
+  <data name="OC_FeaturePreviewDisclaimer" xml:space="preserve">
+    <value>Uporabom ove značajke prihvaćate da je ta značajka u pretpregledu i prihvaćate Uvjete pretpregleda.</value>
+  </data>
+  <data name="OC_ProgressIndicator_Loading" xml:space="preserve">
+    <value>Učitavanje...</value>
+    <comment>Progress indicator message</comment>
+  </data>
+  <data name="OC_TokenAcquireFailed_AlertText" xml:space="preserve">
+    <value>Dohvaćanje tokena nije uspjelo</value>
+    <comment>Alert message for token acquire failures</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationTitle" xml:space="preserve">
+    <value>Prebacivanje na unaprijed konfigurirani radni prostor</value>
+    <comment>Analytics PaaS feature confirmation dialog body text</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationText" xml:space="preserve">
+    <value>Prebacivanje na unaprijed konfigurirano izbrisat će sve prilagođene postavke radnog prostora. Možete se vratiti na prilagođeni radni prostor u bilo kojem trenutku, ali morat ćete ga ponovno konfigurirati.</value>
+    <comment>Analytics PaaS feature confirmation dialog title</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationButtonLabel" xml:space="preserve">
+    <value>Prebacivanje na unaprijed konfigurirano</value>
+    <comment>Analytics PaaS feature confirmation dialog confirm button label</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimer" xml:space="preserve">
+    <value>WhatsApp ima otvoreno razdoblje za odgovore od 24 sata. Ako isteknu 24 sata nakon posljednje poruke klijenta, Agenti će moći slati samo poruke predložaka koje odobrava WhatsApp dok klijent ne odgovori. Provjerite odobrava li WhatsApp vaše predloške poruka prije nego što ih ovdje dodate. {0}</value>
+    <comment>{0} will be replaced by a link "learn more"</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimerLearnMore" xml:space="preserve">
+    <value>Saznajte više</value>
+    <comment>learn more link for OC_WhatsAppMessageTemplateDisclaimer</comment>
+  </data>
+  <data name="MessageTemplateFeatureName" xml:space="preserve">
+    <value>Predložak poruke</value>
+    <comment>This should be the same as what we show in the sitemap</comment>
+  </data>
+  <data name="AutomatedMessageRequiredFieldNotFilled" xml:space="preserve">
+    <value>Obavezna polja moraju se popuniti.</value>
+    <comment>Shown in banner when required fields are not populated</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitor" xml:space="preserve">
+    <value>Posjetitelj</value>
+    <comment>Used when user name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleLiveWorkStream" xml:space="preserve">
+    <value>Tijek rada uživo</value>
+    <comment>Used when live work stream name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitorFormatter" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} and {1} should not be changed. They will be replaced by customer name and workstream name respectively. Example, James: WorkStream1</comment>
+  </data>
+  <data name="DefaultFieldsRquiredForMessageTemplate" xml:space="preserve">
+    <value>Za predložak poruke potreban je zadani jezik i tekst zadane poruke.</value>
+  </data>
+  <data name="DefaultLocalizationDataNotFoundForMessageTemplate" xml:space="preserve">
+    <value>Nisu pronađeni podaci za zadanu lokalizaciju za ovaj predložak poruke.</value>
+  </data>
+  <data name="SavingPrivacyTerms" xml:space="preserve">
+    <value>Učitavanje...</value>
+    <comment>Shown after user agrees to privacy terms</comment>
+  </data>
+  <data name="ConversationFormReadonlyNotificationText" xml:space="preserve">
+    <value>Samo za čitanje. Razlog stanja ovog zapisa: {0}</value>
+    <comment>{0} will be replaced with statuscode text. Any changes to this will have an impact on msdyn_customersummaryscripts.ts</comment>
+  </data>
+  <data name="OC_IntradayInsights_ConfigTitle" xml:space="preserve">
+    <value>Konfiguracija uvida unutar jednog dana</value>
+    <comment>Title for Intraday insights configuration</comment>
+  </data>
+  <data name="OC_FormsPro_Button_Text" xml:space="preserve">
+    <value>Otvorite Dynamics 365 Customer Voice</value>
+  </data>
+  <data name="FbAppNotFound" xml:space="preserve">
+    <value>ID aplikacije Facebook nije pronađen. Pokušajte upotrijebiti drugi.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PrivacyNotFound" xml:space="preserve">
+    <value>Nisu prihvaćeni uvjeti zaštite privatnosti za kanal.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="CantProvisionFBPage" xml:space="preserve">
+    <value>Nismo uspjeli pripremiti vašu Facebook stranicu. Pažljivo provjerite sve podatke koje ste naveli i pokušajte ponovno.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PreValidationFacebookApplicationCreatePluginFailure" xml:space="preserve">
+    <value>Tijekom stvaranja aplikacije Facebook došlo je do neočekivane pogreške. Pokušajte ponovno kasnije.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageCreatePluginFailure" xml:space="preserve">
+    <value>Tijekom stvaranja Facebook stranice došlo je do neočekivane pogreške. Pokušajte ponovno kasnije.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageUpdatePluginFailure" xml:space="preserve">
+    <value>Tijekom ažuriranja Facebook stranice došlo je do neočekivane pogreške. Pokušajte ponovno kasnije.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ExistingFbPageFound" xml:space="preserve">
+    <value>Već ste postavili ovu Facebook stranicu. Unesite drugu stranicu i pokušajte ponovno.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ErrorProcessingRequestParameter" xml:space="preserve">
+    <value>Pogreška pri obradi parametara zahtjeva. Pogreška: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="InvalidContextVariable" xml:space="preserve">
+    <value>ContextVariables nije valjan. Pogreška: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="MissingRequestId" xml:space="preserve">
+    <value>Nedostaje RequestId.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingVersion" xml:space="preserve">
+    <value>Version nije valjan.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingChannelInstance" xml:space="preserve">
+    <value>Nedostaje ChannelInstance.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingDirection" xml:space="preserve">
+    <value>Nedostaje Direction.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidDirection" xml:space="preserve">
+    <value>Direction nije valjan.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingContextVariables" xml:space="preserve">
+    <value>Nedostaje ContextVariables.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingMessageText" xml:space="preserve">
+    <value>Nedostaje MessageText.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingOffsetTime" xml:space="preserve">
+    <value>Nedostaje OffsetTime.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidChannelInstance" xml:space="preserve">
+    <value>Korisni podaci instance kanala nisu valjani.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiParameterMissing" xml:space="preserve">
+    <value>{0} nedostaje ili nije valjan.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays parameter value.</comment>
+  </data>
+  <data name="ChannelApiUnsupportedVersion" xml:space="preserve">
+    <value>ApiVersion {0} nije podržan.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays version number.</comment>
+  </data>
+  <data name="ChannelApiInternalError" xml:space="preserve">
+    <value>Dogodila se neka interna pogreška. {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the exception message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationSend" xml:space="preserve">
+    <value>Razgovor ne postoji ili je razgovor zatvoren.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiMessageNullSend" xml:space="preserve">
+    <value>Tekst poruke ne može biti null ili prazan.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationGet" xml:space="preserve">
+    <value>Razgovor ne postoji.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationEnd" xml:space="preserve">
+    <value>Razgovor ne postoji ili je razgovor zatvoren.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Title" xml:space="preserve">
+    <value>Prisilno zatvori razgovor</value>
+    <comment>Title of the confirmation window displayed before force close is triggered</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Text" xml:space="preserve">
+    <value>Jeste li sigurni da želite zatvoriti radnu stavku?</value>
+    <comment>Confirmation text for force close</comment>
+  </data>
+  <data name="ForceClose_Confirmation_OKButtonLabel" xml:space="preserve">
+    <value>Nastavi</value>
+    <comment>Proceed</comment>
+  </data>
+  <data name="NewCase_Label">
+    <value>Novi slučaj</value>
+    <comment>Label for Create a Case button</comment>
+  </data>
+</root>

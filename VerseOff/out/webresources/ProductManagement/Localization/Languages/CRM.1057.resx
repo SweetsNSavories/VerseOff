@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DynamicProperty_OverrideDialog_SubTitle" xml:space="preserve">
+    <value>Ingin menimpa properti ini?</value>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Text" xml:space="preserve">
+    <value>Hal ini akan memungkinkan Anda membuat perubahan pada versi warisan properti ini. Versi warisan yang asli dari properti ini juga akan disimpan.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to override the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Title" xml:space="preserve">
+    <value>Konfirmasikan Penimpaan</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_SubTitle" xml:space="preserve">
+    <value>Ingin menimpa properti ini?</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Text" xml:space="preserve">
+    <value>Hal ini akan memungkinkan Anda membuat perubahan tambahan pada versi yang dipublikasi sebelumnya dari properti ini. Versi sebelumnya dari properti ini juga akan disimpan.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to overwrite the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Title" xml:space="preserve">
+    <value>Konfirmasikan Penimpaan</value>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_39" xml:space="preserve">
+    <value>Masukkan nilai dari {0} hingga {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_9" xml:space="preserve">
+    <value>Anda harus memasukkan bilangan bulat antara {0} hingga {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvaluestring.warning" xml:space="preserve">
+    <value>Panjang string nilai default harus kurang dari atau sama dengan panjang maksimum yang diizinkan.</value>
+    <comment>Warning message for Default Value string lenght of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvalue.warning" xml:space="preserve">
+    <value>Nilai default harus lebih besar dari atau sama dengan nilai minimum dan kurang dari atau sama dengan nilai maksimum.</value>
+    <comment>Warning message for Default value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.minvalue.warning" xml:space="preserve">
+    <value>Nilai minimum tidak boleh lebih dari nilai maksimum.</value>
+    <comment>Warning message for Minimum value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.optionset.warning" xml:space="preserve">
+    <value>Anda tidak dapat membuat properti rangkaian pilihan menjadi wajib atau hanya baca hingga Anda menambahkan item rangkaian pilihan dan menentukan nilai default.</value>
+    <comment>Warning message for Dynamic Property of type Option Set.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.readonlyrequired.warning" xml:space="preserve">
+    <value>Anda harus menentukan nilai default karena properti ini wajib dan hanya baca.</value>
+    <comment>Warning message for Default Value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Web.products.ValidToEarlierThanValidFromDate" xml:space="preserve">
+    <value>Tanggal Valid Hingga tidak terjadi sebelum tanggal Valid Mulai.</value>
+    <comment>Error message to display if the valid to date supplied  is earlier than the valid from date.</comment>
+  </data>
+  <data name="Kit_Products_Section_Name" xml:space="preserve">
+    <value>PRODUK KIT</value>
+    <comment>Kit Products section name in product kit form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Product_Family_Hierarchy_Label_Value" xml:space="preserve">
+    <value>Hierarki Kelompok</value>
+    <comment>Label text for Product Family Hierarchy Control.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Product_Bundle_Form_Title" xml:space="preserve">
+    <value>Bundel Baru</value>
+    <comment>Title text for Product Bundle Form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="ProductFamilyQuickCreate.DisplayName" xml:space="preserve">
+    <value>Kelompok Produk Baru</value>
+  </data>
+  <data name="Object_Singular_Kit" xml:space="preserve">
+    <value>Kit</value>
+    <comment>Singular Name of Product Kit.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Object_Singular_Bundle" xml:space="preserve">
+    <value>Bundel</value>
+    <comment>Singular Name of Product Bundle.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Object_Singular_Product_Family" xml:space="preserve">
+    <value>Kelompok Produk</value>
+    <comment>Singular Name of Product Family.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Object_Singular_Product" xml:space="preserve">
+    <value>Produk</value>
+    <comment>Singular Name of Product.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_90" xml:space="preserve">
+    <value>Peringatan:</value>
+    <comment>Label that is prefixed to a warning message.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_91" xml:space="preserve">
+    <value>Daftar harga default belum diatur.</value>
+    <comment>Error message that is displayed to the user in the product form when the default price list for the product is not specified.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_92" xml:space="preserve">
+    <value>Penerbitan otomatis diaktifkan.</value>
+    <comment>Alert message that is displayed to the user in the product form when System Settings Sales enabled with Create products in active state. </comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_93" xml:space="preserve">
+    <value>Produk sudah dibuat dan diterbitkan.</value>
+    <comment>Alert message that is displayed to the user in the product form when System Settings Sales enabled with Create products in active state and product is creating.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_12" xml:space="preserve">
+    <value>Anda harus memilih produk terlebih dulu.</value>
+    <comment>Error message displayed in the price list form if the user tries to choose the unit without choosing the product.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_153" xml:space="preserve">
+    <value>Persentase untuk metode harga persentase dari daftar harus berada di antara {0} dan {1} persen. Tentukan persentase baru.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent of List". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_157" xml:space="preserve">
+    <value>Persentase untuk metode harga persentase markup harus berada di antara {0} dan {1} persen. Tentukan persentase baru.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Markup". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_161" xml:space="preserve">
+    <value>Persentase untuk metode harga persentase margin harus berada di antara {0} dan {1} persen. Tentukan persentase baru.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Margin". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_113" xml:space="preserve">
+    <value>Jumlah pembulatan untuk akhir pada pilihan pembulatan harus berada di antara {0} dan {1}. Tentukan jumlah pembulatan baru.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Ends in". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_106" xml:space="preserve">
+    <value>Jumlah pembulatan untuk beberapa pilihan pembulatan harus berada di antara {0} dan {1}. Tentukan jumlah pembulatan baru.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Multiple of". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifying minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Kit_Products_Form_Title" xml:space="preserve">
+    <value>Produk Kit</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Bundle_Product_Form_Value" xml:space="preserve">
+    <value>Bundel Produk</value>
+    <comment>Bundle Product Form Title Value.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Kit_Product_Label_Value" xml:space="preserve">
+    <value>Kit</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>Terjadi kesalahan. Kembali ke halaman beranda dan coba lagi.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Anda harus memilih satu atau beberapa rekaman agar dapat melakukan tindakan ini.</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Terjadi kesalahan. Tindakan yang dipilih tidak diselesaikan untuk satu atau beberapa rekaman.</value>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleArticle_DialogText" xml:space="preserve">
+    <value>Anda harus memilih artikel</value>
+    <comment>select an article to associate.[Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleProduct_DialogText" xml:space="preserve">
+    <value>Anda harus memilih produk.</value>
+    <comment>select a product to associate.[Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>Tidak dapat memproses permintaan ini karena klien offline.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>Memproses...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="Web.products.pricelevel.EndDateEarlierThanStartDate" xml:space="preserve">
+    <value>Tanggal Berakhir tidak boleh sebelum Tanggal Mulai.</value>
+    <comment>Error message to display if the end date supplied in the price list form is earlier than the start date.</comment>
+  </data>
+  <data name="Web.Products.UoM.edit.aspx_71" xml:space="preserve">
+    <value>Ini adalah unit utama.</value>
+    <comment>Informational message displayed to the user in the primary unit form.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>Judul Kasus</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>Pelanggan</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>Prioritas</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>Dibuat Pada</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="ConfirmRevise" xml:space="preserve">
+    <value>Konfirmasikan Revisi</value>
+  </data>
+  <data name="ConfirmPublish" xml:space="preserve">
+    <value>Konfirmasikan Publikasi</value>
+  </data>
+  <data name="ConfirmHierarchyPublish" xml:space="preserve">
+    <value>Konfirmasikan Publikasi Hierarki</value>
+  </data>
+  <data name="ConfirmRevert" xml:space="preserve">
+    <value>Konfirmasikan Pengembalian</value>
+  </data>
+  <data name="ConfirmRetire" xml:space="preserve">
+    <value>Konfirmasikan Penghentian</value>
+  </data>
+  <data name="CloneProduct" xml:space="preserve">
+    <value>Produk Kloning</value>
+  </data>
+  <data name="ConfirmReviseMessage" xml:space="preserve">
+    <value>Anda ingin merevisi rekaman yang dipilih? Tindakan ini akan memungkinkan Anda mengubah properti rekaman ini.</value>
+  </data>
+  <data name="ConfirmRetireMessage" xml:space="preserve">
+    <value>Anda ingin menghentikan rekaman yang dipilih? Operasi ini akan mengatur rekaman yang dipilih ke status dihentikan.</value>
+  </data>
+  <data name="ConfirmPublishMessage" xml:space="preserve">
+    <value>Anda ingin mempublikasikan rekaman yang dipilih? Operasi ini akan mengatur rekaman yang dipilih ke status aktif.</value>
+  </data>
+  <data name="ConfirmCloneMessage" xml:space="preserve">
+    <value>Buat produk baru dari produk ini.</value>
+  </data>
+  <data name="ConfirmRevertMessage" xml:space="preserve">
+    <value>Ingin mengembalikan rekaman yang dipilih? Pengembalian ini akan membuang setiap perubahan yang dilakukan pada properti rekaman ini.</value>
+  </data>
+  <data name="ConfirmHierarchyPublishMessage" xml:space="preserve">
+    <value>Anda ingin mempublikasikan hierarki kelompok produk? Operasi ini akan mengatur rekaman anak dari kelompok produk terpilih ke status aktif. </value>
+  </data>
+  <data name="Revert_after_reparent_error_message" xml:space="preserve">
+    <value>Anda tidak dapat mengembalikan perubahan pada properti produk karena induk produk telah diubah.</value>
+    <comment>You can’t revert the changes to the product properties because the parent of the product was changed.</comment>
+  </data>
+  <data name="Viewpublished_after_reparent_error_message" xml:space="preserve">
+    <value>Anda tidak dapat melihat produk yang dipublikasikan karena induk produk telah diubah.</value>
+    <comment>You can’t view the published product because the parent of the product has been changed.</comment>
+  </data>
+  <data name="Save_Before_Publishing_Product_message" xml:space="preserve">
+    <value>Simpan perubahan induk produk sebelum publikasi.</value>
+    <comment>Please save product parent changes before publishing.</comment>
+  </data>
+  <data name="MissingCostOnProductError" xml:space="preserve">
+    <value>Untuk menggunakan metode penetapan harga yang terkait dengan {0}, bidang {1} harus tersedia dan diisi pada formulir produk.</value>
+    <comment>Selected Pricing method's field should be available and filled on product form. Placeholder {0} represents pricing method and {1} represents atrribute name related to selected pricing method.</comment>
+  </data>
+  <data name="Entity_set_to_readonly" xml:space="preserve">
+    <value>Pengaturan hanya baca seluler diaktifkan untuk UCI, dan Anda akan melihat beberapa tombol tidak ada dan formulir sebagai hanya baca. Admin dapat mengubah pengaturan ini. Baca selengkapnya</value>
+    <comment>As entity is set to readonly some functionalities will be unavailable.</comment>
+  </data>
+  <data name="Read_More" xml:space="preserve">
+    <value>Baca Selengkapnya</value>
+    <comment>Label for Read More button in notification.</comment>
+  </data>
+  <data name="CannotSetPrecisionValue" xml:space="preserve">
+    <value>Tidak dapat menetapkan presisi {0} ke nilai yang lebih besar dari nilai presisi default sistemnya, yakni {1}. Tingkatkan nilai default atau kurangi nilai presisi.</value>
+    <comment>Error message when an attribute's precision is being set to a value greater than its system default precision. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 represents the attribute name and Placeholder 1 represents its default precision value.</comment>
+  </data>
+  <data name="Reparenting_Attribute_Missing" xml:space="preserve">
+    <value>Bidang {0} disembunyikan karena bidang terkait tidak ada di formulir. Untuk menampilkan bidang {1}, tambahkan semua bidang terkait ke formulir.</value>
+    <comment>Parent field is hidden because related fields are missing in the form. To show the Parent field, add all related fields to the form.</comment>
+  </data>
+  <data name="Product_has_been_cloned_Successfully" xml:space="preserve">
+    <value>Produk berhasil dikloning.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is cloned</comment>
+  </data>
+  <data name="Product_has_been_retired_Successfully" xml:space="preserve">
+    <value>Produk berhasil dihentikan.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is retired</comment>
+  </data>
+  <data name="Product_has_been_published_Successfully" xml:space="preserve">
+    <value>Produk berhasil dipublikasikan.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is published</comment>
+  </data>
+  <data name="Product_has_been_revised_Successfully" xml:space="preserve">
+    <value>Produk berhasil direvisi.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is revised</comment>
+  </data>
+</root>

@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<link href="/uclient/resources/styles/Styles.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript">
+		function setLocalizedStringsAndHackStyleForTranscript()
+		{
+			var WebResourceName = "AutomaticRecordCreation/Localization/Languages/AutomaticRecordCreation";
+			var ConfirmMessage_Text = parent.Xrm.Utility.getResourceString(WebResourceName, "Confirm_Message_RuleItem");
+
+			// USSec and USNat do not support redirection so we set to a static help URL
+			let link = "https://aka.ms/arcUciDocumentation";
+			let orgSettings = parent.Xrm.Utility.getGlobalContext().organizationSettings;
+			if(orgSettings)
+			{
+				let currentGeo = orgSettings.organizationGeo;
+				link = currentGeo === "USR" ? "https://docs.microsoft.scloud/en-us/dynamics365/customer-service/automatically-create-update-records"
+                	 : currentGeo === "USE" ? "https://docs.eaglex.ic.gov/en-us/dynamics365/customer-service/automatically-create-update-records"
+                     						: "https://aka.ms/arcUciDocumentation";
+			}
+
+			var LearnMore_Hyperlink = `<a id="learn-more" href="${link}" target="_blank">{0}</a>`;
+			LearnMore_Hyperlink = LearnMore_Hyperlink.replace("{0}", parent.Xrm.Utility.getResourceString(WebResourceName, "Learn_More"));
+
+			var DisclaimerText = ConfirmMessage_Text + LearnMore_Hyperlink;
+			document.getElementById("disclaimer-string").innerHTML = DisclaimerText;
+
+			window.parent.document.getElementById("WebResource_Disclaimer").style.height = "4.3rem";
+			window.parent.document.querySelectorAll('[data-id="arc_condition_config_control-FieldSectionItemContainer"]')[0].style["border-bottom-style"] = "none";
+		}
+		</script>
+		<style>
+			.transcript-disclaimer-text-body
+			{
+				background-color:#EFEFEF !important;
+				font-family: "Segoe UI", sans-serif;
+			}
+
+			.transcript-disclaimer-text
+			{
+				padding: 10px;
+				display : table;
+			}
+
+			#msdyn_disclaimerimage
+			{
+				top: 0.175em;
+				position:relative;
+				display: table-cell;
+				padding : 0.2em;
+				font-size:inherit;
+			}
+
+			#disclamer-string-wrap
+			{
+				display: table-cell;
+			}
+
+			#disclamer-string-wrap a{
+				text-decoration: none;
+				color: "#0078D4";
+				padding-left:5px;
+			}
+		</style>
+	</head>
+	<body onload="setLocalizedStringsAndHackStyleForTranscript();" class="transcript-disclaimer-text-body" style="overflow-wrap: break-word;">
+		<div class="transcript-disclaimer-text">
+			<span id="msdyn_disclaimerimage" class="symbolFont InformationIcon-symbol"></span>
+			<span id="disclamer-string-wrap">
+				<span id="disclaimer-string"></span>
+			</span>
+		</div>
+	</body>
+</html>

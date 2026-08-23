@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+							<xsd:attribute ref="xml:space"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string"/>
+							<xsd:attribute name="name" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+							<xsd:attribute ref="xml:space"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Brand_Name" xml:space="preserve">
+    <value>Dynamics 365</value>
+    <comment>Branding for CRM.</comment>
+  </data>
+	<data name="APPOINTMENT_ACTIVITY_DELETION" xml:space="preserve">
+    <value>Dynamics 365에서 약속도 삭제하시겠습니까? 아니면 추적 해제하고 약속을 유지하시겠습니까?</value>
+    <comment>Confirmation dialog message is shown when try to untrack event.</comment>
+  </data>
+	<data name="CONFIRM_TEMPLATE_REGARDINGS_RECHECK" xml:space="preserve">
+    <value>전자 메일 템플릿을 사용하려면 관련 항목을 이 전자 메일로 설정하거나 연락처, 잠재 고객 또는 사용자에 해당하는 받는 사람을 한 명 이상 추가한 후 [다시 시도]를 클릭하십시오.</value>
+    <comment>Confirmation dialog message is shown when try to add email template.</comment>
+  </data>
+	<data name="EMAIL_ACTIVITY_DELETION" xml:space="preserve">
+    <value>Dynamics 365에서 전자 메일 활동도 삭제하시겠습니까?</value>
+    <comment>Confirmation dialog message is shown when try to untrack email.</comment>
+  </data>
+	<data name="EMAIL_TO_BE_DELETED" xml:space="preserve">
+    <value>전자 메일이 삭제됨</value>
+    <comment>Popup message shown after success untrack of email</comment>
+  </data>
+	<data name="APPT_TO_BE_DELETED" xml:space="preserve">
+    <value>Dynamics 365에서 약속이 삭제됨</value>
+    <comment>Popup message shown after success untrack of event</comment>
+  </data>
+	<data name="UNTRACK_EMAIL_FAILURE" xml:space="preserve">
+    <value>이 이메일을 추적 해제할 수 없음</value>
+    <comment>Text displayed to the user when the app is unable to set the untracked state in Exchange.</comment>
+  </data>
+	<data name="UNTRACK_APPOINTMENT_FAILURE" xml:space="preserve">
+    <value>이 약속을 추적 해제할 수 없음</value>
+    <comment>Text displayed to the user when the app is unable to set the tracked state in Exchange.</comment>
+  </data>
+	<data name="PENDING_UNTRACK" xml:space="preserve">
+    <value>이 항목은 추적 해제로 표시되어 있으며 현재 보류 중임</value>
+    <comment>Text displayed to the user when untracking is in pending untracked state.</comment>
+  </data>
+	<data name="SUCCESS_UNTRACK" xml:space="preserve">
+    <value>이 항목은 더 이상 추적되지 않음</value>
+    <comment>Text displayed to the user when untracking is in success untracked state.</comment>
+  </data>
+	<data name="PENDING_UNTRACK_AND_DELETE" xml:space="preserve">
+    <value>추적 해제 및 삭제 보류 중</value>
+    <comment>Text displayed to the user when untracking is in pending untracked+delete state.</comment>
+  </data>
+	<data name="FUTURE_APPPOINTMENT_DELETION" xml:space="preserve">
+    <value>이 시리즈의 이후 약속도 삭제하시겠습니까? 아니면 추적 해제하고 약속을 유지하시겠습니까?</value>
+    <comment>Confirmation dialog message is shown when try to untrack recurrent event.</comment>
+  </data>
+	<data name="UNFOLLOW_CONFIRMATION" xml:space="preserve">
+    <value>이 전자 메일을 팔로우 취소하시겠습니까?</value>
+    <comment>Confirmation dialog message is shown when try to unfollow email.</comment>
+  </data>
+	<data name="NO" xml:space="preserve">
+    <value>아니요</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="RETRY" xml:space="preserve">
+    <value>다시 시도</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="TRACK_FAILED" xml:space="preserve">
+    <value>이 {0}을(를) 추적할 수 없습니다.</value>
+    <comment>Popup message shown after fail track</comment>
+  </data>
+	<data name="TRACK_SUCCEEDED" xml:space="preserve">
+    <value>추적했음</value>
+    <comment>Popup message shown after success track</comment>
+  </data>
+	<data name="UNFOLLOW_SUCCEEDED" xml:space="preserve">
+    <value>팔로우 취소됨</value>
+    <comment>Popup message shown after success unfollow</comment>
+  </data>
+	<data name="UNTRACK_FOLLOWED" xml:space="preserve">
+    <value>전자 메일이 팔로우되고 있습니다. 이 전자 메일을 추적 해제하면 팔로우되지 않습니다. 이 전자 메일을 추적 해제하시겠습니까?</value>
+    <comment>Confirmation dialog message is shown when try to untrack already followed email</comment>
+  </data>
+	<data name="YES" xml:space="preserve">
+    <value>예</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="UNTRACK" xml:space="preserve">
+    <value>추적 해제</value>
+    <comment>Text used for appointment untrack button.</comment>
+  </data>
+	<data name="INSUFFICIENT_RECORD_PERMISSIONS" xml:space="preserve">
+    <value>이러한 레코드에 액세스할 수 있는 권한이 없습니다. Dynamic 365 관리자에게 문의하십시오.</value>
+    <comment>Message that being displayed if user don't have permissions for record deletion</comment>
+  </data>
+	<data name="EWS_FAILURE" xml:space="preserve">
+    <value>Exchange에 연결할 수 없음</value>
+    <comment>Message that being displayed if we were not able to perform ews operation.</comment>
+  </data>
+	<data name="DELETE" xml:space="preserve">
+    <value>삭제</value>
+    <comment>Confirm button label for deleted in Dynamics 365 action</comment>
+  </data>
+	<data name="EMAIL_IS_NOT_FOLLOWED" xml:space="preserve">
+    <value>이 전자 메일이 팔로우되지 않음</value>
+    <comment>Status text used for email engagement follow tab page when email is not followed.</comment>
+  </data>
+	<data name="FOLLOW_RIGHT_BEFORE_SEND" xml:space="preserve">
+    <value>전자 메일을 보내기 직전에 [팔로우]를 클릭하는 것이 좋습니다.</value>
+    <comment>Recommendation text used for email engagement follow tab page when email is not follow.</comment>
+  </data>
+	<data name="EMAIL_CANNOT_BE_FOLLOWED" xml:space="preserve">
+    <value>이 전자 메일을 팔로우할 수 없음</value>
+    <comment>Message that displayed when email connot be followed.</comment>
+  </data>
+	<data name="TRACK_BEFORE_FOLLOWING" xml:space="preserve">
+    <value>팔로우하기 전에 이 전자 메일을 추적해야 합니다.</value>
+    <comment>Message that explanes that email should be tracked before following.</comment>
+  </data>
+	<data name="FOLLOW_IN_PROCESS_MESSAGE" xml:space="preserve">
+    <value>있는 동안에는 이 창을 열어 두십시오 ...</value>
+    <comment>Status message that displayed on the follow MDD while following is in process.</comment>
+  </data>
+	<data name="EMAIL_WILL_BE_FOLLOWED" xml:space="preserve">
+    <value>이 전자 메일이 팔로우됨</value>
+    <comment>Email will be followed message.</comment>
+  </data>
+	<data name="DONT_EDIT_AFTER_FOLLOW" xml:space="preserve">
+    <value>전자 메일을 편집하거나 전자 메일을 팔로우한 후 받는 사람을 변경하지 않는 것이 좋습니다.</value>
+    <comment>Message that displayed after followed succeeded.</comment>
+  </data>
+	<data name="FOLLOW_ERROR" xml:space="preserve">
+    <value>이 전자 메일을 팔로우할 수 없습니다. 다시 팔로우해 보십시오. 문제가 계속되면 시스템 관리자에게 문의하십시오.</value>
+    <comment>Message that displayed if message follow failed.</comment>
+  </data>
+	<data name="UNFOLLOW_ERROR" xml:space="preserve">
+    <value>이 전자 메일을 팔로우 취소할 수 없습니다. 다시 팔로우 취소해 보십시오. 문제가 계속되면 팔로우된 전자 메일로 보내지 않도록 전자 메일을 삭제하십시오.</value>
+    <comment>Message that displayed if message unfollow failed.</comment>
+  </data>
+	<data name="FOLLOW_HELP_LINK_URL_1">
+		<value>https://go.microsoft.com/fwlink/p/?linkid=867623</value>
+		<comment>Recommendation link used for email engagement follow tab page.[Category="MoCA OWA"]</comment>
+	</data>
+	<data name="ADD_TEMPLATE_FAILED" xml:space="preserve">
+    <value>템플릿 추가 명령에 문제가 있습니다.</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_SALES_LITERATURE_FAILED" xml:space="preserve">
+    <value>영업 홍보 자료 추가 명령에 문제가 있습니다.</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_KNOWLEDGE_ARTICLE_FAILED" xml:space="preserve">
+    <value>참조 문서 추가 명령에 문제가 있습니다.</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="VIEW_ACTIVITY_FAILED" xml:space="preserve">
+    <value>활동 보기 명령에 문제가 있습니다.</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_TASK_FAILED" xml:space="preserve">
+    <value>작업 추가 명령에 문제가 있습니다.</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_APPOINTMENT_FAILED" xml:space="preserve">
+    <value>약속 추가 명령에 문제가 있습니다.</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_PHONE_CALL_FAILED" xml:space="preserve">
+    <value>전화 통화 추가 명령에 문제가 있습니다.</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="FOLLOW_FAILED" xml:space="preserve">
+    <value>팔로우 명령에 문제가 있습니다.</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="EMAIL" xml:space="preserve">
+    <value>전자 메일</value>
+    <comment>Track item type name</comment>
+  </data>
+	<data name="APPOINTMENT" xml:space="preserve">
+     <value>약속</value>
+     <comment>Track item type name</comment>
+  </data>
+</root>

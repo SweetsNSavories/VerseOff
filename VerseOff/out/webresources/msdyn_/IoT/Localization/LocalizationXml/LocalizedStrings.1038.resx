@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Az eszköz regisztrálása a háttérben fut. Folytathatja a Microsoft Dynamics 365 használatát.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Az eszközadatok lekérése a háttérben fut. Folytathatja a Microsoft Dynamics 365 használatát.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>Hiba történt a művelet végrehajtása során. Később próbálja meg újra!</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Válasszon ki legalább egy rekordot!</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Az eszközadatok lekérése előtt regisztrálja az eszközt.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Az eszközadatok lekérése a háttérben fut. Folytathatja a Microsoft Dynamics 365 használatát. Néhány eszköz nem lett regisztrálva, így az adatok nem kérhetők le.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>A kijelölt eszközök regisztrálása a háttérben fut. Folytathatja a Microsoft Dynamics 365 használatát.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Az eszközadatok lekérése a háttérben fut. Folytathatja a Microsoft Dynamics 365 használatát.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Az eszközadatok lekérése a háttérben fut. Folytathatja a Microsoft Dynamics 365 használatát.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Az új eszközök importálása a háttérben folyik. Az IoT-szolgáltató új eszközeinek megtekintéséhez navigáljon az eszközök oldalára!</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Az új eszközök importálása a háttérben folyik. Az új eszközök megtekintéséhez frissítse a listát!</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Válasszon egy rekordot!</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Nem sikerült a hitelesítés. A Power BI-csempék megtekintéséhez vagy szerkesztéséhez be kell jelentkeznie a Power BI-fiókjába.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Bejelentkezés</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Nem található egy regisztrált eszköz.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>Nem találhatók regisztrált csatlakoztatott eszközök.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>Nem található egy eszközazonosító. A Power BI-csempe megtekintéséhez vegyen fel egy eszközt.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Power BI-csempe</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Power BI-irányítópult</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Csempe</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Nem olvasható be a mentett PowerBI embedded konfigurációs fájlja</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>Hiba történt, és a testreszabása mentése nem sikerült. Hiba részletei: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>Az aktuális entitás konfigurációja nem támogatja a készülékazonosító szűrők Power BI-csempékre történő alkalmazását.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Válassza ki azt a Power BI-csempét, amelyet hozzá szeretne adni az űrlaphoz.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Power BI-csempe</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Power BI-csempe felvétele a csatlakoztatott eszközhöz.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Testreszabás közzététele</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>A Power BI-csempe az aktuális eszköz adatait jeleníti meg.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>A parancs mentésével elküldi azt a készülék(ek)re is. Folytatja?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Címke</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Tulajdonság</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Tudjon meg többet az Azure IoT Central integrációjáról, amely egy teljes mértékben felügyelt globális IoT SaaS-megoldás.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Meglévő IoT Hub integrációja vagy új telepítése, és az előre konfigurált IoT PaaS-megoldás felügyelete a saját Azure-előfizetéséből.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>Nem küldhető el a parancs. A parancs elküldéséhez egy IoT-értesítést kell társítani ehhez a rekordhoz.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Az eszköz regisztrációja a háttérben folyik. A frissített regisztrációs állapot megtekintéséhez frissítse az oldalt!</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>Az eszköz regisztrációja folyamatban van. Szeretné újra regisztrálni ezt az eszközt?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Igen</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Nem</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>Az eszköz már regisztrálva van. Szeretné újra regisztrálni ezt az eszközt?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Eszköz regisztrálása</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>A kiválasztott eszközök regisztrációja folyamatban van. A frissített regisztrációs állapot megtekintéséhez frissítse az oldalt!</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Parancs küldése a következőnek: {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Parancs küldése</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0} elküldve a következőnek: {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Parancs elküldve a következőnek: {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>A(z) {0} parancsai</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Csatlakoztatott eszközök</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>Parancs elküldve.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Parancs állapotának megtekintése</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>A parancs elküldése sikertelen.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Meg kell adni a parancsot vagy az üzenetet.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Az eszköz nem csatlakoztatható.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Eszközök</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Eszköz csatlakoztatása ehhez: {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Eszköz elérési útja</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Kulcs elérési útja</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Nem kapcsolódnak előre definiált parancsok az eszközhöz. Az előre definiált parancsok megtekintéséhez konfigurálja az eszközkategóriát!</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>Az IoT-javaslatok funkció engedélyezve van. A konfiguráció módosításainak érvénybe lépése a modell betanításához 24 óráig is eltarthat. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Erősítse meg az IoT-javaslatok szolgáltatás letiltását!</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>Az IoT-javaslatok letiltásának megerősítése</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>A szolgáltatás engedélyezésével elfogadja, hogy ez a szolgáltatás előzetes verzióként érhető el, és elfogadja a következőt: {0}.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Előzetes verzió feltételei</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>További információk</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Egyéni eszköznézet</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Adjon meg egy érvényes IoT-eszközt a folytatáshoz.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>A Számláló az egyetlen rendelkezésre álló összesítési lehetőség az eszközesemények esetében.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>Legfeljebb 6 csempét lehet létrehozni az aktuális készülékhez.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Ellenőrizze, hogy a kiválasztott mérés szerepel-e az aktuális készülék jelentett mérései között.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Csatlakoztatott készülék leolvasásai</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Power BI-konfiguráció gomb</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Sikerült elküldeni a parancsot a kiszolgálónak. A parancs állapotának megtekintéséhez szinkronizálja az eszközt.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Csatlakozási problémák miatt nem lett elküldve a parancs a kiszolgálónak, a rendszer az adott eszköz következő szinkronizálásakor küldi el a parancsot.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>Csak online módban lehet adatokat lekérni.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>A művelet végrehajtásához internetkapcsolat szükséges.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>A művelet végrehajtásához szinkronizálnia kell ezt a rekordot.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Sikerült elküldeni az eszközregisztrációt. A regisztráció állapotát a következő szinkronizáláskor vagy online módra váltáskor tekintheti meg.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Csatlakozási problémák miatt nem lett elküldve az eszközregisztráció a kiszolgálónak. A rendszer az adott eszköz következő szinkronizálásakor küldi el a regisztrációt.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Sikerült elküldeni az Eszközadatok lekérése kérést. Az eredmény az Eszköz előzményei lapon fog megjelenni az adott eszköz következő szinkronizálása után.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>A parancsok elküldéséhez internetkapcsolat szükséges.</value>
+  </data>
+</root>

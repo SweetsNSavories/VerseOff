@@ -1,0 +1,422 @@
+.listView-Name {
+    font-family: "SegoeUI-Semibold","Segoe UI Semibold","Segoe UI Regular","Segoe UI";
+    fill: #333333;
+    font-size: 1.00rem;
+}
+
+
+.listView-EmailAddress {
+    font-family: "Segoe UI Regular","SegoeUI","Segoe UI";
+    fill: #666666;
+    font-size: 1.00rem;
+    padding-bottom: 0.25rem;
+}
+
+.listView-GetIntroduced {
+    font-family: "Segoe UI Regular","SegoeUI","Segoe UI";
+    font-size: 1.00rem;
+    color: #1160B7;
+    background-color: transparent;
+    border-style: none;
+    padding: 0px;
+}
+
+.listView-ConnectionDetailsWithImage {
+    margin-top: 1.00rem;
+    padding-top: 1.00rem;
+    display: flex;
+    flex-flow: row;
+    position: relative;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #d8d8d8;
+}
+
+.listView-ConnectionDetails {
+    padding-left: 0.75rem;
+    padding-right: 1.00rem;
+    flex: 1;
+    white-space: initial;
+    word-break: break-word;
+}
+
+.listView-ConnectionImage {
+    border-radius: 1.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.listView-ConnectionImageContainer {
+    display: flex;
+    align-items: center;
+}
+
+.listView-ConnectionImageInitials {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 1.25rem;
+    line-height: 2.5rem;
+    text-align: center;
+    font-size: 1.00rem;
+    font-family: "Segoe UI Regular","SegoeUI","Segoe UI";
+    color: white;
+    cursor: default;
+}
+
+.listView-Strong {
+    fill: #358717;
+}
+
+.listView-Fair {
+    fill: #e83d0f;
+}
+
+.listView-Weak {
+    fill: #bf0900;
+}
+
+.listView-Grey {
+    fill: #949494;
+}
+
+.graphView-GetIntroduced {
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    font-size: 1rem;
+    font-family: "Segoe UI Regular","SegoeUI","Segoe UI";
+    background-color: transparent;
+    border-style: none;
+    color: #333333;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+    .graphView-GetIntroduced:hover {
+        background-color: #d8d8d8;
+    }
+
+    .graphView-GetIntroduced:active {
+        background-color: #d8d8d8;
+    }
+
+.jobImg:before {
+    content: '\E821';
+    font-family: 'Dyn CRM Symbol';
+    color: #333333;
+    margin-right: 0.75rem;
+}
+
+.emailImg:before {
+    content: '\EF61';
+    font-family: 'Dyn CRM Symbol';
+    margin-right: 0.75rem;
+}
+
+.phoneImg:before {
+    content: '\E717';
+    font-family: 'Dyn CRM Symbol';
+    color: #333333;
+    margin-right: 0.75rem;
+}
+
+.mobileImg:before {
+    content: '\E8EA';
+    font-family: 'Dyn CRM Symbol';
+    color: #333333;
+    margin-right: 0.75rem;
+}
+
+.listViewButton:before {
+    content: '\E8FD';
+    font-family: 'Dyn CRM Symbol';
+    font-size: 1.00rem;
+}
+
+.graphViewButton:before {
+    content: '\ECA6';
+    font-family: 'Dyn CRM Symbol';
+    font-size: 1.00rem;
+}
+
+.emailSentIcon:after {
+    content: '\ED81';
+    font-family: 'Dyn CRM Symbol';
+    color: #333333;
+    padding-left: 0.5rem;
+}
+
+.emailMissingIcon:before {
+    content: '\ED80';
+    font-family: 'Dyn CRM Symbol';
+    color: #9B9B9B;
+}
+
+.linkText {
+    cursor: pointer;
+    color: #2266E3;
+}
+
+.noConnectionsIcon:before {
+    content: '\F0B9';
+    font-family: 'Dyn CRM Symbol';
+    color: #9B9B9B;
+}
+
+.flyoutActive {
+    background-color: #d8d8d8;
+}
+
+.emailEditor-container {
+    padding-left: 1.00rem;
+    padding-right: 1.00rem;
+    padding-top: 0.5rem;
+    padding-bottom: 1.00rem;
+    flex-flow: column;
+    max-width: 27rem;
+    z-index: 1;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+    top: 0px;
+    left: 0px;
+    /* To make the email editor fit the available width */
+    right: 0px;
+}
+
+.emailEditor-titleContainer {
+    padding-bottom: 0.5rem;
+    line-height: 2.5rem;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.emailEditor-sendMessage {
+    font-family: "Segoe UI Regular","SegoeUI","Segoe UI";
+    font-size: 1.00rem;
+    color: #666666;
+}
+
+.iconBox {
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-style: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    position: relative;
+    display: inline-block;
+}
+
+    .iconBox:hover {
+        background-color: #e2e2e2;
+        cursor: pointer;
+    }
+
+    .iconBox:active {
+        background-color: #e2e2e2;
+        cursor: pointer;
+    }
+
+.emailEditor-cancelSymbol {
+    font-family: 'Dyn CRM Symbol';
+    font-size: 1.00rem;
+}
+
+    .emailEditor-cancelSymbol:before {
+        content: '\E711';
+    }
+
+.emailEditor-toField {
+    display: inline-block;
+    width: 100%;
+    overflow-x: auto;
+    font-family: "SegoeUI-Semibold","Segoe UI Semibold","Segoe UI Regular","Segoe UI";
+    font-size: 1.00rem;
+    color: #333333;
+    line-height: 2.5rem;
+}
+
+.emailEditor-p {
+    height: 15rem;
+    border: 1px solid #d8d8d8;
+    padding: 0.5rem;
+    background-color: white;
+    font-family: "Segoe UI Regular","SegoeUI","Segoe UI";
+    font-size: 1.00rem;
+    color: #333333;
+    white-space: normal;
+    overflow-y: auto;
+}
+
+    .emailEditor-p:empty:before {
+        content: attr(data-placeholder);
+        color: #666666;
+    }
+
+.emailEditor-buttons {
+    padding-top: 1.00rem;
+    display: flex;
+    justify-content: flex-end;
+}
+.emailEditor-buttonsRTL {
+    padding-top: 1.00rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.emailEditor-sendButton {
+    padding-left: 1.00rem;
+    padding-right: 1.00rem;
+    height: 2.5rem;
+    background-color: #3b79b7;
+    border: none;
+    color: white;
+    font-size: 1.00rem;
+    font-family: "Segoe UI Regular","SegoeUI","Segoe UI";
+    min-width: 6.00rem;
+}
+
+    .emailEditor-sendButton:hover {
+        background-color: #25477a;
+        border: none;
+        cursor: pointer;
+    }
+
+    .emailEditor-sendButton:active {
+        background-color: #25477a;
+        outline: 1px solid #25477a;
+        border: 1px solid white;
+        cursor: pointer;
+    }
+
+    .emailEditor-sendButton:disabled {
+        color: #666666;
+        background-color: #efefef;
+        cursor: not-allowed;
+    }
+
+.emailEditor-openFormButton {
+    margin-left: 0.5rem;
+    padding-left: 1.00rem;
+    padding-right: 1.00rem;
+    height: 2.5rem;
+    color: #3b79b7;
+    border: 1px solid #3b79b7;
+    background-color: white;
+    font-size: 1.00rem;
+    font-family: "Segoe UI Regular","SegoeUI","Segoe UI";
+    min-width: 6.00rem;
+}
+
+.emailEditor-openFormButton:hover {
+    background-color: #25477a;
+    border: 1px solid #25477a;
+    cursor: pointer;
+    color: white;
+}
+
+.emailEditor-openFormButton:active {
+    background-color: #25477a;
+    outline: 1px solid #25477a;
+    border: 1px solid white;
+    cursor: pointer;
+    color: white;
+}
+
+.loadingConnectionsIcon:before {
+    content: '\E821';
+    font-family: 'Dyn CRM Symbol';
+    color: #9B9B9B;
+}
+
+.errorGettingConnectionsIcon:before {
+    content: '\EA39';
+    font-family: 'Dyn CRM Symbol';
+    color: #9B9B9B;
+}
+
+.connectionStrengthImg {
+    position: relative;
+    display: inline-block;
+    margin:3px;
+}
+
+.iconBox .imgTitle,
+.connectionStrengthImg .imgTitle {
+    font-family: "Segoe UI";
+    font-size: 12px;
+    line-height: 22px;
+    padding: 4px;
+    background-color: #ffffff;
+    visibility: hidden;
+    border: 1px solid black;
+    color: #323130;
+    position: absolute;
+    z-index: 1;
+}
+
+.connectionStrengthImg:focus {
+    outline: 1px dotted black;
+    outline-offset: 1px;
+}
+
+.connectionStrengthImg:focus .imgTitle,
+.connectionStrengthImg:active .imgTitle,
+.connectionStrengthImg:hover .imgTitle {
+    visibility: visible;
+    word-wrap: break-word;
+    top: -5px;
+    right: 105%;
+}
+
+.iconBox:focus .imgTitle,
+.iconBox:hover .imgTitle {
+    visibility: visible;
+    word-wrap: break-word;
+    top: -5px;
+    right: 105%;
+}
+
+.emptyHeadingDiv {
+    font-family: "Segoe UI Semibold"; 
+    font-weight: 600; 
+    font-size: 14px; 
+    line-height: 20px; 
+    margin-bottom: 8px; 
+    color:#323130
+}
+
+.emptyContentDiv{
+    font-family: "Segoe UI Semibold"; 
+    font-weight: 400; 
+    font-size: 14px; 
+    line-height: 20px; 
+    margin-bottom: 16px; 
+    display: inline;
+    color:#605E5C
+}
+
+@media screen and (-ms-high-contrast: white-on-black) {
+    .emailEditor-sendButton {
+        border: 1px solid  #fff ;
+    }
+}
+@media screen and (-ms-high-contrast: black-on-white) {
+    .emailEditor-sendButton {
+        border: 1px solid  #000 ;
+    }
+}
+@media screen and (-ms-high-contrast: white-on-black) {
+    .graphView-GetIntroduced {
+        border: 1px solid  #fff ;
+    }
+}
+@media screen and (-ms-high-contrast: black-on-white) {
+    .graphView-GetIntroduced {
+        border: 1px solid  #000 ;
+    }
+}

@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Trebuie să specificați o oră de sfârșit care să fie ulterioară orei de început.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Trebuie să specificați o oră de sfârșit care să fie anterioară orei de început.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Câmpul Dată de început nu poate fi gol.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Câmpul Dată de sfârșit nu poate fi gol.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0} este obligatoriu.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Subiectul este obligatoriu.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Subiectul este necesar.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Șablonul este necesar.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Ora de început este necesară.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Ora de sfârșit este necesară.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Entitate nouă - {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Campanie (șablon)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Trebuie să salvați modificările înainte de a distribui această activitate.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Activitatea de campanie se poate distribui numai o singură dată.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Selectați un tip de canal, salvați formularul și apoi încercați din nou.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Această opțiune este disponibilă numai când s-a ales metoda de contact. În acest formular nu este disponibilă o metodă de contact. Activitatea nu se poate distribui. Contactați administratorul {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>E-mailurile directe prin îmbinarea corespondenței sunt dezactivate. Activitatea nu se poate distribui. Contactați administratorul {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Capabilitatea de distribuire nu este disponibilă pentru canalul selectat</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>Îmbinarea corespondenței nu este disponibilă în clientul web {#Brand_CRM}. Pentru a efectua îmbinarea corespondenței, trebuie să utilizați {#Brand_CRM_Outlook_Short}.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Imposibil de distribuit această activitate de campanie, deoarece nu are liste de marketing asociate. Asociați liste de marketing cu această activitate de campanie și încercați din nou.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Remediați toate avertismentele și erorile din formular.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Nu se poate distribui această activitate de campanie. Contactați administratorul {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Eliminați {0}</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Eliminați cele {0} {1} selectate din campanie?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Imposibil de creat campanie rapidă, deoarece în pagina curentă nu s-au găsit înregistrări.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Nu aveți posibilitatea să creați o campanie rapidă pentru mai multe liste de marketing simultan. Selectați o singură listă de marketing.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Această opțiune nu este disponibilă pentru vizualizarea curentă. Nu toate vizualizările funcționează cu opțiunea {0}. Selectați o altă vizualizare sau o altă opțiune Campanie rapidă și încercați din nou.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Imposibil de rulat campaniile rapide dintr-o listă de marketing inactivă. Activați lista de marketing sau selectați o altă listă de marketing și încercați din nou.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Această opțiune nu este disponibilă pentru vizualizarea curentă. Selectați o altă opțiune Campanie rapidă și încercați din nou.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Proprietarul este necesar.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Coada este necesară.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Pentru înregistrările selectate</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Pentru toate înregistrările din pagina curentă</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Pentru toate înregistrările din toate paginile</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Această acțiune din panglică nu este acceptată.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Trebuie să selectați una sau mai multe înregistrări înainte de a putea efectua această acțiune.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Nu sunt permise mai mult de 50 de înregistrări pentru această operațiune</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Aveți posibilitatea să efectuați această acțiune numai pentru înregistrări de același tip.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Procesare. Așteptați...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>S-a produs o eroare. Acțiunea selectată nu s-a terminat pentru una sau mai multe înregistrări.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Eliminați {0}</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Găsiți membri de eliminat în funcție de criteriile de căutare.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Găsiți membri de adăugat în funcție de criteriile de căutare.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Evaluați care membri se păstrează în lista de marketing în funcție de criteriile de căutare. Actualizați lista de marketing.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Trebuie să selectați înregistrări pentru a continua</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Eliminare</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Adăugare</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Cont</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Persoană de contact</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Client potențial</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Evaluare</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Eliminați cele {0} {1} selectate din listă?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Confirmare pentru copierea unei liste de marketing în altă listă de marketing</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Ați selectat listele de marketing care să fie copiate în altă listă de marketing.</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Această operațiune va adăuga toți membrii listei de marketing selectate în lista de marketing țintă.</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Modificările dvs. nu sunt salvate. Salvați modificările și încercați din nou.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>În curs de procesare...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Așteptați cât timp este procesată solicitarea dvs...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Nu se poate crea campania rapidă</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Nume: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Activitate: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Domeniu de aplicare: pentru înregistrările selectate ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Domeniu de aplicare: pentru toate înregistrările din pagina curentă ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Domeniu de aplicare: pentru toate înregistrările din toate paginile</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Proprietar: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Numele campaniei rapide este necesar.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Tipul de activitate este necesar.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Proprietarii înregistrărilor incluse în campania rapidă</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Eu</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Această campanie nu poate fi dezactivată, deoarece există activități de campanie deschise și asociate cu aceasta. Închideți activitățile de campanie și încercați din nou.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>Nu putem dezactiva {0} din campaniile selectate, deoarece ele au una sau mai multe activități de campanie deschise și asociate cu ele. Închideți activitățile de campanie care sunt deschise și încercați din nou.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>Conținutul e-mailului este prea mare pentru acest expert. Creați-l ca șablon de e-mail și selectați șablonul respectiv aici.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Campaniile rapide nu acceptă editarea în bloc.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Lista este blocată</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>Listele {0} sunt blocate</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Acțiunea nu se poate efectua în lista dinamică.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Nu se poate asocia un element inactiv cu o Campanie.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Nu se poate asocia un element inactiv cu o Campanie.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Referința la atașare nu a putut fi găsită.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>Destinatarul e-mailului fie nu există, fie adresa de e-mail pentru destinatarul e-mailului nu este validă.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Atașarea fie nu este un tip valid, fie este prea mare. Nu poate fi încărcată sau descărcată.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Destinatarul este marcat ca „Nu se trimite fax”.</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Destinatar de e-mail nevalid.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Eroare în acțiune - șablon de e-mail.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Eroare în acțiune - trimiteți e-mail.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Eroare în acțiune - atașare notă.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Eroare în acțiune - creați notă.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Eroare în acțiune - nu se poate trata activitatea.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Eroare în acțiune - tratați activitatea.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Eroare în acțiune - atașare activitate.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Eroare în acțiune - creați activitate.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Acest membru al listei de marketing nu a fost contactat, deoarece a primit anterior această comunicare.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Expeditorul nu are o adresă de e-mail la înregistrarea părții</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>Nu a fost specificată nicio adresă de e-mail, iar utilizatorul apelant nu are setată o adresă de e-mail</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>E-mailul nu a fost trimis din cauza preferințelor de comunicare ale destinatarului sau a unei probleme privind adresa de e-mail a acestuia.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Tip nevalid de adresă a clientului.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>A apărut o eroare neașteptată în timpul îmbinării corespondenței.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Operațiunea de îmbinare a corespondenței a fost anulată de utilizator.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Acest client este filtrat din cauza lipsei adresei de e-mail.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Destinatar exclus, deoarece este inactiv.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Operațiunea în bloc aferentă regulilor de flux de lucru lipsesc.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>Destinatar exclus din cauza setărilor antispam sau a preferințelor de comunicare ale destinatarului.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Nu poate fi specificat un participant pentru distribuția rezervării.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Nu poate fi specificat un destinatar pentru distribuția rezervării</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Nu poate fi specificat un organizator pentru distribuția rezervării</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Tipul de membru listă nu este acceptat.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Ați încercat să efectuați o operațiune neautorizată.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>Utilizatorul nu are privilegiile necesare.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Utilizatorul nu are privilegiul de a efectua această acțiune.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Adresă de e-mail nevalidă. Pentru mai multe informații, luați legătura cu administratorul de sistem.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Din formular lipsesc următoarele elemente: {0}. Funcționalitățile vor fi afectate.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Nu se pot crea oportunități pentru o listă de marketing care vizează acest tip de entitate.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Există deja o solicitare în curs, încercați din nou după un timp.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Cerere remisă. Așteptați până când pagina redirecționează către lista copiată.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>Nou {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Completați acest formular pentru a crea {0} pentru membrii pe care i-ați selectat în lista de marketing. Pentru a adăuga acest {0} ca nou {0} la înregistrarea fiecărui membru, faceți clic pe Distribuire.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Salvare reușită</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

@@ -1,0 +1,1493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddToQueueDialog_NoQueueSelected" xml:space="preserve">
+    <value>이 레코드를 추가할 큐를 선택하지 않았습니다. 큐를 선택하고 다시 시도하십시오.</value>
+    <comment>The above error message is displayed when the user has selected no queue to add the current item to [Category="Servicing"].</comment>
+  </data>
+  <data name="AssignToQueue_noSelectedUser" xml:space="preserve">
+    <value>현재 이 사용자의 레코드를 할당하기 위해 선택한 사용자가 없습니다. 할당할 사용자를 선택하고 다시 시도하십시오.</value>
+  </data>
+  <data name="Dialog_AssignQueue_Description_Plural" xml:space="preserve">
+    <value>{0}개의 항목을 선택했습니다. 해당 항목을 누구에게 할당하시겠습니까?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_AssignQueue_Description_Single" xml:space="preserve">
+    <value>{0}개의 항목을 선택했습니다. 해당 항목을 누구에게 할당하시겠습니까?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is "1".</comment>
+  </data>
+  <data name="Dialog_QueueItemRoute_Description_Plural" xml:space="preserve">
+    <value>{0}개 항목을 선택했습니다. 라우팅 방법을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_QueueItemRoute_Description_Single" xml:space="preserve">
+    <value>1개 항목을 선택했습니다. 라우팅 방법을 선택하십시오.</value>
+  </data>
+  <data name="Dialog_RejectEmail_Title" xml:space="preserve">
+    <value>기본 전자 메일 거부</value>
+  </data>
+  <data name="Dialog_RejectEmail_Description_Plural" xml:space="preserve">
+    <value>{0}개의 큐의 기본 전자 메일 주소를 거부하시겠습니까?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_RejectEmail_Description_Single" xml:space="preserve">
+    <value>{0}개의 큐의 기본 전자 메일 주소를 거부하시겠습니까?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_RejectEmail_Text" xml:space="preserve">
+    <value>이 작업을 수행하면 선택한 큐의 기본 이메일 주소가 거부됩니다.</value>
+  </data>
+  <data name="Dialog_ApproveEmail_Title" xml:space="preserve">
+    <value>기본 전자 메일 승인</value>
+  </data>
+  <data name="Dialog_ApproveEmail_Description_Plural" xml:space="preserve">
+    <value>{0}개의 큐의 기본 전자 메일 주소를 승인하시겠습니까?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_ApproveEmail_Description_Single" xml:space="preserve">
+    <value>{0}개의 큐의 기본 전자 메일 주소를 승인하시겠습니까?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_ApproveEmail_Text" xml:space="preserve">
+    <value>이렇게 하면 Microsoft Exchange 또는 Microsoft Dynamics 365에 구성된 다른 전자 메일 시스템의 데이터를 공유하는 데 동의하는 것입니다. Microsoft Dynamics 365는 아래의 '개인 정보 계약' 버튼을 클릭하여 액세스할 수 있는 별도의 개인 정보 계약을 따릅니다.</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>오류가 발생했습니다. 선택한 작업이 하나 이상의 레코드에 대해 완료되지 않습니다.</value>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage" xml:space="preserve">
+    <value>Exchange 구독을 사용하는 Office 365 고객의 경우 Exchange와 Dynamics 365의 통합을 구성하고 Dynamics 365 App for Outlook을 사용하도록 설정합니다.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 1.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage1" xml:space="preserve">
+    <value>설정을 시작하려면 다음을 읽고 동의하십시오.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 2.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage2" xml:space="preserve">
+    <value>자동 구성을 활성화하면 외부 시스템에서 데이터를 공유하는 데 동의하는 것입니다. 외부 시스템에서 Microsoft Dynamics 365으로 가져온 데이터는 여기에 있는 개인정보취급방침이 적용됩니다</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 3.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage3" xml:space="preserve">
+    <value>적용됩니다.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 4.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage4" xml:space="preserve">
+    <value>자세한 내용은 다음을 참조하십시오.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 5.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage5" xml:space="preserve">
+    <value>설명서.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 6.</comment>
+  </data>
+  <data name="SMBAdvSettings_ProgressIndicatorMessage" xml:space="preserve">
+    <value>처리 중</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ErrorStrings" xml:space="preserve">
+    <value>사용자 또는 팀을 선택하십시오</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ReassigningRecords" xml:space="preserve">
+    <value>레코드를 다시 할당하는 중</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeactivationOfDefaultView" xml:space="preserve">
+    <value>기본 보기는 비활성화할 수 없습니다.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeleteConfirmation" xml:space="preserve">
+    <value>이 보기를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeletionOfDefaultView" xml:space="preserve">
+    <value>다른 보기를 기본 보기로 지정할 때까지 기본 보기를 삭제할 수 없습니다.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeletionOfSystemDefinedView" xml:space="preserve">
+    <value>시스템 정의 보기는 삭제할 수 없습니다.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_SetAsDefaultForDeactivatedView" xml:space="preserve">
+    <value>활성 보기만 기본 보기로 설정할 수 있습니다.</value>
+  </data>
+  <data name="SMBAdvSettings_UnknownErrorMessage" xml:space="preserve">
+    <value>오류가 발생했습니다. 선택한 작업이 하나 이상의 레코드에 대해 완료되지 않습니다.</value>
+  </data>
+  <data name="UserErrorExecutingAssociations" xml:space="preserve">
+    <value>사용자와 역할의 연결을 업데이트하는 요청을 실행 중 오류가 발생했습니다.</value>
+  </data>
+  <data name="TeamErrorExecutingAssociations" xml:space="preserve">
+    <value>팀과 역할의 연결을 업데이트하는 요청을 실행 중 오류가 발생했습니다.</value>
+  </data>
+  <data name="Dialog_QueueItemPick_Description_Plural" xml:space="preserve">
+    <value>항목 {0}개를 선택했습니다.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_QueueItemPick_Description_Single" xml:space="preserve">
+    <value>항목 1개를 선택했습니다.</value>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="Button_Label_Release" xml:space="preserve">
+    <value>해제</value>
+    <comment>Label for the Release button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Button_Label_Remove" xml:space="preserve">
+    <value>제거</value>
+  </data>
+  <data name="Dialog_QueueItemRelease_Label_Single" xml:space="preserve">
+    <value>다른 구성원이 선택할 수 있도록 항목이 다시 큐 담당자에게 할당됩니다.</value>
+  </data>
+  <data name="Dialog_QueueItemRelease_Title" xml:space="preserve">
+    <value>큐 항목 해제</value>
+  </data>
+  <data name="Dialog_QueueItemRemoveNew_Description_Plural" xml:space="preserve">
+    <value>선택한 {0}개의 항목을 큐에서 제거하시겠습니까?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemRemoveNew_Description_Single" xml:space="preserve">
+    <value>선택한 항목을 큐에서 제거하시겠습니까?</value>
+    <comment>instruction text.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemRemove_Title" xml:space="preserve">
+    <value>큐 항목 제거</value>
+    <comment>Dialog title for the Queue Item Remove dialog. [Category="Servicing"]</comment>
+  </data>
+  <data name="SMBAdvSettings_ActionOnMultipleRecordsFailed" xml:space="preserve">
+    <value>오류가 발생했습니다. 선택한 작업이 하나 이상의 레코드에 대해 완료되지 않습니다.</value>
+  </data>
+  <data name="SMBAdvSettings_ActivatedBPFDeletionError" xml:space="preserve">
+    <value>활성화된 BPF는 삭제할 수 없습니다</value>
+    <comment>Message that needs to be displayed when user tries to delete the activated BPF</comment>
+  </data>
+  <data name="SMBAdvSettings_GenericErrorOccurred" xml:space="preserve">
+    <value>예기치 않은 오류가 발생했습니다. 다시 시도하십시오. 문제가 계속되면 Microsoft Dynamics 365 커뮤니티에서 솔루션을 확인하거나 조직의 관리자에게 문의하십시오. 자세한 내용은 Microsoft 기술 지원부에 문의하여 오류에 대한 기술 정보를 제공하십시오.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_NoRecordSelected" xml:space="preserve">
+    <value>선택된 레코드가 없음</value>
+    <comment>Message when no user is selected from grid and Enabling or Disabling of User is attempted.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ChangeManager_HeaderDescription" xml:space="preserve">
+    <value>{0} 사용자를 선택했습니다. 선택한 {0} 사용자에 지정할 관리자를 지정하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_ChangeManager_HeaderDescription" xml:space="preserve">
+    <value>{0} 사용자를 선택했습니다. 선택한 {0} 사용자에 지정할 관리자를 지정하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_JoinTeam_HeaderDescription" xml:space="preserve">
+    <value>선택한 {0} 사용자에 적용할 팀을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_JoinTeam_HeaderDescription" xml:space="preserve">
+    <value>선택한 {0} 사용자에 적용할 팀을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>선택한 {0} 사용자에 적용할 역할을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>선택한 {0} 사용자에 적용할 역할을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>선택한 {0} 팀에 적용할 역할을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Teams_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>선택한 {0} 팀에 적용할 역할을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="EditTeam_UpdateSuccessful_Notification" xml:space="preserve">
+    <value>팀이 성공적으로 업데이트되었습니다.</value>
+  </data>
+  <data name="ExcelWordTemplate_FileUploadErrorLabel" xml:space="preserve">
+    <value>서버에 파일을 업로드하는 동안 오류가 발생했습니다.</value>
+  </data>
+  <data name="ExcelWordTemplate_FileErrorLabel" xml:space="preserve">
+    <value>잘못된 파일 형식입니다. 확장명이 xlsx, docx인 파일을 선택하십시오</value>
+  </data>
+  <data name="ExcelWordTemplate_OkButtonLabel" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="ExcelWordTemplate_UploadLabel" xml:space="preserve">
+    <value>업로드</value>
+  </data>
+  <data name="ExcelWordTemplate_NextLabel" xml:space="preserve">
+    <value>다음</value>
+  </data>
+  <data name="ExcelWordtemplate_DoneLabel" xml:space="preserve">
+    <value>완료됨</value>
+  </data>
+  <data name="ExcelWordTemplate_SelectEntityLabel" xml:space="preserve">
+    <value>엔터티를 선택하십시오</value>
+  </data>
+  <data name="ExcelWordTemplate_SelectTemplateLabel" xml:space="preserve">
+    <value>템플릿 선택</value>
+  </data>
+  <data name="ExcelWordTemplate_TabErrorLabel" xml:space="preserve">
+    <value>예기치 않은 탭 이름:</value>
+  </data>
+  <data name="SubjectTreeTemplate_OkButtonLabel" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="SubjectTreeTemplate_SubjectEmptyTitleError" xml:space="preserve">
+    <value>주제 제목을 입력하십시오.</value>
+  </data>
+  <data name="SWITCHSCENARIO_NOTE" xml:space="preserve">
+    <value>경고: 시나리오를 전환하면 이전 시나리오의 일부였던 데이터가 모두 손실될 수 있습니다. 또한 새 시나리오의 샘플 데이터는 다를 수 있습니다.</value>
+  </data>
+  <data name="SWITCHSCENARIO_ALL_SCENARIOS" xml:space="preserve">
+    <value>모든 시나리오</value>
+  </data>
+  <data name="SWITCHSCENARIO_FIELD_SERVICE" xml:space="preserve">
+    <value>Field Service</value>
+  </data>
+  <data name="SWITCHSCENARIO_MARKETING" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+  <data name="SWITCHSCENARIO_PROJECT_SERVICE" xml:space="preserve">
+    <value>Project Service Automation</value>
+  </data>
+  <data name="SWITCHSCENARIO_SUCCESS_NOTIFICATION" xml:space="preserve">
+    <value>작업 완료됨</value>
+  </data>
+  <data name="SWITCHSCENARIO_SALES" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="SWITCHSCENARIO_SERVICE" xml:space="preserve">
+    <value>Customer Service</value>
+  </data>
+  <data name="SMBAdvSettings_EmailSetup_TestAndEnableAsyncJobSubmitted" xml:space="preserve">
+    <value>선택한 레코드에 대해 백그라운드에서 테스트 및 사용이 실행되고 있습니다.</value>
+  </data>
+  <data name="SMBAdvSettings_NewDialog_EmptyBPFName" xml:space="preserve">
+    <value>이름을 입력하십시오.</value>
+  </data>
+  <data name="SMBAdvSettings_NewDialog_EmptyEntityName" xml:space="preserve">
+    <value>엔터티를 선택하십시오</value>
+  </data>
+  <data name="SMBAdvSettings_Team_AddMembers_HeaderDescription" xml:space="preserve">
+    <value>{0} 팀에 구성원을 추가하도록 선택했습니다. [사용자] 상자 옆의 [조회]를 클릭하여 추가할 구성원을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Teams_AddMembers_HeaderDescription" xml:space="preserve">
+    <value>{0} 팀에 구성원을 추가하도록 선택했습니다. [사용자] 상자 옆의 [조회]를 클릭하여 추가할 구성원을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMembers_HeaderDescription" xml:space="preserve">
+    <value>{0} 팀에서 구성원을 제거하도록 선택했습니다. [사용자] 상자 옆의 [조회]를 클릭하여 추가할 구성원을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMultipleMembers_HeaderDescription" xml:space="preserve">
+    <value>{0} 팀에서 구성원을 제거하도록 선택했습니다. [사용자] 상자 옆의 [조회]를 클릭하여 추가할 구성원을 선택하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ChangeManager_SuccessNotification" xml:space="preserve">
+    <value>작업 완료됨</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_JoinTeams_SuccessNotification" xml:space="preserve">
+    <value>작업 완료됨</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ManageRoles_SuccessNotification" xml:space="preserve">
+    <value>작업 완료됨</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ReassignRecords_SuccessNotification" xml:space="preserve">
+    <value>작업 완료됨</value>
+  </data>
+  <data name="SMBAdvSettings_Team_AddMembers_SuccessNotification" xml:space="preserve">
+    <value>작업 완료됨</value>
+  </data>
+  <data name="SMBAdvSettings_Team_ManageRoles_SuccessNotification" xml:space="preserve">
+    <value>작업 완료됨</value>
+  </data>
+  <data name="SMBAdvSettings_Team_ReassignRecords_SuccessNotification" xml:space="preserve">
+    <value>작업 완료됨</value>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMembers_SuccessNotification" xml:space="preserve">
+    <value>작업 완료됨</value>
+  </data>
+  <data name="SMBAdvSettings_FormFactorOrDeviceNotSupportedMessage" xml:space="preserve">
+    <value>이 폼 팩터 또는 장치의 고급 설정 구성은 지원하지 않습니다.</value>
+  </data>
+  <data name="SMBAdvSettings_ManageRoles_TableHeader" xml:space="preserve">
+    <value>역할 이름</value>
+  </data>
+  <data name="Dialog_QueueItemReleaseNew_Description_Plural" xml:space="preserve">
+    <value>선택한 {0}개의 항목을 해제하시겠습니까?</value>
+    <comment>&gt;{NumberedPlaceholder="{0}"}. Placeholder 0 is number.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemReleaseNew_Description_Single" xml:space="preserve">
+    <value>선택한 항목을 해제하시겠습니까?</value>
+    <comment>instruction text.[Category="Servicing"]</comment>
+  </data>
+  <data name="AlertDialog_Text_Territory_Warning" xml:space="preserve">
+    <value>사용자의 지역을 변경하려고 합니다. 이 경우 이전에 할당된 지역에서 사용자가 제거됩니다. 계속하시겠습니까?</value>
+  </data>
+  <data name="Goal_Recalculate_Notification" xml:space="preserve">
+    <value>데이터 롤업은 시간이 오래 걸릴 수 있습니다. 계속하려면 [확인]을 클릭하십시오.</value>
+    <comment>Notification to be shown after click of Goal Recalculate</comment>
+  </data>
+  <data name="Goal_Recalculate_DialogTitle" xml:space="preserve">
+    <value>다시 계산 확인</value>
+    <comment>Confirm recalculation</comment>
+  </data>
+  <data name="GoalDateValidationErrorMessage" xml:space="preserve">
+    <value>이 목표에 대해 지정한 기간이 잘못되었습니다. 시작 날짜는 끝 날짜보다 이전이거나 같아야 합니다.</value>
+    <comment>Preview Records button text on the advanced find page used in the Goal Rollup Query form. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Text_GoalFormNotification">
+    <value>다음 오류 발생:</value>
+    <comment>Error message shown on goal form Notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="GoalFormNotification_HyperLinkText">
+    <value>목표 열기</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_ActiveChildGoal_Deactivate_Warning">
+    <value>현재 목표에 활성 하위 목표가 하나 이상 있습니다. 활성 하위 목표가 있으면 목표를 닫지 않는 것이 좋습니다. 이 목표를 닫으시겠습니까?</value>
+    <comment>Warning message shown to the user when he tries to deactivate a goal which has active child goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_Date_Change_Warning">
+    <value>이 목표의 기간이 변경되면 종속 목표도 변경됩니다. 계속하려면 [확인]을 클릭하십시오.</value>
+    <comment>Warning message shown to the user when he tries to change the start date/end date of a goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044814">
+    <value>The fiscal settings of your organization have changed since the time this goal was changed. You might want to realign the dates to the new fiscal settings.</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="DocTemplate_Label_For_Dynamic_Excel" xml:space="preserve">
+    <value>동적 Excel용 열 선택</value>
+    <comment>Select Columns for Dynamic Excel Label</comment>
+  </data>
+  <data name="DocTemplate_Label_For_Pivot" xml:space="preserve">
+    <value>피벗 Excel용 열 선택</value>
+    <comment>Select Columns for Pivot Label</comment>
+  </data>
+  <data name="ExportToExcelOnline_CancelLabel" xml:space="preserve">
+    <value>취소</value>
+    <comment>Return to Excel Online</comment>
+  </data>
+  <data name="ExportToExcelOnline_ConfirmLabel" xml:space="preserve">
+    <value>확인</value>
+    <comment>Return to Dynamics 365</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Info" xml:space="preserve">
+    <value>가져오기 상태를 확인하려면 다음으로 이동하십시오. 설정 &gt; 데이터 관리 &gt; 가져오기</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Text" xml:space="preserve">
+    <value>가져올 데이터가 제출되었습니다.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Title" xml:space="preserve">
+    <value>가져오기를 위해 제출된 데이터</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Warning" xml:space="preserve">
+    <value>가져오기 프로세스가 완료될 때까지 이 데이터를 더 이상 편집하지 마십시오.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_ReturnToCrm_Text" xml:space="preserve">
+    <value>Dynamics 365에 변경 내용을 제출하지 않으면 Excel에서 변경한 내용이 손실됩니다.</value>
+    <comment>Text</comment>
+   </data>
+  <data name="ExportToExcelOnline_DataSubmitted_StatusText" xml:space="preserve">
+    <value>가져오기 상태를 확인하려면 진도 추적 버튼을 클릭하십시오.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_ReturnToCrm_Title" xml:space="preserve">
+    <value>Excel의 변경 내용이 모두 손실됨</value>
+    <comment>Text</comment>
+   </data>
+  <data name="ExportToExcelOnline_Alert_Goto_ImportsPage" xml:space="preserve">
+    <value>진도 추적</value>
+    <comment>Text</comment>
+   </data>
+  <data name="Error_Message_0x8004480c">
+    <value>상위 목표 및 메트릭/기간 정보를 동시에 업데이트할 수 없습니다.</value>
+    <comment>Error message shown when user tries to update parentgoalid and metric/period at same time.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044900">
+    <value>하위 목표에 대한 메트릭을 업데이트할 수 없습니다.</value>
+    <comment>Error message shown when user tries to update goal metric on a child goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044901">
+    <value>하위 목표에 대한 목표 기간 관련 특성을 업데이트할 수 없습니다.</value>
+    <comment>Error message shown when user tries to update goal period settings on a child goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044902">
+    <value>하위 목표가 연관되어 있는 목표에 대한 메트릭을 업데이트할 수 없습니다.</value>
+    <comment>Error message shown when user tries to update goal metric on a root goal with associated child goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044903">
+    <value>회계 기간 유형의 목표에 대해 회계 기간 특성을 설정해야 합니다.</value>
+    <comment>Error message shown when user does not provide fiscal year and fiscal period info for period type goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044905">
+    <value>현재 목표의 메트릭 또는 기간 값이 상위 목표의 값과 일치하지 않습니다. 값을 변경하고 다시 시도하십시오.</value>
+    <comment>Error message shown when metric of goal and parent goal does not match.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044906">
+    <value>현재 목표의 메트릭 또는 기간 값이 상위 목표의 값과 일치하지 않습니다. 값을 변경하고 다시 시도하십시오.</value>
+    <comment>Error message shown when time period of goal and parent goal does not match.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044907">
+    <value>사용자 지정 기간 유형의 목표에 대해 목표 시작 날짜 및 목표 종료 날짜 특성에 데이터가 있어야 합니다.</value>
+    <comment>Error message shown when user does not provide fiscal year and fiscal period info for period type goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044910">
+    <value>종료된 종속 목표가 하나 이상 있어서 이 목표의 기간을 변경할 수 없습니다.</value>
+    <comment>Error message shown when user changes the period info of goal which has one or more closed subordinate goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f683">
+    <value>필드에 대해 메트릭에 지정되지 않은 롤업 쿼리를 정의했습니다. 양식을 새로 고치고 다시 시도하십시오.</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9602</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f685">
+    <value>선택한 롤업 쿼리는 비활성 상태입니다. 활성 쿼리를 선택하고 다시 시도하십시오.</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9602</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f686">
+    <value>선택한 목표 메트릭은 비활성 상태입니다. 활성 목표 메트릭을 선택하고 다시 시도하십시오.</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+      <ObjectType>9603</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalRollupCriteriaNotSpecifiedErrorMessage">
+    <value>롤업 조건을 지정해야 합니다.</value>
+    <comment>Error message shown on goal form if consider only goal owner records is false and no query is specified.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="GoalManagement_OverriddenGoal_Notification">
+    <value>이 목표에 대한 롤업 데이터가 수동으로 업데이트되었습니다. {#Brand_CRM}는 이 목표에 대해 데이터를 자동으로 롤업하지 않습니다.</value>
+    <comment>Notification message shown on a goal form which has overridden the rolled up values.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_OnDemandRollup_Warning">
+    <value>데이터 롤업은 시간이 오래 걸릴 수 있습니다. 계속하려면 [확인]을 클릭하십시오.</value>
+    <comment>Warning message shown when user clicks the Recalculate button for a goal.[Category="Sales goal mgmt: Rollup"]</comment>
+  </data>
+  <data name="GoalManagement_RollupError_ErrorRecordLink">
+    <value>목표 {0}에 대해 롤업 오류가 발생했습니다.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the name of the goal with an error[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x80041136">
+    <value>이 목표 트리를 롤업하는 중 오류가 발생했습니다. 목표 {0}에 대해 롤업된 값이 최대값을 초과했습니다.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the name of the goal with an error[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F681">
+    <value>이 목표의 롤업된 데이터를 업데이트할 수 없습니다. 이 목표에 첨부된 목표 메트릭에는 정의된 롤업 특성이 없습니다.</value>
+    <comment>Rollup error message.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+      <ObjectType Singular="Goal Metric" Plural="Goal Metrics">9603</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F682">
+    <value>계산된 값이 허용 범위 내에 없어서 달성률 값이 0으로 설정되었습니다.</value>
+    <comment>Error shown if the percentage value computed is not a valid value.[Category="Sales goal mgmt: Rollup"]</comment>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F687">
+    <value>목표 메트릭에서 참조되는 레코드 종류 또는 필드가 올바르지 않습니다.</value>
+    <comment>Rollup error message.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal Metric" Plural="Goal Metrics">9603</ObjectType>
+    </ObjectReferences>
+    <DoesNotReference>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </DoesNotReference>
+  </data>
+  <data name="Dialog_Close_Goal_Title">
+    <value>목표 종료 확인</value>
+    <comment>Dialog page title for close goal confirmation dialog page.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Dialog_Delete_DeleteGoal">
+    <value>하나 이상의 선택한 목표에 연결된 하위 목표가 있을 수 있습니다. 목표를 삭제하기 전에 하위 목표를 다른 상위 목표에 할당하는 것이 좋습니다. 선택한 목표를 삭제하려면 [확인]을 클릭하십시오.</value>
+    <comment>Message displayed in the delete goal dialog page. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="AF_RollupQuery_Btn_Preview">
+    <value>레코드 보기(&amp;V)</value>
+    <comment>Preview Records button text on the advanced find page used in the Goal Rollup Query form. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="AF_RollupQuery_Btn_Back">
+    <value>쿼리로 돌아가기(&amp;Q)</value>
+    <comment>Clicking on this button will take the user back to the advanced find screen. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Group_Salesperformance">
+    <value>영업 성과</value>
+    <comment>Sitemap title for sales performance group.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Group_Sales">
+    <value>영업</value>
+    <comment>Sitemap title for sales group.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="NamePlural_Metric">
+    <value>목표 메트릭</value>
+    <comment>Title shown on Settings-Business Management Page for Metric.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+    </ObjectReferences>
+    <DoesNotReference>
+      <ObjectType>9600</ObjectType>
+    </DoesNotReference>
+  </data>
+  <data name="Web.Settings.BusinessManagement.Metric">
+    <value>조직에서 추적하는 목표 종류를 정의하고 관리합니다.</value>
+    <comment>Description shown on Settings-Business Management Page for Metric.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_10">
+    <value>회계 연도 설정</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_37">
+    <value>모든 설정을 선택하십시오.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_45">
+    <value>윤년의 경우에는 2월 29일에 회계 달력은 시작할 수 없습니다.</value>
+    <comment>Error message text when the user tries to set the start date of the fiscal calendar to February 29th of a leap year.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_48">
+    <value>2100 이후 연도의 회계 달력은 시작할 수 없습니다.</value>
+    <comment>Error message text when the user tries to set the start date of the fiscal calendar to 2101 or greater.[Category="Sales goal mgmt: Quota/UI work/Charts/Reports"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_235">
+    <value>회계 기간을 설정하세요.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_104">
+    <value>시작 날짜</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_109">
+    <value>회계 기간 템플릿</value>
+    <comment>Label for type of fiscal period[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_115">
+    <value>이름 지정 기준</value>
+    <comment>Label to indicate whether the name of the fiscal year is based on the start date or end date.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_128">
+    <value>회계 기간 표시 방법</value>
+    <comment>Label for display settings section on fiscal period dialog[Category="Sales goal mgmt: Quota/UI work/Charts/Reports"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_270">
+    <value>회계 연도</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_146">
+    <value>회계 기간을 표시할 방법을 선택하십시오.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_149">
+    <value>회계 기간</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_166">
+    <value>회계 연도 및 회계 기간을 연결할 방법을 선택하십시오.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_169">
+    <value>표시 형식</value>
+    <comment>Label to indicate how the fiscal year string should be displayed.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_170">
+    <value>월 이름을 기반으로 한 월별 기간 이름</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.Title">
+    <value>롤업 만료 시간 및 롤업 빈도를 설정합니다.</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupExpiryTime">
+    <value>롤업이 중지되는 목표 종료 날짜 이후의 일 수</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupExpiryTimeUnit">
+    <value>일</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupFrequency">
+    <value>롤업 되풀이 빈도</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupFrequencyUnit">
+    <value>시간</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.ManageAttribute.Goal.DisplayNameUpdate.Info">
+    <value>이 필드는 {0} 필드와 관련이 있습니다. 관련된 필드의 표시 이름도 변경하는 것이 좋습니다.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the attribute display name. Informational message show to the user when he updates the display names of any of the rollup related attributes in goal entity.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="ManageRoles.Goal.UpdateRoles.Warning">
+    <value>목표 레코드에 대해 상위 수준의 권한을 부여하면 이 보안 역할을 지닌 사용자가 액세스 권한이 없는 레코드에서 집계된 데이터를 볼 수 있습니다. 계속하려면 [확인]을 클릭하십시오.</value>
+    <comment>Informational message show to the user when he increases the access settings of privileges in goal entity.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+      <ObjectType>8</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="SystemCustomization.SettingsPage.FiscalYearSettings.Help">
+    <value>영업 목표를 추적하는 데 사용되는 회계 연도 및 회계 기간의 시작 날짜, 템플릿 및 표시 옵션을 설정합니다.</value>
+    <comment>Help text for fiscal settings link in the UI.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.Recalculate">
+    <value>전체 목표 트리의 실제 데이터를 다시 계산합니다.</value>
+    <comment>Super tooltip for a ribbon control. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.ToolTipTitle">
+    <value>목표 닫기</value>
+    <comment>Tool tip title for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.ToolTipDescription">
+    <value>목표를 닫습니다. &lt;br&gt;&lt;br&gt;닫힌 목표 보기에서 목표를 다시 활성화할 수 있습니다.</value>
+    <comment>Super tool tip text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.Alt">
+    <value>목표 닫기</value>
+    <comment>Alt text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.LabelText">
+    <value>목표 닫기</value>
+    <comment>Label text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.Recalculate">
+    <value>다시 계산</value>
+    <comment>Label text for recalculate button on ribbon. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Ribbon.Goal.Alt.Recalculate">
+    <value>다시 계산</value>
+    <comment>Alt text for recalculate button on ribbon. [Category="Application Infrastructure"].</comment>
+  </data>
+  <data name="Ribbon.Goal.ToolTipTitle.ChangeGoalOwner">
+    <value>목표 관리자 변경</value>
+    <comment>Tooltip title on the goal ribbon for Change Goal Owner button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.ChangeGoalOwner">
+    <value>이 목표의 관리자를 다른 사용자로 설정합니다.</value>
+    <comment>Super tooltip on the goal ribbon for Change Goal Owner button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>8</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.ChangeGoalOwner">
+    <value>목표 관리자 변경</value>
+    <comment>Label text for ChangeGoalOwner button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.Alt.ChangeGoalOwner">
+    <value>목표 관리자 변경</value>
+    <comment>Alt text for ChangeGoalOwner button on ribbon.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"].</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipTitle.Realign">
+    <value>회계 기간에 맞춤</value>
+    <comment>Tooltip title on the ribbon form for align button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.Realign">
+    <value>목표의 시작 및 종료 날짜를 새 회계 기간 설정에 맞춥니다.</value>
+    <comment>Super tooltip on the ribbon form for align button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.Realign">
+    <value>회계 기간에 맞춤</value>
+    <comment>Label text for align button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Ribbon.Goal.Alt.Realign">
+    <value>회계 기간에 맞춤</value>
+    <comment>Alt text for align button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Dialog_Title_Realign">
+    <value>시작 및 종료 날짜 다시 정렬</value>
+    <comment>Title for realign dialog. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Dialog_Desc_Realign">
+    <value>이 작업은 새로운 회계 연도 설정에 맞게 이 목표의 시작 및 종료 날짜를 변경합니다. 계속하려면 [확인]을 클릭하십시오.</value>
+    <comment>Text for realign dialog. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044800">
+    <value>이 목표 메트릭은 하나 이상의 목표에 사용되고 있어서 삭제할 수 없습니다.</value>
+    <comment>Message shown when user tries to delete a metric associated with goal[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044801">
+    <value>관련 목표 메트릭이 하나 이상의 종료된 목표에 사용되고 있어서 롤업 필드 정의의 변경 내용을 저장할 수 없습니다.</value>
+    <comment>Message shown when user tries to update Rollup Attribute which has associated closed goals[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044802">
+    <value>동일한 이름의 목표 메트릭이 이미 있습니다. 다른 이름을 지정한 다음 다시 시도하십시오.</value>
+    <comment>Message shown when user tries to create a metric with an already existing name[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044809">
+    <value>이 롤업 필드를 사용하는 목표 메트릭이 하나 이상의 목표와 연관되어 있습니다. 연관을 제거하고 다시 시도하십시오.</value>
+    <comment>Message shown when user tries to delete Rollup Attribute which has associated goals[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalForm.RollupAttributes.NavigationBarHeader.Title">
+    <value>참여 레코드</value>
+    <comment>Title of the Navigation Bar For Rollup attributes on Goal form.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="RollUpAttribute.Form.Alert">
+    <value>모든 필수 필드의 값을 지정해야 합니다.</value>
+    <comment>Alert shown when some fields are empty on Roll Up Attribute form.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Goal.UnSupported.Forms">
+    <value>현재 이 엔터티는 통합 인터페이스 프레임워크를 기반으로 구축된 응용 프로그램에서 지원되지 않습니다. 이 엔터티에 대한 레코드를 만들거나 편집하려면 Dynamics 365 - 사용자 지정 응용 프로그램을 사용하십시오.</value>
+    <comment>Message for unsupported forms in UCI.</comment>
+  </data>
+  <data name="Error_Message_0x80044814">
+    <value>이 목표가 변경된 이후 조직의 회계 설정이 변경되었습니다. 날짜를 새 회계 설정에 다시 맞춰야 할 수 있습니다.</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="DocTemplate_DialogUpload_exceltitle" xml:space="preserve">
+    <value>템플릿으로 업로드할 파일 선택</value>
+    <comment>Upload Title</comment>
+  </data>
+  <data name="DocTemplate_DialogUpload_wordtitle" xml:space="preserve">
+    <value>템플릿으로 업로드할 파일 선택</value>
+    <comment>Upload Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_exceltitle" xml:space="preserve">
+    <value>템플릿을 생성된 파일 다운로드</value>
+    <comment>Download Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_wordtitle" xml:space="preserve">
+    <value>템플릿을 생성된 파일 다운로드</value>
+    <comment>Download Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_exceldescription" xml:space="preserve">
+    <value>지원되는 파일 형식: .xlsx</value>
+    <comment>Excel supported file type message</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_worddescription" xml:space="preserve">
+    <value>지원되는 파일 형식: .docx</value>
+    <comment>Word supported file type message</comment>
+  </data>
+  <data name="DocTemplate_Label_For_View_My_Templates" xml:space="preserve">
+    <value>내 템플릿 보기</value>
+    <comment>View My Templates Label</comment>
+  </data>
+  <data name="DocTemplate_Not_Valid_File_Type" xml:space="preserve">
+    <value>지원되는 파일 유형이 아님</value>
+    <comment>Not a Valid File Type Supported Error</comment>
+  </data>
+  <data name="DocTemplate_Empty_File_Uploaded" xml:space="preserve">
+    <value>파일을 선택하지 않았으므로 이 업로드가 실패했습니다. 파일을 선택한 후 다시 시도하십시오.</value>
+    <comment>Empty file uploaded Error</comment>
+  </data>
+  <data name="DocTemplate_Invalid_File_Type_Uploaded" xml:space="preserve">
+    <value>업로드되는 파일 유형이 아님</value>
+    <comment>Invalid File Type Uploaded Error</comment>
+  </data>
+  <data name="DocTemplate_Successfully_Uploaded" xml:space="preserve">
+    <value>개인 템플릿을 만들었습니다.</value>
+    <comment>Successfully Uploaded Message</comment>
+  </data>
+  <data name="DocTemplate_Successfully_Downloaded" xml:space="preserve">
+    <value>파일이 성공적으로 다운로드되었습니다. 수정 및 업로드하여 템플릿을 만드십시오.</value>
+    <comment>Successfully Downloaded Message</comment>
+  </data>
+  <data name="DocTemplate_Word_Successfully_Downloaded" xml:space="preserve">
+    <value>다운로드했습니다.</value>
+    <comment>Successfully Downloaded Message</comment>
+  </data>
+  <data name="DocTemplate_Error_Displaying_Notification" xml:space="preserve">
+    <value>오류 표시 알림</value>
+    <comment>Error displaying notification</comment>
+  </data>
+  <data name="DocTemplate_Activate_Title" xml:space="preserve">
+    <value>활성화 확인</value>
+    <comment>Title name</comment>
+  </data>
+  <data name="DocTemplate_Dectivate_Title" xml:space="preserve">
+    <value>비활성화 확인</value>
+    <comment>Title name</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Activate_text" xml:space="preserve">
+    <value>선택한 {0} 문서 템플릿을 활성화하시겠습니까?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Dectivate_text" xml:space="preserve">
+    <value>선택한 {0} 문서 템플릿을 비활성화하시겠습니까? 원하는 경우 나중에 다시 활성화할 수 있습니다.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Activate_btn" xml:space="preserve">
+    <value>활성화</value>
+    <comment>Activate button</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Deactivate_btn" xml:space="preserve">
+    <value>비활성화</value>
+    <comment>Deactivate button</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Cancel_btn" xml:space="preserve">
+    <value>취소</value>
+    <comment>Cancel button</comment>
+  </data>
+  <data name="DocTemplate_FormDialog_Activate_text" xml:space="preserve">
+    <value>선택한 문서 템플릿을 활성화하시겠습니까?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_FormDialog_Deactivate_text" xml:space="preserve">
+    <value>선택한 문서 템플릿을 비활성화하시겠습니까?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Error_Downloading_Message" xml:space="preserve">
+    <value>템플릿을 다운로드하는 동안 오류가 발생했습니다.</value>
+    <comment>Downloading error message</comment>
+  </data>
+  <data name="DocTemplate_Confirm_Button" xml:space="preserve">
+    <value>확인</value>
+    <comment>Confirm Button</comment>
+  </data>
+  <data name="Dialog_Calendar_Duplicate_Name" xml:space="preserve">
+    <value>이 이름의 일정이 이미 있습니다. 다른 이름을 지정하십시오.</value>
+    <comment>This is the text that appears to prompt the user to select a different calndar name</comment>
+  </data>
+  <data name="CustomerServiceSchedule_Header_Label" xml:space="preserve">
+    <value>고객 서비스 일정 만들기</value>
+    <comment>This is the text that appears on Customer Service Schedule MDD</comment>
+  </data>
+  <data name="HolidaySchedule_Header_Label" xml:space="preserve">
+    <value>휴일 스케줄 생성</value>
+    <comment>This is the text that appears on Holiday Schedule MDD</comment>
+  </data>
+  <data name="CustomerServiceSchedule_Provide_Name" xml:space="preserve">
+    <value>서비스 일정의 이름을 입력하십시오.</value>
+    <comment>This is the text that appears to prompt the user when an error is encountered during the creation of calendar</comment>
+  </data>
+  <data name="HolidaySchedule_Provide_Name" xml:space="preserve">
+    <value>휴일 일정의 이름을 입력하십시오.</value>
+    <comment>This is the text that appears to prompt the user when an error is encountered during the creation of calendar</comment>
+  </data>
+  <data name="ServiceProcessingMessage" xml:space="preserve">
+    <value>처리 중</value>
+  </data>
+  <data name="Dialog_CalendarRule_State_Existing" xml:space="preserve">
+    <value>기존</value>
+  </data>
+  <data name="Dialog_CalendarRule_State_New" xml:space="preserve">
+    <value>새로 만들기 (주별 스케줄 연계되지 않음)</value>
+  </data>
+  <data name="Dialog_CalendarRule_DoNotObserveHolidaySchedule" xml:space="preserve">
+    <value>따르지 않음</value>
+  </data>
+  <data name="Dialog_CalendarRule_ObserveHolidaySchedule" xml:space="preserve">
+    <value>따름</value>
+  </data>
+  <data name="Dialog_CustomerServiceSchedule_SelectSchedule" xml:space="preserve">
+    <value>휴일 일정을 선택합니다.</value>
+  </data>
+  <data name="Dialog_CustomerServiceSchedule_SelectTimeZone" xml:space="preserve">
+    <value>시간대를 선택하십시오.</value>
+  </data>
+  <data name="Dialog_CalenderRule_GenericErrorOccurred" xml:space="preserve">
+    <value>예기치 않은 오류가 발생했습니다. 다시 시도하십시오. 문제가 계속되면 Microsoft Dynamics 365 커뮤니티에서 솔루션을 확인하거나 조직의 관리자에게 문의하십시오. 자세한 내용은 Microsoft 기술 지원부에 문의하여 오류에 대한 기술 정보를 제공하십시오.</value>
+  </data>
+  <data name="Shortcut_To_Clipboard_Error" xml:space="preserve">
+    <value>링크를 클립보드에 복사하지 못했습니다.</value>
+    <comment>Error message when clipboard operation failed [Category="Ribbon - M3 - Finalizing"]</comment>
+  </data>
+  <data name="Error_Max_Shortcut_Record_Reached" xml:space="preserve">
+    <value>이 작업에 선택할 수 있는 최대 레코드 수는 10개입니다.</value>
+    <comment>The maximum number of records that can be supported for copy/send shortcut action.</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>이 작업을 수행하려면 먼저 하나 이상의 레코드를 선택해야 합니다.</value>
+  </data>
+  <data name="Shortcut_To_Clipboard_Unsupported" xml:space="preserve">
+    <value>이 동작은 사용 중인 브라우저에서 지원되지 않습니다.</value>
+    <comment>Text shown to the user when user clicks an action which is not supported on the user's browser[Category="Cross Browser"]</comment>
+  </data>
+  <data name="UnexpectedErrorMessage" xml:space="preserve">
+    <value>오류가 발생했습니다. 선택한 작업이 완료되지 않았습니다.</value>
+  </data>
+  <data name="AppCommonClientCommon_GenericErrorOccurred" xml:space="preserve">
+    <value>예기치 않은 오류가 발생했습니다. 다시 시도하십시오. 문제가 계속되면 Microsoft Dynamics 365 커뮤니티에서 솔루션을 확인하거나 조직의 관리자에게 문의하십시오. 자세한 내용은 Microsoft 기술 지원부에 문의하여 오류에 대한 기술 정보를 제공하십시오.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_RRI" xml:space="preserve">
+    <value>이 규칙이 비활성 상태입니다. 지정된 큐에 추가된 활동에 대한 레코드가 만들어지지 않습니다.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_ALL" xml:space="preserve">
+    <value>이 규칙이 활성 상태입니다. 규칙 설정에 따라 지정된 큐에 추가된 활동에 대한 레코드가 만들어집니다.</value>
+  </data>
+  <data name="Dialog_CalendarRule_Warning" xml:space="preserve">
+    <value>이 주별 스케줄은 현재 사용 중입니다. 그것을 변경하면 {0}부터 {1}까지의 작업 시간이 변경됩니다.</value>
+    <comment>This Label contains the string that needs to be displayed as warning message in CSS MDD</comment>
+  </data>
+  <data name="Dialog_CalendarUpdate_Warning" xml:space="preserve">
+    <value>고객 서비스 일정의 변경 사항은 이미 진행되고 있는 SLA KPI 레코드에 반영되지 않을 수 있습니다.</value>
+    <comment>This Label contains the string that needs to be displayed as warning message.</comment>
+  </data>
+  <data name="Dialog_HolidayUpdate_Warning" xml:space="preserve">
+    <value>고객 휴일 일정의 변경 사항은 이미 진행되고 있는 SLA KPI 레코드에 반영되지 않을 수 있습니다.</value>
+    <comment>This Label contains the string that needs to be displayed as warning message.</comment>
+  </data>
+  <data name="Dialog_CalendarRule_Privilege_Error" xml:space="preserve">
+    <value>이 레코드에 액세스할 수 있는 권한이 없습니다. Microsoft Dynamics 365 관리자에게 문의하십시오.</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="WorkHour_UnsavedChanges_Message" xml:space="preserve">
+    <value>변경 내용을 저장하지 않았습니다. 변경 내용을 저장할 수 있도록 현재 페이지를 유지하려면 취소를 클릭하십시오.</value>
+  </data>
+  <data name="WorkHour_UnsavedChanges_Title" xml:space="preserve">
+    <value>저장되지 않은 변경 사항</value>
+  </data>
+  <data name="Holiday_ConfirmDeleteButton" xml:space="preserve">
+    <value>삭제</value>
+    <comment>Button lable for deleting holiday</comment>
+  </data>
+  <data name="Holiday_ConfirmDeleteText" xml:space="preserve">
+    <value>휴일 스케줄에서 이 휴일을 삭제하시겠습니까? 이 작업은 실행 취소할 수 없습니다.</value>
+    <comment>Text for Delete Holiday Dialog</comment>
+  </data>
+  <data name="Holiday_ConfirmDeleteTitle" xml:space="preserve">
+    <value>확인</value>
+    <comment>Confirmation for Delete</comment>
+  </data>
+  <data name="Holiday_ConfirmMultiDeleteText" xml:space="preserve">
+    <value>휴일 스케줄에서 선택된 {0}개의 휴일을 삭제하시겠습니까? 이 작업은 실행 취소할 수 없습니다.</value>
+    <comment>Text for Delete Multiple Holiday Dialog</comment>
+  </data>
+  <data name="EndTime_StartTime_Min_Diff" xml:space="preserve">
+    <value>종료 시간은 시작 시간 이전이거나 시작 시간과의 차이가 5분 미만일 수 없습니다.</value>
+  </data>
+  <data name="WorkHour_RefreshChanges_Message" xml:space="preserve">
+    <value>새로 고치면 편집 내용이 손실됩니다.</value>
+  </data>
+  <data name="WorkHour_RefreshChanges_Title" xml:space="preserve">
+    <value>새로 고침</value>
+  </data>
+  <data name="GlobalNotification_CSS_Created" xml:space="preserve">
+    <value>고객 서비스 스케줄 생성됨</value>
+  </data>
+  <data name="GlobalNotification_CSS_Edit" xml:space="preserve">
+    <value>고객 서비스 스케줄 저장됨</value>
+  </data>
+  <data name="Global_Notification_After_SetWorkHours" xml:space="preserve">
+    <value>주별 스케줄이 새 작업 시간으로 업데이트됨</value>
+  </data>
+  <data name="GlobalNotification_HS_Created" xml:space="preserve">
+    <value>휴일 스케줄 생성됨</value>
+  </data>
+  <data name="CalendarFormTitle_HolidaySchedule" xml:space="preserve">
+    <value>휴일 스케줄</value>
+    <comment>Title to be displayed on calendar form.</comment>
+  </data>
+  <data name="Dialog_Title_RemoveUsers" xml:space="preserve">
+    <value>구성원 제거</value>
+  </data>
+  <data name="Dialog_Description_RemoveUsers" xml:space="preserve">
+    <value>선택한 {0}의 영업 사원을 제거하시겠습니까? 이 작업은 현재 선택된 권역의 모든 구성원을 제거합니다. 이 작업은 실행 취소할 수 없습니다. 그러나 나중에 해당 권역으로 다시 영업 사원을 추가할 수 있습니다.</value>
+  </data>
+  <data name="Dialog_RemoveButton_Label_RemoveUsers" xml:space="preserve">
+    <value>제거</value>
+  </data>
+  <data name="AlertDialog_Text_RemoveUsers_Failure" xml:space="preserve">
+    <value>사용자 제거에 실패했습니다. 이 정보 - 상태:{0}, 상태 텍스트: {1} 및 반응 텍스트: {2}를 사용하여 관리자에게 문의하십시오</value>
+  </data>
+  <data name="Dialog_HolidayItem_Header_New" xml:space="preserve">
+    <value>휴일 추가</value>
+  </data>
+  <data name="Dialog_HolidayItem_Header_Edit" xml:space="preserve">
+    <value>휴일 편집</value>
+  </data>
+  <data name="Error_End_Must_Be_After_Start" xml:space="preserve">
+    <value>종료 시간은 시작 시간 이후로 지정해야 합니다.</value>
+  </data>
+  <data name="Dialog_HolidayItem_Name_Short" xml:space="preserve">
+    <value>휴일 이름은 비워 둘 수 없습니다.</value>
+  </data>
+  <data name="Dialog_HolidayItem_Name_Long" xml:space="preserve">
+    <value>휴일 이름이 너무 깁니다.</value>
+  </data>
+  <data name="Dialog_HolidayItem_Privilege_Error" xml:space="preserve">
+    <value>이 레코드에 액세스할 수 있는 권한이 없습니다. Microsoft Dynamics 365 관리자에게 문의하십시오.</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="GlobalNotification_HolidayItem_AddEdit" xml:space="preserve">
+    <value>휴일 저장됨</value>
+  </data>
+  <data name="GlobalNotification_HolidayItem_Add" xml:space="preserve">
+    <value>휴일 생성됨</value>
+  </data>
+  <data name="QueueItem_Private_Queue_LookUp" xml:space="preserve">
+    <value>개인 큐 사용자 조회 보기</value>
+  </data>
+  <data name="RECORD_ADDED_TO_NO_QUEUE">
+    <value>이 레코드는 큐에 추가되지 않았습니다.</value>
+  </data>
+  <data name="RECORD_ADDED_TO_MULTIPLE_QUEUES">
+    <value>이 레코드는 여러 큐에 있습니다. 세부 정보를 보려면 특정 큐로 이동하십시오.</value>
+  </data>
+  <data name="TeamManagement_Users_Label" xml:space="preserve">
+    <value>사용자</value>
+    <comment>Label to use as a prefix for aria label in users look up control.</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromCSV">
+    <value>CSV에서 가져오기</value>
+    <comment>Import from CSV file</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromXML">
+    <value>XML에서 가져오기</value>
+    <comment>Import from XML file</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromExcel">
+    <value>Excel에서 가져오기</value>
+    <comment>Import from Excel file.</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInBytes">
+    <value>바이트</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInKB">
+    <value>KB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInMB">
+    <value>MB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInGB">
+    <value>GB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInTB">
+    <value>TB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileFormat">
+    <value>선택한 파일이 가져오기 위해 선택한 파일 형식과 다릅니다.</value>
+    <comment>Invalid file format than selected filetype</comment>
+  </data>
+  <data name="ImportExport_Label_NoFileSelected">
+    <value>선택한 파일이 없습니다. 계속하려면 가져올 파일을 선택하세요.</value>
+    <comment>No File Selected</comment>
+  </data>
+  <data name="ImportExport_Label_NoActivityTypeSelected">
+    <value>선택한 활동 유형이 없습니다. 계속하려면 활동 유형을 선택하세요.</value>
+    <comment>No Activity Type Selected</comment>
+  </data>
+  <data name="ImportExport_Label_NoDataInFile">
+    <value>선택한 파일에 포함된 데이터가 없습니다.</value>
+    <comment>no data in file</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileSubmitted">
+    <value>선택한 파일은 "{0}" 가져오기에 유효하지 않습니다.</value>
+    <comment>File submitted is not valid for import</comment>
+  </data>
+  <data name="ImportExport_Label_UnmappedFieldConfimationDialogTitle">
+    <value>데이터 제출</value>
+    <comment>Unmapped Field Confimation Dialog title</comment>
+  </data>
+  <data name="ImportExport_Label_OptionalUnmappedFieldConfimationDialog">
+    <value>마법사가 매핑되지 않은 필드를 하나 이상 발견했습니다. 매핑되지 않은 필드를 무시하고 계속하시겠습니까?</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_MandatoryAndOptionalUnmappedFieldConfimationDialog">
+    <value>마법사가 매핑되지 않은 필드를 하나 이상 발견했습니다. 필수 필드가 매핑되지 않아 가져오기 오류가 발생할 수 있습니다. 매핑되지 않은 필드를 무시하고 계속하시겠습니까?</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_MandatoryUnmappedFieldConfimationDialog">
+    <value>일부 필수 필드가 매핑되지 않았습니다. 따라서 가져올 떄 일부 레코드가 누락될 수 있습니다.</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromExchangeFailed">
+    <value>Exchange에서 연락처 가져오기가 실패했습니다. {0}</value>
+    <comment>mport of Contacts from Exchange has Failed</comment>
+  </data>
+  <data name="ImportExport_Label_UnmappedMandatoryField">
+    <value>마법사가 매핑되지 않은 필수 필드를 하나 이상 감지했습니다.</value>
+    <comment>Unmapped Manadatory Field</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileSize">
+    <value>선택한 파일이 허용된 크기 제한을 초과합니다.</value>
+    <comment>File size is more than expected</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsWithHistory">
+    <value>선택한 파일에서 만들어진 모든 레코드, 가져온 로그 및 관련된 모든 레코드를 삭제하시겠습니까? 이 작업은 실행 취소할 수 없습니다.</value>
+    <comment>Delete Imported Logs with History</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsData">
+    <value>선택한 원본 파일 가져오기에 대해 가져온 레코드를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Delete Imported Logs Data</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsDialogTitle">
+    <value>삭제 확인</value>
+    <comment>Delete Imported Logs Data Dialog Title</comment>
+  </data>
+  <data name="ImportExport_Label_NoRecordSelected">
+    <value>삭제하기 위해 선택한 레코드 없음</value>
+    <comment>No Record Selected</comment>
+  </data>
+  <data name="ImportExport_Label_BulkDeletion">
+    <value>대량 삭제</value>
+    <comment>Bulk Deletion</comment>
+  </data>
+  <data name="ImportExport_Label_Confirm">
+    <value>확인</value>
+    <comment>Confirm</comment>
+  </data>
+  <data name="ImportExport_Label_Cancel">
+    <value>취소</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="ImportExport_Label_MultipleDeleteFailures">
+    <value>하나 이상의 레코드를 삭제하는 중에 오류가 발생했습니다.</value>
+    <comment>Delete</comment>
+  </data>
+  <data name="ImportExport_Label_UnknownFailures">
+    <value>예기치 않은 오류! 다시 시도하세요. 문제가 계속되면 Microsoft Dynamics 365 커뮤니티에서 해결 방법을 확인하거나 관리자에게 문의하세요. 추가 도움이 필요하면 Microsoft 지원에 문의하여 오류에 대한 기술적 세부 정보를 제공해 주세요.</value>
+    <comment>Unknown Failures</comment>
+  </data>
+  <data name="ImportExport_Label_PreviligeError">
+    <value>{1} 레코드에 액세스할 수 있는 {0} 권한이 없습니다. 도움이 필요하면 Microsoft Dynamics 365 관리자에게 문의하세요.</value>
+    <comment>
+          Displayed when user tries to access something that they do not have the permissions to access [Category="Application Infrastructure"]
+          {NumberedPlaceholder="{0}"} Placeholder 0 is the name of the Privilege Type which is missing.
+          {NumberedPlaceholder="{1}"} Placeholder 1 is the name of the Entity on which the privilege is missing.
+      </comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeMaxLimitExceeded">
+    <value>선택한 파일이 허용된 크기 제한을 초과합니다.</value>
+    <comment>File size max limit exceeded</comment>
+  </data>
+  <data name="ImportExport_Label_NoErrorRowsFoundInThisImport">
+    <value>No error rows found in this import.</value>
+    <comment>No error rows found in this import</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsWithHistoryMultipleFiles">
+    <value>선택한 파일에서 만들어진 모든 레코드, 가져온 로그 및 관련된 모든 레코드를 삭제하시겠습니까? 이 작업은 실행 취소할 수 없습니다.</value>
+    <comment>Delete Imported Logs with History - Multiple Files</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsDataMultipleFiles">
+    <value>선택한 원본 파일 가져오기에 대해 가져온 레코드를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Delete Imported Logs Data - Multiple Files</comment>
+  </data>
+  <data name="ImportExport_ActivityEntitiesRetrieveError">
+    <value>활동 포인터 엔터티 목록을 가져올 수 없음</value>
+    <comment>Retrieve Activity Entities</comment>
+  </data>
+  <data name="ImportExport_Label_NoErrorRowsFoundInThisImport">
+    <value>이 가져오기에서 오류 행을 찾을 수 없습니다.</value>
+    <comment>No error rows found in this import</comment>
+  </data>
+  <data name="ImportExport_Label_TargetAttributeInvalidForMap">
+    <value>이 필드가 {0}, {1} 매핑에 올바르지 않습니다. 이 불일치를 해결한 다음 이 데이터 맵을 다시 가져오세요.</value>
+    <comment>Attribute is not valid for mapping. {NumberedPlaceholder="{0}"} Placeholder 0 is the localized display name of the entity. {NumberedPlaceholder="{1}"} Placeholder 1 is the localized display name of the attribute.</comment>
+  </data>
+  <data name="AppCommon.PDF" xml:space="preserve">
+    <value>PDF로 내보내기</value>
+    <comment>Label  for Export to PDF button.</comment>
+  </data>
+  <data name="AppCommon.PDFToolTip" xml:space="preserve">
+    <value>PDF로 내보내기 시작 대화</value>
+    <comment>Tooltip description for Export to PDF button.</comment>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Name_Short" xml:space="preserve">
+    <value>휴무 이름은 비워 둘 수 없습니다.</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Name_Long" xml:space="preserve">
+    <value>휴무 이름이 너무 깁니다.</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Privilege_Error" xml:space="preserve">
+    <value>이 레코드에 액세스할 수 있는 권한이 없습니다. Microsoft Dynamics 365 관리자에게 문의하세요.</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="GlobalNotification_BusinessClosureItem_AddEdit" xml:space="preserve">
+    <value>휴무를 저장했습니다.</value>
+  </data>
+  <data name="GlobalNotification_BusinessClosureItem_Add" xml:space="preserve">
+    <value>휴무를 만들었습니다.</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_MDD_Subheader02" xml:space="preserve">
+    <value>휴무 기간에는 리소스를 예약할 수 없습니다. 그러나 '휴무'에 대해 '따르지 않음' 옵션이 선택된 리소스는 예약할 수 있습니다.</value>
+  </data>
+  <data name="BusinessClosure_StartTimeInvalid" xml:space="preserve">
+    <value>1753~9999년 사이의 휴무 시작 시간을 지정합니다.</value>
+    <comment>Error message occurring when the user enters an invalid start time when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_EndTimeOrDurationNotSpecified" xml:space="preserve">
+    <value>휴무 종료 시간 또는 기간을 지정합니다.</value>
+    <comment>Error message occurring when the user fails to enter an end time or duration value when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_EndTimeInvalid" xml:space="preserve">
+    <value>1753~9999년 사이의 휴무 종료 시간을 지정합니다.</value>
+    <comment>Error message occurring when the user enters an invalid end time when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_InvalidStartTimeEndTime" xml:space="preserve">
+    <value>시작 시간은 종료 시간 이전이어야 합니다.</value>
+    <comment>Error message occurring when a business closure's end time occurs before start time.</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteText" xml:space="preserve">
+    <value>이 휴무를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Text for Delete Business Closure Dialog</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmMultiDeleteText" xml:space="preserve">
+    <value>선택한 휴무 {0}개를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Text for Delete Multiple Business Closure Dialog.{NumberedPlaceholder="{0}"}. Placeholder 0 is the number of selected records.</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteTitle" xml:space="preserve">
+    <value>확인</value>
+    <comment>Confirmation for Delete</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteButton" xml:space="preserve">
+    <value>삭제</value>
+    <comment>Button label for deleting business closure</comment>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_DateAndTime_Message" xml:space="preserve">
+    <value>날짜 및 시간을 선택하세요</value>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_InProgress_Message" xml:space="preserve">
+    <value>대량 이메일 예약 중...</value>
+  </data>
+  <data name="ContextualBulkEmail_Send_InProgress_Message" xml:space="preserve">
+    <value>대량 이메일 보내는 중...</value>
+  </data>
+  <data name="ContextualBulkEmail_Form_Notification_Message" xml:space="preserve">
+    <value>대량 이메일 양식을 직접 사용할 수 없습니다. 이 양식은 영업 가속기 대량 이메일 모드에서만 사용해야 합니다.</value>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_Failed_Message" xml:space="preserve">
+    <value>이메일을 예약할 수 없습니다. 다시 시도해 보세요. 이 문제가 계속 발생할 경우 관리자에게 문의하세요.</value>
+  </data>
+  <data name="ContextualBulkEmail_Send_Failed_Message" xml:space="preserve">
+    <value>이메일을 보낼 수 없습니다. 다시 시도해 보세요. 이 문제가 계속 발생할 경우 관리자에게 문의하세요.</value>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>2023년 4월 1일부터 이전에 사용되지 않던 웹 클라이언트의 레거시 SLA(서비스 수준 약정)는 EoS(지원 종료일)가 지났습니다. 기능 손실을 방지하기 위해 웹 클라이언트에서 생성된 레거시 SLA를 통합 인터페이스 환경으로 즉시 마이그레이션해야 합니다. 항목을 마이그레이션하는 방법에 대한 자세한 내용은 {0}에서 확인하세요.</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>확인함</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="LearnMore_Label_Text" xml:space="preserve">
+    <value>자세히 알아보기</value>
+  </data>
+  <data name="Dialog_QueueItemPick_MutliPick_Error" xml:space="preserve">
+    <value>하나 이상의 레코드에 대해 요청된 작업을 수행하는 데 문제가 있습니다. 개별 레코드로 다시 시도해 보세요.</value>
+  </data>
+</root>

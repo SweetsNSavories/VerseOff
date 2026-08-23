@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Başlangıç tarihinden sonra gelen bir bitiş tarihi belirtmelisiniz.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Başlangıç tarihi olarak bitiş tarihinden önceki bir tarihi belirtmelisiniz.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Başlangıç Tarihi boş olamaz.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Bitiş Tarihi boş olamaz.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0} gereklidir.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Konu gereklidir.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Konu gereklidir.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Şablon gereklidir.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Başlangıç saati gereklidir.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Bitiş saati gereklidir.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Yeni {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Kampanya (Şablon)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Bu etkinliği dağıtabilmeniz için önce değişiklikleri kaydetmeniz gerekir.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Kampanya Etkinliği tek bir kez dağıtılabilir.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Kanal türünü seçin, formu kaydedin ve yeniden deneyin.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Bu seçenek yalnızca bağlantı yöntemi seçildiğinde kullanılabilir. Bu formda bağlantı yöntemi yok. Etkinlik dağıtılamıyor. Lütfen {#Brand_CRM} yöneticinize başvurun.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>Adres Mektup Birleştirme yoluyla Doğrudan E-posta kapalı. Etkinlik dağıtılamıyor. Lütfen {#Brand_CRM} yöneticinize başvurun.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Seçili kanal için dağıtım olanağı kullanılamıyor</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>Adres Mektup Birleştirme {#Brand_CRM} Web istemcisinde kullanılamıyor. Adres mektup birleştirme işlemi yapmak için {#Brand_CRM_Outlook_Short} öğesini kullanmanız gerekir.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Bu Kampanya Etkinliğiyle ilişkilendirilmiş Pazarlama Listeleri olmadığından Kampanya Etkinliği dağıtılamıyor. Lütfen bu Kampanya Etkinliğiyle Pazarlama Listelerini ilişkilendirin ve yeniden deneyin.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Lütfen formdaki tüm uyarıları ve hataları düzeltin.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Bu Kampanya Etkinliği dağıtılamıyor. Lütfen {#Brand_CRM} yöneticinize başvurun.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>{0} öğesini kaldır</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Seçili {0} {1} öğesini Kampanyadan kaldırmak istiyor musunuz?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Geçerli sayfada hiç kayıt bulunamadığından Hızlı Kampanya oluşturulamıyor.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Bir kerede birden fazla pazarlama listesi için Hızlı Kampanya oluşturamazsınız. Lütfen tek bir pazarlama listesi seçin.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Bu seçenek geçerli görünümde kullanılamıyor. Tüm görünümler {0} seçeneğiyle çalışmaz. Başka bir görünüm seçin veya başka bir Hızlı Kampanya seçeneği belirtin ve yeniden deneyin.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Hızlı kampanyalar etkin olmayan bir Pazarlama Listesinde çalıştırılamaz. Pazarlama Listesini etkinleştirin veya başka bir Pazarlama Listesi seçin ve yeniden deneyin.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Bu seçenek geçerli görünümde kullanılamıyor. Başka bir Hızlı Kampanya seçeneği belirtin ve yeniden deneyin.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Sahibi gereklidir.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Kuyruk gereklidir.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Seçilen Kayıtlar için</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Geçerli Sayfadaki Tüm Kayıtlar için</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Tüm Sayfalardaki Tüm Kayıtlar için</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Bu şerit eylemi desteklenmiyor.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Bu eylemi gerçekleştirebilmek için bir veya daha fazla kayıt seçmelisiniz.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Bu işlem için 50'den fazla kayda izin verilmez</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Bu eylemi yalnızca aynı türden kayıtlar için gerçekleştirebilirsiniz.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>İşleniyor, lütfen bekleyin ...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Bir hata oluştu. Seçilen eylem bir veya daha fazla kayıt için tamamlanmadı.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>{0} öğesini kaldır</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Kaldırılacak üyeleri arama ölçütlerine göre bulun.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Eklenecek üyeleri arama ölçütlerine göre bulun.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Pazarlama listesinde tutulacak üyeleri arama ölçütlerine göre değerlendirin. Pazarlama listesini güncelleştirin.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Devam etmeden önce kayıtları seçmeniz gerekir</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Kaldır</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Ekle</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Firma</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>İlgili kişi</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Müşteri adayı</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Değerlendir</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Seçili {0} {1} öğesini Listeden kaldırmak istiyor musunuz?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Pazarlama Listesi başka bir Pazarlama Listesi Onayına kopyalanıyor</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Başka bir Pazarlama Listesine kopyalamak üzere Pazarlama Listeleri seçtiniz</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Bu işlem, seçili Pazarlama Listesinin tüm üyelerini hedef pazarlama listesine ekleyecek</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Değişiklikleriniz kaydedilmedi. Değişiklikleri kaydedip yeniden deneyin.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Tamam</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>İşleniyor...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>İsteğiniz işlenirken lütfen bekleyin...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Hızlı Kampanya oluşturulamıyor</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Ad: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Etkinlik: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Kapsam: Seçilen Kayıtlar için ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Kapsam: Geçerli Sayfadaki Tüm Kayıtlar için ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Kapsam: Tüm Sayfalardaki Tüm Kayıtlar için</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Sahibi: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Hızlı kampanya adı gereklidir.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Etkinlik türü gereklidir.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Hızlı kampanyaya eklenen kayıtların sahipleri</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Ben</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Bu kampanyayla ilişkilendirilmiş açık kampanya etkinlikleri olduğundan, bu kampanya devre dışı bırakılamıyor. Kampanya etkinliklerini kapatın ve yeniden deneyin.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>İlişkili bir veya daha fazla açık kampanya etkinliği olduğundan {0} seçili kampanyayı devre dışı bırakamıyoruz. Lütfen açık kampanya etkinliklerini kapatın ve yeniden deneyin.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>E-postanızın içeriği bu sihirbaz için çok büyük. Lütfen e-posta şablonu olarak oluşturup bu şablonu buradan seçin.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Hızlı Kampanyalar toplu düzenlemeyi desteklemez.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Liste kilitli</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>{0} listeleri kilitli</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Dinamik listede işlem gerçekleştirilemiyor.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Etkin olmayan bir öğe Kampanya ile ilişkilendirilemez.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Etkin olmayan bir öğe Kampanya ile ilişkilendirilemez.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Ek başvurusu bulunamadı.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>E-posta alıcısı yok veya e-posta alıcısının e-posta adresi geçerli değil.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Ek geçersiz bir türde veya çok büyük. Karşıya yüklenemez veya indirilemez.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Alıcı "Faks Gönderme" olarak işaretlendi.</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Geçersiz e-posta alıcısı.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>E-posta şablonu eylemi hatası.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>E-posta gönderme eylemi hatası.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Not ekleme eylemi hatası.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Not oluşturma eylemi hatası.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Etkinlik işlememe eylemi hatası.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Etkinlik işleme eylemi hatası.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Etkinlik ekleme eylemi hatası.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Etkinlik oluşturma eylemi hatası.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Üye bu iletişimi önceden aldığından, bu pazarlama listesi üyesiyle iletişim kurulamadı.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Gönderenin taraf kaydında e-posta adresi yok</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>E-posta adresi belirtilmedi ve arayan kullanıcının e-posta adresi ayarlanmamış</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>E-posta, alıcının iletişim tercihleri veya e-posta adresiyle ilgili bir sorun nedeniyle gönderilmedi.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Geçersiz müşteri adresi türü.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Posta birleştirme sırasında beklenmeyen bir hata oluştu.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Posta birleştirme işlemi kullanıcı tarafından iptal edildi.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Bu müşteri eksik e-posta adresi nedeniyle filtrelendi.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Alıcı etkin olmadığından dışlandı.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Toplu İşlemle ilgili iş akışı kuralları eksik.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>İstenmeyen posta önleme ayarları veya alıcının iletişim tercihleri nedeniyle alıcı dışlandı.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Randevu dağıtma için katılımcı belirtilemiyor.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Randevu dağıtma için gönderen belirtilemiyor</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Randevu dağıtma için düzenleyen belirtilemiyor</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Desteklenmeyen liste üyesi türü.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Yetkisiz bir erişim gerçekleştirilmeye çalışıldı.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>Kullanıcı gerekli ayrıcalıklara sahip değil.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Kullanıcı bu eylemi gerçekleştirme ayrıcalığına sahip değil.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>E-posta adresi geçersiz. Daha fazla bilgi için sistem yöneticinize başvurun.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Formda şu öğeler eksik: {0}. İşlevler etkilenecektir.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Bu varlık türünü hedefleyen bir Pazarlama Listesi için fırsatlar oluşturamazsınız.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Zaten devam eden bir istek var. Lütfen bir süre sonra yeniden deneyin.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>İstek gönderildi. Lütfen sayfa kopyalanan listeye yönlendirene kadar bekleyin.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>Yeni {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Pazarlama listesinde seçtiğiniz üyeler için {0} oluşturmak üzere bu formu doldurun. Bu {0} öğesini her üyenin kaydına yeni bir {0} olarak eklemek için Dağıt'a tıklayın.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Başarıyla Kaydedildi</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

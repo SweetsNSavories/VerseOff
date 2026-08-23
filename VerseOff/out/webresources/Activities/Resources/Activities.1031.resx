@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+                Microsoft ResX Schema
+                Version 2.0
+                The primary goals of this format is to allow a simple XML format
+                that is mostly human readable. The generation and parsing of the
+                various data types are done through the TypeConverter classes
+                associated with the data types.
+                Example:
+                ... ado.net/XML headers & schema ...
+                <resheader name="resmimetype">text/microsoft-resx</resheader>
+                <resheader name="version">2.0</resheader>
+                <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+                <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+                <data name="Name1">this is my long string</data>
+                <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+                <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+                                [base64 mime encoded serialized .NET Framework object]
+                </data>
+                <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+                                [base64 mime encoded string representing a byte array form of the .NET Framework object]
+                </data>
+                There are any number of "resheader" rows that contain simple
+                name/value pairs.
+                Each data row contains a name, and value. The row also contains a
+                type or mimetype. Type corresponds to a .NET class that support
+                text/value conversion through the TypeConverter architecture.
+                Classes that don't support this are serialized and stored with the
+                mimetype set.
+                The mimetype is used for serialized objects, and tells the
+                ResXResourceReader how to depersist the object. This is currently not
+                extensible. For a given mimetype the value must be set accordingly:
+                Note - application/x-microsoft.net.object.binary.base64 is the format
+                that the ResXResourceWriter will generate, however the reader can
+                read any of the formats listed below.
+                mimetype: application/x-microsoft.net.object.binary.base64
+                value   : The object must be serialized with
+                                                : System.Serialization.Formatters.Binary.BinaryFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.soap.base64
+                value   : The object must be serialized with
+                                                : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.bytearray.base64
+                value   : The object must be serialized into a byte array
+                                                : using a System.ComponentModel.TypeConverter
+                                                : and then encoded with base64 encoding.
+                -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="ObjectReferences" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="DoesNotReference" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ObjectType">
+      <xsd:complexType>
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:int">
+            <xsd:attribute name="Singular" form="unqualified" type="xsd:string" />
+            <xsd:attribute name="Plural" form="unqualified" type="xsd:string" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExchangeSyncAppointmentPrivacyWarning">
+    <value>Einige Empfänger befinden sich außerhalb Ihres Unternehmens. Diese Empfänger erhalten diesen Termin ebenfalls, wenn Sie ihn speichern.</value>
+    <comment>Warning displayed for appointments and recurring appointments when some attendees are not CRM users and the organizer uses Exchange Sync. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="MA_Alert_EndDate_LessThan_StartDate">
+    <value>Sie müssen eine Endzeit angeben, die chronologisch nach der Startzeit liegt.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="Error_Message_ETM_Retry">
+    <value>Die Anforderung kann von Dynamics 365 CRM nicht ausgeführt werden, da die Server mit Anforderungen anderer Benutzer in der Organisation ausgelastet sind. Klicken Sie auf „OK”, um die Anforderung jetzt auszuführen, oder klicken Sie auf „Abbrechen”, um Ihre Arbeit fortzusetzen. Wenn Sie auf „Abbrechen” klicken, können Sie die Anforderung zu einem späteren Zeitpunkt wiederholen. Sollte das Problem weiterhin bestehen, wenden Sie sich an den Kundensupport von Dynamics 365 CRM.</value>
+    <comment>CrmSqlGovernorDatabaseRequestDenied message providing user an option to retry.</comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_75">
+    <value>Die E-Mail muss an einen Absender adressiert sein. Wählen Sie einen Absender aus.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_70">
+    <value>Es muss mindestens ein Empfänger festgelegt sein, bevor die E-Mail-Nachricht gesendet werden kann. Wählen Sie einen Empfänger aus.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Email_No_Recipient_Found_Error_Title">
+    <value>Es wurde kein Empfänger gefunden</value>
+  </data>
+  <data name="Email_No_Sender_Found_Error_Title">
+    <value>Es wurde kein Absender gefunden</value>
+  </data>
+  <data name="Email_Prefix_Reply">
+    <value>AW:</value>
+  </data>
+  <data name="Email_Prefix_Forward">
+    <value>WG:</value>
+  </data>
+  <data name="Brand_CRM">
+    <value>Microsoft Dynamics 365</value>
+    <comment>Branding for CRM.</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveTitle">
+    <value>Vorlage anwenden</value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveText">
+    <value>Möchten Sie die Betreffzeile in der E-Mail-Nachricht durch die Betreffzeile in der Vorlage ersetzen? </value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_ToRecipientString">
+    <value>Empfänger (An:)</value>
+    <comment>This is the String that will appear for To Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_CCRecipientString">
+    <value>Empfänger (Cc:)</value>
+    <comment>This is the String that will appear for CC Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_RegardingString">
+    <value>Bezug</value>
+    <comment>This is the String that will appear for Regarding dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_InvalidTargetRecipient">
+    <value>Wählen Sie einen Empfänger oder einen Bezugsdatensatz aus, der einer E-Mail-Vorlage zugeordnet werden kann. Eine Warteschlange kann beispielsweise nicht ausgewählt werden.</value>
+    <comment>This is the Text that will appear if no Valid target object selected for Email Template [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog">
+    <value>Wird verarbeitet...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="UCI.Form.Saving">
+    <value>Wird gespeichert ...</value>
+    <comment>Message which is displayed while UCI main form is getting saved.</comment>
+  </data>
+  <data name="Button_Label_OK">
+    <value>OK</value>
+  </data>
+  <data name="Button_Label_Cancel">
+    <value>Abbrechen</value>
+  </data>
+  <data name="AddTemplateWithoutAttachment">
+    <value>Diese Vorlage enthält Anlagen. Wenn Sie Anlagen in einer E-Mail versenden möchten, klicken Sie auf "Abbrechen", speichern Sie die E-Mail, und fügen Sie die Vorlage erneut an. Klicken Sie auf "OK", wenn Sie den Vorgang ohne Anlagen fortsetzen möchten.</value>
+    <comment>Message shown on confirm dialog when user attempts to add a template containing attachments to email without saving the email.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Microsoft_Crm_Msgbody_Default_fonts">
+    <value>Tahoma, Verdana, Arial</value>
+    <comment>
+      This defines the default font for the body of a new e-mail (although users can change the font at runtime by using the HTMLbar).
+      Like the fonts listed in resource Microsoft_Crm_Web_Fonts, the order of the fonts matter, since IE will use the first font and go down the
+      list until it finds the first font that is installed on the user's system.  Therefore the most preferable font should be placed first in the list.
+      However, unlike resource Microsoft_Crm_Web_Fonts, fonts that have spaces should only be enclosed in single quotes - double quotes will cause
+      a formatting error.
+      The list of fonts in this resource should be a proper subset of the list of fonts in resource Web._controls.htmlbar.defaultfonts.
+    </comment>
+  </data>
+  <data name="Email_Followup_Header">
+    <value>------------------- Ursprüngliche Nachricht -------------------</value>
+  </data>
+  <data name="Email_Followup_Sender">
+    <value>Von:</value>
+  </data>
+  <data name="Email_Followup_ReceivedDate">
+    <value>Empfangen:</value>
+  </data>
+  <data name="Email_Followup_ToRecipients">
+    <value>An:</value>
+  </data>
+  <data name="Email_Followup_CcRecipients">
+    <value>Cc:</value>
+  </data>
+  <data name="Email_Followup_Subject">
+    <value>Betreff:</value>
+  </data>
+  <data name="Activity_ConfirmSwap_Title">
+    <value>Richtung ändern</value>
+    <comment>Title for change direction dialog box.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_Description">
+    <value>Entscheiden Sie, ob Sie mit der ausgewählten Änderung fortfahren wollen.</value>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_27">
+    <value>Sie haben dem Datensatz mehrere Empfänger hinzugefügt. Falls Sie die Richtung ändern, wird nur der erste Empfänger verwendet, die anderen Empfänger werden entfernt.</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_30">
+    <value>Möchten Sie die Richtung ändern?</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_OkButton">
+    <value>Ändern</value>
+    <comment>Ok button label for change direction dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="ConvActSaveWarning">
+    <value>Sie müssen die Änderungen zunächst speichern, bevor Sie diese Aktivität konvertieren können.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Error_Message_0x80046fff">
+    <value>Das Feld {0}, das zur Entität {1} gehört, kann nicht gelöscht werden, da das Feld zum Senden von E-Mails verwendet wird und die Entität für E-Mails aktiviert ist.</value>
+    <comment>
+      An emailable entity must have atleast one email attribute. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 is attribute name. Placeholder 1 parent entity name[Category="Administration and Deployment"]
+    </comment>
+  </data>
+  <data name="Error_Title_0x80048422">
+    <value>Ungültiger E-Mail-Empfänger.</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80048422">
+    <value>Der E-Mail-Empfänger ist nicht vorhanden, oder seine E-Mail-Adresse ist ungültig.</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80044192">
+    <value>Ungültige E-Mail-Adresse. Wenden Sie sich an den {#Brand_CRM}-Administrator, um weitere Informationen zu erhalten.</value>
+    <comment>Description for the error when user tries to send an e-mail and some parties have invalid e-mail addresses. [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Followed_Email_Attachments_Tooltip" xml:space="preserve">
+    <value>Liste der gefolgten Anlagen, wie sie dem E-Mail-Empfänger angezeigt wird.</value>
+    <comment>Text for followed email attachements div aria-label[Category="Email Engagement"]</comment>
+  </data>
+  <data name="Generic_ErrorMessage">
+    <value>Fehler. Versuchen Sie es erneut. Sollte das Problem weiterhin auftreten, wenden Sie sich an den Administrator.</value>
+    <comment>Generic error when error message is not defined properly</comment>
+  </data>
+  <data name="Error">
+    <value>Fehler</value>
+    <comment>This name is used to indicate error name</comment>
+  </data>
+  <data name="ErrorCode">
+    <value>Fehlercode</value>
+    <comment>This name is used to indicate error code</comment>
+  </data>
+  <data name="ErrorMessage">
+    <value>Fehlermeldung </value>
+    <comment>This name used to indicate error message</comment>
+  </data>
+  <data name="Url">
+    <value>URL </value>
+    <comment>This name used to indicate Url</comment>
+  </data>
+  <data name="Command">
+    <value>Befehl </value>
+    <comment>This name used to indicate Command</comment>
+  </data>
+  <data name="Parameters">
+    <value>Parameter </value>
+    <comment>This name used to indicate Parameters</comment>
+  </data>
+  <data name="Error_In_Dialog_Open">
+    <value>Fehler beim Öffnen des Dialogs. Versuchen Sie es erneut. Sollte das Problem weiterhin auftreten, wenden Sie sich an den Administrator.</value>
+    <comment>Generic error when error occurred while open a dialog</comment>
+  </data>
+  <data name="Button_Ok">
+    <value>OK</value>
+    <comment>This message is used to indicate ok label on a button</comment>
+  </data>
+  <data name="UnsavedChanges">
+    <value>Ihre Änderungen werden möglicherweise nicht gespeichert.</value>
+    <comment>This message is used to indicate changes made to the record are not saved</comment>
+  </data>
+  <data name="ConfirmAttachmentRemoval">
+    <value>Möchten Sie diese Anlage wirklich entfernen? Diese Aktion kann nicht rückgängig gemacht werden.</value>
+    <comment>This message is used to indicate user to confirm the removal of attachment as it cannot be added again</comment>
+  </data>
+  <data name="RemovedAttachmentConfirmation">
+    <value>Das angefügte Dokument wurde entfernt.</value>
+    <comment>This message is used to confirm to user that attachment is removed</comment>
+  </data>
+  <data name="FileNotFound">
+    <value>Datei nicht gefunden.</value>
+    <comment>This message is used to indicate not able to locate file</comment>
+  </data>
+  <data name="UnsupportedAttachment">
+    <value>Dieser Anhang kann auf Ihrem Gerät nicht geöffnet werden.</value>
+    <comment>This message is used to indicate selected attachment is not supported on the current device</comment>
+  </data>
+  <data name="FileNameLengthExceeded">
+    <value>Dateiname enthält mehr als 165 Zeichen.</value>
+    <comment>This message is used to indicate file contains more characters than allowed limit</comment>
+  </data>
+  <data name="EmptyFile">
+    <value>Die angegebene Datei ist entweder leer oder nicht vorhanden. Vergewissern Sie sich, dass der Dateiname korrekt ist, oder geben Sie eine andere Datei an, und wiederholen Sie anschließend den Vorgang.</value>
+    <comment>This message is used to indicate file is empty or does not exist</comment>
+  </data>
+  <data name="InvalidFileExtension">
+    <value>Dies ist eine ungültige Dateierweiterung.</value>
+    <comment>This message is used to indicate file extension is not valid</comment>
+  </data>
+  <data name="FileSizeExceeded">
+    <value>Die Anlage ist zu groß. Die maximal zulässige Dateigröße beträgt {0} KB.</value>
+    <comment>This message is used to attachment size exceeded the allowed limit</comment>
+  </data>
+  <data name="NonEditableDialog">
+    <value>Dieser Dialog kann nicht bearbeitet werden</value>
+    <comment>This message is used to edit is not allowed in this dialog </comment>
+  </data>
+  <data name="activities/act_dlgs/dlg_seriesaction.aspx_textDeleteInstance">
+    <value>Möchten Sie alle Elemente der Terminserie {0} oder nur diesen Termin löschen?</value>
+    <comment>Text of the confirmation dialog when user deletes an instance.[Category="Business Modules"]. {NumberedPlaceholder="{0}"} Placeholder 0 is the truncated subject of the appointment.</comment>
+  </data>
+  <data name="New_Attachment_Form_Description">
+    <value>Wählen Sie eine anzufügende Datei aus.</value>
+    <comment>Instructional text for attach file dialog, when opened for attaching a new attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Existing_Attachment_Form_Description">
+    <value>Klicken Sie auf die Datei, um sie anzuzeigen, oder klicken Sie auf "Entfernen", um sie zu entfernen.</value>
+    <comment>Instructional text for attach file dialog, when opened for an existing attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="New_Attachment_Label_Message">
+    <value>Dateiname</value>
+    <comment>Instructional text to indicate file name</comment>
+  </data>
+  <data name="Error_Message_0x80040b00">
+    <value>Diese Nachricht kann nicht an alle ausgewählten Empfänger gesendet werden. Vergewissern Sie sich, dass sowohl die Absender-E-Mail-Adresse als auch die Empfänger-E-Mail-Adressen gültig und die Empfänger zum Empfangen von E-Mails berechtigt sind.</value>
+    <comment>IDS_COMMUNICATIONS_NOPARTYADDRESS</comment>
+  </data>
+  <data name="Error_Message_0x8004b000" xml:space="preserve">
+    <value>Fehler beim Verarbeiten der Anforderung. Wiederholen Sie den Vorgang.</value>
+    <comment>CrmLiveGenericError</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected">
+    <value>Sie müssen mindestens einen Datensatz auswählen, bevor Sie diese Aktion durchführen können.</value>
+  </data>
+  <data name="ReadOnlyEntity">
+    <value>Die ausgewählte Entität ist für diesen Client schreibgeschützt.</value>
+    <comment>Alert shown when user tries to perform action on entity which is Read-only in Mobile</comment>
+  </data>
+  <data name="Grid_Apply_Rule_Heterogenous_Activity_Type_Records_Selected">
+    <value>Diese Aktion kann nur für Aktivitäten desselben Typs ausgeführt werden.</value>
+    <comment>Alert shown when user tries to perform action which can be performed on single entity type on 2 different entity types</comment>
+  </data>
+  <data name="TemplateNotSelected">
+    <value>Sie müssen die Vorlage auswählen, an die Direktmailings gesendet werden sollen.</value>
+    <comment>Message shown when user tries to send bulk email and template is not selected</comment>
+  </data>
+  <data name="BPFNavigationBlockAlert">
+    <value>Speichern oder verwerfen Sie die durchgeführten Änderungen, bevor Sie zu einer anderen Phase im Prozess wechseln.</value>
+    <comment>Message shown when user tries to do a BPF navigation on a unsaved appointment form.</comment>
+  </data>
+  <data name="SenderNotSelected">
+    <value>Sie müssen einen Benutzer oder eine Warteschlange auswählen.</value>
+    <comment>Message shown when user tries to send bulk email and sender is not selected</comment>
+  </data>
+  <data name="RecipientsNotSelected">
+    <value>Sie müssen die Datensätze auswählen, an die Direktmailings gesendet werden sollen.</value>
+    <comment>Message shown when user tries to send bulk email and the records to sedn to are not selected</comment>
+  </data>
+  <data name="Form_Title_Draft_Status_Prefix_For_Appointment">
+    <value>[Entwurf]</value>
+    <comment>"[Draft]" string to be prefixed for form title for draft appointments.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_Appointment">
+    <value>Die folgenden potenziellen Planungsprobleme wurden gefunden. Möglicherweise können Sie diese Aktivität erst planen, wenn diese Probleme behoben sind.</value>
+    <comment>SchedulingConflict Dialog  Description for Appointment</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_RecurringAppointment">
+    <value>Erster Termin: Die folgenden Terminprobleme wurden identifiziert.</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description1_RecurringAppointment">
+    <value>Nachfolgende Termine: Von {#Brand_CRM} wurde die Verfügbarkeit der Teilnehmer nicht überprüft.</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSave_Button">
+    <value>Ignorieren und speichern</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSave Button</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSend_Button">
+    <value>Ignorieren und senden</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSend Button</comment>
+  </data>
+  <data name="ErrorCode.ResourceConstraints">
+    <value>{0} ist aufgrund von Ressourceneinschränkungen nicht verfügbar.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceBusy">
+    <value>{0} ist zu diesem Zeitpunkt nicht verfügbar.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceOverCapacity">
+    <value>{0} verfügt nicht über die erforderliche Kapazität.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceNonBusinessHours">
+    <value>{0} wird außerhalb der Arbeitszeit geplant.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="PreviewTemplateNotSelected">
+    <value>Wählen Sie eine Vorlage aus der Liste aus, um den Vorgang fortzusetzen.</value>
+    <comment>Message to display when user not selected any template.</comment>
+  </data>
+  <data name="LOCID_EMAIL_NORECORDS_MSG">
+    <value>Keine Datensätze ausgewählt.</value>
+    <comment>Message to display when bulk email is invoked without any records selected.</comment>
+  </data>
+  <data name="UnresolvedEmailsNotAllowed">
+    <value>Ihre Organisation lässt den Versand von E-Mails an nicht aufgelöste E-Mail-Empfänger nicht zu. Entfernen Sie diese Empfänger, oder wenden Sie sich an den Systemadministrator, um den Versand von Nachrichten mit nicht aufgelösten E-Mail-Empfängern zuzulassen. Weitere Informationen: https://go.microsoft.com/fwlink/p/?linkid=2127763</value>
+    <comment>Message to display when allowUnresolvedPartiesOnEmailSend is false and the form contains unresolved parties.</comment>
+  </data>
+  <data name="UnresolvedEmailsCanNotSendEmail">
+    <value>Fehler beim Senden der E-Mail an:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is false and the control contains unresolved parties.</comment>
+  </data>
+  <data name="AttachmentDownloadError" xml:space="preserve">
+    <value>Beim Herunterladen von {0} ist ein Problem aufgetreten. Versuchen Sie es später erneut.</value>
+    <comment>Error message shown if an error occurs while trying to download an attachment</comment>
+  </data>
+  <data name="AttachmentDownloadGenericError" xml:space="preserve">
+    <value>Beim Herunterladen der Anlagen ist ein Problem aufgetreten. Versuchen Sie es später erneut.</value>
+    <comment>Error message shown if an error occurs while trying to download attachments</comment>
+  </data>
+  <data name="AttachmentDownloadFormNotification" xml:space="preserve">
+    <value>Anlagen werden heruntergeladen ...</value>
+    <comment>Form notification text that is shown while attachments are downloading</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_LearnMore">
+    <value>Weitere Informationen</value>
+    <comment>Continue Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_Continue">
+    <value>Weiter</value>
+    <comment>Cancel Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultTitle">
+    <value>Weitere Informationen</value>
+    <comment>Default title for the learn more dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultPrimaryText">
+    <value>Dieser Vorgang ist nicht zulässig.</value>
+    <comment>Default primary text for the learn more dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Title">
+    <value>Postfach ist deaktiviert</value>
+    <comment>Title for the Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Text">
+    <value>Die E-Mail kann nicht gesendet werden, da das {0}-Postfach deaktiviert ist. Durch Fortfahren wird die E-Mail in den Status „Ausstehend“ gesetzt.</value>
+    <comment>Text displayed in the Mailbox Not Enabled dialog for Admin</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Instruction_NonAdmin">
+    <value>Wenden Sie sich an Ihren Systemadministrator, um es zu aktivieren.</value>
+    <comment>Instruction text for nonadmins in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="InsertDataAddDataFieldButtonLabel" xml:space="preserve">
+    <value>Datenfeld hinzufügen</value>
+    <comment>Button label for adding new entry of dynamic text</comment>
+  </data>
+  <data name="InsertDataDefaultTextLabel" xml:space="preserve">
+    <value>Standardtext</value>
+    <comment>Label for default text control</comment>
+  </data>
+  <data name="InsertDataRecordTypeLabel" xml:space="preserve">
+    <value>Datensatztyp</value>
+    <comment>Column name of record type in dynamic text</comment>
+  </data>
+  <data name="InsertDataFieldNameLabel" xml:space="preserve">
+    <value>Feldname</value>
+    <comment>Column name of field names in dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveUpButtonLabel" xml:space="preserve">
+    <value>Nach oben</value>
+    <comment>Button label for moving up one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveDownButtonLabel" xml:space="preserve">
+    <value>Nach unten</value>
+    <comment>Button label for moving down one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataRemoveButtonLabel" xml:space="preserve">
+    <value>Entfernen</value>
+    <comment>Button label for removing one row of dynamic text</comment>
+  </data>
+  <data name="UnableToInsertDynamicText" xml:space="preserve">
+    <value>Es kann kein dynamischer Text eingefügt werden. Wählen Sie aus, wo der dynamische Text im Betreff oder im Text der Vorlage eingefügt oder aktualisiert werden soll.</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="UnableToInsertDynamicTextInSignature" xml:space="preserve">
+    <value>Es kann kein dynamischer Text eingefügt werden. Wählen Sie aus, wo der dynamische Text im Text der Vorlage eingefügt oder aktualisiert werden soll.</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="PreOctoberNotification" xml:space="preserve">
+    <value>In einer zukünftigen Version danach suchen</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="malformedDefaultValue" xml:space="preserve">
+    <value>Das Standardtextfeld darf keines der folgenden Zeichen enthalten:  ; &amp; &lt; &gt; { }</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="RequiredFieldMustBeFilledIn" xml:space="preserve">
+    <value>Pflichtfelder müssen ausgefüllt werden.</value>
+    <comment>Required fields must be filled in.</comment>
+  </data>
+  <data name="ConvertingEmailToTemplateProgressMessage" xml:space="preserve">
+    <value>E-Mail wird zur Vorlage konvertiert ...</value>
+    <comment>Progress message to show during email to template conversion</comment>
+  </data>
+  <data name="CreatingTemplateProgressMessage" xml:space="preserve">
+    <value>Vorlage wird erstellt ...</value>
+    <comment>Progress message to show during new template creation</comment>
+  </data>
+  <data name="RequiredFieldsErrorMessage" xml:space="preserve">
+    <value>Alle erforderlichen Felder müssen ausgefüllt werden.</value>
+    <comment>Error message to show when required fields are not filled in</comment>
+  </data>
+  <data name="CopyingAttachmentsToTemplateMessage" xml:space="preserve">
+    <value>Anlagen werden in Vorlage kopiert ...</value>
+    <comment>Progress message to show during copying attachments to template on (email or template) -&gt; template conversion</comment>
+  </data>
+  <data name="TemplateCopyString" xml:space="preserve">
+    <value>Kopieren</value>
+    <comment>'Copy' word to append to the end of the cloned template</comment>
+  </data>
+  <data name="ErrorCopyAttachmentsToTemplate" xml:space="preserve">
+    <value>Einige Anlagen aus dieser E-Mail konnten nicht kopiert werden. Laden Sie die Dateien erneut hoch.</value>
+    <comment>Error message shown when one or more attachments fail to copy over to new template.</comment>
+  </data>
+  <data name="ErrorCreateTemplate" xml:space="preserve">
+    <value>Beim Erstellen der Anlage ist ein Fehler aufgetreten. Versuchen Sie es noch einmal, oder wenden Sie sich an den Microsoft Support.</value>
+    <comment>Error message shown when createRecord fails for template creation.</comment>
+  </data>
+  <data name="ErrorRetrievingAttachmentsForTemplate" xml:space="preserve">
+    <value>Beim Verschieben der Anlagen in die Vorlage ist ein Fehler aufgetreten. Versuchen Sie es noch einmal, oder wenden Sie sich an den Microsoft Support.</value>
+    <comment>Error message shown when the retrieve call fails to get the attachments to copy over to the template.</comment>
+  </data>
+  <data name="WarningSomeAttachmentsNotSupported" xml:space="preserve">
+    <value>Die Nachricht wurde als Microsoft Dynamics 365-E-Mail-Datensatz gespeichert, es konnten jedoch nicht alle Anlagen gespeichert werden. Blockierte Anlagen und Anlagen mit ungültigem Dateityp werden nicht gespeichert.</value>
+    <comment>Notification shown when some attachments couldn't be supported for a received email</comment>
+  </data>
+  <data name="WarningEmailSubjectLengthMessage" xml:space="preserve">
+    <value>Verringern Sie die Länge der Betreffzeile, um zu vermeiden, dass beim Einfügen in eine E-Mail die Betreffzeile abgeschnitten wird.</value>
+    <comment>Warning message shown when the email template subject length is greater than 800</comment>
+  </data>
+  <data name="EndSeriesDialogTopLabel" xml:space="preserve">
+    <value>Wählen Sie aus, wann die Terminserie enden soll. Wir löschen sämtliche späteren Termine in dieser Serie.</value>
+    <comment>End Series Dialog description</comment>
+  </data>
+  <data name="EndSeriesDialogCompletionTypeLabel" xml:space="preserve">
+    <value>Wir bewahren die vergangenen Termine der beendeten Serien auf. Was möchten Sie mit vergangenen Terminen machen, die offen sind?</value>
+    <comment>End Series Dialog Description of radio options</comment>
+  </data>
+  <data name="EndSeriesDialogOptionCancel" xml:space="preserve">
+    <value>Abbrechen</value>
+    <comment>Radio option for Cancel in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionComplete" xml:space="preserve">
+    <value>Abschließen</value>
+    <comment>Radio option for Complete in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionKeepOpen" xml:space="preserve">
+    <value>Als offen beibehalten</value>
+    <comment>Radio option for Keep Open in End Series Dialog</comment>
+  </data>
+  <data name="SameDayString" xml:space="preserve">
+    <value>Gleicher Tag</value>
+    <comment>String for Same Day radio option</comment>
+  </data>
+  <data name="SameWeekString" xml:space="preserve">
+    <value>Gleiche Woche</value>
+    <comment>String for Same Week radio option</comment>
+  </data>
+  <data name="UpdateSeriesDialogCancelCurrentSeries" xml:space="preserve">
+    <value>Brechen Sie die aktuelle Serie ab, und erstellen Sie eine neue.</value>
+    <comment>Cancel current series</comment>
+  </data>
+  <data name="UpdateSeriesDialogFirstLabel" xml:space="preserve">
+    <value>Sie möchten die Serieninformationen einer vorhandenen Serie bearbeiten. Die aktuelle Serie wird abgebrochen, und eine neue Serie wird erstellt.</value>
+    <comment>Update Series First Label</comment>
+  </data>
+  <data name="UpdateSeriesDialogSecondLabel" xml:space="preserve">
+    <value>Der Verlauf der Vorkommnisse in der Vergangenheit wird beibehalten. Es werden jedoch alle offenen Vorkommnisse gelöscht.</value>
+    <comment>Update Series Second Label</comment>
+  </data>
+  <data name="RecurrenceErrorIntervalOutOfRange" xml:space="preserve">
+    <value>Serienmuster können keine Werte kleiner als 1 oder größer als 99 haben. Geben Sie ein gültiges Serienmuster ein.</value>
+    <comment>Error string for interval Out of Range in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorDayOfMonthOutOfRange" xml:space="preserve">
+    <value>Die Tage eines Monats dürfen 31 nicht überschreiten.</value>
+    <comment>Error string for number of days of month in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceWarningDayOfMonthMore" xml:space="preserve">
+    <value>Einige Monate haben weniger als {0} Tage. Der Termin wird in diesen Monaten auf den letzten Tag des Monats gelegt.</value>
+    <comment>Warning string when number of days specific is more than 28 in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorEndLessThanStartDate" xml:space="preserve">
+    <value>Das von Ihnen eingegebene Startdatum liegt zeitlich hinter dem Enddatum. Wählen Sie ein gültiges Startdatum aus.</value>
+    <comment>Error string when pattern end date is less than start date</comment>
+  </data>
+  <data name="RecurrenceErrorInvalidDateForMonth" xml:space="preserve">
+    <value>Der Wert liegt außerhalb des gültigen Bereichs für den angegebenen Monat. Wählen Sie einen gültigen Wert aus.</value>
+    <comment>Error string when number of days is invalid for that month in yearly recurrence pattern</comment>
+  </data>
+  <data name="RecurrenceErrorFebruary29DaysStartDate" xml:space="preserve">
+    <value>Das Startdatum für Muster sollte ein Schaltjahr sein, um Termine für den 29. Februar zu erstellen</value>
+    <comment>Error string when pattern start date is not a leap year for chosen 29th Feb</comment>
+  </data>
+  <data name="RecurrenceWarningFebruary29" xml:space="preserve">
+    <value>In regulären Jahren (außer in Schaltjahren) hat der Februar weniger als 29 Tage. In diesen Fällen wird der Termin auf den letzten Februartag gelegt.</value>
+    <comment>Warning string for 29th February in Recurrence Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOpenError" xml:space="preserve">
+    <value>Fehler beim Öffnen des Dialogfelds „Serie beenden“</value>
+    <comment>Error in opening End Series Dialog</comment>
+  </data>
+  <data name="RecurrenceDialogAlert" xml:space="preserve">
+    <value>Warnungsdialogfeld „Serie“</value>
+    <comment>Recurrence Dialog alert</comment>
+  </data>
+  <data name="RecurrenceDialogStartTimeField" xml:space="preserve">
+    <value>Startzeit</value>
+    <comment>Start time control display name</comment>
+  </data>
+  <data name="RecurrenceDialogEndTimeField" xml:space="preserve">
+    <value>Endzeit</value>
+    <comment>End time control display name</comment>
+  </data>
+  <data name="JoinTeamsMeeting_Label" xml:space="preserve">
+    <value>Teams-Besprechung beitreten</value>
+    <comment>Label for the teams meeting button</comment>
+  </data>
+  <data name="TeamsChatsPreview_Label" xml:space="preserve">
+    <value>Teams-Chats (Vorschauversion)</value>
+    <comment>'chat' : displayname for Teams chats (Preview) LabelText</comment>
+  </data>
+  <data name="TeamsChatsJoinNotAllowedDialogAlert" xml:space="preserve">
+    <value>Sie können diese Funktion nicht verwenden, da Sie kein Mitglied des Chats sind. Wenden Sie sich an Ihren Administrator, um an Chats teilnehmen zu können, deren Besitzer Sie nicht sind.</value>
+    <comment>Cannot join teams chat dialog alert</comment>
+  </data>
+  <data name="TeamsChatsDisabledDialogAlert" xml:space="preserve">
+    <value>Diese Funktion ist nicht verfügbar, da Microsoft Teams im Agent-Umgebungsprofil, dem Sie angehören (App-Profil-Manager), nicht aktiviert ist. Wenden Sie sich an Ihren Administrator.</value>
+    <comment>Teams integration disabled dialog alert</comment>
+  </data>
+  <data name="InvalidEmailAddressCannotSend">
+    <value>Entfernen Sie die folgenden ungültigen E-Mail-Adressen:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is true and the control contains invalid email addresses.</comment>
+  </data>
+  <data name="ReminderToAttachmentKeywords">
+    <value>anhängen,Anhängen,angehängt,Anhang,Anhänge</value>
+    <comment>Keywords to find in email body to pop attachment dialog when no attachment is added.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogTitle">
+    <value>Anlagenerinnerung</value>
+    <comment>Reminder attachment Dialog Title.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogText">
+    <value>Sie haben möglicherweise vergessen, eine Datei anzuhängen.</value>
+    <comment>Reminder attachment Dialog text.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogOk">
+    <value>Senden</value>
+    <comment>Reminder attachment Dialog Ok button.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogCancel">
+    <value>Nicht senden</value>
+    <comment>Reminder attachment Dialog cancel button.</comment>
+  </data>
+  <data name="EmailDraftDeleteMessage" xml:space="preserve">
+    <value>Diese E-Mail wird gelöscht, wenn sie nicht manuell gespeichert oder vor dem Schließen gesendet wird.</value>
+    <comment>Used to delete draft emails for multisession apps created from Reply/Reply All/Forward</comment>
+  </data>
+  <data name="DownloadEmailAsAttachment_Download" xml:space="preserve">
+    <value>Herunterladen </value>
+  </data>
+  <data name="DownloadEmailAsAttachment_MB" xml:space="preserve">
+    <value> MB</value>
+  </data>
+  <data name="DownloadEmailAsAttachment_PreparingFile" xml:space="preserve">
+    <value>Datei wird vorbereitet</value>
+  </data>
+  <data name="EmailDraftDeleteMessageonAttachmentControlLoad" xml:space="preserve">
+    <value>Die Anlagenaktualisierungen wurden nicht gespeichert. Speichern Sie das Formular, damit keine nicht gespeicherten Anlagenaktualisierungen verloren gehen.</value>
+    <comment>Used to inform user to save changes when attachments are updated on Email form.</comment>
+  </data>
+  <data name="GuardRailFailedDialogTitle" xml:space="preserve">
+    <value>Fehler bei der Überprüfung der Schutzmaßnahmen</value>
+    <comment>Title shown in the guardrail failure dialog.</comment>
+  </data>
+  <data name="GuardRailFailedDialogText" xml:space="preserve">
+    <value>Die entworfene E-Mail hat die Überprüfung der Schutzmaßnahmen nicht bestanden. Überarbeiten Sie die Inhalte, und senden Sie sie erneut, um sicherzustellen, dass sie die Anforderungen an die Schutzmaßnahmen erfüllt.</value>
+    <comment>Main explanation text shown when guardrails fail in the dialog.</comment>
+  </data>
+  <data name="GuardrailsFailed" xml:space="preserve">
+    <value>Fehlerhafte(r) Schutzplan/-pläne</value>
+    <comment>Label for listing failed guardrail names.</comment>
+  </data>
+  <data name="GuardrailFailureReasons" xml:space="preserve">
+    <value>Grund/Gründe</value>
+    <comment>Label for listing failure reasons for each violated guardrail.</comment>
+  </data>
+  <data name="GuardrailCloseButton" xml:space="preserve">
+    <value>Schließen</value>
+    <comment>Text for the dialog Close button.</comment>
+  </data>
+  <data name="SeeTerms" xml:space="preserve">
+    <value>Bestimmungen anzeigen</value>
+    <comment>Hyperlink label for opening Microsoft Terms URL.</comment>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>fehlgeschlagen</value>
+    <comment>Lowercase 'failed' suffix used in inline status messages.</comment>
+  </data>
+  <data name="AiDisclaimerText" xml:space="preserve">
+    <value>KI-generierte Inhalte können fehlerhaft sein. Stellen Sie sicher, dass KI-generierte Inhalte korrekt und angemessen sind, bevor Sie sie verwenden.</value>
+    <comment>AI safety disclaimer shown below guardrail messages.</comment>
+  </data>
+</root>

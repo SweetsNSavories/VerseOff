@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="regardingObjectIdNotFound" xml:space="preserve">
+    <value>Vezani ID objekta nije pronađen</value>
+    <comment>Regarding object Id not found</comment>
+  </data>
+  <data name="openEvaluationTitleError" xml:space="preserve">
+    <value>Pogreška</value>
+    <comment>Error</comment>
+  </data>
+  <data name="unexpectedError" xml:space="preserve">
+    <value>Pogreška</value>
+    <comment>Error</comment>
+  </data>
+  <data name="createEvaluationForCasesSuccess" xml:space="preserve">
+    <value>Predmeti dodijeljeni za procjenu</value>
+    <comment>Case(s) assigned for evaluation</comment>
+  </data>
+  <data name="createEvaluationForConversationSuccess" xml:space="preserve">
+    <value>Razgovori dodijeljeni za procjenu</value>
+    <comment>Conversation(s) assigned for evaluation</comment>
+  </data>
+  <data name="createEvaluationForCustomEntitySuccess" xml:space="preserve">
+    <value>Zapisi dodijeljeni za procjenu</value>
+    <comment>Record(s) assigned for evaluation</comment>
+  </data>
+  <data name="createEvaluationSuccess" xml:space="preserve">
+    <value>Procjene su uspješno dodijeljene</value>
+    <comment>Evaluation(s) assigned successfully</comment>
+  </data>
+  <data name="createEvaluationError" xml:space="preserve">
+    <value>Neočekivana pogreška prilikom zahtjeva za procjenom.</value>
+    <comment>Unexpected error requesting evaluation(s).</comment>
+  </data>
+  <data name="requestedByStr" xml:space="preserve">
+    <value>Zatražio</value>
+    <comment>Requested by</comment>
+  </data>
+  <data name="invalidDueDateError" xml:space="preserve">
+    <value>Odabrani datum ne smije biti u prošlosti.</value>
+    <comment>Selected date must not be in the past.</comment>
+  </data>
+  <data name="invalidEvaluationOwnerOrRequestorError" xml:space="preserve">
+    <value>Jedan ili više odabranih zapisa ima sukob. Vlasnik zapisa ne može zatražiti procjenu niti mu se može dodijeliti.</value>
+    <comment>One or more of the selected records have a conflict. The record owner cannot request or be assigned the evaluation.</comment>
+  </data>
+  <data name="bulkEvaluationMaxLimitError" xml:space="preserve">
+    <value>Možete odabrati najviše ovoliko zapisa za procjenu: {0}.</value>
+    <comment>You can only select up to {0} records for evaluation.</comment>
+  </data>
+  <data name="aiagentmethodnotsupported" xml:space="preserve">
+    <value>Metoda AI agenta nije podržana za odabrane kriterije procjene jer sadrži pitanja koja su onemogućena za procjenu umjetnom inteligencijom</value>
+    <comment>AI Agent method is not supported for the selected evaluation criteria as it contains question(s) that are disabled for AI evaluation</comment>
+  </data>
+  <data name="retrieveEvaluationCriteriaError" xml:space="preserve">
+    <value>Pogreška pri dohvaćanju kriterija procjene. Pokušajte ponovo.</value>
+    <comment>Error retrieving evaluation criteria. Please try again.</comment>
+  </data>
+  <data name="reassignEvaluationError" xml:space="preserve">
+    <value>Neočekivana pogreška pri ponovnom dodjeljivanju procjena.</value>
+    <comment>Unexpected error reassigning evaluation(s).</comment>
+  </data>
+  <data name="billingSetupPendingError" xml:space="preserve">
+    <value>Da biste koristili ovu značajku, dovršite postavljanje plaćanja prema potrošnji za ovo okruženje.</value>
+    <comment>To use this feature, complete the pay-as-you-go setup for this environment.</comment>
+  </data>
+  <data name="dataMovementSetupPendingError" xml:space="preserve">
+    <value>Značajke Copilota ne funkcioniraju jer je onemogućeno premještanje podataka između regija.</value>
+    <comment>Copilot features aren't working because data movement across regions has been disabled.</comment>
+  </data>
+  <data name="aiAgentsDisabledError" xml:space="preserve">
+    <value>AI agenti nisu omogućeni za ovu organizaciju.</value>
+    <comment>AI agents are not enabled for this org.</comment>
+  </data>
+  <data name="requestEvaluationButton" xml:space="preserve">
+    <value>Zatražite</value>
+    <comment>Request</comment>
+  </data>
+  <data name="requestingEvaluationButton" xml:space="preserve">
+    <value>Upućivanje zahtjeva...</value>
+    <comment>Requesting...</comment>
+  </data>
+  <data name="extendCriteriaOutOfBoxError" xml:space="preserve">
+    <value>Možete proširiti kriterije definirane u vašoj organizaciji.</value>
+    <comment>You may extend criteria defined at your organization.</comment>
+  </data>
+  <data name="extendCriteriaOutOfBoxErrorTitle" xml:space="preserve">
+    <value>Gotovi kriteriji ne mogu se proširiti</value>
+    <comment>Out-of-box criteria can’t be extended</comment>
+  </data>
+  <data name="extendCriteriaAlreadyExtendedError" xml:space="preserve">
+    <value>Ne može se proširiti kriterij koji je već proširen s drugog kriterija.</value>
+    <comment>Cannot extend criteria that has already been extended from another criteria.</comment>
+  </data>
+  <data name="extendCriteriaAlreadyExtendedErrorTitle" xml:space="preserve">
+    <value>Kriteriji su već prošireni</value>
+    <comment>Criteria already extended</comment>
+  </data>
+  <data name="extendCriteriaGenericError" xml:space="preserve">
+    <value>Došlo je do pogreške prilikom pokušaja proširenja kriterija procjene.</value>
+    <comment>An error occurred while trying to extend the evaluation criteria.</comment>
+  </data>
+  <data name="extendCriteriaGenericErrorTitle" xml:space="preserve">
+    <value>Pogreška</value>
+    <comment>Error</comment>
+  </data>
+  <data name="activateEvaluationPlanSuccess" xml:space="preserve">
+    <value>Plan evaluacije aktiviran</value>
+    <comment>Evaluation plan activated</comment>
+  </data>
+  <data name="activateEvaluationPlanFailure" xml:space="preserve">
+    <value>Neočekivana pogreška pri aktiviranju plana procjene. Pokušajte ponovo.</value>
+    <comment>Unexpected error activating evaluation plan. Please try again.</comment>
+  </data>
+  <data name="pauseEvaluationPlanSuccess" xml:space="preserve">
+    <value>Plan evaluacije je pauziran</value>
+    <comment>Evaluation plan paused</comment>
+  </data>
+  <data name="pauseEvaluationPlanFailure" xml:space="preserve">
+    <value>Neočekivana pogreška pri pauziranju plana procjene. Pokušajte ponovo.</value>
+    <comment>Unexpected error pausing evaluation plan. Please try again.</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogTitle" xml:space="preserve">
+    <value>Aktivirati plan?</value>
+    <comment>Activate plan?</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogText" xml:space="preserve">
+    <value>Procjene provedene pomoću ovog plana mogu se pronaći na stranici procjena.</value>
+    <comment>Evaluations done using this plan can be found under the evaluations page.</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogConfirmButton" xml:space="preserve">
+    <value>Aktivirajte</value>
+    <comment>Activate</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogCancelButton" xml:space="preserve">
+    <value>Nemojte aktivirati</value>
+    <comment>Don't activate</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogTitle" xml:space="preserve">
+    <value>Pauzirati plan?</value>
+    <comment>Pause plan?</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogText" xml:space="preserve">
+    <value>Svaka aktivna procjena s pomoću ovog plana bit će dovršena, ali neće se provoditi daljnje procjene s ovim planom.</value>
+    <comment>Any active evaluation using this plan will complete, but no further evaluation with this plan will be done.</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogConfirmButton" xml:space="preserve">
+    <value>Pauzirajte</value>
+    <comment>Pause</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogCancelButton" xml:space="preserve">
+    <value>Nemojte pauzirati</value>
+    <comment>Don't pause</comment>
+  </data>
+  <data name="evaluationPlanDialogCancel" xml:space="preserve">
+    <value>Odustani</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="activateEvaluationPlanSaveRecordError" xml:space="preserve">
+    <value>Spremite zapis prije nego što ga aktivirate.</value>
+    <comment>Please save the record before activating it.</comment>
+  </data>
+  <data name="pauseEvaluationPlanSaveRecordError" xml:space="preserve">
+    <value>Spremite zapis prije nego što ga pauzirate.</value>
+    <comment>Please save the record before pausing it.</comment>
+  </data>
+  <data name="noChannelEnabledNotificationText" xml:space="preserve">
+    <value>QEA agent trenutačno nije omogućen ni za jedan entitet. Omogućite ga putem Centra za administratore za nastavak.</value>
+    <comment>QEA Agent is currently not enabled for any entities. Please enable it via the Admin Center to proceed.</comment>
+  </data>
+  <data name="saveEvaluationPlanInDraft" xml:space="preserve">
+    <value>Plan evaluacije spremljen je kao skica</value>
+    <comment>Evaluation plan is saved as draft</comment>
+  </data>
+  <data name="evaluationPlanInActiveStateNotificationText" xml:space="preserve">
+    <value>Ovaj je plan aktiviran i sada je samo za pregled</value>
+    <comment>This plan has been activated and is now view-only</comment>
+  </data>
+  <data name="evaluationPlanInPauseStateNotificationText" xml:space="preserve">
+    <value>Ovaj je plan pauziran i trenutačno nije aktivan</value>
+    <comment>This plan is paused and not active at the moment</comment>
+  </data>
+  <data name="conversationChannelNotEnabledNotificationText" xml:space="preserve">
+    <value>Planovi procjene trenutačno podržavaju samo entitet/kanal razgovora. Ažurirajte svoj odabir u Centru za administratore kako biste nastavili.</value>
+    <comment>Evaluation Plans currently support the Conversation entity/channel only. Please update your selection in the Admin Center to continue.</comment>
+  </data>
+  <data name="bulkEvaluationNotSetupNotificationText" xml:space="preserve">
+    <value>Postavljanje na čekanju za skupnu procjenu. Obratite se administratoru klijenta kako biste to omogućili</value>
+    <comment>Setup pending for bulk evaluation. Please contact your tenant admin to get this enabled</comment>
+  </data>
+  <data name="maxActivePlansLimitReachedNotificationText" xml:space="preserve">
+    <value>Dosegnut je maksimalan broj aktivnih planova procjene.</value>
+    <comment>Maximum number of active evaluation plans has been reached.</comment>
+  </data>
+  <data name="aiAgentsDisabledErrorEvaluationPlan" xml:space="preserve">
+    <value>**AI agenti onemogućeni** | AI agenti nisu omogućeni za ovu tvrtku. Obratite se administratoru klijenta da biste to aktivirali.</value>
+    <comment>AI agents disabled|AI agents are not enabled for this org. Please contact your tenant admin to get this activated.</comment>
+  </data>
+  <data name="billingSetupPendingErrorEvaluationPlan" xml:space="preserve">
+    <value>Postavljanje naplate u čekanju|Da biste koristili ovu značajku, postavite kredite servisa Microsoft Copilot za ovo okruženje.</value>
+    <comment>Billing setup pending|To use this feature, setup Microsoft Copilot credits for this environment.</comment>
+  </data>
+  <data name="dataMovementSetupPendingErrorEvaluationPlan" xml:space="preserve">
+    <value>**Postavka premještanja podataka na čekanju**|Značajke usluge Copilot ne rade jer je onemogućeno premještanje podataka između regija. Da biste omogućili premještanje podataka, obratite se administratoru klijenta.</value>
+    <comment>Data movement setup pending|Copilot features aren't working because data movement across regions has been disabled. To enable data movement, contact your tenant admin.</comment>
+  </data>
+  <data name="evaluationCriteriaIncompatibleNotificationText" xml:space="preserve">
+    <value>Nekompatibilni kriteriji procjene|Ovi kriteriji za procjenu ne uključuju potrebna pitanja s podrškom umjetne inteligencije za odabranu metodu procjene. Odaberite drukčiji kriterij procjene ili prijeđite na drugu metodu.</value>
+    <comment>Incompatible evaluation criteria|This evaluation criteria doesn't include the required AI-enabled questions for the selected evaluation method. Choose a different evaluation criteria or switch to a different method.</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogTitle" xml:space="preserve">
+    <value>Obnovi / Objavi</value>
+    <comment>Restore / Publish</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogText" xml:space="preserve">
+    <value>Vraćanje ili objavljivanje stare verzije zamijenit će trenutačno objavljenu verziju. Sve postojeće skice bit će odbačene.</value>
+    <comment>Restoring / publishing an old version will replace the current published version. Any existing draft versions will be discarded.</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogConfirmButton" xml:space="preserve">
+    <value>Obnovi / Objavi</value>
+    <comment>Restore / Publish</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogCancelButton" xml:space="preserve">
+    <value>Odustani</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaSuccessText" xml:space="preserve">
+    <value>Kriteriji evaluacije su uspješno obnovljeni i objavljeni.</value>
+    <comment>Evaluation criteria restored and published successfully.</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaSuccessTitle" xml:space="preserve">
+    <value>Uspjeh</value>
+    <comment>Success</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaProgressIndicator" xml:space="preserve">
+    <value>Obnavljanje i objavljivanje...</value>
+    <comment>Progress indicator message when restoring and publishing evaluation criteria</comment>
+  </data>
+  <data name="versionNoCriteriaError" xml:space="preserve">
+    <value>Odabrana verzija nema pripadajuće kriterije procjene.</value>
+    <comment>Error message when the selected version has no associated evaluation criteria</comment>
+  </data>
+  <data name="fetchVersionNumberError" xml:space="preserve">
+    <value>Nije moguće dohvatiti broj verzije.</value>
+    <comment>Error message when version number cannot be fetched from the selected version</comment>
+  </data>
+  <data name="fetchParentCriteriaError" xml:space="preserve">
+    <value>Nije moguće dohvatiti verziju kriterija nadređenog elementa.</value>
+    <comment>Error message when parent criteria version cannot be fetched</comment>
+  </data>
+  <data name="fetchActiveVersionError" xml:space="preserve">
+    <value>Nije moguće dohvatiti aktivnu verziju za kriterije procjene.</value>
+    <comment>Error message when active version for criteria cannot be fetched</comment>
+  </data>
+  <data name="loadSimulationFormError" xml:space="preserve">
+    <value>Nije moguće učitati obrazac za simulaciju. Pokušajte ponovo.</value>
+    <comment>Error message when simulation form fails to load</comment>
+  </data>
+  <data name="saveSimulationRunError" xml:space="preserve">
+    <value>Nije moguće spremiti izvođenje simulacije. Pokušajte ponovo.</value>
+    <comment>Error message when saving simulation run fails</comment>
+  </data>
+  <data name="runSimulationError" xml:space="preserve">
+    <value>Nije moguće pokrenuti simulaciju. Pokušajte ponovo.</value>
+    <comment>Error message when simulation execution fails</comment>
+  </data>
+  <data name="noSimulationRunError" xml:space="preserve">
+    <value>Nijedno pokretanje simulacije nije povezano s ovim zapisom. Prvo spremite obrazac.</value>
+    <comment>Error message when simulation run lookup is empty</comment>
+  </data>
+  <data name="noRowSelectedError" xml:space="preserve">
+    <value>Odaberite simulacijsko pokretanje za ponovno pokretanje.</value>
+    <comment>Error message when no row is selected in the subgrid</comment>
+  </data>
+  <data name="multipleRowsSelectedError" xml:space="preserve">
+    <value>Odaberite samo jedno pokretanje simulacije za ponovno pokretanje.</value>
+    <comment>Error message when multiple rows are selected in the subgrid</comment>
+  </data>
+  <data name="noSimulationDataFoundError" xml:space="preserve">
+    <value>Nije moguće dohvatiti podatke simulacije. Pokušajte ponovo.</value>
+    <comment>Error message when simulation data cannot be found</comment>
+  </data>
+  <data name="QMSFeatureDisabled" xml:space="preserve">
+    <value>Zastavica onemogućene značajke QEA</value>
+    <comment>Error when feature flag for QEA is not enabled</comment>
+  </data>
+  <data name="CannotChangeStatusBackToDraft" xml:space="preserve">
+    <value>Ne možete promijeniti status u Skica iz stanja atributa koji nije skica.</value>
+    <comment>Error message when the status is changed to draft from non draft state</comment>
+  </data>
+  <data name="CannotDeleteActiveEvaluationPlan" xml:space="preserve">
+    <value>Aktivne planove procjene nije moguće izbrisati. Pauzirajte plan da biste ga izbrisali.</value>
+    <comment>Error message when an active evaluation plan is deleted</comment>
+  </data>
+  <data name="EndDateInPast" xml:space="preserve">
+    <value>Datume početka i završetka nije moguće postaviti u prošlosti. Odaberite valjani datum.</value>
+    <comment>Error message when end date is set in the past</comment>
+  </data>
+  <data name="StartDateAfterEndDate" xml:space="preserve">
+    <value>Datum početka ne smije biti nakon datum završetka. Prilagodite datume za nastavak.</value>
+    <comment>Error when start date is set after the end date</comment>
+  </data>
+  <data name="DueDateInPast" xml:space="preserve">
+    <value>Krajnji rok nije moguće postaviti u prošlosti. Odaberite valjani datum.</value>
+    <comment>Error message when due date is set in the past.</comment>
+  </data>
+  <data name="EvaluationExpirationValueOutOfRange" xml:space="preserve">
+    <value>Vrijednost isteka procjene mora biti između 1 i 365.</value>
+    <comment>Error message when evaluation expiration value is out of the allowed range.</comment>
+  </data>
+  <data name="EvaluationExpirationUnitRequired" xml:space="preserve">
+    <value>Jedinica za istek procjene je obavezna i ne može se ukloniti.</value>
+    <comment>Error message when evaluation expiration unit is explicitly set to null on update.</comment>
+  </data>
+  <data name="RecordTypeNotEnabledForOrg" xml:space="preserve">
+    <value>Vrsta zapisa nije omogućena za tu tvrtku ili ustanovu.</value>
+    <comment>Error when the selected record type is not enabled for the organization</comment>
+  </data>
+  <data name="AssignedUserPrivilegesNotFound" xml:space="preserve">
+    <value>Dodijeljeni korisnik nema potrebne dozvole</value>
+    <comment>Error message when the assigned user doesn't have the required permissions</comment>
+  </data>
+  <data name="AssignedTeamPrivilegesNotFound" xml:space="preserve">
+    <value>Dodijeljeni tim nema potrebne dozvole</value>
+    <comment>Error message when the assigned team doesn't have the required permissions</comment>
+  </data>
+  <data name="SamplingFeatureDisabled" xml:space="preserve">
+    <value>Polja uzorkovanja ne mogu se postaviti kada je mogućnost uzorkovanja onemogućena.</value>
+    <comment>Error message when sampling fields are set but the sampling feature is disabled via FCS</comment>
+  </data>
+  <data name="SamplingOnlyForRecurring" xml:space="preserve">
+    <value>Konfiguracija uzorkovanja dopuštena je samo za ponavljajuće planove procjene.</value>
+    <comment>Error message when sampling fields are set on non-recurring evaluation plans</comment>
+  </data>
+  <data name="SamplingModeRequired" xml:space="preserve">
+    <value>Način uzorkovanja mora biti naveden kada su konfigurirana druga polja uzorkovanja.</value>
+    <comment>Error message when sampling fields are set without specifying the sampling mode</comment>
+  </data>
+  <data name="samplingValuePercentageRangeError" xml:space="preserve">
+    <value>Vrijednost uzorkovanja mora biti između 1 i 100 kada je način uzorkovanja postotak.</value>
+    <comment>Validation error when sampling value is out of range for Percentage mode</comment>
+  </data>
+  <data name="samplingValueAbsoluteNumberMinError" xml:space="preserve">
+    <value>Vrijednost uzorkovanja mora biti najmanje 1 kada je način uzorkovanja apsolutni broj.</value>
+    <comment>Validation error when sampling value is less than 1 for Absolute Number mode</comment>
+  </data>
+  <data name="AllSamplingFieldsRequired" xml:space="preserve">
+    <value>Sva polja uzorkovanja (način uzorkovanja, vrijednost uzorkovanja, strategija odabira, rangiranje zapisa) moraju biti popunjena za ponavljajuće planove procjene s omogućenim uzorkovanjem.</value>
+    <comment>Error message when not all required sampling fields are populated for a recurring plan</comment>
+  </data>
+  <data name="criteriaContentSizeLimitExceeded" xml:space="preserve">
+    <value>Sadržaj kriterija je prevelik za spremanje. Za nastavak smanjite broj pitanja, opcija ili uputa.</value>
+    <comment>Error dialog shown when the criteria content exceeds the maximum storage limit</comment>
+  </data>
+</root>

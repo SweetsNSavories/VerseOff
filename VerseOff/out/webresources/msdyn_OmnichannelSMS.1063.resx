@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Close_Opp_Dlg_Desc" xml:space="preserve">
+    <value>Pateikite šią informaciją apie galimybės uždarymo priežastis.</value>
+  </data>
+  <data name="Error_Message_0x80040515" xml:space="preserve">
+    <value>Galimybė jau uždaryta.</value>
+    <comment>IDS_OPPORTUNITY_IS_ALREADY_CLOSED</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_37" xml:space="preserve">
+    <value>Pirminėje galimybėje neteisingai nustatytos Faktinės pajamos. Turite įvesti skaičių tarp "{0}" ir "{1}".</value>
+    <comment>Error message displayed to the user in the close opportunity dialog page when the actual revenue is set incorrectly on the opportunity. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible revenue amount and Placeholder 1 is a number specifing maximum permissible revenue amount.</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_67" xml:space="preserve">
+    <value>Turite nurodyti uždarymo datą.</value>
+    <comment>Error message displayed when the user clicks on the ok button without entering a value in the close date field in close opportunity dialog box.</comment>
+  </data>
+  <data name="Suggestions_Dlg_Add_Selected_Text" xml:space="preserve">
+    <value>Įtraukti</value>
+    <comment>Label text for the "Add Selected" button in the product suggestions dialog.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>Atšaukti</value>
+  </data>
+  <data name="Suggestions_Dlg_Error_Moca_Offline" xml:space="preserve">
+    <value>Peržiūrėti pasiūlymus galite tik kai programa yra prijungta prie tinklo.</value>
+    <comment>Error text for when users attempts to view or add suggestions when Moca is offline.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Selection" xml:space="preserve">
+    <value>Pasirinkite bent vieną pasiūlymą, kurį įtrauksite.</value>
+    <comment>Error text for when users attempts to click add suggestions button without selecting any suggestion.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_Add_Suggestions" xml:space="preserve">
+    <value>Mums nepavyko įtraukti pasiūlymų. Bandykite dar kartą. {0}</value>
+    <comment>Error text for when adding suggestion fails.[Category="MoCA Client"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Price_List" xml:space="preserve">
+    <value>Norėdami matyti pasiūlymus, turite pasirinkti kainoraštį.</value>
+    <comment>Error text for when user opens Suggestions dialog without a price list selected.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_NoParentRecordFound" xml:space="preserve">
+    <value>Pirminių įrašų nerasta.</value>
+  </data>
+  <data name="Quote_Closed_Subject" xml:space="preserve">
+    <value>Uždarytas pasiūlymas ({0}) – {1}</value>
+    <comment>Subject for the quote close activity. Whenever a quote is closed a quote closed activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was closed. Eg: Lost, Canceled or Revised. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Quote_Won_Subject" xml:space="preserve">
+    <value>Laimėtas pasiūlymas ({0}) – {1}</value>
+    <comment>Subject for the quote won activity. Whenever a quote is won a quote won activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was won. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Close_Opportunity_Activity_Subject" xml:space="preserve">
+    <value>Uždaryta galimybė: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is name of object.</comment>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>Ar norite panaikinti {0}? Šio veiksmo anuliuoti negalima.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Eg: Deleting a product. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>Naikinti</value>
+  </data>
+  <data name="ViewDuplicates_aspx_Button_Label_CancelUpdateRecord" xml:space="preserve">
+    <value>&amp;Atšaukti</value>
+    <comment>The label of the Cancel Update button</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>Naikinimo patvirtinimas</value>
+  </data>
+  <data name="Web.SFA.QOI.QuantityAndPriceNegativeAlert" xml:space="preserve">
+    <value>Negalite nurodyti ir kiekio, ir vieneto kainos neigiamos reikšmės. Pakeiskite kurią nors iš šių reikšmių ir bandykite dar kartą.</value>
+    <comment>Alert message that is displayed in QOI forms when the both Quantity and Price Per Unit fields are filled up with negative values. [Category="SFA: Negative prices"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Prieš atlikdami šį veiksmą privalote pasirinkti vieną ar daugiau įrašų.</value>
+  </data>
+  <data name="Web.SFA.quotes.EffectiveToEarlierThanEffectiveFrom" xml:space="preserve">
+    <value>Galiojimo pabaigos data negali būti ankstesnė už Galiojimo pradžios datą.</value>
+    <comment>Error message to display if effective to date supplied in the quote form is earlier than effective from date.</comment>
+  </data>
+  <data name="Web.SFA.QOI.CurrencyChangeAlert" xml:space="preserve">
+    <value>Prieš tęsdami peržiūrėkite visus formos pinigų laukus.</value>
+    <comment>Alert message that is displayed in Quote and Opportunity forms when transaction currency is changed. [Category="Business Modules"]</comment>
+  </data>
+  <data name="QUOTE_EXPIRED" xml:space="preserve">
+    <value>Galioja iki data praėjo. Norėdami iš naujo aktyvinti pasiūlymą, galite nustatyti būsimą datą.</value>
+    <comment>quote is expired.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Suggestions_Notification_Available_Message" xml:space="preserve">
+    <value>Yra produktų pasiūlymų ({0})</value>
+    <comment>Text for the notification that product suggestions are available.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Notification_See_Link_Text" xml:space="preserve">
+    <value>Rodyti</value>
+    <comment>Text for clickable link in suggestion notification.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_340" xml:space="preserve">
+    <value>Šio pasiūlymo keitimas į pardavimo užsakymą bus įvykdytas automatiškai, kai vėl prisijungsite. Norėdami tęsti, spustelėkite Gerai.</value>
+    <comment>Confirmation message displayed when the user attempts to create an order from a quote in outlook client when the outlook client is in offline mode.</comment>
+  </data>
+  <data name="Web.SFA.QOI.QuantityChangedDueToChangeInAccuracy" xml:space="preserve">
+    <value>Atnaujinus produkte palaikomas dešimtaines trupmenas, laukelio Kiekis reikšmė iš {0} pasikeitė į {1}.
+  Norėdami įrašyti keitimus, spustelėkite Gerai, tada spustelėkite Įrašyti arba Įrašyti ir uždaryti.</value>
+    <comment>Header of Message to prompt the user about change in qunatity due to change in decimal accuracy supported by the product. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 and Placeholder 1 are numbers.</comment>
+  </data>
+  <data name="Close_Quote_Dlg_Title" xml:space="preserve">
+    <value>Uždaryti pasiūlymą</value>
+  </data>
+  <data name="Close_Quote_Dlg_Desc" xml:space="preserve">
+    <value>Uždarote šį pasiūlymą.</value>
+    <comment>Close quote dialog description.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.dlg_close.aspx_155" xml:space="preserve">
+    <value>Uždarymo data</value>
+    <comment>Label for the close date field in the close quote dialog box. Represents the quote close date.</comment>
+  </data>
+  <data name="Dialog_PaidInvoice_Title" xml:space="preserve">
+    <value>Apmokėta sąskaita faktūra</value>
+  </data>
+  <data name="Dialog_PaidInvoice_Description" xml:space="preserve">
+    <value>Pažymėkite šios sąskaitos faktūros apmokėjimo informaciją.</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Title" xml:space="preserve">
+    <value>Atšaukti sąskaitą faktūrą</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Description" xml:space="preserve">
+    <value>Pažymėkite šios sąskaitos faktūros atšaukimo informaciją.</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Title" xml:space="preserve">
+    <value>Atšaukti užsakymą</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Desc" xml:space="preserve">
+    <value>Pateikite šio užsakymo atšaukimo informaciją.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_ConfirmButton.dlg_close" xml:space="preserve">
+    <value>Patvirtinti</value>
+    <comment>OK Button text when Order close dialog when the order is canceled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_50.dlg_close" xml:space="preserve">
+    <value>Atšaukimo data</value>
+    <comment>Label for the sales order cancel date field in cancel order dialog page.</comment>
+  </data>
+  <data name="Order_Fulfill_Dlg_Title" xml:space="preserve">
+    <value>Vykdyti užsakymą</value>
+  </data>
+  <data name="Order_Fulfill_Dlg_Desc" xml:space="preserve">
+    <value>Pateikite šio užsakymo įvykdymo informaciją.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_FulfillButton.dlg_close" xml:space="preserve">
+    <value>Vykdyti</value>
+    <comment>OK Button text when Order close dialog when the order is fulfilled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_51.dlg_close" xml:space="preserve">
+    <value>Įvykdymo data</value>
+    <comment>Label for the sales order fulfill date field in fulfill order dialog page.</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_155" xml:space="preserve">
+    <value>Norėdami įtraukti produktą, turite pažymėti kainoraštį.</value>
+    <comment>Error message displayed in the opportunity form when the user attempts to add a product to the opportunity without choosing a price list for the opportunity.</comment>
+  </data>
+  <data name="notEligibleBulkEdit" xml:space="preserve">
+    <value>Valdiklių negalima masiškai redaguoti.</value>
+  </data>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>Uždarykite el. laiško formą</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>Keisti {0} būseną į Baigta ir uždaryti formą</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>Turite pasirinkti klientą.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>Prieš keisdami šią veiklą, turite įrašyti keitimus.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="LOCID_PROVIDE_VALUE_ADDRESS" xml:space="preserve">
+    <value>Ieškoti adreso galėsite tik nurodę {0} reikšmę.</value>
+    <comment>{NumberedPlaceholder="{0}"}. AlertMessage.Message on omission of value for address lookup.</comment>
+  </data>
+  <data name="LOCID_SALESLIT_NO_DOCUMENTS" xml:space="preserve">
+    <value>{0} nėra jokio {1}.</value>
+    <comment>Text in alert when sales literature does not contain any documents. [Category="Business Modules"] {NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with salesliterature entity display name. {NumberedPlaceholder="{1}"} Placeholder 1 will be replaced with salesliteratureitem entity display name</comment>
+  </data>
+  <data name="Web.SFA.invoice.edit.aspx_163" xml:space="preserve">
+    <value>Įvyko tokia klaida: {0}</value>
+    <comment>Message displayed with price error messages.</comment>
+  </data>
+  <data name="SalesAttachmentDisplayName" xml:space="preserve">
+    <value>Pardavimo priedas</value>
+    <comment>Sales Attachment display name.</comment>
+  </data>
+  <data name="LiveWorkStream.ProviderInvalid" xml:space="preserve">
+    <value>SMS teikėjas netinkamas</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid provider</comment>
+  </data>
+  <data name="LiveWorkStream.APIKeyInvalid" xml:space="preserve">
+    <value>Autorizavimo raktas netinkamas</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid authorization Key</comment>
+  </data>
+  <data name="LiveWorkStream.OCEndpointMissing" xml:space="preserve">
+    <value>Nepavyko sugeneruoti SMS gavimo URL, nes trūksta organizacijos URL galinio punkto. Susisiekite su savo sistemos administratoriumi</value>
+    <comment>Error message displayed when the sms inbound URL is not displayed as the OCEndPoint is not set correctly</comment>
+  </data>
+  <data name="LiveWorkStream.CustomerIdInvalid" xml:space="preserve">
+    <value>Autorizavimo ID netinkamas</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid authorization Id</comment>
+  </data>
+  <data name="LiveWorkStream.DoesNotExist" xml:space="preserve">
+    <value>Nurodyto darbo srauto nėra</value>
+    <comment>Error text for when users specify a non-existant Work Stream to validate its SMS connection</comment>
+  </data>
+  <data name="LiveWorkStream.InsufficientInputs" xml:space="preserve">
+    <value>Iš nurodytos įvesties nepavyko nustatyti būtinų darbo srauto ypatybių</value>
+    <comment>Error message displayed when not enough inputs have been passed to the Work Stream SMS connection validation workflow to determine the necessary Work Stream SMS settings to validate the connection</comment>
+  </data>
+  <data name="LiveWorkStream.InvalidInputData" xml:space="preserve">
+    <value>Įvestis buvo neatpažįstamo formato</value>
+    <comment>Error text for when there is an error deserializing the input to the Work Stream SMS connection validation workflow</comment>
+  </data>
+  <data name="LiveWorkStream.NoAssociatedSMSNumbers" xml:space="preserve">
+    <value>Darbo srautas turi būti susietas su bent vienu SMS numeriu</value>
+    <comment>Error text for when users try to validate a Work Stream not associated to any SMS Numbers</comment>
+  </data>
+  <data name="LiveWorkStream.SourceNotSMS" xml:space="preserve">
+    <value>Šis veiksmą galima atlikti tik su SMS darbų srautu</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with a source other than SMS</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignError" xml:space="preserve">
+    <value>Nepavyko išsiųsti patvirtinimo pranešimo</value>
+    <comment>Error message displayed for generic errors encountered calling provider when validating an SMS Work Steam connection</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignErrorWithArgument" xml:space="preserve">
+    <value>Nepavyko išsiųsti patvirtinimo pranešimo: {0}</value>
+    <comment>Error message displayed for errors with additional content encountered calling provider when validating an SMS Work Steam connection</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignTimeout" xml:space="preserve">
+    <value>Baigėsi laukimo, kol bus pateiktas patvirtinimo pranešimo, skirtasis laikas</value>
+    <comment>Error message displayed when provider does not successfully or unsuccessfully deliver the verification message in a set amount of time</comment>
+  </data>
+  <data name="LiveWorkStream.Validating" xml:space="preserve">
+    <value>Tikrinama SMS REST API išsami informacija</value>
+    <comment>Informational message shown to the user when they click on any of the buttons to validate an SMS Work Stream connection</comment>
+  </data>
+  <data name="LiveWorkStream.ValidationError" xml:space="preserve">
+    <value>Nepavyko įvykdyti tikrinimo darbo eigos</value>
+    <comment>Error message displayed for generic errors executing the Work Stream SMS validation workflows</comment>
+  </data>
+  <data name="LiveWorkStream.ValidationSuccess" xml:space="preserve">
+    <value>Sėkmingai patikrinta SMS API išsami informacija</value>
+    <comment>Message shown when the SMS connection is successfully validated</comment>
+  </data>
+  <data name="LiveWorkStream.VerificationSMSMessageText" xml:space="preserve">
+    <value>Patvirtinimo pranešimas. Nepaisykite.</value>
+    <comment>The SMS Number verification message text sent when validating a given SMS Work Stream</comment>
+  </data>
+  <data name="LiveWorkStream.WrongEntity" xml:space="preserve">
+    <value>Objekto, perduoto kaip darbo srautas, tipas netinkamas</value>
+    <comment>Error message displayed when the Work Stream passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="SMSNumber.DoesNotExist" xml:space="preserve">
+    <value>Nurodyto SMS numerio nėra</value>
+    <comment>Error text for when users specify a non-existant SMS Number for validating an SMS Work Stream SMS connection</comment>
+  </data>
+  <data name="SMSNumber.InsufficientInputs" xml:space="preserve">
+    <value>Iš nurodytos įvesties nepavyko nustatyti būtinų SMS numerio ypatybių</value>
+    <comment>Error message displayed when not enough inputs have been passed to the Work Stream SMS connection validation workflow to determine the necessary SMS Number settings to validate the connection</comment>
+  </data>
+  <data name="SMSNumber.InvalidOrMissingLiveWorkStream" xml:space="preserve">
+    <value>SMS numeris turi būti susietas su SMS darbo srautu</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for an SMS Number not associated to a Work Stream or associated to a Work Stream with a Stream Source other than SMS</comment>
+  </data>
+  <data name="SMSNumber.NumberInvalid" xml:space="preserve">
+    <value>SMS numeris netinkamas</value>
+    <comment>Error message displayed when an invalid validating SMS Rest API is due to the number being invalid</comment>
+  </data>
+  <data name="SMSNumber.ProviderInvalid" xml:space="preserve">
+    <value>SMS numerio teikėjas netinkamas</value>
+    <comment>Error message displayed when an invalid provider is selected for an SMS Number</comment>
+  </data>
+  <data name="SMSNumber.Telesign.LongCodeInvalid" xml:space="preserve">
+    <value>Ilgąjį kodą turi sudaryti 8–15 skaitmenų</value>
+    <comment>Error message displayed when an invalid long code SMS Number has been entered</comment>
+  </data>
+  <data name="SMSNumber.Telesign.ShortCodeInvalid" xml:space="preserve">
+    <value>Trumpojo kodo numerius turi sudaryti 3–8 raidiniai arba skaitiniai simboliai. Neleidžiama naudoti papildomo formatavimo simbolių.</value>
+    <comment>Error message displayed when an invalid short code SMS number has been entered</comment>
+  </data>
+  <data name="SMSNumber.Telesign.TollFreeInvalid" xml:space="preserve">
+    <value>Nemokami numeriai turi prasidėti 1 ir būti sudaryti iš 8–15 skaitmenų</value>
+    <comment>Error message displayed when an invalid toll free SMS Number has been entered</comment>
+  </data>
+  <data name="SMSNumber.TypeInvalid" xml:space="preserve">
+    <value>SMS numerio tipas netinkamas</value>
+    <comment>Error message displayed when an invalid number type is selected for an SMS Number</comment>
+  </data>
+  <data name="SMSNumber.WrongEntity" xml:space="preserve">
+    <value>Objekto, perduoto kaip SMS numeris, tipas netinkamas</value>
+    <comment>Error message displayed when the SMS Number passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="LiveWorkStream.ValidateFailed" xml:space="preserve">
+    <value>Nepavyko</value>
+    <comment>Failure validation status of the last SMS provider validation.</comment>
+  </data>
+  <data name="LiveWorkStream.ValidateSuccess" xml:space="preserve">
+    <value>Sėkmingai</value>
+    <comment>Success validation status of the last SMS provider validation.</comment>
+  </data>
+  <data name="PhoneNumber.DoesNotExists" xml:space="preserve">
+    <value>Nurodyto telefono numerio nėra</value>
+    <comment>Error text when users specify a non-existent Phone Number.</comment>
+  </data>
+  <data name="PhoneNumber.WrongEntity" xml:space="preserve">
+    <value>Objekto, perduoto kaip telefono numeris, tipas netinkamas</value>
+    <comment>Error message displayed when the Phone Number passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="OC_FormNotificationMessageForSMSProvider" xml:space="preserve">
+    <value>Užpildykite visus SMS parametrus, kad užbaigtumėte SMS kanalo nustatymą.</value>
+    <comment>Warning notification message at the form level when the sms provider is not selected, api key, customer id are not filled.</comment>
+  </data>
+  <data name="OC_TeleSignAccountInformationSectionLabel" xml:space="preserve">
+    <value>„TeleSign“ kliento informacija</value>
+    <comment>Account information label for TeleSign</comment>
+  </data>
+  <data name="OC_TeleSignApiKeyLabel" xml:space="preserve">
+    <value>API raktas</value>
+    <comment>TeleSign label for key</comment>
+  </data>
+  <data name="OC_TeleSignCustomerIdLabel" xml:space="preserve">
+    <value>Kliento ID</value>
+    <comment>TeleSign label for ID</comment>
+  </data>
+  <data name="OC_TwilioAccountInformationSectionLabel" xml:space="preserve">
+    <value>„Twilio“ kliento informacija</value>
+    <comment>Account information label for Twilio</comment>
+  </data>
+  <data name="OC_TwilioAccountSIDLabel" xml:space="preserve">
+    <value>Kliento SID</value>
+    <comment>Twilio label for ID</comment>
+  </data>
+  <data name="OC_TwilioAuthTokenLabel" xml:space="preserve">
+    <value>Autentifikavimo atpažinimo ženklas</value>
+    <comment>Twilio label for key</comment>
+  </data>
+  <data name="OC_TwilioLegalDisclaimerPreviewTerms" xml:space="preserve">
+    <value>Peržiūros versijos sąlygos</value>
+  </data>
+  <data name="OC_TwilioLegalDisclaimerText" xml:space="preserve">
+    <value>Pateikdami „Twilio“ kliento informaciją, kad galėtumėte įjungti SMS, patvirtinate, jog ši funkcija yra peržiūros versijos, ir sutinkate su {0}.</value>
+    <comment>DO NOT CHANGE {0} as it will be replaced with OC_TwilioLegalDisclaimerPreviewTerms.</comment>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Nerasta jokių problemų.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>Įvyko priedo „{0}“ klaida.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.ResultEntityMessage" xml:space="preserve">
+    <value>SMS kanalo konfigūracija neturi aktyviojo darbo srauto.</value>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Yra 1 SMS kanalo konfigūracija, kuri neturi aktyviojo darbo srauto.</value>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>SMS kanalo konfigūracijų, kurios neturi aktyviojo darbo srauto: {0}.</value>
+    <comment>The error message for SmsChannelConfigurationShouldHaveWorkStream rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.ResultEntityMessage" xml:space="preserve">
+    <value>SMS kanalo konfigūracija, skirta {0} tiekėjui, turi tuščią {1}.</value>
+    <comment>The error message for SmsSettingsShouldHaveAllRequiredFields rule where placeholder {0} is SMS provider name, 
+    and {1} is an invalid field name or names</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Yra 1 SMS kanalo konfigūracija su neišsamiais parametrais.</value>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>SMS kanalo konfigūracijų su neišsamiais parametrais: {0}.</value>
+    <comment>The error message for SmsSettingsShouldHaveAllRequiredFields rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.CustomerIdProperty" xml:space="preserve">
+    <value>Kliento ID</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_customerid"] property for TeleSign</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.APIKeyProperty" xml:space="preserve">
+    <value>API raktas</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_apikey"] property for TeleSign</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.AccountSIDProperty" xml:space="preserve">
+    <value>Paskyros SID</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_customerid"] property for Twilio</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.AuthTokenProperty" xml:space="preserve">
+    <value>Autentifikavimo atpažinimo ženklas</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_apikey"] property for Twilio</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.LastValidationStatus" xml:space="preserve">
+    <value>Paskutiniojo tikrinimo būsena</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_lastvalidationstatus"] property</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.smsProviderMessage" xml:space="preserve">
+    <value>SMS teikėjas nenustatytas</value>
+    <comment>SMS provider is not set message</comment>
+  </data>
+</root>

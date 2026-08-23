@@ -1,5 +1,6 @@
 import csv
 import hashlib
+import json
 import os
 import posixpath
 import re
@@ -393,6 +394,14 @@ def collect_web_resource_names(entities):
             for action in command.get("actions", []):
                 if action.get("type") == "JavaScriptFunction":
                     include(action.get("library"))
+        for rule_list in (ribbon.get("enable_rules", {}).values(), ribbon.get("display_rules", {}).values()):
+            for rules in rule_list:
+                for rule in rules:
+                    if rule.get("type") == "CustomRule":
+                        include(rule.get("library"))
+        ribbon_str = json.dumps(ribbon)
+        for m in re.finditer(r'\$webresource:([a-zA-Z0-9_\-\.\/]+)', ribbon_str, re.IGNORECASE):
+            include(m.group(1))
         for timeline in entity.get("timelines", []):
             for source in timeline.get("custom_record_sources", []):
                 include(source.get("name"))

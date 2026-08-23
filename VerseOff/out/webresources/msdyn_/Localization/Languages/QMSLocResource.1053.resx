@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="regardingObjectIdNotFound" xml:space="preserve">
+    <value>Det går inte att hitta objekt-ID:t</value>
+    <comment>Regarding object Id not found</comment>
+  </data>
+  <data name="openEvaluationTitleError" xml:space="preserve">
+    <value>Fel</value>
+    <comment>Error</comment>
+  </data>
+  <data name="unexpectedError" xml:space="preserve">
+    <value>Fel</value>
+    <comment>Error</comment>
+  </data>
+  <data name="createEvaluationForCasesSuccess" xml:space="preserve">
+    <value>Ärenden som har tilldelats för utvärdering</value>
+    <comment>Case(s) assigned for evaluation</comment>
+  </data>
+  <data name="createEvaluationForConversationSuccess" xml:space="preserve">
+    <value>Konversationer har tilldelats för utvärdering</value>
+    <comment>Conversation(s) assigned for evaluation</comment>
+  </data>
+  <data name="createEvaluationForCustomEntitySuccess" xml:space="preserve">
+    <value>Post(ar) har tilldelats för utvärdering</value>
+    <comment>Record(s) assigned for evaluation</comment>
+  </data>
+  <data name="createEvaluationSuccess" xml:space="preserve">
+    <value>Utvärderingarna har tilldelats</value>
+    <comment>Evaluation(s) assigned successfully</comment>
+  </data>
+  <data name="createEvaluationError" xml:space="preserve">
+    <value>Ett oväntat fel uppstod när utvärdering(ar) skulle begäras.</value>
+    <comment>Unexpected error requesting evaluation(s).</comment>
+  </data>
+  <data name="requestedByStr" xml:space="preserve">
+    <value>Begärt av</value>
+    <comment>Requested by</comment>
+  </data>
+  <data name="invalidDueDateError" xml:space="preserve">
+    <value>Det valda datumet får inte vara i det förflutna.</value>
+    <comment>Selected date must not be in the past.</comment>
+  </data>
+  <data name="invalidEvaluationOwnerOrRequestorError" xml:space="preserve">
+    <value>En eller flera av de valda posterna har en konflikt. Postägaren kan inte begära eller tilldelas utvärderingen.</value>
+    <comment>One or more of the selected records have a conflict. The record owner cannot request or be assigned the evaluation.</comment>
+  </data>
+  <data name="bulkEvaluationMaxLimitError" xml:space="preserve">
+    <value>Du kan bara välja upp till {0} poster för utvärdering.</value>
+    <comment>You can only select up to {0} records for evaluation.</comment>
+  </data>
+  <data name="aiagentmethodnotsupported" xml:space="preserve">
+    <value>AI Agent-metoden stöds inte för de valda utvärderingskriterierna eftersom den innehåller frågor som är inaktiverade för AI-utvärdering</value>
+    <comment>AI Agent method is not supported for the selected evaluation criteria as it contains question(s) that are disabled for AI evaluation</comment>
+  </data>
+  <data name="retrieveEvaluationCriteriaError" xml:space="preserve">
+    <value>Fel vid hämtning av utvärderingsvillkor. Försök igen.</value>
+    <comment>Error retrieving evaluation criteria. Please try again.</comment>
+  </data>
+  <data name="reassignEvaluationError" xml:space="preserve">
+    <value>Oväntat fel vid omtilldelning av utvärderingar.</value>
+    <comment>Unexpected error reassigning evaluation(s).</comment>
+  </data>
+  <data name="billingSetupPendingError" xml:space="preserve">
+    <value>Slutför konfigurationen av betala per användning för den här miljön om du vill använda den här funktionen.</value>
+    <comment>To use this feature, complete the pay-as-you-go setup for this environment.</comment>
+  </data>
+  <data name="dataMovementSetupPendingError" xml:space="preserve">
+    <value>Copilot-funktioner fungerar inte eftersom dataflytt mellan regioner har inaktiverats.</value>
+    <comment>Copilot features aren't working because data movement across regions has been disabled.</comment>
+  </data>
+  <data name="aiAgentsDisabledError" xml:space="preserve">
+    <value>AI-agenter har inte aktiverats för den här organisationen.</value>
+    <comment>AI agents are not enabled for this org.</comment>
+  </data>
+  <data name="requestEvaluationButton" xml:space="preserve">
+    <value>Begäran</value>
+    <comment>Request</comment>
+  </data>
+  <data name="requestingEvaluationButton" xml:space="preserve">
+    <value>Begär...</value>
+    <comment>Requesting...</comment>
+  </data>
+  <data name="extendCriteriaOutOfBoxError" xml:space="preserve">
+    <value>Du kan utöka kriterier som definierats i din organisation.</value>
+    <comment>You may extend criteria defined at your organization.</comment>
+  </data>
+  <data name="extendCriteriaOutOfBoxErrorTitle" xml:space="preserve">
+    <value>Färdiga villkor kan inte utökas</value>
+    <comment>Out-of-box criteria can’t be extended</comment>
+  </data>
+  <data name="extendCriteriaAlreadyExtendedError" xml:space="preserve">
+    <value>Det går inte att utöka villkor som redan har utökats från ett annat villkor.</value>
+    <comment>Cannot extend criteria that has already been extended from another criteria.</comment>
+  </data>
+  <data name="extendCriteriaAlreadyExtendedErrorTitle" xml:space="preserve">
+    <value>Villkor har redan utökats</value>
+    <comment>Criteria already extended</comment>
+  </data>
+  <data name="extendCriteriaGenericError" xml:space="preserve">
+    <value>Ett fel uppstod när utvärderingskriterierna skulle utökas.</value>
+    <comment>An error occurred while trying to extend the evaluation criteria.</comment>
+  </data>
+  <data name="extendCriteriaGenericErrorTitle" xml:space="preserve">
+    <value>Fel</value>
+    <comment>Error</comment>
+  </data>
+  <data name="activateEvaluationPlanSuccess" xml:space="preserve">
+    <value>Utvärderingsplanen har aktiverats</value>
+    <comment>Evaluation plan activated</comment>
+  </data>
+  <data name="activateEvaluationPlanFailure" xml:space="preserve">
+    <value>Ett oväntat fel uppstod när utvärderingsplanen aktiveras. Försök igen.</value>
+    <comment>Unexpected error activating evaluation plan. Please try again.</comment>
+  </data>
+  <data name="pauseEvaluationPlanSuccess" xml:space="preserve">
+    <value>Utvärderingsplanen har pausats</value>
+    <comment>Evaluation plan paused</comment>
+  </data>
+  <data name="pauseEvaluationPlanFailure" xml:space="preserve">
+    <value>Ett oväntat fel uppstod när utvärderingsplanen pausas. Försök igen.</value>
+    <comment>Unexpected error pausing evaluation plan. Please try again.</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogTitle" xml:space="preserve">
+    <value>Vill du aktivera planen?</value>
+    <comment>Activate plan?</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogText" xml:space="preserve">
+    <value>Utvärderingar som görs med den här planen finns på utvärderingssidan.</value>
+    <comment>Evaluations done using this plan can be found under the evaluations page.</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogConfirmButton" xml:space="preserve">
+    <value>Aktivera</value>
+    <comment>Activate</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogCancelButton" xml:space="preserve">
+    <value>Aktivera inte</value>
+    <comment>Don't activate</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogTitle" xml:space="preserve">
+    <value>Vill du pausa planen?</value>
+    <comment>Pause plan?</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogText" xml:space="preserve">
+    <value>Alla aktiva utvärderingar som använder den här planen slutförs, men ingen ytterligare utvärdering med den här planen kommer att göras.</value>
+    <comment>Any active evaluation using this plan will complete, but no further evaluation with this plan will be done.</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogConfirmButton" xml:space="preserve">
+    <value>Paus</value>
+    <comment>Pause</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogCancelButton" xml:space="preserve">
+    <value>Pausa inte</value>
+    <comment>Don't pause</comment>
+  </data>
+  <data name="evaluationPlanDialogCancel" xml:space="preserve">
+    <value>Avbryt</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="activateEvaluationPlanSaveRecordError" xml:space="preserve">
+    <value>Spara posten innan du aktiverar den.</value>
+    <comment>Please save the record before activating it.</comment>
+  </data>
+  <data name="pauseEvaluationPlanSaveRecordError" xml:space="preserve">
+    <value>Spara posten innan du pausar den.</value>
+    <comment>Please save the record before pausing it.</comment>
+  </data>
+  <data name="noChannelEnabledNotificationText" xml:space="preserve">
+    <value>QEA-agenten är för närvarande inte aktiverad för några entiteter. Aktivera det via administrationscentret för att fortsätta.</value>
+    <comment>QEA Agent is currently not enabled for any entities. Please enable it via the Admin Center to proceed.</comment>
+  </data>
+  <data name="saveEvaluationPlanInDraft" xml:space="preserve">
+    <value>Utvärderingsplanen sparas som utkast</value>
+    <comment>Evaluation plan is saved as draft</comment>
+  </data>
+  <data name="evaluationPlanInActiveStateNotificationText" xml:space="preserve">
+    <value>Den här planen har aktiverats och är nu skrivskyddad</value>
+    <comment>This plan has been activated and is now view-only</comment>
+  </data>
+  <data name="evaluationPlanInPauseStateNotificationText" xml:space="preserve">
+    <value>Den här planen är pausad och inte aktiv just nu</value>
+    <comment>This plan is paused and not active at the moment</comment>
+  </data>
+  <data name="conversationChannelNotEnabledNotificationText" xml:space="preserve">
+    <value>Utvärderingsplaner stöder för närvarande endast konversationsentiteten/kanalen. Uppdatera ditt val i administrationscentret för att fortsätta.</value>
+    <comment>Evaluation Plans currently support the Conversation entity/channel only. Please update your selection in the Admin Center to continue.</comment>
+  </data>
+  <data name="bulkEvaluationNotSetupNotificationText" xml:space="preserve">
+    <value>Installation väntar på massutvärdering. Kontakta klientorganisationens administratör för att aktivera detta</value>
+    <comment>Setup pending for bulk evaluation. Please contact your tenant admin to get this enabled</comment>
+  </data>
+  <data name="maxActivePlansLimitReachedNotificationText" xml:space="preserve">
+    <value>Maximalt antal aktiva utvärderingsplaner har uppnåtts.</value>
+    <comment>Maximum number of active evaluation plans has been reached.</comment>
+  </data>
+  <data name="aiAgentsDisabledErrorEvaluationPlan" xml:space="preserve">
+    <value>**AI-agenter har inaktiverats**|AI-agenter är inte aktiverade för den här organisationen. Kontakta klientorganisationens administratör för att aktivera detta.</value>
+    <comment>AI agents disabled|AI agents are not enabled for this org. Please contact your tenant admin to get this activated.</comment>
+  </data>
+  <data name="billingSetupPendingErrorEvaluationPlan" xml:space="preserve">
+    <value>Faktureringskonfiguration väntar|Om du vill använda den här funktionen konfigurerar du Microsoft Copilot-krediter för den här miljön.</value>
+    <comment>Billing setup pending|To use this feature, setup Microsoft Copilot credits for this environment.</comment>
+  </data>
+  <data name="dataMovementSetupPendingErrorEvaluationPlan" xml:space="preserve">
+    <value>Konfiguration av dataflytt väntar|Copilot-funktionerna fungerar inte eftersom dataflytt mellan olika regioner har inaktiverats. Kontakta klientorganisationens administratör om du vill aktivera dataflytt.</value>
+    <comment>Data movement setup pending|Copilot features aren't working because data movement across regions has been disabled. To enable data movement, contact your tenant admin.</comment>
+  </data>
+  <data name="evaluationCriteriaIncompatibleNotificationText" xml:space="preserve">
+    <value>Inkompatibla utvärderingsvillkor|Det här utvärderingskriterierna innehåller inte de AI-aktiverade frågorna som krävs för den valda utvärderingsmetoden. Välj ett annat utvärderingsvillkor eller växla till en annan metod.</value>
+    <comment>Incompatible evaluation criteria|This evaluation criteria doesn't include the required AI-enabled questions for the selected evaluation method. Choose a different evaluation criteria or switch to a different method.</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogTitle" xml:space="preserve">
+    <value>Återställ/publicera</value>
+    <comment>Restore / Publish</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogText" xml:space="preserve">
+    <value>Om du återställer/publicerar en gammal version ersätts den aktuella publicerade versionen. Alla befintliga utkastversioner kommer att ignoreras.</value>
+    <comment>Restoring / publishing an old version will replace the current published version. Any existing draft versions will be discarded.</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogConfirmButton" xml:space="preserve">
+    <value>Återställ/publicera</value>
+    <comment>Restore / Publish</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogCancelButton" xml:space="preserve">
+    <value>Avbryt</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaSuccessText" xml:space="preserve">
+    <value>Utvärderingskriterierna har återställts och publicerats.</value>
+    <comment>Evaluation criteria restored and published successfully.</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaSuccessTitle" xml:space="preserve">
+    <value>Klart</value>
+    <comment>Success</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaProgressIndicator" xml:space="preserve">
+    <value>Återställer och publicerar...</value>
+    <comment>Progress indicator message when restoring and publishing evaluation criteria</comment>
+  </data>
+  <data name="versionNoCriteriaError" xml:space="preserve">
+    <value>Den valda versionen har inga associerade utvärderingsvillkor.</value>
+    <comment>Error message when the selected version has no associated evaluation criteria</comment>
+  </data>
+  <data name="fetchVersionNumberError" xml:space="preserve">
+    <value>Det gick inte att hämta versionsnumret.</value>
+    <comment>Error message when version number cannot be fetched from the selected version</comment>
+  </data>
+  <data name="fetchParentCriteriaError" xml:space="preserve">
+    <value>Det gick inte att hämta den överordnade villkorsversionen.</value>
+    <comment>Error message when parent criteria version cannot be fetched</comment>
+  </data>
+  <data name="fetchActiveVersionError" xml:space="preserve">
+    <value>Det gick inte att hämta den aktiva versionen för utvärderingskriterierna.</value>
+    <comment>Error message when active version for criteria cannot be fetched</comment>
+  </data>
+  <data name="loadSimulationFormError" xml:space="preserve">
+    <value>Det gick inte att läsa in simuleringsformuläret. Försök igen.</value>
+    <comment>Error message when simulation form fails to load</comment>
+  </data>
+  <data name="saveSimulationRunError" xml:space="preserve">
+    <value>Det gick inte att spara simuleringskörningen. Försök igen.</value>
+    <comment>Error message when saving simulation run fails</comment>
+  </data>
+  <data name="runSimulationError" xml:space="preserve">
+    <value>Det går inte att köra simuleringen. Försök igen.</value>
+    <comment>Error message when simulation execution fails</comment>
+  </data>
+  <data name="noSimulationRunError" xml:space="preserve">
+    <value>Ingen simuleringskörning är associerad med den här posten. Spara formuläret först.</value>
+    <comment>Error message when simulation run lookup is empty</comment>
+  </data>
+  <data name="noRowSelectedError" xml:space="preserve">
+    <value>Välj en simuleringskörning för att återaktivera.</value>
+    <comment>Error message when no row is selected in the subgrid</comment>
+  </data>
+  <data name="multipleRowsSelectedError" xml:space="preserve">
+    <value>Välj bara en simuleringskörning för att återaktivera.</value>
+    <comment>Error message when multiple rows are selected in the subgrid</comment>
+  </data>
+  <data name="noSimulationDataFoundError" xml:space="preserve">
+    <value>Det gick inte att hämta simuleringsdata. Försök igen.</value>
+    <comment>Error message when simulation data cannot be found</comment>
+  </data>
+  <data name="QMSFeatureDisabled" xml:space="preserve">
+    <value>Funktionen för frågor och svar har inaktiverats</value>
+    <comment>Error when feature flag for QEA is not enabled</comment>
+  </data>
+  <data name="CannotChangeStatusBackToDraft" xml:space="preserve">
+    <value>Det går inte att ändra status till Utkast från ett attribut som inte är i utkasttillstånd.</value>
+    <comment>Error message when the status is changed to draft from non draft state</comment>
+  </data>
+  <data name="CannotDeleteActiveEvaluationPlan" xml:space="preserve">
+    <value>Det går inte att ta bort aktiva utvärderingsplaner. Pausa planen om du vill ta bort den.</value>
+    <comment>Error message when an active evaluation plan is deleted</comment>
+  </data>
+  <data name="EndDateInPast" xml:space="preserve">
+    <value>Start- och slutdatum kan inte anges tidigare. Välj ett giltigt datum.</value>
+    <comment>Error message when end date is set in the past</comment>
+  </data>
+  <data name="StartDateAfterEndDate" xml:space="preserve">
+    <value>Startdatumet måste infalla tidigare än slutdatumet. Justera datumen om du vill fortsätta.</value>
+    <comment>Error when start date is set after the end date</comment>
+  </data>
+  <data name="DueDateInPast" xml:space="preserve">
+    <value>Förfallodatumet kan inte infalla före dagens datum. Välj ett giltigt datum.</value>
+    <comment>Error message when due date is set in the past.</comment>
+  </data>
+  <data name="EvaluationExpirationValueOutOfRange" xml:space="preserve">
+    <value>Utvärderingsförfallovärdet måste vara mellan 1 och 365.</value>
+    <comment>Error message when evaluation expiration value is out of the allowed range.</comment>
+  </data>
+  <data name="EvaluationExpirationUnitRequired" xml:space="preserve">
+    <value>Utvärderingsenheten för förfallodatum krävs och kan inte rensas.</value>
+    <comment>Error message when evaluation expiration unit is explicitly set to null on update.</comment>
+  </data>
+  <data name="RecordTypeNotEnabledForOrg" xml:space="preserve">
+    <value>Posttypen är inte aktiverad för den här organisationen.</value>
+    <comment>Error when the selected record type is not enabled for the organization</comment>
+  </data>
+  <data name="AssignedUserPrivilegesNotFound" xml:space="preserve">
+    <value>Den tilldelade användaren har inte de behörigheter som krävs</value>
+    <comment>Error message when the assigned user doesn't have the required permissions</comment>
+  </data>
+  <data name="AssignedTeamPrivilegesNotFound" xml:space="preserve">
+    <value>Det tilldelade teamet har inte de behörigheter som krävs</value>
+    <comment>Error message when the assigned team doesn't have the required permissions</comment>
+  </data>
+  <data name="SamplingFeatureDisabled" xml:space="preserve">
+    <value>Det går inte att ange samplingsfält när samplingsfunktionen är inaktiverad.</value>
+    <comment>Error message when sampling fields are set but the sampling feature is disabled via FCS</comment>
+  </data>
+  <data name="SamplingOnlyForRecurring" xml:space="preserve">
+    <value>Samplingskonfiguration tillåts endast för återkommande utvärderingsplaner.</value>
+    <comment>Error message when sampling fields are set on non-recurring evaluation plans</comment>
+  </data>
+  <data name="SamplingModeRequired" xml:space="preserve">
+    <value>Samplingsläget måste anges när andra samplingsfält har konfigurerats.</value>
+    <comment>Error message when sampling fields are set without specifying the sampling mode</comment>
+  </data>
+  <data name="samplingValuePercentageRangeError" xml:space="preserve">
+    <value>Samplingsvärdet måste vara mellan 1 och 100 när samplingsläget är procent.</value>
+    <comment>Validation error when sampling value is out of range for Percentage mode</comment>
+  </data>
+  <data name="samplingValueAbsoluteNumberMinError" xml:space="preserve">
+    <value>Samplingsvärdet måste vara minst 1 när samplingsläget är absolut tal.</value>
+    <comment>Validation error when sampling value is less than 1 for Absolute Number mode</comment>
+  </data>
+  <data name="AllSamplingFieldsRequired" xml:space="preserve">
+    <value>Alla samplingsfält (samplingsläge, samplingsvärde, urvalsstrategi, rankningsposter efter) måste fyllas i för återkommande utvärderingsplaner med sampling aktiverat.</value>
+    <comment>Error message when not all required sampling fields are populated for a recurring plan</comment>
+  </data>
+  <data name="criteriaContentSizeLimitExceeded" xml:space="preserve">
+    <value>Villkorsinnehållet är för stort för att sparas. Minska antalet frågor, alternativ eller instruktioner för att fortsätta.</value>
+    <comment>Error dialog shown when the criteria content exceeds the maximum storage limit</comment>
+  </data>
+</root>

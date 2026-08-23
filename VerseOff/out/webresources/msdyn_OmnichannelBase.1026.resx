@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OC_LimitQuestions_AlertDialogConfirmButton" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="OC_RecordPermissions_AlertDialogText" xml:space="preserve">
+    <value>Нямате разрешения да изпълните това действие.</value>
+  </data>
+  <data name="OC_LimitQuestions_AlertDialogText" xml:space="preserve">
+    <value>Не можете да добавяте повече от пет въпроса. Моля, изтрийте няколко въпроса, за да добавите повече.</value>
+  </data>
+  <data name="OC_PickAuthFailed" xml:space="preserve">
+    <value>Избирането е неуспешно поради грешка при удостоверяване. Опитайте отново по-късно. Работен елемент: {0}</value>
+  </data>
+  <data name="OC_PickedByAnotherAgent" xml:space="preserve">
+    <value>Избирането е неуспешно. Елементът е избран от друг агент. Работен елемент: {0}</value>
+  </data>
+  <data name="OC_PickInternalError" xml:space="preserve">
+    <value>Избирането е неуспешно. Опитайте да изберете елемента отново. Работен елемент: {0}</value>
+  </data>
+  <data name="OC_PickMaxCapacityReached" xml:space="preserve">
+    <value>Избирането е неуспешно. Достигнахте максималната производителност. Работен елемент: {0}</value>
+  </data>
+  <data name="OC_PickMaxConcurrencyReached" xml:space="preserve">
+    <value>Избирането е неуспешно. Достигнахте максималната паралелност. Работен елемент: {0}</value>
+  </data>
+  <data name="OC_PickNotAvailable" xml:space="preserve">
+    <value>Избирането е неуспешно. Елементът не е достъпен. Работен елемент: {0}</value>
+  </data>
+  <data name="OC_PickPresenceError" xml:space="preserve">
+    <value>Избирането е неуспешно поради състоянието на присъствието ви. Работен елемент: {0}</value>
+  </data>
+  <data name="OC_PickSuccess" xml:space="preserve">
+    <value>Работният елемент е избран успешно. Работен елемент: {0}</value>
+  </data>
+  <data name="OC_OpenFormFail" xml:space="preserve">
+    <value>Неуспешно отваряне на формуляр. Опитайте отново да отворите формуляра. Ако проблемът не се реши, се свържете с администратора си.</value>
+  </data>
+  <data name="OC_OpenSessionFail" xml:space="preserve">
+    <value>Неуспешно отваряне на сесия. Опитайте отново да отворите сесията. Ако проблемът не се реши, се свържете с администратора си.</value>
+  </data>
+  <data name="OC_InputTimeFormat" xml:space="preserve">
+    <value>Моля, въведете час в правилния 24-часов формат (ЧЧ:мм).</value>
+  </data>
+  <data name="OC_InputTimesDifferenceValidation" xml:space="preserve">
+    <value>Крайното време не може да бъде избрано по-рано или близо от {0} минути от началния час.</value>
+  </data>
+  <data name="OC_SendMessageToConversationSuccessMessage" xml:space="preserve">
+    <value>Готово! Това съобщение беше изпратено към разговора.</value>
+  </data>
+  <data name="OC_SendMessageToConversationFailureMessage" xml:space="preserve">
+    <value>Нещо се обърка. Опитайте отново да изпратите съобщението към разговора.</value>
+  </data>
+  <data name="OC_SupervisorOpenRecord" xml:space="preserve">
+    <value>Записите на разговор са само за преглед и не могат да се отварят.</value>
+  </data>
+  <data name="OC_LinkToConversationSuccessMessage" xml:space="preserve">
+    <value>Готово! Този {0} беше свързан с разговора.</value>
+  </data>
+  <data name="OC_LinkToConversationFailureMessage" xml:space="preserve">
+    <value>Нещо се обърка. Опитайте отново да се свържете с разговора.</value>
+  </data>
+  <data name="OC_LinkToConversationUpdatedMessage" xml:space="preserve">
+    <value>Актуализирано! Този {0} замени предишния {0}, свързан с този разговор.</value>
+  </data>
+  <data name="OC_Presence_Available" xml:space="preserve">
+    <value>Достъпен</value>
+  </data>
+  <data name="OC_Presence_Busy" xml:space="preserve">
+    <value>Зает</value>
+  </data>
+  <data name="OC_Presence_DoNotDisturb" xml:space="preserve">
+    <value>Не безпокойте</value>
+  </data>
+  <data name="OC_Presence_Away" xml:space="preserve">
+    <value>Да изглежда отдалечен</value>
+  </data>
+  <data name="OC_Presence_Offline" xml:space="preserve">
+    <value>Офлайн</value>
+  </data>
+  <data name="MaskingRule.LimitReached" xml:space="preserve">
+    <value>Не е разрешено създаването на повече от {0} правила за маскиране. Моля, изтрийте правила, за да ограничите общото количество до {0}.</value>
+  </data>
+  <data name="MaskingRule.PluginError" xml:space="preserve">
+    <value>Възникна грешка в добавката PreValidationMaskingRuleLimitPlugin.</value>
+  </data>
+  <data name="MaskingRule.RegexException.InvalidEscape" xml:space="preserve">
+    <value>SyntaxError: Невалиден обичаен израз: /{0}/: Невалидно избягване</value>
+  </data>
+  <data name="MaskingRule.RegexException.EndOfPattern" xml:space="preserve">
+    <value>SyntaxError: Невалиден обичаен израз: /{0}/: \ в края на модел</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedCharacterClass" xml:space="preserve">
+    <value>SyntaxError: Невалиден обичаен израз: /{0}/: Непрекратен клас на знак</value>
+  </data>
+  <data name="MaskingRule.RegexException.IncompleteQuantifier" xml:space="preserve">
+    <value>SyntaxError: Невалиден обичаен израз: /{0}/: Незавършен квантор</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedGroup" xml:space="preserve">
+    <value>SyntaxError: Невалиден обичаен израз: /{0}/: Непрекратена група</value>
+  </data>
+  <data name="MaskingRule.RegexException.LoneQuantifierBrackets" xml:space="preserve">
+    <value>SyntaxError: Невалиден обичаен израз: /{0}/: Единични скоби на квантор</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnmatchedParen" xml:space="preserve">
+    <value>SyntaxError: Невалиден обичаен израз: /{0}/: „)” без съответствие</value>
+  </data>
+  <data name="MaskingRule.RegexException.NothingToRepeat" xml:space="preserve">
+    <value>SyntaxError: Невалиден обичаен израз: /{0}/: Няма нищо за повтаряне</value>
+  </data>
+  <data name="MaskingRule.RegexException.Timeout" xml:space="preserve">
+    <value>TimeoutError: Оценяването на обичаен израз отне твърде много време: /{0}/: Прекратено след {1} мсек.</value>
+  </data>
+  <data name="MaskingRule.MaskingInProgress" xml:space="preserve">
+    <value>Маскиране на тестови данни с обичаен израз.</value>
+  </data>
+  <data name="SentimentAnalysis.WrongName" xml:space="preserve">
+    <value>Името на записа трябва да е {0}.</value>
+  </data>
+  <data name="SentimentAnalysis.DeleteNotAllowed" xml:space="preserve">
+    <value>Изтриването на запис не е разрешено.</value>
+  </data>
+  <data name="Entity.OnlyOneAllowed" xml:space="preserve">
+    <value>Позволен е само един запис от този тип.</value>
+  </data>
+  <data name="Entity.DeleteNotAllowed" xml:space="preserve">
+    <value>Изтриването на запис не е разрешено.</value>
+  </data>
+  <data name="DefaultQueue.DeleteNotAllowed" xml:space="preserve">
+    <value>Не можете да изтривате DefaultQueue, защото опашката е само за четене.</value>
+  </data>
+  <data name="DefaultQueue.UpdateNotAllowed" xml:space="preserve">
+    <value>Не можете да редактирате DefaultQueue, защото опашката е само за четене.</value>
+  </data>
+  <data name="Queue.IncorrectEntityError" xml:space="preserve">
+    <value>Грешка при регистрация на добавка: Логическото име на обект не е Queue.</value>
+  </data>
+  <data name="Queue.QueueTypeUpdateError" xml:space="preserve">
+    <value>Не можете да актуализирате типа на опашката.</value>
+  </data>
+  <data name="Queue.NonEntityQueueSelected" xml:space="preserve">
+    <value>Не може да се създаде елемент на правило за обработка, тъй като избраната опашка не е от тип обект. Можете да насочвате само към опашката тип обект.</value>
+  </data>
+  <data name="RoutingRuleItem.NonEntityQueueSelected" xml:space="preserve">
+    <value>Не може да се добави запис към избраната опашка, тъй като избраната опашка не е от тип обект. Изберете опашка тип обект и опитайте отново.</value>
+  </data>
+  <data name="OC_Refresh_Grid" xml:space="preserve">
+    <value>Не е възможно преместването на запис, защото мрежата е в режим на сортиране. Обновете мрежата и опитайте отново</value>
+  </data>
+  <data name="GeoLocationProvider.IncorrectEntityError" xml:space="preserve">
+    <value>Грешка при регистрация на добавка: Логическото име на обект не е GeoLocationProvider.</value>
+  </data>
+  <data name="GeoLocationProvider.PluginError" xml:space="preserve">
+    <value>Възникна грешка в добавката GeoLocationProviderPlugIn.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelsNotSupported" xml:space="preserve">
+    <value>Каналите на обект не се поддържат в това издание. Вижте ReadMe файла за повече информация.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelTypeNotSupported" xml:space="preserve">
+    <value>Каналът на обект не се поддържа в това издание. Моля, изберете други типове канал. Вижте ReadMe файла за повече информация.</value>
+  </data>
+  <data name="EntityRouting.EntityWorkStreamsNotSupported" xml:space="preserve">
+    <value>Потоците на работа на обект не се поддържат в това издание. Вижте ReadMe файла за повече информация.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForDSF" xml:space="preserve">
+    <value>Отразяването на промените в конфигурацията на Омниканал отнема до 15 минути.</value>
+  </data>
+  <data name="OC_CaseRoutingFormNotificationMessage" xml:space="preserve">
+    <value>В това издание се поддържа само маршрутизиране на случай. Други записи на обекти ще се поддържат в бъдещата версия.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForRoutingSolutionDep" xml:space="preserve">
+    <value>Трябва да инсталирате решението „Правила за обработка – Преглед“, за да използвате маршрутизиране на обект на случай. За да научите повече, вижте {0}</value>
+  </data>
+  <data name="OC_Preview_Message" xml:space="preserve">
+    <value>С активирането на тази функция потвърждавате, че тя е на етап преглед, и приемате {0}. {1}</value>
+    <comment>Template Preview Text for all features</comment>
+  </data>
+  <data name="OC_Preview_Link_Label" xml:space="preserve">
+    <value>Условията за преглед</value>
+    <comment>Preview Terms label to point to the relevant Preview Terms</comment>
+  </data>
+  <data name="OC_LearnMore_Link_Label" xml:space="preserve">
+    <value>Научете повече</value>
+    <comment>Hyperlink label to point to the relevant feature documentation</comment>
+  </data>
+  <data name="AutomaticQueueName" xml:space="preserve">
+    <value>Опашка за автоматично разпространение</value>
+  </data>
+  <data name="AutomaticQueueSelectionRecommendation" xml:space="preserve">
+    <value>Изберете опашка за автоматично разпространение и присвояване на работни елементи на агенти.</value>
+  </data>
+  <data name="ConfigureRoutingRulesAtERCNotification" xml:space="preserve">
+    <value>Правила за обработка на работните потоци на записи на обект се конфигурират на ниво канал. Отидете на Канали &gt; Записи на обект &gt; {0} &gt; Правила за обработка, за да конфигурирате.</value>
+  </data>
+  <data name="isOmnichannelQueueGuidanceNotification" xml:space="preserve">
+    <value>Задайте „Да”, за да активирате опашката за автоматично разпределение на работата на Омниканал. За да научите повече, вижте {0}</value>
+  </data>
+  <data name="ManualQueueName" xml:space="preserve">
+    <value>Ръчна опашка</value>
+  </data>
+  <data name="ManualQueueSelectionRecommendation" xml:space="preserve">
+    <value>Изберете опашка за автоматично разпределение на работата, за да присвоите автоматично записи на обекти на агентите.</value>
+  </data>
+  <data name="ERCDeletionWarningMessage" xml:space="preserve">
+    <value>Изтриването на записа {0} ще дезактивира маршрутизирането на записи на обект за обект {1}. Сигурни ли сте, че искате да изтриете?</value>
+  </data>
+  <data name="InstallRoutingRuleForERCNotification" xml:space="preserve">
+    <value>Трябва да инсталирате решението „Правила за обработка“, за да използвате маршрутизиране на записи на обект. За да научите повече, вижте {0}.</value>
+  </data>
+  <data name="EntityRoutingPlugins.GenericError" xml:space="preserve">
+    <value>Не може да се изпълни операцията поради грешка. Опитайте отново по-късно. Ако проблемът не се реши, се свържете с поддръжката на Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.CreateError" xml:space="preserve">
+    <value>Не може да се създаде {0}. Опитайте отново по-късно. Ако проблемът не се реши, се свържете с поддръжката на Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.SaveError" xml:space="preserve">
+    <value>Не може да се запише {0}. Опитайте отново по-късно. Ако проблемът не се реши, се свържете с поддръжката на Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.DeleteError" xml:space="preserve">
+    <value>Не може да се изтрие {0}. Опитайте отново по-късно. Ако проблемът не се реши, се свържете с поддръжката на Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityMissing" xml:space="preserve">
+    <value>Полето за обект е празно. Изберете стойност за полето за обект и опитайте отново.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityNotRequired" xml:space="preserve">
+    <value>Полето за обект има стойност. Оставете полето за обект празно и опитайте отново.</value>
+  </data>
+  <data name="EntityRoutingPlugins.BothEntityConfigurationsNotRequired" xml:space="preserve">
+    <value>И двете полета за конфигуриране на обекти имат стойност. Оставете всяко поле за конфигуриране на един обект празно и опитайте отново.</value>
+    <comment>Liveworkstream has ercId and mercId fields, and only one can have value</comment>
+  </data>
+  <data name="EntityRoutingPlugins.DefaultWorkStreamName" xml:space="preserve">
+    <value>Поток на работа {0}</value>
+  </data>
+  <data name="EntityRoutingPlugins.FlowConfigurationError" xml:space="preserve">
+    <value>Операцията не бе успешна поради неправилна конфигурация в потока за разпределение на записи на обект. Уверете се, че {0} не е изтрит или преименуван.</value>
+  </data>
+  <data name="EntityRoutingPlugins.TroubleshootingLearnMore" xml:space="preserve">
+    <value>За да научите повече, вижте темата за отстраняване на неизправности на Омниканал – {0}</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>Потвърждение</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Изтрий</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Отмяна</value>
+  </data>
+  <data name="OC_IncidentQueueItemWarningNessage" xml:space="preserve">
+    <value>Този запис беше прехвърлен към опашката на Омниканал и вече не се вижда тук. За да видите този запис, моля, отворете го от таблото на Омниканал.</value>
+  </data>
+  <data name="OC_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Декларация за поверителност на Microsoft</value>
+  </data>
+  <data name="OC_ChannelPreviewDisclaimer" xml:space="preserve">
+    <value>С използването на този канал потвърждавате, че тази функция е на етап преглед, и приемате Условията за преглед.</value>
+  </data>
+  <data name="OC_SeePreviewTerms" xml:space="preserve">
+    <value>Вижте Условията за преглед</value>
+  </data>
+  <data name="OC_ThirdPartyChannelPrivacyDisclaimer" xml:space="preserve">
+    <value>С активирането на този канал се съгласявате данните ви да се споделят със системи на трети страни и да изтичат извън границите за съответствие на организацията ви и географски граници (включително среди на Government Cloud). Научете повече в {0}.</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_FeatureDocumentation" xml:space="preserve">
+    <value>превод в реално време</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Декларация за поверителност на Microsoft</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_Text" xml:space="preserve">
+    <value>Като активирате тази функция, потвърждавате, че данните ви може да изтичат извън границите за съответствие на организацията ви и географските граници. Това включва и средите на Government Cloud. Научете повече за {0} и за {1}.</value>
+    <comment>DO NOT CHANGE {0} and {1}, as they will be replaced with OC_LanguageTranslation_Disclaimer_FeatureDocumentation and OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement respectively.</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_DocumentFeature_Text" xml:space="preserve">
+    <value>Щракнете тук за документация за функцията</value>
+    <comment>Indicates this is the link for feature documentation</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Link" xml:space="preserve">
+    <value>конфигурация на уеб ресурс</value>
+    <comment>  This is the link for real time translation webresource documentation </comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Text" xml:space="preserve">
+    <value>Конфигурирайте уеб ресурс, за да генерира вашия URL адрес. След това копирайте и поставете този URL адрес по-долу. Научете повече за {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder "0" will be replaced by a OC_LanguageTranslation_Webresource_Disclaimer_Link. Link text is "here".</comment>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_Text" xml:space="preserve">
+    <value>С включването на тази функция потвърждавате, че тя е на етап преглед, и приемате </value>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_LinkText" xml:space="preserve">
+    <value>Условията за преглед</value>
+  </data>
+  <data name="LanguageTranslation_Invalid_webresource_url" xml:space="preserve">
+    <value>Въведеният от вас URL адрес не съвпада с вашия уеб ресурс. Моля, опитайте да копирате и поставите URL адреса на вашия уеб ресурс отново.</value>
+  </data>
+  <data name="DeprecationBanner" xml:space="preserve">
+    <value>От юли 2022 г. това приложение вече няма да е достъпно за използване. Мигрирайте работните си потоци към центъра за администриране на Омниканал, за да продължите да използвате Омниканал за Customer Service.</value>
+  </data>
+  <data name="OC_Deprecation_Title_Text" xml:space="preserve">
+    <value>„Администрация на Омниканал“ вече не се поддържа</value>
+  </data>
+  <data name="OC_Deprecation_Description_Text" xml:space="preserve">
+    <value>Поддръжката за приложението „Администрация на омниканал“ е приключила на 30 април 2022 г. За да конфигурирате Customer Service, започнете да използвате приложението за център за администриране на Customer Service. Моля, мигрирайте всички дефиниции за поток на работа от приложението „Администрация на омниканал“ към приложението за център за администриране на Customer Service незабавно. {0}</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More" xml:space="preserve">
+    <value>Научете повече</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More_Aria_Label" xml:space="preserve">
+    <value>Научете повече за отхвърлянето на „Администриране на Омниканал“</value>
+  </data>
+  <data name="OC_Deprecation_Acknowledge_Checkbox_Label" xml:space="preserve">
+    <value>Разбирам, че приложението „Администрация на омниканал“ вече не се поддържа.</value>
+  </data>
+  <data name="OC_Deprecation_Redirect_Button_Text" xml:space="preserve">
+    <value>Отваряне на „Център за администриране на Customer Service“</value>
+  </data>
+  <data name="OC_Deprecation_Dismiss_Button_Text" xml:space="preserve">
+    <value>Продължаване в „Администриране на Омниканал“</value>
+  </data>
+  <data name="PostConversationSurveyMessage" xml:space="preserve">
+    <value>Как намирате своето изживяване? Моля, споделете обратната си връзка в това проучване. </value>
+  </data>
+  <data name="OC_FormsProSurvey_Disclaimer" xml:space="preserve">
+    <value>Това ще се управлява от Microsoft Dynamics 365 Customer Voice.</value>
+  </data>
+  <data name="Presence.InactivePresenceUpdateNotAllowed" xml:space="preserve">
+    <value>Актуализациите в това поле за този запис са дезактивирани.</value>
+  </data>
+  <data name="Presence.IncorrectEntityError" xml:space="preserve">
+    <value>Грешка при регистрация на добавка: Логическото име на обект не е msdyn_presence.</value>
+  </data>
+  <data name="OperatingHours.Hours" xml:space="preserve">
+    <value> час(а)</value>
+  </data>
+  <data name="OperatingHours.Minutes" xml:space="preserve">
+    <value> минути</value>
+  </data>
+  <data name="OperatingHours.TotalOperatingHours" xml:space="preserve">
+    <value>Общо работни часове: </value>
+  </data>
+  <data name="Presence.DefaultDeletePlugin" xml:space="preserve">
+    <value>Присъствие по подразбиране не може да бъде изтрито</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Няма намерени проблеми.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>Възникна грешка в {0}.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Невалиден капацитет на агент. Стойността трябва да е по-голяма от 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Намерен е неправилно конфигуриран агент. Капацитетът на агента трябва да бъде зададен на стойност, по-голяма от 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Намерени са {0} неправилно конфигурирани агенти. Капацитетът на агентите трябва да е по-голям от 0.</value>
+    <comment>The error message for OcAgentsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Невалиден капацитет на бот. Стойността трябва да е по-голяма от 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Намерен е неправилно конфигуриран бот. Капацитетът на бота трябва да бъде зададен на стойност, по-голяма от 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Има {0} неправилно конфигурирани ботове. Капацитетът на ботовете трябва да е по-голям от 0.</value>
+    <comment>The error message for OcBotsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Има 1 опашка без агенти.</value>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Има {0} опашки без агенти.</value>
+    <comment>The error message for OcQueuesShouldHaveAgentsRule rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ErrorMessage" xml:space="preserve">
+    <value>Омниканал не е напълно функционален, някои стъпки за обработка на съобщения са дезактивирани.</value>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ResultEntityMessage" xml:space="preserve">
+    <value>Стъпката за обработка на съобщения трябва да бъде активирана, за да се гарантира, че Омниканал работи правилно.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointIsNotConfigured" xml:space="preserve">
+    <value>Крайната точка на услуга на OC не е конфигурирана.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointPathIsEmpty" xml:space="preserve">
+    <value>Пътят за крайната точка на услугата на OC е празен.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.ResultEntityMessage" xml:space="preserve">
+    <value>Агенти: {0} (ИД: {1})</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is agent name and {1} is agent Id</comment>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Има 1 поток на работа с капацитет, по-голям от агентите му.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Има {0} работни потока с капацитет, по-голям от агентите им.</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.ResultEntityMessage" xml:space="preserve">
+    <value>Потокът на работа няма зададени някои набори на шаблони за известия.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Има 1 поток на работа без шаблон за известие.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Има {0} потока на работа без шаблон за известие.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoSessionTemplates" xml:space="preserve">
+    <value>Потокът на работа {0} има сценарии без шаблон за сесия.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoScenarios" xml:space="preserve">
+    <value>Потокът на работа {0} няма сценарии.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Има 1 поток на работа без шаблон за сесия.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Има {0} работни потока без шаблон за сесия.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.ResultEntityMessage" xml:space="preserve">
+    <value>Потокът на работа има дублирани контекстни променливи: {0}</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is duplicated context names</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Има 1 поток на работа с дублиращи се контекстни променливи.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Има {0} работни потока с дублиращи се контекстни променливи.</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.ResultEntityMessage" xml:space="preserve">
+    <value>Правила за обработка без условия: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities list</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Има {0} работа потоци с празни правила за обработка над правила с условие.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Има 1 потока на работа с празни правила за обработка над правила с условие.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Има 1 поток на работа с режим на налагане, който позволява офлайн режим.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Има {0} потока на работа с режим на налагане, който позволява офлайн режим.</value>
+    <comment>The error message for WorkstreamWithPushModeShouldNotAllowOfflineMode rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Ботът има потенциално нисък капацитет.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Има 1 бот, който има потенциално нисък капацитет.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Има {0} бота, които имат потенциално нисък капацитет.</value>
+    <comment>The error message for OcBotsShouldNotHavePotentiallyLowCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.EntityMessage" xml:space="preserve">
+    <value>Дублирана конфигурация на доставчик на канал.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultDuplicatedChannel" xml:space="preserve">
+    <value>Намерени са дублирани конфигурации на доставчик на канал.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ProviderNotFound" xml:space="preserve">
+    <value>Доставчикът на канал на Омниканал не е намерен.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsEmpty" xml:space="preserve">
+    <value>Полето за URL адрес на канала е празно</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsInvalid" xml:space="preserve">
+    <value>Полето за URL адрес на канала е невалидно</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.UnifiedInterfaceAppsFieldNoOCApp" xml:space="preserve">
+    <value>Полето за приложения на Унифициран интерфейс не съдържа приложение Омниканал</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AgentRoleNotAssigned" xml:space="preserve">
+    <value>Ролята на агент на Омниканал не е присвоена</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.SupervisorRoleNotAssigned" xml:space="preserve">
+    <value>Ролята на ръководител на Омниканал не е присвоена</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AdministratorRoleNotAssigned" xml:space="preserve">
+    <value>Ролята на администратор на Омниканал не е присвоена.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultImproperlyConfigured" xml:space="preserve">
+    <value>Доставчикът на канал на Омниканал е неправилно конфигуриран.</value>
+  </data>
+  <data name="OC_OH_Preview_Message" xml:space="preserve">
+    <value>С използването на тази функция потвърждавате, че тя е на етап преглед, и приемате {0}. {1}</value>
+    <comment>Template Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_OH_Preview_Notification" xml:space="preserve">
+    <value>С използването на тази функция потвърждавате, че тя е на етап преглед, и приемате Условията за преглед.</value>
+    <comment>Notification Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_InstanceLevelBanner" xml:space="preserve">
+    <value>Вашите автоматични настройки за съобщения за {0} бяха приложени. За да създадете автоматизирано съобщение за {1}, изберете „създаване“.</value>
+  </data>
+  <data name="OC_CustomSystemMessage_ConfirmDelete" xml:space="preserve">
+    <value>Наистина ли искате да изтриете това съобщение? Като го изтрием, ще ви върнем към автоматичните ви настройки за съобщения за {0}.</value>
+  </data>
+  <data name="OC_Channel_Chat" xml:space="preserve">
+    <value>Чат</value>
+    <comment>Messaging channel chat</comment>
+  </data>
+  <data name="OC_Channel_Custom" xml:space="preserve">
+    <value>По избор</value>
+    <comment>Messaging channel Custom</comment>
+  </data>
+  <data name="OC_Channel_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>Messaging channel Facebook</comment>
+  </data>
+  <data name="OC_Channel_LINE" xml:space="preserve">
+    <value>LINE</value>
+    <comment>Messaging channel LINE</comment>
+  </data>
+  <data name="OC_Channel_SMS" xml:space="preserve">
+    <value>SMS</value>
+    <comment>Messaging channel SMS</comment>
+  </data>
+  <data name="OC_Channel_Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+    <comment>Messaging channel Microsoft Teams</comment>
+  </data>
+  <data name="OC_Channel_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Messaging channel Twitter</comment>
+  </data>
+  <data name="OC_Channel_unknown" xml:space="preserve">
+    <value>Неизвестен канал</value>
+    <comment>Messaging channel unknown channel</comment>
+  </data>
+  <data name="OC_Channel_WeChat" xml:space="preserve">
+    <value>WeChat</value>
+    <comment>Messaging channel WeChat</comment>
+  </data>
+  <data name="OC_Channel_WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+    <comment>Messaging channel WhatsApp</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_DuplicateNameMessage" xml:space="preserve">
+    <value>Вече има създадено автоматизирано съобщение или шаблон на съобщение със същото име.</value>
+  </data>
+  <data name="OC_FeaturePreviewDisclaimer" xml:space="preserve">
+    <value>С използването на тази функция потвърждавате, че тя е на етап преглед, и приемате Условията за преглед.</value>
+  </data>
+  <data name="OC_ProgressIndicator_Loading" xml:space="preserve">
+    <value>Зареждане...</value>
+    <comment>Progress indicator message</comment>
+  </data>
+  <data name="OC_TokenAcquireFailed_AlertText" xml:space="preserve">
+    <value>Придобиването на маркер е неуспешно</value>
+    <comment>Alert message for token acquire failures</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationTitle" xml:space="preserve">
+    <value>Превключване към предварително конфигурирано работно пространство</value>
+    <comment>Analytics PaaS feature confirmation dialog body text</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationText" xml:space="preserve">
+    <value>Преминаването към предварително конфигурирани ще изтрие вашите персонализирани настройки на работното пространство. Можете да превключите обратно към персонализирано работно пространство по всяко време, но ще трябва да конфигурирате повторно работното си пространство.</value>
+    <comment>Analytics PaaS feature confirmation dialog title</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationButtonLabel" xml:space="preserve">
+    <value>Превключване към предварително конфигурирани</value>
+    <comment>Analytics PaaS feature confirmation dialog confirm button label</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimer" xml:space="preserve">
+    <value>WhatsApp има 24-часов отворен прозорец за отговор. Ако изминат 24 часа след последното съобщение на клиента, агентите ще могат да изпращат одобрени от WhatsApp шаблони само докато клиентът не отговори. Уверете се, че WhatsApp одобрява вашите шаблони за съобщения, преди да ги добавите тук. {0}</value>
+    <comment>{0} will be replaced by a link "learn more"</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimerLearnMore" xml:space="preserve">
+    <value>Научете повече</value>
+    <comment>learn more link for OC_WhatsAppMessageTemplateDisclaimer</comment>
+  </data>
+  <data name="MessageTemplateFeatureName" xml:space="preserve">
+    <value>Шаблон за съобщение</value>
+    <comment>This should be the same as what we show in the sitemap</comment>
+  </data>
+  <data name="AutomatedMessageRequiredFieldNotFilled" xml:space="preserve">
+    <value>Задължителните полета трябва да бъдат попълнени.</value>
+    <comment>Shown in banner when required fields are not populated</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitor" xml:space="preserve">
+    <value>Посетител</value>
+    <comment>Used when user name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleLiveWorkStream" xml:space="preserve">
+    <value>Поток на работа на живо</value>
+    <comment>Used when live work stream name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitorFormatter" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} and {1} should not be changed. They will be replaced by customer name and workstream name respectively. Example, James: WorkStream1</comment>
+  </data>
+  <data name="DefaultFieldsRquiredForMessageTemplate" xml:space="preserve">
+    <value>Езикът по подразбиране и текстът по подразбиране са необходими за шаблон на съобщение.</value>
+  </data>
+  <data name="DefaultLocalizationDataNotFoundForMessageTemplate" xml:space="preserve">
+    <value>Данни за локализация по подразбиране не са намерени за този шаблон на съобщение.</value>
+  </data>
+  <data name="SavingPrivacyTerms" xml:space="preserve">
+    <value>Зареждане...</value>
+    <comment>Shown after user agrees to privacy terms</comment>
+  </data>
+  <data name="ConversationFormReadonlyNotificationText" xml:space="preserve">
+    <value>Само за четене. Описанието на състоянието на този запис: {0}</value>
+    <comment>{0} will be replaced with statuscode text. Any changes to this will have an impact on msdyn_customersummaryscripts.ts</comment>
+  </data>
+  <data name="OC_IntradayInsights_ConfigTitle" xml:space="preserve">
+    <value>Конфигурация на аналитични данни на Intraday</value>
+    <comment>Title for Intraday insights configuration</comment>
+  </data>
+  <data name="OC_FormsPro_Button_Text" xml:space="preserve">
+    <value>Отваряне на Dynamics 365 Customer Voice</value>
+  </data>
+  <data name="FbAppNotFound" xml:space="preserve">
+    <value>ИД на приложението Facebook не е намерен. Моля, опитайте друг.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PrivacyNotFound" xml:space="preserve">
+    <value>Условията за поверителност не са приети за канала.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="CantProvisionFBPage" xml:space="preserve">
+    <value>Не можахме да осигурим страницата ви във Facebook. Моля, проверете отново цялата предоставена информация и опитайте отново.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PreValidationFacebookApplicationCreatePluginFailure" xml:space="preserve">
+    <value>При създаването на приложението Facebook възникна неочаквана грешка. Моля, опитайте отново по-късно.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageCreatePluginFailure" xml:space="preserve">
+    <value>При създаването на страницата във Facebook възникна неочаквана грешка. Моля, опитайте отново по-късно.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageUpdatePluginFailure" xml:space="preserve">
+    <value>При актуализирането на страницата във Facebook възникна неочаквана грешка. Моля, опитайте отново по-късно.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ExistingFbPageFound" xml:space="preserve">
+    <value>Вече сте настроили тази страница във Facebook. Въведете друга страница и опитайте отново.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ErrorProcessingRequestParameter" xml:space="preserve">
+    <value>Грешка при обработката на параметрите на заявката. Грешка: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="InvalidContextVariable" xml:space="preserve">
+    <value>ContextVariables не е валиден. Грешка: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="MissingRequestId" xml:space="preserve">
+    <value>Липсва RequestId.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingVersion" xml:space="preserve">
+    <value>Version е невалидно.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingChannelInstance" xml:space="preserve">
+    <value>Липсва ChannelInstance.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingDirection" xml:space="preserve">
+    <value>Липсва Direction.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidDirection" xml:space="preserve">
+    <value>Direction не е валидно.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingContextVariables" xml:space="preserve">
+    <value>Липсват ContextVariables.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingMessageText" xml:space="preserve">
+    <value>Липсва MessageText.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingOffsetTime" xml:space="preserve">
+    <value>Липсва OffsetTime.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidChannelInstance" xml:space="preserve">
+    <value>Полезното натоварване на екземпляр на канал е невалидно.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiParameterMissing" xml:space="preserve">
+    <value>{0} липсва или е невалиден.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays parameter value.</comment>
+  </data>
+  <data name="ChannelApiUnsupportedVersion" xml:space="preserve">
+    <value>ApiVersion {0} не се поддържа.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays version number.</comment>
+  </data>
+  <data name="ChannelApiInternalError" xml:space="preserve">
+    <value>Възникна някаква вътрешна грешка. {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the exception message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationSend" xml:space="preserve">
+    <value>Разговорът не съществува или е затворен.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiMessageNullSend" xml:space="preserve">
+    <value>Текстът на съобщението не може да е нула или празен.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationGet" xml:space="preserve">
+    <value>Разговорът не съществува.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationEnd" xml:space="preserve">
+    <value>Разговорът не съществува или е затворен.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Title" xml:space="preserve">
+    <value>Принудително приключване на разговор</value>
+    <comment>Title of the confirmation window displayed before force close is triggered</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Text" xml:space="preserve">
+    <value>Сигурни ли сте, че искате да затворите работния елемент?</value>
+    <comment>Confirmation text for force close</comment>
+  </data>
+  <data name="ForceClose_Confirmation_OKButtonLabel" xml:space="preserve">
+    <value>Продължаване</value>
+    <comment>Proceed</comment>
+  </data>
+  <data name="NewCase_Label">
+    <value>Нов случай</value>
+    <comment>Label for Create a Case button</comment>
+  </data>
+</root>

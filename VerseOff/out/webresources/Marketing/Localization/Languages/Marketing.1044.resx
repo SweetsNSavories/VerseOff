@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Du må angi et sluttidspunkt som kommer etter starttidspunktet.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Du må angi et starttidspunkt som kommer før sluttidspunktet.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Startdato-feltet kan ikke være tomt.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Sluttdato-feltet kan ikke være tomt.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0} er obligatorisk.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Emne er obligatorisk.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Emne er obligatorisk.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Mal er obligatorisk.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Starttidspunkt er obligatorisk.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Sluttidspunkt er obligatorisk.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Ny {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Kampanje (mal)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Du må lagre endringene før du kan distribuere denne aktiviteten.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Kampanjeaktiviteten kan bare distribueres én gang.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Velg en markedskanaltype, lagre skjemaet og prøv på nytt.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Dette alternativet er bare tilgjengelig når en kontaktmetode er valgt. En kontaktmetode er ikke tilgjengelig i dette skjemaet. Aktiviteten kan ikke distribueres. Kontakt systemansvarlig for {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>Direkte e-post via utskriftsfletting er deaktivert. Aktiviteten kan ikke distribueres. Kontakt systemansvarlig for {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Distribusjon er ikke tilgjengelig for den valgte markedskanalen</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>Utskriftsfletting er ikke tilgjengelig i webklienten {#Brand_CRM}. For å utføre utskriftsfletting må du bruke {#Brand_CRM_Outlook_Short}.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Kan ikke distribuere denne kampanjeaktiviteten fordi den ikke har noen tilknyttede markedsføringslister. Tilknytt markedsføringslister til denne kampanjeaktiviteten, og prøv på nytt.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Rett opp alle feil og advarsler i skjemaet.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Kan ikke distribuere denne kampanjeaktiviteten. Kontakt systemansvarlig for {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Fjern {0}</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Vil du fjerne den valgte {0} {1} fra kampanjen?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Kan ikke opprette hurtigkampanje fordi ingen oppføringer ble funnet på den gjeldende siden.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Du kan ikke opprette en hurtigkampanje for mer enn én markedsføringsliste om gangen. Velg bare én markedsføringsliste.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Dette alternativet er ikke tilgjengelig i gjeldende visning. Alle visninger vil ikke fungere med alternativet {0}. Velg en annen visning eller et annet hurtigkampanjealternativ og prøv på nytt.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Du kan ikke kjøre hurtigkampanjer på en inaktiv markedsføringsliste. Aktiver markedsføringslisten eller velg en annen markedsføringsliste, og prøv på nytt.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Dette alternativet er ikke tilgjengelig for gjeldende visning. Velg et annet hurtigkampanjealternativ og prøv på nytt.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Eier er obligatorisk.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Kø er obligatorisk.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>For valgte oppføringer</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>For alle oppføringer på gjeldende side</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>For alle oppføringer på alle sider</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Dette båndet støttes ikke.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Du må velge én eller flere oppføringer før du kan utføre denne handlingen.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Mer enn 50 oppføringer er ikke tillatt for denne operasjonen</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Du kan bare utføre denne handlingen for oppføringer av samme type.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Behandler. Vent litt...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Det har oppstått en feil. Den valgte handlingen ble ikke fullført for en eller flere oppføringer.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Fjern {0}</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Søk etter medlemmer som skal fjernes basert på søkevilkår.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Søk etter medlemmer som skal legges til basert på søkevilkår.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Vurder hvilke medlemmer som skal beholdes i markedsføringslisten basert på søkevilkår. Oppdater markedsføringslisten.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Du må velge oppføringer før du kan fortsette</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Fjern</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Legg til</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Forretningsforbindelse</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Kundeemne</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Evaluer</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Vil du fjerne den valgte {0} {1} fra listen?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Bekreftelse på kopiering av en markedsføringsliste til en annen markedsføringsliste</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Du har valgt markedsføringslister som skal kopieres til en annen markedsføringsliste</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Denne operasjonen vil legge til alle medlemmer av den valgte markedsføringslisten, i markedsføringsmållisten.</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Endringene er ikke lagret. Lagre endringene og prøv på nytt.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>OK</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>Behandler ...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Vent mens forespørselen blir behandlet ...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Kan ikke opprette hurtigkampanje</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Navn: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Aktivitet: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Omfang: For valgte oppføringer ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Omfang: For alle oppføringer på gjeldende side ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Omfang: For alle oppføringer på alle sider</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Eier: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Navn på hurtigkampanje er obligatorisk.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Aktivitetstype er obligatorisk.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Eierne av oppføringene som er inkludert i hurtigkampanjen</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Meg</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Denne kampanjen kan ikke deaktiveres fordi det finnes åpne kampanjeaktiviteter knyttet til den. Lukk kampanjeaktivitetene og prøv på nytt.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>Kan ikke deaktivere {0} av de valgte kampanjene, fordi de har én eller flere åpne kampanjeaktiviteter tilknyttet. Lukk de åpne kampanjeaktivitetene og prøv på nytt.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>E-postinnholdet er for stort for denne veiviseren. Opprett innholdet som en e-postmal, og velg deretter malen her.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Hurtigkampanjer støtter ikke masseredigering.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Liste er låst</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>Listene {0} er låste</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Handlingen kan ikke utføres i den dynamiske listen.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Kan ikke knytte et inaktivt element til en kampanje.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Kan ikke knytte et inaktivt element til en kampanje.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Fant ikke referansen til vedlegget.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>E-postmottakeren finnes ikke eller har ikke en gyldig e-postadresse.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Vedlegget er ikke en gyldig type, eller det er for stort. Det kan ikke lastes opp eller ned.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Mottakeren er merket med "Ikke tillat" for telefaks.</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Ugyldig e-postmottaker.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Feil i e-postmal.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Feil i sending av e-post.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Feil i notatvedlegg.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Feil i handling for notatoppretting.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Feil i handling for uhåndteringsaktivitet.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Feil i handling for håndteringsaktivitet.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Feil i vedlegg for handlingsaktivitet.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Feil i aktivitet for handlingsoppretting.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Dette medlemmet av markedsføringslisten ble ikke kontaktet fordi medlemmet tidligere har mottatt denne meldingen.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Avsenderen har ikke noen e-postadresse på partsoppføringen</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>E-postadresse er ikke angitt, og den oppringte brukeren har ikke en e-postadresse angitt</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>E-post ikke sendt på grunn av mottakerens kommunikasjonsinnstillinger eller et problem med e-postadressen.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Ugyldig kundeadressetype.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Det oppstod en uventet feil under utskriftsfletting.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Utskriftsflettingsoperasjonen ble avbrutt av brukeren.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Denne kunden er filtrert på grunn av manglende e-postadresse.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Mottaker utelukket fordi vedkommende er inaktiv.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Relaterte arbeidsflytregler for masseoperasjoner mangler.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>Mottaker utelukket på grunn av innstillinger for beskyttelse mot søppelpost eller mottakerens kommunikasjonsinnstillinger.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Kan ikke angi en deltaker for avtaledistribusjon.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Kan ikke angi en avsender for avtaledistribusjon</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Kan ikke angi en arrangør for avtaledistribusjon</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Listemedlemstype støttes ikke.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Forsøkte å utføre en uautorisert operasjon.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>Brukeren har ikke tilstrekkelige rettigheter.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Brukeren har ikke rettigheten til å utføre denne handlingen.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Ugyldig e-postadresse. Kontakt systemansvarlig for mer informasjon.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Skjemaet mangler følgende elementer: {0}. Funksjonaliteter vil bli påvirket.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Du kan ikke opprette muligheter for en markedsføringsliste som målrettes mot denne enhetstypen.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Det finnes allerede en pågående forespørsel. Prøv på nytt om en stund.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Forespørselen er sendt. Vent til siden omdirigeres til kopiert liste.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>Ny {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Fyll ut dette skjemaet for å opprette {0} til medlemmene du valgte i markedsføringslisten. Klikk på Distribuer for å legge til denne {0} som en ny {0} i oppføringen for hvert medlem.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Lagret</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Morate da navedete vreme završetka koje je kasnije od vremena početka.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Morate da odredite vreme početka koje je ranije od vremena završetka.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Datum početka ne može da bude prazan.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Datum završetka ne može da bude prazan.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0} je obavezno.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Tema je obavezna.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Tema je obavezna.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Predložak je obavezan.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Vreme početka je obavezno.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Vreme završetka je obavezno.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Novo {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Kampanja (predložak)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Pre nego što možete da rasporedite aktivnost, prvo morate da sačuvate promene.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Aktivnost vezana za kampanju može da bude distribuirana samo jednom.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Izaberite tip kanala, sačuvajte obrazac i zatim pokušajte ponovo.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Ova opcija je dostupna samo kada je izabran metod kontakta. Za ovaj obrazac nije dostupan metod kontakta. Aktivnost nije moguće rasporediti. Obratite se {#Brand_CRM} administratoru.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>Direktna e-pošta preko objedinjavanja pošte je isključena. Aktivnost nije moguće rasporediti. Obratite se {#Brand_CRM} administratoru.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Mogućnost raspoređivanja nije dostupna za izabrani kanal.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>Objedinjavanje pošte nije dostupno u veb klijentu za {#Brand_CRM}. Da biste izvršili objedinjavanje pošte, morate da koristite {#Brand_CRM_Outlook_Short} za Outlook.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Nije moguće rasporediti ovu aktivnost vezanu za kampanju zato što nema povezanih marketinških spiskova. Povežite marketinške spiskove sa ovom aktivnošću vezanom za kampanju i zatim pokušajte ponovo.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Popravite sva upozorenja i greške na obrascu.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Nije moguće rasporediti aktivnost vezanu za kampanju. Obratite se {#Brand_CRM} administratoru.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Uklanjanje {0}</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Želite li da uklonite sledeći broj izabranih zapisa iz kampanje: {0} {1}?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Nije moguće kreirati brzu kampanju zato što nisu pronađeni zapisi na trenutnoj stranici.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Nije moguće kreiranje brze kampanje za više od jednog marketinškog spiska istovremeno. Izaberite samo jedan marketinški spisak.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Ova opcija nije dostupna za trenutni prikaz. Ne mogu svi prikazi da rade sa opcijom {0}. Izaberite drugi prikaz ili drugu opciju brze kampanje i pokušajte ponovo.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Brze kampanje nije moguće pokrenuti za marketinški spisak koji je neaktivan. Aktivirajte marketinški spisak ili izaberite drugi marketinški spisak i pokušajte ponovo.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Ova opcija nije dostupna za trenutni prikaz. Izaberite drugu opciju brze kampanje i pokušajte ponovo.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Vlasnik je obavezan.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Red je obavezan.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Za izabrane zapise</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Za sve zapise na trenutnoj stranici</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Za sve zapise na svim stranicama</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Ova radnja na traci nije podržana.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Morate da izaberete jedan ili više zapisa pre nego što možete da izvršite ovu radnju.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Više od 50 zapisa nije dozvoljeno za ovu operaciju</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Ovu radnju možete da izvršite samo za zapise istog tipa.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Obrada u toku, sačekajte...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Došlo je do greške. Izabrana radnja nije dovršena za jedan ili više zapisa.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Uklanjanje {0}</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Pronađite članove koje treba ukloniti na osnovu kriterijuma pretrage.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Pronađite članove koje treba dodati na osnovu kriterijuma pretrage.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Procenite koje članove treba zadržati na marketinškom spisku na osnovu kriterijuma pretrage. Ažurirajte marketinški spisak.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Morate da izaberete zapise pre nego što nastavite</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Ukloni</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Poslovni kontakt</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Potencijalni klijent</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Proceni</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Želite li da uklonite sledeći broj izabranih zapisa iz liste: {0} {1}?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Potvrda kopiranja marketinškog spiska u drugi marketinški spisak</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Izabrali ste marketinške spiskove koje treba kopirati u drugi marketinški spisak.</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Ova operacija će dodati sve članove izabranog marketinškog spiska ciljnom marketinškom spisku.</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Promene nisu sačuvane. Sačuvajte promene i pokušajte ponovo.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>U redu</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>Obrada je u toku...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Sačekajte da se zahtev obradi...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Nije moguće kreirati brzu kampanju</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Naziv: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Aktivnost: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Opseg: Za izabrane zapise ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Opseg: Za sve zapise na trenutnoj stranici ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Opseg: Za sve zapise na svim stranicama</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Vlasnik: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Ime brze kampanje je obavezno.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Tip aktivnosti je obavezan.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Vlasnici zapisa koji su uključeni u brzu kampanju</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Ja</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Ova kampanja se ne može deaktivirati jer postoje otvorene aktivnosti vezane za kampanju, a povezane sa njom. Zatvorite aktivnosti vezane za kampanju i pokušajte ponovo.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>Ne možemo da deaktiviramo {0} od izabranih kampanja zato što imaju povezanu jednu otvorenu aktivnost vezanu za kampanju ili više njih. Zatvorite otvorene aktivnosti vezane za kampanju i pokušajte ponovo.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>Sadržaj poruke e-pošte je preveliki za ovog čarobnjaka. Kreirajte ga kao predložak poruke e-pošte, a zatim ovde izaberite taj predložak.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Brze kampanje ne podržavaju masovno uređivanje.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Lista je zaključana</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>Liste {0} su zaključane</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Nije moguće izvršiti ovu radnju na dinamičkoj listi.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Nije moguće povezati neaktivnu stavku sa kampanjom.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Nije moguće povezati neaktivnu stavku sa kampanjom.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Nije moguće pronaći referencu ka prilogu.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>Primalac e-pošte ne postoji ili e-adresa za primaoca e-pošte nije važeća.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Prilog nije važeći tip ili je preveliki. Nije ga moguće otpremiti ili preuzeti.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Primalac je označen kao „Nemoj slati faks“.</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Nevažeći primalac e-pošte.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Greška u radnji predloška e-pošte.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Greška u radnji slanja e-pošte.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Greška u radnji priloga beleške.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Greška u radnji kreiranja beleške.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Greška u radnji otkazivanja obrade aktivnosti.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Greška u radnji obrade aktivnosti.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Greška u radnji priloga aktivnosti.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Greška u radnji kreiranja aktivnosti.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Ovaj član marketinškog spiska nije kontaktiran, jer je prethodno s njim već uspostavljena ova komunikacija.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Pošiljalac nema e-adresu na zapisu učesnika</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>Nije navedena nijedna e-adresa, a korisnik koji poziva nema podešenu e-adresu</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>E-poruka nije poslata zbog primaočevih podešavanja za zaštitu od bezvredne pošte ili njegovih željenih opcija za komunikaciju.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Nevažeći tip adrese klijenta.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Došlo je do neočekivane greške tokom objedinjavanja pošte.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Korisnik je otkazao operaciju objedinjavanja pošte.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Ovaj klijent je filtriran zbog e-adrese koja nedostaje.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Primalac je izuzet zato što je neaktivan.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Nedostaju pravila toka posla povezana sa masovnom operacijom.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>Primalac je izuzet zbog podešavanja za zaštitu od bezvredne pošte ili željenih opcija primaoca za komunikaciju.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Nije moguće odrediti učesnika za raspoređivanje zakazane obaveze.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Nije moguće odrediti pošiljaoca za raspoređivanje zakazane obaveze</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Nije moguće odrediti organizator za raspoređivanje zakazane obaveze</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Nepodržani tip člana liste.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Pokušali ste da izvršite neovlašćenu operaciju.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>Korisnik nema neophodne privilegije.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Korisnik nema privilegiju za obavljanje ove radnje.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Nevažeća e-adresa. Za više informacija obratite se administratoru sistema.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Obrascu nedostaju sledeći elementi: {0}. To će uticati na funkcionalnosti.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Ne možete kreirati mogućnosti za poslovanje za ciljanje marketinškog spiska ovog tipa entiteta.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Već postoji zahtev, pokušajte ponovo nakon nekog vremena.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Zahtev je podnet. Sačekajte dok se stranica ne preusmeri na kopiranu listu.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>Novi {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Popunite ovaj obrazac da biste kreirali {0} za članove koje ste izabrali na marketinškom spisku. Da biste dodali ovaj {0} kao novi {0} u zapis svakog člana, kliknite na dugme „Distribuiraj”.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Uspešno sačuvano</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

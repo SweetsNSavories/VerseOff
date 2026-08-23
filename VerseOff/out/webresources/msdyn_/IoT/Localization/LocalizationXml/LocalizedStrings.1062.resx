@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Ierīce tiek reģistrēta fonā. Varat turpināt izmantot Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Ierīces datu atgādāšana notiek fonā. Varat turpināt izmantot Microsoft Dynamics 365.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>Veicot darbību, radās kļūda. Lūdzu, vēlāk mēģiniet vēlreiz.</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Lūdzu, atlasiet vismaz vienu ierakstu.</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Lūdzu, reģistrējiet ierīci, pirms mēģināt iegūt ierīces datus.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Ierīces datu atgādāšana notiek fonā. Varat turpināt izmantot Microsoft Dynamics 365. Dažas no šīm ierīcēm netika reģistrētas, tāpēc datus nevar izgūt.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>Atlasītās ierīces tiek reģistrētas fonā. Varat turpināt izmantot Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Ierīces datu atgādāšana notiek fonā. Varat turpināt izmantot Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Ierīces datu atgādāšana notiek fonā. Varat turpināt izmantot Microsoft Dynamics 365.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Notiek visu jauno ierīču importēšana fonā. Pārejiet uz lapu Ierīces, lai redzētu jaunās ierīces no IoT nodrošinātāja.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Notiek visu jauno ierīču importēšana fonā. Atsvaidziniet sarakstu, lai redzētu jaunās ierīces.</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Lūdzu, atlasiet vienu ierakstu.</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Autentifikācija nebija sekmīga. Lai skatītu vai rediģētu Power BI elementus, jums jāpierakstās savā Power BI kontā.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Pierakstīšanās</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Reģistrētā ierīce netika atrasta.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>Netika atrastas reģistrētas pievienotās ierīces.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>Netika atrasts ierīces ID. Lai skatītu Power BI elementu, lūdzu, pievienojiet ierīces ID.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Power BI elements</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Power BI informācijas panelis</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Elements</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Nevar izgūt konfigurācijas failu saglabātajai PowerBI embedded</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>Radās kļūda un neizdevās saglabāt veikto pielāgojumu. Detalizēta informācija par kļūdu: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>Pašreizējai entītijai nav konfigurēts ierīces ID filtra lietošanas atbalsts Power BI elementam.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Izvēlieties Power BI elementu, ko vēlaties pievienot veidlapai.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Power BI elements</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Saglabāt</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Atcelt</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Pievienot Power BI elementu pievienotajai ierīcei.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Notiek pielāgojuma publicēšana</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>Power BI elements tiks filtrēts, parādot pašreizējos ierīces datus.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>Šīs komandas saglabāšanas rezultātā tā tiks nosūtīta arī ierīcei(-ēm); vai vēlaties turpināt?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Atzīme</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Rekvizīts</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Iegūstiet papildinformāciju par integrāciju ar Azure IoT Central — pilnībā pārvaldītu globālu IoT SaaS risinājumu.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Integrējiet ar esošo IoT centrmezglu vai izvietojiet jaunu un pārvaldiet iepriekš konfigurēto IoT PaaS risinājumu no sava Azure abonementa.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>Nevar nosūtīt komandu. Lai nosūtītu komandu, IoT brīdinājumam jābūt saistītam ar šo ierakstu.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Ierīce tiek reģistrēta fonā. Atsvaidziniet, lai redzētu atjaunināto reģistrācijas statusu.</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>Ierīce tiek reģistrēta. Vai vēlaties reģistrēt šo ierīci vēlreiz?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Jā</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Nē</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>Šī ierīce jau ir reģistrēta. Vai vēlaties reģistrēt šo ierīci vēlreiz?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Reģistrēt ierīci</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>Atlasītās ierīces tiek reģistrētas. Atsvaidziniet, lai redzētu atjaunināto reģistrācijas statusu.</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Sūtīt komandu uz {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Sūtīt komandu</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0} nosūtīts {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Komanda nosūtīta {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>{0} komandas</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Pievienotās ierīces</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>Komanda nosūtīta.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Skatīt komandas statusu</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>Nevar sūtīt komandu.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Ir jānorāda komanda vai ziņojums.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Nevar izveidot savienojumu ar ierīci.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Ierīces</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Savienot ierīci ar {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Ierīces ceļš</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Atslēgas ceļš</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Ar šo ierīci nav saistīta neviena iepriekš definēta komanda. Lūdzu, konfigurējiet ierīces kategoriju, lai skatītu iepriekš definētās komandas.</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>IoT ieteikumu līdzeklis ir iespējots, un, lai veiktu apmācību, lūdzu, iegādājieties 24 stundas, lai veiktu konfigurācijas izmaiņas. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Lūdzu, apstipriniet, lai atspējotu IoT ieteikumu līdzekli.</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>Apstiprināt IoT ieteikumu atspējošanu</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>Iespējojot šo līdzekli, jūs apzināties, ka šis līdzeklis ir pieejams kā priekšskatījuma versija, un jūs piekrītat šim: {0}.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Priekšskatījuma lietošanas nosacījumi</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>Uzzināt vairāk</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Pielāgots ierīces skats</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Lūdzu, ievadiet derīgu IoT ierīci, lai turpinātu.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>Skaits ir vienīgā pieejamā apkopošanas opcija ierīces notikumiem.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>Pašreizējai ierīcei var izveidot ne vairāk par 6 elementiem.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Pārliecinieties, vai atlasītais mērījums ir pašreizējās ierīces ziņotais mērījums.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Pievienotās ierīces rādījumi</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Power BI konfigurācijas poga</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Komanda ir sekmīgi nosūtīta uz serveri. Lūdzu, sinhronizējiet ierīci, lai skatītu komandas statusu.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Komanda netika nosūtīta uz serveri, jo radās savienojamības problēmas; komanda tiks nosūtīta nākamreiz, kad sinhronizēsit ierīci.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>Lai izgūtu datus, ir jāstrādā tiešsaistē.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>Lai veiktu šo darbību, ir nepieciešams savienojums ar internetu.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>Lai veiktu šo darbību, ir jāsinhronizē ieraksts.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Ierīču reģistrācija ir sekmīgi nosūtīta. Nākamreiz, kad sinhronizēsit vai pāriesit tiešsaistes režīmā, varēsit skatīt reģistrācijas statusu.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Ierīču reģistrācija netika nosūtīta uz serveri, jo radās savienojamības problēmas. Reģistrācija tiks nosūtīta nākamreiz, kad sinhronizēsit ierīci.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Ierīces datu atgādāšanas pieprasījums tika sekmīgi nosūtīts. Nākamreiz, kad sinhronizēsit ierīci, rezultātu varēsit skatīt ierīces vēstures cilnē.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>Lai sūtītu komandas, ir nepieciešams interneta savienojums.</value>
+  </data>
+</root>

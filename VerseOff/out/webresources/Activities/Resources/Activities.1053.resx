@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+                Microsoft ResX Schema
+                Version 2.0
+                The primary goals of this format is to allow a simple XML format
+                that is mostly human readable. The generation and parsing of the
+                various data types are done through the TypeConverter classes
+                associated with the data types.
+                Example:
+                ... ado.net/XML headers & schema ...
+                <resheader name="resmimetype">text/microsoft-resx</resheader>
+                <resheader name="version">2.0</resheader>
+                <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+                <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+                <data name="Name1">this is my long string</data>
+                <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+                <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+                                [base64 mime encoded serialized .NET Framework object]
+                </data>
+                <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+                                [base64 mime encoded string representing a byte array form of the .NET Framework object]
+                </data>
+                There are any number of "resheader" rows that contain simple
+                name/value pairs.
+                Each data row contains a name, and value. The row also contains a
+                type or mimetype. Type corresponds to a .NET class that support
+                text/value conversion through the TypeConverter architecture.
+                Classes that don't support this are serialized and stored with the
+                mimetype set.
+                The mimetype is used for serialized objects, and tells the
+                ResXResourceReader how to depersist the object. This is currently not
+                extensible. For a given mimetype the value must be set accordingly:
+                Note - application/x-microsoft.net.object.binary.base64 is the format
+                that the ResXResourceWriter will generate, however the reader can
+                read any of the formats listed below.
+                mimetype: application/x-microsoft.net.object.binary.base64
+                value   : The object must be serialized with
+                                                : System.Serialization.Formatters.Binary.BinaryFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.soap.base64
+                value   : The object must be serialized with
+                                                : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.bytearray.base64
+                value   : The object must be serialized into a byte array
+                                                : using a System.ComponentModel.TypeConverter
+                                                : and then encoded with base64 encoding.
+                -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="ObjectReferences" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="DoesNotReference" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ObjectType">
+      <xsd:complexType>
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:int">
+            <xsd:attribute name="Singular" form="unqualified" type="xsd:string" />
+            <xsd:attribute name="Plural" form="unqualified" type="xsd:string" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExchangeSyncAppointmentPrivacyWarning">
+    <value>Vissa av mottagarna finns utanför din organisation. De här mottagarna kommer också att få den avtalade tiden när du sparar den.</value>
+    <comment>Warning displayed for appointments and recurring appointments when some attendees are not CRM users and the organizer uses Exchange Sync. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="MA_Alert_EndDate_LessThan_StartDate">
+    <value>Den angivna sluttiden måste inträffa efter starttiden.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="Error_Message_ETM_Retry">
+    <value>Din begäran kan inte bearbetas i Dynamics 365 CRM eftersom servrarna är upptagna med begäranden från andra användare i organisationen. Klicka på OK om du vill försöka skicka begäran för bearbetning på nytt, eller klicka på Avbryt om du vill fortsätta arbeta. Om du klickar på Avbryt kan du försöka skicka begäran igen senare. Kontakta kundsupport för Dynamics 365 CRM om problemet kvarstår.</value>
+    <comment>CrmSqlGovernorDatabaseRequestDenied message providing user an option to retry.</comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_75">
+    <value>E-postmeddelandet måste ha en avsändare. Välj en avsändare.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_70">
+    <value>E-postmeddelandet måste ha minst en mottagare innan du kan skicka det. Välj en mottagare.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Email_No_Recipient_Found_Error_Title">
+    <value>Ingen mottagare hittades</value>
+  </data>
+  <data name="Email_No_Sender_Found_Error_Title">
+    <value>Ingen avsändare hittades</value>
+  </data>
+  <data name="Email_Prefix_Reply">
+    <value>SV:</value>
+  </data>
+  <data name="Email_Prefix_Forward">
+    <value>VB:</value>
+  </data>
+  <data name="Brand_CRM">
+    <value>Microsoft Dynamics 365</value>
+    <comment>Branding for CRM.</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveTitle">
+    <value>Använd mall</value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveText">
+    <value>Vill du ersätta ämnesraden i e-postmeddelandet med ämnesraden i mallen? </value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_ToRecipientString">
+    <value>Mottagare</value>
+    <comment>This is the String that will appear for To Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_CCRecipientString">
+    <value>Kopiemottagare</value>
+    <comment>This is the String that will appear for CC Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_RegardingString">
+    <value>Ämne</value>
+    <comment>This is the String that will appear for Regarding dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_InvalidTargetRecipient">
+    <value>Välj en mottagare eller angående-post som kan associeras med en e-postmall. Du kan till exempel inte välja en kö.</value>
+    <comment>This is the Text that will appear if no Valid target object selected for Email Template [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog">
+    <value>Bearbetar...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="UCI.Form.Saving">
+    <value>Sparar ...</value>
+    <comment>Message which is displayed while UCI main form is getting saved.</comment>
+  </data>
+  <data name="Button_Label_OK">
+    <value>OK</value>
+  </data>
+  <data name="Button_Label_Cancel">
+    <value>Avbryt</value>
+  </data>
+  <data name="AddTemplateWithoutAttachment">
+    <value>Den här mallen innehåller bifogade filer. Om du vill att bifogade filer ska ingå i e-postmeddelandet klickar du på Avbryt, sparar e-postmeddelandet och aktiverar mallen på nytt. Om du vill fortsätta utan bifogade filer klickar du på OK.</value>
+    <comment>Message shown on confirm dialog when user attempts to add a template containing attachments to email without saving the email.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Microsoft_Crm_Msgbody_Default_fonts">
+    <value>Tahoma, Verdana, Arial</value>
+    <comment>
+      This defines the default font for the body of a new e-mail (although users can change the font at runtime by using the HTMLbar).
+      Like the fonts listed in resource Microsoft_Crm_Web_Fonts, the order of the fonts matter, since IE will use the first font and go down the
+      list until it finds the first font that is installed on the user's system.  Therefore the most preferable font should be placed first in the list.
+      However, unlike resource Microsoft_Crm_Web_Fonts, fonts that have spaces should only be enclosed in single quotes - double quotes will cause
+      a formatting error.
+      The list of fonts in this resource should be a proper subset of the list of fonts in resource Web._controls.htmlbar.defaultfonts.
+    </comment>
+  </data>
+  <data name="Email_Followup_Header">
+    <value>--------------- Ursprungligt meddelande ----------------</value>
+  </data>
+  <data name="Email_Followup_Sender">
+    <value>Från:</value>
+  </data>
+  <data name="Email_Followup_ReceivedDate">
+    <value>Mottaget:</value>
+  </data>
+  <data name="Email_Followup_ToRecipients">
+    <value>Till:</value>
+  </data>
+  <data name="Email_Followup_CcRecipients">
+    <value>Kopia:</value>
+  </data>
+  <data name="Email_Followup_Subject">
+    <value>Ämne:</value>
+  </data>
+  <data name="Activity_ConfirmSwap_Title">
+    <value>Ändra riktning</value>
+    <comment>Title for change direction dialog box.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_Description">
+    <value>Avgör om du vill fortsätta med den angivna ändringen.</value>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_27">
+    <value>Du har lagt till flera mottagare i posten. Om du ändrar till riktningen behålls bara den första mottagaren. De andra mottagarna tas bort.</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_30">
+    <value>Vill du ändra riktning?</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_OkButton">
+    <value>Ändra</value>
+    <comment>Ok button label for change direction dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="ConvActSaveWarning">
+    <value>Du måste spara ändringarna innan du kan konvertera aktiviteten.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Error_Message_0x80046fff">
+    <value>Fältet {0}, som tillhör entiteten {1}, kan inte raderas eftersom det här fältet används för att skicka e-postmeddelanden, och entiteten är aktiverad för e-post.</value>
+    <comment>
+      An emailable entity must have atleast one email attribute. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 is attribute name. Placeholder 1 parent entity name[Category="Administration and Deployment"]
+    </comment>
+  </data>
+  <data name="Error_Title_0x80048422">
+    <value>Ogiltig e-postmottagare</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80048422">
+    <value>E-postmottagaren finns inte eller så är e-postmottagarens e-postadress inte giltig.</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80044192">
+    <value>Ogiltig e-postadress. Kontakta {#Brand_CRM}-administratören om du vill ha mer information.</value>
+    <comment>Description for the error when user tries to send an e-mail and some parties have invalid e-mail addresses. [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Followed_Email_Attachments_Tooltip" xml:space="preserve">
+    <value>Lista över bilagor som följs, så som det visas för mottagaren.</value>
+    <comment>Text for followed email attachements div aria-label[Category="Email Engagement"]</comment>
+  </data>
+  <data name="Generic_ErrorMessage">
+    <value>Ett fel uppstod. Försök igen. Kontakta administratören om problemet kvarstår.</value>
+    <comment>Generic error when error message is not defined properly</comment>
+  </data>
+  <data name="Error">
+    <value>Fel</value>
+    <comment>This name is used to indicate error name</comment>
+  </data>
+  <data name="ErrorCode">
+    <value>Felkod</value>
+    <comment>This name is used to indicate error code</comment>
+  </data>
+  <data name="ErrorMessage">
+    <value>Felmeddelande </value>
+    <comment>This name used to indicate error message</comment>
+  </data>
+  <data name="Url">
+    <value>URL </value>
+    <comment>This name used to indicate Url</comment>
+  </data>
+  <data name="Command">
+    <value>Kommando </value>
+    <comment>This name used to indicate Command</comment>
+  </data>
+  <data name="Parameters">
+    <value>Parametrar </value>
+    <comment>This name used to indicate Parameters</comment>
+  </data>
+  <data name="Error_In_Dialog_Open">
+    <value>Ett fel uppstod när dialogrutan öppnades. Försök igen senare. Kontakta administratören om problemet kvarstår.</value>
+    <comment>Generic error when error occurred while open a dialog</comment>
+  </data>
+  <data name="Button_Ok">
+    <value>OK</value>
+    <comment>This message is used to indicate ok label on a button</comment>
+  </data>
+  <data name="UnsavedChanges">
+    <value>Ändringarna som du gjorde kanske inte sparas.</value>
+    <comment>This message is used to indicate changes made to the record are not saved</comment>
+  </data>
+  <data name="ConfirmAttachmentRemoval">
+    <value>Är du säker på att du vill ta bort den här bifogade filen? Den här åtgärden går inte att ångra.</value>
+    <comment>This message is used to indicate user to confirm the removal of attachment as it cannot be added again</comment>
+  </data>
+  <data name="RemovedAttachmentConfirmation">
+    <value>Det bifogade dokumentet har tagits bort.</value>
+    <comment>This message is used to confirm to user that attachment is removed</comment>
+  </data>
+  <data name="FileNotFound">
+    <value>Filen hittades inte</value>
+    <comment>This message is used to indicate not able to locate file</comment>
+  </data>
+  <data name="UnsupportedAttachment">
+    <value>Bilagan kan inte öppnas på din enhet.</value>
+    <comment>This message is used to indicate selected attachment is not supported on the current device</comment>
+  </data>
+  <data name="FileNameLengthExceeded">
+    <value>Filnamnet innehåller fler än 165 tecken.</value>
+    <comment>This message is used to indicate file contains more characters than allowed limit</comment>
+  </data>
+  <data name="EmptyFile">
+    <value>Den angivna filen är antingen tom eller finns inte. Kontrollera att filnamnet är rätt eller ange en annan fil och försök igen.</value>
+    <comment>This message is used to indicate file is empty or does not exist</comment>
+  </data>
+  <data name="InvalidFileExtension">
+    <value>Det här är ett ogiltigt filnamnstillägg.</value>
+    <comment>This message is used to indicate file extension is not valid</comment>
+  </data>
+  <data name="FileSizeExceeded">
+    <value>Den bifogade filen är för stor. Största tillåtna filstorlek är {0} kB.</value>
+    <comment>This message is used to attachment size exceeded the allowed limit</comment>
+  </data>
+  <data name="NonEditableDialog">
+    <value>Dialogrutan kan inte redigeras</value>
+    <comment>This message is used to edit is not allowed in this dialog </comment>
+  </data>
+  <data name="activities/act_dlgs/dlg_seriesaction.aspx_textDeleteInstance">
+    <value>Vill du radera alla förekomster av den återkommande avtalade tiden {0} eller endast den här förekomsten?</value>
+    <comment>Text of the confirmation dialog when user deletes an instance.[Category="Business Modules"]. {NumberedPlaceholder="{0}"} Placeholder 0 is the truncated subject of the appointment.</comment>
+  </data>
+  <data name="New_Attachment_Form_Description">
+    <value>Välj en fil att bifoga.</value>
+    <comment>Instructional text for attach file dialog, when opened for attaching a new attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Existing_Attachment_Form_Description">
+    <value>Klicka på filen för att visa den, eller klicka på Ta bort för att ta bort den.</value>
+    <comment>Instructional text for attach file dialog, when opened for an existing attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="New_Attachment_Label_Message">
+    <value>Filnamn</value>
+    <comment>Instructional text to indicate file name</comment>
+  </data>
+  <data name="Error_Message_0x80040b00">
+    <value>Meddelandet kan inte skickas till alla markerade mottagare. Kontrollera att både avsändaren och mottagarna har giltiga e-postadresser samt att mottagarna har tillåtelse att ta emot e-post.</value>
+    <comment>IDS_COMMUNICATIONS_NOPARTYADDRESS</comment>
+  </data>
+  <data name="Error_Message_0x8004b000" xml:space="preserve">
+    <value>Ett fel uppstod när din begäran bearbetades. Försök igen.</value>
+    <comment>CrmLiveGenericError</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected">
+    <value>Du måste markera någon av posterna innan du kan utföra den här åtgärden.</value>
+  </data>
+  <data name="ReadOnlyEntity">
+    <value>Vald entitet är skrivskyddad för den här klienten.</value>
+    <comment>Alert shown when user tries to perform action on entity which is Read-only in Mobile</comment>
+  </data>
+  <data name="Grid_Apply_Rule_Heterogenous_Activity_Type_Records_Selected">
+    <value>Du kan endast utföra åtgärden för aktiviteter av samma typ.</value>
+    <comment>Alert shown when user tries to perform action which can be performed on single entity type on 2 different entity types</comment>
+  </data>
+  <data name="TemplateNotSelected">
+    <value>Du måste välja mallen för att kunna skicka direkt e-post</value>
+    <comment>Message shown when user tries to send bulk email and template is not selected</comment>
+  </data>
+  <data name="BPFNavigationBlockAlert">
+    <value>Spara eller ignorera ändringarna innan du flyttar till en annan del av processen.</value>
+    <comment>Message shown when user tries to do a BPF navigation on a unsaved appointment form.</comment>
+  </data>
+  <data name="SenderNotSelected">
+    <value>Du måste först markera en användare eller kö.</value>
+    <comment>Message shown when user tries to send bulk email and sender is not selected</comment>
+  </data>
+  <data name="RecipientsNotSelected">
+    <value>Du måste välja posterna för att kunna skicka direkt e-post till</value>
+    <comment>Message shown when user tries to send bulk email and the records to sedn to are not selected</comment>
+  </data>
+  <data name="Form_Title_Draft_Status_Prefix_For_Appointment">
+    <value>[Utkast]</value>
+    <comment>"[Draft]" string to be prefixed for form title for draft appointments.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_Appointment">
+    <value>Följande potentiella schemaläggningsproblem hittades. Du kanske inte kan schemalägga aktiviteten förrän problemen har åtgärdats.</value>
+    <comment>SchedulingConflict Dialog  Description for Appointment</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_RecurringAppointment">
+    <value>Den första avtalade tiden: Följande schemaläggningsfel har identifierats.</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description1_RecurringAppointment">
+    <value>Följande avtalade tider: Tillgängligheten för deltagare verifieras inte i {#Brand_CRM}.</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSave_Button">
+    <value>Ignorera och spara</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSave Button</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSend_Button">
+    <value>Ignorera och skicka</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSend Button</comment>
+  </data>
+  <data name="ErrorCode.ResourceConstraints">
+    <value>{0} är inte tillgänglig på grund av resursbegränsningarna.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceBusy">
+    <value>{0} är inte tillgänglig vid denna tidpunkt.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceOverCapacity">
+    <value>{0} har inte tillräcklig kapacitet.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceNonBusinessHours">
+    <value>{0} håller på att schemaläggas utanför arbetstid.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="PreviewTemplateNotSelected">
+    <value>Välj en mall i listan om du vill fortsätta.</value>
+    <comment>Message to display when user not selected any template.</comment>
+  </data>
+  <data name="LOCID_EMAIL_NORECORDS_MSG">
+    <value>Inga poster valda.</value>
+    <comment>Message to display when bulk email is invoked without any records selected.</comment>
+  </data>
+  <data name="UnresolvedEmailsNotAllowed">
+    <value>Din organisation tillåter inte att e-postmeddelanden skickas till omatchade e-postmottagare. Du måste ta bort dessa mottagare eller kontakta din systemadministratör för att tillåta att meddelanden med okända e-postmottagare skickas. Läs mer: https://go.microsoft.com/fwlink/p/?linkid=2127763</value>
+    <comment>Message to display when allowUnresolvedPartiesOnEmailSend is false and the form contains unresolved parties.</comment>
+  </data>
+  <data name="UnresolvedEmailsCanNotSendEmail">
+    <value>Kan inte skicka e-post till:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is false and the control contains unresolved parties.</comment>
+  </data>
+  <data name="AttachmentDownloadError" xml:space="preserve">
+    <value>Ett fel inträffade när {0} laddades ned. Försök igen senare.</value>
+    <comment>Error message shown if an error occurs while trying to download an attachment</comment>
+  </data>
+  <data name="AttachmentDownloadGenericError" xml:space="preserve">
+    <value>Det gick inte att ladda ned de bifogade filerna. Försök igen senare.</value>
+    <comment>Error message shown if an error occurs while trying to download attachments</comment>
+  </data>
+  <data name="AttachmentDownloadFormNotification" xml:space="preserve">
+    <value>Laddar ned bifogade filer ...</value>
+    <comment>Form notification text that is shown while attachments are downloading</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_LearnMore">
+    <value>Läs mer</value>
+    <comment>Continue Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_Continue">
+    <value>Fortsätt</value>
+    <comment>Cancel Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultTitle">
+    <value>Läs mer</value>
+    <comment>Default title for the learn more dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultPrimaryText">
+    <value>Den här åtgärden tillåts inte.</value>
+    <comment>Default primary text for the learn more dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Title">
+    <value>Postlåda inaktiverad</value>
+    <comment>Title for the Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Text">
+    <value>Det gick inte att skicka e-postmeddelandet eftersom postlådan {0} är inaktiverad. Om du fortsätter anges e-postmeddelandet till väntande tillstånd.</value>
+    <comment>Text displayed in the Mailbox Not Enabled dialog for Admin</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Instruction_NonAdmin">
+    <value>Kontakta systemadministratören för att aktivera den.</value>
+    <comment>Instruction text for nonadmins in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="InsertDataAddDataFieldButtonLabel" xml:space="preserve">
+    <value>Lägg till datafält</value>
+    <comment>Button label for adding new entry of dynamic text</comment>
+  </data>
+  <data name="InsertDataDefaultTextLabel" xml:space="preserve">
+    <value>Standardtext</value>
+    <comment>Label for default text control</comment>
+  </data>
+  <data name="InsertDataRecordTypeLabel" xml:space="preserve">
+    <value>Posttyp</value>
+    <comment>Column name of record type in dynamic text</comment>
+  </data>
+  <data name="InsertDataFieldNameLabel" xml:space="preserve">
+    <value>Fältnamn</value>
+    <comment>Column name of field names in dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveUpButtonLabel" xml:space="preserve">
+    <value>Flytta upp</value>
+    <comment>Button label for moving up one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveDownButtonLabel" xml:space="preserve">
+    <value>Flytta ned</value>
+    <comment>Button label for moving down one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataRemoveButtonLabel" xml:space="preserve">
+    <value>Ta bort</value>
+    <comment>Button label for removing one row of dynamic text</comment>
+  </data>
+  <data name="UnableToInsertDynamicText" xml:space="preserve">
+    <value>Det går inte att infoga dynamisk text. Välj var du vill infoga eller uppdatera din dynamiska text i mallens ämne eller brödtext.</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="UnableToInsertDynamicTextInSignature" xml:space="preserve">
+    <value>Det går inte att infoga dynamisk text. Välj var du vill infoga eller uppdatera den dynamiska texten i mallens brödtext.</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="PreOctoberNotification" xml:space="preserve">
+    <value>Håll utkik efter detta i en kommande version</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="malformedDefaultValue" xml:space="preserve">
+    <value>Fältet för standardtext kan inte innehålla något av följande tecken: ; &amp; &lt; &gt; { }</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="RequiredFieldMustBeFilledIn" xml:space="preserve">
+    <value>Obligatoriska fält måste fyllas i.</value>
+    <comment>Required fields must be filled in.</comment>
+  </data>
+  <data name="ConvertingEmailToTemplateProgressMessage" xml:space="preserve">
+    <value>Konverterar e-post till mall ...</value>
+    <comment>Progress message to show during email to template conversion</comment>
+  </data>
+  <data name="CreatingTemplateProgressMessage" xml:space="preserve">
+    <value>Skapar mallen ...</value>
+    <comment>Progress message to show during new template creation</comment>
+  </data>
+  <data name="RequiredFieldsErrorMessage" xml:space="preserve">
+    <value>Alla obligatoriska fält måste fyllas i.</value>
+    <comment>Error message to show when required fields are not filled in</comment>
+  </data>
+  <data name="CopyingAttachmentsToTemplateMessage" xml:space="preserve">
+    <value>Kopierar bifogade filer till mallen ...</value>
+    <comment>Progress message to show during copying attachments to template on (email or template) -&gt; template conversion</comment>
+  </data>
+  <data name="TemplateCopyString" xml:space="preserve">
+    <value>Kopia</value>
+    <comment>'Copy' word to append to the end of the cloned template</comment>
+  </data>
+  <data name="ErrorCopyAttachmentsToTemplate" xml:space="preserve">
+    <value>Det går inte att kopiera några av de bifogade filerna från e-postmeddelandet. Försök ladda upp filerna igen.</value>
+    <comment>Error message shown when one or more attachments fail to copy over to new template.</comment>
+  </data>
+  <data name="ErrorCreateTemplate" xml:space="preserve">
+    <value>Det gick inte att skapa mallen. Försök igen eller kontakta Microsoft Support.</value>
+    <comment>Error message shown when createRecord fails for template creation.</comment>
+  </data>
+  <data name="ErrorRetrievingAttachmentsForTemplate" xml:space="preserve">
+    <value>Det gick inte att flytta de bifogade filerna till mallen. Kontakta administratören eller Microsoft Support.</value>
+    <comment>Error message shown when the retrieve call fails to get the attachments to copy over to the template.</comment>
+  </data>
+  <data name="WarningSomeAttachmentsNotSupported" xml:space="preserve">
+    <value>Meddelandet sparades som en post av typen Microsoft Dynamics 365-e-post, men alla bifogade filer gick inte att spara där. En bifogad fil går inte att spara om den är blockerad eller om filtypen är ogiltig.</value>
+    <comment>Notification shown when some attachments couldn't be supported for a received email</comment>
+  </data>
+  <data name="WarningEmailSubjectLengthMessage" xml:space="preserve">
+    <value>Gör ämnesraden kortare för att undvika att den bryts av när du infogar den i ett e-postmeddelande.</value>
+    <comment>Warning message shown when the email template subject length is greater than 800</comment>
+  </data>
+  <data name="EndSeriesDialogTopLabel" xml:space="preserve">
+    <value>Ange när du vill att serien med avtalade tider ska sluta. Alla framtida avtalade tider i serien raderas.</value>
+    <comment>End Series Dialog description</comment>
+  </data>
+  <data name="EndSeriesDialogCompletionTypeLabel" xml:space="preserve">
+    <value>Vi bevarar alla tidigare avtalade tider i de avslutade serierna. Vad vill du göra med de tidigare tiderna som är öppna?</value>
+    <comment>End Series Dialog Description of radio options</comment>
+  </data>
+  <data name="EndSeriesDialogOptionCancel" xml:space="preserve">
+    <value>Avbryt</value>
+    <comment>Radio option for Cancel in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionComplete" xml:space="preserve">
+    <value>Slutför</value>
+    <comment>Radio option for Complete in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionKeepOpen" xml:space="preserve">
+    <value>Behåll öppen</value>
+    <comment>Radio option for Keep Open in End Series Dialog</comment>
+  </data>
+  <data name="SameDayString" xml:space="preserve">
+    <value>Samma dag</value>
+    <comment>String for Same Day radio option</comment>
+  </data>
+  <data name="SameWeekString" xml:space="preserve">
+    <value>Samma vecka</value>
+    <comment>String for Same Week radio option</comment>
+  </data>
+  <data name="UpdateSeriesDialogCancelCurrentSeries" xml:space="preserve">
+    <value>Avbryt aktuell serie och skapa en ny.</value>
+    <comment>Cancel current series</comment>
+  </data>
+  <data name="UpdateSeriesDialogFirstLabel" xml:space="preserve">
+    <value>Du har begärt ändringar av återkommandeinformationen för en befintlig serie. Den aktuella serien avbryts och en ny serie skapas.</value>
+    <comment>Update Series First Label</comment>
+  </data>
+  <data name="UpdateSeriesDialogSecondLabel" xml:space="preserve">
+    <value>Historiken för tidigare instanser av serien bevaras, men alla eventuella öppna instanser raderas.</value>
+    <comment>Update Series Second Label</comment>
+  </data>
+  <data name="RecurrenceErrorIntervalOutOfRange" xml:space="preserve">
+    <value>Värden för återkommande mönster kan inte vara lägre än 1 eller högre än 99. Ange ett giltigt återkommande mönster.</value>
+    <comment>Error string for interval Out of Range in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorDayOfMonthOutOfRange" xml:space="preserve">
+    <value>Dagar i en månad får inte överstiga 31</value>
+    <comment>Error string for number of days of month in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceWarningDayOfMonthMore" xml:space="preserve">
+    <value>Vissa månader har färre än {0} dagar. För dessa månader inträffar händelsen den sista dagen i månaden.</value>
+    <comment>Warning string when number of days specific is more than 28 in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorEndLessThanStartDate" xml:space="preserve">
+    <value>Det angivna startdatumet inträffar efter slutdatumet. Välj ett giltigt startdatum.</value>
+    <comment>Error string when pattern end date is less than start date</comment>
+  </data>
+  <data name="RecurrenceErrorInvalidDateForMonth" xml:space="preserve">
+    <value>Värdet ligger utanför intervallet för den valda månaden. Ange ett giltigt värde.</value>
+    <comment>Error string when number of days is invalid for that month in yearly recurrence pattern</comment>
+  </data>
+  <data name="RecurrenceErrorFebruary29DaysStartDate" xml:space="preserve">
+    <value>Mönstrets startdatum ska vara ett skottår om du vill skapa avtalade tider 29 februari</value>
+    <comment>Error string when pattern start date is not a leap year for chosen 29th Feb</comment>
+  </data>
+  <data name="RecurrenceWarningFebruary29" xml:space="preserve">
+    <value>I år som inte är skottår har februari färre än 29 dagar. I sådana fall inträffar händelsen den sista dagen i februari.</value>
+    <comment>Warning string for 29th February in Recurrence Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOpenError" xml:space="preserve">
+    <value>Fel vid öppning av dialogen Avsluta serie</value>
+    <comment>Error in opening End Series Dialog</comment>
+  </data>
+  <data name="RecurrenceDialogAlert" xml:space="preserve">
+    <value>Varningsdialogen Återkommande</value>
+    <comment>Recurrence Dialog alert</comment>
+  </data>
+  <data name="RecurrenceDialogStartTimeField" xml:space="preserve">
+    <value>Starttid</value>
+    <comment>Start time control display name</comment>
+  </data>
+  <data name="RecurrenceDialogEndTimeField" xml:space="preserve">
+    <value>Sluttid</value>
+    <comment>End time control display name</comment>
+  </data>
+  <data name="JoinTeamsMeeting_Label" xml:space="preserve">
+    <value>Anslut till Teams-möte</value>
+    <comment>Label for the teams meeting button</comment>
+  </data>
+  <data name="TeamsChatsPreview_Label" xml:space="preserve">
+    <value>Teams-chattar (förhandsversion)</value>
+    <comment>'chat' : displayname for Teams chats (Preview) LabelText</comment>
+  </data>
+  <data name="TeamsChatsJoinNotAllowedDialogAlert" xml:space="preserve">
+    <value>Du kan inte använda den här funktionen eftersom du inte är medlem i chatten. Kontakta systemadministratören om du vill kunna delta i chattar som du inte är ägare till.</value>
+    <comment>Cannot join teams chat dialog alert</comment>
+  </data>
+  <data name="TeamsChatsDisabledDialogAlert" xml:space="preserve">
+    <value>Den här funktionen är inte tillgänglig eftersom Microsoft Teams inte är aktiverat i den profil för handläggarens upplevelse som du tillhör (appen Profilhanterare). Kontakta administratören.</value>
+    <comment>Teams integration disabled dialog alert</comment>
+  </data>
+  <data name="InvalidEmailAddressCannotSend">
+    <value>Ta bort följande ogiltiga e-postmeddelanden:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is true and the control contains invalid email addresses.</comment>
+  </data>
+  <data name="ReminderToAttachmentKeywords">
+    <value>bifoga,bifogar,bifogad,bilaga,bilagor</value>
+    <comment>Keywords to find in email body to pop attachment dialog when no attachment is added.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogTitle">
+    <value>Påminnelse om bilaga</value>
+    <comment>Reminder attachment Dialog Title.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogText">
+    <value>Du kanske har glömt att bifoga en fil.</value>
+    <comment>Reminder attachment Dialog text.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogOk">
+    <value>Skicka</value>
+    <comment>Reminder attachment Dialog Ok button.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogCancel">
+    <value>Skicka inte</value>
+    <comment>Reminder attachment Dialog cancel button.</comment>
+  </data>
+  <data name="EmailDraftDeleteMessage" xml:space="preserve">
+    <value>Det här e-postmeddelandet tas bort om det inte sparas manuellt eller skickas innan det stängs.</value>
+    <comment>Used to delete draft emails for multisession apps created from Reply/Reply All/Forward</comment>
+  </data>
+  <data name="DownloadEmailAsAttachment_Download" xml:space="preserve">
+    <value>Ladda ner </value>
+  </data>
+  <data name="DownloadEmailAsAttachment_MB" xml:space="preserve">
+    <value> MB</value>
+  </data>
+  <data name="DownloadEmailAsAttachment_PreparingFile" xml:space="preserve">
+    <value>Förbereder filen</value>
+  </data>
+  <data name="EmailDraftDeleteMessageonAttachmentControlLoad" xml:space="preserve">
+    <value>Uppdateringarna för bifogade filer har inte sparats. Spara formuläret om du inte vill förlora uppdateringar av bilagor som inte har sparats.</value>
+    <comment>Used to inform user to save changes when attachments are updated on Email form.</comment>
+  </data>
+  <data name="GuardRailFailedDialogTitle" xml:space="preserve">
+    <value>Det gick inte att kontrollera skyddsräcket</value>
+    <comment>Title shown in the guardrail failure dialog.</comment>
+  </data>
+  <data name="GuardRailFailedDialogText" xml:space="preserve">
+    <value>Det utkastade e-postmeddelandet klarade inte skyddsräckeskontrollerna. Ändra innehållet och skicka det igen för att säkerställa att det uppfyller skyddsräckeskraven.</value>
+    <comment>Main explanation text shown when guardrails fail in the dialog.</comment>
+  </data>
+  <data name="GuardrailsFailed" xml:space="preserve">
+    <value>Misslyckad(e) skyddsräck(en)</value>
+    <comment>Label for listing failed guardrail names.</comment>
+  </data>
+  <data name="GuardrailFailureReasons" xml:space="preserve">
+    <value>Orsak(er)</value>
+    <comment>Label for listing failure reasons for each violated guardrail.</comment>
+  </data>
+  <data name="GuardrailCloseButton" xml:space="preserve">
+    <value>Stäng</value>
+    <comment>Text for the dialog Close button.</comment>
+  </data>
+  <data name="SeeTerms" xml:space="preserve">
+    <value>Visa villkor</value>
+    <comment>Hyperlink label for opening Microsoft Terms URL.</comment>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>misslyckades</value>
+    <comment>Lowercase 'failed' suffix used in inline status messages.</comment>
+  </data>
+  <data name="AiDisclaimerText" xml:space="preserve">
+    <value>AI-genererat innehåll kan vara felaktigt. Se till att AI-genererat innehåll är korrekt och lämpligt innan du använder det.</value>
+    <comment>AI safety disclaimer shown below guardrail messages.</comment>
+  </data>
+</root>

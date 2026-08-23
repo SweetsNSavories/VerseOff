@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+                Microsoft ResX Schema
+                Version 2.0
+                The primary goals of this format is to allow a simple XML format
+                that is mostly human readable. The generation and parsing of the
+                various data types are done through the TypeConverter classes
+                associated with the data types.
+                Example:
+                ... ado.net/XML headers & schema ...
+                <resheader name="resmimetype">text/microsoft-resx</resheader>
+                <resheader name="version">2.0</resheader>
+                <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+                <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+                <data name="Name1">this is my long string</data>
+                <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+                <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+                                [base64 mime encoded serialized .NET Framework object]
+                </data>
+                <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+                                [base64 mime encoded string representing a byte array form of the .NET Framework object]
+                </data>
+                There are any number of "resheader" rows that contain simple
+                name/value pairs.
+                Each data row contains a name, and value. The row also contains a
+                type or mimetype. Type corresponds to a .NET class that support
+                text/value conversion through the TypeConverter architecture.
+                Classes that don't support this are serialized and stored with the
+                mimetype set.
+                The mimetype is used for serialized objects, and tells the
+                ResXResourceReader how to depersist the object. This is currently not
+                extensible. For a given mimetype the value must be set accordingly:
+                Note - application/x-microsoft.net.object.binary.base64 is the format
+                that the ResXResourceWriter will generate, however the reader can
+                read any of the formats listed below.
+                mimetype: application/x-microsoft.net.object.binary.base64
+                value   : The object must be serialized with
+                                                : System.Serialization.Formatters.Binary.BinaryFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.soap.base64
+                value   : The object must be serialized with
+                                                : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.bytearray.base64
+                value   : The object must be serialized into a byte array
+                                                : using a System.ComponentModel.TypeConverter
+                                                : and then encoded with base64 encoding.
+                -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="ObjectReferences" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="DoesNotReference" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ObjectType">
+      <xsd:complexType>
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:int">
+            <xsd:attribute name="Singular" form="unqualified" type="xsd:string" />
+            <xsd:attribute name="Plural" form="unqualified" type="xsd:string" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExchangeSyncAppointmentPrivacyWarning">
+    <value>Beberapa penerima berada di luar organisasi anda. Penerima ini juga akan menerima janji temu ini semasa anda menyimpannya.</value>
+    <comment>Warning displayed for appointments and recurring appointments when some attendees are not CRM users and the organizer uses Exchange Sync. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="MA_Alert_EndDate_LessThan_StartDate">
+    <value>Anda perlu menyatakan masa tamat yang lebih lewat daripada masa mula.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="Error_Message_ETM_Retry">
+    <value>Dynamics 365 CRM tidak dapat menyelesaikan permintaan anda kerana pelayan sibuk menangani permintaan dari pengguna lain di organisasi anda. Klik OK untuk mencuba menyelesaikan permintaan sekarang, atau klik Batal untuk meneruskan kerja. Jika mengklik Batal, anda dapat mencuba menyelesaikan permintaan nanti. Jika masalah ini berlanjut, hubungi sokongan pelanggan Dynamics 365 CRM untuk mendapatkan bantuan.</value>
+    <comment>CrmSqlGovernorDatabaseRequestDenied message providing user an option to retry.</comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_75">
+    <value>E-mel mesti mempunyai penghantar. Pilih penghantar.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_70">
+    <value>E-mel mesti mempunyai sekurang-kurangnya satu penerima sebelum dapat dihantar. Pilih penerima.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Email_No_Recipient_Found_Error_Title">
+    <value>Tiada Penerima Ditemui</value>
+  </data>
+  <data name="Email_No_Sender_Found_Error_Title">
+    <value>Tiada Penghantar Ditemui</value>
+  </data>
+  <data name="Email_Prefix_Reply">
+    <value>BALAS:</value>
+  </data>
+  <data name="Email_Prefix_Forward">
+    <value>MAJU:</value>
+  </data>
+  <data name="Brand_CRM">
+    <value>Microsoft Dynamics 365</value>
+    <comment>Branding for CRM.</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveTitle">
+    <value>Guna Templat</value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveText">
+    <value>Adakah anda mahu mengganti baris subjek dalam mesej e-mel dengan baris subjek dalam templat? </value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_ToRecipientString">
+    <value>Kepada Penerima</value>
+    <comment>This is the String that will appear for To Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_CCRecipientString">
+    <value>Penerima SK</value>
+    <comment>This is the String that will appear for CC Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_RegardingString">
+    <value>Berkenaan</value>
+    <comment>This is the String that will appear for Regarding dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_InvalidTargetRecipient">
+    <value>Pilih penerima atau rekod berkaitan yang dapat dikaitkan ke templat e-mel. Contohnya, anda tidak dapat memilih baris gilir.</value>
+    <comment>This is the Text that will appear if no Valid target object selected for Email Template [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog">
+    <value>Memproses...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="UCI.Form.Saving">
+    <value>Menyimpan...</value>
+    <comment>Message which is displayed while UCI main form is getting saved.</comment>
+  </data>
+  <data name="Button_Label_OK">
+    <value>OK</value>
+  </data>
+  <data name="Button_Label_Cancel">
+    <value>Batal</value>
+  </data>
+  <data name="AddTemplateWithoutAttachment">
+    <value>Templat ini mengandungi lampiran. Jika anda mahu lampiran sebagai sebahagian daripada e-mel anda, klik Batal, simpan e-mel dan kemudian gunakan semula templat. Untuk meneruskan tanpa lampiran, klik OK.</value>
+    <comment>Message shown on confirm dialog when user attempts to add a template containing attachments to email without saving the email.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Microsoft_Crm_Msgbody_Default_fonts">
+    <value>Tahoma, Verdana, Arial</value>
+    <comment>
+      This defines the default font for the body of a new e-mail (although users can change the font at runtime by using the HTMLbar).
+      Like the fonts listed in resource Microsoft_Crm_Web_Fonts, the order of the fonts matter, since IE will use the first font and go down the
+      list until it finds the first font that is installed on the user's system.  Therefore the most preferable font should be placed first in the list.
+      However, unlike resource Microsoft_Crm_Web_Fonts, fonts that have spaces should only be enclosed in single quotes - double quotes will cause
+      a formatting error.
+      The list of fonts in this resource should be a proper subset of the list of fonts in resource Web._controls.htmlbar.defaultfonts.
+    </comment>
+  </data>
+  <data name="Email_Followup_Header">
+    <value>------------------- Mesej Asal -------------------</value>
+  </data>
+  <data name="Email_Followup_Sender">
+    <value>Daripada:</value>
+  </data>
+  <data name="Email_Followup_ReceivedDate">
+    <value>Diterima:</value>
+  </data>
+  <data name="Email_Followup_ToRecipients">
+    <value>Kepada:</value>
+  </data>
+  <data name="Email_Followup_CcRecipients">
+    <value>Sk:</value>
+  </data>
+  <data name="Email_Followup_Subject">
+    <value>Subjek:</value>
+  </data>
+  <data name="Activity_ConfirmSwap_Title">
+    <value>Tukar Arah</value>
+    <comment>Title for change direction dialog box.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_Description">
+    <value>Putuskan sama ada untuk meneruskan dengan perubahan yang dipilih.</value>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_27">
+    <value>Anda telah menambah berbilang penerima pada rekod. Jika anda mengubah arah, hanya penerima pertama akan disimpan, penerima lain akan dialih keluar.</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_30">
+    <value>Adakah anda ingin mengubah arah?</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_OkButton">
+    <value>Ubah</value>
+    <comment>Ok button label for change direction dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="ConvActSaveWarning">
+    <value>Anda harus menyimpan perubahan agar dapat menukar aktiviti ini.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Error_Message_0x80046fff">
+    <value>Medan {0}, yang tercakup dalam entiti {1}, tidak dapat dipadamkan kerana medan ini digunakan untuk menghantar mesej e-mel, dan entiti diaktifkan untuk e-mel.</value>
+    <comment>
+      An emailable entity must have atleast one email attribute. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 is attribute name. Placeholder 1 parent entity name[Category="Administration and Deployment"]
+    </comment>
+  </data>
+  <data name="Error_Title_0x80048422">
+    <value>Penerima E-mel Tidak Sah</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80048422">
+    <value>Penerima e-mel tidak ada atau alamat e-mel untuk penerima e-mel tidak sah.</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80044192">
+    <value>Alamat e-mel tidak sah.  Untuk mendapatkan maklumat lanjut, hubungi pentadbir {#Brand_CRM} anda.</value>
+    <comment>Description for the error when user tries to send an e-mail and some parties have invalid e-mail addresses. [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Followed_Email_Attachments_Tooltip" xml:space="preserve">
+    <value>Senarai lampiran yang diikuti kerana ia akan ditunjukkan kepada penerima e-mel.</value>
+    <comment>Text for followed email attachements div aria-label[Category="Email Engagement"]</comment>
+  </data>
+  <data name="Generic_ErrorMessage">
+    <value>Ralat telah berlaku. Sila cuba semula kemudian. Jika masalah berterusan, sila hubungi pentadbir anda.</value>
+    <comment>Generic error when error message is not defined properly</comment>
+  </data>
+  <data name="Error">
+    <value>Ralat</value>
+    <comment>This name is used to indicate error name</comment>
+  </data>
+  <data name="ErrorCode">
+    <value>Kod Ralat</value>
+    <comment>This name is used to indicate error code</comment>
+  </data>
+  <data name="ErrorMessage">
+    <value>Mesej Ralat</value>
+    <comment>This name used to indicate error message</comment>
+  </data>
+  <data name="Url">
+    <value>Url </value>
+    <comment>This name used to indicate Url</comment>
+  </data>
+  <data name="Command">
+    <value>Perintah</value>
+    <comment>This name used to indicate Command</comment>
+  </data>
+  <data name="Parameters">
+    <value>Parameter</value>
+    <comment>This name used to indicate Parameters</comment>
+  </data>
+  <data name="Error_In_Dialog_Open">
+    <value>Ralat telah berlaku semasa membuka dialog. Sila cuba semula kemudian. Jika masalah berterusan, sila hubungi pentadbir anda.</value>
+    <comment>Generic error when error occurred while open a dialog</comment>
+  </data>
+  <data name="Button_Ok">
+    <value>Ok</value>
+    <comment>This message is used to indicate ok label on a button</comment>
+  </data>
+  <data name="UnsavedChanges">
+    <value>Perubahan yang anda buat mungkin tidak disimpan.</value>
+    <comment>This message is used to indicate changes made to the record are not saved</comment>
+  </data>
+  <data name="ConfirmAttachmentRemoval">
+    <value>Adakah anda pasti mahu mengeluarkan lampiran ini? Tindakan ini tidak boleh dibalikkan kepada asal.</value>
+    <comment>This message is used to indicate user to confirm the removal of attachment as it cannot be added again</comment>
+  </data>
+  <data name="RemovedAttachmentConfirmation">
+    <value>Dokumen yang dilampirkan telah dikeluarkan.</value>
+    <comment>This message is used to confirm to user that attachment is removed</comment>
+  </data>
+  <data name="FileNotFound">
+    <value>Fail Tidak Ditemui</value>
+    <comment>This message is used to indicate not able to locate file</comment>
+  </data>
+  <data name="UnsupportedAttachment">
+    <value>Lampiran ini tidak dapat dibuka pada peranti anda.</value>
+    <comment>This message is used to indicate selected attachment is not supported on the current device</comment>
+  </data>
+  <data name="FileNameLengthExceeded">
+    <value>Nama Fail mengandungi lebih panjang daripada 165 aksara.</value>
+    <comment>This message is used to indicate file contains more characters than allowed limit</comment>
+  </data>
+  <data name="EmptyFile">
+    <value>Fail yang dinyatakan sama ada kosong atau tidak wujud. Pastikan nama fail adalah betul atau nyatakan fail lain dan cuba lagi.</value>
+    <comment>This message is used to indicate file is empty or does not exist</comment>
+  </data>
+  <data name="InvalidFileExtension">
+    <value>Ini adalah sambungan fail yang tidak sah.</value>
+    <comment>This message is used to indicate file extension is not valid</comment>
+  </data>
+  <data name="FileSizeExceeded">
+    <value>Lampiran terlalu besar. Saiz fail maksimum yang dibenarkan ialah {0} kilobait.</value>
+    <comment>This message is used to attachment size exceeded the allowed limit</comment>
+  </data>
+  <data name="NonEditableDialog">
+    <value>Dialog ini tidak dapat diedit</value>
+    <comment>This message is used to edit is not allowed in this dialog </comment>
+  </data>
+  <data name="activities/act_dlgs/dlg_seriesaction.aspx_textDeleteInstance">
+    <value>Adakah anda mahu memadamkan semua kejadian janji temu yang berulang {0} atau hanya ini saja?</value>
+    <comment>Text of the confirmation dialog when user deletes an instance.[Category="Business Modules"]. {NumberedPlaceholder="{0}"} Placeholder 0 is the truncated subject of the appointment.</comment>
+  </data>
+  <data name="New_Attachment_Form_Description">
+    <value>Pilih fail untuk dilampirkan.</value>
+    <comment>Instructional text for attach file dialog, when opened for attaching a new attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Existing_Attachment_Form_Description">
+    <value>Klik fail untuk melihatnya, atau klik Keluarkan untuk mengeluarkannya.</value>
+    <comment>Instructional text for attach file dialog, when opened for an existing attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="New_Attachment_Label_Message">
+    <value>Nama Fail</value>
+    <comment>Instructional text to indicate file name</comment>
+  </data>
+  <data name="Error_Message_0x80040b00">
+    <value>Mesej ini tidak dapat dihantar ke semua penerima yang dipilih. Pastikan penghantar dan penerima mempunyai alamat e-mel yang sah, dan penerima dapat menerima e-mel.</value>
+    <comment>IDS_COMMUNICATIONS_NOPARTYADDRESS</comment>
+  </data>
+  <data name="Error_Message_0x8004b000" xml:space="preserve">
+    <value>Ralat telah berlaku semasa permintaan anda sedang diproses. Cuba sekali lagi.</value>
+    <comment>CrmLiveGenericError</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected">
+    <value>Anda mesti memilih satu atau beberapa rekod sebelum anda boleh melakukan tindakan ini.</value>
+  </data>
+  <data name="ReadOnlyEntity">
+    <value>Entiti terpilih adalah baca sahaja untuk klien ini.</value>
+    <comment>Alert shown when user tries to perform action on entity which is Read-only in Mobile</comment>
+  </data>
+  <data name="Grid_Apply_Rule_Heterogenous_Activity_Type_Records_Selected">
+    <value>Anda hanya boleh melakukan tindakan ini bagi aktiviti sama jenis.</value>
+    <comment>Alert shown when user tries to perform action which can be performed on single entity type on 2 different entity types</comment>
+  </data>
+  <data name="TemplateNotSelected">
+    <value>Anda hendaklah memilih templat untuk hantarkan e-mel secara langsung</value>
+    <comment>Message shown when user tries to send bulk email and template is not selected</comment>
+  </data>
+  <data name="BPFNavigationBlockAlert">
+    <value>Sila simpan atau buang perubahan yang telah dibuat sebelum beralih ke peringkat lain dalam proses.</value>
+    <comment>Message shown when user tries to do a BPF navigation on a unsaved appointment form.</comment>
+  </data>
+  <data name="SenderNotSelected">
+    <value>Anda mesti memilih pengguna atau baris.</value>
+    <comment>Message shown when user tries to send bulk email and sender is not selected</comment>
+  </data>
+  <data name="RecipientsNotSelected">
+    <value>Anda hendaklah memilih rekod untuk hantarkan e-mel secara langsung</value>
+    <comment>Message shown when user tries to send bulk email and the records to sedn to are not selected</comment>
+  </data>
+  <data name="Form_Title_Draft_Status_Prefix_For_Appointment">
+    <value>[Draf]</value>
+    <comment>"[Draft]" string to be prefixed for form title for draft appointments.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_Appointment">
+    <value>Berikut ialah kemungkinan masalah penjadualan yang ditemui. Anda mungkin tidak dapat menjadualkan aktiviti ini sebelum masalah tersebut diatasi.</value>
+    <comment>SchedulingConflict Dialog  Description for Appointment</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_RecurringAppointment">
+    <value>Janji Temu Pertama: Masalah penjadualan berikut telah dikenal pasti.</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description1_RecurringAppointment">
+    <value>Janji Temu Seterusnya: {#Brand_CRM} tidak mengesahkan ketersediaan peserta.</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSave_Button">
+    <value>Abaikan Dan Simpan</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSave Button</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSend_Button">
+    <value>Abaikan Dan Hantar</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSend Button</comment>
+  </data>
+  <data name="ErrorCode.ResourceConstraints">
+    <value>{0} tidak tersedia disebabkan kekangan sumber.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceBusy">
+    <value>{0} tidak tersedia pada masa ini.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceOverCapacity">
+    <value>{0} tidak mempunyai kapasiti yang diperlukan.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceNonBusinessHours">
+    <value>{0} dijadualkan di luar waktu kerja mereka.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="PreviewTemplateNotSelected">
+    <value>Untuk meneruskan, pilih templat daripada senarai.</value>
+    <comment>Message to display when user not selected any template.</comment>
+  </data>
+  <data name="LOCID_EMAIL_NORECORDS_MSG">
+    <value>Tiada Rekod dipilih.</value>
+    <comment>Message to display when bulk email is invoked without any records selected.</comment>
+  </data>
+  <data name="UnresolvedEmailsNotAllowed">
+    <value>Organisasi anda tidak membenarkan e-mel untuk dihantar kepada penerima e-mel yang belum diselesaikan. Anda mesti mengalih keluar penerima ini atau hubungi pentadbir sistem anda untuk membenarkan penghantaran mesej dengan penerima e-mel yang belum diselesaikan. Ketahui Lebih Lanjut: https://go.microsoft.com/fwlink/p/?linkid=2127763</value>
+    <comment>Message to display when allowUnresolvedPartiesOnEmailSend is false and the form contains unresolved parties.</comment>
+  </data>
+  <data name="UnresolvedEmailsCanNotSendEmail">
+    <value>Tidak dapat menghantar e-mel kepada :</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is false and the control contains unresolved parties.</comment>
+  </data>
+  <data name="AttachmentDownloadError" xml:space="preserve">
+    <value>Terdapat masalah semasa memuat turun {0}. Sila cuba lagi kemudian.</value>
+    <comment>Error message shown if an error occurs while trying to download an attachment</comment>
+  </data>
+  <data name="AttachmentDownloadGenericError" xml:space="preserve">
+    <value>Terdapat masalah semasa memuat turun lampiran anda. Sila cuba lagi kemudian.</value>
+    <comment>Error message shown if an error occurs while trying to download attachments</comment>
+  </data>
+  <data name="AttachmentDownloadFormNotification" xml:space="preserve">
+    <value>Memuat turun lampiran...</value>
+    <comment>Form notification text that is shown while attachments are downloading</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_LearnMore">
+    <value>Ketahui Lebih Lanjut</value>
+    <comment>Continue Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_Continue">
+    <value>Teruskan</value>
+    <comment>Cancel Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultTitle">
+    <value>Ketahui Lebih Lanjut</value>
+    <comment>Default title for the learn more dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultPrimaryText">
+    <value>Operasi ini tidak dibenarkan.</value>
+    <comment>Default primary text for the learn more dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Title">
+    <value>Peti mel telah dinyahdayakan</value>
+    <comment>Title for the Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Text">
+    <value>E-mel tidak dapat dihantar kerana peti mel {0} telah dinyahdayakan. E-mel akan ditetapkan kepada keadaan belum selesai jika diteruskan.</value>
+    <comment>Text displayed in the Mailbox Not Enabled dialog for Admin</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Instruction_NonAdmin">
+    <value>Hubungi pentadbir sistem anda untuk mendayakannya.</value>
+    <comment>Instruction text for nonadmins in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="InsertDataAddDataFieldButtonLabel" xml:space="preserve">
+    <value>Tambah medan data</value>
+    <comment>Button label for adding new entry of dynamic text</comment>
+  </data>
+  <data name="InsertDataDefaultTextLabel" xml:space="preserve">
+    <value>Teks lalai</value>
+    <comment>Label for default text control</comment>
+  </data>
+  <data name="InsertDataRecordTypeLabel" xml:space="preserve">
+    <value>Jenis rekod</value>
+    <comment>Column name of record type in dynamic text</comment>
+  </data>
+  <data name="InsertDataFieldNameLabel" xml:space="preserve">
+    <value>Nama medan</value>
+    <comment>Column name of field names in dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveUpButtonLabel" xml:space="preserve">
+    <value>Alihkan ke atas</value>
+    <comment>Button label for moving up one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveDownButtonLabel" xml:space="preserve">
+    <value>Alihkan ke bawah</value>
+    <comment>Button label for moving down one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataRemoveButtonLabel" xml:space="preserve">
+    <value>Alih Keluar</value>
+    <comment>Button label for removing one row of dynamic text</comment>
+  </data>
+  <data name="UnableToInsertDynamicText" xml:space="preserve">
+    <value>Tidak dapat memasukkan teks dinamik. Pilih tempat untuk memasukkan atau mengemas kini teks dinamik anda dalam subjek atau isi templat.</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="UnableToInsertDynamicTextInSignature" xml:space="preserve">
+    <value>Tidak dapat memasukkan teks dinamik. Pilih tempat untuk memasukkan atau mengemas kini teks dinamik anda dalam isi templat.</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="PreOctoberNotification" xml:space="preserve">
+    <value>Cari ini dalam keluaran akan datang</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="malformedDefaultValue" xml:space="preserve">
+    <value>Medan teks lalai tidak boleh mengandungi sebarang aksara yang berikut:  ; &amp; &lt; &gt; { }</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="RequiredFieldMustBeFilledIn" xml:space="preserve">
+    <value>Medan wajib mesti diisi.</value>
+    <comment>Required fields must be filled in.</comment>
+  </data>
+  <data name="ConvertingEmailToTemplateProgressMessage" xml:space="preserve">
+    <value>Menukar e-mel kepada templat...</value>
+    <comment>Progress message to show during email to template conversion</comment>
+  </data>
+  <data name="CreatingTemplateProgressMessage" xml:space="preserve">
+    <value>Mencipta templat...</value>
+    <comment>Progress message to show during new template creation</comment>
+  </data>
+  <data name="RequiredFieldsErrorMessage" xml:space="preserve">
+    <value>Semua medan wajib mesti diisi.</value>
+    <comment>Error message to show when required fields are not filled in</comment>
+  </data>
+  <data name="CopyingAttachmentsToTemplateMessage" xml:space="preserve">
+    <value>Menyalin lampiran kepada templat...</value>
+    <comment>Progress message to show during copying attachments to template on (email or template) -&gt; template conversion</comment>
+  </data>
+  <data name="TemplateCopyString" xml:space="preserve">
+    <value>Salin</value>
+    <comment>'Copy' word to append to the end of the cloned template</comment>
+  </data>
+  <data name="ErrorCopyAttachmentsToTemplate" xml:space="preserve">
+    <value>Kami tidak dapat menyalin beberapa lampiran daripada e-mel ini. Sila cuba memuat naik fail ini semula.</value>
+    <comment>Error message shown when one or more attachments fail to copy over to new template.</comment>
+  </data>
+  <data name="ErrorCreateTemplate" xml:space="preserve">
+    <value>Masalah telah berlaku semasa mencipta templat anda. Sila cuba lagi atau hubungi Sokongan Microsoft.</value>
+    <comment>Error message shown when createRecord fails for template creation.</comment>
+  </data>
+  <data name="ErrorRetrievingAttachmentsForTemplate" xml:space="preserve">
+    <value>Terdapat masalah semasa memindahkan lampiran kepada templat. Sila hubungi pentadbir anda atau Sokongan Microsoft.</value>
+    <comment>Error message shown when the retrieve call fails to get the attachments to copy over to the template.</comment>
+  </data>
+  <data name="WarningSomeAttachmentsNotSupported" xml:space="preserve">
+    <value>Mesej telah disimpan sebagai rekod e-mel Microsoft Dynamics 365, tetapi bukan semua lampiran dapat disimpan dengan rekod tersebut. Lampiran tidak dapat disimpan jika disekat atau jika jenis fail tidak sah.</value>
+    <comment>Notification shown when some attachments couldn't be supported for a received email</comment>
+  </data>
+  <data name="WarningEmailSubjectLengthMessage" xml:space="preserve">
+    <value>Untuk mengelakkan baris subjek daripada terpangkas apabila dimasukkan ke dalam e-mel, sila pendekkannya.</value>
+    <comment>Warning message shown when the email template subject length is greater than 800</comment>
+  </data>
+  <data name="EndSeriesDialogTopLabel" xml:space="preserve">
+    <value>Pilih masa anda mahu siri janji temu untuk tamat. Kami akan memadamkan semua janji temu akan datang dalam siri ini.</value>
+    <comment>End Series Dialog description</comment>
+  </data>
+  <data name="EndSeriesDialogCompletionTypeLabel" xml:space="preserve">
+    <value>Kami mengekalkan janji temu siri lalu yang telah berakhir. Apakah yang ingin anda lakukan untuk janji temu terbuka yang lalu?</value>
+    <comment>End Series Dialog Description of radio options</comment>
+  </data>
+  <data name="EndSeriesDialogOptionCancel" xml:space="preserve">
+    <value>Batal</value>
+    <comment>Radio option for Cancel in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionComplete" xml:space="preserve">
+    <value>Selesai</value>
+    <comment>Radio option for Complete in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionKeepOpen" xml:space="preserve">
+    <value>Biar Terbuka</value>
+    <comment>Radio option for Keep Open in End Series Dialog</comment>
+  </data>
+  <data name="SameDayString" xml:space="preserve">
+    <value>Hari Sama</value>
+    <comment>String for Same Day radio option</comment>
+  </data>
+  <data name="SameWeekString" xml:space="preserve">
+    <value>Minggu Sama</value>
+    <comment>String for Same Week radio option</comment>
+  </data>
+  <data name="UpdateSeriesDialogCancelCurrentSeries" xml:space="preserve">
+    <value>Batalkan siri semasa dan cipta yang baharu.</value>
+    <comment>Cancel current series</comment>
+  </data>
+  <data name="UpdateSeriesDialogFirstLabel" xml:space="preserve">
+    <value>Anda telah meminta untuk mengubah suai maklumat yang berulang bagi siri sedia ada. Siri semasa akan dibatalkan dan siri baharu akan dicipta.</value>
+    <comment>Update Series First Label</comment>
+  </data>
+  <data name="UpdateSeriesDialogSecondLabel" xml:space="preserve">
+    <value>Sejarah tika lalu bagi siri ini akan dikekalkan tetapi sebarang tika yang terbuka akan dipadamkan.</value>
+    <comment>Update Series Second Label</comment>
+  </data>
+  <data name="RecurrenceErrorIntervalOutOfRange" xml:space="preserve">
+    <value>Corak berulang tidak boleh mengandungi nilai kurang daripada 1 atau lebih daripada 99. Sila masukkan corak berulang yang sah.</value>
+    <comment>Error string for interval Out of Range in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorDayOfMonthOutOfRange" xml:space="preserve">
+    <value>Hari dalam bulan tidak boleh melebihi 31</value>
+    <comment>Error string for number of days of month in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceWarningDayOfMonthMore" xml:space="preserve">
+    <value>Sesetengah bulan mengandungi kurang daripada {0} hari. Untuk bulan ini, pengulangan akan jatuh pada hari terakhir bulan tersebut.</value>
+    <comment>Warning string when number of days specific is more than 28 in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorEndLessThanStartDate" xml:space="preserve">
+    <value>Tarikh mula yang anda masukkan lebih lewat daripada tarikh tamat. Pilih tarikh mula yang sah.</value>
+    <comment>Error string when pattern end date is less than start date</comment>
+  </data>
+  <data name="RecurrenceErrorInvalidDateForMonth" xml:space="preserve">
+    <value>Nilai berada di luar julat waktu untuk bulan yang dipilih. Masukkan nilai yang sah.</value>
+    <comment>Error string when number of days is invalid for that month in yearly recurrence pattern</comment>
+  </data>
+  <data name="RecurrenceErrorFebruary29DaysStartDate" xml:space="preserve">
+    <value>Tarikh Mula Corak hendaklah tahun lompat untuk mencipta janji temu bagi 29hb Februari</value>
+    <comment>Error string when pattern start date is not a leap year for chosen 29th Feb</comment>
+  </data>
+  <data name="RecurrenceWarningFebruary29" xml:space="preserve">
+    <value>Pada tahun yang bukan tahun lompat, Februari mempunyai kurang daripada 29 hari. Dalam situasi ini, pengulangan akan berlaku pada hari terakhir bulan Februari.</value>
+    <comment>Warning string for 29th February in Recurrence Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOpenError" xml:space="preserve">
+    <value>Ralat berlaku semasa membuka Dialog Tamatkan Siri</value>
+    <comment>Error in opening End Series Dialog</comment>
+  </data>
+  <data name="RecurrenceDialogAlert" xml:space="preserve">
+    <value>Isyarat dialog berulang</value>
+    <comment>Recurrence Dialog alert</comment>
+  </data>
+  <data name="RecurrenceDialogStartTimeField" xml:space="preserve">
+    <value>Masa Mula</value>
+    <comment>Start time control display name</comment>
+  </data>
+  <data name="RecurrenceDialogEndTimeField" xml:space="preserve">
+    <value>Masa Tamat</value>
+    <comment>End time control display name</comment>
+  </data>
+  <data name="JoinTeamsMeeting_Label" xml:space="preserve">
+    <value>Sertai Mesyuarat Teams</value>
+    <comment>Label for the teams meeting button</comment>
+  </data>
+  <data name="TeamsChatsPreview_Label" xml:space="preserve">
+    <value>Sembang Teams (Pratonton)</value>
+    <comment>'chat' : displayname for Teams chats (Preview) LabelText</comment>
+  </data>
+  <data name="TeamsChatsJoinNotAllowedDialogAlert" xml:space="preserve">
+    <value>Anda tidak boleh menggunakan ciri ini kerana anda bukan ahli sembang tersebut. Sila hubungi pentadbir anda agar dapat menyertai sembang yang anda bukan pemiliknya.</value>
+    <comment>Cannot join teams chat dialog alert</comment>
+  </data>
+  <data name="TeamsChatsDisabledDialogAlert" xml:space="preserve">
+    <value>Ciri ini tidak tersedia kerana Microsoft Teams tidak didayakan dalam profil pengalaman ejen yang anda tergolong (Pengurus Profil Aplikasi). Sila hubungi pentadbir anda.</value>
+    <comment>Teams integration disabled dialog alert</comment>
+  </data>
+  <data name="InvalidEmailAddressCannotSend">
+    <value>Sila alih keluar e-mel tidak sah yang berikut:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is true and the control contains invalid email addresses.</comment>
+  </data>
+  <data name="ReminderToAttachmentKeywords">
+    <value>lampir,melampirkan,dilampirkan,lampiran,lampiran</value>
+    <comment>Keywords to find in email body to pop attachment dialog when no attachment is added.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogTitle">
+    <value>Peringatan lampiran</value>
+    <comment>Reminder attachment Dialog Title.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogText">
+    <value>Anda mungkin terlupa untuk melampirkan fail.</value>
+    <comment>Reminder attachment Dialog text.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogOk">
+    <value>Hantar</value>
+    <comment>Reminder attachment Dialog Ok button.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogCancel">
+    <value>Jangan hantar</value>
+    <comment>Reminder attachment Dialog cancel button.</comment>
+  </data>
+  <data name="EmailDraftDeleteMessage" xml:space="preserve">
+    <value>E-mel ini akan dipadamkan jika tidak disimpan secara manual atau dihantar sebelum penutupan.</value>
+    <comment>Used to delete draft emails for multisession apps created from Reply/Reply All/Forward</comment>
+  </data>
+  <data name="DownloadEmailAsAttachment_Download" xml:space="preserve">
+    <value>Muat turun </value>
+  </data>
+  <data name="DownloadEmailAsAttachment_MB" xml:space="preserve">
+    <value> mb</value>
+  </data>
+  <data name="DownloadEmailAsAttachment_PreparingFile" xml:space="preserve">
+    <value>Menyediakan Fail</value>
+  </data>
+  <data name="EmailDraftDeleteMessageonAttachmentControlLoad" xml:space="preserve">
+    <value>Kemas kini lampiran belum disimpan. Untuk kehilangan sebarang kemas kini lampiran yang tidak disimpan, sila simpan borang.</value>
+    <comment>Used to inform user to save changes when attachments are updated on Email form.</comment>
+  </data>
+  <data name="GuardRailFailedDialogTitle" xml:space="preserve">
+    <value>Pemeriksaan kawalan gagal</value>
+    <comment>Title shown in the guardrail failure dialog.</comment>
+  </data>
+  <data name="GuardRailFailedDialogText" xml:space="preserve">
+    <value>E-mel yang didrafkan tidak lulus pemeriksaan kawalan. Sila semak semula kandungan dan hantar semula untuk memastikan ia memenuhi keperluan kawalan.</value>
+    <comment>Main explanation text shown when guardrails fail in the dialog.</comment>
+  </data>
+  <data name="GuardrailsFailed" xml:space="preserve">
+    <value>Kawalan gagal</value>
+    <comment>Label for listing failed guardrail names.</comment>
+  </data>
+  <data name="GuardrailFailureReasons" xml:space="preserve">
+    <value>Sebab</value>
+    <comment>Label for listing failure reasons for each violated guardrail.</comment>
+  </data>
+  <data name="GuardrailCloseButton" xml:space="preserve">
+    <value>Tutup</value>
+    <comment>Text for the dialog Close button.</comment>
+  </data>
+  <data name="SeeTerms" xml:space="preserve">
+    <value>Lihat terma</value>
+    <comment>Hyperlink label for opening Microsoft Terms URL.</comment>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>gagal</value>
+    <comment>Lowercase 'failed' suffix used in inline status messages.</comment>
+  </data>
+  <data name="AiDisclaimerText" xml:space="preserve">
+    <value>Kandungan yang dijana AI mungkin tidak betul. Pastikan kandungan janaan AI adalah betul dan sesuai sebelum digunakan.</value>
+    <comment>AI safety disclaimer shown below guardrail messages.</comment>
+  </data>
+</root>

@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>A kezdési időpontnál későbbre eső befejezési időpontot kell megadni.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Meg kell adnia egy olyan kezdő időpontot, amely a befejezésnél korábbi időpontra esik.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>A kezdő dátum nem maradhat üresen.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>A befejező dátum nem maradhat üresen.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>A(z) {0} megadása kötelező.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>A témakör megadása kötelező.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Meg kell adni a tárgyat.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Sablon szükséges.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Meg kell adni a kezdési időpontot.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Meg kell adni a befejezési időpontot.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Új {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Kampány (sablon)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>A tevékenység terjesztése előtt mentenie kell a módosításokat.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>A kampánytevékenységet csak egyszer lehet terjeszteni.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Válasszon csatornatípust, mentse az űrlapot, majd próbálja újra.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Ez a lehetőség csak akkor érhető el, ha a kapcsolatba lépés módja ki van választva. A kapcsolatba lépés módja nem érhető el ezen az űrlapon. A tevékenység nem terjeszthető. Lépjen kapcsolatba a {#Brand_CRM}-rendszergazdával.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>A körlevél útján küldött direkt e-mail ki van kapcsolva. A tevékenységet nem lehet terjeszteni. Lépjen kapcsolatba a {#Brand_CRM}-rendszergazdával.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>A terjesztés nem használható a kijelölt csatornánál</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>A körlevél nem áll rendelkezésre a {#Brand_CRM} webes ügyfélprogramban. Körlevelet a {#Brand_CRM_Outlook_Short} alkalmazásban hozhat létre.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>A kampánytevékenység nem terjeszthető, mert nincsenek hozzá társított marketinglisták. Társítson marktinglistákat az adott kampánytevékenységhez, és próbálja a műveletet újból végrehajtani.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Javítsa ki az űrlapon lévő figyelmeztetéseket és hibákat.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>A kampánytevékenység nem küldhető szét. Vegye fel a kapcsolatot a {#Brand_CRM}-rendszergazdával.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>{0} eltávolítása</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Eltávolítja a kijelölt {0} {1} elemet a kampányból?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Nem hozható létre a gyorskampány, mert nem találhatók rekordok a jelenlegi oldalon.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Nem lehet gyorskampányt létrehozni egyszerre egynél több marketinglistához. Válasszon ki egyetlen marketinglistát.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Ez a lehetőség nem használható a jelenlegi nézetben. Nem minden nézet működik a(z) {0}lehetőséggel. Válasszon egy másik nézetet, vagy egy másik lehetőséget a gyorskampánynál, és próbálja újra.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Nem lehet gyorskampányt végezni inaktív marketinglistával. Aktiválja a marketinglistát, vagy válasszon egy másik marketinglistát, és próbálja újra.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Ez a lehetőség nem használható a jelenlegi nézetnél. Válasszon egy másik lehetőséget a gyorskampánynál, és próbálja újra.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Meg kell adni a tulajdonost.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Meg kell adni a feldolgozási sort.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Kijelölt rekordok</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Minden rekord ezen az oldalon</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Minden rekord az összes oldalról</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Ez a szalagművelet nem támogatott.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>A művelet végrehajtásához ki kell jelölnie egy vagy több rekordot.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Ennél a műveletnél legfeljebb 50 rekord megengedett</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Ez a művelet csak ugyanolyan típusú rekordokon hajtható végre.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Feldolgozás, kis türelmet...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Hiba történt. A kijelölt művelet egy vagy több rekordnál nem fejeződött be.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>{0} eltávolítása</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Keresési feltételekkel keresheti meg az eltávolítandó tagokat.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>A hozzáadni kívánt tagokat keresési feltételek alapján keresheti meg.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>A keresési feltételek alapján meghatározhatja, hogy melyik tagok maradjanak a marketinglistában. Frissítse a marketinglistát!</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>A folytatáshoz ki kell jelölni a rekordokat.</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Eltávolítás</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Hozzáadás</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Partner</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Kapcsolattartó</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Érdeklődő</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Értékelés</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Eltávolítja a kijelölt {0} {1} elemet a listából?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Marketinglista másolásának megerősítése másik marketinglistába</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Marketinglistákat választott ki egy másik marketinglistába történő másolásra</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Ez a művelet hozzáadja a kijelölt marketinglista összes tagját a megcélzott marketinglistához</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>A változtatások nincsenek mentve. Mentse a változtatásokat, majd próbálja újra.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>OK</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>Feldolgozás...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Várjon, amíg befejeződik a kérés feldolgozása...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>A gyorskampány létrehozása nem sikerült</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Név: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Tevékenység: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Hatókör: A kijelölt rekordok ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Hatókör: Az aktuális oldal ({0}) összes rekordja</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Hatókör: Az összes oldal összes rekordja</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Tulajdonos: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Meg kell adni a gyorskampány nevét.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Meg kell adni a tevékenység típusát.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>A gyorskampányban szereplő rekordok tulajdonosai</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Saját</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Ez a kampány nem inaktiválható, mivel nyitott kampánytevékenységekhez van társítva. Zárja le a kampánytevékenységeket, majd próbálkozzon újra.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>A kiválasztott kampányok közül {0} nem inaktiválható, mert egy vagy több nyitott kampánytevékenység van hozzájuk társítva. Zárja le a nyitott kampánytevékenységeket, majd próbálkozzon újra.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>Az e-mail tartalma túl nagy a varázsló számára. Hozza létre e-mail-sablonként, azután itt válassza ki a létrehozott sablont.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Gyorskampányok esetén nem használható a tömeges szerkesztés.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>A lista le van zárva</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>A(z) {0} listák zárolva vannak</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>A művelet nem hajtható végre dinamikus listán.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Nem lehet inaktív elemet társítani egy kampányhoz.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Nem lehet inaktív elemet társítani egy kampányhoz.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>A mellékletre mutató hivatkozás nem található.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>Az e-mail címzettje nem létezik, vagy az e-mail-címzett e-mail címe nem érvényes.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>A melléklet vagy nem érvényes típusú, vagy túl nagy méretű. Nem lehet feltölteni vagy letölteni.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>A címzett "Nem kér faxot"-ként van megjelölve.</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Érvénytelen e-mail-címzett.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Hiba történt az e-mail-sablon művelet közben.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Hiba történt az e-mail-küldés művelet közben.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Hiba történt a jegyzetmelléklet művelet során.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Hiba történt a jegyzet létrehozása művelet során.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Hiba történt a tevékenység kezelésének visszavonása művelet során.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Hiba történt a tevékenység kezelése művelet során.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Hiba történt a tevékenységmelléklet művelet során.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Hiba történt a tevékenység létrehozása művelet során.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Ez a marketinglistatag nem kapta meg az üzenetet, mivel korábban már értesítették.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>A feladónak nincs e-mail-címe a fél rekordjában</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>Nincs megadott e-mail-cím, és a hívó felhasználónál nincs e-mail-cím beállítva</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>A rendszer nem küldte el az e-mailt a címzett kommunikációs beállításai vagy az e-mail-címmel kapcsolatos probléma miatt.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Az ügyfél címének típusa érvénytelen.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Nem várt hiba történt a körlevél művelet során.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>A körlevél műveletet megszakította a felhasználó.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>A rendszer kiszűrte az ügyfelet a hiányzó e-mail-címe miatt.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>A címzett ki van zárva, mert inaktív.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>A tömeges művelethez kapcsolódó munkafolyamat-szabályok hiányoznak.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>A címzett ki van zárva a levélszemét-beállítások vagy a címzett kommunikációs beállításai miatt.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Nem adható meg résztvevő a találkozó elosztásához.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Nem adható meg feladó a találkozó elosztásához</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Nem adható meg szervező a találkozó elosztásához</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Nem támogatott a listatag típusa.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Nem engedélyezett műveletet próbált végrehajtani.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>A felhasználó nem rendelkezik a szükséges jogosultságokkal.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>A felhasználó nem jogosult a művelet elvégzésére.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Érvénytelen e-mail-cím. További információkért lépjen kapcsolatba a rendszergazdával.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>A következő elemek hiányoznak az űrlapról: {0}. Ez kihat a funkciókra.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Nem hozhat létre lehetőségeket az ezt az entitástípust megcélzó marketinglisták részére.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Már van egy folyamatban lévő kérés, próbálkozzon újra később.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Kérését elküldtük. Várjon, amíg az oldal átirányítja a másolt listához.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>Új {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Ha {0} csatornát szeretne létrehozni a marketinglistában kiválasztott tagokhoz, töltse ki ezt az űrlapot. Ha az egyes tagok rekordjára új {0} csatornaként szeretné felvenni ezt a(z) {0} csatornát, kattintson a Terjesztés gombra.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Sikeresen mentve</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+							<xsd:attribute ref="xml:space"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string"/>
+							<xsd:attribute name="name" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+							<xsd:attribute ref="xml:space"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Brand_Name" xml:space="preserve">
+    <value>Dynamics 365</value>
+    <comment>Branding for CRM.</comment>
+  </data>
+	<data name="APPOINTMENT_ACTIVITY_DELETION" xml:space="preserve">
+    <value>Želite li takođe da izbrišete zakazanu obavezu u sistemu Dynamics 365 ili samo želite da prestanete s praćenjem i zadržite zakazanu obavezu?</value>
+    <comment>Confirmation dialog message is shown when try to untrack event.</comment>
+  </data>
+	<data name="CONFIRM_TEMPLATE_REGARDINGS_RECHECK" xml:space="preserve">
+    <value>Da biste koristili predložak e-poruke, podesite interes za ovu e-poruku ili dodajte barem jednog primaoca koji je kontakt, potencijalni klijent ili korisnik, a zatim kliknite na „Pokušaj opet“.</value>
+    <comment>Confirmation dialog message is shown when try to add email template.</comment>
+  </data>
+	<data name="EMAIL_ACTIVITY_DELETION" xml:space="preserve">
+    <value>Želite li takođe da izbrišete aktivnost e-pošte u sistemu Dynamics 365?</value>
+    <comment>Confirmation dialog message is shown when try to untrack email.</comment>
+  </data>
+	<data name="EMAIL_TO_BE_DELETED" xml:space="preserve">
+    <value>E-poruka će biti izbrisana</value>
+    <comment>Popup message shown after success untrack of email</comment>
+  </data>
+	<data name="APPT_TO_BE_DELETED" xml:space="preserve">
+    <value>Zakazana obaveza će biti izbrisana u sistemu Dynamics 365</value>
+    <comment>Popup message shown after success untrack of event</comment>
+  </data>
+	<data name="UNTRACK_EMAIL_FAILURE" xml:space="preserve">
+    <value>Ne možete prestati da pratite ovu e-poruku</value>
+    <comment>Text displayed to the user when the app is unable to set the untracked state in Exchange.</comment>
+  </data>
+	<data name="UNTRACK_APPOINTMENT_FAILURE" xml:space="preserve">
+    <value>Ne možete prestati da pratite ovu zakazanu obavezu</value>
+    <comment>Text displayed to the user when the app is unable to set the tracked state in Exchange.</comment>
+  </data>
+	<data name="PENDING_UNTRACK" xml:space="preserve">
+    <value>Ova stavka je označena za prestanak praćenja i trenutno je na čekanju</value>
+    <comment>Text displayed to the user when untracking is in pending untracked state.</comment>
+  </data>
+	<data name="SUCCESS_UNTRACK" xml:space="preserve">
+    <value>Ova stavka se više ne prati</value>
+    <comment>Text displayed to the user when untracking is in success untracked state.</comment>
+  </data>
+	<data name="PENDING_UNTRACK_AND_DELETE" xml:space="preserve">
+    <value>Opoziv praćenja i brisanje na čekanju</value>
+    <comment>Text displayed to the user when untracking is in pending untracked+delete state.</comment>
+  </data>
+	<data name="FUTURE_APPPOINTMENT_DELETION" xml:space="preserve">
+    <value>Želite li takođe da izbrišete buduće zakazane obaveze u ovoj grupi ili samo želite da prestanete s praćenjem i zadržite zakazane obaveze?</value>
+    <comment>Confirmation dialog message is shown when try to untrack recurrent event.</comment>
+  </data>
+	<data name="UNFOLLOW_CONFIRMATION" xml:space="preserve">
+    <value>Želite li zaista da prekinete sa prikupljanjem statistike za ovu e-poruku?</value>
+    <comment>Confirmation dialog message is shown when try to unfollow email.</comment>
+  </data>
+	<data name="NO" xml:space="preserve">
+    <value>Ne</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="RETRY" xml:space="preserve">
+    <value>Pokušaj opet</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="TRACK_FAILED" xml:space="preserve">
+    <value>Nismo mogli da pratimo ovu {0}</value>
+    <comment>Popup message shown after fail track</comment>
+  </data>
+	<data name="TRACK_SUCCEEDED" xml:space="preserve">
+    <value>Uspešno praćeno</value>
+    <comment>Popup message shown after success track</comment>
+  </data>
+	<data name="UNFOLLOW_SUCCEEDED" xml:space="preserve">
+    <value>Uspešan prekid praćenja</value>
+    <comment>Popup message shown after success unfollow</comment>
+  </data>
+	<data name="UNTRACK_FOLLOWED" xml:space="preserve">
+    <value>Za ovu e-poruku se prikuplja statistika. Ako prestanete da pratite ovu e-poruku, statistika se neće prikupljati. Želite li zaista da opozovete praćenje ove e-poruke?</value>
+    <comment>Confirmation dialog message is shown when try to untrack already followed email</comment>
+  </data>
+	<data name="YES" xml:space="preserve">
+    <value>Da</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="UNTRACK" xml:space="preserve">
+    <value>Opozovi praćenje</value>
+    <comment>Text used for appointment untrack button.</comment>
+  </data>
+	<data name="INSUFFICIENT_RECORD_PERMISSIONS" xml:space="preserve">
+    <value>Nemate dozvolu za pristup ovim zapisima. Obratite se Dynamic 365 administratoru.</value>
+    <comment>Message that being displayed if user don't have permissions for record deletion</comment>
+  </data>
+	<data name="EWS_FAILURE" xml:space="preserve">
+    <value>Povezivanje sa sistemom Exchange nije moguće</value>
+    <comment>Message that being displayed if we were not able to perform ews operation.</comment>
+  </data>
+	<data name="DELETE" xml:space="preserve">
+    <value>Izbriši</value>
+    <comment>Confirm button label for deleted in Dynamics 365 action</comment>
+  </data>
+	<data name="EMAIL_IS_NOT_FOLLOWED" xml:space="preserve">
+    <value>Statistika za ovu e-poruku se ne prikuplja</value>
+    <comment>Status text used for email engagement follow tab page when email is not followed.</comment>
+  </data>
+	<data name="FOLLOW_RIGHT_BEFORE_SEND" xml:space="preserve">
+    <value>Preporučujemo vam da kliknete na „Prati“ neposredno pre nego što pošaljete e-poruku.</value>
+    <comment>Recommendation text used for email engagement follow tab page when email is not follow.</comment>
+  </data>
+	<data name="EMAIL_CANNOT_BE_FOLLOWED" xml:space="preserve">
+    <value>Statistika za ovu e-poruku ne može da se prikuplja</value>
+    <comment>Message that displayed when email connot be followed.</comment>
+  </data>
+	<data name="TRACK_BEFORE_FOLLOWING" xml:space="preserve">
+    <value>Morate da pratite ovu e-poruku pre nego što počnete da prikupljate statistiku.</value>
+    <comment>Message that explanes that email should be tracked before following.</comment>
+  </data>
+	<data name="FOLLOW_IN_PROCESS_MESSAGE" xml:space="preserve">
+    <value>Ostavite ovaj prozor otvoren dok mi...</value>
+    <comment>Status message that displayed on the follow MDD while following is in process.</comment>
+  </data>
+	<data name="EMAIL_WILL_BE_FOLLOWED" xml:space="preserve">
+    <value>Statistika za ovu e-poruku će biti prikupljana</value>
+    <comment>Email will be followed message.</comment>
+  </data>
+	<data name="DONT_EDIT_AFTER_FOLLOW" xml:space="preserve">
+    <value>Preporučujemo vam da ne uređujete e-poruku ili menjate primaoce kada počnete da prikupljate statistiku za e-poruku.</value>
+    <comment>Message that displayed after followed succeeded.</comment>
+  </data>
+	<data name="FOLLOW_ERROR" xml:space="preserve">
+    <value>Nismo mogli da prikupljamo statistiku za ovu e-poruku. Ponovo pokušajte sa prikupljanjem statistike za nju. Ako problem nastavi da se dešava, obratite se administratoru sistema.</value>
+    <comment>Message that displayed if message follow failed.</comment>
+  </data>
+	<data name="UNFOLLOW_ERROR" xml:space="preserve">
+    <value>Nismo mogli da prekinemo prikupljanje statistike za ovu e-poruku. Ponovo pokušajte da prekinete prikupljanje statistike za nju. Ako problem nastavi da se dešava, izbrišite e-poruku da biste izbegli njeno slanje kao e-poruke sa prikupljanjem statistike.</value>
+    <comment>Message that displayed if message unfollow failed.</comment>
+  </data>
+	<data name="FOLLOW_HELP_LINK_URL_1">
+		<value>https://go.microsoft.com/fwlink/p/?linkid=867623</value>
+		<comment>Recommendation link used for email engagement follow tab page.[Category="MoCA OWA"]</comment>
+	</data>
+	<data name="ADD_TEMPLATE_FAILED" xml:space="preserve">
+    <value>Došlo je do problema sa komandom Dodaj predložak</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_SALES_LITERATURE_FAILED" xml:space="preserve">
+    <value>Došlo je do problema sa komandom Dodaj prodajnu literaturu</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_KNOWLEDGE_ARTICLE_FAILED" xml:space="preserve">
+    <value>Došlo je do problema sa komandom Dodaj članak u bazi znanja</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="VIEW_ACTIVITY_FAILED" xml:space="preserve">
+    <value>Došlo je do problema sa komandom Prikaži aktivnost</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_TASK_FAILED" xml:space="preserve">
+    <value>Došlo je do problema sa komandom Dodaj zadatak</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_APPOINTMENT_FAILED" xml:space="preserve">
+    <value>Došlo je do problema sa komandom Dodaj zakazanu obavezu</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_PHONE_CALL_FAILED" xml:space="preserve">
+    <value>Došlo je do problema sa komandom Dodaj telefonski poziv</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="FOLLOW_FAILED" xml:space="preserve">
+    <value>Došlo je do problema sa komandom Praćenje</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="EMAIL" xml:space="preserve">
+    <value>E-poruka</value>
+    <comment>Track item type name</comment>
+  </data>
+	<data name="APPOINTMENT" xml:space="preserve">
+     <value>Zakazana obaveza</value>
+     <comment>Track item type name</comment>
+  </data>
+</root>

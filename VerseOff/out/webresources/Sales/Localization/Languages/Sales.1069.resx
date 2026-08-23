@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Close_Opp_Dlg_Desc" xml:space="preserve">
+    <value>Eman ondorengo informazioa abagune hau ixteko arrazoiari buruz.</value>
+  </data>
+  <data name="Error_Message_0x80040515" xml:space="preserve">
+    <value>Abagunea dagoeneko itxi da.</value>
+    <comment>IDS_OPPORTUNITY_IS_ALREADY_CLOSED</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_37" xml:space="preserve">
+    <value>Benetako diru-sarrerak oker kokatu dira abagune nagusian. "{0}" eta "{1}" arteko zenbaki bat idatzi behar duzu.</value>
+    <comment>Error message displayed to the user in the close opportunity dialog page when the actual revenue is set incorrectly on the opportunity. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible revenue amount and Placeholder 1 is a number specifing maximum permissible revenue amount.</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_67" xml:space="preserve">
+    <value>Itxiera-data zehaztu behar duzu.</value>
+    <comment>Error message displayed when the user clicks on the ok button without entering a value in the close date field in close opportunity dialog box.</comment>
+  </data>
+  <data name="Suggestions_Dlg_Add_Selected_Text" xml:space="preserve">
+    <value>Gehitu</value>
+    <comment>Label text for the "Add Selected" button in the product suggestions dialog.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>Utzi</value>
+  </data>
+  <data name="Suggestions_Dlg_Error_Moca_Offline" xml:space="preserve">
+    <value>Aplikazioa linean dagoenean soilik ikus ditzakezu iradokizunak.</value>
+    <comment>Error text for when users attempts to view or add suggestions when Moca is offline.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Selection" xml:space="preserve">
+    <value>Hautatu, gutxienez, gehitzeko iradokizun bat.</value>
+    <comment>Error text for when users attempts to click add suggestions button without selecting any suggestion.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_Add_Suggestions" xml:space="preserve">
+    <value>Ezin izan dugu gehitu iradokizunik. Saiatu berriro. {0}</value>
+    <comment>Error text for when adding suggestion fails.[Category="MoCA Client"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Price_List" xml:space="preserve">
+    <value>Prezio-zerrenda bat hautatu behar duzu iradokizunak ikusteko.</value>
+    <comment>Error text for when user opens Suggestions dialog without a price list selected.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_NoParentRecordFound" xml:space="preserve">
+    <value>Ez da aurkitu erregistro nagusirik.</value>
+  </data>
+  <data name="Quote_Closed_Subject" xml:space="preserve">
+    <value>Eskaintza itxia ({0}) - {1}</value>
+    <comment>Subject for the quote close activity. Whenever a quote is closed a quote closed activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was closed. Eg: Lost, Canceled or Revised. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Quote_Won_Subject" xml:space="preserve">
+    <value>Lortutako eskaintza ({0}) - {1}</value>
+    <comment>Subject for the quote won activity. Whenever a quote is won a quote won activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was won. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Close_Opportunity_Activity_Subject" xml:space="preserve">
+    <value>Itxi abagunea: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is name of object.</comment>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>{0} hau ezabatu nahi duzu? Ezin duzu ekintza desegin.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Eg: Deleting a product. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Quote_Lines" xml:space="preserve">
+    <value>Eskaintzako lerro hauek ezabatu nahi dituzu? Ezin izango duzu ekintza hori desegin.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple quote products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Quote_Line" xml:space="preserve">
+    <value>Eskaintzako lerro hau ezabatu nahi duzu? Ezingo duzu desegin ekintza hori.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single quote product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Order_Lines" xml:space="preserve">
+    <value>Eskaerako lerro hauek ezabatu nahi dituzu? Ezin izango duzu ekintza hori desegin.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple order products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Order_Line" xml:space="preserve">
+    <value>Eskaerako lerro hau ezabatu nahi duzu? Ezin izango duzu ekintza hori desegin.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single order product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Invoice_Lines" xml:space="preserve">
+    <value>Fakturako lerro hauek ezabatu nahi dituzu? Ezin izango duzu ekintza hori desegin.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple invoice products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Invoice_Line" xml:space="preserve">
+    <value>Fakturako lerro hau ezabatu nahi duzu? Ezin izango duzu ekintza hori desegin.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single invoice product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Opportunity_Lines" xml:space="preserve">
+    <value>Abaguneko lerro hauek ezabatu nahi dituzu? Ezin izango duzu ekintza hori desegin.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple opportunity products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Opportunity_Line" xml:space="preserve">
+    <value>Abaguneko lerro hau ezabatu nahi duzu? Ezin izango duzu ekintza hori desegin.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single opportunity product</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>Ezabatu</value>
+  </data>
+  <data name="ViewDuplicates_aspx_Button_Label_CancelUpdateRecord" xml:space="preserve">
+    <value>&amp;Utzi</value>
+    <comment>The label of the Cancel Update button</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>Berretsi ezabatzea</value>
+  </data>
+  <data name="Web.SFA.QOI.QuantityAndPriceNegativeAlert" xml:space="preserve">
+    <value>Ezin dituzu "Kopurua" eta "Prezioa unitate bakoitzeko" eremuetan balio negatiboak zehaztu. Aldatu balio horietako bat eta saiatu berriro.</value>
+    <comment>Alert message that is displayed in QOI forms when the both Quantity and Price Per Unit fields are filled up with negative values. [Category="SFA: Negative prices"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Ekintza hau egin ahal izateko, erregistro bat edo gehiago hautatu behar dituzu gutxienez.</value>
+  </data>
+  <data name="Web.SFA.quotes.EffectiveToEarlierThanEffectiveFrom" xml:space="preserve">
+    <value>Data efektiboak ezin du Efektiboa hemendik dataren aurrekoa izan.</value>
+    <comment>Error message to display if effective to date supplied in the quote form is earlier than effective from date.</comment>
+  </data>
+  <data name="Web.SFA.QOI.CurrencyChangeAlert" xml:space="preserve">
+    <value>Jarraitu aurretik, berrikusi inprimakiko diru-eremu guztiak.</value>
+    <comment>Alert message that is displayed in Quote and Opportunity forms when transaction currency is changed. [Category="Business Modules"]</comment>
+  </data>
+  <data name="QUOTE_EXPIRED" xml:space="preserve">
+    <value>"Noiz arte eraginkorra" data pasa da. Eskaintza berriro aktibatu nahi baduzu, datan ezarri etorkizuneko data bat.</value>
+    <comment>quote is expired.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Suggestions_Notification_Available_Message" xml:space="preserve">
+    <value>Produktu-iradokizunak daude erabilgarri ({0})</value>
+    <comment>Text for the notification that product suggestions are available.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Notification_See_Link_Text" xml:space="preserve">
+    <value>Ikuspegia</value>
+    <comment>Text for clickable link in suggestion notification.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_340" xml:space="preserve">
+    <value>Eskaintza hau automatikoki bihurtuko da salmenta-eskaera konektatzen zarenean. Jarraitzeko, sakatu Ados.</value>
+    <comment>Confirmation message displayed when the user attempts to create an order from a quote in outlook client when the outlook client is in offline mode.</comment>
+  </data>
+  <data name="Web.SFA.QOI.QuantityChangedDueToChangeInAccuracy" xml:space="preserve">
+    <value>"Kopurua" koadroaren "{0}" balioa "{1}" baliora aldatu da, produktuak onartzen dituen balio hamartarren kopurua eguneratu egin delako.
+  Aldaketak gordetzeko, sakatu "Ados" eta, ondoren, sakatu "Gorde" edo "Gorde eta itxi".</value>
+    <comment>Header of Message to prompt the user about change in qunatity due to change in decimal accuracy supported by the product. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 and Placeholder 1 are numbers.</comment>
+  </data>
+  <data name="Close_Quote_Dlg_Title" xml:space="preserve">
+    <value>Itxi eskaintza</value>
+  </data>
+  <data name="Close_Quote_Dlg_Desc" xml:space="preserve">
+    <value>Eskaintza ixtera zoaz.</value>
+    <comment>Close quote dialog description.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.dlg_close.aspx_155" xml:space="preserve">
+    <value>Itxiera-data</value>
+    <comment>Label for the close date field in the close quote dialog box. Represents the quote close date.</comment>
+  </data>
+  <data name="Dialog_PaidInvoice_Title" xml:space="preserve">
+    <value>Ordaindutako faktura</value>
+  </data>
+  <data name="Dialog_PaidInvoice_Description" xml:space="preserve">
+    <value>Hautatu faktura honen ordainketa-informazioa.</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Title" xml:space="preserve">
+    <value>Utzi faktura</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Description" xml:space="preserve">
+    <value>Hautatu faktura hau uzteko informazioa.</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Title" xml:space="preserve">
+    <value>Utzi eskaera</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Desc" xml:space="preserve">
+    <value>Eman eskaera hau uztearen informazioa.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_ConfirmButton.dlg_close" xml:space="preserve">
+    <value>Berretsi</value>
+    <comment>OK Button text when Order close dialog when the order is canceled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_50.dlg_close" xml:space="preserve">
+    <value>Uzte-data</value>
+    <comment>Label for the sales order cancel date field in cancel order dialog page.</comment>
+  </data>
+  <data name="Order_Fulfill_Dlg_Title" xml:space="preserve">
+    <value>Osatu eskaera</value>
+  </data>
+  <data name="Order_Fulfill_Dlg_Desc" xml:space="preserve">
+    <value>Eman eskaera honen osatzearen informazioa.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_FulfillButton.dlg_close" xml:space="preserve">
+    <value>Bete</value>
+    <comment>OK Button text when Order close dialog when the order is fulfilled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_51.dlg_close" xml:space="preserve">
+    <value>Osatze-data</value>
+    <comment>Label for the sales order fulfill date field in fulfill order dialog page.</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_155" xml:space="preserve">
+    <value>Prezio-zerrenda hautatu behar duzu produktua gehitu aurretik.</value>
+    <comment>Error message displayed in the opportunity form when the user attempts to add a product to the opportunity without choosing a price list for the opportunity.</comment>
+  </data>
+  <data name="notEligibleBulkEdit" xml:space="preserve">
+    <value>Kontrol horiek ez dira egokiak editatze masiborako.</value>
+  </data>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>Itxi mezu elektroniko bidezko inprimakia</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>Aldatu {0} Osatuta egoerara eta itxi inprimakia</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>Bezero bat hautatu behar duzu.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>Jarduera bihurtu ahal izateko, aldaketak gorde behar dituzu.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="LOCID_PROVIDE_VALUE_ADDRESS" xml:space="preserve">
+    <value>Helbide bat bilatu ahal izateko, balio bat idatzi behar duzu "{0}" eremuan.</value>
+    <comment>{NumberedPlaceholder="{0}"}. AlertMessage.Message on omission of value for address lookup.</comment>
+  </data>
+  <data name="LOCID_SALESLIT_NO_DOCUMENTS" xml:space="preserve">
+    <value>{0} entitateak ez du {1} entitaterik.</value>
+    <comment>Text in alert when sales literature does not contain any documents. [Category="Business Modules"] {NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with salesliterature entity display name. {NumberedPlaceholder="{1}"} Placeholder 1 will be replaced with salesliteratureitem entity display name</comment>
+  </data>
+  <data name="Web.SFA.invoice.edit.aspx_163" xml:space="preserve">
+    <value>Errore hau gertatu da: {0}</value>
+    <comment>Message displayed with price error messages.</comment>
+  </data>
+  <data name="SalesAttachmentDisplayName" xml:space="preserve">
+    <value>Salmenta-eranskina</value>
+    <comment>Sales Attachment display name.</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Kanpaina bizkorrak ez dute onartzen edizio masiboa.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="Admin_Settings_Error_Saving_Data" xml:space="preserve">
+    <value>Errore bat gertatu da datuak zerbitzarian gordetzean. Saiatu berriro</value>
+    <comment>error message on saving data.</comment>
+  </data>
+  <data name="Admin_Settings_Error_Loading_Data" xml:space="preserve">
+    <value>Errore bat gertatu da zerbitzariko datuak eskuratzean. Saiatu orria berriro kargatzen.</value>
+    <comment>error message on fetching data</comment>
+  </data>
+  <data name="Sales_DeleteSingleProductsFromQOOI" xml:space="preserve">
+    <value>Produktua ezabatzen</value>
+    <comment>Message to show while deleting the products from QOOI Entities.</comment>
+  </data>
+  <data name="Sales_DeleteMultipleProductsFromQOOI" xml:space="preserve">
+    <value>Produktuak ezabatzen</value>
+    <comment>Message to show while deleting the products from QOOI Entities.</comment>
+  </data>
+  <data name="Admin_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Gorde da</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+  <data name="Admin_Settings_Sales_Title" xml:space="preserve">
+    <value>Produktuen katalogoaren ezarpenak</value>
+    <comment>Sales Setting Page title</comment>
+  </data>
+  <data name="Admin_Settings_Goal_Title" xml:space="preserve">
+    <value>Xedearen ezarpenak</value>
+    <comment>Goal Setting Page title</comment>
+  </data>
+  <data name="Web.products.discounttypeitem.edit.aspx_21" xml:space="preserve">
+    <value>Amaierako kopuruak hasierako kopuruaren berdina edo handiagoa izan behar du.</value>
+    <comment>Error message displayed to the user if the begin quantity supplied in the discount form is more than the end quantity.</comment>
+  </data>
+  <data name="Sales_GeneratePDF" xml:space="preserve">
+    <value>PDFra esportatzen</value>
+    <comment>Message to show when exporting record to PDF </comment>
+  </data>
+  <data name="Sales_PersonalTemplates" xml:space="preserve">
+    <value>Txantiloi pertsonalak</value>
+    <comment>Sub sections header for command create PDF </comment>
+  </data>
+  <data name="Sales_EmailAsPDF" xml:space="preserve">
+    <value>Mezu elektroniko irekitzen</value>
+    <comment>Message to show when opening email record with PDF attached.</comment>
+  </data>
+  <data name="Sales_CreatePDF_Downloaded_Notification" xml:space="preserve">
+    <value>Deskargatu da!</value>
+    <comment>Notificaiton message shown when PDF download is complete.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_Add_Notification_Text" xml:space="preserve">
+    <value>{0} abagunearen prezio-zerrendan ez dagoelako ezin da gehitu produktua.</value>
+    <comment>Error message displayed in the OQOI Product forms when the user attempts to add a product to the opportunity which doesn't belong to the chosen price list.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_Active_Products_Error" xml:space="preserve">
+    <value>Produktu aktiboak soilik gehi ditzakezu.</value>
+    <comment>Only active products can be added.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_ProductFamily_Lookup_Error" xml:space="preserve">
+    <value>Produktuak eta produktu multzoak soilik gehi ditzakezu.</value>
+    <comment>Product Family should not be allowed to be selected in Opportunity Product lookup.</comment>
+  </data>
+  <data name="Sales_BusinessCardScanner_ButtonText" xml:space="preserve">
+    <value>Eskaneatu negozio-txartela</value>
+    <comment>Button Text displayed for Business Card Reader Control</comment>
+  </data>
+  <data name="Sales_Quote_Activated_ToastNotification" xml:space="preserve">
+    <value>Bikain! {0} aktibatuta duzu eta ez da editagarria izango</value>
+    <comment>Toast Notificaiton message for successful Quote Activate action.</comment>
+  </data>
+  <data name="Sales_Quote_Closed_ToastNotification" xml:space="preserve">
+    <value>Itxi da {0}</value>
+    <comment>Toast Notificaiton message for successful Quote Close action.</comment>
+  </data>
+  <data name="Sales_Quote_Revised_ToastNotification" xml:space="preserve">
+    <value>{0} edita dezakezu</value>
+    <comment>Toast Notificaiton message for successful Quote Revise action.</comment>
+  </data>
+  <data name="Sales_OrderToInvoice_Created_ToastNotification" xml:space="preserve">
+    <value>Sortu da {0}</value>
+    <comment>Toast Notificaiton message for successful entity creation</comment>
+  </data>
+  <data name="Sales_ToastNotification_EntityCreation" xml:space="preserve">
+    <value>Sortu da {0}</value>
+    <comment>Toast Notificaiton message for successful entity creation</comment>
+  </data>
+  <data name="Sales_ToastNotification_CreateQuoteFromOpty" xml:space="preserve">
+    <value>{0} berri baten zirriborroa sortu duzu. Amaitzeko, sakatu goiko menuko Aktibatu.</value>
+    <comment>Toast Notificaiton message for successful quote creation from opportunity</comment>
+  </data>
+  <data name="Sales_CreatePDF_AttachPDFToNote" xml:space="preserve">
+    <value>Denbora-eskalan gordetzen</value>
+    <comment>Message to show when saving document PDF as an attachment to Note.</comment>
+  </data>
+  <data name="Sales_CreatePDF_SavePDFAsAttachmentToNote_Notification" xml:space="preserve">
+    <value>Gorde da "Zure {0}" denbora-eskalan.</value>
+    <comment>Notificaiton message shown when PDF attachment to timeline -&gt; note is complete. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing document template name. E.g.: “Quote Summary”</comment>
+  </data>
+  <data name="Sales_CreatePDF_SaveToSharepoint" xml:space="preserve">
+    <value>SharePoint-en gordetzen</value>
+    <comment>Message to show when saving document PDF to Sharepoint.</comment>
+  </data>
+  <data name="Sales_CreatePDF_SaveToSharePoint_Notification" xml:space="preserve">
+    <value>Gorde da "Zure {0}" SharePoint-en</value>
+    <comment>Notificaiton message shown when PDF upload to sharepoint is complete. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing document template name. E.g.: “Quote Summary”</comment>
+  </data>
+  <data name="Button_Label_Download" xml:space="preserve">
+    <value>Deskargatu</value>
+  </data>
+  <data name="Button_Label_Save" xml:space="preserve">
+    <value>Gorde</value>
+  </data>
+  <data name="cannotReviseQuote" xml:space="preserve">
+    <value>Ezin da berrikusi aurrekontua.
+    Ez da aurkitu jabearen balioa.</value>
+    <comment>Cannot revise the Quote.</comment>
+  </data>
+  <data name="Dialog_CreatePDF_Description" xml:space="preserve">
+    <value>Prest duzu {0} dokumentua. {1}zerbitzuan gorde nahi duzu, edo kopia bat deskargatu?</value>
+    <comment>Dialog page description for Create PDF confirmation dialog page. Eg: Creating PDF document. {NumberedPlaceholder="{0}", NumberedPlaceholder="{1}"}. Placeholder 0 is a text representing an entity name Eg: Quote and Placeholder 1 is a text representing either Dynamics or Sharepoint</comment>
+  </data>
+  <data name="CreatePDF_Dlg_Title" xml:space="preserve">
+    <value>PDF entregatzeko aukera</value>
+    <comment>Create PDF Dialog title</comment>
+  </data>
+  <data name="RequiredFieldsNotFilledError" xml:space="preserve">
+    <value>Ziurtatu eremuaren eskakizun guztiak betetzen direla.</value>
+    <comment>Message shown when required fields are not filled</comment>
+  </data>
+  <data name="Read_More" xml:space="preserve">
+    <value>Irakurri gehiago</value>
+    <comment>Label for Read More button in notification.</comment>
+  </data>
+  <data name="Web.SFA.requiredproductbundle.edit.aspx_92" xml:space="preserve">
+    <value>Ez da onartzen produktu multzoko beharrezko inprimakian prezioekin erlazionatutako eremua eguneratzea.</value>
+    <comment>Alert message that is displayed to the user in the required product bundle form when user opens required bundle product</comment>
+  </data>
+  <data name="ParentReadOnly" xml:space="preserve">
+    <value>Ezin da ezabatu produktua haren elementu nagusia irakurtzeko soilik delako</value>
+    <comment>Error message when the parent entity is read only</comment>
+  </data>
+  <data name="COPY_CONTACTS" xml:space="preserve">
+    <value>{contact} kontaktuaren informazioa kopiatzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="COPY_SHAREPOINT_DOCS" xml:space="preserve">
+    <value>{sharepointdocument} dokumentuaren informazioa kopiatzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_SALESORDER" xml:space="preserve">
+    <value>{salesorder} sortzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_SALESORDERDETAIL" xml:space="preserve">
+    <value>{salesorderdetail} sortzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="PROCESS_BPF" xml:space="preserve">
+    <value>Prozesuaren negozio-prozesuaren fluxua</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVE_QUOTE_LINEITEMS" xml:space="preserve">
+    <value>{quote} lerro-elementu eskuratzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVING_QUOTE" xml:space="preserve">
+    <value>{quote} eskuratzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="TRIGGER_PRICE_CALCULATIONS" xml:space="preserve">
+    <value>Prezio-kalkuluak abiarazten</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_INVOICE" xml:space="preserve">
+    <value>{invoice} sortzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_INVOICEDETAIL" xml:space="preserve">
+    <value>{invoicedetail} sortzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="VALIDATE_SALESORDER" xml:space="preserve">
+    <value>{salesorder} balioztatzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_QOI" xml:space="preserve">
+    <value>QOI entitatea sortzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_QOI_PRODUCTS" xml:space="preserve">
+    <value>QOI {product} sortzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVE_CUSTOMER_INFO" xml:space="preserve">
+    <value>{contact}/{account} kontaktuaren informazioa eskuratzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="UPDATE_QUOTE" xml:space="preserve">
+    <value>{quote} eguneratzen</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="Add_Multiple_Products_Description" xml:space="preserve">
+    <value>Hautatu, berrikusi eta gehitu hainbat produktu aldi berean hemen: {0}</value>
+    <comment>Subheading for Add product dialog for OQOI entities. {0} is placeholder for the respective OQOI entity.</comment>
+  </data>
+  <data name="Add_Multiple_Products_ButtonText" xml:space="preserve">
+    <value>Gehitu hemen: {0}</value>
+    <comment>Add Product button text for OQOI AddProducts dialog. {0} is placeholder for the respective OQOI entity.</comment>
+  </data>
+  <data name="Cancel_Fulfill_PotentialCustomerHidden" xml:space="preserve">
+    <value>Gehitu "Bezero potentziala" izeneko derrigorrezko eremu bat inprimakian, eskaera betetzeko edo bertan behera uzteko.</value>
+    <comment>Alert message to notify that mandatory field Potential Customer is hidden.</comment>
+  </data>
+  <data name="CopyOpportunity_Warning_Title" xml:space="preserve">
+    <value>Gorde abagunea informazio gehiago ikusteko</value>
+    <comment>Copy Opportunity: pre-save warning banner title.</comment>
+  </data>
+  <data name="CopyOpportunity_Warning_Message" xml:space="preserve">
+    <value>  Aukera hemendik kopiatu da: “{0}”. Gainerako eremuak, produktuak eta interes taldeak gorde ondoren gehituko dira.</value>
+    <comment>Copy Opportunity: pre-save warning banner message. {0} is the source opportunity name.</comment>
+  </data>
+  <data name="CopyOpportunity_SaveButton_Label" xml:space="preserve">
+    <value>Gorde abagunea</value>
+    <comment>Copy Opportunity: label for the Save button on the pre-save warning banner.</comment>
+  </data>
+  <data name="CopyOpportunity_Success_Title" xml:space="preserve">
+    <value>Abagunea kopiatu da</value>
+    <comment>Copy Opportunity: post-save success banner title.</comment>
+  </data>
+  <data name="CopyOpportunity_Success_Message" xml:space="preserve">
+    <value>  Hemendik kopiatu da: “{0}”. Egiaztatu denbora-lerroa zer sartu den eta zer ez ikusteko.</value>
+    <comment>Copy Opportunity: post-save success banner message. {0} is an in-text link to the source opportunity.</comment>
+  </data>
+  <data name="CopyOpportunity_UnnamedSource" xml:space="preserve">
+    <value>(izengabea)</value>
+    <comment>Copy Opportunity: fallback label shown when the source opportunity has no name.</comment>
+  </data>
+  <data name="CopyOpportunity_Preparing" xml:space="preserve">
+    <value>Kopia prestatzen...</value>
+    <comment>Copy Opportunity: progress indicator shown while fetching the source and opening the create form.</comment>
+  </data>
+</root>

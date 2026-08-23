@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+                Microsoft ResX Schema
+                Version 2.0
+                The primary goals of this format is to allow a simple XML format
+                that is mostly human readable. The generation and parsing of the
+                various data types are done through the TypeConverter classes
+                associated with the data types.
+                Example:
+                ... ado.net/XML headers & schema ...
+                <resheader name="resmimetype">text/microsoft-resx</resheader>
+                <resheader name="version">2.0</resheader>
+                <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+                <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+                <data name="Name1">this is my long string</data>
+                <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+                <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+                                [base64 mime encoded serialized .NET Framework object]
+                </data>
+                <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+                                [base64 mime encoded string representing a byte array form of the .NET Framework object]
+                </data>
+                There are any number of "resheader" rows that contain simple
+                name/value pairs.
+                Each data row contains a name, and value. The row also contains a
+                type or mimetype. Type corresponds to a .NET class that support
+                text/value conversion through the TypeConverter architecture.
+                Classes that don't support this are serialized and stored with the
+                mimetype set.
+                The mimetype is used for serialized objects, and tells the
+                ResXResourceReader how to depersist the object. This is currently not
+                extensible. For a given mimetype the value must be set accordingly:
+                Note - application/x-microsoft.net.object.binary.base64 is the format
+                that the ResXResourceWriter will generate, however the reader can
+                read any of the formats listed below.
+                mimetype: application/x-microsoft.net.object.binary.base64
+                value   : The object must be serialized with
+                                                : System.Serialization.Formatters.Binary.BinaryFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.soap.base64
+                value   : The object must be serialized with
+                                                : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.bytearray.base64
+                value   : The object must be serialized into a byte array
+                                                : using a System.ComponentModel.TypeConverter
+                                                : and then encoded with base64 encoding.
+                -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="ObjectReferences" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="DoesNotReference" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ObjectType">
+      <xsd:complexType>
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:int">
+            <xsd:attribute name="Singular" form="unqualified" type="xsd:string" />
+            <xsd:attribute name="Plural" form="unqualified" type="xsd:string" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExchangeSyncAppointmentPrivacyWarning">
+    <value>Ορισμένοι από τους παραλήπτες βρίσκονται εκτός του οργανισμού σας. Αυτοί οι παραλήπτες θα λάβουν επίσης τη συνάντηση μόλις την αποθηκεύσετε.</value>
+    <comment>Warning displayed for appointments and recurring appointments when some attendees are not CRM users and the organizer uses Exchange Sync. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="MA_Alert_EndDate_LessThan_StartDate">
+    <value>Πρέπει να καθορίσετε μια ώρα λήξης που να είναι μεταγενέστερη της ώρας έναρξης.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="Error_Message_ETM_Retry">
+    <value>Δεν είναι δυνατή η ολοκλήρωση της αίτησής σας από το Dynamics 365 CRM επειδή οι διακομιστές είναι απασχολημένοι με το χειρισμό αιτήσεων από άλλους χρήστες στον οργανισμό σας. Κάντε κλικ στο κουμπί "ΟΚ" για να προσπαθήσετε να ολοκληρώσετε την αίτηση τώρα ή κάντε κλικ στο κουμπί "Άκυρο" για να συνεχίσετε την εργασία σας. Εάν κάνετε κλικ στο κουμπί "Άκυρο", μπορείτε να προσπαθήσετε ξανά να ολοκληρώσετε την αίτησή σας αργότερα. Εάν το πρόβλημα συνεχιστεί, επικοινωνήστε με την υποστήριξη πελατών του Dynamics 365 CRM για βοήθεια.</value>
+    <comment>CrmSqlGovernorDatabaseRequestDenied message providing user an option to retry.</comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_75">
+    <value>Το μήνυμα ηλεκτρονικού ταχυδρομείου πρέπει να έχει αποστολέα. Επιλέξτε αποστολέα.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_70">
+    <value>Το μήνυμα ηλεκτρονικού ταχυδρομείου πρέπει να περιλαμβάνει τουλάχιστον έναν παραλήπτη για να αποσταλεί. Επιλέξτε παραλήπτη.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Email_No_Recipient_Found_Error_Title">
+    <value>Δεν βρέθηκε παραλήπτης</value>
+  </data>
+  <data name="Email_No_Sender_Found_Error_Title">
+    <value>Δεν βρέθηκε αποστολέας</value>
+  </data>
+  <data name="Email_Prefix_Reply">
+    <value>ΑΠ:</value>
+  </data>
+  <data name="Email_Prefix_Forward">
+    <value>ΠΡ:</value>
+  </data>
+  <data name="Brand_CRM">
+    <value>Microsoft Dynamics 365</value>
+    <comment>Branding for CRM.</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveTitle">
+    <value>Εφαρμογή προτύπου</value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveText">
+    <value>Θέλετε να αντικαταστήσετε τη γραμμή θέματος στο μήνυμα ηλεκτρονικού ταχυδρομείου με τη γραμμή θέματος στο πρότυπο;</value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_ToRecipientString">
+    <value>Προς τους παραλήπτες</value>
+    <comment>This is the String that will appear for To Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_CCRecipientString">
+    <value>Παραλήπτες κοινοποίησης</value>
+    <comment>This is the String that will appear for CC Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_RegardingString">
+    <value>Σχετικά με</value>
+    <comment>This is the String that will appear for Regarding dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_InvalidTargetRecipient">
+    <value>Επιλέξτε έναν παραλήπτη ή μια σχετική καρτέλα που μπορεί να συσχετιστεί με πρότυπο ηλεκτρονικού ταχυδρομείου. Για παράδειγμα, δεν μπορείτε να επιλέξετε μια ουρά.</value>
+    <comment>This is the Text that will appear if no Valid target object selected for Email Template [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog">
+    <value>Γίνεται επεξεργασία...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="UCI.Form.Saving">
+    <value>Αποθήκευση...</value>
+    <comment>Message which is displayed while UCI main form is getting saved.</comment>
+  </data>
+  <data name="Button_Label_OK">
+    <value>ΟΚ</value>
+  </data>
+  <data name="Button_Label_Cancel">
+    <value>Άκυρο</value>
+  </data>
+  <data name="AddTemplateWithoutAttachment">
+    <value>Το πρότυπο αυτό περιέχει συνημμένα. Αν θέλετε τα συνημμένα να αποτελούν μέρος του μηνύματος ηλεκτρονικού ταχυδρομείου, κάντε κλικ στο κουμπί "Άκυρο", αποθηκεύστε το μήνυμα ηλεκτρονικού ταχυδρομείου και, στη συνέχεια, εφαρμόστε εκ νέου το πρότυπο. Για να συνεχίσετε χωρίς τα συνημμένα, κάντε κλικ στο κουμπί OK.</value>
+    <comment>Message shown on confirm dialog when user attempts to add a template containing attachments to email without saving the email.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Microsoft_Crm_Msgbody_Default_fonts">
+    <value>Tahoma, Verdana, Arial</value>
+    <comment>
+      This defines the default font for the body of a new e-mail (although users can change the font at runtime by using the HTMLbar).
+      Like the fonts listed in resource Microsoft_Crm_Web_Fonts, the order of the fonts matter, since IE will use the first font and go down the
+      list until it finds the first font that is installed on the user's system.  Therefore the most preferable font should be placed first in the list.
+      However, unlike resource Microsoft_Crm_Web_Fonts, fonts that have spaces should only be enclosed in single quotes - double quotes will cause
+      a formatting error.
+      The list of fonts in this resource should be a proper subset of the list of fonts in resource Web._controls.htmlbar.defaultfonts.
+    </comment>
+  </data>
+  <data name="Email_Followup_Header">
+    <value>------------------- Αρχικό μήνυμα -------------------</value>
+  </data>
+  <data name="Email_Followup_Sender">
+    <value>Από:</value>
+  </data>
+  <data name="Email_Followup_ReceivedDate">
+    <value>Παραλαβή:</value>
+  </data>
+  <data name="Email_Followup_ToRecipients">
+    <value>Προς:</value>
+  </data>
+  <data name="Email_Followup_CcRecipients">
+    <value>Κοιν.:</value>
+  </data>
+  <data name="Email_Followup_Subject">
+    <value>Θέμα:</value>
+  </data>
+  <data name="Activity_ConfirmSwap_Title">
+    <value>Αλλαγή κατεύθυνσης</value>
+    <comment>Title for change direction dialog box.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_Description">
+    <value>Αποφασίστε εάν θα συνεχίσετε με την επιλεγμένη αλλαγή.</value>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_27">
+    <value>Έχετε προσθέσει πολλούς παραλήπτες στην καρτέλα. Αν αλλάξετε την κατεύθυνση στα εξερχόμενα, θα παραμείνει μόνο ο πρώτος παραλήπτης. Οι άλλοι παραλήπτες θα καταργηθούν.</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_30">
+    <value>Θέλετε να αλλάξετε την κατεύθυνση;</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_OkButton">
+    <value>Αλλαγή</value>
+    <comment>Ok button label for change direction dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="ConvActSaveWarning">
+    <value>Πρέπει να αποθηκεύσετε τις αλλαγές, για να μπορέσετε να μετατρέψετε αυτήν τη δραστηριότητα.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Error_Message_0x80046fff">
+    <value>Δεν είναι δυνατή η διαγραφή του πεδίου {0}, το οποίο ανήκει στην οντότητα {1}, διότι αυτό το πεδίο χρησιμοποιείται για αποστολή μηνυμάτων ηλεκτρονικού ταχυδρομείου και η οντότητα έχει ενεργοποιηθεί για ηλεκτρονικό ταχυδρομείο.</value>
+    <comment>
+      An emailable entity must have atleast one email attribute. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 is attribute name. Placeholder 1 parent entity name[Category="Administration and Deployment"]
+    </comment>
+  </data>
+  <data name="Error_Title_0x80048422">
+    <value>Μη έγκυρος παραλήπτης ηλεκτρονικού ταχυδρομείου</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80048422">
+    <value>Ο παραλήπτης ηλεκτρονικού ταχυδρομείου δεν υπάρχει ή η διεύθυνση ηλεκτρονικού ταχυδρομείου του παραλήπτη δεν είναι έγκυρη.</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80044192">
+    <value>Μη έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου. Για περισσότερες πληροφορίες, επικοινωνήστε με το διαχειριστή του {#Brand_CRM}.</value>
+    <comment>Description for the error when user tries to send an e-mail and some parties have invalid e-mail addresses. [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Followed_Email_Attachments_Tooltip" xml:space="preserve">
+    <value>Λίστα των παρακολουθούμενων συνημμένων όπως θα εμφανίζεται στον παραλήπτη του μηνύματος ηλεκτρονικού ταχυδρομείου.</value>
+    <comment>Text for followed email attachements div aria-label[Category="Email Engagement"]</comment>
+  </data>
+  <data name="Generic_ErrorMessage">
+    <value>Παρουσιάστηκε σφάλμα. Προσπαθήστε ξανά. Εάν το πρόβλημα δεν λυθεί, επικοινωνήστε με το διαχειριστή σας.</value>
+    <comment>Generic error when error message is not defined properly</comment>
+  </data>
+  <data name="Error">
+    <value>Σφάλμα</value>
+    <comment>This name is used to indicate error name</comment>
+  </data>
+  <data name="ErrorCode">
+    <value>Κωδικός σφάλματος</value>
+    <comment>This name is used to indicate error code</comment>
+  </data>
+  <data name="ErrorMessage">
+    <value>Μήνυμα σφάλματος </value>
+    <comment>This name used to indicate error message</comment>
+  </data>
+  <data name="Url">
+    <value>Διεύθυνση URL </value>
+    <comment>This name used to indicate Url</comment>
+  </data>
+  <data name="Command">
+    <value>Εντολή </value>
+    <comment>This name used to indicate Command</comment>
+  </data>
+  <data name="Parameters">
+    <value>Παράμετροι </value>
+    <comment>This name used to indicate Parameters</comment>
+  </data>
+  <data name="Error_In_Dialog_Open">
+    <value>Παρουσιάστηκε σφάλμα κατά το άνοιγμα του παραθύρου διαλόγου. Προσπαθήστε ξανά. Εάν το πρόβλημα δεν λυθεί, επικοινωνήστε με το διαχειριστή σας.</value>
+    <comment>Generic error when error occurred while open a dialog</comment>
+  </data>
+  <data name="Button_Ok">
+    <value>ΟΚ</value>
+    <comment>This message is used to indicate ok label on a button</comment>
+  </data>
+  <data name="UnsavedChanges">
+    <value>Ενδέχεται να μην αποθηκευτούν οι αλλαγές που κάνατε.</value>
+    <comment>This message is used to indicate changes made to the record are not saved</comment>
+  </data>
+  <data name="ConfirmAttachmentRemoval">
+    <value>Είστε βέβαιοι ότι θέλετε να καταργήστε αυτό το συνημμένο; Αυτή η ενέργεια δεν είναι δυνατό να αναιρεθεί.</value>
+    <comment>This message is used to indicate user to confirm the removal of attachment as it cannot be added again</comment>
+  </data>
+  <data name="RemovedAttachmentConfirmation">
+    <value>Το συνημμένο έγγραφο έχει καταργηθεί.</value>
+    <comment>This message is used to confirm to user that attachment is removed</comment>
+  </data>
+  <data name="FileNotFound">
+    <value>Δεν βρέθηκε το αρχείο</value>
+    <comment>This message is used to indicate not able to locate file</comment>
+  </data>
+  <data name="UnsupportedAttachment">
+    <value>Δεν μπορείτε να ανοίξετε αυτό το συνημμένο στη συσκευή σας.</value>
+    <comment>This message is used to indicate selected attachment is not supported on the current device</comment>
+  </data>
+  <data name="FileNameLengthExceeded">
+    <value>Το όνομα αρχείου περιέχει περισσότερους από 165 χαρακτήρες.</value>
+    <comment>This message is used to indicate file contains more characters than allowed limit</comment>
+  </data>
+  <data name="EmptyFile">
+    <value>Το καθορισμένο αρχείο είναι κενό ή δεν υπάρχει. Ελέγξτε ότι το όνομα αρχείου είναι σωστό ή καθορίστε ένα διαφορετικό αρχείο και προσπαθήστε ξανά.</value>
+    <comment>This message is used to indicate file is empty or does not exist</comment>
+  </data>
+  <data name="InvalidFileExtension">
+    <value>Αυτή η επέκταση αρχείου δεν είναι έγκυρη.</value>
+    <comment>This message is used to indicate file extension is not valid</comment>
+  </data>
+  <data name="FileSizeExceeded">
+    <value>Το συνημμένο είναι πολύ μεγάλο. Το μέγιστο επιτρεπόμενο μέγεθος αρχείου είναι {0} kilobyte.</value>
+    <comment>This message is used to attachment size exceeded the allowed limit</comment>
+  </data>
+  <data name="NonEditableDialog">
+    <value>Δεν είναι δυνατή η επεξεργασία αυτού του παραθύρου διαλόγου.</value>
+    <comment>This message is used to edit is not allowed in this dialog </comment>
+  </data>
+  <data name="activities/act_dlgs/dlg_seriesaction.aspx_textDeleteInstance">
+    <value>Θέλετε να διαγράψετε όλες τις εμφανίσεις αυτής της περιοδικής συνάντησης {0} ή μόνο αυτή;</value>
+    <comment>Text of the confirmation dialog when user deletes an instance.[Category="Business Modules"]. {NumberedPlaceholder="{0}"} Placeholder 0 is the truncated subject of the appointment.</comment>
+  </data>
+  <data name="New_Attachment_Form_Description">
+    <value>Επιλέξτε αρχείο για επισύναψη.</value>
+    <comment>Instructional text for attach file dialog, when opened for attaching a new attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Existing_Attachment_Form_Description">
+    <value>Κάντε κλικ στο αρχείο για προβολή ή κάντε κλικ στο στοιχείο "Κατάργηση" για να το καταργήσετε.</value>
+    <comment>Instructional text for attach file dialog, when opened for an existing attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="New_Attachment_Label_Message">
+    <value>Όνομα αρχείου</value>
+    <comment>Instructional text to indicate file name</comment>
+  </data>
+  <data name="Error_Message_0x80040b00">
+    <value>Αυτό το μήνυμα δεν είναι δυνατό να σταλεί σε όλους επιλεγμένους παραλήπτες. Επιβεβαιώστε ότι τόσο ο αποστολέας όσο και οι παραλήπτες έχουν έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου και ότι οι παραλήπτες επιτρέπεται να λαμβάνουν μηνύματα ηλεκτρονικού ταχυδρομείου.</value>
+    <comment>IDS_COMMUNICATIONS_NOPARTYADDRESS</comment>
+  </data>
+  <data name="Error_Message_0x8004b000" xml:space="preserve">
+    <value>Παρουσιάστηκε ένα σφάλμα κατά την επεξεργασία της αίτησής σας. Προσπαθήστε ξανά.</value>
+    <comment>CrmLiveGenericError</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected">
+    <value>Για να εκτελέσετε αυτήν την ενέργεια, πρέπει να επιλέξετε μία ή περισσότερες καρτέλες.</value>
+  </data>
+  <data name="ReadOnlyEntity">
+    <value>Η επιλεγμένη οντότητα είναι μόνο για ανάγνωση για αυτό το πρόγραμμα-πελάτη.</value>
+    <comment>Alert shown when user tries to perform action on entity which is Read-only in Mobile</comment>
+  </data>
+  <data name="Grid_Apply_Rule_Heterogenous_Activity_Type_Records_Selected">
+    <value>Αυτή η ενέργεια μπορεί να εκτελεστεί μόνο για δραστηριότητες του ίδιου τύπου.</value>
+    <comment>Alert shown when user tries to perform action which can be performed on single entity type on 2 different entity types</comment>
+  </data>
+  <data name="TemplateNotSelected">
+    <value>Πρέπει να επιλέξετε το πρότυπο για την απευθείας αποστολή μηνυμάτων ηλεκτρονικού ταχυδρομείου</value>
+    <comment>Message shown when user tries to send bulk email and template is not selected</comment>
+  </data>
+  <data name="BPFNavigationBlockAlert">
+    <value>Αποθηκεύστε ή απορρίψτε τις αλλαγές που έγιναν πριν τη μετάβαση σε άλλο στάδιο της διεργασίας.</value>
+    <comment>Message shown when user tries to do a BPF navigation on a unsaved appointment form.</comment>
+  </data>
+  <data name="SenderNotSelected">
+    <value>Πρέπει να επιλέξετε έναν χρήστη ή μια ουρά.</value>
+    <comment>Message shown when user tries to send bulk email and sender is not selected</comment>
+  </data>
+  <data name="RecipientsNotSelected">
+    <value>Πρέπει να επιλέξετε τις καρτέλες στις οποίες θα σταλούν τα μηνύματα ηλεκτρονικού ταχυδρομείου</value>
+    <comment>Message shown when user tries to send bulk email and the records to sedn to are not selected</comment>
+  </data>
+  <data name="Form_Title_Draft_Status_Prefix_For_Appointment">
+    <value>[Προσχέδιο]</value>
+    <comment>"[Draft]" string to be prefixed for form title for draft appointments.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_Appointment">
+    <value>Εντοπίστηκαν τα ακόλουθα πιθανά προβλήματα προγραμματισμού. Ενδέχεται να μην μπορέσετε να προγραμματίσετε αυτήν τη δραστηριότητα μέχρι να διορθωθούν αυτά τα προβλήματα.</value>
+    <comment>SchedulingConflict Dialog  Description for Appointment</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_RecurringAppointment">
+    <value>Πρώτη συνάντηση: Εντοπίστηκαν τα ακόλουθα ζητήματα προγραμματισμού.</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description1_RecurringAppointment">
+    <value>Επόμενες συναντήσεις: Το {#Brand_CRM} δεν επαληθεύει τη διαθεσιμότητα των συμμετεχόντων.</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSave_Button">
+    <value>Παράβλεψη και αποθήκευση</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSave Button</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSend_Button">
+    <value>Παράβλεψη και αποστολή</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSend Button</comment>
+  </data>
+  <data name="ErrorCode.ResourceConstraints">
+    <value>Το στοιχείο {0} δεν είναι διαθέσιμο λόγω περιορισμών πόρων.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceBusy">
+    <value>Το στοιχείο {0} δεν είναι διαθέσιμο αυτήν τη στιγμή.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceOverCapacity">
+    <value>Το στοιχείο {0} δεν έχει την απαιτούμενη χωρητικότητα.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceNonBusinessHours">
+    <value>Το στοιχείο {0} προγραμματίζεται εκτός ωρών εργασίας.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="PreviewTemplateNotSelected">
+    <value>Για να συνεχίσετε, επιλέξτε ένα πρότυπο από τη λίστα.</value>
+    <comment>Message to display when user not selected any template.</comment>
+  </data>
+  <data name="LOCID_EMAIL_NORECORDS_MSG">
+    <value>Δεν έχει επιλεγεί καμία καρτέλα.</value>
+    <comment>Message to display when bulk email is invoked without any records selected.</comment>
+  </data>
+  <data name="UnresolvedEmailsNotAllowed">
+    <value>Ο οργανισμός σας δεν επιτρέπει την αποστολή μηνυμάτων ηλεκτρονικού ταχυδρομείου σε ανεπίλυτους παραλήπτες ηλεκτρονικού ταχυδρομείου. Πρέπει να καταργήσετε αυτούς τους παραλήπτες ή να επικοινωνήσετε με τον διαχειριστή του συστήματός σας για να επιτρέψετε την αποστολή μηνυμάτων με ανεπίλυτους παραλήπτες ηλεκτρονικού ταχυδρομείου. Μάθε περισσότερα: https://go.microsoft.com/fwlink/p/?linkid=2127763</value>
+    <comment>Message to display when allowUnresolvedPartiesOnEmailSend is false and the form contains unresolved parties.</comment>
+  </data>
+  <data name="UnresolvedEmailsCanNotSendEmail">
+    <value>Δεν είναι δυνατή η αποστολή μηνύματος ηλεκτρονικού ταχυδρομείου σε:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is false and the control contains unresolved parties.</comment>
+  </data>
+  <data name="AttachmentDownloadError" xml:space="preserve">
+    <value>Παρουσιάστηκε πρόβλημα κατά τη λήψη {0}. Δοκιμάστε ξανά αργότερα.</value>
+    <comment>Error message shown if an error occurs while trying to download an attachment</comment>
+  </data>
+  <data name="AttachmentDownloadGenericError" xml:space="preserve">
+    <value>Παρουσιάστηκε πρόβλημα στη λήψη των συνημμένων σας. Δοκιμάστε ξανά αργότερα.</value>
+    <comment>Error message shown if an error occurs while trying to download attachments</comment>
+  </data>
+  <data name="AttachmentDownloadFormNotification" xml:space="preserve">
+    <value>Γίνεται λήψη συνημμένων...</value>
+    <comment>Form notification text that is shown while attachments are downloading</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_LearnMore">
+    <value>Μάθετε περισσότερα</value>
+    <comment>Continue Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_Continue">
+    <value>Συνέχεια</value>
+    <comment>Cancel Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultTitle">
+    <value>Μάθετε περισσότερα</value>
+    <comment>Default title for the learn more dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultPrimaryText">
+    <value>Δεν επιτρέπεται αυτή η λειτουργία.</value>
+    <comment>Default primary text for the learn more dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Title">
+    <value>Το γραμματοκιβώτιο έχει απενεργοποιηθεί</value>
+    <comment>Title for the Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Text">
+    <value>Δεν είναι δυνατή η αποστολή μηνυμάτων ηλεκτρονικού ταχυδρομείου επειδή το γραμματοκιβώτιο του {0} είναι απενεργοποιημένο. Συνεχίζοντας το μήνυμα ηλεκτρονικού ταχυδρομείου θα οριστεί σε κατάσταση εκκρεμότητας.</value>
+    <comment>Text displayed in the Mailbox Not Enabled dialog for Admin</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Instruction_NonAdmin">
+    <value>Επικοινωνήστε με τον διαχειριστή του συστήματός σας για να το ενεργοποιήσετε.</value>
+    <comment>Instruction text for nonadmins in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="InsertDataAddDataFieldButtonLabel" xml:space="preserve">
+    <value>Προσθέστε πεδίο δεδομένων</value>
+    <comment>Button label for adding new entry of dynamic text</comment>
+  </data>
+  <data name="InsertDataDefaultTextLabel" xml:space="preserve">
+    <value>Κείμενο προεπιλογής</value>
+    <comment>Label for default text control</comment>
+  </data>
+  <data name="InsertDataRecordTypeLabel" xml:space="preserve">
+    <value>Τύπος καρτέλας</value>
+    <comment>Column name of record type in dynamic text</comment>
+  </data>
+  <data name="InsertDataFieldNameLabel" xml:space="preserve">
+    <value>Όνομα πεδίου</value>
+    <comment>Column name of field names in dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveUpButtonLabel" xml:space="preserve">
+    <value>Μετακίνηση επάνω</value>
+    <comment>Button label for moving up one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveDownButtonLabel" xml:space="preserve">
+    <value>Μετακίνηση κάτω</value>
+    <comment>Button label for moving down one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataRemoveButtonLabel" xml:space="preserve">
+    <value>Αφαίρεση</value>
+    <comment>Button label for removing one row of dynamic text</comment>
+  </data>
+  <data name="UnableToInsertDynamicText" xml:space="preserve">
+    <value>Δεν είναι δυνατή η εισαγωγή δυναμικού κειμένου. Επιλέξτε το πού θα εισαγάγετε ή θα ενημερώσετε το δυναμικό κείμενό σας στο θέμα ή το σώμα του προτύπου.</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="UnableToInsertDynamicTextInSignature" xml:space="preserve">
+    <value>Δεν είναι δυνατή η εισαγωγή δυναμικού κειμένου. Επιλέξτε πού θα εισαγάγετε ή θα ενημερώσετε το δυναμικό κείμενό σας στο σώμα του προτύπου.</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="PreOctoberNotification" xml:space="preserve">
+    <value>Αναζητήστε το σε μελλοντική έκδοση</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="malformedDefaultValue" xml:space="preserve">
+    <value>Τα προεπιλεγμένο πεδίο κειμένου δεν μπορεί να περιέχει κανέναν από τους ακόλουθους χαρακτήρες:  ; &amp; &lt; &gt; { }</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="RequiredFieldMustBeFilledIn" xml:space="preserve">
+    <value>Πρέπει να συμπληρωθούν τα απαιτούμενα πεδία.</value>
+    <comment>Required fields must be filled in.</comment>
+  </data>
+  <data name="ConvertingEmailToTemplateProgressMessage" xml:space="preserve">
+    <value>Μετατροπή ηλεκτρονικού ταχυδρομείου σε πρότυπο...</value>
+    <comment>Progress message to show during email to template conversion</comment>
+  </data>
+  <data name="CreatingTemplateProgressMessage" xml:space="preserve">
+    <value>Δημιουργία προτύπου...</value>
+    <comment>Progress message to show during new template creation</comment>
+  </data>
+  <data name="RequiredFieldsErrorMessage" xml:space="preserve">
+    <value>Πρέπει να συμπληρωθούν όλα τα απαιτούμενα πεδία.</value>
+    <comment>Error message to show when required fields are not filled in</comment>
+  </data>
+  <data name="CopyingAttachmentsToTemplateMessage" xml:space="preserve">
+    <value>Αντιγραφή συνημμένων στο πρότυπο...</value>
+    <comment>Progress message to show during copying attachments to template on (email or template) -&gt; template conversion</comment>
+  </data>
+  <data name="TemplateCopyString" xml:space="preserve">
+    <value>Αντίγραφο</value>
+    <comment>'Copy' word to append to the end of the cloned template</comment>
+  </data>
+  <data name="ErrorCopyAttachmentsToTemplate" xml:space="preserve">
+    <value>Δεν είναι δυνατή η αντιγραφή μερικών συνημμένων από αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου. Δοκιμάστε να επαναλάβετε την αποστολή αυτών των αρχείων.</value>
+    <comment>Error message shown when one or more attachments fail to copy over to new template.</comment>
+  </data>
+  <data name="ErrorCreateTemplate" xml:space="preserve">
+    <value>Παρουσιάστηκε πρόβλημα κατά τη δημιουργία του προτύπου σας. Δοκιμάστε ξανά ή επικοινωνήστε με την υποστήριξη της Microsoft.</value>
+    <comment>Error message shown when createRecord fails for template creation.</comment>
+  </data>
+  <data name="ErrorRetrievingAttachmentsForTemplate" xml:space="preserve">
+    <value>Παρουσιάστηκε πρόβλημα κατά τη μετακίνηση των συνημμένων στο πρότυπο. Επικοινωνήστε με τον διαχειριστή σας ή την υποστήριξη της Microsoft.</value>
+    <comment>Error message shown when the retrieve call fails to get the attachments to copy over to the template.</comment>
+  </data>
+  <data name="WarningSomeAttachmentsNotSupported" xml:space="preserve">
+    <value>Το μήνυμα αποθηκεύτηκε ως καρτέλα ηλεκτρονικού ταχυδρομείου του Microsoft Dynamics 365, αλλά δεν ήταν δυνατή η αποθήκευση όλων των συνημμένων. Δεν είναι δυνατή η αποθήκευση ενός συνημμένου, εάν έχει αποκλειστεί ή εάν ο τύπος αρχείου δεν είναι έγκυρος.</value>
+    <comment>Notification shown when some attachments couldn't be supported for a received email</comment>
+  </data>
+  <data name="WarningEmailSubjectLengthMessage" xml:space="preserve">
+    <value>Για να αποφύγετε την αποκοπή της γραμμής θέματος κατά την εισαγωγή σε ένα μήνυμα ηλεκτρονικού ταχυδρομείου, μειώστε το μέγεθός του.</value>
+    <comment>Warning message shown when the email template subject length is greater than 800</comment>
+  </data>
+  <data name="EndSeriesDialogTopLabel" xml:space="preserve">
+    <value>Επιλέξτε πότε θέλετε να λήξει η σειρά συναντήσεων. Θα διαγράψουμε όλες τις μελλοντικές συναντήσεις σε αυτήν τη σειρά.</value>
+    <comment>End Series Dialog description</comment>
+  </data>
+  <data name="EndSeriesDialogCompletionTypeLabel" xml:space="preserve">
+    <value>Διατηρούμε παλαιότερες συναντήσεις των σειρών που έληξαν. Τι θα θέλατε να κάνετε με τις παλαιότερες συναντήσεις που είναι ανοιχτές;</value>
+    <comment>End Series Dialog Description of radio options</comment>
+  </data>
+  <data name="EndSeriesDialogOptionCancel" xml:space="preserve">
+    <value>Ακύρωση</value>
+    <comment>Radio option for Cancel in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionComplete" xml:space="preserve">
+    <value>Ολοκλήρωση</value>
+    <comment>Radio option for Complete in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionKeepOpen" xml:space="preserve">
+    <value>Μόνιμη προβολή</value>
+    <comment>Radio option for Keep Open in End Series Dialog</comment>
+  </data>
+  <data name="SameDayString" xml:space="preserve">
+    <value>Ίδια ημέρα</value>
+    <comment>String for Same Day radio option</comment>
+  </data>
+  <data name="SameWeekString" xml:space="preserve">
+    <value>Ίδια εβδομάδα</value>
+    <comment>String for Same Week radio option</comment>
+  </data>
+  <data name="UpdateSeriesDialogCancelCurrentSeries" xml:space="preserve">
+    <value>Ακυρώστε την τρέχουσα σειρά και δημιουργήστε νέα.</value>
+    <comment>Cancel current series</comment>
+  </data>
+  <data name="UpdateSeriesDialogFirstLabel" xml:space="preserve">
+    <value>Έχετε ζητήσει να τροποποιήσετε τις πληροφορίες περιοδικότητας μιας υπάρχουσας σειράς. Η τρέχουσα σειρά θα ακυρωθεί και θα δημιουργηθεί μια νέα σειρά.</value>
+    <comment>Update Series First Label</comment>
+  </data>
+  <data name="UpdateSeriesDialogSecondLabel" xml:space="preserve">
+    <value>Το ιστορικό παλαιότερων παρουσιών της σειράς θα διατηρηθεί, αλλά θα διαγραφούν όλες οι ανοιχτές παρουσίες.</value>
+    <comment>Update Series Second Label</comment>
+  </data>
+  <data name="RecurrenceErrorIntervalOutOfRange" xml:space="preserve">
+    <value>Τα μοτίβα περιοδικότητας δεν μπορούν να έχουν τιμές μικρότερες από 1 ή μεγαλύτερες από 99. Καταχωρήστε ένα έγκυρο μοτίβο περιοδικότητας.</value>
+    <comment>Error string for interval Out of Range in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorDayOfMonthOutOfRange" xml:space="preserve">
+    <value>Οι ημέρες σε έναν μήνα δεν μπορούν να είναι περισσότερες από 31</value>
+    <comment>Error string for number of days of month in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceWarningDayOfMonthMore" xml:space="preserve">
+    <value>Ορισμένοι μήνες έχουν λιγότερες από {0} ημέρες. Για αυτούς τους μήνες, η εμφάνιση θα συμβαίνει την τελευταία ημέρα του μήνα.</value>
+    <comment>Warning string when number of days specific is more than 28 in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorEndLessThanStartDate" xml:space="preserve">
+    <value>Η ημερομηνία έναρξης που ορίσατε είναι μετά την ημερομηνίας λήξης. Επιλέξτε μια έγκυρη ημερομηνία έναρξης.</value>
+    <comment>Error string when pattern end date is less than start date</comment>
+  </data>
+  <data name="RecurrenceErrorInvalidDateForMonth" xml:space="preserve">
+    <value>Η τιμή είναι εκτός των ορίων για τον επιλεγμένο μήνα. Πληκτρολογήστε μια έγκυρη τιμή.</value>
+    <comment>Error string when number of days is invalid for that month in yearly recurrence pattern</comment>
+  </data>
+  <data name="RecurrenceErrorFebruary29DaysStartDate" xml:space="preserve">
+    <value>Η ημερομηνία έναρξης μοτίβου πρέπει να είναι σε δίσεκτο έτος για τη δημιουργία συναντήσεων στις 29 Φεβρουαρίου</value>
+    <comment>Error string when pattern start date is not a leap year for chosen 29th Feb</comment>
+  </data>
+  <data name="RecurrenceWarningFebruary29" xml:space="preserve">
+    <value>Στα μη δίσεκτα έτη, ο Φεβρουάριος έχει λιγότερες από 29 ημέρες. Σε τέτοιες περιπτώσεις, η εμφάνιση θα συμβαίνει την τελευταία ημέρα του Φεβρουαρίου.</value>
+    <comment>Warning string for 29th February in Recurrence Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOpenError" xml:space="preserve">
+    <value>Σφάλμα κατά το άνοιγμα του παραθύρου διαλόγου «Τέλος σειράς»</value>
+    <comment>Error in opening End Series Dialog</comment>
+  </data>
+  <data name="RecurrenceDialogAlert" xml:space="preserve">
+    <value>Ειδοποίηση παραθύρου διαλόγου περιοδικότητας</value>
+    <comment>Recurrence Dialog alert</comment>
+  </data>
+  <data name="RecurrenceDialogStartTimeField" xml:space="preserve">
+    <value>Ώρα έναρξης</value>
+    <comment>Start time control display name</comment>
+  </data>
+  <data name="RecurrenceDialogEndTimeField" xml:space="preserve">
+    <value>Ώρα λήξης</value>
+    <comment>End time control display name</comment>
+  </data>
+  <data name="JoinTeamsMeeting_Label" xml:space="preserve">
+    <value>Συμμετοχή σε σύσκεψη Teams</value>
+    <comment>Label for the teams meeting button</comment>
+  </data>
+  <data name="TeamsChatsPreview_Label" xml:space="preserve">
+    <value>Συνομιλίες Teams (Έκδοση προεπισκόπησης)</value>
+    <comment>'chat' : displayname for Teams chats (Preview) LabelText</comment>
+  </data>
+  <data name="TeamsChatsJoinNotAllowedDialogAlert" xml:space="preserve">
+    <value>Δεν μπορείτε να χρησιμοποιήσετε αυτήν τη δυνατότητα, επειδή δεν είστε μέλος της συνομιλίας. Επικοινωνήστε με το διαχειριστή σας για να μπορέσετε να συμμετάσχετε σε συνομιλίες των οποίων δεν είστε κάτοχος.</value>
+    <comment>Cannot join teams chat dialog alert</comment>
+  </data>
+  <data name="TeamsChatsDisabledDialogAlert" xml:space="preserve">
+    <value>Αυτή η δυνατότητα δεν είναι διαθέσιμη, επειδή το Microsoft Teams δεν είναι ενεργοποιημένο στο προφίλ εμπειρίας εκπρόσωπου στο οποίο ανήκετε (Διαχείριση προφίλ εφαρμογών). Επικοινωνήστε με το διαχειριστή σας.</value>
+    <comment>Teams integration disabled dialog alert</comment>
+  </data>
+  <data name="InvalidEmailAddressCannotSend">
+    <value>Καταργήστε τα ακόλουθα μη έγκυρα μηνύματα ηλεκτρονικού ταχυδρομείου:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is true and the control contains invalid email addresses.</comment>
+  </data>
+  <data name="ReminderToAttachmentKeywords">
+    <value>επισυνάπτω,επισύναψη,επισυνάφθηκε,συνημμένο,συνημμένα</value>
+    <comment>Keywords to find in email body to pop attachment dialog when no attachment is added.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogTitle">
+    <value>Υπενθύμιση συνημμένου</value>
+    <comment>Reminder attachment Dialog Title.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogText">
+    <value>Ίσως ξεχάσατε να επισυνάψετε ένα αρχείο.</value>
+    <comment>Reminder attachment Dialog text.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogOk">
+    <value>Αποστολή</value>
+    <comment>Reminder attachment Dialog Ok button.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogCancel">
+    <value>Να μη γίνει αποστολή</value>
+    <comment>Reminder attachment Dialog cancel button.</comment>
+  </data>
+  <data name="EmailDraftDeleteMessage" xml:space="preserve">
+    <value>Αν δεν αποθηκευτεί μη αυτόματα, αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου θα διαγραφεί ή θα σταλεί πριν από το κλείσιμο.</value>
+    <comment>Used to delete draft emails for multisession apps created from Reply/Reply All/Forward</comment>
+  </data>
+  <data name="DownloadEmailAsAttachment_Download" xml:space="preserve">
+    <value>Λήψη </value>
+  </data>
+  <data name="DownloadEmailAsAttachment_MB" xml:space="preserve">
+    <value> mb</value>
+  </data>
+  <data name="DownloadEmailAsAttachment_PreparingFile" xml:space="preserve">
+    <value>Προετοιμασία αρχείου</value>
+  </data>
+  <data name="EmailDraftDeleteMessageonAttachmentControlLoad" xml:space="preserve">
+    <value>Οι ενημερώσεις συνημμένων δεν αποθηκεύτηκαν. Για να μη χάσετε τυχόν μη αποθηκευμένες ενημερώσεις συνημμένων, αποθηκεύστε τη φόρμα.</value>
+    <comment>Used to inform user to save changes when attachments are updated on Email form.</comment>
+  </data>
+  <data name="GuardRailFailedDialogTitle" xml:space="preserve">
+    <value>Αποτυχία ελέγχων προστατευτικών μέτρων</value>
+    <comment>Title shown in the guardrail failure dialog.</comment>
+  </data>
+  <data name="GuardRailFailedDialogText" xml:space="preserve">
+    <value>Το μήνυμα ηλεκτρονικού ταχυδρομείου που συντάχθηκε δεν πέρασε τους ελέγχους προστατευτικών μέτρων. Αναθεωρήστε το περιεχόμενο και στείλτε το ξανά για να βεβαιωθείτε ότι πληροί τις απαιτήσεις των προστατευτικών μέτρων.</value>
+    <comment>Main explanation text shown when guardrails fail in the dialog.</comment>
+  </data>
+  <data name="GuardrailsFailed" xml:space="preserve">
+    <value>Προστατευτικά μέτρα που απέτυχαν</value>
+    <comment>Label for listing failed guardrail names.</comment>
+  </data>
+  <data name="GuardrailFailureReasons" xml:space="preserve">
+    <value>Αιτιολογία(-ες)</value>
+    <comment>Label for listing failure reasons for each violated guardrail.</comment>
+  </data>
+  <data name="GuardrailCloseButton" xml:space="preserve">
+    <value>Κλείσιμο</value>
+    <comment>Text for the dialog Close button.</comment>
+  </data>
+  <data name="SeeTerms" xml:space="preserve">
+    <value>Δείτε τους όρους</value>
+    <comment>Hyperlink label for opening Microsoft Terms URL.</comment>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>απέτυχε</value>
+    <comment>Lowercase 'failed' suffix used in inline status messages.</comment>
+  </data>
+  <data name="AiDisclaimerText" xml:space="preserve">
+    <value>Το περιεχόμενο που δημιουργείται από AI ίσως είναι εσφαλμένο. Βεβαιωθείτε ότι το περιεχόμενο που δημιουργήθηκε από AI είναι ακριβές και κατάλληλο πριν το χρησιμοποιήσετε.</value>
+    <comment>AI safety disclaimer shown below guardrail messages.</comment>
+  </data>
+</root>

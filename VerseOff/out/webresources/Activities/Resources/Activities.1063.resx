@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+                Microsoft ResX Schema
+                Version 2.0
+                The primary goals of this format is to allow a simple XML format
+                that is mostly human readable. The generation and parsing of the
+                various data types are done through the TypeConverter classes
+                associated with the data types.
+                Example:
+                ... ado.net/XML headers & schema ...
+                <resheader name="resmimetype">text/microsoft-resx</resheader>
+                <resheader name="version">2.0</resheader>
+                <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+                <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+                <data name="Name1">this is my long string</data>
+                <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+                <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+                                [base64 mime encoded serialized .NET Framework object]
+                </data>
+                <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+                                [base64 mime encoded string representing a byte array form of the .NET Framework object]
+                </data>
+                There are any number of "resheader" rows that contain simple
+                name/value pairs.
+                Each data row contains a name, and value. The row also contains a
+                type or mimetype. Type corresponds to a .NET class that support
+                text/value conversion through the TypeConverter architecture.
+                Classes that don't support this are serialized and stored with the
+                mimetype set.
+                The mimetype is used for serialized objects, and tells the
+                ResXResourceReader how to depersist the object. This is currently not
+                extensible. For a given mimetype the value must be set accordingly:
+                Note - application/x-microsoft.net.object.binary.base64 is the format
+                that the ResXResourceWriter will generate, however the reader can
+                read any of the formats listed below.
+                mimetype: application/x-microsoft.net.object.binary.base64
+                value   : The object must be serialized with
+                                                : System.Serialization.Formatters.Binary.BinaryFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.soap.base64
+                value   : The object must be serialized with
+                                                : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.bytearray.base64
+                value   : The object must be serialized into a byte array
+                                                : using a System.ComponentModel.TypeConverter
+                                                : and then encoded with base64 encoding.
+                -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="ObjectReferences" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="DoesNotReference" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ObjectType">
+      <xsd:complexType>
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:int">
+            <xsd:attribute name="Singular" form="unqualified" type="xsd:string" />
+            <xsd:attribute name="Plural" form="unqualified" type="xsd:string" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExchangeSyncAppointmentPrivacyWarning">
+    <value>Kai kurie gavėjai nepriklauso jūsų organizacijai. Šie gavėjai taip pat gaus šią paskyrą, kai ją įrašysite.</value>
+    <comment>Warning displayed for appointments and recurring appointments when some attendees are not CRM users and the organizer uses Exchange Sync. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="MA_Alert_EndDate_LessThan_StartDate">
+    <value>Turite nurodyti pabaigos laiką, esantį po pradžios laiko.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="Error_Message_ETM_Retry">
+    <value>„Dynamics 365 CRM“ negali įvykdyti jūsų užklausos, nes serveriai apdoroja kitų jūsų organizacijos vartotojų užklausas. Spustelėkite Gerai, norėdami pamėginti įvykdyti užklausą dabar, arba spustelėkite Atšaukti, norėdami tęsti darbą. Jei spustelėsite Atšaukti, galėsite mėginti įvykdyti užklausą vėliau. Jei ši problema išlieka, pagalbos kreipkitės į „Dynamics 365 CRM“ klientų aptarnavimo tarnybą.</value>
+    <comment>CrmSqlGovernorDatabaseRequestDenied message providing user an option to retry.</comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_75">
+    <value>Turi būti nurodytas el. laiško siuntėjas. Pažymėkite siuntėją.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_70">
+    <value>Norint siųsti el. laišką, turi būti nurodytas bent vienas gavėjas. Pažymėkite gavėją.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Email_No_Recipient_Found_Error_Title">
+    <value>Gavėjas nerastas</value>
+  </data>
+  <data name="Email_No_Sender_Found_Error_Title">
+    <value>Siuntėjas nerastas</value>
+  </data>
+  <data name="Email_Prefix_Reply">
+    <value>Ats.:</value>
+  </data>
+  <data name="Email_Prefix_Forward">
+    <value>Persiųsti:</value>
+  </data>
+  <data name="Brand_CRM">
+    <value>„Microsoft Dynamics 365“</value>
+    <comment>Branding for CRM.</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveTitle">
+    <value>Taikyti šabloną</value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveText">
+    <value>Ar norite pakeisti el. laiško temos eilutę šablono temos eilute? </value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_ToRecipientString">
+    <value>Gavėjams</value>
+    <comment>This is the String that will appear for To Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_CCRecipientString">
+    <value>CC gavėjai</value>
+    <comment>This is the String that will appear for CC Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_RegardingString">
+    <value>Dėl</value>
+    <comment>This is the String that will appear for Regarding dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_InvalidTargetRecipient">
+    <value>Pasirinkite gavėją arba įrašą, kurį galima susieti su el. pašto šablonu. Pavyzdžiui, negalima pasirinkti eilės.</value>
+    <comment>This is the Text that will appear if no Valid target object selected for Email Template [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog">
+    <value>Apdorojama...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="UCI.Form.Saving">
+    <value>Įrašoma...</value>
+    <comment>Message which is displayed while UCI main form is getting saved.</comment>
+  </data>
+  <data name="Button_Label_OK">
+    <value>Gerai</value>
+  </data>
+  <data name="Button_Label_Cancel">
+    <value>Atšaukti</value>
+  </data>
+  <data name="AddTemplateWithoutAttachment">
+    <value>Šiame šablone yra priedų. Jei priedai reikalingi kaip el. laiško dalis, spustelėkite Atšaukti, įrašykite el. laišką ir pakartotinai pritaikykite šabloną. Norėdami tęsti be priedų, spustelėkite Gerai.</value>
+    <comment>Message shown on confirm dialog when user attempts to add a template containing attachments to email without saving the email.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Microsoft_Crm_Msgbody_Default_fonts">
+    <value>Tahoma, Verdana, Arial</value>
+    <comment>
+      This defines the default font for the body of a new e-mail (although users can change the font at runtime by using the HTMLbar).
+      Like the fonts listed in resource Microsoft_Crm_Web_Fonts, the order of the fonts matter, since IE will use the first font and go down the
+      list until it finds the first font that is installed on the user's system.  Therefore the most preferable font should be placed first in the list.
+      However, unlike resource Microsoft_Crm_Web_Fonts, fonts that have spaces should only be enclosed in single quotes - double quotes will cause
+      a formatting error.
+      The list of fonts in this resource should be a proper subset of the list of fonts in resource Web._controls.htmlbar.defaultfonts.
+    </comment>
+  </data>
+  <data name="Email_Followup_Header">
+    <value>------------------- Pradinis laiškas -------------------</value>
+  </data>
+  <data name="Email_Followup_Sender">
+    <value>Nuo:</value>
+  </data>
+  <data name="Email_Followup_ReceivedDate">
+    <value>Gauta:</value>
+  </data>
+  <data name="Email_Followup_ToRecipients">
+    <value>Kam:</value>
+  </data>
+  <data name="Email_Followup_CcRecipients">
+    <value>Kopija:</value>
+  </data>
+  <data name="Email_Followup_Subject">
+    <value>Tema:</value>
+  </data>
+  <data name="Activity_ConfirmSwap_Title">
+    <value>Pakeisti kryptį</value>
+    <comment>Title for change direction dialog box.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_Description">
+    <value>Nuspręskite, ar išlaikyti pasirinktą keitimą.</value>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_27">
+    <value>Į įrašą įtraukėte keletą gavėjų. Jei pakeisite kryptį, bus išsaugotas tik pirmasis gavėjas. Kiti gavėjai bus pašalinti.</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_30">
+    <value>Ar norite pakeisti kryptį?</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_OkButton">
+    <value>Keisti</value>
+    <comment>Ok button label for change direction dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="ConvActSaveWarning">
+    <value>Prieš keisdami šią veiklą, turite įrašyti keitimus.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Error_Message_0x80046fff">
+    <value>Lauko {0}, priklausančio objektui {1}, panaikinti negalima, nes šis laukas naudojamas el. laiškams siųsti, o objektas gauna el. laiškus.</value>
+    <comment>
+      An emailable entity must have atleast one email attribute. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 is attribute name. Placeholder 1 parent entity name[Category="Administration and Deployment"]
+    </comment>
+  </data>
+  <data name="Error_Title_0x80048422">
+    <value>Negaliojantis el. pašto gavėjas</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80048422">
+    <value>El. pašto gavėjo nėra arba negaliojantis el. pašto gavėjo adresas.</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80044192">
+    <value>Netinkamas el. pašto adresas. Jei reikia išsamesnės informacijos, susisiekite su „{#Brand_CRM}“ administratoriumi.</value>
+    <comment>Description for the error when user tries to send an e-mail and some parties have invalid e-mail addresses. [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Followed_Email_Attachments_Tooltip" xml:space="preserve">
+    <value>Stebimų priedų sąrašas, kuris bus matomas el. laiško gavėjui.</value>
+    <comment>Text for followed email attachements div aria-label[Category="Email Engagement"]</comment>
+  </data>
+  <data name="Generic_ErrorMessage">
+    <value>Įvyko klaida. Bandykite dar kartą. Jei problema išlieka, kreipkitės į administratorių.</value>
+    <comment>Generic error when error message is not defined properly</comment>
+  </data>
+  <data name="Error">
+    <value>Klaida</value>
+    <comment>This name is used to indicate error name</comment>
+  </data>
+  <data name="ErrorCode">
+    <value>Klaidos kodas</value>
+    <comment>This name is used to indicate error code</comment>
+  </data>
+  <data name="ErrorMessage">
+    <value>Klaidos pranešimas</value>
+    <comment>This name used to indicate error message</comment>
+  </data>
+  <data name="Url">
+    <value>URL </value>
+    <comment>This name used to indicate Url</comment>
+  </data>
+  <data name="Command">
+    <value>Komanda </value>
+    <comment>This name used to indicate Command</comment>
+  </data>
+  <data name="Parameters">
+    <value>Parametrai </value>
+    <comment>This name used to indicate Parameters</comment>
+  </data>
+  <data name="Error_In_Dialog_Open">
+    <value>Atidarant dialogo langą įvyko klaida. Bandykite dar kartą. Jei problema išlieka, kreipkitės į administratorių.</value>
+    <comment>Generic error when error occurred while open a dialog</comment>
+  </data>
+  <data name="Button_Ok">
+    <value>Gerai</value>
+    <comment>This message is used to indicate ok label on a button</comment>
+  </data>
+  <data name="UnsavedChanges">
+    <value>Jūsų atlikti keitimai gali būti neįrašyti.</value>
+    <comment>This message is used to indicate changes made to the record are not saved</comment>
+  </data>
+  <data name="ConfirmAttachmentRemoval">
+    <value>Ar tikrai norite pašalinti šį priedą? Šio veiksmo negalima atšaukti.</value>
+    <comment>This message is used to indicate user to confirm the removal of attachment as it cannot be added again</comment>
+  </data>
+  <data name="RemovedAttachmentConfirmation">
+    <value>Pridėtas dokumentas buvo pašalintas.</value>
+    <comment>This message is used to confirm to user that attachment is removed</comment>
+  </data>
+  <data name="FileNotFound">
+    <value>Failas nerastas</value>
+    <comment>This message is used to indicate not able to locate file</comment>
+  </data>
+  <data name="UnsupportedAttachment">
+    <value>Jūsų įrenginyje priedo atidaryti negalima.</value>
+    <comment>This message is used to indicate selected attachment is not supported on the current device</comment>
+  </data>
+  <data name="FileNameLengthExceeded">
+    <value>Failo vardą sudaro daugiau nei 165 simboliai.</value>
+    <comment>This message is used to indicate file contains more characters than allowed limit</comment>
+  </data>
+  <data name="EmptyFile">
+    <value>Nurodytas failas yra tuščias arba jo nėra. Patikrinkite, ar failo vardas teisingas, arba nurodykite kitą failą ir bandykite dar kartą.</value>
+    <comment>This message is used to indicate file is empty or does not exist</comment>
+  </data>
+  <data name="InvalidFileExtension">
+    <value>Šis failo plėtinys yra netinkamas.</value>
+    <comment>This message is used to indicate file extension is not valid</comment>
+  </data>
+  <data name="FileSizeExceeded">
+    <value>Priedas yra per didelis. Didžiausias leidžiamas failo dydis yra {0} kilob.</value>
+    <comment>This message is used to attachment size exceeded the allowed limit</comment>
+  </data>
+  <data name="NonEditableDialog">
+    <value>Šio dialogo lango redaguoti negalima</value>
+    <comment>This message is used to edit is not allowed in this dialog </comment>
+  </data>
+  <data name="activities/act_dlgs/dlg_seriesaction.aspx_textDeleteInstance">
+    <value>Ar norite panaikinti visus pasikartojančios paskyros {0} atvejus ar tik šį?</value>
+    <comment>Text of the confirmation dialog when user deletes an instance.[Category="Business Modules"]. {NumberedPlaceholder="{0}"} Placeholder 0 is the truncated subject of the appointment.</comment>
+  </data>
+  <data name="New_Attachment_Form_Description">
+    <value>Pasirinkite norimą pridėti failą.</value>
+    <comment>Instructional text for attach file dialog, when opened for attaching a new attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Existing_Attachment_Form_Description">
+    <value>Norėdami peržiūrėti failą, jį spustelėkite, o norėdami jį pašalinti, spustelėkite Pašalinti.</value>
+    <comment>Instructional text for attach file dialog, when opened for an existing attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="New_Attachment_Label_Message">
+    <value>Failo vardas</value>
+    <comment>Instructional text to indicate file name</comment>
+  </data>
+  <data name="Error_Message_0x80040b00">
+    <value>Šios žinutės nepavyksta nusiųsti visiems pažymėtiems gavėjams. Patikrinkite, ar siuntėjo ir gavėjų el. pašto adresai galioja ir ar jiems leidžiama gauti el. laiškus.</value>
+    <comment>IDS_COMMUNICATIONS_NOPARTYADDRESS</comment>
+  </data>
+  <data name="Error_Message_0x8004b000" xml:space="preserve">
+    <value>Apdorojant jūsų užklausą įvyko klaida. Bandykite dar kartą.</value>
+    <comment>CrmLiveGenericError</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected">
+    <value>Prieš atlikdami šį veiksmą privalote pasirinkti vieną ar daugiau įrašų.</value>
+  </data>
+  <data name="ReadOnlyEntity">
+    <value>Naudojant šį klientą pasirinktą objektą galima tik skaityti.</value>
+    <comment>Alert shown when user tries to perform action on entity which is Read-only in Mobile</comment>
+  </data>
+  <data name="Grid_Apply_Rule_Heterogenous_Activity_Type_Records_Selected">
+    <value>Šį veiksmą galite atlikti tik to paties tipo veiklai.</value>
+    <comment>Alert shown when user tries to perform action which can be performed on single entity type on 2 different entity types</comment>
+  </data>
+  <data name="TemplateNotSelected">
+    <value>Turite pasirinkti šabloną, kad galėtumėte siųsti tiesioginį el. laišką</value>
+    <comment>Message shown when user tries to send bulk email and template is not selected</comment>
+  </data>
+  <data name="BPFNavigationBlockAlert">
+    <value>Prieš pereidami prie kito proceso etapo įrašykite arba atmeskite atliktus pakeitimus.</value>
+    <comment>Message shown when user tries to do a BPF navigation on a unsaved appointment form.</comment>
+  </data>
+  <data name="SenderNotSelected">
+    <value>Turite pažymėti vartotoją arba eilę.</value>
+    <comment>Message shown when user tries to send bulk email and sender is not selected</comment>
+  </data>
+  <data name="RecipientsNotSelected">
+    <value>Turite pažymėti įrašus, kuriems norite siųsti tiesioginį el. laišką</value>
+    <comment>Message shown when user tries to send bulk email and the records to sedn to are not selected</comment>
+  </data>
+  <data name="Form_Title_Draft_Status_Prefix_For_Appointment">
+    <value>[Juodraštis]</value>
+    <comment>"[Draft]" string to be prefixed for form title for draft appointments.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_Appointment">
+    <value>Buvo aptiktos šios galimos planavimo kliūtys. Galbūt negalėsite planuoti šios veiklos, kol jos nebus pašalintos.</value>
+    <comment>SchedulingConflict Dialog  Description for Appointment</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_RecurringAppointment">
+    <value>Pirma paskyra: nustatytos nurodytos planavimo problemos.</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description1_RecurringAppointment">
+    <value>Vėlesnės paskyros: „{#Brand_CRM} “ netikrina dalyvių pasiekiamumo.</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSave_Button">
+    <value>Ignoruoti ir įrašyti</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSave Button</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSend_Button">
+    <value>Ignoruoti ir siųsti</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSend Button</comment>
+  </data>
+  <data name="ErrorCode.ResourceConstraints">
+    <value>{0} nepasiekiamas dėl išteklių apribojimų.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceBusy">
+    <value>{0} šiuo metu nepasiekiamas.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceOverCapacity">
+    <value>{0} neturi būtinų pajėgumų.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceNonBusinessHours">
+    <value>{0} planuojami ne jų darbo valandomis.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="PreviewTemplateNotSelected">
+    <value>Norėdami tęsti, pažymėkite šabloną sąraše.</value>
+    <comment>Message to display when user not selected any template.</comment>
+  </data>
+  <data name="LOCID_EMAIL_NORECORDS_MSG">
+    <value>Nepasirinkta įrašų.</value>
+    <comment>Message to display when bulk email is invoked without any records selected.</comment>
+  </data>
+  <data name="UnresolvedEmailsNotAllowed">
+    <value>Jūsų organizacija neleidžia siųsti el. laiškų neišspręstiems el. pašto gavėjams. Turite pašalinti šiuos gavėjus arba kreipkitės į sistemos administratorių, kad leistų siųsti laiškus su neišspręstais el. pašto gavėjais. Sužinoti daugiau: https://go.microsoft.com/fwlink/p/?linkid=2127763</value>
+    <comment>Message to display when allowUnresolvedPartiesOnEmailSend is false and the form contains unresolved parties.</comment>
+  </data>
+  <data name="UnresolvedEmailsCanNotSendEmail">
+    <value>Negalima siųsti el. laiško:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is false and the control contains unresolved parties.</comment>
+  </data>
+  <data name="AttachmentDownloadError" xml:space="preserve">
+    <value>Kilo problema atsisiunčiant {0}. Bandykite dar kartą vėliau.</value>
+    <comment>Error message shown if an error occurs while trying to download an attachment</comment>
+  </data>
+  <data name="AttachmentDownloadGenericError" xml:space="preserve">
+    <value>Kilo problema atsisiunčiant priedus. Bandykite dar kartą vėliau.</value>
+    <comment>Error message shown if an error occurs while trying to download attachments</comment>
+  </data>
+  <data name="AttachmentDownloadFormNotification" xml:space="preserve">
+    <value>Atsisiunčiami priedai...</value>
+    <comment>Form notification text that is shown while attachments are downloading</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_LearnMore">
+    <value>Sužinokite daugiau</value>
+    <comment>Continue Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_Continue">
+    <value>Tęsti</value>
+    <comment>Cancel Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultTitle">
+    <value>Sužinokite daugiau</value>
+    <comment>Default title for the learn more dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultPrimaryText">
+    <value>Ši operacija neleidžiama.</value>
+    <comment>Default primary text for the learn more dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Title">
+    <value>Pašto dėžutė išjungta</value>
+    <comment>Title for the Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Text">
+    <value>El. laiško nepavyksta išsiųsti, nes {0} pašto dėžutė išjungta. Jei tęsite, el. laiško būsena bus nustatyta kaip laukianti.</value>
+    <comment>Text displayed in the Mailbox Not Enabled dialog for Admin</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Instruction_NonAdmin">
+    <value>Kreipkitės į sistemos administratorių, norėdami ją įjungti.</value>
+    <comment>Instruction text for nonadmins in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="InsertDataAddDataFieldButtonLabel" xml:space="preserve">
+    <value>Įtraukti duomenų lauką</value>
+    <comment>Button label for adding new entry of dynamic text</comment>
+  </data>
+  <data name="InsertDataDefaultTextLabel" xml:space="preserve">
+    <value>Numatytasis tekstas</value>
+    <comment>Label for default text control</comment>
+  </data>
+  <data name="InsertDataRecordTypeLabel" xml:space="preserve">
+    <value>Įrašo tipas</value>
+    <comment>Column name of record type in dynamic text</comment>
+  </data>
+  <data name="InsertDataFieldNameLabel" xml:space="preserve">
+    <value>Lauko pavadinimas</value>
+    <comment>Column name of field names in dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveUpButtonLabel" xml:space="preserve">
+    <value>Perkelti aukštyn</value>
+    <comment>Button label for moving up one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveDownButtonLabel" xml:space="preserve">
+    <value>Perkelti žemyn</value>
+    <comment>Button label for moving down one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataRemoveButtonLabel" xml:space="preserve">
+    <value>Pašalinti</value>
+    <comment>Button label for removing one row of dynamic text</comment>
+  </data>
+  <data name="UnableToInsertDynamicText" xml:space="preserve">
+    <value>Nepavyksta įterpti dinaminio teksto. Pasirinkite, kur įterpti arba atnaujinti dinaminį tekstą šablono temoje arba tekste.</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="UnableToInsertDynamicTextInSignature" xml:space="preserve">
+    <value>Nepavyksta įterpti dinaminio teksto. Pasirinkite, kur įterpti arba atnaujinti dinaminį tekstą šablono tekste.</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="PreOctoberNotification" xml:space="preserve">
+    <value>Ieškoti šito funkcijos patvirtinime</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="malformedDefaultValue" xml:space="preserve">
+    <value>Numatytame teksto lauke negali būti tokių simbolių: ; &amp; &lt; &gt; {}</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="RequiredFieldMustBeFilledIn" xml:space="preserve">
+    <value>Būtini laukai turi būti užpildyti.</value>
+    <comment>Required fields must be filled in.</comment>
+  </data>
+  <data name="ConvertingEmailToTemplateProgressMessage" xml:space="preserve">
+    <value>El. laiškas konvertuojamas į šabloną...</value>
+    <comment>Progress message to show during email to template conversion</comment>
+  </data>
+  <data name="CreatingTemplateProgressMessage" xml:space="preserve">
+    <value>Kuriamas šablonas...</value>
+    <comment>Progress message to show during new template creation</comment>
+  </data>
+  <data name="RequiredFieldsErrorMessage" xml:space="preserve">
+    <value>Visi būtini laukai turi būti užpildyti.</value>
+    <comment>Error message to show when required fields are not filled in</comment>
+  </data>
+  <data name="CopyingAttachmentsToTemplateMessage" xml:space="preserve">
+    <value>Kopijuojami priedai į šabloną...</value>
+    <comment>Progress message to show during copying attachments to template on (email or template) -&gt; template conversion</comment>
+  </data>
+  <data name="TemplateCopyString" xml:space="preserve">
+    <value>Kopija</value>
+    <comment>'Copy' word to append to the end of the cloned template</comment>
+  </data>
+  <data name="ErrorCopyAttachmentsToTemplate" xml:space="preserve">
+    <value>Nepavyksta nukopijuoti kai kurių priedų iš šio el. laiško. Pabandykite dar kartą nusiųsti šiuos failus.</value>
+    <comment>Error message shown when one or more attachments fail to copy over to new template.</comment>
+  </data>
+  <data name="ErrorCreateTemplate" xml:space="preserve">
+    <value>Kilo problema kuriant šabloną. Bandykite dar kartą arba kreipkitės į „Microsoft“ palaikymo tarnybą.</value>
+    <comment>Error message shown when createRecord fails for template creation.</comment>
+  </data>
+  <data name="ErrorRetrievingAttachmentsForTemplate" xml:space="preserve">
+    <value>Kilo problema perkeliant priedus į šabloną. Kreipkitės į administratorių arba į „Microsoft“ palaikymo tarnybą.</value>
+    <comment>Error message shown when the retrieve call fails to get the attachments to copy over to the template.</comment>
+  </data>
+  <data name="WarningSomeAttachmentsNotSupported" xml:space="preserve">
+    <value>Laiškas buvo įrašytas kaip „Microsoft Dynamics 365“ el. laiško įrašas, tačiau nepavyko įrašyti visų jo priedų. Priedo įrašyti negalima, jei jis užblokuotas arba jei jo failo tipas netinkamas.</value>
+    <comment>Notification shown when some attachments couldn't be supported for a received email</comment>
+  </data>
+  <data name="WarningEmailSubjectLengthMessage" xml:space="preserve">
+    <value>Norėdami išvengti temos eilutės nukirpimo, kai įterpiate į el. laišką, sutrumpinkite jos ilgį.</value>
+    <comment>Warning message shown when the email template subject length is greater than 800</comment>
+  </data>
+  <data name="EndSeriesDialogTopLabel" xml:space="preserve">
+    <value>Pasirinkite, kada norite baigti paskyrų seką. Panaikinsime visas būsimas šios sekos paskyras.</value>
+    <comment>End Series Dialog description</comment>
+  </data>
+  <data name="EndSeriesDialogCompletionTypeLabel" xml:space="preserve">
+    <value>Saugosime pabaigtos sekos praeities paskyras. Ką norėtumėte daryti su atidarytomis praeities paskyromis?</value>
+    <comment>End Series Dialog Description of radio options</comment>
+  </data>
+  <data name="EndSeriesDialogOptionCancel" xml:space="preserve">
+    <value>Atšaukti</value>
+    <comment>Radio option for Cancel in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionComplete" xml:space="preserve">
+    <value>Užbaigti</value>
+    <comment>Radio option for Complete in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionKeepOpen" xml:space="preserve">
+    <value>Palikti atidarytą</value>
+    <comment>Radio option for Keep Open in End Series Dialog</comment>
+  </data>
+  <data name="SameDayString" xml:space="preserve">
+    <value>Ta pati diena</value>
+    <comment>String for Same Day radio option</comment>
+  </data>
+  <data name="SameWeekString" xml:space="preserve">
+    <value>Ta pati savaitė</value>
+    <comment>String for Same Week radio option</comment>
+  </data>
+  <data name="UpdateSeriesDialogCancelCurrentSeries" xml:space="preserve">
+    <value>Dabartinės sekos atšaukimas ir naujos sukūrimas.</value>
+    <comment>Cancel current series</comment>
+  </data>
+  <data name="UpdateSeriesDialogFirstLabel" xml:space="preserve">
+    <value>Pageidavote modifikuoti esamos sekos pasikartojimų informaciją. Dabartinė seka bus atšaukta ir bus sukurta nauja seka.</value>
+    <comment>Update Series First Label</comment>
+  </data>
+  <data name="UpdateSeriesDialogSecondLabel" xml:space="preserve">
+    <value>Sekos buvusių egzempliorių retrospektyva bus išsaugota, bet visi atidaryti egzemplioriai bus panaikinti.</value>
+    <comment>Update Series Second Label</comment>
+  </data>
+  <data name="RecurrenceErrorIntervalOutOfRange" xml:space="preserve">
+    <value>Pasikartojimo šablonuose negali būti reikšmių, kuriuos mažesnės kaip 1 arba didesnės kaip 99. Įveskite tinkamą pasikartojimo šabloną.</value>
+    <comment>Error string for interval Out of Range in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorDayOfMonthOutOfRange" xml:space="preserve">
+    <value>Mėnesio dienų skaičius negali viršyti 31</value>
+    <comment>Error string for number of days of month in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceWarningDayOfMonthMore" xml:space="preserve">
+    <value>Kai kurie mėnesiai turi mažiau kaip {0} d. Šiais mėnesiais įvykis įvyks paskutinę mėnesio dieną.</value>
+    <comment>Warning string when number of days specific is more than 28 in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorEndLessThanStartDate" xml:space="preserve">
+    <value>Jūsų įvesta pradžios data yra vėlesnė nei pabaigos data. Pasirinkite tinkamą pradžios datą.</value>
+    <comment>Error string when pattern end date is less than start date</comment>
+  </data>
+  <data name="RecurrenceErrorInvalidDateForMonth" xml:space="preserve">
+    <value>Reikšmė nepatenka į pasirinkto mėnesio intervalą. Įveskite tinkamą reikšmę.</value>
+    <comment>Error string when number of days is invalid for that month in yearly recurrence pattern</comment>
+  </data>
+  <data name="RecurrenceErrorFebruary29DaysStartDate" xml:space="preserve">
+    <value>Šablono pradžios data turi būti keliamieji metai, kad būtų galima sukurti paskyras vasario 29 d.</value>
+    <comment>Error string when pattern start date is not a leap year for chosen 29th Feb</comment>
+  </data>
+  <data name="RecurrenceWarningFebruary29" xml:space="preserve">
+    <value>Ne keliamaisiais metais vasaris turi mažiau kaip 29 dienas. Tokiais atvejais įvykis įvyks paskutinę vasario dieną.</value>
+    <comment>Warning string for 29th February in Recurrence Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOpenError" xml:space="preserve">
+    <value>Atidarant sekos pabaigos dialogo langą įvyko klaida</value>
+    <comment>Error in opening End Series Dialog</comment>
+  </data>
+  <data name="RecurrenceDialogAlert" xml:space="preserve">
+    <value>Pasikartojimo dialogo lango įspėjimas</value>
+    <comment>Recurrence Dialog alert</comment>
+  </data>
+  <data name="RecurrenceDialogStartTimeField" xml:space="preserve">
+    <value>Pradžios laikas</value>
+    <comment>Start time control display name</comment>
+  </data>
+  <data name="RecurrenceDialogEndTimeField" xml:space="preserve">
+    <value>Pabaigos laikas</value>
+    <comment>End time control display name</comment>
+  </data>
+  <data name="JoinTeamsMeeting_Label" xml:space="preserve">
+    <value>Prisijungti prie „Teams“ susitikimo</value>
+    <comment>Label for the teams meeting button</comment>
+  </data>
+  <data name="TeamsChatsPreview_Label" xml:space="preserve">
+    <value>„Teams“ pokalbiai (peržiūros versija)</value>
+    <comment>'chat' : displayname for Teams chats (Preview) LabelText</comment>
+  </data>
+  <data name="TeamsChatsJoinNotAllowedDialogAlert" xml:space="preserve">
+    <value>Negalite naudotis šia funkcija, nes nesate pokalbio narys. Norėdami prisijungti prie pokalbių, kurių savininkas nesate, susisiekite su administratoriumi.</value>
+    <comment>Cannot join teams chat dialog alert</comment>
+  </data>
+  <data name="TeamsChatsDisabledDialogAlert" xml:space="preserve">
+    <value>Ši funkcija nepasiekiama, nes Microsoft Teams nėra įjungta agento patirties profilyje, kuriam priklausote („App Profile Manager“). Kreipkitės į savo administratorių.</value>
+    <comment>Teams integration disabled dialog alert</comment>
+  </data>
+  <data name="InvalidEmailAddressCannotSend">
+    <value>Pašalinkite šiuos netinkamus el. laiškus:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is true and the control contains invalid email addresses.</comment>
+  </data>
+  <data name="ReminderToAttachmentKeywords">
+    <value>pridėti,pridėjimas,pridėta,priedas,priedai</value>
+    <comment>Keywords to find in email body to pop attachment dialog when no attachment is added.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogTitle">
+    <value>Priedo priminimas</value>
+    <comment>Reminder attachment Dialog Title.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogText">
+    <value>Gali būti, kad pamiršote pridėti failą.</value>
+    <comment>Reminder attachment Dialog text.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogOk">
+    <value>Siųsti</value>
+    <comment>Reminder attachment Dialog Ok button.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogCancel">
+    <value>Nesiųsti</value>
+    <comment>Reminder attachment Dialog cancel button.</comment>
+  </data>
+  <data name="EmailDraftDeleteMessage" xml:space="preserve">
+    <value>Jei prieš uždarydami neįrašysite patys arba neišsiųsite, šis el. laiškas bus panaikintas.</value>
+    <comment>Used to delete draft emails for multisession apps created from Reply/Reply All/Forward</comment>
+  </data>
+  <data name="DownloadEmailAsAttachment_Download" xml:space="preserve">
+    <value>Atsisiųsti </value>
+  </data>
+  <data name="DownloadEmailAsAttachment_MB" xml:space="preserve">
+    <value> MB</value>
+  </data>
+  <data name="DownloadEmailAsAttachment_PreparingFile" xml:space="preserve">
+    <value>Failas ruošiamas</value>
+  </data>
+  <data name="EmailDraftDeleteMessageonAttachmentControlLoad" xml:space="preserve">
+    <value>Priedo atnaujinimai neįrašyti. Norėdami išsaugoti neįrašytų priedų atnaujinimus, įrašykite formą.</value>
+    <comment>Used to inform user to save changes when attachments are updated on Email form.</comment>
+  </data>
+  <data name="GuardRailFailedDialogTitle" xml:space="preserve">
+    <value>Apsaugos patikrinimai nepavyko</value>
+    <comment>Title shown in the guardrail failure dialog.</comment>
+  </data>
+  <data name="GuardRailFailedDialogText" xml:space="preserve">
+    <value>Parengtas el. laiškas nepraėjo apsaugos patikrinimų. Peržiūrėkite turinį ir siųskite iš naujo įsitikindami, kad jis atitinka apsaugos reikalavimus.</value>
+    <comment>Main explanation text shown when guardrails fail in the dialog.</comment>
+  </data>
+  <data name="GuardrailsFailed" xml:space="preserve">
+    <value>Nesėkmingi apsaugos patikrinimai</value>
+    <comment>Label for listing failed guardrail names.</comment>
+  </data>
+  <data name="GuardrailFailureReasons" xml:space="preserve">
+    <value>Priežastis (-ys)</value>
+    <comment>Label for listing failure reasons for each violated guardrail.</comment>
+  </data>
+  <data name="GuardrailCloseButton" xml:space="preserve">
+    <value>Uždaryti</value>
+    <comment>Text for the dialog Close button.</comment>
+  </data>
+  <data name="SeeTerms" xml:space="preserve">
+    <value>Žr. sąlygas</value>
+    <comment>Hyperlink label for opening Microsoft Terms URL.</comment>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>nepavyko</value>
+    <comment>Lowercase 'failed' suffix used in inline status messages.</comment>
+  </data>
+  <data name="AiDisclaimerText" xml:space="preserve">
+    <value>DI sugeneruotas turinys gali būti neteisingas. Prieš naudodami įsitikinkite, kad DI sugeneruotas turinys yra tikslus ir tinkamas.</value>
+    <comment>AI safety disclaimer shown below guardrail messages.</comment>
+  </data>
+</root>

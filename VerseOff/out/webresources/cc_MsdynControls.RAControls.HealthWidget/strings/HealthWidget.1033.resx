@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ErrorLoadHealthWidget" xml:space="preserve">
+    <value>Error while loading HealthWidget</value>
+  </data>
+  <data name="ErrorLoadKPIData" xml:space="preserve">
+    <value>Error occured while retrieving KPI data</value>
+  </data>
+  <data name="ErrorNoReadPrivilege" xml:space="preserve">
+    <value>You do not have sufficient privileges to view this chart. Contact your system administrator.</value>
+  </data>
+  <data name="UnableToRetrieveRelationshipHealth" xml:space="preserve">
+    <value>We are unable to get analytics data. Please try again later.</value>
+  </data>
+  <data name="UnableToRetrieveNextActivity" xml:space="preserve">
+    <value>Unable to retrieve next activity. Please try again later.</value>
+  </data>
+  <data name="UnableToRetrieveLastActivty" xml:space="preserve">
+    <value>Unable to retrieve last activity. Please try again later.</value>
+  </data>
+  <data name="KpiDataNotPresent" xml:space="preserve">
+    <value>Gathering information for relationship health. Please try again later.</value>
+  </data>
+  <data name="RelationshipHealthNotApplicable" xml:space="preserve">
+    <value>Relationship health is not applicable in this entity.</value>
+  </data>
+  <data name="NextInteraction" xml:space="preserve">
+    <value>Next interaction</value>
+  </data>
+  <data name="LastInteraction" xml:space="preserve">
+    <value>Last interaction</value>
+  </data>
+  <data name="LoadingLabel" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="NextActivityNoScheduled" xml:space="preserve">
+    <value>No upcoming activities scheduled</value>
+  </data>
+  <data name="LastActivityNoScheduled" xml:space="preserve">
+    <value>No previous activity found</value>
+  </data>
+  <data name="NoOfTotalActivities" xml:space="preserve">
+    <value>{0} Activities</value>
+  </data>
+  <data name="GatheringInformationForNextActivity" xml:space="preserve">
+    <value>Gathering information for next activity. Please try again later.</value>
+  </data>
+  <data name="GatheringInformationForLastActivity" xml:space="preserve">
+    <value>Gathering information for last activity. Please try again later.</value>
+  </data>
+  <data name="FairRelationAndDecliningDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Fair&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Declining&lt;/span&gt;</value>
+  </data>
+  <data name="FairRelationAndDecliningText" xml:space="preserve">
+    <value>Relationship health is fair and Declining</value>
+  </data>
+  <data name="FairRelationAndImprovingDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Fair&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Improving&lt;/span&gt;</value>
+  </data>
+  <data name="FairRelationAndImprovingText" xml:space="preserve">
+    <value>Relationship health is fair and Improving</value>
+  </data>
+  <data name="FairRelationAndSteadyDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Fair&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Steady&lt;/span&gt;</value>
+  </data>
+  <data name="FairRelationAndSteadyText" xml:space="preserve">
+    <value>Relationship health is fair and Steady</value>
+  </data>
+  <data name="FairRelationAndUnknownDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Fair&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Not enough information&lt;/span&gt;</value>
+  </data>
+  <data name="FairRelationAndUnknownText" xml:space="preserve">
+    <value>Relationship health is fair and Not enough information</value>
+  </data>
+  <data name="GoodRelationAndDecliningDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Good&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Declining&lt;/span&gt;</value>
+  </data>
+  <data name="GoodRelationAndDecliningText" xml:space="preserve">
+    <value>Relationship health is good and Declining</value>
+  </data>
+  <data name="HealthWidget" xml:space="preserve">
+    <value>Relationship health</value>
+  </data>
+  <data name="GoodRelationAndImprovingText" xml:space="preserve">
+    <value>Relationship health is good and improving</value>
+  </data>
+  <data name="GoodRelationAndSteadyDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Good&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Steady&lt;/span&gt;</value>
+  </data>
+  <data name="GoodRelationAndSteadyText" xml:space="preserve">
+    <value>Relationship health is good and Steady</value>
+  </data>
+  <data name="GoodRelationAndImprovingDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Good&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Improving&lt;/span&gt;</value>
+  </data>
+  <data name="GoodRelationAndUnknownDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Good&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Not enough information&lt;/span&gt;</value>
+  </data>
+  <data name="GoodRelationAndUnknownText" xml:space="preserve">
+    <value>Relationship health is good and not enough information.</value>
+  </data>
+  <data name="PoorRelationAndDecliningDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Poor&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Declining&lt;/span&gt;</value>
+  </data>
+  <data name="PoorRelationAndDecliningText" xml:space="preserve">
+    <value>Relationship health is poor and Declining</value>
+  </data>
+  <data name="PoorRelationAndImprovingDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Poor&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Improving&lt;/span&gt;</value>
+  </data>
+  <data name="PoorRelationAndImprovingText" xml:space="preserve">
+    <value>Relationship health is poor and Improving</value>
+  </data>
+  <data name="PoorRelationAndSteadyDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Poor&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Steady&lt;/span&gt;</value>
+  </data>
+  <data name="PoorRelationAndSteadyText" xml:space="preserve">
+    <value>Relationship health is poor and Steady</value>
+  </data>
+  <data name="PoorRelationAndUnknownDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Poor&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;not enough information&lt;/span&gt;</value>
+  </data>
+  <data name="PoorRelationAndUnknownText" xml:space="preserve">
+    <value>Relationship health is poor and not enough information.</value>
+  </data>
+  <data name="UnknownRelationAndDecliningDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Not enough information&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Declining&lt;/span&gt;</value>
+  </data>
+  <data name="UnknownRelationAndDecliningText" xml:space="preserve">
+    <value>Not enough information and Declining</value>
+  </data>
+  <data name="UnknownRelationAndImprovingDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Not enough information&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Improving&lt;/span&gt;</value>
+  </data>
+  <data name="UnknownRelationAndImprovingText" xml:space="preserve">
+    <value>Not enough information and Improving</value>
+  </data>
+  <data name="UnknownRelationAndSteadyDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Not enough information&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;Steady&lt;/span&gt;</value>
+  </data>
+  <data name="UnknownRelationAndSteadyText" xml:space="preserve">
+    <value>Not enough information about relationship health and trending Steady</value>
+  </data>
+  <data name="UnknownRelationAndUnknownDisplay" xml:space="preserve">
+    <value>&lt;span class='healthtext-strong-font'&gt;Not enough information&lt;/span&gt; relationship and &lt;span class='healthtext-strong-font'&gt;not enough information&lt;/span&gt;</value>
+  </data>
+  <data name="UnknownRelationAndUnknownText" xml:space="preserve">
+    <value>Not enough information and not enough information.</value>
+  </data>
+  <data name="NoClosedActivityAssociated" xml:space="preserve">
+    <value>Complete your first activity to see relationship health.</value>
+  </data>
+  <data name="NoClosedActivityAssociatedIn120Days" xml:space="preserve">
+    <value>No closed activities in the last 120 days. Health is computed only on activities created within one year and are closed in the past 120 days.</value>
+  </data>
+  <data name="HealthComputationInProgress" xml:space="preserve">
+    <value>Calculating relationship health. This may take up to 24 hours.</value>
+  </data>
+  <data name="HealthScoreLastUpdated" xml:space="preserve">
+    <value>Relationship health is calculated based on emails, appointments, phone calls and tasks associated with the record, between Dynamics 365 users and External contacts.</value>
+  </data>
+  <data name="DisabledRelationshipAnalyticsText" xml:space="preserve">
+    <value>Relationship Analytics has been disabled for your organization.  To see relationship KPIs, please contact your administrator.</value>
+  </data>
+  <data name="RequestMessageForEnablingRA" xml:space="preserve">
+    <value>Want to know the health of this relationship?  Ask your system administrator to enable Relationship Analytics.</value>
+  </data>
+  <data name="NotScheduled" xml:space="preserve">
+    <value>Not Scheduled</value>
+  </data>
+  <data name="Good" xml:space="preserve">
+    <value>Good</value>
+  </data>
+  <data name="Fair" xml:space="preserve">
+    <value>Fair</value>
+  </data>
+  <data name="Poor" xml:space="preserve">
+    <value>Poor</value>
+  </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>In progress</value>
+  </data>
+  <data name="NoClosedActivity" xml:space="preserve">
+    <value>No closed activity</value>
+  </data>
+  <data name="NotEnoughInfo" xml:space="preserve">
+    <value>Not enough info</value>
+  </data>
+  <data name="SomethingWentWrong" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="EntityCreatedBeforeTwoYears" xml:space="preserve">
+    <value>Health not applicable</value>
+  </data>
+  <data name="CouldNotCalculate" xml:space="preserve">
+    <value>Could not calculate</value>
+  </data>
+  <data name="CreatedBeforeTwoYears" xml:space="preserve">
+    <value>Entity older than 2 years</value>
+  </data>
+  <data name="createdBeforeTwoYearsMsg" xml:space="preserve">
+    <value>This entity is older than two years. Health can be computed only for the entities created within two years.</value>
+  </data>
+  <data name="RecordOlderThanTwoYears" xml:space="preserve">
+    <value>Relationship health score can't be calculated for record older than 2 years old.</value>
+  </data>
+  <data name="NoClosedActivitiesLast120Days" xml:space="preserve">
+    <value>No closed activities for this record during the last 120 days.</value>
+  </data>
+  <data name="FourtyEightHours" xml:space="preserve">
+    <value>It takes up to 48 hours to calculate health score.</value>
+  </data>
+  <data name="ProblemInCalulation" xml:space="preserve">
+    <value>There was a problem in calculating health score. Try again later.</value>
+  </data>  
+  <data name="Improving" xml:space="preserve">
+    <value>Improving</value>
+  </data>
+  <data name="Declining" xml:space="preserve">
+    <value>Declining</value>
+  </data>
+  <data name="Steady" xml:space="preserve">
+    <value>Steady</value>
+  </data>
+  <data name="WidgetInfo" xml:space="preserve">
+    <value>Relationship health is calculated based on emails, appointments, phone calls, and tasks between a seller and the customer.</value>
+  </data>
+  <data name="ControlInfo" xml:space="preserve">
+    <value>Shows your overall relationship health with the customer and recent trend including the next activity that is scheduled for the record and the last activity that you completed for the record. Relationship Health widget is applicable only for contacts, leads and opportunities.</value>
+  </data>
+  <data name="NoInformation" xml:space="preserve">
+    <value>No Information</value>
+  </data>
+  <data name="ActivityInteraction" xml:space="preserve">
+    <value>{0} {1} at {2}</value>
+    <comment>Phonecall 6/18/2021 at 8:00 AM</comment>
+  </data>
+  <data name="Phonecall" xml:space="preserve">
+    <value>Phonecall</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Appointment" xml:space="preserve">
+    <value>Appointment</value>
+  </data>
+  <data name="LastUpdated" xml:space="preserve">
+    <value>Last updated:</value>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>Learn more.</value>
+  </data>
+
+</root>

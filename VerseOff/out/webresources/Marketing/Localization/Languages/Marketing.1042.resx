@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>종료 시간은 시작 시간 이후로 지정해야 합니다.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>시작 시간은 종료 시간 이전으로 지정해야 합니다.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>시작 날짜는 비워 둘 수 없습니다.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>종료 날짜는 비워 둘 수 없습니다.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0}이(가) 필요합니다.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>토픽은 필수입니다.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>제목은 필수입니다.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>템플릿은 필수입니다.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>시작 시간은 필수입니다.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>종료 시간은 필수입니다.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>새 {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>캠페인(템플릿)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>이 활동을 배포하기 전에 변경 내용을 저장해야 합니다.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>캠페인 활동은 한 번만 배포할 수 있습니다.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>채널 유형을 선택하고 양식을 저장한 다음 다시 시도하십시오.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>이 옵션은 연락 방법을 선택한 경우에만 사용할 수 있습니다. 이 양식에서는 연락 방법을 사용할 수 없으므로 활동을 배포할 수 없습니다. {#Brand_CRM} 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>메일 병합을 통한 직접 전자 메일이 꺼져 있습니다. 활동을 배포할 수 없습니다. {#Brand_CRM} 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>선택한 채널에는 배포 기능을 사용할 수 없습니다.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>{#Brand_CRM} 웹 클라이언트에서는 메일 병합을 사용할 수 없습니다. 메일 병합을 수행하려면 {#Brand_CRM_Outlook_Short}를 사용해야 합니다.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>연관된 마케팅 목록이 없으므로 이 캠페인 활동을 배포할 수 없습니다. 이 캠페인 활동에 마케팅 목록을 연결하고 다시 시도하십시오.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>양식에서 모든 경고 및 오류를 수정하십시오.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>이 캠페인 활동을 배포할 수 없습니다. {#Brand_CRM} 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>{0} 제거</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>캠페인에서 선택한 {0} {1}을 제거하시겠습니까?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>현재 페이지에서 레코드를 찾을 수 없으므로 퀵 캠페인을 만들 수 없습니다.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>한 번에 둘 이상의 마케팅 목록에 대해 퀵 캠페인을 만들 수 없습니다. 마케팅 목록을 하나만 선택하십시오.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>이 옵션은 현재 보기에서 사용할 수 없습니다. {0} 옵션을 사용하면 일부 보기가 작동하지 않습니다. 다른 보기나 다른 퀵 캠페인 옵션을 선택하고 다시 시도하십시오.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>비활성 상태인 마케팅 목록에 대해 퀵 캠페인을 실행할 수 없습니다. 마케팅 목록을 활성화하거나 다른 마케팅 목록을 선택하고 다시 시도하십시오.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>이 옵션은 현재 보기에서 사용할 수 없습니다. 다른 퀵 캠페인 옵션을 선택하고 다시 시도하십시오.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>담당자는 필수입니다.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>큐는 필수입니다.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>선택한 레코드</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>현재 페이지의 모든 레코드</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>모든 페이지의 모든 레코드</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>이 리본 작업은 지원되지 않습니다.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>이 작업을 수행하려면 먼저 하나 이상의 레코드를 선택해야 합니다.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>이 작업에는 50개 이상의 레코드가 허용되지 않습니다</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>이 작업은 동일한 유형의 레코드에 대해서만 수행할 수 있습니다.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>처리 중입니다. 기다려 주십시오...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>오류 발생 선택한 작업이 하나 이상의 레코드에 대해 완료되지 않았습니다.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>{0} 제거</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>검색 조건을 기준으로 제거할 구성원을 찾으십시오.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>검색 조건을 기준으로 추가할 구성원을 찾으십시오.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>검색 조건을 기준으로 마케팅 목록에 보관할 구성원을 평가하십시오. 마케팅 목록을 업데이트하십시오.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>계속하기 전에 레코드를 선택해야 합니다.</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>제거</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>추가</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>거래처</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>연락처</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>잠재 고객</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>평가</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>리스트에서 선택한 {0} {1}을 제거하시겠습니까?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>마케팅 목록을 다른 마케팅 목록에 복사 확인</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>마케팅 목록을 다른 마케팅 목록에 복사하도록 선택했습니다.</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>이 작업은 대상 마케팅 목록에 선택한 마케팅 목록의 모든 구성원을 추가합니다.</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>변경 내용이 저장되지 않았습니다. 변경 내용을 저장하고 다시 시도하십시오.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>확인</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>처리 중...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>요청을 처리하는 동안 잠시 기다려 주십시오...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>퀵 캠페인을 생성할 수 없음</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>이름: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>활동: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>범위: 선택한 레코드 ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>범위: 현재 페이지의 모든 레코드 ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>범위: 모든 페이지의 모든 레코드</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>담당자: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>퀵 캠페인 명칭은 필수입니다.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>활동 타입은 필수입니다.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>퀵 캠페인에 포함된 레코드의 담당자</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>나</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>연결된 캠페인 활동이 열려 있으므로 이 캠페인을 비활성화할 수 없습니다. 캠페인 활동을 종료하고 다시 시도하십시오.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>캠페인과 관련된 열린 캠페인 활동이 하나 이상 있기 때문에 선택한 캠페인의 {0}을(를) 비활성화할 수 없습니다. 열린 캠페인 활동을 닫고 다시 시도하십시오.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>이 마법사에 대한 전자 메일 콘텐츠가 너무 큽니다. 전자 메일 템플릿으로 만든 다음 여기에서 해당 템플릿을 선택하십시오.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>퀵 캠페인에서는 대량 편집을 지원하지 않습니다.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>목록이 잠김</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>{0} 목록이 잠겼음</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>동적 목록에서 작업을 수행할 수 없습니다.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>비활성 항목을 캠페인에 연결할 수 없습니다.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>비활성 항목을 캠페인에 연결할 수 없습니다.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>첨부 파일에 대한 참조를 찾을 수 없습니다.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>전자 메일 받는 사람이 없거나 전자 메일 받는 사람의 전자 메일 주소가 잘못되었습니다.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>첨부 파일 유형이 잘못되었거나 너무 큽니다. 이 첨부 파일을 업로드하거나 다운로드할 수 없습니다.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>받는 사람이 "팩스 허용 안 함"으로 표시되어 있습니다.</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>전자 메일 받는 사람이 잘못되었습니다.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>작업 전자 메일 템플릿에 오류가 발생했습니다.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>작업 전송 전자 메일에 오류가 발생했습니다.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>작업 메모 첨부 파일에 오류가 발생했습니다.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>작업 만들기 메모에 오류가 발생했습니다.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>작업 처리 취소 활동에 오류가 발생했습니다.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>작업 처리 활동에 오류가 발생했습니다.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>작업 활동 첨부 파일에 오류가 발생했습니다.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>작업 만들기 활동에 오류가 발생했습니다.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>이 마케팅 목록 구성원은 이전에 이 통신을 수신했기 때문에 연락되지 않았습니다.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>대상 레코드에 보낸 사람의 전자 메일 주소가 없습니다.</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>지정된 전자 메일 주소가 없어 발신자에게 전자 메일 주소가 설정되어 있지 않습니다.</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>수신자의 통신 기본 설정 또는 이메일 주소 문제로 인해 이메일이 전송되지 않았습니다.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>고객 주소 유형이 잘못되었습니다.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>메일 병합 도중에 예기치 않은 오류가 발생했습니다.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>사용자가 메일 병합 작업을 취소했습니다.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>이 고객은 전자 메일 주소가 없어 필터링됩니다.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>수신자가 비활성 상태이기 때문에 제외되었습니다.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>대량 작업 관련 워크플로 규칙이 없습니다.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>스팸 방지 설정 또는 수신자의 통신 기본 설정으로 인해 수신자가 제외되었습니다.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>약속 배포에 대한 참석자를 지정할 수 없습니다.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>약속 배포에 대한 보낸 사람을 지정할 수 없습니다.</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>약속 배포에 대한 이끌이를 지정할 수 없습니다.</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>지원되지 않는 목록 구성원 유형입니다.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>무단으로 작업을 수행하려 했습니다.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>사용자가 필요한 권한을 보유하고 있지 않습니다.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>사용자에게 이 작업을 수행할 수 있는 권한이 없습니다.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>전자 메일 주소가 잘못되었습니다. 자세한 내용은 시스템 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>이 양식에 {0} 요소가 없습니다. 기능이 영향을 받습니다.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>이 엔터티 유형을 대상으로 하는 마케팅 목록에 대한 영업 기회를 만들 수 없습니다.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>기존 요청이 이미 진행 중입니다. 잠시 후 다시 시도하세요.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>요청이 제출되었습니다. 페이지가 복사된 목록으로 리디렉션될 때까지 기다려주세요.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>새 {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>이 양식을 채워 마케팅 목록에서 선택한 구성원에 대해 새 {0}을(를) 만듭니다. 각 구성원의 레코드에 이 {0}을(를) 새 {0}(으)로 추가하려면 [배포]를 클릭하세요.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>성공적으로 저장됨</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

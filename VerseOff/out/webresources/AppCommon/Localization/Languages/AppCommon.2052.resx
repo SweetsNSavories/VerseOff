@@ -1,0 +1,1493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddToQueueDialog_NoQueueSelected" xml:space="preserve">
+    <value>您尚未选择要添加这些记录的队列。请选择队列，然后重试。</value>
+    <comment>The above error message is displayed when the user has selected no queue to add the current item to [Category="Servicing"].</comment>
+  </data>
+  <data name="AssignToQueue_noSelectedUser" xml:space="preserve">
+    <value>您当前没有选定任何要将此用户的记录重新分派给其的用户。请选择要分派的用户，然后重试。</value>
+  </data>
+  <data name="Dialog_AssignQueue_Description_Plural" xml:space="preserve">
+    <value>您已选择 {0} 个项目。要将它们分派给谁?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_AssignQueue_Description_Single" xml:space="preserve">
+    <value>您已选择 {0} 个项目。要将它分派给谁?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is "1".</comment>
+  </data>
+  <data name="Dialog_QueueItemRoute_Description_Plural" xml:space="preserve">
+    <value>您已经选择 {0} 个项目。要如何传送它?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_QueueItemRoute_Description_Single" xml:space="preserve">
+    <value>您已经选择了 1 个项目。要如何传送它?</value>
+  </data>
+  <data name="Dialog_RejectEmail_Title" xml:space="preserve">
+    <value>拒绝主要电子邮件地址</value>
+  </data>
+  <data name="Dialog_RejectEmail_Description_Plural" xml:space="preserve">
+    <value>是否要拒绝 {0} 个队列的主要电子邮件地址?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_RejectEmail_Description_Single" xml:space="preserve">
+    <value>是否要拒绝 {0} 个队列的主要电子邮件地址?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_RejectEmail_Text" xml:space="preserve">
+    <value>此操作将拒绝选定队列的主要电子邮件地址。</value>
+  </data>
+  <data name="Dialog_ApproveEmail_Title" xml:space="preserve">
+    <value>批准主要电子邮件</value>
+  </data>
+  <data name="Dialog_ApproveEmail_Description_Plural" xml:space="preserve">
+    <value>是否要批准 {0} 个队列的主要电子邮件地址?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_ApproveEmail_Description_Single" xml:space="preserve">
+    <value>是否要批准 {0} 个队列的主要电子邮件地址?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_ApproveEmail_Text" xml:space="preserve">
+    <value>执行此操作，即表示您同意与 Microsoft Dynamics 365 共享来自 Microsoft Exchange 或任何其他已配置的电子邮件系统的数据。Microsoft Dynamics 365 受单独的隐私协议的约束，可单击下方的“隐私协议”按钮访问该协议</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>出现错误，无法针对一个或多个记录完成选定的操作。</value>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage" xml:space="preserve">
+    <value>如果您是拥有 Exchange 订阅的 Office 365 客户，我们将配置 Dynamics 365 与 Exchange 的集成并启用 Dynamics 365 App for Outlook。</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 1.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage1" xml:space="preserve">
+    <value>要开始设置，请阅读并接受以下内容:</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 2.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage2" xml:space="preserve">
+    <value>一旦启用自动配置，即表示您同意与外部系统共享您的数据。从外部系统导入 Microsoft Dynamics 365 的数据受我们的隐私声明约束，该隐私声明位于</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 3.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage3" xml:space="preserve">
+    <value>在此处找到。</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 4.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage4" xml:space="preserve">
+    <value>有关更多信息，请参阅我们的</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 5.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage5" xml:space="preserve">
+    <value>文档。</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 6.</comment>
+  </data>
+  <data name="SMBAdvSettings_ProgressIndicatorMessage" xml:space="preserve">
+    <value>正在处理</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ErrorStrings" xml:space="preserve">
+    <value>请选择用户或团队</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ReassigningRecords" xml:space="preserve">
+    <value>正在重新分派记录</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeactivationOfDefaultView" xml:space="preserve">
+    <value>无法停用默认视图。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeleteConfirmation" xml:space="preserve">
+    <value>是否要删除此视图? 此操作无法撤消。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeletionOfDefaultView" xml:space="preserve">
+    <value>在未将其他视图指定为默认视图前，您不能删除默认视图。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeletionOfSystemDefinedView" xml:space="preserve">
+    <value>无法删除系统定义的视图。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_SetAsDefaultForDeactivatedView" xml:space="preserve">
+    <value>只能将活动视图设为默认视图。</value>
+  </data>
+  <data name="SMBAdvSettings_UnknownErrorMessage" xml:space="preserve">
+    <value>出现错误。无法针对一个或多个记录完成选定的操作。</value>
+  </data>
+  <data name="UserErrorExecutingAssociations" xml:space="preserve">
+    <value>执行用户与角色的关联更新请求时出错。</value>
+  </data>
+  <data name="TeamErrorExecutingAssociations" xml:space="preserve">
+    <value>执行团队与角色的关联更新请求时出错。</value>
+  </data>
+  <data name="Dialog_QueueItemPick_Description_Plural" xml:space="preserve">
+    <value>您已选定 {0} 个项</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_QueueItemPick_Description_Single" xml:space="preserve">
+    <value>您已选定 1 个项</value>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Button_Label_Release" xml:space="preserve">
+    <value>发行​​</value>
+    <comment>Label for the Release button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Button_Label_Remove" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="Dialog_QueueItemRelease_Label_Single" xml:space="preserve">
+    <value>项目将分派回给队列负责人以供其他成员进行选取</value>
+  </data>
+  <data name="Dialog_QueueItemRelease_Title" xml:space="preserve">
+    <value>发布队列项</value>
+  </data>
+  <data name="Dialog_QueueItemRemoveNew_Description_Plural" xml:space="preserve">
+    <value>是否要从队列中移除选定的 {0} 个项?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemRemoveNew_Description_Single" xml:space="preserve">
+    <value>是否要从队列中移除所选项?</value>
+    <comment>instruction text.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemRemove_Title" xml:space="preserve">
+    <value>删除队列项</value>
+    <comment>Dialog title for the Queue Item Remove dialog. [Category="Servicing"]</comment>
+  </data>
+  <data name="SMBAdvSettings_ActionOnMultipleRecordsFailed" xml:space="preserve">
+    <value>出现错误，无法针对一个或多个记录完成选定的操作。</value>
+  </data>
+  <data name="SMBAdvSettings_ActivatedBPFDeletionError" xml:space="preserve">
+    <value>无法删除已激活的 BPF</value>
+    <comment>Message that needs to be displayed when user tries to delete the activated BPF</comment>
+  </data>
+  <data name="SMBAdvSettings_GenericErrorOccurred" xml:space="preserve">
+    <value>出现意外错误。请重试。如果问题仍然存在，请查看 Microsoft Dynamics 365 社区中是否有解决方案或与您组织的管理员联系。要获得更多帮助，请与 Microsoft 支持联系并提供关于此错误的技术详细信息。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_NoRecordSelected" xml:space="preserve">
+    <value>未选择记录</value>
+    <comment>Message when no user is selected from grid and Enabling or Disabling of User is attempted.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ChangeManager_HeaderDescription" xml:space="preserve">
+    <value>您已选择 {0} 个用户。请指定要分派给选定的 {0} 个用户的经理。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_ChangeManager_HeaderDescription" xml:space="preserve">
+    <value>您已选择 {0} 个用户。请指定要分派给选定的 {0} 个用户的经理。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_JoinTeam_HeaderDescription" xml:space="preserve">
+    <value>您要将哪些团队应用于选定的 {0} 个用户?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_JoinTeam_HeaderDescription" xml:space="preserve">
+    <value>您要将哪些团队应用于选定的 {0} 个用户?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>您要将哪些角色应用于选定的 {0} 个用户?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>您要将哪些角色应用于选定的 {0} 个用户?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>您要将哪些角色应用于选定的 {0} 个团队?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Teams_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>您要将哪些角色应用于选定的 {0} 个团队?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="EditTeam_UpdateSuccessful_Notification" xml:space="preserve">
+    <value>已成功更新团队。</value>
+  </data>
+  <data name="ExcelWordTemplate_FileUploadErrorLabel" xml:space="preserve">
+    <value>将文件上载到服务器时出错</value>
+  </data>
+  <data name="ExcelWordTemplate_FileErrorLabel" xml:space="preserve">
+    <value>文件类型无效。请选择扩展名为 xlsx、docx 的文件</value>
+  </data>
+  <data name="ExcelWordTemplate_OkButtonLabel" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="ExcelWordTemplate_UploadLabel" xml:space="preserve">
+    <value>上载</value>
+  </data>
+  <data name="ExcelWordTemplate_NextLabel" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="ExcelWordtemplate_DoneLabel" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="ExcelWordTemplate_SelectEntityLabel" xml:space="preserve">
+    <value>请选择一个实体</value>
+  </data>
+  <data name="ExcelWordTemplate_SelectTemplateLabel" xml:space="preserve">
+    <value>请选择一个模板</value>
+  </data>
+  <data name="ExcelWordTemplate_TabErrorLabel" xml:space="preserve">
+    <value>意外的选项卡名称:</value>
+  </data>
+  <data name="SubjectTreeTemplate_OkButtonLabel" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="SubjectTreeTemplate_SubjectEmptyTitleError" xml:space="preserve">
+    <value>请输入主题标题</value>
+  </data>
+  <data name="SWITCHSCENARIO_NOTE" xml:space="preserve">
+    <value>警告: 如果您切换方案，上一方案中的所有数据都将丢失。此外，新方案的示例数据可能会不同。</value>
+  </data>
+  <data name="SWITCHSCENARIO_ALL_SCENARIOS" xml:space="preserve">
+    <value>全部方案</value>
+  </data>
+  <data name="SWITCHSCENARIO_FIELD_SERVICE" xml:space="preserve">
+    <value>Field Service</value>
+  </data>
+  <data name="SWITCHSCENARIO_MARKETING" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+  <data name="SWITCHSCENARIO_PROJECT_SERVICE" xml:space="preserve">
+    <value>Project service automation</value>
+  </data>
+  <data name="SWITCHSCENARIO_SUCCESS_NOTIFICATION" xml:space="preserve">
+    <value>操作已完成。</value>
+  </data>
+  <data name="SWITCHSCENARIO_SALES" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="SWITCHSCENARIO_SERVICE" xml:space="preserve">
+    <value>Customer service</value>
+  </data>
+  <data name="SMBAdvSettings_EmailSetup_TestAndEnableAsyncJobSubmitted" xml:space="preserve">
+    <value>正在后台对所选记录运行测试和启用。</value>
+  </data>
+  <data name="SMBAdvSettings_NewDialog_EmptyBPFName" xml:space="preserve">
+    <value>请输入一个名称。</value>
+  </data>
+  <data name="SMBAdvSettings_NewDialog_EmptyEntityName" xml:space="preserve">
+    <value>请选择一个实体。</value>
+  </data>
+  <data name="SMBAdvSettings_Team_AddMembers_HeaderDescription" xml:space="preserve">
+    <value>您已选择向 {0} 个团队添加成员。单击“用户”框旁边的“查找”可以选择要添加的成员。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Teams_AddMembers_HeaderDescription" xml:space="preserve">
+    <value>您已选择向 {0} 个团队添加成员。单击“用户”框旁边的“查找”可以选择要添加的成员。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMembers_HeaderDescription" xml:space="preserve">
+    <value>您已选择从 {0} 个团队中删除成员。单击“用户”框旁边的“查找”可以选择要删除的成员。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMultipleMembers_HeaderDescription" xml:space="preserve">
+    <value>您已选择从 {0} 个团队中删除成员。单击“用户”框旁边的“查找”可以选择要删除的成员。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ChangeManager_SuccessNotification" xml:space="preserve">
+    <value>操作已完成。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_JoinTeams_SuccessNotification" xml:space="preserve">
+    <value>操作已完成。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ManageRoles_SuccessNotification" xml:space="preserve">
+    <value>操作已完成。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ReassignRecords_SuccessNotification" xml:space="preserve">
+    <value>操作已完成。</value>
+  </data>
+  <data name="SMBAdvSettings_Team_AddMembers_SuccessNotification" xml:space="preserve">
+    <value>操作已完成。</value>
+  </data>
+  <data name="SMBAdvSettings_Team_ManageRoles_SuccessNotification" xml:space="preserve">
+    <value>操作已完成。</value>
+  </data>
+  <data name="SMBAdvSettings_Team_ReassignRecords_SuccessNotification" xml:space="preserve">
+    <value>操作已完成。</value>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMembers_SuccessNotification" xml:space="preserve">
+    <value>操作已完成。</value>
+  </data>
+  <data name="SMBAdvSettings_FormFactorOrDeviceNotSupportedMessage" xml:space="preserve">
+    <value>不支持针对此外形规格或设备配置高级设置。</value>
+  </data>
+  <data name="SMBAdvSettings_ManageRoles_TableHeader" xml:space="preserve">
+    <value>角色名称</value>
+  </data>
+  <data name="Dialog_QueueItemReleaseNew_Description_Plural" xml:space="preserve">
+    <value>是否要发布选定的 {0} 个项?</value>
+    <comment>&gt;{NumberedPlaceholder="{0}"}. Placeholder 0 is number.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemReleaseNew_Description_Single" xml:space="preserve">
+    <value>是否要发布选定项?</value>
+    <comment>instruction text.[Category="Servicing"]</comment>
+  </data>
+  <data name="AlertDialog_Text_Territory_Warning" xml:space="preserve">
+    <value>您将更改用户的区域。这会将该用户从先前分派的区域中移除。是否要继续?</value>
+  </data>
+  <data name="Goal_Recalculate_Notification" xml:space="preserve">
+    <value>数据汇总可能需要一些时间。单击“确定”以继续。</value>
+    <comment>Notification to be shown after click of Goal Recalculate</comment>
+  </data>
+  <data name="Goal_Recalculate_DialogTitle" xml:space="preserve">
+    <value>确认重新计算</value>
+    <comment>Confirm recalculation</comment>
+  </data>
+  <data name="GoalDateValidationErrorMessage" xml:space="preserve">
+    <value>为此目标指定的时间段不正确。“截止”日期必须早于或等于“起始”日期。</value>
+    <comment>Preview Records button text on the advanced find page used in the Goal Rollup Query form. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Text_GoalFormNotification">
+    <value>出现下列错误:</value>
+    <comment>Error message shown on goal form Notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="GoalFormNotification_HyperLinkText">
+    <value>开放式目标</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_ActiveChildGoal_Deactivate_Warning">
+    <value>当前目标具有一个或多个现行子目标。建议您不要关闭存在现行子目标的目标。是否仍要关闭此目标?</value>
+    <comment>Warning message shown to the user when he tries to deactivate a goal which has active child goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_Date_Change_Warning">
+    <value>更改此目标的时间段的同时，还将更改其从属目标。单击“确定”以继续。</value>
+    <comment>Warning message shown to the user when he tries to change the start date/end date of a goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044814">
+    <value>The fiscal settings of your organization have changed since the time this goal was changed. You might want to realign the dates to the new fiscal settings.</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="DocTemplate_Label_For_Dynamic_Excel" xml:space="preserve">
+    <value>选择动态 Excel 的列</value>
+    <comment>Select Columns for Dynamic Excel Label</comment>
+  </data>
+  <data name="DocTemplate_Label_For_Pivot" xml:space="preserve">
+    <value>选择数据透视 Excel 的列</value>
+    <comment>Select Columns for Pivot Label</comment>
+  </data>
+  <data name="ExportToExcelOnline_CancelLabel" xml:space="preserve">
+    <value>取消</value>
+    <comment>Return to Excel Online</comment>
+  </data>
+  <data name="ExportToExcelOnline_ConfirmLabel" xml:space="preserve">
+    <value>确定</value>
+    <comment>Return to Dynamics 365</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Info" xml:space="preserve">
+    <value>若要查看导入状态，请转到“设置”&gt;“数据管理”&gt;“导入”</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Text" xml:space="preserve">
+    <value>已提交了您要导入的数据。</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Title" xml:space="preserve">
+    <value>已提交要导入的数据</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Warning" xml:space="preserve">
+    <value>在导入流程完成前请不要对此数据进行其他编辑。</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_ReturnToCrm_Text" xml:space="preserve">
+    <value>在 Excel 中所做的更改将丢失，除非您向 Dynamics 365 提交更改内容。</value>
+    <comment>Text</comment>
+   </data>
+  <data name="ExportToExcelOnline_DataSubmitted_StatusText" xml:space="preserve">
+    <value>要查看导入状态，请单击“跟踪进度”按钮。</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_ReturnToCrm_Title" xml:space="preserve">
+    <value>所有 Excel 中的更改将会丢失</value>
+    <comment>Text</comment>
+   </data>
+  <data name="ExportToExcelOnline_Alert_Goto_ImportsPage" xml:space="preserve">
+    <value>跟踪进度</value>
+    <comment>Text</comment>
+   </data>
+  <data name="Error_Message_0x8004480c">
+    <value>不能同时更新父目标和指标/期间信息。</value>
+    <comment>Error message shown when user tries to update parentgoalid and metric/period at same time.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044900">
+    <value>无法更新子目标上的指标。</value>
+    <comment>Error message shown when user tries to update goal metric on a child goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044901">
+    <value>无法更新子目标上与目标期间相关的属性。</value>
+    <comment>Error message shown when user tries to update goal period settings on a child goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044902">
+    <value>无法更新具有子目标的目标上的指标。</value>
+    <comment>Error message shown when user tries to update goal metric on a root goal with associated child goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044903">
+    <value>对于会计期间类型的目标，必须设置会计期间属性。</value>
+    <comment>Error message shown when user does not provide fiscal year and fiscal period info for period type goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044905">
+    <value>当前目标的度量或时间段值与其父目标不匹配。请更改这些值，然后重试。</value>
+    <comment>Error message shown when metric of goal and parent goal does not match.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044906">
+    <value>当前目标的度量或时间段值与其父目标不匹配。请更改这些值，然后重试。</value>
+    <comment>Error message shown when time period of goal and parent goal does not match.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044907">
+    <value>对于自定义期间类型的目标，目标开始日期和目标结束日期属性必须包含数据。</value>
+    <comment>Error message shown when user does not provide fiscal year and fiscal period info for period type goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044910">
+    <value>无法更改此目标的时间段，因为存在一个或多个已结束的附属目标。</value>
+    <comment>Error message shown when user changes the period info of goal which has one or more closed subordinate goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f683">
+    <value>您为其定义汇总查询的字段在度量中未指定。请刷新窗体，然后重试。</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9602</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f685">
+    <value>您选定的汇总查询已停用。请选择活动查询，然后重试。</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9602</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f686">
+    <value>您选择的目标度量已停用。请选择活动的目标度量，然后重试。</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+      <ObjectType>9603</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalRollupCriteriaNotSpecifiedErrorMessage">
+    <value>必须指定汇总条件。</value>
+    <comment>Error message shown on goal form if consider only goal owner records is false and no query is specified.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="GoalManagement_OverriddenGoal_Notification">
+    <value>已手动更新此目标的汇总数据。{#Brand_CRM} 将不自动为此目标汇总数据。</value>
+    <comment>Notification message shown on a goal form which has overridden the rolled up values.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_OnDemandRollup_Warning">
+    <value>数据汇总可能需要一些时间。单击“确定”以继续。</value>
+    <comment>Warning message shown when user clicks the Recalculate button for a goal.[Category="Sales goal mgmt: Rollup"]</comment>
+  </data>
+  <data name="GoalManagement_RollupError_ErrorRecordLink">
+    <value>目标 {0} 出现汇总错误。</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the name of the goal with an error[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x80041136">
+    <value>在汇总此目标树期间出错。目标 {0} 的汇总值超出了最大值。</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the name of the goal with an error[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F681">
+    <value>无法更新此目标的汇总数据。附加到此目标的目标指标未定义汇总属性。</value>
+    <comment>Rollup error message.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+      <ObjectType Singular="Goal Metric" Plural="Goal Metrics">9603</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F682">
+    <value>已实现百分比值已设置为 0，因为已计算值不在允许的范围中。</value>
+    <comment>Error shown if the percentage value computed is not a valid value.[Category="Sales goal mgmt: Rollup"]</comment>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F687">
+    <value>目标度量中引用的记录类型或字段无效。</value>
+    <comment>Rollup error message.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal Metric" Plural="Goal Metrics">9603</ObjectType>
+    </ObjectReferences>
+    <DoesNotReference>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </DoesNotReference>
+  </data>
+  <data name="Dialog_Close_Goal_Title">
+    <value>确认关闭目标</value>
+    <comment>Dialog page title for close goal confirmation dialog page.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Dialog_Delete_DeleteGoal">
+    <value>一个或多个选定目标可能具有关联的子目标。建议在删除这些目标之前，先将子目标分派给其他父目标。单击“确定”以删除选定目标。</value>
+    <comment>Message displayed in the delete goal dialog page. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="AF_RollupQuery_Btn_Preview">
+    <value>查看记录(&amp;V)</value>
+    <comment>Preview Records button text on the advanced find page used in the Goal Rollup Query form. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="AF_RollupQuery_Btn_Back">
+    <value>返回查询(&amp;Q)</value>
+    <comment>Clicking on this button will take the user back to the advanced find screen. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Group_Salesperformance">
+    <value>销售业绩</value>
+    <comment>Sitemap title for sales performance group.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Group_Sales">
+    <value>销售</value>
+    <comment>Sitemap title for sales group.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="NamePlural_Metric">
+    <value>目标度量</value>
+    <comment>Title shown on Settings-Business Management Page for Metric.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+    </ObjectReferences>
+    <DoesNotReference>
+      <ObjectType>9600</ObjectType>
+    </DoesNotReference>
+  </data>
+  <data name="Web.Settings.BusinessManagement.Metric">
+    <value>定义和管理贵组织跟踪的目标类型。</value>
+    <comment>Description shown on Settings-Business Management Page for Metric.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_10">
+    <value>会计年度设置</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_37">
+    <value>请选择所有的设置选项。</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_45">
+    <value>不支持启动闰年 2 月 29 日的会计日历。</value>
+    <comment>Error message text when the user tries to set the start date of the fiscal calendar to February 29th of a leap year.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_48">
+    <value>不支持启动年份大于 2100 的会计日历。</value>
+    <comment>Error message text when the user tries to set the start date of the fiscal calendar to 2101 or greater.[Category="Sales goal mgmt: Quota/UI work/Charts/Reports"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_235">
+    <value>设置会计期间。</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_104">
+    <value>开始日期</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_109">
+    <value>会计期间模板</value>
+    <comment>Label for type of fiscal period[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_115">
+    <value>命名依据</value>
+    <comment>Label to indicate whether the name of the fiscal year is based on the start date or end date.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_128">
+    <value>如何显示?</value>
+    <comment>Label for display settings section on fiscal period dialog[Category="Sales goal mgmt: Quota/UI work/Charts/Reports"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_270">
+    <value>会计年度</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_146">
+    <value>您要如何显示会计期间?</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_149">
+    <value>会计期间</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_166">
+    <value>您要如何连接会计年度和会计期间?</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_169">
+    <value>显示为</value>
+    <comment>Label to indicate how the fiscal year string should be displayed.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_170">
+    <value>基于月份名称的月度周期名称</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.Title">
+    <value>设置汇总到期时间和汇总频率。</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupExpiryTime">
+    <value>目标结束日期之后汇总将停止的天数</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupExpiryTimeUnit">
+    <value>天</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupFrequency">
+    <value>汇总重复频率</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupFrequencyUnit">
+    <value>小时</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.ManageAttribute.Goal.DisplayNameUpdate.Info">
+    <value>此字段与 {0} 字段相关。建议您同时更改相关字段的显示名称。</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the attribute display name. Informational message show to the user when he updates the display names of any of the rollup related attributes in goal entity.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="ManageRoles.Goal.UpdateRoles.Warning">
+    <value>对目标记录授予更高级别的特权可允许具有此安全角色的用户查看他们无权访问的记录的聚合数据。单击“确定”以继续。</value>
+    <comment>Informational message show to the user when he increases the access settings of privileges in goal entity.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+      <ObjectType>8</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="SystemCustomization.SettingsPage.FiscalYearSettings.Help">
+    <value>设置会计年度和会计期间的开始日期、模板以及显示选项以用来跟踪销售目标。</value>
+    <comment>Help text for fiscal settings link in the UI.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.Recalculate">
+    <value>重新计算整个目标树的实际值数据。</value>
+    <comment>Super tooltip for a ribbon control. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.ToolTipTitle">
+    <value>关闭目标</value>
+    <comment>Tool tip title for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.ToolTipDescription">
+    <value>关闭这些目标。&lt;br&gt;&lt;br&gt;您可从“已关闭目标”视图中重新激活这些目标。</value>
+    <comment>Super tool tip text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.Alt">
+    <value>关闭目标</value>
+    <comment>Alt text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.LabelText">
+    <value>关闭目标</value>
+    <comment>Label text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.Recalculate">
+    <value>重新计算</value>
+    <comment>Label text for recalculate button on ribbon. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Ribbon.Goal.Alt.Recalculate">
+    <value>重新计算</value>
+    <comment>Alt text for recalculate button on ribbon. [Category="Application Infrastructure"].</comment>
+  </data>
+  <data name="Ribbon.Goal.ToolTipTitle.ChangeGoalOwner">
+    <value>更换目标经理</value>
+    <comment>Tooltip title on the goal ribbon for Change Goal Owner button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.ChangeGoalOwner">
+    <value>将其他用户指定为此目标的经理。</value>
+    <comment>Super tooltip on the goal ribbon for Change Goal Owner button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>8</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.ChangeGoalOwner">
+    <value>更换目标经理</value>
+    <comment>Label text for ChangeGoalOwner button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.Alt.ChangeGoalOwner">
+    <value>更换目标经理</value>
+    <comment>Alt text for ChangeGoalOwner button on ribbon.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"].</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipTitle.Realign">
+    <value>与会计期间保持一致</value>
+    <comment>Tooltip title on the ribbon form for align button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.Realign">
+    <value>将目标的开始和结束日期与新会计期间设置保持一致。</value>
+    <comment>Super tooltip on the ribbon form for align button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.Realign">
+    <value>与会计期间保持一致</value>
+    <comment>Label text for align button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Ribbon.Goal.Alt.Realign">
+    <value>与会计期间保持一致</value>
+    <comment>Alt text for align button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Dialog_Title_Realign">
+    <value>重新调整开始和结束日期</value>
+    <comment>Title for realign dialog. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Dialog_Desc_Realign">
+    <value>此操作会将此目标的开始和结束日期更改为与新会计年度设置一致。单击“确定”以继续。</value>
+    <comment>Text for realign dialog. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044800">
+    <value>该目标指标正由一个或多个目标使用，无法删除。</value>
+    <comment>Message shown when user tries to delete a metric associated with goal[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044801">
+    <value>无法保存对汇总字段定义所做的更改，因为相关目标指标正由一个或多个已结束的目标使用。</value>
+    <comment>Message shown when user tries to update Rollup Attribute which has associated closed goals[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044802">
+    <value>已存在同名目标指标。请指定其他名称，然后重试。</value>
+    <comment>Message shown when user tries to create a metric with an already existing name[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044809">
+    <value>使用此汇总字段的目标指标与一个或多个目标相关联。请解除关联并重试。</value>
+    <comment>Message shown when user tries to delete Rollup Attribute which has associated goals[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalForm.RollupAttributes.NavigationBarHeader.Title">
+    <value>参与记录</value>
+    <comment>Title of the Navigation Bar For Rollup attributes on Goal form.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="RollUpAttribute.Form.Alert">
+    <value>必须为所有必填字段指定值。</value>
+    <comment>Alert shown when some fields are empty on Roll Up Attribute form.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Goal.UnSupported.Forms">
+    <value>此实体当前在基于统一界面框架构建的应用程序中不受支持。要创建或编辑此实体的记录，请使用 Dynamics 365 - 自定义应用。</value>
+    <comment>Message for unsupported forms in UCI.</comment>
+  </data>
+  <data name="Error_Message_0x80044814">
+    <value>贵组织的会计设置自此目标更改之后已更改。您可能希望将日期重新分派给新的会计设置。</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="DocTemplate_DialogUpload_exceltitle" xml:space="preserve">
+    <value>选择要作为模板上载的文件</value>
+    <comment>Upload Title</comment>
+  </data>
+  <data name="DocTemplate_DialogUpload_wordtitle" xml:space="preserve">
+    <value>选择要作为模板上载的文件</value>
+    <comment>Upload Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_exceltitle" xml:space="preserve">
+    <value>下载用于创建模板的文件</value>
+    <comment>Download Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_wordtitle" xml:space="preserve">
+    <value>下载用于创建模板的文件</value>
+    <comment>Download Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_exceldescription" xml:space="preserve">
+    <value>受支持的文件类型: .xlsx</value>
+    <comment>Excel supported file type message</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_worddescription" xml:space="preserve">
+    <value>受支持的文件类型: .docx</value>
+    <comment>Word supported file type message</comment>
+  </data>
+  <data name="DocTemplate_Label_For_View_My_Templates" xml:space="preserve">
+    <value>查看我的模板</value>
+    <comment>View My Templates Label</comment>
+  </data>
+  <data name="DocTemplate_Not_Valid_File_Type" xml:space="preserve">
+    <value>不是支持的有效文件类型</value>
+    <comment>Not a Valid File Type Supported Error</comment>
+  </data>
+  <data name="DocTemplate_Empty_File_Uploaded" xml:space="preserve">
+    <value>未选择文件，此次上载失败。请在选择文件后重试。</value>
+    <comment>Empty file uploaded Error</comment>
+  </data>
+  <data name="DocTemplate_Invalid_File_Type_Uploaded" xml:space="preserve">
+    <value>上传的文件类型无效</value>
+    <comment>Invalid File Type Uploaded Error</comment>
+  </data>
+  <data name="DocTemplate_Successfully_Uploaded" xml:space="preserve">
+    <value>个人模板已创建。</value>
+    <comment>Successfully Uploaded Message</comment>
+  </data>
+  <data name="DocTemplate_Successfully_Downloaded" xml:space="preserve">
+    <value>已成功下载文件。请修改并上传以创建模板。</value>
+    <comment>Successfully Downloaded Message</comment>
+  </data>
+  <data name="DocTemplate_Word_Successfully_Downloaded" xml:space="preserve">
+    <value>已成功下载。</value>
+    <comment>Successfully Downloaded Message</comment>
+  </data>
+  <data name="DocTemplate_Error_Displaying_Notification" xml:space="preserve">
+    <value>显示通知时出错</value>
+    <comment>Error displaying notification</comment>
+  </data>
+  <data name="DocTemplate_Activate_Title" xml:space="preserve">
+    <value>确认激活</value>
+    <comment>Title name</comment>
+  </data>
+  <data name="DocTemplate_Dectivate_Title" xml:space="preserve">
+    <value>确认停用</value>
+    <comment>Title name</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Activate_text" xml:space="preserve">
+    <value>是否确实要激活所选 {0} 文档模板?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Dectivate_text" xml:space="preserve">
+    <value>是否要停用所选的 {0} 个文档模板? 如果您愿意，则可以稍后重新激活。</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Activate_btn" xml:space="preserve">
+    <value>激活</value>
+    <comment>Activate button</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Deactivate_btn" xml:space="preserve">
+    <value>停用</value>
+    <comment>Deactivate button</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Cancel_btn" xml:space="preserve">
+    <value>取消</value>
+    <comment>Cancel button</comment>
+  </data>
+  <data name="DocTemplate_FormDialog_Activate_text" xml:space="preserve">
+    <value>是否确实要激活所选文档模板?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_FormDialog_Deactivate_text" xml:space="preserve">
+    <value>是否确实要停用所选文档模板?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Error_Downloading_Message" xml:space="preserve">
+    <value>下载模板时出错</value>
+    <comment>Downloading error message</comment>
+  </data>
+  <data name="DocTemplate_Confirm_Button" xml:space="preserve">
+    <value>确定</value>
+    <comment>Confirm Button</comment>
+  </data>
+  <data name="Dialog_Calendar_Duplicate_Name" xml:space="preserve">
+    <value>具有此名称的时间表已存在。请指定其他名称</value>
+    <comment>This is the text that appears to prompt the user to select a different calndar name</comment>
+  </data>
+  <data name="CustomerServiceSchedule_Header_Label" xml:space="preserve">
+    <value>创建客户服务时间表</value>
+    <comment>This is the text that appears on Customer Service Schedule MDD</comment>
+  </data>
+  <data name="HolidaySchedule_Header_Label" xml:space="preserve">
+    <value>创建节日时间表</value>
+    <comment>This is the text that appears on Holiday Schedule MDD</comment>
+  </data>
+  <data name="CustomerServiceSchedule_Provide_Name" xml:space="preserve">
+    <value>请为服务时间表输入名称</value>
+    <comment>This is the text that appears to prompt the user when an error is encountered during the creation of calendar</comment>
+  </data>
+  <data name="HolidaySchedule_Provide_Name" xml:space="preserve">
+    <value>请为节日时间表输入名称</value>
+    <comment>This is the text that appears to prompt the user when an error is encountered during the creation of calendar</comment>
+  </data>
+  <data name="ServiceProcessingMessage" xml:space="preserve">
+    <value>正在处理</value>
+  </data>
+  <data name="Dialog_CalendarRule_State_Existing" xml:space="preserve">
+    <value>现有</value>
+  </data>
+  <data name="Dialog_CalendarRule_State_New" xml:space="preserve">
+    <value>新建(不关联周计划)</value>
+  </data>
+  <data name="Dialog_CalendarRule_DoNotObserveHolidaySchedule" xml:space="preserve">
+    <value>不遵守</value>
+  </data>
+  <data name="Dialog_CalendarRule_ObserveHolidaySchedule" xml:space="preserve">
+    <value>遵守</value>
+  </data>
+  <data name="Dialog_CustomerServiceSchedule_SelectSchedule" xml:space="preserve">
+    <value>选择节日时间表。</value>
+  </data>
+  <data name="Dialog_CustomerServiceSchedule_SelectTimeZone" xml:space="preserve">
+    <value>选择时区。</value>
+  </data>
+  <data name="Dialog_CalenderRule_GenericErrorOccurred" xml:space="preserve">
+    <value>出现意外错误。请重试。如果问题仍然存在，请查看 Microsoft Dynamics 365 社区中是否有解决方案或与您组织的管理员联系。要获得更多帮助，请与 Microsoft 支持联系并提供关于此错误的技术详细信息。</value>
+  </data>
+  <data name="Shortcut_To_Clipboard_Error" xml:space="preserve">
+    <value>无法将此链接复制到剪贴板。</value>
+    <comment>Error message when clipboard operation failed [Category="Ribbon - M3 - Finalizing"]</comment>
+  </data>
+  <data name="Error_Max_Shortcut_Record_Reached" xml:space="preserve">
+    <value>最多可以针对此操作选择 10 条记录。</value>
+    <comment>The maximum number of records that can be supported for copy/send shortcut action.</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>您必须先选择一个或多个记录才能执行此操作。</value>
+  </data>
+  <data name="Shortcut_To_Clipboard_Unsupported" xml:space="preserve">
+    <value>您使用的浏览器不支持此操作。</value>
+    <comment>Text shown to the user when user clicks an action which is not supported on the user's browser[Category="Cross Browser"]</comment>
+  </data>
+  <data name="UnexpectedErrorMessage" xml:space="preserve">
+    <value>出现错误。所选操作未完成。</value>
+  </data>
+  <data name="AppCommonClientCommon_GenericErrorOccurred" xml:space="preserve">
+    <value>出现意外错误。请重试。如果问题仍然存在，请查看 Microsoft Dynamics 365 社区中是否有解决方案或与您组织的管理员联系。要获得更多帮助，请与 Microsoft 支持联系并提供关于此错误的技术详细信息。</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_RRI" xml:space="preserve">
+    <value>此规则已停用。将不会为添加到指定队列的活动创建记录。</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_ALL" xml:space="preserve">
+    <value>此规则可用。将基于规则设置为添加到指定队列的活动创建记录。</value>
+  </data>
+  <data name="Dialog_CalendarRule_Warning" xml:space="preserve">
+    <value>此周计划当前正在使用。更改该计划将会更改 {0} - {1} 之间的工作时间。</value>
+    <comment>This Label contains the string that needs to be displayed as warning message in CSS MDD</comment>
+  </data>
+  <data name="Dialog_CalendarUpdate_Warning" xml:space="preserve">
+    <value>客户服务日历中的更改可能未反映于已在执行的 SLA KPI 记录中。</value>
+    <comment>This Label contains the string that needs to be displayed as warning message.</comment>
+  </data>
+  <data name="Dialog_HolidayUpdate_Warning" xml:space="preserve">
+    <value>客户节日时间表中的更改可能未反映于已在执行的 SLA KPI 记录中。</value>
+    <comment>This Label contains the string that needs to be displayed as warning message.</comment>
+  </data>
+  <data name="Dialog_CalendarRule_Privilege_Error" xml:space="preserve">
+    <value>您无权访问此记录。请联系 Microsoft Dynamics 365 管理员。</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="WorkHour_UnsavedChanges_Message" xml:space="preserve">
+    <value>尚未保存所做的更改。要停留在该页面上，以便保存所做的更改，请单击“取消”。</value>
+  </data>
+  <data name="WorkHour_UnsavedChanges_Title" xml:space="preserve">
+    <value>未保存的更改</value>
+  </data>
+  <data name="Holiday_ConfirmDeleteButton" xml:space="preserve">
+    <value>删除</value>
+    <comment>Button lable for deleting holiday</comment>
+  </data>
+  <data name="Holiday_ConfirmDeleteText" xml:space="preserve">
+    <value>是否要从节日时间表中删除此节日? 您无法撤消此操作。</value>
+    <comment>Text for Delete Holiday Dialog</comment>
+  </data>
+  <data name="Holiday_ConfirmDeleteTitle" xml:space="preserve">
+    <value>确认</value>
+    <comment>Confirmation for Delete</comment>
+  </data>
+  <data name="Holiday_ConfirmMultiDeleteText" xml:space="preserve">
+    <value>是否要从节日时间表中删除选定的 {0} 个节日? 您无法撤消此操作。</value>
+    <comment>Text for Delete Multiple Holiday Dialog</comment>
+  </data>
+  <data name="EndTime_StartTime_Min_Diff" xml:space="preserve">
+    <value>所设置的结束时间不得早于开始时间，或距离开始时间的间隔小于 5 分钟。</value>
+  </data>
+  <data name="WorkHour_RefreshChanges_Message" xml:space="preserve">
+    <value>刷新后您的编辑内容将丢失</value>
+  </data>
+  <data name="WorkHour_RefreshChanges_Title" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="GlobalNotification_CSS_Created" xml:space="preserve">
+    <value>客户服务时间表已创建</value>
+  </data>
+  <data name="GlobalNotification_CSS_Edit" xml:space="preserve">
+    <value>客户服务时间表已保存</value>
+  </data>
+  <data name="Global_Notification_After_SetWorkHours" xml:space="preserve">
+    <value>周计划已更新为新的工作时间</value>
+  </data>
+  <data name="GlobalNotification_HS_Created" xml:space="preserve">
+    <value>节日时间表已创建</value>
+  </data>
+  <data name="CalendarFormTitle_HolidaySchedule" xml:space="preserve">
+    <value>节日时间表</value>
+    <comment>Title to be displayed on calendar form.</comment>
+  </data>
+  <data name="Dialog_Title_RemoveUsers" xml:space="preserve">
+    <value>移除成员</value>
+  </data>
+  <data name="Dialog_Description_RemoveUsers" xml:space="preserve">
+    <value>是否要移除选定的 {0} 个销售员? 此操作将移除当前选定区域的所有成员。此操作无法撤消。不过，您以后可以将销售员重新添加到此区域。</value>
+  </data>
+  <data name="Dialog_RemoveButton_Label_RemoveUsers" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="AlertDialog_Text_RemoveUsers_Failure" xml:space="preserve">
+    <value>无法删除用户。请联系管理员并提供这些信息 - 状态: {0}，statusText: {1}，responseText: {2}</value>
+  </data>
+  <data name="Dialog_HolidayItem_Header_New" xml:space="preserve">
+    <value>添加节日</value>
+  </data>
+  <data name="Dialog_HolidayItem_Header_Edit" xml:space="preserve">
+    <value>编辑节日</value>
+  </data>
+  <data name="Error_End_Must_Be_After_Start" xml:space="preserve">
+    <value>指定的结束时间必须晚于开始时间。</value>
+  </data>
+  <data name="Dialog_HolidayItem_Name_Short" xml:space="preserve">
+    <value>节日名称不应为空。</value>
+  </data>
+  <data name="Dialog_HolidayItem_Name_Long" xml:space="preserve">
+    <value>节日名称太长。</value>
+  </data>
+  <data name="Dialog_HolidayItem_Privilege_Error" xml:space="preserve">
+    <value>您无权访问此记录。请联系 Microsoft Dynamics 365 管理员。</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="GlobalNotification_HolidayItem_AddEdit" xml:space="preserve">
+    <value>节日已保存</value>
+  </data>
+  <data name="GlobalNotification_HolidayItem_Add" xml:space="preserve">
+    <value>节日已创建</value>
+  </data>
+  <data name="QueueItem_Private_Queue_LookUp" xml:space="preserve">
+    <value>专用队列用户查找视图</value>
+  </data>
+  <data name="RECORD_ADDED_TO_NO_QUEUE">
+    <value>此记录没有添加到任何队列。</value>
+  </data>
+  <data name="RECORD_ADDED_TO_MULTIPLE_QUEUES">
+    <value>此记录在多个队列中。转到特定队列查看详细信息。</value>
+  </data>
+  <data name="TeamManagement_Users_Label" xml:space="preserve">
+    <value>用户</value>
+    <comment>Label to use as a prefix for aria label in users look up control.</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromCSV">
+    <value>从 CSV 导入</value>
+    <comment>Import from CSV file</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromXML">
+    <value>从 XML 导入</value>
+    <comment>Import from XML file</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromExcel">
+    <value>从 Excel 导入</value>
+    <comment>Import from Excel file.</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInBytes">
+    <value>字节</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInKB">
+    <value>KB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInMB">
+    <value>MB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInGB">
+    <value>GB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInTB">
+    <value>TB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileFormat">
+    <value>所选文件的文件类型与您选择导入的文件类型不同</value>
+    <comment>Invalid file format than selected filetype</comment>
+  </data>
+  <data name="ImportExport_Label_NoFileSelected">
+    <value>未选择文件。要继续，请选择要导入的文件。</value>
+    <comment>No File Selected</comment>
+  </data>
+  <data name="ImportExport_Label_NoActivityTypeSelected">
+    <value>未选择任何活动类型。要继续，请选择活动类型。</value>
+    <comment>No Activity Type Selected</comment>
+  </data>
+  <data name="ImportExport_Label_NoDataInFile">
+    <value>所选文件未包含任何数据。</value>
+    <comment>no data in file</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileSubmitted">
+    <value>所选文件对 "{0}" 导入无效。</value>
+    <comment>File submitted is not valid for import</comment>
+  </data>
+  <data name="ImportExport_Label_UnmappedFieldConfimationDialogTitle">
+    <value>提交数据</value>
+    <comment>Unmapped Field Confimation Dialog title</comment>
+  </data>
+  <data name="ImportExport_Label_OptionalUnmappedFieldConfimationDialog">
+    <value>向导检测到一个或多个未映射的字段。是否要忽略未映射的字段并继续?</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_MandatoryAndOptionalUnmappedFieldConfimationDialog">
+    <value>向导检测到一个或多个未映射的字段。请注意，未映射的必填字段可能导致导入失败。是否要忽略未映射的字段并继续?</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_MandatoryUnmappedFieldConfimationDialog">
+    <value>某些必填字段尚未映射。这可能会导致无法导入某些记录。</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromExchangeFailed">
+    <value>从 Exchange 导入联系人失败 {0}</value>
+    <comment>mport of Contacts from Exchange has Failed</comment>
+  </data>
+  <data name="ImportExport_Label_UnmappedMandatoryField">
+    <value>向导检测到一个或多个未映射的必填字段</value>
+    <comment>Unmapped Manadatory Field</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileSize">
+    <value>所选文件超出了允许的大小限制。</value>
+    <comment>File size is more than expected</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsWithHistory">
+    <value>是否要删除从所选文件创建的所有记录、该文件的已导入日志和任何相关记录? 此操作无法撤销</value>
+    <comment>Delete Imported Logs with History</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsData">
+    <value>是否要针对选定的导入源文件删除导入的记录? 此操作无法撤消</value>
+    <comment>Delete Imported Logs Data</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsDialogTitle">
+    <value>确认删除</value>
+    <comment>Delete Imported Logs Data Dialog Title</comment>
+  </data>
+  <data name="ImportExport_Label_NoRecordSelected">
+    <value>没有选择要删除的记录</value>
+    <comment>No Record Selected</comment>
+  </data>
+  <data name="ImportExport_Label_BulkDeletion">
+    <value>批量删除</value>
+    <comment>Bulk Deletion</comment>
+  </data>
+  <data name="ImportExport_Label_Confirm">
+    <value>确认</value>
+    <comment>Confirm</comment>
+  </data>
+  <data name="ImportExport_Label_Cancel">
+    <value>取消</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="ImportExport_Label_MultipleDeleteFailures">
+    <value>删除一个或多个记录时遇到故障</value>
+    <comment>Delete</comment>
+  </data>
+  <data name="ImportExport_Label_UnknownFailures">
+    <value>出现意外错误! 请重试。如果问题仍然存在，请查看 Microsoft Dynamics 365 社区中是否有解决方案或与您的管理员联系。要获得更多帮助，请与 Microsoft 支持联系并提供关于此错误的技术详细信息。</value>
+    <comment>Unknown Failures</comment>
+  </data>
+  <data name="ImportExport_Label_PreviligeError">
+    <value>您没有访问 {1} 记录的 {0} 权限。请联系 Microsoft Dynamics 365 管理员以获取帮助。</value>
+    <comment>
+          Displayed when user tries to access something that they do not have the permissions to access [Category="Application Infrastructure"]
+          {NumberedPlaceholder="{0}"} Placeholder 0 is the name of the Privilege Type which is missing.
+          {NumberedPlaceholder="{1}"} Placeholder 1 is the name of the Entity on which the privilege is missing.
+      </comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeMaxLimitExceeded">
+    <value>所选文件超出了允许的大小限制。</value>
+    <comment>File size max limit exceeded</comment>
+  </data>
+  <data name="ImportExport_Label_NoErrorRowsFoundInThisImport">
+    <value>No error rows found in this import.</value>
+    <comment>No error rows found in this import</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsWithHistoryMultipleFiles">
+    <value>是否要删除从所选文件创建的所有记录、这些文件的已导入日志和任何相关记录? 此操作无法撤销。</value>
+    <comment>Delete Imported Logs with History - Multiple Files</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsDataMultipleFiles">
+    <value>是否要针对选定的导入源文件删除导入的记录? 此操作无法撤消。</value>
+    <comment>Delete Imported Logs Data - Multiple Files</comment>
+  </data>
+  <data name="ImportExport_ActivityEntitiesRetrieveError">
+    <value>无法获取活动指针实体的列表</value>
+    <comment>Retrieve Activity Entities</comment>
+  </data>
+  <data name="ImportExport_Label_NoErrorRowsFoundInThisImport">
+    <value>未找到此导入中的错误行。</value>
+    <comment>No error rows found in this import</comment>
+  </data>
+  <data name="ImportExport_Label_TargetAttributeInvalidForMap">
+    <value>此字段对于以下映射无效: {0}，{1}。请纠正这种不一致情况，然后再次导入此数据映射。</value>
+    <comment>Attribute is not valid for mapping. {NumberedPlaceholder="{0}"} Placeholder 0 is the localized display name of the entity. {NumberedPlaceholder="{1}"} Placeholder 1 is the localized display name of the attribute.</comment>
+  </data>
+  <data name="AppCommon.PDF" xml:space="preserve">
+    <value>导出到 PDF</value>
+    <comment>Label  for Export to PDF button.</comment>
+  </data>
+  <data name="AppCommon.PDFToolTip" xml:space="preserve">
+    <value>启动“导出到 PDF”对话框</value>
+    <comment>Tooltip description for Export to PDF button.</comment>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Name_Short" xml:space="preserve">
+    <value>节假日名称不应为空。</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Name_Long" xml:space="preserve">
+    <value>节假日名称太长。</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Privilege_Error" xml:space="preserve">
+    <value>您无权访问此记录。请联系 Microsoft Dynamics 365 管理员。</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="GlobalNotification_BusinessClosureItem_AddEdit" xml:space="preserve">
+    <value>已保存节假日</value>
+  </data>
+  <data name="GlobalNotification_BusinessClosureItem_Add" xml:space="preserve">
+    <value>已创建节假日</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_MDD_Subheader02" xml:space="preserve">
+    <value>在此节假日期间，无法安排资源。但是仍然可以安排其“节假日”设置为“不遵守”的资源。</value>
+  </data>
+  <data name="BusinessClosure_StartTimeInvalid" xml:space="preserve">
+    <value>请指定介于 1753 年和 9999 年之间的节假日开始时间。</value>
+    <comment>Error message occurring when the user enters an invalid start time when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_EndTimeOrDurationNotSpecified" xml:space="preserve">
+    <value>请指定节假日的结束时间或持续时间。</value>
+    <comment>Error message occurring when the user fails to enter an end time or duration value when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_EndTimeInvalid" xml:space="preserve">
+    <value>请指定介于 1753 年和 9999 年之间的节假日结束时间。</value>
+    <comment>Error message occurring when the user enters an invalid end time when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_InvalidStartTimeEndTime" xml:space="preserve">
+    <value>开始时间必须早于结束时间。</value>
+    <comment>Error message occurring when a business closure's end time occurs before start time.</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteText" xml:space="preserve">
+    <value>是否要删除此节假日? 无法撤消此操作。</value>
+    <comment>Text for Delete Business Closure Dialog</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmMultiDeleteText" xml:space="preserve">
+    <value>是否要删除选定的 {0} 个节假日? 无法撤消此操作。</value>
+    <comment>Text for Delete Multiple Business Closure Dialog.{NumberedPlaceholder="{0}"}. Placeholder 0 is the number of selected records.</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteTitle" xml:space="preserve">
+    <value>确认</value>
+    <comment>Confirmation for Delete</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteButton" xml:space="preserve">
+    <value>删除</value>
+    <comment>Button label for deleting business closure</comment>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_DateAndTime_Message" xml:space="preserve">
+    <value>请选择日期和时间</value>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_InProgress_Message" xml:space="preserve">
+    <value>正在执行批量电子邮件计划...</value>
+  </data>
+  <data name="ContextualBulkEmail_Send_InProgress_Message" xml:space="preserve">
+    <value>正在发送批量电子邮件...</value>
+  </data>
+  <data name="ContextualBulkEmail_Form_Notification_Message" xml:space="preserve">
+    <value>不应直接使用批量电子邮件窗体。应仅在销售加速器批量电子邮件模式下使用此窗体。</value>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_Failed_Message" xml:space="preserve">
+    <value>无法安排电子邮件。请重试。如果仍遇到此问题，请联系您的管理员。</value>
+  </data>
+  <data name="ContextualBulkEmail_Send_Failed_Message" xml:space="preserve">
+    <value>无法发送电子邮件。请重试。如果仍遇到此问题，请联系您的管理员。</value>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>2023 年 4 月 1 日起，之前已弃用的 Web 客户端上的旧服务级别协议(SLA)将面临终止支持(EoS)。请务必立即将 Web 客户端上创建的旧 SLA 迁移到统一界面体验以避免功能丢失。有关如何迁移项目的详细信息，请参阅 {0}</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>我确认</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="LearnMore_Label_Text" xml:space="preserve">
+    <value>了解详细信息</value>
+  </data>
+  <data name="Dialog_QueueItemPick_MutliPick_Error" xml:space="preserve">
+    <value>对一个或多个记录执行请求的操作时出现问题。请使用单个记录重试。</value>
+  </data>
+</root>

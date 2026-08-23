@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DynamicProperty_OverrideDialog_SubTitle" xml:space="preserve">
+    <value>Θέλετε να παρακάμψετε αυτήν την ιδιότητα;</value>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Text" xml:space="preserve">
+    <value>Με αυτόν τον τρόπο, μπορείτε να κάνετε αλλαγές στη μεταβιβασμένη έκδοση αυτής της ιδιότητας. Η αρχική μεταβιβασμένη έκδοση αυτής της ιδιότητας θα διατηρηθεί επίσης.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to override the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Title" xml:space="preserve">
+    <value>Επιβεβαίωση παράκαμψης</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_SubTitle" xml:space="preserve">
+    <value>Θέλετε να αντικαταστήσετε αυτήν την ιδιότητα;</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Text" xml:space="preserve">
+    <value>Με αυτόν τον τρόπο, μπορείτε να κάνετε πρόσθετες αλλαγές στην έκδοση αυτής της ιδιότητας που έχει δημοσιευτεί προηγουμένως. Η προηγούμενη έκδοση αυτής της ιδιότητας θα διατηρηθεί επίσης.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to overwrite the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Title" xml:space="preserve">
+    <value>Επιβεβαίωση αντικατάστασης</value>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_39" xml:space="preserve">
+    <value>Εισαγάγετε μια τιμή από {0} έως {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_9" xml:space="preserve">
+    <value>Πρέπει να πληκτρολογήσετε έναν ακέραιο αριθμό μεταξύ {0} και {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvaluestring.warning" xml:space="preserve">
+    <value>Το μήκος συμβολοσειράς για την προεπιλεγμένη τιμή πρέπει να είναι μικρότερο ή ίσο με το μέγιστο επιτρεπόμενο μήκος.</value>
+    <comment>Warning message for Default Value string lenght of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.defaultvalue.warning" xml:space="preserve">
+    <value>Η προεπιλεγμένη τιμή πρέπει να είναι μεγαλύτερη ή ίση με την ελάχιστη τιμή και μικρότερη ή ίση με τη μέγιστη τιμή.</value>
+    <comment>Warning message for Default value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.minvalue.warning" xml:space="preserve">
+    <value>Η ελάχιστη τιμή δεν μπορεί να υπερβαίνει τη μέγιστη τιμή.</value>
+    <comment>Warning message for Minimum value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.optionset.warning" xml:space="preserve">
+    <value>Δεν μπορείτε να ορίσετε μια ιδιότητα συνόλου επιλογών σε απαιτούμενη ή μόνο για ανάγνωση, μέχρι να προσθέσετε τα στοιχεία συνόλου επιλογών και να καθορίσετε μια προεπιλεγμένη τιμή.</value>
+    <comment>Warning message for Dynamic Property of type Option Set.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.readonlyrequired.warning" xml:space="preserve">
+    <value>Πρέπει να καθορίσετε μια προεπιλεγμένη τιμή, επειδή αυτή η ιδιότητα είναι απαιτούμενη και μόνο για ανάγνωση</value>
+    <comment>Warning message for Default Value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.products.ValidToEarlierThanValidFromDate" xml:space="preserve">
+    <value>Η ημερομηνία "Ισχύει έως" δεν μπορεί να προηγείται της ημερομηνίας "Ισχύει από".</value>
+    <comment>Error message to display if the valid to date supplied  is earlier than the valid from date.</comment>
+  </data>
+  <data name="Kit_Products_Section_Name" xml:space="preserve">
+    <value>ΠΡΟΪΟΝΤΑ ΚΙΤ</value>
+    <comment>Kit Products section name in product kit form.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Product_Family_Hierarchy_Label_Value" xml:space="preserve">
+    <value>Ιεραρχία οικογένειας</value>
+    <comment>Label text for Product Family Hierarchy Control.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Product_Bundle_Form_Title" xml:space="preserve">
+    <value>Νέο πακέτο</value>
+    <comment>Title text for Product Bundle Form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="ProductFamilyQuickCreate.DisplayName" xml:space="preserve">
+    <value>Νέα οικογένεια προϊόντων</value>
+    <comment></comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Kit" xml:space="preserve">
+    <value>Κιτ</value>
+    <comment>Singular Name of Product Kit.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Bundle" xml:space="preserve">
+    <value>Πακέτο</value>
+    <comment>Singular Name of Product Bundle.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Product_Family" xml:space="preserve">
+    <value>Οικογένεια προϊόντων</value>
+    <comment>Singular Name of Product Family.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Product" xml:space="preserve">
+    <value>Προϊόν</value>
+    <comment>Singular Name of Product.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_90" xml:space="preserve">
+    <value>Προειδοποίηση:</value>
+    <comment>Label that is prefixed to a warning message.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_91" xml:space="preserve">
+    <value>Δεν έχει οριστεί προεπιλεγμένος τιμοκατάλογος.</value>
+    <comment>Error message that is displayed to the user in the product form when the default price list for the product is not specified.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_12" xml:space="preserve">
+    <value>Πρέπει πρώτα να επιλέξετε προϊόν.</value>
+    <comment>Error message displayed in the price list form if the user tries to choose the unit without choosing the product.</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_153" xml:space="preserve">
+    <value>Το ποσοστό για τη μέθοδο τιμολόγησης ποσοστού τιμοκαταλόγου πρέπει να είναι μεταξύ {0} και {1} τοις εκατό. Καθορίστε ένα νέο ποσοστό.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent of List". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_157" xml:space="preserve">
+    <value>Το ποσοστό για τη μέθοδο τιμολόγησης σήμανσης ποσοστού πρέπει να είναι μεταξύ {0} και {1} τοις εκατό. Καθορίστε ένα νέο ποσοστό.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Markup". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_161" xml:space="preserve">
+    <value>Το ποσοστό για τη μέθοδο τιμολόγησης περιθωρίου ποσοστού πρέπει να είναι μεταξύ {0} και {1} τοις εκατό. Καθορίστε ένα νέο ποσοστό.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Margin". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_113" xml:space="preserve">
+    <value>Το ποσό στρογγυλοποίησης για την επιλογή στρογγυλοποίησης "Λήγει σε" πρέπει να είναι μεταξύ {0} και {1}. Καθορίστε ένα νέο ποσό στρογγυλοποίησης.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Ends in". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_106" xml:space="preserve">
+    <value>Το ποσό στρογγυλοποίησης για το πολλαπλάσιο της επιλογής στρογγυλοποίησης πρέπει να είναι μεταξύ {0} και {1}. Καθορίστε ένα νέο ποσό στρογγυλοποίησης.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Multiple of". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifying minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Kit_Products_Form_Title" xml:space="preserve">
+    <value>Προϊόν κιτ</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Bundle_Product_Form_Value" xml:space="preserve">
+    <value>Προϊόν πακέτου</value>
+    <comment>Bundle Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Kit_Product_Label_Value" xml:space="preserve">
+    <value>Κιτ</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα. Επιστρέψτε στην αρχική σελίδα και δοκιμάστε ξανά.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Για να εκτελέσετε αυτήν την ενέργεια, πρέπει να επιλέξετε μία ή περισσότερες καρτέλες.</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα. Η επιλεγμένη ενέργεια δεν ολοκληρώθηκε για μία ή περισσότερες καρτέλες.</value>
+    <comment></comment>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleArticle_DialogText" xml:space="preserve">
+    <value>Πρέπει να επιλέξετε ένα άρθρο.</value>
+    <comment>select an article to associate.[Category="KnowledgeArticle"]</comment>
+    <ObjectReferences>
+      <ObjectType>9953</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleProduct_DialogText" xml:space="preserve">
+    <value>Πρέπει να επιλέξετε ένα προϊόν.</value>
+    <comment>select a product to associate.[Category="KnowledgeArticle"]</comment>
+    <ObjectReferences>
+      <ObjectType>9953</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>Δεν είναι δυνατή η επεξεργασία αυτής της αίτησης, καθώς αυτός ο πελάτης είναι εκτός σύνδεσης.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Web.products.pricelevel.EndDateEarlierThanStartDate" xml:space="preserve">
+    <value>Η ημερομηνία λήξης δεν πρέπει να προηγείται της ημερομηνίας έναρξης.</value>
+    <comment>Error message to display if the end date supplied in the price list form is earlier than the start date.</comment>
+  </data>
+  <data name="Web.Products.UoM.edit.aspx_71" xml:space="preserve">
+    <value>Αυτή είναι η κύρια μονάδα.</value>
+    <comment>Informational message displayed to the user in the primary unit form.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>Τίτλος υπόθεσης</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>Πελάτης</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>Προτεραιότητα</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>Ημερομηνία και ώρα δημιουργίας</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>Γίνεται επεξεργασία...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="Error_Title_0x80042f0a">
+    <value>Σφάλμα ρόλων ομάδας</value>
+    <comment>TeamNotAssignedRoles.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Error_Message_0x80042f0a">
+    <value>Η επιλεγμένη ομάδα δεν διαθέτει επαρκή προνόμια για αυτήν την ενέργεια. Αναθέστε ένα ρόλο ασφαλείας με τα απαιτούμενα δικαιώματα σε αυτήν την ομάδα και, στη συνέχεια, προσπαθήστε ξανά.</value>
+    <comment>TeamNotAssignedRoles.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Error_Message_0x8003f452">
+    <value>Δεν είναι δυνατό να επιλύσετε τη γονική υπόθεση, επειδή έχει ενεργές θυγατρικές υποθέσεις.</value>
+    <comment>Error message that will be shown to user when  cases with active childs cannot be closed.</comment>
+    <ObjectReferences>
+      <ObjectType Singular="case" Plural="cases">112</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Title_0x8003f452">
+    <value>Κλείστε την ενεργή θυγατρική υπόθεση προτού κλείσετε τη γονική υπόθεση.</value>
+    <comment>Cases with active childs cannot be closed[Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="case" Plural="cases">112</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Brand_CRM" xml:space="preserve">
+		<value>Microsoft Dynamics 365</value>
+		<comment>Branding for CRM.</comment>
+	</data>
+  <data name="Error_Title_0x80048306">
+    <value>Δεν επιτρέπεται η πρόσβαση</value>
+    <comment>IDS_ACCESSDENIED</comment>
+  </data>
+  <data name="Error_Message_0x80048306">
+    <value>Δεν έχετε επαρκή προνόμια για πρόσβαση στο αντικείμενο του {0} ή για εκτέλεση της ζητούμενης λειτουργίας. Για περισσότερες πληροφορίες, επικοινωνήστε με τον διαχειριστή του {0}.</value>
+    <comment>Message displayed to a user when they have insufficient privileges to perform an action.</comment>
+  </data>
+  <data name="Web.cs.socialprofile.saveNotSupported">
+    <value>Δεν επιτρέπεται η δημιουργία ή η αλλαγή κοινωνικού προφίλ μέσω του περιβάλλοντος εργασίας χρήστη</value>
+    <comment>Error message for saving changes in Social Profile through UI. [Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="SocialProfile" Plural="SocialProfiles">99</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.cs.createNotSupported" xml:space="preserve">
+      <value>Δεν επιτρέπεται η δημιουργία ή η αλλαγή ενός {0} μέσω του περιβάλλοντος εργασίας χρήστη</value>
+      <comment>Error message for saving changes through UI for unsupported entities. {0} is the name of the entity. [Category="Servicing"]</comment>
+    </data>
+  <data name="SocialActivity_EntityName" xml:space="preserve">
+      <value>Κοινωνική δραστηριότητα</value>
+      <comment>Localized display name for Social Activity Entity</comment>
+    </data>
+  <data name="SocialProfile_EntityName" xml:space="preserve">
+      <value>Κοινωνικό προφίλ</value>
+      <comment>Localized display name for Social Profile Entity</comment>
+    </data>
+  <data name="Error_Message_Generic_Error_Occured" xml:space="preserve">
+		<value>Προέκυψε σφάλμα. Επαναλάβετε αυτήν την ενέργεια. Εάν το πρόβλημα παραμένει, επικοινωνήστε με τον διαχειριστή του οργανισμού σας.</value>
+		<comment>Generic error message for bad response</comment>
+	</data>
+  <data name="Error_Title_0x80040265">
+    <value>Σφάλμα επιχειρηματικής διαδικασίας</value>
+    <comment>IsvAborted[Category="Plug-in/Workflow Assembly Registration Tool"]</comment>
+  </data>
+  <data name="Error_Message_0x80040265">
+    <value>Η λειτουργία ματαιώθηκε λόγω κώδικα ISV.</value>
+    <comment>IsvAborted[Category="Plug-in/Workflow Assembly Registration Tool"].</comment>
+  </data>
+  <data name="OCV.Feedback.DisclamerText" xml:space="preserve">
+		<value>Μη συμπεριλάβετε προσωπικές ή ευαίσθητες πληροφορίες. Αν δώσετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας, η Microsoft μπορεί να επικοινωνήσει μαζί σας σχετικά με τα σχόλιά σας.</value>
+		<comment>Disclaimer text for OCV</comment>
+	</data>
+  <data name="IFRAME.OCV.Widget.Title" xml:space="preserve">
+		<value>Περιεχόμενο σχολίων</value>
+		<comment>Title text for OCV iframe</comment>
+	</data>
+  <data name="Merge_success_message" xml:space="preserve">
+        <value>Οι επιλεγμένες καρτέλες συγχωνεύονται και η δευτερεύουσα εγγραφή απενεργοποιείται.</value>
+        <comment>When merge operation is successful this message is displayed.</comment>
+	</data>
+  <data name="UpdateRecod_success_message" xml:space="preserve">
+        <value>Η επιλεγμένη καρτέλα ενημερώθηκε με επιτυχία.</value>
+        <comment>When update record operation is successful this message is displayed.</comment>
+    </data>
+  <data name="merge_loading_message" xml:space="preserve">
+    <value>Γίνεται συγχώνευση καρτελών</value>
+    <comment>Label to show progress indicator</comment>
+   </data>
+  <data name="back_button_label" xml:space="preserve">
+    <value>Πίσω</value>
+    <comment>Label to back button in merge dialog</comment>
+   </data>
+  <data name="share_chart_title" xml:space="preserve">
+    <value>Κοινή χρήση γραφήματος χρήστη</value>
+   </data>
+  <data name="share_dashboard_title" xml:space="preserve">
+    <value>Κοινή χρήση πίνακα εργαλείων χρήστη</value>
+   </data>
+  <data name="import_chart_header" xml:space="preserve">
+    <value>Εισαγωγή γραφήματος</value>
+   </data>
+  <data name="import_chart_labelVal" xml:space="preserve">
+    <value>Επιλέξτε ένα αρχείο ορισμού γραφήματος (.xml) για να το εισαγάγετε.</value>
+   </data>
+  <data name="import_error_invalid" xml:space="preserve">
+    <value>Το αρχείο XML δεν συμμορφώνεται με το σχήμα γραφήματος</value>
+   </data>
+  <data name="import_error_typeHeader" xml:space="preserve">
+    <value>Μη έγκυρο αρχείο</value>
+   </data>
+  <data name="import_error_filetype" xml:space="preserve">
+    <value>Μη έγκυρος τύπος αρχείου</value>
+   </data>
+  <data name="import_error_parameters" xml:space="preserve">
+    <value>Μη έγκυρες παράμετροι</value>
+   </data>
+  <data name="import_error_nodesHeader" xml:space="preserve">
+    <value>Λείπουν υποχρεωτικοί κόμβοι</value>
+   </data>
+  <data name="import_error_nodes" xml:space="preserve">
+    <value>Δεν είναι δυνατή η λήψη των απαιτούμενων κόμβων</value>
+   </data>
+  <data name="import_duplicate_suffix" xml:space="preserve">
+    <value> - Αντιγραφή</value>
+   </data>
+  <data name="import_duplicate_found" xml:space="preserve">
+    <value> από </value>
+   </data>
+  <data name="import_missing_child" xml:space="preserve">
+    <value>Λείπουν θυγατρικοί κόμβοι</value>
+   </data>
+  <data name="import_missing_parent" xml:space="preserve">
+    <value>Λείπουν γονικοί κόμβοι</value>
+   </data>
+  <data name="accountsLabel" xml:space="preserve">
+    <value>Συγχώνευση λογαριασμών</value>
+    <comment>Label merge dialog header for account entity</comment>
+   </data>
+  <data name="contactsLabel" xml:space="preserve">
+    <value>Συγχώνευση επαφών</value>
+    <comment>Label merge dialog header for contacts entity</comment>
+   </data>
+  <data name="leadsLabel" xml:space="preserve">
+    <value>Συγχώνευση υποψήφιων πελατών</value>
+    <comment>Label merge dialog header for lead entity</comment>
+   </data>
+  <data name="merge_records_dialog_title" xml:space="preserve">
+    <value>Συγχώνευση: {0}</value>
+    <comment>Label for merge dialog. {0} contains the entity display name (for example, Merge Accounts, Merge Contacts, etc.)</comment>
+   </data>
+  <data name="async_merge_success_message" xml:space="preserve">
+    <value>Οι επιλεγμένες καρτέλες θα συγχωνευτούν στο παρασκήνιο ενώ εργάζεστε.</value>
+    <comment>Success message when async request is completed</comment>
+   </data>
+  <data name="SurveyTitle" xml:space="preserve">
+        <value>Υποβολή σχολίων στη Microsoft</value>
+    </data>
+  <data name="SurveyRatingTitle" xml:space="preserve">
+        <value>Πόσο ικανοποιημένοι είστε με αυτήν τη δυνατότητα;</value>
+    </data>
+  <data name="SurveyCommentTitle" xml:space="preserve">
+        <value>Ποια πρόσθετα σχόλια θέλετε να μοιραστείτε μαζί μας;</value>
+    </data>
+  <data name="SurveyCommentsPlaceholder" xml:space="preserve">
+        <value>Δώστε λεπτομέρειες χωρίς συμπερίληψη προσωπικών στοιχείων</value>
+    </data>
+  <data name="SubmittingSurvey" xml:space="preserve">
+        <value>Υποβολή σχολίων</value>
+    </data>
+  <data name="VerySatisfied" xml:space="preserve">
+        <value>Πολύ ικανοποιημένος/η</value>
+    </data>
+  <data name="Satisfied" xml:space="preserve">
+        <value>Μάλλον ικανοποιημένος/η</value>
+    </data>
+  <data name="Dissatisfied" xml:space="preserve">
+        <value>Μάλλον δυσαρεστημένος/η</value>
+    </data>
+  <data name="VeryDissatisfied" xml:space="preserve">
+        <value>Πολύ δυσαρεστημένος/η</value>
+    </data>
+  <data name="Submit" xml:space="preserve">
+        <value>Υποβολή</value>
+    </data>
+  <data name="Cancel" xml:space="preserve">
+        <value>Ακύρωση</value>
+    </data>
+  <data name="PrivacyStatement" xml:space="preserve">
+        <value>Τα σχόλιά σας θα χρησιμοποιηθούν για τη βελτίωση των προϊόντων και των υπηρεσιών της Microsoft. Οι διαχειριστές IT για τον οργανισμό σας θα είναι σε θέση να προβάλλουν και να διαχειρίζονται τα δεδομένα σχολίων σας.</value>
+    </data>
+  <data name="PrivacyStatementLink" xml:space="preserve">
+        <value>Δήλωση προστασίας προσωπικών δεδομένων.</value>
+    </data>
+  <data name="SurveySuccessMessage" xml:space="preserve">
+        <value>Σας ευχαριστούμε για τα σχόλιά σας.</value>
+    </data>
+  <data name="SurveyFailureMessage" xml:space="preserve">
+        <value>Παρουσιάστηκε κάποιο πρόβλημα με τα σχόλια. Δοκιμάστε ξανά.</value>
+    </data>
+</root>

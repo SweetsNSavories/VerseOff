@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Perangkat sedang didaftarkan di latar belakang. Anda dapat terus menggunakan Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Menarik data perangkat di latar belakang. Anda dapat tetap menggunakan Microsoft Dynamics 365.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>Terjadi kesalahan saat melakukan tindakan. Coba lagi nanti.</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Pilih setidaknya satu catatan.</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Daftarkan perangkat sebelum mencoba menarik data perangkat.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Menarik data perangkat di latar belakang. Anda tetap dapat menggunakan Microsoft Dynamics 365. Beberapa perangkat ini tidak didaftarkan, sehingga data tidak dapat diambil.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>Perangkat yang dipilih sedang didaftarkan di latar belakang. Anda dapat terus menggunakan Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Menarik data perangkat di latar belakang. Anda dapat tetap menggunakan Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Menarik data perangkat di latar belakang. Anda dapat tetap menggunakan Microsoft Dynamics 365.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Mengimpor semua perangkat baru di latar belakang. Navigasikan ke halaman perangkat untuk melihat perangkat baru dari penyedia IoT.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Mengimpor semua perangkat baru di latar belakang. Refresh daftar untuk melihat perangkat baru.</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Pilih satu catatan.</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Autentikasi gagal. Anda harus masuk ke akun Power BI untuk melihat atau mengedit ubin Power BI.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Masuk</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Perangkat terdaftar tidak ditemukan.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>Perangkat tersambung yang terdaftar tidak ditemukan.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>ID perangkat tidak ditemukan. Tambahkan ID perangkat untuk menampilkan ubin Power BI.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Ubin Power BI</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Dasbor Power BI</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Ubin</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Tidak dapat mengambil file konfigurasi untuk PowerBI embedded tersimpan</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>Terjadi kesalahan dan kami tidak dapat menyimpan penyesuaian Anda. Detail kesalahan: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>Entitas saat ini belum dikonfigurasi untuk mendukung penerapan filter id perangkat untuk ubin Power BI.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Pilih ubin Power BI yang akan ditambahkan ke formulir.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Ubin Power BI</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Simpan</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Batal</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Tambahkan ubin Power BI untuk perangkat yang tersambung.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Menerbitkan penyesuaian</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>Ubin Power BI akan difilter untuk menampilkan data perangkat saat ini.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>Menyimpan perintah ini juga akan mengirimkan perintah ke perangkat, Anda ingin melanjutkan?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Properti</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Pelajari selengkapnya tentang integrasi dengan IoT Central Azure, yang merupakan solusi IoT SaaS global terkelola penuh.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Integrasikan dengan Pusat IoT yang ada atau gunakan yang baru, lalu kelola solusi IoT PaaS standar dari langganan Azure.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>Perintah tidak dapat dikirim. Peringatan IoT harus dikaitkan dengan catatan ini agar dapat mengirim perintah.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Perangkat sedang didaftarkan di latar belakang. Refresh untuk melihat status pendaftaran terbaru.</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>Perangkat ini sedang didaftarkan. Anda ingin mendaftarkan perangkat ini lagi?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Ya</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Tidak</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>Perangkat ini sudah terdaftar. Anda ingin mendaftarkan perangkat ini lagi?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Daftarkan Perangkat</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>Perangkat yang dipilih sedang didaftarkan. Refresh untuk melihat status pendaftaran terbaru.</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Kirim Perintah ke {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Kirim Perintah</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0} terkirim ke {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Perintah terkirim ke {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>Perintah untuk {0}</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Perangkat tersambung</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>Perintah terkirim.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Lihat status perintah</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>Tidak dapat mengirim perintah.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Perintah maupun Pesan harus ditentukan.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Tidak dapat menyambungkan perangkat.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Perangkat</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Sambungkan Perangkat ke {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Jalur Perangkat</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Jalur Kunci</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Tidak ada perintah yang ditetapkan terkait dengan perangkat ini. Konfigurasikan kategori perangkat untuk melihat perintah yang telah ditetapkan.</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>Fitur Saran IoT diaktifkan dan tunggu selama 24 jam agar perubahan konfigurasi diterapkan untuk melatih model. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Konfirmasikan untuk menonaktifkan fitur Saran IoT.</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>Konfirmasikan penonaktifan Saran IoT</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>Dengan mengaktifkan fitur ini, Anda mengakui bahwa fitur ini dalam pratinjau dan Anda menyetujui {0}.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Persyaratan Pratinjau</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>Pelajari selengkapnya</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Tampilan Perangkat Kustom</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Masukkan perangkat IoT yang valid untuk melanjutkan.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>Jumlah adalah satu-satunya pilihan agregat yang tersedia untuk aktivitas perangkat.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>Tidak lebih dari 6 ubin yang dapat dibuat untuk perangkat saat ini.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Pastikan pengukuran yang dipilih adalah ukuran yang dilaporkan untuk perangkat saat ini.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Pembacaan perangkat tersambung</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Tombol konfigurasi Power BI</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Perintah berhasil dikirim ke server. Sinkronisasi perangkat untuk melihat status perintah.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Perintah tidak dikirim ke server karena masalah konektivitas, perintah akan dikirim pada sinkronisasi perangkat mendatang.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>Anda harus online untuk menarik data.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>Sambungan internet diperlukan untuk melakukan tindakan ini.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>Anda harus menyinkronkan rekaman ini untuk melakukan tindakan ini.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Pendaftaran perangkat berhasil dikirim. Anda dapat melihat status pendaftaran pada sinkronisasi berikutnya atau masuk ke mode online.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Pendaftaran perangkat tidak dikirim ke server karena masalah konektivitas. Registrasi akan dikirim pada sinkronisasi perangkat mendatang.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Permintaan penarikan data perangkat berhasil dikirim. Anda dapat melihat hasil di tab riwayat perangkat pada sinkronisasi perangkat mendatang.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>Anda harus memiliki sambungan internet untuk mengirim perintah.</value>
+  </data>
+</root>

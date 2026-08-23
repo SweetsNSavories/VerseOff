@@ -1,0 +1,1346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>고객을 선택해야 합니다.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="Banner_Notification_Heading" xml:space="preserve">
+    <value>이메일에서 업데이트된 케이스(프리뷰)</value>
+    <comment>Banner heading for notification message</comment>
+  </data>
+  <data name="Banner_Notification_Message" xml:space="preserve">
+    <value>일부 정보는 AI를 사용하여 작성되었으므로 케이스의 모든 정보를 검토하세요. AI가 생성한 콘텐츠는 부정확할 수 있습니다.</value>
+    <comment>Banner text for notification message</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="Button_Label_Confirm" xml:space="preserve">
+    <value>확인</value>
+    <comment>Button text for the Confirm button</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>삭제</value>
+    <comment>Delete button label</comment>
+  </data>
+  <data name="Associate_Child_Title" xml:space="preserve">
+    <value>상위 하위 관계 설정</value>
+    <comment>Title of the page will be that will be shown when cases selected for parent-child association.[Category="Servicing"]</comment>
+  </data>
+  <data name="Button_Label_OK" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="Button_Label_Reactivate" xml:space="preserve">
+    <value>다시 활성화</value>
+  </data>
+  <data name="Button_Label_Route" xml:space="preserve">
+    <value>라우팅</value>
+    <comment>Label for the Route button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="CancelCaseAction_Title" xml:space="preserve">
+    <value>서비스 케이스 취소</value>
+  </data>
+  <data name="CancelCaseConfirm" xml:space="preserve">
+    <value>이 서비스 케이스와 연관된 시작 활동이 있습니다. 시작 활동은 이 서비스 케이스를 취소하면 취소됩니다. 서비스 케이스를 취소하시겠습니까?</value>
+    <comment>This is the text that will appear on the ConfirmCancel Dialog Screen</comment>
+  </data>
+  <data name="Cancel_Case" xml:space="preserve">
+    <value>서비스 케이스 취소</value>
+  </data>
+  <data name="Case_Reactivate_Dlg_Title" xml:space="preserve">
+    <value>{0} 다시 활성화</value>
+    <comment>Title for Reactivate Case Dialog.</comment>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_Allotments" xml:space="preserve">
+    <value>이 서비스 케이스를 해결하기 위한 계약 품목 서비스 개수가 충분하지 않습니다. 그래도 서비스 케이스를 해결하시겠습니까?</value>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_ContractDetailState" xml:space="preserve">
+    <value>이 서비스 케이스의 상위 계약 내용이 취소되었거나 만료되었습니다. 그래도 서비스 케이스를 해결하시겠습니까?</value>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_Parent" xml:space="preserve">
+    <value>이 서비스 케이스의 상위 계약이 활성 상태가 아닙니다. 그래도 서비스 케이스를 해결하시겠습니까?</value>
+  </data>
+  <data name="ConvCaseSaveWarning" xml:space="preserve">
+    <value>이 서비스 케이스를 변환하기 전에 변경 내용을 저장해야 합니다.</value>
+    <comment>on convert case to knowledge article</comment>
+  </data>
+  <data name="Dialog_Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="Dialog_Confirm" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>{0}을(를) 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Placeholder {0} is the display name of incident entity.</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirmForMultipleCase_Body" xml:space="preserve">
+    <value>활성 회람 규칙 집합에 따라 선택한 서비스 케이스 {0}개를 회람하시겠습니까? 규칙의 조건에 맞는 서비스 케이스가 적절하게 회람됩니다.</value>
+    <comment>Confirmation Message for Routing Mulitiple case. Placeholder {0} is the number of selected records.</comment>
+  </data>
+  <data name="Dlg_UR_RouteCase_AddRequiredConfirmForMultipleCase_Body" xml:space="preserve">
+    <value>활성 회람 규칙 집합에 따라 선택한 서비스 케이스 {0}개를 회람하시겠습니까? 규칙의 조건에 맞는 서비스 케이스가 적절하게 회람됩니다.</value>
+    <comment>Confirmation Message for Routing Mulitiple case when unified routing is enabled. Placeholder {0} is the number of selected records.</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirmForSingleCase_Body" xml:space="preserve">
+    <value>활성 회람 규칙 집합에 따라 이 서비스 케이스를 회람하시겠습니까?</value>
+    <comment>Confirmation Message for Routing Single case. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_UR_RouteCase_AddRequiredConfirmForSingleCase_Body" xml:space="preserve">
+    <value>이 서비스 케이스를 회람하시겠습니까?</value>
+    <comment>Confirmation Message for Routing Single case when unified routing is enabled. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirm_Title" xml:space="preserve">
+    <value>서비스 케이스 회람</value>
+    <comment>Apply Route to Case Confirmation Dialog Title. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_ActiveRouteRuleReqdMsg" xml:space="preserve">
+    <value>이 서비스 케이스를 회람할 활성 규칙이 없습니다.</value>
+    <comment>There is no associated active routing rule set.</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_RecordRoutingHeaderMessage" xml:space="preserve">
+    <value>회람을 완료할 수 없음</value>
+    <comment>Header message if there is no associated record routing.</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_RecordRoutingBodyMessage" xml:space="preserve">
+    <value>레코드 회람이 인시던트에 대해 설정되어 있지 않습니다.</value>
+    <comment>Body message if there is no associated record routing for incident.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_RecordAssociated_CaseTerms_DecrementedAlready_DialogMessage" xml:space="preserve">
+    <value>연결된 권리 유형에 대해 이미 조건이 줄었습니다. 이 옵션을 선택하면 연결된 권리 유형과 권리 유형 채널에 조건을 추가합니다. 계속하시겠습니까?</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is already associated to the case and terms already decremented dialog message.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_RecordAssociated_CaseTerms_DecrementedAlready_DialogTitle" xml:space="preserve">
+    <value>권리 유형 조건 되돌리기 확인</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is already associated to the case and terms already decremented dialog title.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_Record_NotYet_Associated_CaseTerms_NotDecremented_Yet_DialogMessage" xml:space="preserve">
+    <value>권리 유형 레코드가 이 서비스 케이스 레코드에 연결되어 있을 경우 이 옵션을 선택하면 연결된 권리 유형과 권리 유형 채널에서 조건이 감소되지 않습니다. 계속하시겠습니까?</value>
+    <comment>ecrementEntitlementTerms is set to yes and entitlement record is not yet associated to the case dialog message.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_Record_Not_Yet_Associated_CaseTerms_NotDecremented_Yet_DialogTitle" xml:space="preserve">
+    <value>권리 유형 조건 감소 방지 확인</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is not yet associated to the case dialog title.</comment>
+  </data>
+  <data name="DontDecrementTerms_Not_Set_DialogMessage" xml:space="preserve">
+    <value>이 서비스 케이스 레코드에 대해 권리 유형 조건 감소가 이미 중지되었습니다. 권리 유형 조건이 감소되지 않습니다.</value>
+    <comment>Decrement EntitlementTerms is set to no dialog message.</comment>
+  </data>
+  <data name="DontDecrementTerms_Not_Set_DialogTitle" xml:space="preserve">
+    <value>권리 유형 조건 감소 중지</value>
+    <comment>Decrement EntitlementTerms is set to No dialog title.</comment>
+  </data>
+  <data name="Error_Message_0x80044411" xml:space="preserve">
+    <value>서비스 케이스가 종료되었습니다. 종료된 서비스 케이스를 해결하거나 취소할 수 없습니다.</value>
+    <comment>ror message shown when trying to cancel or resolve a Case which has already been closed. </comment>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>오류 발생 선택한 작업이 하나 이상의 레코드에 대해 완료되지 않았습니다.</value>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>이 작업을 수행하려면 먼저 하나 이상의 레코드를 선택해야 합니다.</value>
+  </data>
+  <data name="Error_Message_DifferentPartitions" xml:space="preserve">
+    <value>이 작업은 서로 다른 파티션에 속한 레코드에는 지원되지 않습니다.</value>
+    <comment>This error message is shown when a user attempts an operation (such as merge or associate child cases) on records that are not in the same partition.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>서비스 케이스 제목</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>만든 날짜</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>고객</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>우선 순위</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="LOCID_ASSCO_LESS_RECORDS" xml:space="preserve">
+    <value>상위 하위 관계를 연결할 레코드를 두 개 이상 선택하십시오.</value>
+    <comment>This is the message shown when trying to associate less records than allowed.</comment>
+  </data>
+  <data name="LOCID_ASSCO_TOOMANY_RECORDS" xml:space="preserve">
+    <value>상위 서비스 케이스에는 {0}개 이상의 하위 서비스 케이스를 포함할 수 없습니다. 자세한 내용은 관리자에게 문의하십시오.</value>
+    <comment>This is the message shown when trying to associate less records than required.</comment>
+  </data>
+  <data name="LOCID_CONTRACT_ED_DT_LT_ST_DT" xml:space="preserve">
+    <value>계약의 종료 날짜는 시작 날짜보다 빠를 수 없습니다.</value>
+  </data>
+  <data name="LOCID_ENDDATE_LT_STARTDATE" xml:space="preserve">
+    <value>종료 날짜는 시작 날짜 이전일 수 없습니다.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_CONTRACT" xml:space="preserve">
+    <value>먼저 계약을 선택해야 합니다.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_CUSTOMER" xml:space="preserve">
+    <value>먼저 고객을 선택해야 합니다.</value>
+  </data>
+  <data name="LOCID_MERGE_CASE_TOOMANY_RECORDS" xml:space="preserve">
+    <value>한 번에 {0}개의 서비스 케이스만 병합할 수 있습니다.</value>
+    <comment>This is the message shown when trying to merge more records than allowed. </comment>
+  </data>
+  <data name="LOCID_MERGE_LESS_RECORDS" xml:space="preserve">
+    <value>병합할 레코드를 두 개 이상 선택하십시오.</value>
+    <comment>This is the message shown when trying to merge less records than required. </comment>
+  </data>
+  <data name="LOCID_CONV_ACT_SAVE_WARNING" xml:space="preserve">
+    <value>이 활동을 변환하기 전에 변경 내용을 저장해야 합니다.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Entitlement_Default_Confirmation_DialogTitle" xml:space="preserve">
+    <value>기본값으로 설정 확인</value>
+    <comment>Default Entitlement confirmation dailog title.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="Entitlement_Default_Change_Confirmation_Message" xml:space="preserve">
+    <value>이 고객에 대해 다른 권리 유형이 이미 기본값으로 설정되어 있습니다. 이 권리 유형 레코드를 기본값으로 대신 설정하시겠습니까?</value>
+    <comment>Default Entitlement confirmation dailog message.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="Entitlement_Default_Confirmation_Message" xml:space="preserve">
+    <value>선택한 고객에 대해 이 권리 유형 레코드를 기본값으로 설정하시겠습니까?</value>
+    <comment>Default Entitlement confirmation dailog message.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_INACTIVE_MSG" xml:space="preserve">
+    <value>활성 권리 유형 레코드만 기본값으로 설정할 수 있습니다.</value>
+    <comment>Default Entitlement confirmation dialog message.[Category="Servicing"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_DIALOG_WIDTH" xml:space="preserve">
+    <value>1000</value>
+    <comment>Default Entitlement confirmation dialog width.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_DIALOG_HEIGHT" xml:space="preserve">
+    <value>200</value>
+    <comment>Default Entitlement confirmation dialog height.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ACTION_NOITEMSELECTED" xml:space="preserve">
+    <value>이 작업을 수행하려면 먼저 하나 이상의 레코드를 선택해야 합니다.</value>
+    <comment>Default Entitlement confirmation dialog height.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENTITLEMENT_CANCEL_TH_LT" xml:space="preserve">
+    <value>50</value>
+    <comment>Entitlement cancellation record Threshhold limit.</comment>
+  </data>
+  <data name="LOCID_ENTITLEMENT_CANCEL_TH_MSG" xml:space="preserve">
+    <value>이 작업의 최대 레코드 한도를 초과했습니다. 레코드 수를 {0}개로 줄이십시오.</value>
+    <comment>Dialog alert description for cancellation record limit. {NumberedPlaceholder="{0}"}. Placeholder 0 is a number representing the number of records selected Eg: Entitlement[Category="Servicing"]</comment>
+  </data>
+  <data name="LOCID_FORMS_SAVE_CONFIRM_TITLE" xml:space="preserve">
+    <value>변경 내용을 저장하지 않았습니다. 변경 내용을 저장할 수 있도록 현재 페이지를 유지하는 데 [취소]를 클릭하세요.</value>
+    <comment>Error message to show when no records selected</comment>
+  </data>
+  <data name="Multiple_Merge_Title" xml:space="preserve">
+    <value>서비스 케이스 병합</value>
+    <comment>Title of the page will be that will be shown when cases selected to merge.[Category="Servicing"]</comment>
+  </data>
+  <data name="NoValidStatusReasonTransition02" xml:space="preserve">
+    <value>상태 전환 규칙 때문에 현재 상태의 서비스 케이스를 취소할 수 없습니다. 서비스 케이스 상태를 변경하고 취소해 보거나 시스템 관리자에게 문의하십시오.</value>
+    <comment>Because of the status transition rules, you cannot cancel the case in the current status. Change the case status, and then try canceling it, or contact your system administrator.</comment>
+  </data>
+  <data name="ResolveCaseAction_Title" xml:space="preserve">
+    <value>서비스 케이스 해결</value>
+  </data>
+  <data name="Web.CS.cases.dlg_closecase.aspx_27" xml:space="preserve">
+    <value>[청구 가능 시간]에 올바르지 않는 값이 들어 있습니다. 값을 확인하고 다시 시도하십시오.</value>
+  </data>
+  <data name="Web.CS.cases.dlg_closecase.aspx_50" xml:space="preserve">
+    <value>이 서비스 케이스를 해결하려면 먼저 [해결] 상자에 정보를 제공해야 합니다.</value>
+  </data>
+  <data name="Web.CS.cases.dlg_reactivate.aspx_50" xml:space="preserve">
+    <value>이 작업은 해결되거나 취소된 서비스 케이스를 다시 활성화합니다. 계속하시겠습니까?</value>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition01" xml:space="preserve">
+    <value>상태 전환 규칙 때문에 현재 상태의 서비스 케이스를 해결할 수 없습니다. 서비스 케이스 상태를 변경하고 해결해 보거나 시스템 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition02" xml:space="preserve">
+    <value>상태 전환 규칙 때문에 현재 상태의 서비스 케이스를 취소할 수 없습니다. 서비스 케이스 상태를 변경하고 취소해 보거나 시스템 관리자에게 문의하십시오.</value>
+    <comment>Because of the status transition rules, you cannot cancel the case in the current status. Change the case status, and then try canceling it, or contact your system administrator.</comment>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition03" xml:space="preserve">
+    <value>상태 전환 규칙 때문에 현재 상태에서 서비스 케이스를 활성화할 수 없습니다. 시스템 관리자에게 문의하십시오.</value>
+    <comment>Because of the status transition rules, you can't activate the case from the current status. Contact your system administrator.</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmCancel.aspx_2" xml:space="preserve">
+    <value>서비스 케이스 취소</value>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_1" xml:space="preserve">
+    <value>서비스 케이스 해결</value>
+    <comment>This is the title that will appear on the ConfirmResolve Dialog Screen</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_3" xml:space="preserve">
+    <value>이 서비스 케이스와 연관된 시작 활동이 있습니다. 시작 활동은 이 서비스 케이스를 해결하면 취소됩니다. 서비스 케이스를 해결하시겠습니까?</value>
+    <comment>This is the text that will appear on the ConfirmResolve Dialog Screen</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_4" xml:space="preserve">
+    <value>이 서비스 케이스와 연관된 시작 활동이 있습니다. 시작 활동은 이 서비스 케이스를 취소하면 취소됩니다. 서비스 케이스를 취소하시겠습니까?</value>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>삭제 확인</value>
+  </data>
+  <data name="ParentChild_Cases_Associate_Success" xml:space="preserve">
+    <value>선택한 서비스 케이스 {0}개 간에 상위-하위 관계가 설정되었습니다.</value>
+    <comment>Message that will be shown to the user when parent-child association created between multiple cases.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases for which parent-child realtionship established.Ex:2,3 etc.[Category="Servicing"]</comment>
+  </data>
+  <data name="ParentChild_Cases_NoSuccess_Fail" xml:space="preserve">
+    <value>{0}개의 서비스 케이스를 연결할 수 없습니다.</value>
+    <comment>Error message that will be shown to the user when parent-child association failed to create between multiple cases.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases that were failed.Ex:2,3 etc.[Category="Parent-Child Asscociation  of Cases"]</comment>
+  </data>
+  <data name="MergeRecords_Cases_Merged_Fail" xml:space="preserve">
+    <value>{0}개의 서비스 케이스를 병합할 수 없습니다.</value>
+    <comment>Error message that will be shown to the user has no sufficient privileges to merge more than one case{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases that couldn't be merged.Ex:2,3 etc.[Category="Servicing"]</comment>
+  </data>
+  <data name="MergeRecords_Cases_Merged_Success" xml:space="preserve">
+    <value>서비스 케이스 {0}개가 {1}에 성공적으로 병합되었습니다.</value>
+    <comment>Message that will be shown to the user when more than one case merged successfully.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases merged successfully.Ex:2,3 etc.{NumberedPlaceholder="{1}"} Placeholder 1 is the title of the case into which the selected cases were merged.[Category="Servicing"]</comment>
+  </data>
+  <data name="MergeRecords_Case_Merged_Success" xml:space="preserve">
+  <value>서비스 케이스 1개가 {0}에 성공적으로 병합되었습니다.</value>
+  <comment>Message that will be shown to the user when exactly one case is merged successfully. Placeholder {0} is the title of the case into which the selected case was merged. [Category="Servicing"]</comment>
+</data>
+  <data name="Web.cs.contracts.end_date_earlier_than_start_date" xml:space="preserve">
+    <value>계약의 종료 날짜는 시작 날짜보다 빠를 수 없습니다.</value>
+    <comment>Error message to show when the end date of the contract is before the start date.</comment>
+  </data>
+  <data name="Dialog_Activate_Title" xml:space="preserve">
+    <value>{0} 활성화 확인</value>
+    <comment>Dialog page title for the activate/deactivate dialog page. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name.</comment>
+  </data>
+  <data name="Dialog_Activate_Description_Activate" xml:space="preserve">
+    <value>선택한 {0}개의 {1}을(를) 활성화하시겠습니까?</value>
+    <comment>Dialog page description for the activate record dialog page. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 is a number representing number of records selected, Placeholder 1 is a text representing a singular or plural entity name depending upon whether one or more records are selected. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_activate.aspx_55" xml:space="preserve">
+    <value>그러면 {0}이(가) {1} 상태로 설정됩니다.</value>
+    <comment>
+		{NumberedPlaceholder="{0}", "{1}"} Placeholder 0 will be replaced with a proper noun indicating which entity is being activated.
+		Placeholder 1 will be replaced with 'active' or 'inactive'.  Example : This operation will set the selected Account as active.
+	</comment>
+  </data>
+  <data name="Dialog_Label_Active" xml:space="preserve">
+    <value>활성</value>
+    <comment>This is used as a parameter in other resource strings.  Such as "This operation will set the selected Account as Active".</comment>
+  </data>
+  <data name="Button_Label_Activate" xml:space="preserve">
+    <value>활성화</value>
+    <comment>Label for the Activate button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web.cs.contracts.edit.aspx_74" xml:space="preserve">
+    <value>먼저 고객을 선택해야 합니다.</value>
+    <comment>Error message to show when customer is not selected</comment>
+  </data>
+  <data name="Web.cs.contracts.edit.aspx_75" xml:space="preserve">
+    <value>먼저 청구 대상 고객을 선택해야 합니다.</value>
+    <comment>Error message to show when bill to customer is not selected</comment>
+  </data>
+  <data name="FB5A9CDE-C002-418F-BD0C-2CB25431E5CD" xml:space="preserve">
+    <value>이 작업은 취소할 수 없습니다. 계속하려면 [확인]을 클릭하십시오.</value>
+    <comment>AlertMessage.Cannot undo confirmation </comment>
+  </data>
+  <data name="Dialog_Single_Cancel_Description_Entitlement" xml:space="preserve">
+    <value>이 권리 유형을 취소하시겠습니까?</value>
+    <comment>Dialog page description for canceling single entitlement.Contracts[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_Cancel_Description_Entitlement" xml:space="preserve">
+    <value>선택한 권리 유형 {0}개를 취소하시겠습니까? 그러면 권리 유형 상태가 취소됨으로 설정됩니다.</value>
+    <comment>Dialog page description for cancel confirmation dialog page. Eg: Cancelling a contract. {NumberedPlaceholder="{0}"}. Placeholder 0 is a number representing the number of records selected Eg: Contracts[Category="Servicing"]</comment>
+  </data>
+  <data name="Web.CS.cases.dlg_cancel.aspx_20" xml:space="preserve">
+    <value>취소 확인</value>
+    <comment>Cancellation dialog title</comment>
+  </data>
+  <data name="Web.CS.contractdetails.edit.aspx_dis" xml:space="preserve">
+    <value>할인은 총 가격보다 클 수 없습니다. 값을 확인하고 다시 시도하십시오.</value>
+    <comment>
+		This is a validation for the contract lines that the discount cannot be greater than the
+		Total price, this is related to bug#1752.
+	</comment>
+  </data>
+  <data name="Dialog_RenewEntitlement_Title" xml:space="preserve">
+    <value>갱신 확인</value>
+    <comment>Renewal dialog title</comment>
+  </data>
+  <data name="Dialog_RenewEntitlement_Description" xml:space="preserve">
+    <value>이 권리 유형을 갱신하시겠습니까?</value>
+    <comment>Renewal dialog text</comment>
+  </data>
+  <data name="Button_Label_Renew" xml:space="preserve">
+    <value>갱신</value>
+    <comment>Button text for the Renew button [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Error_Message_0x80060607" xml:space="preserve">
+    <value>초안 또는 만료 상태의 권리 유형은 취소할 수 없습니다.</value>
+    <comment>IDS_ENTITLEMENT_INVALIDENTITLEMENTCANCEL[Category="Servicing"]</comment>
+  </data>
+  <data name="Error_Message_0x80044208" xml:space="preserve">
+    <value>취소됨 상태의 권리 유형은 취소할 수 없습니다.</value>
+    <comment>IDS_ENTITLEMENT_ENTITLEMENTALREADYINDRAFTSTATE[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_Deactivate_Title" xml:space="preserve">
+    <value>{0} 비활성화 확인</value>
+    <comment>Dialog page title for deactivate confirmation dialog page. Eg: Confirm Product Deactivation. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product</comment>
+  </data>
+  <data name="Dialog_Deactivate_Description" xml:space="preserve">
+    <value>선택한 {0}개의 {1}을(를) 비활성화하시겠습니까? 원하는 경우 나중에 다시 활성화할 수 있습니다.</value>
+    <comment>Dialog page description for deactivate dialog page. Eg: You have selected 5 products to deactivate. {NumberedPlaceholder="{0}","{1}"}. Placeholder 0 is a number representing the number of records selected and Placeholder 1 is a text representing a singular or plural entity name depending upon whether one or more records are selected Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_deactivate.aspx_55" xml:space="preserve">
+    <value>이 작업은 선택한 {0}의 상태를 비활성으로 변경합니다.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun, singular or plural, indicating an entity name.  Example : This action will change the status of the selected Contact to Inactive.  To continue, click OK.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Button_Label_Deactivate" xml:space="preserve">
+    <value>비활성화</value>
+    <comment>Deactivate button label</comment>
+  </data>
+  <data name="Alert_Conv_Case_Owner_Must" xml:space="preserve">
+    <value>담당자를 선택하십시오.</value>
+    <comment>on convert case to knowledge article dialog</comment>
+  </data>
+  <data name="Alert_Conv_Case_Title_Must" xml:space="preserve">
+    <value>제목을 입력하십시오.</value>
+    <comment>on convert case to knowledge article dialog</comment>
+  </data>
+  <data name="Error_Message_Fail" xml:space="preserve">
+    <value>서비스 케이스가 {0}개 실패했습니다.</value>
+    <comment>
+		Error message that will be shown to user when cases did not get merged.
+		{NumberedPlaceholder="{0}"} Placeholder 0 is for the total number of cases failed to merged.[Category="Servicing"]
+	</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMembers_Title" xml:space="preserve">
+    <value>사이트에서 리소스 제거</value>
+    <comment>"Remove Resources From Site" dialog title</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMember_Description" xml:space="preserve">
+    <value>1개의 리소스를 제거하도록 선택했습니다.</value>
+    <comment>singular version of Dialog_RemoveSiteMembers_Description</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMember_Confirmation" xml:space="preserve">
+    <value>이 작업은 선택한 리소스를 사이트에서 제거합니다. 이 작업은 취소할 수 없지만 필요한 경우 나중에 리소스를 다시 사이트에 추가할 수 있습니다. 계속하려면 [확인]을 클릭하십시오.</value>
+    <comment>Message that will be shown to the user when removing resources from Site.</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMembers_Description" xml:space="preserve">
+    <value>{0}개의 리소스를 제거하도록 선택했습니다.</value>
+    <comment>{NumberedPlaceholder="{0}"} parameter 0 is a number of members to be removed from the site.</comment>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>오류가 발생했습니다. 홈 페이지로 돌아가고 다시 시도하십시오.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>이 클라이언트가 오프라인이므로 이 요청을 처리할 수 없습니다.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>처리 중...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="OperationFailed_SelectOnlyOneCase" xml:space="preserve">
+    <value>작업이 실패했습니다. 서비스 케이스는 1개만 선택할 수 있습니다.</value>
+    <comment>If more than one record is selected, displays this alert message to inform user to only select one</comment>
+  </data>
+  <data name="Alert_TopicModel_Test_ConfigurationUsed_Required" xml:space="preserve">
+    <value>구성이 필요합니다.</value>
+    <comment>Error message to show when configuration is empty</comment>
+  </data>
+  <data name="Alert_TopicModel_Test_MaxTopics_Required" xml:space="preserve">
+    <value>최대 토픽 수를 입력합니다.</value>
+    <comment>Error message to show when maximum number of topics is empty</comment>
+  </data>
+  <data name="Dialog_ConvertToCase_ChangeTaskStatus" xml:space="preserve">
+    <value>{0} 상태를 완료됨으로 변경하고 양식 닫기</value>
+    <comment>Label to show on ConvertToCase dialog for general activities</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_casehierarchy.aspx_6" xml:space="preserve">
+    <value>모든 하위 서비스 케이스가 제대로 만들어지도록 상속에 필요한 모든 필수 필드 선택</value>
+    <comment>Label for Case Settings Dialog</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Header" xml:space="preserve">
+    <value>고객 서비스 허브 응용 프로그램의 참조 문서 관리</value>
+    <comment>Header for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Para1" xml:space="preserve">
+    <value>고객 서비스 허브 응용 프로그램의 새 탭에서 참조 문서가 열렸습니다. 향상된 기능으로 참조 문서에 액세스, 생성 및 관리하려면 브라우저의 새로운 탭을 참조하십시오.</value>
+    <comment>Second Paragraph for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Para2" xml:space="preserve">
+    <value>새 탭이 자동으로 열리지 않는 경우 팝업을 허용하려면 브라우저 설정을 확인하십시오. 또한 고객 서비스 허브 응용 프로그램에 액세스하기 위한 보안 역할 권한도 확인하십시오. 그래도 문제가 지속되면 Dynamics 365 관리자 또는 Microsoft 지원 팀에 문의하십시오.</value>
+    <comment>Third Paragraph for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.MoreHelp" xml:space="preserve">
+    <value>자세히 알아보기:</value>
+    <comment>More Help Text for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.LinkText" xml:space="preserve">
+    <value>고객 서비스 허브의 참조 문서를 사용하여 호출 처리 시간 단축</value>
+    <comment>Text for KM Redirection Notice Help Link</comment>
+  </data>
+  <data name="Error_Message_Deactivate_Service" xml:space="preserve">
+    <value>이러한 서비스와 연결된 예약 서비스 활동이 있으므로 비활성화할 수 없습니다. 비활성화하려면 서비스 활동을 닫거나 취소합니다.</value>
+    <comment>Error message shown when trying to deactivate the service with associated scheduled service activities.</comment>
+  </data>
+  <data name="MultilevelParentChildRelationshipNotAllowed" xml:space="preserve">
+    <value>하위 서비스 케이스에 대해서는 하위 서비스 케이스를 만들 수 없습니다</value>
+    <comment>Error message when child incident is created for child inicident</comment>
+  </data>
+  <data name="Info_Message_Legacy_Service_scheduling_Deprecated" xml:space="preserve">
+    <value>레거시 서비스 예약이 Universal Resource Scheduling에 내장된 새로운 기능으로 바뀝니다. 마이그레이션하는 방법에 대한 자세한 내용은 http://aka.ms/ServiceScheduling을 참조하십시오.</value>
+    <comment>Legacy service scheduling is deprecated in legacy web client.</comment>
+  </data>
+  <data name="Case_Resolve_Dlg_Incident_Not_Active" xml:space="preserve">
+    <value>서비스 케이스가 이미 해결되었습니다.</value>
+    <comment>Alert message to show when an attempt is made to resolve a case when it has already been resolved.</comment>
+  </data>
+  <data name="No_Incident_Id" xml:space="preserve">
+    <value>관련 케이스를 찾을 수 없습니다.</value>
+    <comment>Error message to show when an incident id cannot be found.</comment>
+  </data>
+  <data name="SCH_Year_Single" xml:space="preserve">
+    <value>년</value>
+  </data>
+  <data name="SCH_Year_Plural" xml:space="preserve">
+    <value>년</value>
+  </data>
+  <data name="SCH_Year_Abbrev" xml:space="preserve">
+    <value>년</value>
+  </data>
+  <data name="SCH_Quarter_Single" xml:space="preserve">
+    <value>분기</value>
+  </data>
+  <data name="SCH_Quarter_Plural" xml:space="preserve">
+    <value>분기</value>
+  </data>
+  <data name="SCH_Quarter_Abbrev" xml:space="preserve">
+    <value>분기</value>
+  </data>
+  <data name="SCH_Month_Single" xml:space="preserve">
+    <value>월</value>
+  </data>
+  <data name="SCH_Month_Plural" xml:space="preserve">
+    <value>월</value>
+  </data>
+  <data name="SCH_Month_Abbrev" xml:space="preserve">
+    <value>월</value>
+  </data>
+  <data name="SCH_Week_Single" xml:space="preserve">
+    <value>주</value>
+  </data>
+  <data name="SCH_Week_Plural" xml:space="preserve">
+    <value>주</value>
+  </data>
+  <data name="SCH_Week_Abbrev" xml:space="preserve">
+    <value>주</value>
+  </data>
+  <data name="SCH_Day_Single" xml:space="preserve">
+    <value>일</value>
+  </data>
+  <data name="SCH_Day_Plural" xml:space="preserve">
+    <value>일</value>
+  </data>
+  <data name="SCH_Day_Abbrev" xml:space="preserve">
+    <value>일</value>
+  </data>
+  <data name="SCH_Hour_Single" xml:space="preserve">
+    <value>시간</value>
+  </data>
+  <data name="SCH_Hour_Plural" xml:space="preserve">
+    <value>시간</value>
+  </data>
+  <data name="SCH_Hour_Abbrev" xml:space="preserve">
+    <value>시간</value>
+  </data>
+  <data name="SCH_Minute_Single" xml:space="preserve">
+    <value>분</value>
+  </data>
+  <data name="SCH_Minute_Plural" xml:space="preserve">
+    <value>분</value>
+  </data>
+  <data name="SCH_Minute_Abbrev" xml:space="preserve">
+    <value>분</value>
+  </data>
+  <data name="SCH_Minutes_Abbrev" xml:space="preserve">
+    <value>분</value>
+  </data>
+  <data name="SCH_Minute_Abbrev_Short" xml:space="preserve">
+    <value>분</value>
+  </data>
+  <data name="SCH_Second_Single" xml:space="preserve">
+    <value>초</value>
+  </data>
+  <data name="SCH_Sec_Single" xml:space="preserve">
+    <value>초</value>
+  </data>
+  <data name="SCH_Second_Plural" xml:space="preserve">
+    <value>초</value>
+  </data>
+  <data name="SCH_Second_Abbrev" xml:space="preserve">
+    <value>초</value>
+  </data>
+  <data name="SCH_MilliSecond" xml:space="preserve">
+    <value>밀리초</value>
+  </data>
+  <data name="Duration_FormatHour" xml:space="preserve">
+    <value>{0}시간</value>
+    <comment>Single hour duration formatting on booking bars. Placeholder {0} is the number of hours booked</comment>
+  </data>
+  <data name="Duration_FormatHours" xml:space="preserve">
+    <value>{0}시간</value>
+    <comment>Multiple hour duration formatting on booking bars. Placeholder {0} is the number of hours booked</comment>
+  </data>
+  <data name="Duration_FormatHour_Minutes" xml:space="preserve">
+    <value>{0}시간 {1}분</value>
+    <comment>Single hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_FormatHours_Minutes" xml:space="preserve">
+    <value>{0}시간 {1}분</value>
+    <comment>Multiple hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_Format_Minutes" xml:space="preserve">
+    <value>{0}분</value>
+    <comment>Zero hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_FormatHours_Minutes_Short" xml:space="preserve">
+    <value>{0}:{1}분</value>
+    <comment>Multiple hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_HrsSuffix" xml:space="preserve">
+    <value>시간</value>
+    <comment>Abbreviation for the word "hours", e.g. "100 hrs"</comment>
+  </data>
+  <data name="Duration_HrSuffix" xml:space="preserve">
+    <value>시간</value>
+    <comment>Abbreviation for the word "hour", e.g. "1 hr"</comment>
+  </data>
+  <data name="Duration_Format_Minutes_Short" xml:space="preserve">
+    <value>{0}분</value>
+    <comment>Placeholder {0} is the number of minutes booked.</comment>
+  </data>
+  <data name="Duration_FormatHours_Short" xml:space="preserve">
+    <value>{0}시간</value>
+    <comment>Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatHours_Long" xml:space="preserve">
+    <value>{0}시간</value>
+    <comment>Multiple hour long formatting. Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatOneHour_Long" xml:space="preserve">
+    <value>1시간</value>
+    <comment>Single hour formatting.</comment>
+  </data>
+  <data name="Duration_FormatMinutes_Long" xml:space="preserve">
+    <value>{0}분</value>
+    <comment>Multiple hour long formatting. Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatOneMinute_Long" xml:space="preserve">
+    <value>1분</value>
+    <comment>Single minute formatting.</comment>
+  </data>
+  <data name="EndTimeLaterThanStartTime" xml:space="preserve">
+    <value>종료 시간은 시작 시간 이후로 지정해야 합니다.</value>
+  </data>
+  <data name="DateFieldCannotBeNull" xml:space="preserve">
+    <value>날짜 필드는 null일 수 없습니다.</value>
+  </data>
+  <data name="SC_Pagging_Label" xml:space="preserve">
+    <value>{0} - {1}/{2}</value>
+  </data>
+  <data name="SC_Header_HourlyView" xml:space="preserve">
+    <value>시간별 보기</value>
+  </data>
+  <data name="SC_ViewMode_Tooltip" xml:space="preserve">
+    <value>보기 모드</value>
+  </data>
+  <data name="SC_Legend" xml:space="preserve">
+    <value>범례</value>
+  </data>
+  <data name="SC_HideLegend" xml:space="preserve">
+    <value>범례 숨기기</value>
+  </data>
+  <data name="SC_PreviousButton_ActionBarCalendar_AriaLabel" xml:space="preserve">
+    <value>이전 날짜 범위, {0}부터 {1}까지</value>
+    <comment>Aria-label for the action bar calendar previous button</comment>
+  </data>
+  <data name="SC_NextButton_ActionBarCalendar_AriaLabel" xml:space="preserve">
+    <value>다음 날짜 범위, {0}부터 {1}까지</value>
+    <comment>Aria-label for the action bar calendar next button</comment>
+  </data>
+  <data name="SC_CalendarPreviousButton_Tooltip" xml:space="preserve">
+    <value>이전 범위</value>
+  </data>
+  <data name="SC_CalendarNextButton_Tooltip" xml:space="preserve">
+    <value>다음 범위</value>
+  </data>
+  <data name="SC_CalendarIcon_Tooltip" xml:space="preserve">
+    <value>날짜 선택</value>
+  </data>
+  <data name="SC_Refresh_Tooltip" xml:space="preserve">
+    <value>새로 고침</value>
+  </data>
+  <data name="SC_SortForm_Apply" xml:space="preserve">
+    <value>적용</value>
+  </data>
+  <data name="SC_SortForm_Apply_Tooltip" xml:space="preserve">
+    <value>변경 사항 적용</value>
+  </data>
+  <data name="SC_SortForm_Clear" xml:space="preserve">
+    <value>지우기</value>
+  </data>
+  <data name="SC_SortForm_Clear_Tooltip" xml:space="preserve">
+    <value>변경 사항 지우기</value>
+  </data>
+  <data name="SC_SomethingWentWrong" xml:space="preserve">
+    <value>문제 발생</value>
+  </data>
+  <data name="SC_ReloadToFix" xml:space="preserve">
+    <value>페이지를 다시 로드하세요. 이 메시지가 계속 표시되는 경우 관리자에게 문의하여 지원 요청을 신청하세요.</value>
+  </data>
+  <data name="SC_PreviousButton_AriaLabel" xml:space="preserve">
+    <value>이전 페이지 버튼입니다. 현재 {0}({1}/{2}) 레코드를 표시 중입니다.</value>
+    <comment>Aria-label for a paging previous button</comment>
+  </data>
+  <data name="SC_NextButton_AriaLabel" xml:space="preserve">
+    <value>다음 페이지 버튼입니다. 현재 {0}({1}/{2}) 레코드를 표시 중입니다.</value>
+    <comment>Aria-label for a paging next button</comment>
+  </data>
+  <data name="SC_PreviousButton_Tooltip" xml:space="preserve">
+    <value>이전 페이지</value>
+  </data>
+  <data name="SC_NextButton_Tooltip" xml:space="preserve">
+    <value>다음 페이지</value>
+  </data>
+  <data name="SC_CalendarIcon_AriaLabel" xml:space="preserve">
+    <value>날짜를 선택합니다. 현재 선택한 날짜 범위는 {0}부터 {1}까지입니다.</value>
+    <comment>Aria-label for the action bar calendar button</comment>
+  </data>
+  <data name="SC_Refresh_Announcement" xml:space="preserve">
+    <value>새로 고침이 트리거되었습니다.</value>
+  </data>
+  <data name="SC_SortForm_Ascending" xml:space="preserve">
+    <value>오름차순</value>
+  </data>
+  <data name="SC_SortForm_Descending" xml:space="preserve">
+    <value>내림차순</value>
+  </data>
+  <data name="SC_Appointment" xml:space="preserve">
+    <value>약속</value>
+  </data>
+  <data name="SC_ServiceActivity" xml:space="preserve">
+    <value>서비스 활동</value>
+  </data>
+  <data name="SC_SortForm_Selection_Placeholder" xml:space="preserve">
+    <value>옵션 선택</value>
+  </data>
+  <data name="SC_SortForm_Name" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="SC_Zoom_Slider" xml:space="preserve">
+    <value>확대/축소 슬라이더</value>
+    <comment>Name of the zoom slider on service calendar. Used in the aria-label and tooltip.</comment>
+  </data>
+  <data name="SC_SortForm_FormLabel" xml:space="preserve">
+    <value>정렬</value>
+  </data>
+  <data name="SC_Search" xml:space="preserve">
+    <value>이름으로 검색</value>
+    <comment>Placeholder text on Service Calendar Search Box.</comment>
+  </data>
+  <data name="SC_Filters" xml:space="preserve">
+    <value>필터</value>
+  </data>
+  <data name="SC_Filters_Close_Tooltip" xml:space="preserve">
+    <value>닫기</value>
+    <comment>When the button is pressed, closes the filter panel.</comment>
+  </data>
+  <data name="SC_FilterPanel_Apply" xml:space="preserve">
+    <value>적용</value>
+    <comment>When the button is pressed, applies the currently selected filters.</comment>
+  </data>
+  <data name="SC_FilterPanel_Clear" xml:space="preserve">
+    <value>지우기</value>
+    <comment>When the button is pressed, clears the currently selected filters.</comment>
+  </data>
+  <data name="SC_Type" xml:space="preserve">
+    <value>유형</value>
+  </data>
+  <data name="SC_View" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="SC_Today" xml:space="preserve">
+    <value>오늘</value>
+  </data>
+  <data name="SC_NoResources" xml:space="preserve">
+    <value>이 보기에 표시할 리소스가 없습니다. 시작하려면 리소스를 하나 이상을 만드세요.</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize" xml:space="preserve">
+    <value>창 크기를 조정합니다.</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize_Horizontal" xml:space="preserve">
+    <value>수평 분할: 패널을 크기 조정합니다.</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize_Vertical" xml:space="preserve">
+    <value>수직 분할: 패널을 크기 조정합니다.</value>
+  </data>
+  <data name="Splitter_AriaLabel_ExpandCollapse" xml:space="preserve">
+    <value>패널을 확장/축소합니다.</value>
+  </data>
+  <data name="Alert_ServiceActivity_Check_StartOrEnd" xml:space="preserve">
+    <value>시작 또는 종료 날짜를 확인해야 합니다.</value>
+    <comment>Error message to make sure start or end date is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Include_Future_Dates" xml:space="preserve">
+    <value>날짜 범위에는 이후의 날짜가 포함되어야 합니다.</value>
+    <comment>Error message to make sure future date range is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_Date_Range" xml:space="preserve">
+    <value>잘못된 날짜 범위</value>
+    <comment>Error message to make sure correct date range is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_End_Time" xml:space="preserve">
+    <value>잘못된 종료 시간.</value>
+    <comment>Error message to make sure end time is in the correct format</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_Start_Time" xml:space="preserve">
+    <value>잘못된 시작 시간.</value>
+    <comment>Error message to make sure start time is in the correct format</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Select_Days" xml:space="preserve">
+    <value>요일을 선택하세요.</value>
+    <comment>Error message to make sure atleast one day is selected</comment>
+  </data>
+  <data name="Alert_ServiceActivity_StartTime_Before_EndTime" xml:space="preserve">
+    <value>시작 시간은 종료 시간 이전이어야 합니다.</value>
+    <comment>Error message to make sure start time is lesser than end time</comment>
+  </data>
+  <data name="Confirm_Remove_Resource_From_ResourceGroup" xml:space="preserve">
+    <value>이 작업은 그룹에서 선택한 리소스를 제거합니다. 이 작업은 취소할 수 없지만 필요한 경우 나중에 리소스를 다시 그룹에 추가할 수 있습니다. 계속하는 데 [확인]을 클릭하세요.</value>
+    <comment>Confirm dialog for removal of resource from resource group</comment>
+  </data>
+  <data name="Dialog_Cycle_Bottom_Plural" xml:space="preserve">
+    <value>현재 리소스 그룹이나 해당 상위 그룹 중 하나에 이미 존재하므로 추가할 수 없습니다.</value>
+    <comment>Resource group cyclic dependency error dialog bottom message for multiple RG</comment>
+  </data>
+  <data name="Dialog_Cycle_Bottom_Singular" xml:space="preserve">
+    <value>현재 리소스 그룹이나 해당 상위 그룹 중 하나에 이미 존재하므로 추가할 수 없습니다.</value>
+    <comment>Resource group cyclic dependency error dialog bottom message for single RG</comment>
+  </data>
+  <data name="Dialog_Cycle_Top_Plural" xml:space="preserve">
+    <value>다음 리소스 그룹:</value>
+    <comment>Resource group cyclic dependency error dialog top message for multiple RGs</comment>
+  </data>
+  <data name="Dialog_Cycle_Top_Singular" xml:space="preserve">
+    <value>다음 리소스 그룹:</value>
+    <comment>Resource group cyclic dependency error dialog top message for single RG</comment>
+  </data>
+  <data name="ErrorCode.ResourceConstraints" xml:space="preserve">
+    <value>리소스 제약 조건으로 인해 {0}을(를) 사용할 수 없습니다.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceBusy" xml:space="preserve">
+    <value>{0}은(는) 현재 사용할 수 없습니다.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceOverCapacity" xml:space="preserve">
+    <value>{0}에 필요한 생산 능력이 없습니다.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceNonBusinessHours" xml:space="preserve">
+    <value>{0}이(가) 근무 시간이 아닌 시간에 예약됩니다.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.SearchInvalid" xml:space="preserve">
+    <value>요청한 시간이 잘못되었습니다.</value>
+  </data>
+  <data name="ErrorCode.DifferentEffort" xml:space="preserve">
+    <value>이 서비스에 필요한 생산 능력이 {0} 리소스의 생산 능력과 일치하지 않습니다.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.NotSameSitePartyMembers" xml:space="preserve">
+    <value>모든 리소스가 동일한 사이트에 있어야 합니다.</value>
+  </data>
+  <data name="ErrorCode.EmptyAppointment" xml:space="preserve">
+    <value>이 활동에 대해 선택한 리소스가 없습니다.</value>
+  </data>
+  <data name="ErrorCode.RequiredResourceMisMatch" xml:space="preserve">
+    <value>선택된 리소스 중 하나 이상에 대해 올바른 선택 규칙을 확인할 수 없습니다. [일정] 버튼을 클릭한 다음, 사용 가능한 슬롯 표에서 리소스를 다시 선택하세요.</value>
+  </data>
+  <data name="ErrorCode.MissingMandatory" xml:space="preserve">
+    <value>필요한 {0} 리소스의 서비스 선택 규칙을 충족시킬 수 없습니다. 선택 규칙을 보려면 이 서비스의 레코드를 여세요.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSave_Button" xml:space="preserve">
+    <value>무시 및 저장</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSave Button</comment>
+  </data>
+  <data name="ErrorCode.InvalidAppointmentDuration" xml:space="preserve">
+    <value>약속의 기간이 잘못되었습니다.</value>
+    <comment>appointment duration more than MaxAppointmentDurationDays in user settings</comment>
+  </data>
+  <data name="ErrorCode.NotEnoughResources" xml:space="preserve">
+    <value>선택한 날짜 및 시간에 사용할 수 있는 리소스가 이 서비스의 최소 리소스 요구 사항에 맞지 않습니다.</value>
+  </data>
+  <data name="ErrorCode.MandatoryResourceOverSpecification" xml:space="preserve">
+    <value>서비스에 필요한 것보다 많은 리소스가 지정되었습니다.</value>
+  </data>
+  <data name="Root_Resource_Spec_Name_Format" xml:space="preserve">
+    <value>{1}에서 {0} 추가</value>
+    <comment>Root selection rule label</comment>
+  </data>
+  <data name="Resource_Spec_Name_Format" xml:space="preserve">
+    <value>다음에서 {0} 추가</value>
+    <comment>Selection rule label</comment>
+  </data>
+  <data name="Resource_Selection_Resouce_Group_Label" xml:space="preserve">
+    <value>{0}의 구성원</value>
+    <comment>Resouce groups label</comment>
+  </data>
+  <data name="Button_Label_Add_Selection_Rule" xml:space="preserve">
+    <value>선택 규칙 추가</value>
+    <comment>Add selection rule</comment>
+  </data>
+  <data name="Button_Label_Add_Resources" xml:space="preserve">
+    <value>리소스 추가</value>
+    <comment>Add resources</comment>
+  </data>
+  <data name="Button_Label_Edit" xml:space="preserve">
+    <value>편집</value>
+    <comment>Edit button label</comment>
+  </data>
+  <data name="Dialog_Title_Add_Selection_Rule" xml:space="preserve">
+    <value>선택 규칙 추가</value>
+    <comment>Add selection rule dialog label</comment>
+  </data>
+  <data name="Dialog_Title_Edit_Selection_Rule" xml:space="preserve">
+    <value>선택 규칙 편집</value>
+    <comment>Edit selection rule dialog label</comment>
+  </data>
+  <data name="Service_Form_Save_Progress" xml:space="preserve">
+    <value>저장 진행 중</value>
+    <comment>Save in progress</comment>
+  </data>
+  <data name="Service_Resource_Tree_Load_Message" xml:space="preserve">
+    <value>구성된 리소스 로드 중</value>
+    <comment>Loading configured resources</comment>
+  </data>
+  <data name="Resource_Selection_Notification" xml:space="preserve">
+    <value>하나 이상의 선택 규칙에 필요한 리소스를 선택하지 않았습니다. 규칙을 완성하려면 [필요한 리소스]를 클릭하십시오.</value>
+    <comment>Empty selection rule notification</comment>
+  </data>
+  <data name="Delete_Dialog_Title" xml:space="preserve">
+    <value>삭제 확인</value>
+    <comment>Delete dialog title</comment>
+  </data>
+  <data name="Resource_Rule_Delete_Confirmation" xml:space="preserve">
+    <value>이 노드와 모든 하위 노드를 제거하시겠습니까?</value>
+    <comment>Resource rule delete confirmation message</comment>
+  </data>
+  <data name="Resource_Delete_Confirmation" xml:space="preserve">
+    <value>이 노드를 제거하시겠습니까?</value>
+    <comment>Resource delete confirmation message</comment>
+  </data>
+  <data name="Resouce_Selection_Error" xml:space="preserve">
+    <value>동일한 리소스를 동일한 선택 규칙 {0}에서 두 번 선택할 수 없음</value>
+    <comment>Error message when adding same resource twice in same selection rule</comment>
+  </data>
+  <data name="Resource_Delete_Confirmation_Note" xml:space="preserve">
+    <value>참고: 트리에서 리소스 및 리소스 그룹을 제거해도 Microsoft Dynamics 365에서는 해당 항목이 삭제되지 않습니다.</value>
+    <comment>Note: Removing resources and resource groups from the tree will not delete them from Microsoft Dynamics 365.</comment>
+  </data>
+  <data name="Info_Message_Deprecated_Legacy_Contract_Entity_migrating_to_Entitlement" xml:space="preserve">
+    <value>이 계약 엔터티는 사용이 중지되며 권리 유형 엔터티로 대체됩니다. 통합 인터페이스에서 계약 엔터티에 액세스할 수 없게 됩니다. 2020년 12월 1일 전까지 권리 유형 엔터티에 데이터를 마이그레이션하세요. 자세한 정보: https://go.microsoft.com/fwlink/p/?linkid=2135246</value>
+    <comment>Contract entity had been deprecated and won’t be accessible in Unified Interface. </comment>
+  </data>
+  <data name="Info_Message_Deprecated_Legacy_ContractTemplate_Entity_migrating_to_Entitlement" xml:space="preserve">
+    <value>이 계약 템플릿 엔터티는 사용이 중지되며 권리 유형 엔터티로 대체됩니다. 통합 인터페이스에서 계약 템플릿 엔터티에 액세스할 수 없게 됩니다. 2020년 12월 1일 전까지 권리 유형 엔터티에 데이터를 마이그레이션하세요. 자세한 정보: https://go.microsoft.com/fwlink/p/?linkid=2135246</value>
+    <comment>Contract template entity had been deprecated and won’t be accessible in Unified Interface. </comment>
+  </data>
+  <data name="UCI.Form.Saving" xml:space="preserve">
+    <value>저장하는 중...</value>
+    <comment>Message which is displayed while UCI main form is getting saved.</comment>
+  </data>
+  <data name="Days_Of_Week_Friday" xml:space="preserve">
+    <value>금요일</value>
+  </data>
+  <data name="Days_Of_Week_Monday" xml:space="preserve">
+    <value>월요일</value>
+  </data>
+  <data name="Days_Of_Week_Saturday" xml:space="preserve">
+    <value>토요일</value>
+  </data>
+  <data name="Days_Of_Week_Sunday" xml:space="preserve">
+    <value>일요일</value>
+  </data>
+  <data name="Days_Of_Week_Thursday" xml:space="preserve">
+    <value>목요일</value>
+  </data>
+  <data name="Days_Of_Week_Tuesday" xml:space="preserve">
+    <value>화요일</value>
+  </data>
+  <data name="Days_Of_Week_Wednesday" xml:space="preserve">
+    <value>수요일</value>
+  </data>
+  <data name="SC_SortForm_AriaButton" xml:space="preserve">
+    <value>정렬</value>
+  </data>
+  <data name="SC_FilterPanel_Applied_Announce" xml:space="preserve">
+    <value>필터 적용됨</value>
+  </data>
+  <data name="SC_FilterPanel_Cleared_Announce" xml:space="preserve">
+    <value>필터 지움</value>
+  </data>
+  <data name="SC_SearchBox_A11y" xml:space="preserve">
+    <value>리소스 검색</value>
+  </data>
+  <data name="SC_ListView_ViewType_ListView" xml:space="preserve">
+    <value>목록 보기</value>
+  </data>
+  <data name="SC_ListView_Column_Availability" xml:space="preserve">
+    <value>가용성</value>
+  </data>
+  <data name="SC_ListView_Column_Start_Time" xml:space="preserve">
+    <value>시작 시간</value>
+  </data>
+  <data name="SC_ListView_Column_End_Time" xml:space="preserve">
+    <value>종료 시간</value>
+  </data>
+  <data name="SC_ListView_Column_Duration" xml:space="preserve">
+    <value>기간</value>
+  </data>
+  <data name="SC_ListView_Column_Activity" xml:space="preserve">
+    <value>활동</value>
+  </data>
+  <data name="SC_ListView_Column_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_Available" xml:space="preserve">
+    <value>사용 가능</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_Scheduled" xml:space="preserve">
+    <value>예약됨</value>
+  </data>
+  <data name="SC_ListView_ViewType_GridView" xml:space="preserve">
+    <value>표 보기</value>
+  </data>
+  <data name="Alert_Failed_Updating_ServiceActivity_Status" xml:space="preserve">
+    <value>StateAttributeMetadata가 null이라 서비스 활동 상태를 업데이트하지 못했습니다.</value>
+    <comment>Failure when setting default status for given service activity state due to empty StateAttributeMetadata.</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Failed" xml:space="preserve">
+    <value>통합 회람을 프로비전할 수 없습니다. 다시 시도하거나 Microsoft 지원에 문의하세요. https://go.microsoft.com/fwlink/?linkid=2155040</value>
+    <comment>Label for failed provisioning</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Started" xml:space="preserve">
+    <value>통합 회람이 프로비전 중입니다. 이 프로세스를 완료하는 데 몇 시간이 걸립니다.</value>
+    <comment>Label for in progress provisioning</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Completed" xml:space="preserve">
+    <value>통합 회람을 프로비전했습니다.</value>
+    <comment>Label for successful provisioning</comment>
+  </data>
+  <data name="SC_ListView_Availability_Option_PartiallyAvailable" xml:space="preserve">
+    <value>부분적으로 사용할 수 있음</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_OutsideWorkingHours" xml:space="preserve">
+    <value>사용 불가</value>
+  </data>
+  <data name="SC_SearchBox_MoreRecords_Announce" xml:space="preserve">
+    <value>레코드 {0}개 찾음</value>
+  </data>
+  <data name="SC_SearchBox_OneRecord_Announce" xml:space="preserve">
+    <value>레코드 {0}개 찾음</value>
+  </data>
+  <data name="SC_SortForm_Cleared_Announce" xml:space="preserve">
+    <value>선택한 정렬 옵션이 지워졌습니다.</value>
+  </data>
+  <data name="SC_SortForm_Apply_Ascending" xml:space="preserve">
+    <value>리소스가 이름별 오름차순으로 정렬됩니다.</value>
+  </data>
+  <data name="SC_SortForm_Apply_Descending" xml:space="preserve">
+    <value>리소스가 이름별 내림차순으로 정렬됩니다.</value>
+  </data>
+  <data name="SC_Notifications_of" xml:space="preserve">
+    <value>{0}/{1}</value>
+    <comment>{Placeholder='{0}','{1}'} Placeholder 0 is the number of current notifications and Placeholder 1 is the total number of notifications</comment>
+  </data>
+  <data name="SC_AlertWindow_DismissButton" xml:space="preserve">
+    <value>해제</value>
+    <comment>Label for the dismiss button on the notification item</comment>
+  </data>
+  <data name="SC_ChangeStatus_Text" xml:space="preserve">
+    <value>상태 변경</value>
+  </data>
+  <data name="SC_ListView_More_Options" xml:space="preserve">
+    <value>추가 옵션</value>
+    <comment>Label for more option button for list view</comment>
+  </data>
+  <data name="SLA_Recalculation_Text" xml:space="preserve">
+    <value>SLA가 마지막 상태에 도달할 때 다시 계산됩니다. {0}.</value>
+  </data>
+  <data name="SLA_Recalculation_HyperLinkText" xml:space="preserve">
+    <value>자세히 보기</value>
+  </data>
+  <data name="CalendarImportExportHyperLinkText" xml:space="preserve">
+    <value>자세히 알아보기</value>
+  </data>
+  <data name="SlaCalendarExportImportHelpText" xml:space="preserve">
+    <value>솔루션의 일부로 내보내거나 가져온 SLA에 연결된 휴일 일정 및 고객 서비스 일정을 포함합니다. {0}</value>
+  </data>
+  <data name="Hard_Refresh_Save_Notification_Msg" xml:space="preserve">
+    <value>업데이트를 반영하기 위한 강제 새로 고침</value>
+    <comment>for showing the user message to hard refresh the page when the insert dialog setting is changed</comment>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>2023년 4월 1일부터 이전에 사용되지 않던 웹 클라이언트의 레거시 SLA(서비스 수준 약정)는 EoS(지원 종료일)가 지났습니다. 기능 손실을 방지하기 위해 웹 클라이언트에서 생성된 레거시 SLA를 통합 인터페이스 환경으로 즉시 마이그레이션해야 합니다. 항목을 마이그레이션하는 방법에 대한 자세한 내용은 {0}에서 확인하세요.</value>
+    <comment>Notification message about SLA and ARC web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="Entitlement_AllocationTypeNotification" xml:space="preserve">
+    <value>권리 유형의 엔터티 할당 유형을 매핑할 수 있는 레코드가 없습니다. 권리 유형의 엔터티 할당 유형 매핑을 추가하십시오. 자세한 내용은 {0}을 참조하십시오</value>
+    <comment>Notification message about entitlement's entity allocation type mapping. {Placeholder='{0}'} Placeholder '0' is a documentation link for more information.</comment>
+  </data>
+  <data name="CancelCaseWithActivityNumber" xml:space="preserve">
+    <value>&lt;p&gt;열려 있는 활동이 {0}개&lt;p&gt; 있습니다. 확인하면 열려 있는 모든 활동이 취소됩니다.</value>
+    <comment>Notification message about cancelling open activities if case is resolved. {Placeholder='{0}'}, {Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities.</comment>
+  </data>
+  <data name="CaseCancellationToastNotification" xml:space="preserve">
+    <value>서비스 케이스가 취소되었습니다.</value>
+    <comment>Toast notification message when case has been cancelled.</comment>
+  </data>
+  <data name="CaseResolutionToastNotification" xml:space="preserve">
+    <value>서비스 케이스가 해결되었습니다.</value>
+    <comment>Toast notification message when case has been resolved.</comment>
+  </data>
+  <data name="ResolveCaseWithActivityNumber" xml:space="preserve">
+    <value>&lt;p&gt;열려 있는 활동이 {0}개&lt;p&gt; 있습니다. 확인하면 열려 있는 모든 활동이 취소됩니다.</value>
+    <comment>Notification message about cancelling open activities if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivity" xml:space="preserve">
+    <value>&lt;p&gt;열려 있는 활동이 {0}개&lt;p&gt; 있습니다. 확인하면 열려 있는 활동이 취소됩니다.</value>
+    <comment>Notification message about cancelling open activity if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities. It will be 1 in this case</comment>
+  </data>
+  <data name="NewCase" xml:space="preserve">
+    <value>새 케이스</value>
+    <comment>Title of Panel to create a case record.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleOpenSwarms" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 전문가 그룹 {0}개&lt;p&gt;가 있습니다. 확인하면 진행 중인 전문가 그룹이 모두 해제됩니다.</value>
+    <comment>Notification message about resolving open swarms if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneOpenSwarm" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 전문가 그룹 {0}개&lt;p&gt;가 있습니다. 확인하면 진행 중인 전문가 그룹이 해제됩니다.</value>
+    <comment>Notification message about resolving open swarms if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleOpenSwarms" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 전문가 그룹 {0}개&lt;p&gt;가 있습니다. 확인하면 진행 중인 전문가 그룹이 모두 취소됩니다.</value>
+    <comment>Notification message about cancelling open swarms if case is cancelled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneOpenSwarm" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 전문가 그룹 {0}개&lt;p&gt;가 있습니다. 확인하면 진행 중인 전문가 그룹이 취소됩니다.</value>
+    <comment>Notification message about cancelling open swarms if case is cancelled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivityAndOneSwarm" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 활동 {0}개&lt;p&gt;와 &lt;p&gt;진행 중인 전문가 그룹 {1}개&lt;p&gt;가 있습니다. 케이스를 해결하면 활동이 취소되고 전문가 그룹이 해제됩니다.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleActivitiesAndOneSwarm" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 활동 {0}개&lt;p&gt;와 &lt;p&gt;진행 중인 전문가 그룹 {1}개&lt;p&gt;가 있습니다. 케이스를 해결하면 활동이 취소되고 전문가 그룹이 해제됩니다.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivityAndMultipleSwarms" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 활동 {0}개&lt;p&gt;와 &lt;p&gt;진행 중인 전문가 그룹 {1}개&lt;p&gt;가 있습니다. 케이스를 해결하면 활동이 취소되고 전문가 그룹이 해제됩니다.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleActivitiesAndMultipleSwarms" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 활동 {0}개&lt;p&gt;와 &lt;p&gt;진행 중인 전문가 그룹 {1}개&lt;p&gt;가 있습니다. 케이스를 해결하면 활동이 취소되고 전문가 그룹이 해제됩니다.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneActivityAndOneSwarm" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 활동 {0}개&lt;p&gt;와 &lt;p&gt;진행 중인 전문가 그룹 {1}개&lt;p&gt;가 있습니다. 케이스를 취소하면 활동과 전문가 그룹이 취소됩니다.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleActivitiesAndOneSwarm" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 활동 {0}개&lt;p&gt;와 &lt;p&gt;진행 중인 전문가 그룹 {1}개&lt;p&gt;가 있습니다. 케이스를 취소하면 활동과 전문가 그룹이 취소됩니다.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneActivityAndMultipleSwarms" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 활동 {0}개&lt;p&gt;와 &lt;p&gt;진행 중인 전문가 그룹 {1}개&lt;p&gt;가 있습니다. 케이스를 취소하면 활동과 전문가 그룹이 취소됩니다.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleActivitiesAndMultipleSwarms" xml:space="preserve">
+    <value>&lt;p&gt;진행 중인 활동 {0}개&lt;p&gt;와 &lt;p&gt;진행 중인 전문가 그룹 {1}개&lt;p&gt;가 있습니다. 케이스를 취소하면 활동과 전문가 그룹이 취소됩니다.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOpenSwarmWhenFCSOff" xml:space="preserve">
+    <value>이 케이스와 연결된 진행 중인 전문가 그룹이 있습니다. 케이스를 취소하면 전문가 그룹이 취소됩니다. 케이스를 취소하시겠습니까?</value>
+    <comment>Notification message about cancelling open swarm if case is cancelled.</comment>
+  </data>
+  <data name="ResolveCaseWithOpenSwarmWhenFCSOff" xml:space="preserve">
+    <value>이 케이스와 연결된 진행 중인 전문가 그룹이 있습니다. 케이스를 해결하면 전문가 그룹이 해제됩니다. 케이스를 해결하시겠습니까?</value>
+    <comment>Notification message about resolving open swarm if case is resolved.</comment>
+  </data>
+  <data name="CancelCaseWithOpenSwarmAndActivityWhenFCSOff" xml:space="preserve">
+    <value>이 케이스와 연결된 진행 중인 활동과 전문가 그룹이 있습니다. 케이스를 취소하면 활동과 전문가 그룹이 취소됩니다. 케이스를 취소하시겠습니까?</value>
+    <comment>Notification message about cancelling open swarm and activities if case is cancelled.</comment>
+  </data>
+  <data name="ResolveCaseWithOpenSwarmAndActivityWhenFCSOff" xml:space="preserve">
+    <value>이 케이스와 연결된 진행 중인 활동과 전문가 그룹이 있습니다. 케이스를 해결하면 활동이 취소되고 전문가 그룹이 해제됩니다. 케이스를 해결하시겠습니까?</value>
+    <comment>Notification message about cancelling open swarm and activities if case is resolved.</comment>
+  </data>
+  <data name="EntitlementWorkflowNotInActiveState" xml:space="preserve">
+    <value>연결된 {0} 워크플로가 활성 상태가 아닙니다. 권리 유형을 활성화하기 전에 워크플로를 활성화하세요.</value>
+    <comment>Error message when dependent Workflow/CustomAction is not enabled. {Placeholder='{0}'} Placeholder '0' is the entitlement's workflow name</comment>
+  </data>
+  <data name="SeeTermsText" xml:space="preserve">
+    <value>프리뷰 사용 약관 보기</value>
+    <comment>Link to preview terms</comment>
+  </data>
+  <data name="LOBHasNotChanged" xml:space="preserve">
+    <value>케이스의 새 의도를 알고 있는 경우 아래 드롭다운에서 선택합니다. 그렇지 않으면 저장 및 경로를 클릭하면 의도가 다시 결정됩니다.</value>
+    <comment>Label in Save And ReRoute Dialog when LOB Has not changed</comment>
+  </data>
+  <data name="LOBHasChanged" xml:space="preserve">
+    <value>케이스의 새 의도를 알고 있는 경우 아래 드롭다운에서 선택합니다. 그렇지 않으면 저장 및 경로를 클릭하면 의도가 다시 결정됩니다.</value>
+    <comment>Label in Save And ReRoute Dialog when LOB has changed</comment>
+  </data>
+  <data name="CaseResolutionFormFillSourceTitle" xml:space="preserve">
+    <value>대/소문자</value>
+    <comment>Label to be shown in source pill of AI toolbar when manual form fill of case resolution</comment>
+  </data>
+  <data name="EmailToCaseFormFillSourceTitle" xml:space="preserve">
+    <value>이메일</value>
+    <comment>Label to be shown in source pill of AI toolbar when manual form fill of case</comment>
+  </data>
+  <data name="AIToolBarPillChat" xml:space="preserve">
+    <value>케이스에 대화를 기반으로 저장된 AI 변경 내용이 포함되어 있습니다</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on conversation.</comment>
+  </data>
+  <data name="AIToolBarPillEmail" xml:space="preserve">
+    <value>케이스에 이메일을 기반으로 한 저장된 AI 변경 내용이 포함되어 있습니다</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on Email.</comment>
+  </data>
+  <data name="AIToolBarPillChatAndEmail" xml:space="preserve">
+    <value>케이스에 대화 및 이메일을 기반으로 저장된 Al 변경 내용이 포함되어 있습니다</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on conversation and emails.</comment>
+  </data>
+  <data name="viewInAuditHistoryLink" xml:space="preserve">
+    <value>감사 기록 보기</value>
+    <comment>View in audit history.</comment>
+  </data>
+</root>

@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OC_LimitQuestions_AlertDialogConfirmButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OC_RecordPermissions_AlertDialogText" xml:space="preserve">
+    <value>Nemáte povolenia na vykonanie tejto akcie.</value>
+  </data>
+  <data name="OC_LimitQuestions_AlertDialogText" xml:space="preserve">
+    <value>Nemôžete pridať viac ako päť otázok. Ak chcete pridať ďalšie otázky, niektoré odstráňte.</value>
+  </data>
+  <data name="OC_PickAuthFailed" xml:space="preserve">
+    <value>Výber bol neúspešný pre zlyhanie overenia. Skúste to znova neskôr. Pracovná položka: {0}</value>
+  </data>
+  <data name="OC_PickedByAnotherAgent" xml:space="preserve">
+    <value>Výber bol neúspešný. Položku vybral iný agent. Pracovná položka: {0}</value>
+  </data>
+  <data name="OC_PickInternalError" xml:space="preserve">
+    <value>Výber bol neúspešný. Skúste položku vybrať znova. Pracovná položka: {0}</value>
+  </data>
+  <data name="OC_PickMaxCapacityReached" xml:space="preserve">
+    <value>Výber bol neúspešný. Dosiahli ste maximálnu kapacitu. Pracovná položka: {0}</value>
+  </data>
+  <data name="OC_PickMaxConcurrencyReached" xml:space="preserve">
+    <value>Výber bol neúspešný. Dosiahli ste maximálnu súbežnosť. Pracovná položka: {0}</value>
+  </data>
+  <data name="OC_PickNotAvailable" xml:space="preserve">
+    <value>Výber bol neúspešný. Položka nie je k dispozícii. Pracovná položka: {0}</value>
+  </data>
+  <data name="OC_PickPresenceError" xml:space="preserve">
+    <value>Výber bol neúspešný pre váš stav prítomnosti. Pracovná položka: {0}</value>
+  </data>
+  <data name="OC_PickSuccess" xml:space="preserve">
+    <value>Pracovná položka bola úspešne vybratá. Pracovná položka: {0}</value>
+  </data>
+  <data name="OC_OpenFormFail" xml:space="preserve">
+    <value>Nepodarilo sa otvoriť formulár. Ak chcete tento formulár otvoriť, skúste to znova. Ak tento problém pretrváva, obráťte sa na správcu.</value>
+  </data>
+  <data name="OC_OpenSessionFail" xml:space="preserve">
+    <value>Nepodarilo sa otvoriť reláciu. Ak chcete túto reláciu otvoriť, skúste to znova. Ak tento problém pretrváva, obráťte sa na správcu.</value>
+  </data>
+  <data name="OC_InputTimeFormat" xml:space="preserve">
+    <value>Zadajte čas v správnom 24-hodinovom formáte (HH:mm).</value>
+  </data>
+  <data name="OC_InputTimesDifferenceValidation" xml:space="preserve">
+    <value>Čas ukončenia nemôže byť skorší alebo nastavený na skôr ako {0} min. pred časom začatia.</value>
+  </data>
+  <data name="OC_SendMessageToConversationSuccessMessage" xml:space="preserve">
+    <value>Hotovo. Táto správa bola odoslaná do konverzácie.</value>
+  </data>
+  <data name="OC_SendMessageToConversationFailureMessage" xml:space="preserve">
+    <value>Vyskytol sa problém. Skúste znova odoslať správu do konverzácie.</value>
+  </data>
+  <data name="OC_SupervisorOpenRecord" xml:space="preserve">
+    <value>Záznamy konverzácie sú určené iba na zobrazenie a nedajú sa otvoriť.</value>
+  </data>
+  <data name="OC_LinkToConversationSuccessMessage" xml:space="preserve">
+    <value>Hotovo. Tento záznam {0} bol prepojený s danou konverzáciou.</value>
+  </data>
+  <data name="OC_LinkToConversationFailureMessage" xml:space="preserve">
+    <value>Vyskytol sa problém. Skúste znova vykonať prepojenie s konverzáciou.</value>
+  </data>
+  <data name="OC_LinkToConversationUpdatedMessage" xml:space="preserve">
+    <value>Aktualizované. Tento záznam {0} nahradil predchádzajúci záznam {0} prepojený s touto konverzáciou.</value>
+  </data>
+  <data name="OC_Presence_Available" xml:space="preserve">
+    <value>K dispozícii</value>
+  </data>
+  <data name="OC_Presence_Busy" xml:space="preserve">
+    <value>Nemám čas</value>
+  </data>
+  <data name="OC_Presence_DoNotDisturb" xml:space="preserve">
+    <value>Nerušiť</value>
+  </data>
+  <data name="OC_Presence_Away" xml:space="preserve">
+    <value>Zobraziť stav Som preč</value>
+  </data>
+  <data name="OC_Presence_Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="MaskingRule.LimitReached" xml:space="preserve">
+    <value>Nie je povolené vytvoriť pravidlá maskovania vo väčšom počte než {0}. Odstráňte pravidlá a obmedzte tak celkový počet na {0}.</value>
+  </data>
+  <data name="MaskingRule.PluginError" xml:space="preserve">
+    <value>V doplnku PreValidationMaskingRuleLimitPlugin sa vyskytla chyba.</value>
+  </data>
+  <data name="MaskingRule.RegexException.InvalidEscape" xml:space="preserve">
+    <value>Syntaktická chyba: Neplatný regulárny výraz: /{0}/: Neplatný znak escape</value>
+  </data>
+  <data name="MaskingRule.RegexException.EndOfPattern" xml:space="preserve">
+    <value>Syntaktická chyba: Neplatný regulárny výraz: /{0}/: \ na konci vzoru</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedCharacterClass" xml:space="preserve">
+    <value>Syntaktická chyba: Neplatný regulárny výraz: /{0}/: Neukončená trieda znakov</value>
+  </data>
+  <data name="MaskingRule.RegexException.IncompleteQuantifier" xml:space="preserve">
+    <value>Syntaktická chyba: Neplatný regulárny výraz: /{0}/: Neúplný kvantifikátor</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedGroup" xml:space="preserve">
+    <value>Syntaktická chyba: Neplatný regulárny výraz: /{0}/: Neukončená skupina</value>
+  </data>
+  <data name="MaskingRule.RegexException.LoneQuantifierBrackets" xml:space="preserve">
+    <value>Syntaktická chyba: Neplatný regulárny výraz: /{0}/: Osamelé zátvorky kvantifikátora</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnmatchedParen" xml:space="preserve">
+    <value>Syntaktická chyba: Neplatný regulárny výraz: /{0}/: Znak ) bez zhody</value>
+  </data>
+  <data name="MaskingRule.RegexException.NothingToRepeat" xml:space="preserve">
+    <value>Syntaktická chyba: Neplatný regulárny výraz: /{0}/: Nič na opakovanie</value>
+  </data>
+  <data name="MaskingRule.RegexException.Timeout" xml:space="preserve">
+    <value>TimeoutError: Vyhodnotenie regulárneho výrazu trvalo príliš dlho: /{0}/: Ukončilo sa po {1} ms.</value>
+  </data>
+  <data name="MaskingRule.MaskingInProgress" xml:space="preserve">
+    <value>Maskujú sa testovacie údaje s regulárnym výrazom.</value>
+  </data>
+  <data name="SentimentAnalysis.WrongName" xml:space="preserve">
+    <value>Názov záznamu musí byť {0}.</value>
+  </data>
+  <data name="SentimentAnalysis.DeleteNotAllowed" xml:space="preserve">
+    <value>Odstránenie záznamu nie je povolené.</value>
+  </data>
+  <data name="Entity.OnlyOneAllowed" xml:space="preserve">
+    <value>Povolený je iba jeden záznam tohto typu.</value>
+  </data>
+  <data name="Entity.DeleteNotAllowed" xml:space="preserve">
+    <value>Odstránenie záznamu nie je povolené.</value>
+  </data>
+  <data name="DefaultQueue.DeleteNotAllowed" xml:space="preserve">
+    <value>Nemôžete odstrániť front DefaultQueue, pretože je určený len na čítanie.</value>
+  </data>
+  <data name="DefaultQueue.UpdateNotAllowed" xml:space="preserve">
+    <value>Nemôžete upraviť front DefaultQueue, pretože je určený len na čítanie.</value>
+  </data>
+  <data name="Queue.IncorrectEntityError" xml:space="preserve">
+    <value>Chyba registrácie doplnku: Logický názov entity nie je Queue.</value>
+  </data>
+  <data name="Queue.QueueTypeUpdateError" xml:space="preserve">
+    <value>Nemôžete aktualizovať typ frontu.</value>
+  </data>
+  <data name="Queue.NonEntityQueueSelected" xml:space="preserve">
+    <value>Nie je možné vytvoriť položku pravidla smerovania, pretože vybratý front nemá typ entity. Môžete smerovať iba do frontu typu entity.</value>
+  </data>
+  <data name="RoutingRuleItem.NonEntityQueueSelected" xml:space="preserve">
+    <value>Nie je možné pridať záznam do vybratého frontu, pretože vybratý front nemá typ entity. Vyberte front entity a skúste to znova.</value>
+  </data>
+  <data name="OC_Refresh_Grid" xml:space="preserve">
+    <value>Záznam sa nepodarilo premiestniť, keďže mriežka je v režime zoradenia. Obnovte mriežku a skúste to znova.</value>
+  </data>
+  <data name="GeoLocationProvider.IncorrectEntityError" xml:space="preserve">
+    <value>Chyba registrácie doplnku: Logický názov entity nie je GeoLocationProvider.</value>
+  </data>
+  <data name="GeoLocationProvider.PluginError" xml:space="preserve">
+    <value>V doplnku GeoLocationProviderPlugIn sa vyskytla chyba.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelsNotSupported" xml:space="preserve">
+    <value>Kanály entít sa v tomto vydaní nepodporujú. Ďalšie informácie nájdete v súbore ReadMe.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelTypeNotSupported" xml:space="preserve">
+    <value>Kanál entity sa v tomto vydaní nepodporuje. Vyberte iné typy kanálov. Ďalšie informácie nájdete v súbore ReadMe.</value>
+  </data>
+  <data name="EntityRouting.EntityWorkStreamsNotSupported" xml:space="preserve">
+    <value>Prehľady prác entít sa v tomto vydaní nepodporujú. Ďalšie informácie nájdete v súbore ReadMe.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForDSF" xml:space="preserve">
+    <value>Zmeny konfigurácie Omnikanála sa môžu prejaviť až o 15 minút.</value>
+  </data>
+  <data name="OC_CaseRoutingFormNotificationMessage" xml:space="preserve">
+    <value>V tomto vydaní sa podporuje iba smerovanie prípadu. V budúcom vydaní sa budú podporovať ďalšie záznamy entít.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForRoutingSolutionDep" xml:space="preserve">
+    <value>Ak chcete používať smerovanie entity prípadu, musíte nainštalovať riešenie Pravidlá smerovania – verzia Preview. Ďalšie informácie nájdete v časti {0}</value>
+  </data>
+  <data name="OC_Preview_Message" xml:space="preserve">
+    <value>Povolením tejto funkcie potvrdzujete, že táto funkcia je vo verzii Preview a súhlasíte s {0}. {1}</value>
+    <comment>Template Preview Text for all features</comment>
+  </data>
+  <data name="OC_Preview_Link_Label" xml:space="preserve">
+    <value>Podmienky používania verzie Preview</value>
+    <comment>Preview Terms label to point to the relevant Preview Terms</comment>
+  </data>
+  <data name="OC_LearnMore_Link_Label" xml:space="preserve">
+    <value>Ďalšie informácie</value>
+    <comment>Hyperlink label to point to the relevant feature documentation</comment>
+  </data>
+  <data name="AutomaticQueueName" xml:space="preserve">
+    <value>Front automatickej distribúcie</value>
+  </data>
+  <data name="AutomaticQueueSelectionRecommendation" xml:space="preserve">
+    <value>Vyberte front na automatickú distribúciu a priradenie pracovných položiek agentom.</value>
+  </data>
+  <data name="ConfigureRoutingRulesAtERCNotification" xml:space="preserve">
+    <value>Pravidlá smerovania pre prehľady prác záznamov entít sú nakonfigurované na úrovni kanála. Konfiguráciu môžete vykonať v ponuke Kanály &gt; Záznamy entít &gt; {0} &gt; Pravidlá smerovania.</value>
+  </data>
+  <data name="isOmnichannelQueueGuidanceNotification" xml:space="preserve">
+    <value>Nastavením možnosti Áno povolíte front na automatickú distribúciu práce Omnikanála. Ďalšie informácie nájdete v časti {0}.</value>
+  </data>
+  <data name="ManualQueueName" xml:space="preserve">
+    <value>Manuálny front</value>
+  </data>
+  <data name="ManualQueueSelectionRecommendation" xml:space="preserve">
+    <value>Ak chcete automaticky priradiť záznamy entít agentom, vyberte položku Front na účely automatickej distribúcie práce.</value>
+  </data>
+  <data name="ERCDeletionWarningMessage" xml:space="preserve">
+    <value>Odstránením záznamu {0} sa zakáže smerovanie záznamov entít pre entitu {1}. Naozaj chcete vykonať odstránenie?</value>
+  </data>
+  <data name="InstallRoutingRuleForERCNotification" xml:space="preserve">
+    <value>Ak chcete používať smerovanie záznamov entít, musíte nainštalovať riešenie Pravidlá smerovania. Ďalšie informácie nájdete v časti {0}.</value>
+  </data>
+  <data name="EntityRoutingPlugins.GenericError" xml:space="preserve">
+    <value>Pre chybu sa nepodarilo dokončiť operáciu. Skúste to znova neskôr. Ak bude problém pretrvávať, obráťte sa na oddelenie podpory spoločnosti Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.CreateError" xml:space="preserve">
+    <value>Nepodarilo sa vytvoriť {0}. Skúste to znova neskôr. Ak bude problém pretrvávať, obráťte sa na oddelenie podpory spoločnosti Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.SaveError" xml:space="preserve">
+    <value>Nepodarilo sa uložiť {0}. Skúste to znova neskôr. Ak bude problém pretrvávať, obráťte sa na oddelenie podpory spoločnosti Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.DeleteError" xml:space="preserve">
+    <value>Nepodarilo sa odstrániť {0}. Skúste to znova neskôr. Ak bude problém pretrvávať, obráťte sa na oddelenie podpory spoločnosti Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityMissing" xml:space="preserve">
+    <value>Pole entity je prázdne. Vyberte hodnotu poľa entity a skúste to znova.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityNotRequired" xml:space="preserve">
+    <value>Pole entity obsahuje hodnotu. Ponechajte pole entity prázdne a skúste to znova.</value>
+  </data>
+  <data name="EntityRoutingPlugins.BothEntityConfigurationsNotRequired" xml:space="preserve">
+    <value>Obe polia konfigurácií entít majú hodnotu. Nechajte jedno ľubovoľné pole konfigurácie entity prázdne a skúste to znova.</value>
+    <comment>Liveworkstream has ercId and mercId fields, and only one can have value</comment>
+  </data>
+  <data name="EntityRoutingPlugins.DefaultWorkStreamName" xml:space="preserve">
+    <value>Prehľad prác {0}</value>
+  </data>
+  <data name="EntityRoutingPlugins.FlowConfigurationError" xml:space="preserve">
+    <value>Operácia zlyhala z dôvodu nesprávnej konfigurácie v toku distribúcie záznamov entít. Neodstraňujte ani nepremenúvajte {0}.</value>
+  </data>
+  <data name="EntityRoutingPlugins.TroubleshootingLearnMore" xml:space="preserve">
+    <value>Ďalšie informácie nájdete v téme Riešenie problémov s omnikanálom – {0}</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>Potvrdiť</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Odstrániť</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Zrušiť</value>
+  </data>
+  <data name="OC_IncidentQueueItemWarningNessage" xml:space="preserve">
+    <value>Tento záznam bol prenesený do frontu Omnikanála a už sa tu nedá zobraziť. Ak chcete tento záznam zobraziť, otvorte ho z tabule Omnikanála.</value>
+  </data>
+  <data name="OC_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Vyhlásenie spoločnosti Microsoft o používaní osobných údajov</value>
+  </data>
+  <data name="OC_ChannelPreviewDisclaimer" xml:space="preserve">
+    <value>Používaním tohto kanála potvrdzujete, že táto funkcia je vo verzii Preview, a súhlasíte s podmienkami používania ukážok.</value>
+  </data>
+  <data name="OC_SeePreviewTerms" xml:space="preserve">
+    <value>Zobraziť podmienky používania verzie Preview</value>
+  </data>
+  <data name="OC_ThirdPartyChannelPrivacyDisclaimer" xml:space="preserve">
+    <value>Povolením tohto kanála vyjadrujete súhlas so zdieľaním svojich údajov s externými systémami a s posielaním svojich údajov mimo oblasti dodržiavania súladu a mimo geografických hraníc svojej organizácie (to zahŕňa prostredia Government Cloud). Ďalšie informácie nájdete v dokumente {0}.</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_FeatureDocumentation" xml:space="preserve">
+    <value>preklade v reálnom čase</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Vyhlásenie spoločnosti Microsoft o ochrane osobných údajov</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_Text" xml:space="preserve">
+    <value>Povolením tejto funkcie potvrdzujete, že vaše údaje sa môžu posielať mimo oblasti dodržiavania súladu a mimo geografických hraníc vašej organizácie. To zahŕňa prostredia Government Cloud. Pozrite si ďalšie informácie o {0} a {1}.</value>
+    <comment>DO NOT CHANGE {0} and {1}, as they will be replaced with OC_LanguageTranslation_Disclaimer_FeatureDocumentation and OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement respectively.</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_DocumentFeature_Text" xml:space="preserve">
+    <value>Kliknutím sem získate dokumentáciu k funkciám</value>
+    <comment>Indicates this is the link for feature documentation</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Link" xml:space="preserve">
+    <value>konfigurácii webových zdrojov</value>
+    <comment>  This is the link for real time translation webresource documentation </comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Text" xml:space="preserve">
+    <value>Nakonfigurujte webový zdroj tak, aby vygeneroval vašu URL adresu. Potom túto URL adresu skopírujte a nižšie ju prilepte. Pozrite si ďalšie informácie o {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder "0" will be replaced by a OC_LanguageTranslation_Webresource_Disclaimer_Link. Link text is "here".</comment>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_Text" xml:space="preserve">
+    <value>Zapnutím tejto funkcie potvrdzujete, že táto funkcia je vo verzii Preview, a súhlasíte s dokumentom </value>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_LinkText" xml:space="preserve">
+    <value>Podmienky používania verzie Preview</value>
+  </data>
+  <data name="LanguageTranslation_Invalid_webresource_url" xml:space="preserve">
+    <value>Zadaná URL adresa sa nezhoduje s webovým prostriedkom. Skúste znova skopírovať a prilepiť URL adresu webového prostriedku.</value>
+  </data>
+  <data name="DeprecationBanner" xml:space="preserve">
+    <value>Od júla 2022 už túto aplikáciu nebude možné používať. Ak chcete naďalej používať Omnikanál pre Customer Service, migrujte svoje prehľady prác do centra spravovania Omnikanála.</value>
+  </data>
+  <data name="OC_Deprecation_Title_Text" xml:space="preserve">
+    <value>Aplikácia Spravovanie Omnikanála sa už nepodporuje</value>
+  </data>
+  <data name="OC_Deprecation_Description_Text" xml:space="preserve">
+    <value>Podpora pre aplikáciu Spravovanie Omnikanála sa ukončila 30. apríla 2022. Ak chcete nakonfigurovať aplikáciu Customer Service, začnite používať aplikáciu Centrum spravovania aplikácie Customer Service. Okamžite migrujte všetky definície prehľadov prác z aplikácie Spravovanie Omnikanála do aplikácie Centrum spravovania aplikácie Customer Service. {0}</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More" xml:space="preserve">
+    <value>Ďalšie informácie</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More_Aria_Label" xml:space="preserve">
+    <value>Ďalšie informácie o ukončení poskytovania aplikácie Spravovanie Omnikanála</value>
+  </data>
+  <data name="OC_Deprecation_Acknowledge_Checkbox_Label" xml:space="preserve">
+    <value>Beriem na vedomie, že aplikácia Spravovanie Omnikanála sa už nepodporuje.</value>
+  </data>
+  <data name="OC_Deprecation_Redirect_Button_Text" xml:space="preserve">
+    <value>Otvoriť Centrum spravovania aplikácie Customer Service</value>
+  </data>
+  <data name="OC_Deprecation_Dismiss_Button_Text" xml:space="preserve">
+    <value>Pokračovať v aplikácii Spravovanie Omnikanála</value>
+  </data>
+  <data name="PostConversationSurveyMessage" xml:space="preserve">
+    <value>Aké boli vaše skúsenosti? Podeľte sa o svoju odozvu v tomto prieskume. </value>
+  </data>
+  <data name="OC_FormsProSurvey_Disclaimer" xml:space="preserve">
+    <value>Toto bude fungovať prostredníctvom služby Microsoft Dynamics 365 Customer Voice.</value>
+  </data>
+  <data name="Presence.InactivePresenceUpdateNotAllowed" xml:space="preserve">
+    <value>Aktualizácie tohto poľa pre tento záznam sú zakázané.</value>
+  </data>
+  <data name="Presence.IncorrectEntityError" xml:space="preserve">
+    <value>Chyba registrácie doplnku: Logický názov entity nie je msdyn_presence.</value>
+  </data>
+  <data name="OperatingHours.Hours" xml:space="preserve">
+    <value> hod.</value>
+  </data>
+  <data name="OperatingHours.Minutes" xml:space="preserve">
+    <value> min.</value>
+  </data>
+  <data name="OperatingHours.TotalOperatingHours" xml:space="preserve">
+    <value>Celkový počet prevádzkových hodín: </value>
+  </data>
+  <data name="Presence.DefaultDeletePlugin" xml:space="preserve">
+    <value>Nemožno odstrániť predvolenú prítomnosť</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Nezistili sa žiadne problémy.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>V doplnku {0} sa vyskytla chyba.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Neplatná kapacita agenta. Táto hodnota musí byť väčšia ako 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Zistil sa nesprávne nakonfigurovaný agent. Kapacita agenta musí byť nastavená na hodnotu, ktorá je väčšia ako 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Zistili sa nesprávne nakonfigurovaní agenti ({0}). Kapacita agentov musí byť väčšia ako 0.</value>
+    <comment>The error message for OcAgentsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Neplatná kapacita robota. Táto hodnota musí byť väčšia ako 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Zistil sa nesprávne nakonfigurovaný robot. Kapacita robota musí byť nastavená na hodnotu, ktorá je väčšia ako 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Zistili sa nesprávne nakonfigurované roboty ({0}). Kapacita robotov musí byť väčšia ako 0.</value>
+    <comment>The error message for OcBotsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Zistil sa 1 front bez agentov.</value>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Zistili sa fronty ({0}) bez agentov.</value>
+    <comment>The error message for OcQueuesShouldHaveAgentsRule rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ErrorMessage" xml:space="preserve">
+    <value>Omnikanál nie je plne funkčný, niektoré kroky spracovania správ sú zakázané.</value>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ResultEntityMessage" xml:space="preserve">
+    <value>Krok spracovania správy musí byť povolený, aby sa zaručilo správne fungovanie Omnikanála.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointIsNotConfigured" xml:space="preserve">
+    <value>Koncový bod služby OC nie je nakonfigurovaný.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointPathIsEmpty" xml:space="preserve">
+    <value>Cesta ku koncovému bodu služby OC je prázdna.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.ResultEntityMessage" xml:space="preserve">
+    <value>Agenti: {0} (identifikátor: {1})</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is agent name and {1} is agent Id</comment>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Zistil sa 1 prehľad prác s kapacitou väčšou, než majú jeho agenti.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Zistili sa prehľady prác ({0}) s kapacitou väčšou, než majú ich agenti.</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.ResultEntityMessage" xml:space="preserve">
+    <value>Tento prehľad prác nemá nastavené niektoré šablóny oznámení.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Existuje 1 prehľad prác bez šablóny oznámenia.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Existujú prehľady prác ({0}) bez šablón oznámení.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoSessionTemplates" xml:space="preserve">
+    <value>Prehľad prác {0} obsahuje scenáre bez šablóny relácie.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoScenarios" xml:space="preserve">
+    <value>Prehľad prác {0} neobsahuje scenáre.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Zistil sa 1 prehľad prác bez šablóny relácie.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Zistili sa prehľady prác ({0}) bez šablóny relácie.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.ResultEntityMessage" xml:space="preserve">
+    <value>Tento prehľad prác obsahuje duplicitné kontextové premenné: {0}</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is duplicated context names</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Zistil sa 1 prehľad prác s duplicitnými kontextovými premennými.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Zistili sa prehľady prác ({0}) s duplicitnými kontextovými premennými.</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.ResultEntityMessage" xml:space="preserve">
+    <value>Pravidlá smerovania bez podmienok: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities list</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Zistili sa prehľady prác ({0}) s prázdnymi pravidlami smerovania nad pravidlami s podmienkou.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Zistil sa 1 prehľad prác s prázdnymi pravidlami smerovania nad pravidlami s podmienkou.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Zistil sa 1 prehľad prác s režimom doručovania bez vyžiadania, ktorý umožňuje používať offline režim.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Zistili sa prehľady prác ({0}) s režimom doručovania bez vyžiadania, ktorý umožňuje používať offline režim.</value>
+    <comment>The error message for WorkstreamWithPushModeShouldNotAllowOfflineMode rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Tento robot má potenciálne nízku kapacitu.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Zistil sa 1 robot s potenciálne nízkou kapacitou.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Zistili sa roboty ({0}) s potenciálne nízkou kapacitou.</value>
+    <comment>The error message for OcBotsShouldNotHavePotentiallyLowCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.EntityMessage" xml:space="preserve">
+    <value>Duplicitná konfigurácia poskytovateľa kanálov.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultDuplicatedChannel" xml:space="preserve">
+    <value>Zistili sa duplicitné konfigurácie poskytovateľa kanálov.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ProviderNotFound" xml:space="preserve">
+    <value>Poskytovateľ kanála Omnikanál sa nenašiel.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsEmpty" xml:space="preserve">
+    <value>Pole URL adresa kanála je prázdne</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsInvalid" xml:space="preserve">
+    <value>Pole URL adresa kanála je neplatné</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.UnifiedInterfaceAppsFieldNoOCApp" xml:space="preserve">
+    <value>Pole Aplikácie Zjednoteného rozhrania neobsahuje aplikáciu Omnikanál</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AgentRoleNotAssigned" xml:space="preserve">
+    <value>Rola agenta Omnikanála nie je priradená</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.SupervisorRoleNotAssigned" xml:space="preserve">
+    <value>Rola supervízora Omnikanála nie je priradená</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AdministratorRoleNotAssigned" xml:space="preserve">
+    <value>Rola správcu Omnikanála nie je priradená.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultImproperlyConfigured" xml:space="preserve">
+    <value>Poskytovateľ kanálov Omnikanála je nesprávne nakonfigurovaný.</value>
+  </data>
+  <data name="OC_OH_Preview_Message" xml:space="preserve">
+    <value>Používaním tejto funkcie beriete na vedomie, že táto funkcia je vo verzii Preview, a súhlasíte s dokumentom {0}. {1}</value>
+    <comment>Template Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_OH_Preview_Notification" xml:space="preserve">
+    <value>Používaním tejto funkcie beriete na vedomie, že táto funkcia je vo verzii Preview, a súhlasíte s podmienkami používania ukážok.</value>
+    <comment>Notification Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_InstanceLevelBanner" xml:space="preserve">
+    <value>Použili sa nastavenia automatizovaných správ pre {0}. Ak chcete vytvoriť automatizovanú správu pre {1}, vyberte položku „nové“.</value>
+  </data>
+  <data name="OC_CustomSystemMessage_ConfirmDelete" xml:space="preserve">
+    <value>Naozaj chcete odstrániť túto správu? Jej odstránením sa obnovia nastavenia automatických správ pre {0}.</value>
+  </data>
+  <data name="OC_Channel_Chat" xml:space="preserve">
+    <value>Chat</value>
+    <comment>Messaging channel chat</comment>
+  </data>
+  <data name="OC_Channel_Custom" xml:space="preserve">
+    <value>Vlastné</value>
+    <comment>Messaging channel Custom</comment>
+  </data>
+  <data name="OC_Channel_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>Messaging channel Facebook</comment>
+  </data>
+  <data name="OC_Channel_LINE" xml:space="preserve">
+    <value>LINE</value>
+    <comment>Messaging channel LINE</comment>
+  </data>
+  <data name="OC_Channel_SMS" xml:space="preserve">
+    <value>SMS</value>
+    <comment>Messaging channel SMS</comment>
+  </data>
+  <data name="OC_Channel_Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+    <comment>Messaging channel Microsoft Teams</comment>
+  </data>
+  <data name="OC_Channel_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Messaging channel Twitter</comment>
+  </data>
+  <data name="OC_Channel_unknown" xml:space="preserve">
+    <value>Neznámy kanál</value>
+    <comment>Messaging channel unknown channel</comment>
+  </data>
+  <data name="OC_Channel_WeChat" xml:space="preserve">
+    <value>WeChat</value>
+    <comment>Messaging channel WeChat</comment>
+  </data>
+  <data name="OC_Channel_WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+    <comment>Messaging channel WhatsApp</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_DuplicateNameMessage" xml:space="preserve">
+    <value>Automatická správa alebo šablóna správy s rovnakým názvom už bola vytvorená.</value>
+  </data>
+  <data name="OC_FeaturePreviewDisclaimer" xml:space="preserve">
+    <value>Používaním tejto funkcie beriete na vedomie, že táto funkcia je vo verzii Preview, a súhlasíte s podmienkami používania ukážok.</value>
+  </data>
+  <data name="OC_ProgressIndicator_Loading" xml:space="preserve">
+    <value>Načítava sa...</value>
+    <comment>Progress indicator message</comment>
+  </data>
+  <data name="OC_TokenAcquireFailed_AlertText" xml:space="preserve">
+    <value>Získanie tokenu zlyhalo</value>
+    <comment>Alert message for token acquire failures</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationTitle" xml:space="preserve">
+    <value>Prepnúť na vopred nakonfigurovaný pracovný priestor</value>
+    <comment>Analytics PaaS feature confirmation dialog body text</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationText" xml:space="preserve">
+    <value>Prepnutím na vopred nakonfigurované sa vymažú nastavenia vlastného pracovného priestoru. Kedykoľvek môžete prepnúť späť na vlastný pracovný priestor, svoj pracovný priestor však budete musieť nakonfigurovať znova.</value>
+    <comment>Analytics PaaS feature confirmation dialog title</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationButtonLabel" xml:space="preserve">
+    <value>Prepnúť na vopred nakonfigurované</value>
+    <comment>Analytics PaaS feature confirmation dialog confirm button label</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimer" xml:space="preserve">
+    <value>WhatsApp ponúka 24-hodinový interval na odpovede. Ak od poslednej správy zákazníka uplynie 24 hodín, agenti budú môcť odosielať len šablóny správ schválené službou WhatsApp, až kým zákazník neodpovie. Presvedčte sa, že aplikácia WhatsApp schválila šablóny správ, skôr než ich sem pridáte. {0}</value>
+    <comment>{0} will be replaced by a link "learn more"</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimerLearnMore" xml:space="preserve">
+    <value>Ďalšie informácie</value>
+    <comment>learn more link for OC_WhatsAppMessageTemplateDisclaimer</comment>
+  </data>
+  <data name="MessageTemplateFeatureName" xml:space="preserve">
+    <value>Šablóna správy</value>
+    <comment>This should be the same as what we show in the sitemap</comment>
+  </data>
+  <data name="AutomatedMessageRequiredFieldNotFilled" xml:space="preserve">
+    <value>Povinné polia musia byť vyplnené.</value>
+    <comment>Shown in banner when required fields are not populated</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitor" xml:space="preserve">
+    <value>Návštevník</value>
+    <comment>Used when user name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleLiveWorkStream" xml:space="preserve">
+    <value>Dynamický prehľad prác</value>
+    <comment>Used when live work stream name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitorFormatter" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} and {1} should not be changed. They will be replaced by customer name and workstream name respectively. Example, James: WorkStream1</comment>
+  </data>
+  <data name="DefaultFieldsRquiredForMessageTemplate" xml:space="preserve">
+    <value>Pre šablónu správy sa vyžaduje predvolený jazyk a predvolený text správy.</value>
+  </data>
+  <data name="DefaultLocalizationDataNotFoundForMessageTemplate" xml:space="preserve">
+    <value>Pre túto šablónu správy sa nenašli predvolené údaje lokalizácie.</value>
+  </data>
+  <data name="SavingPrivacyTerms" xml:space="preserve">
+    <value>Načítava sa...</value>
+    <comment>Shown after user agrees to privacy terms</comment>
+  </data>
+  <data name="ConversationFormReadonlyNotificationText" xml:space="preserve">
+    <value>Iba na čítanie. Dôvod stavu tohto záznamu: {0}</value>
+    <comment>{0} will be replaced with statuscode text. Any changes to this will have an impact on msdyn_customersummaryscripts.ts</comment>
+  </data>
+  <data name="OC_IntradayInsights_ConfigTitle" xml:space="preserve">
+    <value>Konfigurácia denných prehľadov</value>
+    <comment>Title for Intraday insights configuration</comment>
+  </data>
+  <data name="OC_FormsPro_Button_Text" xml:space="preserve">
+    <value>Otvoriť Dynamics 365 Customer Voice</value>
+  </data>
+  <data name="FbAppNotFound" xml:space="preserve">
+    <value>ID aplikácie Facebook sa nenašlo. Skúste iné ID.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PrivacyNotFound" xml:space="preserve">
+    <value>Pre daný kanál neboli prijaté podmienky ochrany osobných údajov.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="CantProvisionFBPage" xml:space="preserve">
+    <value>Nepodarilo sa zriadiť stránku služby Facebook. Dôkladne skontrolujte všetky zadané informácie a skúste to znova.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PreValidationFacebookApplicationCreatePluginFailure" xml:space="preserve">
+    <value>Počas vytvárania aplikácie Facebook sa vyskytla neočakávaná chyba. Skúste to znova neskôr.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageCreatePluginFailure" xml:space="preserve">
+    <value>Počas vytvárania stránky služby Facebook sa vyskytla neočakávaná chyba. Skúste to znova neskôr.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageUpdatePluginFailure" xml:space="preserve">
+    <value>Počas aktualizovania stránky služby Facebook sa vyskytla neočakávaná chyba. Skúste to znova neskôr.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ExistingFbPageFound" xml:space="preserve">
+    <value>Túto stránku služby Facebook ste už nastavili. Zadajte inú stránku a skúste to znova.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ErrorProcessingRequestParameter" xml:space="preserve">
+    <value>Chyba počas spracovania parametrov požiadaviek. Chyba: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="InvalidContextVariable" xml:space="preserve">
+    <value>Parameter ContextVariables nie je platný. Chyba: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="MissingRequestId" xml:space="preserve">
+    <value>Chýba parameter RequestId.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingVersion" xml:space="preserve">
+    <value>Parameter Version nie je platný.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingChannelInstance" xml:space="preserve">
+    <value>Chýba parameter ChannelInstance.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingDirection" xml:space="preserve">
+    <value>Chýba parameter Direction.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidDirection" xml:space="preserve">
+    <value>Parameter Direction nie je platný.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingContextVariables" xml:space="preserve">
+    <value>Chýba parameter ContextVariables.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingMessageText" xml:space="preserve">
+    <value>Chýba parameter MessageText.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingOffsetTime" xml:space="preserve">
+    <value>Chýba parameter OffsetTime.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidChannelInstance" xml:space="preserve">
+    <value>Údajová časť inštancie kanála je neplatná.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiParameterMissing" xml:space="preserve">
+    <value>Parameter {0} chýba alebo je neplatný.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays parameter value.</comment>
+  </data>
+  <data name="ChannelApiUnsupportedVersion" xml:space="preserve">
+    <value>ApiVersion {0} sa nepodporuje.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays version number.</comment>
+  </data>
+  <data name="ChannelApiInternalError" xml:space="preserve">
+    <value>Vyskytla sa nejaká vnútorná chyba. {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the exception message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationSend" xml:space="preserve">
+    <value>Konverzácia neexistuje alebo konverzácia je uzavretá.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiMessageNullSend" xml:space="preserve">
+    <value>Text správy nemôže mať hodnotu null ani byť prázdny.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationGet" xml:space="preserve">
+    <value>Konverzácia neexistuje.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationEnd" xml:space="preserve">
+    <value>Konverzácia neexistuje alebo konverzácia je uzavretá.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Title" xml:space="preserve">
+    <value>Vynútiť zatvorenie konverzácie</value>
+    <comment>Title of the confirmation window displayed before force close is triggered</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Text" xml:space="preserve">
+    <value>Naozaj chcete zavrieť túto pracovnú položku?</value>
+    <comment>Confirmation text for force close</comment>
+  </data>
+  <data name="ForceClose_Confirmation_OKButtonLabel" xml:space="preserve">
+    <value>Pokračovať</value>
+    <comment>Proceed</comment>
+  </data>
+  <data name="NewCase_Label">
+    <value>Nový prípad</value>
+    <comment>Label for Create a Case button</comment>
+  </data>
+</root>

@@ -16,12 +16,19 @@ import re
 import requests
 import tempfile
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import hashlib
 from typing import Optional
 from urllib.parse import urlparse
 
 try:
     from VerseOff.client_script_metadata import (
+        collect_web_resource_names,
         normalize_web_resource_name,
+        safe_web_resource_path,
+        sitemap_web_resource_names,
+        web_resource_content_dependency_names,
+        web_resource_dependency_names,
     )
     from VerseOff.pcf_metadata import (
         bind_pcf_resources,
@@ -33,7 +40,14 @@ try:
         extract_timeline_definitions,
     )
 except ImportError:
-    from client_script_metadata import normalize_web_resource_name
+    from client_script_metadata import (
+        collect_web_resource_names,
+        normalize_web_resource_name,
+        safe_web_resource_path,
+        sitemap_web_resource_names,
+        web_resource_content_dependency_names,
+        web_resource_dependency_names,
+    )
     from pcf_metadata import (
         bind_pcf_resources,
         custom_control_names_from_form,
@@ -243,17 +257,18 @@ class MetadataFetcher:
             f"{last_error}"
         ) from last_error
 
-    def _get(self, endpoint: str, params: dict = None, timeout: int = 30) -> dict:
+    def _get(self, endpoint: str, params: dict = None, timeout: int = 30, max_attempts: int = 4) -> dict:
         """GET request against the Dataverse Web API."""
         cached_data = self._read_cache(endpoint, params)
         if cached_data is not None:
             return cached_data
             
-        url = f"{self.base_url}{endpoint}"
+        url = f"{self.base_url}{endpoint}" if not endpoint.startswith("http") else endpoint
         data = self._request_json(
             url,
             params=params,
             timeout=timeout,
+            max_attempts=max_attempts,
         )
         self._write_cache(endpoint, params, data)
         return data
@@ -512,7 +527,58 @@ class MetadataFetcher:
                     f"Could not fetch metadata for app entity {eid}: {e}"
                 ) from e
 
+        # Check if activitypointer is included and expand to concrete activity tables
+        has_activitypointer = any(e.get("LogicalName") == "activitypointer" for e in entities)
+        if has_activitypointer:
+            concrete_acts = ["task", "email", "phonecall", "appointment", "letter", "fax"]
+            existing_names = {e.get("LogicalName") for e in entities}
+            for act in concrete_acts:
+                if act not in existing_names:
+                    try:
+                        act_meta = self._get(
+                            f"/EntityDefinitions(LogicalName='{act}')",
+                            params={
+                                "$select": (
+                                    "LogicalName,DisplayName,DisplayCollectionName,"
+                                    "EntitySetName,PrimaryIdAttribute,PrimaryNameAttribute,"
+                                    "IsAvailableOffline,IsActivity,ObjectTypeCode,DataProviderId"
+                                )
+                            }
+                        )
+                        if act_meta and act_meta.get("LogicalName"):
+                            entities.append(act_meta)
+                    except Exception as e:
+                        logger.debug(f"Could not fetch concrete activity table {act}: {e}")
+
         return entities
+
+    def get_app_components_catalog(self, app_module_id: str) -> dict:
+        """
+        Queries AppModuleComponent for all component types:
+        1=Entities, 26=Views, 29=BPFs, 48=Commands, 59=Charts, 60=Forms, 62=SiteMap.
+        """
+        app_data = self._get(
+            f"/appmodules({app_module_id})",
+            params={"$select": "appmoduleidunique"}
+        )
+        uid = app_data.get("appmoduleidunique")
+        if not uid:
+            return {}
+
+        components = self._get_all_pages(
+            "/appmodulecomponents",
+            params={
+                "$filter": f"_appmoduleidunique_value eq {uid}",
+                "$select": "componenttype,objectid"
+            }
+        )
+        catalog = {}
+        for c in components:
+            ctype = c.get("componenttype")
+            oid = c.get("objectid")
+            if ctype is not None and oid:
+                catalog.setdefault(ctype, []).append(oid)
+        return catalog
 
     def download_organization_topology(self):
         """Downloads globally applicable configuration, security roles, and user topology."""
@@ -546,25 +612,51 @@ class MetadataFetcher:
         logger.info("Downloading PCF Custom Controls Metadata...")
         self._get_all_pages("/customcontrols")
         
-        logger.info("Topology download complete!")
+
+    # ------------------------------------------------------------------
+    # Entity Definitions & Metadata
+    # ------------------------------------------------------------------
+
+    def get_all_entity_definitions(self) -> list[dict]:
+        """Returns lightweight metadata for all entities in the organisation."""
+        return self._get_all_pages(
+            "/EntityDefinitions",
+            params={
+                "$select": (
+                    "LogicalName,DisplayName,ObjectTypeCode,PrimaryIdAttribute,"
+                    "PrimaryNameAttribute,IsActivity,IsCustomEntity,"
+                    "IsAvailableOffline,ChangeTrackingEnabled,OwnershipType,"
+                    "EntitySetName"
+                )
+            }
+        )
 
     def get_entity_definition(self, logical_name: str) -> dict:
-        """Returns full entity definition for a single entity by logical name."""
+        """
+        Fetches complete metadata for a single entity including attributes,
+        relationships, option sets, forms, saved queries, and ribbon XML.
+        """
         entity_def = self._get(
             f"/EntityDefinitions(LogicalName='{logical_name}')",
             params={
                 "$select": (
-                    "LogicalName,DisplayName,EntitySetName,PrimaryIdAttribute,"
-                    "PrimaryNameAttribute,IsAvailableOffline,IsActivity,"
-                    "ObjectTypeCode,OwnershipType,DataProviderId,"
-                    "ChangeTrackingEnabled"
+                    "LogicalName,DisplayName,ObjectTypeCode,PrimaryIdAttribute,"
+                    "PrimaryNameAttribute,IsActivity,IsCustomEntity,"
+                    "IsAvailableOffline,ChangeTrackingEnabled,OwnershipType,"
+                    "EntitySetName"
                 )
             }
         )
-        if entity_def.get("EntitySetName"):
-            self._entity_set_name_cache[logical_name] = entity_def[
-                "EntitySetName"
-            ]
+        if not entity_def.get("EntitySetName"):
+            raw = self._get_all_pages(
+                "/EntityDefinitions",
+                params={
+                    "$filter": f"LogicalName eq '{logical_name}'",
+                    "$select": "EntitySetName"
+                }
+            )
+            if raw and raw[0].get("EntitySetName"):
+                entity_def["EntitySetName"] = raw[0]["EntitySetName"]
         
         entity_def["attributes"] = self.get_entity_attributes(logical_name)
         entity_def["option_sets"] = self.get_entity_option_sets(logical_name)
@@ -610,10 +702,10 @@ class MetadataFetcher:
                 "RibbonLocationFilter="
                 "Microsoft.Dynamics.CRM.RibbonLocationFilters'All')"
             )
-            data = self._get(url, timeout=6)
+            data = self._get(url, timeout=10, max_attempts=1)
             base64_zip = data.get("CompressedEntityXml")
             if not base64_zip:
-                logger.warning(
+                logger.debug(
                     "No CompressedEntityXml returned for %s",
                     logical_name,
                 )
@@ -782,7 +874,7 @@ class MetadataFetcher:
                 attrs = self._get_all_pages(
                     f"/EntityDefinitions(LogicalName='{logical_name}')"
                     f"/Attributes/Microsoft.Dynamics.CRM.{attr_type}",
-                    params={"$select": "LogicalName,OptionSet"}
+                    params={"$select": "LogicalName", "$expand": "OptionSet"}
                 )
                 for attr in attrs:
                     lname = attr["LogicalName"]
@@ -796,7 +888,7 @@ class MetadataFetcher:
             state_attrs = self._get_all_pages(
                 f"/EntityDefinitions(LogicalName='{logical_name}')"
                 f"/Attributes/Microsoft.Dynamics.CRM.StateAttributeMetadata",
-                params={"$select": "LogicalName,OptionSet"}
+                params={"$select": "LogicalName", "$expand": "OptionSet"}
             )
             for attr in state_attrs:
                 option_sets[attr["LogicalName"]] = _extract_options(
@@ -810,7 +902,7 @@ class MetadataFetcher:
             status_attrs = self._get_all_pages(
                 f"/EntityDefinitions(LogicalName='{logical_name}')"
                 f"/Attributes/Microsoft.Dynamics.CRM.StatusAttributeMetadata",
-                params={"$select": "LogicalName,OptionSet"}
+                params={"$select": "LogicalName", "$expand": "OptionSet"}
             )
             for attr in status_attrs:
                 option_sets[attr["LogicalName"]] = _extract_options(
@@ -824,7 +916,7 @@ class MetadataFetcher:
             bool_attrs = self._get_all_pages(
                 f"/EntityDefinitions(LogicalName='{logical_name}')"
                 f"/Attributes/Microsoft.Dynamics.CRM.BooleanAttributeMetadata",
-                params={"$select": "LogicalName,OptionSet"}
+                params={"$select": "LogicalName", "$expand": "OptionSet"}
             )
             for attr in bool_attrs:
                 os_data = attr.get("OptionSet", {})
@@ -1033,6 +1125,93 @@ class MetadataFetcher:
             },
         )
         return self._web_resource_payload(resource)
+
+    def download_web_resources_concurrent(
+        self,
+        resource_names: set[str] | list[str],
+        output_dir: str = None,
+        max_workers: int = 10,
+    ) -> list[dict]:
+        """Concurrently downloads web resources and their transitive dependencies.
+
+        Saves files to output_dir/webresources/ and returns a list of packaged web resource dicts.
+        """
+        webresources_dir = os.path.join(output_dir, "webresources") if output_dir else None
+        if webresources_dir:
+            os.makedirs(webresources_dir, exist_ok=True)
+
+        downloaded = {}
+        visited = set()
+        to_fetch = set(resource_names or [])
+
+        while to_fetch:
+            current_batch = [
+                name for name in (to_fetch - visited)
+                if normalize_web_resource_name(name)
+            ]
+            if not current_batch:
+                break
+
+            logger.info(
+                f"Fetching batch of {len(current_batch)} web resources with {max_workers} threads..."
+            )
+
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                future_to_name = {
+                    executor.submit(self.get_web_resource, name): name
+                    for name in current_batch
+                }
+
+                for future in as_completed(future_to_name):
+                    raw_name = future_to_name[future]
+                    visited.add(raw_name)
+                    try:
+                        res = future.result()
+                        if not res:
+                            continue
+                        normalized = normalize_web_resource_name(res.get("name") or raw_name)
+                        visited.add(normalized)
+
+                        if "content" in res:
+                            content_bytes = (res["content"] or "").encode("utf-8")
+                        elif "content_base64" in res:
+                            content_bytes = base64.b64decode(res["content_base64"] or "")
+                        else:
+                            content_bytes = b""
+
+                        sha256 = hashlib.sha256(content_bytes).hexdigest()
+                        rel_path = safe_web_resource_path(normalized)
+
+                        if webresources_dir:
+                            full_path = os.path.join(output_dir, rel_path)
+                            os.makedirs(os.path.dirname(full_path), exist_ok=True)
+                            with open(full_path, "wb") as f:
+                                f.write(content_bytes)
+
+                        entry = {
+                            "id": res.get("id"),
+                            "name": normalized,
+                            "display_name": res.get("display_name") or normalized,
+                            "description": res.get("description") or "",
+                            "language_code": res.get("language_code"),
+                            "type": res.get("type"),
+                            "dependency_xml": res.get("dependency_xml") or "",
+                            "relative_path": rel_path.replace("\\", "/"),
+                            "sha256": sha256,
+                        }
+                        downloaded[normalized] = entry
+
+                        for dep in web_resource_dependency_names(entry):
+                            if dep and dep not in visited:
+                                to_fetch.add(dep)
+                        for dep in web_resource_content_dependency_names(entry):
+                            if dep and dep not in visited:
+                                to_fetch.add(dep)
+                    except Exception as e:
+                        logger.warning(f"Failed to process web resource '{raw_name}': {e}")
+
+        logger.info(f"Successfully packaged {len(downloaded)} web resources.")
+        return list(downloaded.values())
 
     def get_custom_control(self, control_name: str) -> dict | None:
         name = str(control_name or "").strip()

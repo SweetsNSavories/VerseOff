@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>Itxi mezu elektroniko bidezko inprimakia</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>Aldatu {0} Osatuta egoerara eta itxi inprimakia</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>Bezero bat hautatu behar duzu.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="Alert_Conv_Act_Currency_Must" xml:space="preserve">
+    <value>Moneta beharrezkoa da. Hautatu moneta eta saiatu berriro.</value>
+    <comment>Error message displayed to the user on convert activity to opportunity dialog when the user does not supply a value for currency field.</comment>
+  </data>
+  <data name="Alert_Conv_Act_Campaign_Must" xml:space="preserve">
+    <value>Kanpainaren erantzun bat sortzeko, iturburuko kanpaina bat hautatu behar duzu.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>Jarduera bihurtu ahal izateko, aldaketak gorde behar dituzu.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Alert_Lead_Company_Must_Be_Supplied" xml:space="preserve">
+    <value>Bezerogaia kontu bihurtu aurretik, konpainiaren informazioa gehitu behar duzu bezerogaiaren erregistroan.</value>
+    <comment>Convert response dialog page's alter message if user is starting convert lead process to account without having Lead Company name.</comment>
+  </data>
+  <data name="Alert_Lead_Must_Be_Supplied" xml:space="preserve">
+    <value>Bezerogai bat adierazi behar duzu aukera honetan.</value>
+    <comment>Convert response dialog page's alter message if user is starting convert lead process without supplying the Lead.</comment>
+  </data>
+  <data name="Alert_Customer_Must_Be_Supplied" xml:space="preserve">
+    <value>Bezero bat hautatu behar duzu. Bezeroa kontu bat edo kontaktu bat izan daiteke.</value>
+    <comment>Convert response dialog page's alter message if user is trying to create new quote/order or opportunity without supplying the Customer which could be only Account/Contact.</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Ados</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Lead_Disqualify_Lost_LabelText" xml:space="preserve">
+    <value>Galduta</value>
+    <comment>Disqualify a lead as lost label text</comment>
+  </data>
+  <data name="Lead_Disqualify_CannotContact_LabelText" xml:space="preserve">
+    <value>Ezin da harremanetan jarri</value>
+    <comment>Disqualify a lead as cannot contact label text</comment>
+  </data>
+  <data name="Lead_Disqualify_NoLongerInterested_LabelText" xml:space="preserve">
+    <value>Jada ez zaio interesatzen</value>
+    <comment>Disqualify a lead as no longer interested label text</comment>
+  </data>
+  <data name="Lead_Disqualify_Canceled_LabelText" xml:space="preserve">
+    <value>Bertan behera utzita</value>
+    <comment>Disqualify a lead as canceled label text</comment>
+  </data>
+  <data name="Lead_Disqualify_Lost_ToolTipDescription" xml:space="preserve">
+    <value>"Galduta" gisa</value>
+    <comment>Disqualify a lead as lost tooltip</comment>
+  </data>
+  <data name="Lead_Disqualify_CannotContact_ToolTipDescription" xml:space="preserve">
+    <value>"Ezin da harremanetan jarri" gisa</value>
+    <comment>Disqualify a lead as cannot contact tooltip</comment>
+  </data>
+  <data name="Lead_Disqualify_NoLongerInterested_ToolTipDescription" xml:space="preserve">
+    <value>"Jada ez zaio interesatzen" gisa</value>
+    <comment>Disqualify a lead as no longer interested tooltip</comment>
+  </data>
+  <data name="Lead_Disqualify_Canceled_ToolTipDescription" xml:space="preserve">
+    <value>"Bertan behera utzita" gisa</value>
+    <comment>Disqualify a lead as canceled tooltip</comment>
+  </data>
+  <data name="ErrorMessage_Lead_ReQualify_ProcessNoActiveStage" xml:space="preserve">
+    <value>Fase aktiboa ez dago "{0}" entitatean</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the lead name. Error message when process active stage doesn't belong to entity.</comment>
+  </data>
+  <data name="ErrorMessage_Convert_Lead_lastName" xml:space="preserve">
+    <value>Abizen idatzi behar duzu</value>
+    <comment>Convert to lead Error message for last name</comment>
+  </data>
+  <data name="ErrorMessage_Convert_Lead_email" xml:space="preserve">
+    <value>Helbide elektronikoa idatzi behar duzu</value>
+    <comment>Convert to lead Error message for email</comment>
+  </data>
+  <data name="ErrorMessage_No_Lead_Selecteed" xml:space="preserve">
+    <value>Ez dago bezerogairik hautatuta</value>
+    <comment>Select Lead to continue</comment>
+  </data>
+  <data name="ConvertLeadGrid_Description" xml:space="preserve">
+    <value>Bihurtu hautatutako bezerogaiak "gaitu" gisa eta sortu bakoitzaren honako erregistro hauek:</value>
+    <comment>Description for convert lead options dialog on grid</comment>
+  </data>
+  <data name="ConvertLeadGrid_Header" xml:space="preserve">
+    <value>Gaitu bezerogaiak</value>
+    <comment>Header for convert lead options dialog on grid</comment>
+  </data>
+  <data name="ConvertLead_Description" xml:space="preserve">
+    <value>Bihurtu bezerogaia "gaitu" gisa eta sortu honako erregistro hauek:</value>
+    <comment>Description for convert lead options dialog</comment>
+  </data>
+  <data name="ConvertLead_Header" xml:space="preserve">
+    <value>Gaitu bezerogaia</value>
+    <comment>Header for convert lead options dialog</comment>
+  </data>
+  <data name="ToastMessage_Lead_Qualify" xml:space="preserve">
+    <value>Gaitu da {0}. </value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the lead name. Toast message when lead is qualified and navigated to opportunity.</comment>
+  </data>
+  <data name="ToastMessage_Navigate_Lead_LinkMessage" xml:space="preserve">
+    <value>Joan hona: {0}</value>
+    <comment>Hyperlink message for the qualified Lead.</comment>
+  </data>
+  <data name="ToastMessage_Lead_Disqualify" xml:space="preserve">
+    <value>Desgaitu da {0}</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the lead name. Toast message when lead is disqualified.</comment>
+  </data>
+  <data name="COPY_COMPETITORS" xml:space="preserve">
+    <value>{competitor} lehiakidearen informazioa kopiatzen</value>
+    <comment>Copying Competitors Information step in StepError execution flow</comment>
+  </data>
+  <data name="COPY_LEAD_CONNECTIONS" xml:space="preserve">
+    <value>{lead} bezerogaiaren konexioak kopiatzen</value>
+    <comment>Copying Lead Connections step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_ACCOUNT" xml:space="preserve">
+    <value>{account} sortzen</value>
+    <comment>Creating Account step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_CONTACT" xml:space="preserve">
+    <value>{contact} sortzen</value>
+    <comment>Creating Contact step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_OPPORTUNITY" xml:space="preserve">
+    <value>{opportunity} sortzen</value>
+    <comment>Creating Opportunity step in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_ACCOUNT" xml:space="preserve">
+    <value>{account} lehiakidearen informazioa eguneratzen</value>
+    <comment>Updating Account Information step in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_LEAD_STATUSCODE" xml:space="preserve">
+    <value>{lead} bezerogaiaren egoera-kodea eguneratzen</value>
+    <comment>Updating Lead StatusCode step in StepError execution flow</comment>
+  </data>
+  <data name="VALIDATING_BPF" xml:space="preserve">
+    <value>Negozio-prozesuaren fluxua balioztatzen</value>
+    <comment>Validating BPF step in StepError execution flow</comment>
+  </data>
+  <data name="VALIDATING_LEAD" xml:space="preserve">
+    <value>{lead} bezerogaiaren informazioa eskuratzen</value>
+    <comment>Retrieving Lead Information in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_PARENTACCOUNT" xml:space="preserve">
+    <value>Dagoen {account} kontuaren informazioa eguneratzen</value>
+    <comment>Updating parent account Information step in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_PARENTCONTACT" xml:space="preserve">
+    <value>Dagoen {contact} kontaktuaren informazioa eguneratzen</value>
+    <comment>Updating parent contact Information step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_OPPORTUNITIES" xml:space="preserve">
+    <value>Hainbat {opportunity} sortzen</value>
+    <comment>Creating multiple Opportunities step in StepError execution flow</comment>
+  </data>
+  <data name="RelatedEntities_Fetch_Fail_Message" xml:space="preserve">
+    <value> "Ezin izan da gauzatu "initializeFrom" ekintza kontuen eta kontaktuen entitateetan."</value>
+    <comment>Failure alert for lead's realated entities account and contact 'initialiseFrom' Failed.</comment>
+  </data>
+  <data name="RequiredFieldsNotFilledError" xml:space="preserve">
+    <value>Ziurtatu beharrezko eremu guztiak bete dituzula eta informazio baliozkoa dutela.</value>
+    <comment>Message shown when required fields are not filled or form data is invalid and not resolved</comment>
+  </data>
+  <data name="RecordsSelectedExceededLimitError" xml:space="preserve">
+    <value>Hautatutako erregistro kopuruak 52 eskaeren muga gainditu du. Hautatu 52 erregistro baino gutxiago eta saiatu berriro.</value>
+    <comment>Message shown when selected records exceeded concurrent requests limit of 52 during disqualify or qualify from lead homepage grid.</comment>
+  </data>
+  <data name="OpportunityDuplicateRecordCreationErrorEntityName" xml:space="preserve">
+    <value>Abagunea</value>
+    <comment>Concatinates oppotunity name to Qualify lead duplicate error message.</comment>
+  </data>
+  <data name="LeadDuplicateRecordCreationErrorEntityName" xml:space="preserve">
+    <value>Bezerogaia</value>
+    <comment>Concatinates Lead name to Qualify lead duplicate error message.</comment>
+  </data>
+  <data name="LeadDuplicateRecordCreationErrorOpportunityDescription" xml:space="preserve">
+    <value>Abagune-erregistro bat ez da sortu edo eguneratu uneko erregistroa bikoiztuta dagoelako.</value>
+    <comment>Opportunity record was not Created or Updated because a duplicate of the current record already exists.</comment>
+  </data>
+  <data name="LeadDuplicateRecordCreationErrorOpportunityTitle" xml:space="preserve">
+    <value>Erregistro bat ez da sortu edo eguneratu uneko erregistroa bikoiztuta dagoelako.</value>
+    <comment>A record was not created or updated because a duplicate of the current record already exists.</comment>
+  </data>
+  <data name="QualifyLabel" xml:space="preserve">
+    <value>Gaitu</value>
+    <comment>Qualify button label.</comment>
+  </data>
+  <data name="FinishLabel" xml:space="preserve">
+    <value>Amaitu</value>
+    <comment>Finish button label.</comment>
+  </data>
+  <data name="QualifyConfirmationDialogTitle" xml:space="preserve">
+    <value>Bezerogaia gaitu nahi duzu?</value>
+    <comment>Qualify confirmation dialog's title.</comment>
+  </data>
+  <data name="QualifyConfirmationDialogContext" xml:space="preserve">
+    <value>Bezerogai hau gaitzera zoaz hartarako abagunerik sortu gabe.</value>
+    <comment>Qualify confirmation dialog's content.</comment>
+  </data>
+  <data name="CancelLabel" xml:space="preserve">
+    <value>Utzi</value>
+    <comment>Cancel button label.</comment>
+  </data>
+  <data name="InvalidaOpportunityForm_error_message" xml:space="preserve">
+    <value>Arazoren bat izan da. Saiatu berriro edo, arazoak badirau, jarri harremanetan administratzailearekin.</value>
+    <comment>Toast message when new lead qualification's add/edit opportunity form is invalid</comment>
+  </data>
+</root>

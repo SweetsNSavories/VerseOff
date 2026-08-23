@@ -1,0 +1,1 @@
+var KnowledgeManagement;(function(b){var a=function(){function a(){}a.getResourceString=function(c){var b=Xrm.Utility.getResourceString(a.WebResourceName,c);if(b===undefined||b===null)b=c;return b};a.WebResourceName="msdyncrm_/KnowledgeManagement/Localization/Languages/KnowledgeManagement";return a}();b.KMResourceStringProvider=a})(KnowledgeManagement||(KnowledgeManagement={}))

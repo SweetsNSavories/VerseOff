@@ -1,0 +1,2 @@
+var ProductManagement;!function(e){var n=function(){function e(){}return e.getResourceString=function(n){var r=Xrm.Utility.getResourceString(e.WebResourceName,n);return void 0===r||null===r?n:r},e}();n.WebResourceName="ProductManagement/Localization/Languages/CRM",e.ResourceStringProvider=n}(ProductManagement||(ProductManagement={}));
+//# sourceMappingURL=G:\Agents\BA5270\_wap\140\s\target\retail\AnyCPU\ProductManagementWebResources\MinifiedWebResources\Localization\ResourceStringProvider.js.map

@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Close_Opp_Dlg_Desc" xml:space="preserve">
+    <value>Cung cấp thông tin sau về lý do tại sao cơ hội này lại bị đóng.</value>
+  </data>
+  <data name="Error_Message_0x80040515" xml:space="preserve">
+    <value>Đã đóng cơ hội.</value>
+    <comment>IDS_OPPORTUNITY_IS_ALREADY_CLOSED</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_37" xml:space="preserve">
+    <value>Trên cơ hội mẹ, bạn đã đặt Doanh thu thực tế không đúng. Bạn phải nhập một số nằm giữa số "{0}" và "{1}".</value>
+    <comment>Error message displayed to the user in the close opportunity dialog page when the actual revenue is set incorrectly on the opportunity. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible revenue amount and Placeholder 1 is a number specifing maximum permissible revenue amount.</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_67" xml:space="preserve">
+    <value>Bạn phải chỉ định ngày đóng.</value>
+    <comment>Error message displayed when the user clicks on the ok button without entering a value in the close date field in close opportunity dialog box.</comment>
+  </data>
+  <data name="Suggestions_Dlg_Add_Selected_Text" xml:space="preserve">
+    <value>Thêm</value>
+    <comment>Label text for the "Add Selected" button in the product suggestions dialog.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="Suggestions_Dlg_Error_Moca_Offline" xml:space="preserve">
+    <value>Bạn chỉ có thể xem gợi ý khi ứng dụng trực tuyến.</value>
+    <comment>Error text for when users attempts to view or add suggestions when Moca is offline.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Selection" xml:space="preserve">
+    <value>Vui lòng chọn ít nhất một gợi ý để thêm vào.</value>
+    <comment>Error text for when users attempts to click add suggestions button without selecting any suggestion.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_Add_Suggestions" xml:space="preserve">
+    <value>Chúng tôi không thể thêm gợi ý. Vui lòng thử lại. {0}</value>
+    <comment>Error text for when adding suggestion fails.[Category="MoCA Client"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Price_List" xml:space="preserve">
+    <value>Bạn phải chọn bảng giá để xem gợi ý.</value>
+    <comment>Error text for when user opens Suggestions dialog without a price list selected.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_NoParentRecordFound" xml:space="preserve">
+    <value>Không tìm thấy bản ghi mẹ.</value>
+  </data>
+  <data name="Quote_Closed_Subject" xml:space="preserve">
+    <value>Báo giá đã đóng ({0}) - {1}</value>
+    <comment>Subject for the quote close activity. Whenever a quote is closed a quote closed activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was closed. Eg: Lost, Canceled or Revised. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Quote_Won_Subject" xml:space="preserve">
+    <value>Báo giá giành được ({0}) - {1}</value>
+    <comment>Subject for the quote won activity. Whenever a quote is won a quote won activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was won. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Close_Opportunity_Activity_Subject" xml:space="preserve">
+    <value>Cơ hội Bị đóng: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is name of object.</comment>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>Bạn có muốn xóa {0} này không? Bạn không thể hoàn tác hành động này.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Eg: Deleting a product. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="ViewDuplicates_aspx_Button_Label_CancelUpdateRecord" xml:space="preserve">
+    <value>&amp;Hủy</value>
+    <comment>The label of the Cancel Update button</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>Xác nhận Xóa</value>
+  </data>
+  <data name="Web.SFA.QOI.QuantityAndPriceNegativeAlert" xml:space="preserve">
+    <value>Bạn không thể chỉ định giá trị âm cho cả Số lượng lẫn Giá cho mỗi đơn vị. Hãy đổi một trong các giá trị này và thử lại.</value>
+    <comment>Alert message that is displayed in QOI forms when the both Quantity and Price Per Unit fields are filled up with negative values. [Category="SFA: Negative prices"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Bạn phải chọn một hoặc nhiều bản ghi thì mới có thể thực hiện hành động này.</value>
+  </data>
+  <data name="Web.SFA.quotes.EffectiveToEarlierThanEffectiveFrom" xml:space="preserve">
+    <value>Có hiệu lực đến ngày không thể xảy ra trước Có hiệu lực từ ngày.</value>
+    <comment>Error message to display if effective to date supplied in the quote form is earlier than effective from date.</comment>
+  </data>
+  <data name="Web.SFA.QOI.CurrencyChangeAlert" xml:space="preserve">
+    <value>Xem lại mọi trường tài chính trong biểu mẫu trước khi bạn tiếp tục.</value>
+    <comment>Alert message that is displayed in Quote and Opportunity forms when transaction currency is changed. [Category="Business Modules"]</comment>
+  </data>
+  <data name="QUOTE_EXPIRED" xml:space="preserve">
+    <value>Ngày "Hiệu lực đến" đã kết thúc. Nếu bạn muốn kích hoạt lại báo giá, bạn có thể đặt ngày thành ngày sau này.</value>
+    <comment>quote is expired.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Suggestions_Notification_Available_Message" xml:space="preserve">
+    <value>Gợi ý sản phẩm sẵn có ({0})</value>
+    <comment>Text for the notification that product suggestions are available.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Notification_See_Link_Text" xml:space="preserve">
+    <value>Dạng xem</value>
+    <comment>Text for clickable link in suggestion notification.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_340" xml:space="preserve">
+    <value>Sẽ tự động thực hiện việc chuyển đổi báo giá này thành đơn hàng bán hàng khi bạn quay lại chế độ trực tuyến.  Để tiếp tục, bấm OK.</value>
+    <comment>Confirmation message displayed when the user attempts to create an order from a quote in outlook client when the outlook client is in offline mode.</comment>
+  </data>
+  <data name="Web.SFA.QOI.QuantityChangedDueToChangeInAccuracy" xml:space="preserve">
+    <value>Giá trị trong hộp Số lượng đã thay đổi từ "{0}" thành "{1}" do có cập nhật đối với phần thập phân được hỗ trợ trong sản phẩm.
+ Để lưu thay đổi, hãy bấm Ok rồi bấm Lưu hoặc Lưu và Đóng.</value>
+    <comment>Header of Message to prompt the user about change in qunatity due to change in decimal accuracy supported by the product. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 and Placeholder 1 are numbers.</comment>
+  </data>
+  <data name="Close_Quote_Dlg_Title" xml:space="preserve">
+    <value>Đóng Báo giá</value>
+  </data>
+  <data name="Close_Quote_Dlg_Desc" xml:space="preserve">
+    <value>Bạn đang đóng báo giá này.</value>
+    <comment>Close quote dialog description.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.dlg_close.aspx_155" xml:space="preserve">
+    <value>Ngày đóng</value>
+    <comment>Label for the close date field in the close quote dialog box. Represents the quote close date.</comment>
+  </data>
+  <data name="Dialog_PaidInvoice_Title" xml:space="preserve">
+    <value>Hóa đơn Đã thanh toán</value>
+  </data>
+  <data name="Dialog_PaidInvoice_Description" xml:space="preserve">
+    <value>Chọn thông tin để thanh toán hóa đơn này.</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Title" xml:space="preserve">
+    <value>Hủy Hóa đơn</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Description" xml:space="preserve">
+    <value>Chọn thông tin để hủy hóa đơn này.</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Title" xml:space="preserve">
+    <value>Hủy Đơn hàng</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Desc" xml:space="preserve">
+    <value>Cấp thông tin hủy cho đơn hàng này.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_ConfirmButton.dlg_close" xml:space="preserve">
+    <value>Xác nhận</value>
+    <comment>OK Button text when Order close dialog when the order is canceled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_50.dlg_close" xml:space="preserve">
+    <value>Hủy ngày</value>
+    <comment>Label for the sales order cancel date field in cancel order dialog page.</comment>
+  </data>
+  <data name="Order_Fulfill_Dlg_Title" xml:space="preserve">
+    <value>Thực hiện đơn hàng</value>
+  </data>
+  <data name="Order_Fulfill_Dlg_Desc" xml:space="preserve">
+    <value>Cấp thông tin thực hiện cho đơn hàng này.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_FulfillButton.dlg_close" xml:space="preserve">
+    <value>Thực hiện</value>
+    <comment>OK Button text when Order close dialog when the order is fulfilled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_51.dlg_close" xml:space="preserve">
+    <value>Ngày thực hiện</value>
+    <comment>Label for the sales order fulfill date field in fulfill order dialog page.</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_155" xml:space="preserve">
+    <value>Bạn phải chọn bảng giá trước khi thêm sản phẩm.</value>
+    <comment>Error message displayed in the opportunity form when the user attempts to add a product to the opportunity without choosing a price list for the opportunity.</comment>
+  </data>
+  <data name="notEligibleBulkEdit" xml:space="preserve">
+    <value>Kiểm soát không đủ điều kiện để Sửa Hàng loạt.</value>
+  </data>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>Đóng biểu mẫu email</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>Thay đổi trạng thái {0} thành Đã hoàn thành và đóng biểu mẫu</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>Bạn phải chọn một khách hàng.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>Bạn phải lưu thay đổi trước khi có thể chuyển đổi hoạt động này.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="LOCID_PROVIDE_VALUE_ADDRESS" xml:space="preserve">
+    <value>Bạn phải cung cấp giá trị cho {0} trước khi tra cứu địa chỉ.</value>
+    <comment>{NumberedPlaceholder="{0}"}. AlertMessage.Message on omission of value for address lookup.</comment>
+  </data>
+  <data name="LOCID_SALESLIT_NO_DOCUMENTS" xml:space="preserve">
+    <value>{0} không chứa bất kỳ {1}.</value>
+    <comment>Text in alert when sales literature does not contain any documents. [Category="Business Modules"] {NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with salesliterature entity display name. {NumberedPlaceholder="{1}"} Placeholder 1 will be replaced with salesliteratureitem entity display name</comment>
+  </data>
+  <data name="Web.SFA.invoice.edit.aspx_163" xml:space="preserve">
+    <value>Đã xảy ra lỗi sau: {0}</value>
+    <comment>Message displayed with price error messages.</comment>
+  </data>
+  <data name="SalesAttachmentDisplayName" xml:space="preserve">
+    <value>Đính kèm bán hàng</value>
+    <comment>Sales Attachment display name.</comment>
+  </data>
+  <data name="LiveWorkStream.ProviderInvalid" xml:space="preserve">
+    <value>Nhà cung cấp SMS không hợp lệ</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid provider</comment>
+  </data>
+  <data name="LiveWorkStream.APIKeyInvalid" xml:space="preserve">
+    <value>Khóa ủy quyền không hợp lệ</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid authorization Key</comment>
+  </data>
+  <data name="LiveWorkStream.OCEndpointMissing" xml:space="preserve">
+    <value>Không thể tạo URL đến cho SMS do điểm cuối URL tổ chức đang bị thiếu. Vui lòng liên hệ quản trị viên hệ thống</value>
+    <comment>Error message displayed when the sms inbound URL is not displayed as the OCEndPoint is not set correctly</comment>
+  </data>
+  <data name="LiveWorkStream.CustomerIdInvalid" xml:space="preserve">
+    <value>ID ủy quyền không hợp lệ</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid authorization Id</comment>
+  </data>
+  <data name="LiveWorkStream.DoesNotExist" xml:space="preserve">
+    <value>Luồng Công Việc được chỉ định không tồn tại</value>
+    <comment>Error text for when users specify a non-existant Work Stream to validate its SMS connection</comment>
+  </data>
+  <data name="LiveWorkStream.InsufficientInputs" xml:space="preserve">
+    <value>Không thể xác định thuộc tính Luồng Công Việc bắt buộc từ đầu vào được cung cấp</value>
+    <comment>Error message displayed when not enough inputs have been passed to the Work Stream SMS connection validation workflow to determine the necessary Work Stream SMS settings to validate the connection</comment>
+  </data>
+  <data name="LiveWorkStream.InvalidInputData" xml:space="preserve">
+    <value>Đầu vào có định dạng không được nhận diện</value>
+    <comment>Error text for when there is an error deserializing the input to the Work Stream SMS connection validation workflow</comment>
+  </data>
+  <data name="LiveWorkStream.NoAssociatedSMSNumbers" xml:space="preserve">
+    <value>Luồng Công Việc phải liên kết với ít nhất một Số SMS</value>
+    <comment>Error text for when users try to validate a Work Stream not associated to any SMS Numbers</comment>
+  </data>
+  <data name="LiveWorkStream.SourceNotSMS" xml:space="preserve">
+    <value>Tác vụ này chỉ hợp lệ đối với Luồng Công Việc SMS</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with a source other than SMS</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignError" xml:space="preserve">
+    <value>Không thể gửi tin nhắn xác minh</value>
+    <comment>Error message displayed for generic errors encountered calling provider when validating an SMS Work Steam connection</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignErrorWithArgument" xml:space="preserve">
+    <value>Không thể gửi tin nhắn xác minh: {0}</value>
+    <comment>Error message displayed for errors with additional content encountered calling provider when validating an SMS Work Steam connection</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignTimeout" xml:space="preserve">
+    <value>Đã hết thời gian chờ để chuyển giao tin nhắn xác minh</value>
+    <comment>Error message displayed when provider does not successfully or unsuccessfully deliver the verification message in a set amount of time</comment>
+  </data>
+  <data name="LiveWorkStream.Validating" xml:space="preserve">
+    <value>Đang xác thực chi tiết SMS Rest API</value>
+    <comment>Informational message shown to the user when they click on any of the buttons to validate an SMS Work Stream connection</comment>
+  </data>
+  <data name="LiveWorkStream.ValidationError" xml:space="preserve">
+    <value>Không thể thực hiện quy trình xác thực</value>
+    <comment>Error message displayed for generic errors executing the Work Stream SMS validation workflows</comment>
+  </data>
+  <data name="LiveWorkStream.ValidationSuccess" xml:space="preserve">
+    <value>Đã xác thực thành công chi tiết SMS API</value>
+    <comment>Message shown when the SMS connection is successfully validated</comment>
+  </data>
+  <data name="LiveWorkStream.VerificationSMSMessageText" xml:space="preserve">
+    <value>Tin nhắn xác minh. Vui lòng bỏ qua.</value>
+    <comment>The SMS Number verification message text sent when validating a given SMS Work Stream</comment>
+  </data>
+  <data name="LiveWorkStream.WrongEntity" xml:space="preserve">
+    <value>Thực thể được phân tách thành Luồng Công Việc không thuộc đúng loại thực thể</value>
+    <comment>Error message displayed when the Work Stream passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="SMSNumber.DoesNotExist" xml:space="preserve">
+    <value>Số SMS được chỉ định không tồn tại</value>
+    <comment>Error text for when users specify a non-existant SMS Number for validating an SMS Work Stream SMS connection</comment>
+  </data>
+  <data name="SMSNumber.InsufficientInputs" xml:space="preserve">
+    <value>Không thể xác định thuộc tính Số SMS bắt buộc từ đầu vào được cung cấp</value>
+    <comment>Error message displayed when not enough inputs have been passed to the Work Stream SMS connection validation workflow to determine the necessary SMS Number settings to validate the connection</comment>
+  </data>
+  <data name="SMSNumber.InvalidOrMissingLiveWorkStream" xml:space="preserve">
+    <value>Số SMS phải liên kết với một Luồng Công Việc SMS</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for an SMS Number not associated to a Work Stream or associated to a Work Stream with a Stream Source other than SMS</comment>
+  </data>
+  <data name="SMSNumber.NumberInvalid" xml:space="preserve">
+    <value>Số SMS không hợp lệ</value>
+    <comment>Error message displayed when an invalid validating SMS Rest API is due to the number being invalid</comment>
+  </data>
+  <data name="SMSNumber.ProviderInvalid" xml:space="preserve">
+    <value>Nhà cung cấp Số SMS không hợp lệ</value>
+    <comment>Error message displayed when an invalid provider is selected for an SMS Number</comment>
+  </data>
+  <data name="SMSNumber.Telesign.LongCodeInvalid" xml:space="preserve">
+    <value>Số Mã Dài phải chứa 8 đến 15 chữ số</value>
+    <comment>Error message displayed when an invalid long code SMS Number has been entered</comment>
+  </data>
+  <data name="SMSNumber.Telesign.ShortCodeInvalid" xml:space="preserve">
+    <value>Số dạng Mã ngắn phải chứa từ 3 đến 8 ký tự chữ cái hoặc chữ số. Không được phép sử dụng các ký tự định dạng khác.</value>
+    <comment>Error message displayed when an invalid short code SMS number has been entered</comment>
+  </data>
+  <data name="SMSNumber.Telesign.TollFreeInvalid" xml:space="preserve">
+    <value>Số điện thoại Miễn cước phải bắt đầu bằng số 1 và chứa 8 đến 15 chữ số</value>
+    <comment>Error message displayed when an invalid toll free SMS Number has been entered</comment>
+  </data>
+  <data name="SMSNumber.TypeInvalid" xml:space="preserve">
+    <value>Loại Số SMS không hợp lệ</value>
+    <comment>Error message displayed when an invalid number type is selected for an SMS Number</comment>
+  </data>
+  <data name="SMSNumber.WrongEntity" xml:space="preserve">
+    <value>Thực thể được phân tách thành Số SMS không thuộc đúng loại thực thể</value>
+    <comment>Error message displayed when the SMS Number passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="LiveWorkStream.ValidateFailed" xml:space="preserve">
+    <value>Không thành công</value>
+    <comment>Failure validation status of the last SMS provider validation.</comment>
+  </data>
+  <data name="LiveWorkStream.ValidateSuccess" xml:space="preserve">
+    <value>Thành công</value>
+    <comment>Success validation status of the last SMS provider validation.</comment>
+  </data>
+  <data name="PhoneNumber.DoesNotExists" xml:space="preserve">
+    <value>Số điện thoại SMS được chỉ định không tồn tại</value>
+    <comment>Error text when users specify a non-existent Phone Number.</comment>
+  </data>
+  <data name="PhoneNumber.WrongEntity" xml:space="preserve">
+    <value>Thực thể được truyền qua dưới dạng Số điện thoại không thuộc đúng loại thực thể</value>
+    <comment>Error message displayed when the Phone Number passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="OC_FormNotificationMessageForSMSProvider" xml:space="preserve">
+    <value>Vui lòng điền tất cả các thiết đặt trong Thiết đặt SMS để hoàn tất thiết lập cho kênh SMS.</value>
+    <comment>Warning notification message at the form level when the sms provider is not selected, api key, customer id are not filled.</comment>
+  </data>
+  <data name="OC_TeleSignAccountInformationSectionLabel" xml:space="preserve">
+    <value>Thông tin tài khoản TeleSign</value>
+    <comment>Account information label for TeleSign</comment>
+  </data>
+  <data name="OC_TeleSignApiKeyLabel" xml:space="preserve">
+    <value>Khóa API</value>
+    <comment>TeleSign label for key</comment>
+  </data>
+  <data name="OC_TeleSignCustomerIdLabel" xml:space="preserve">
+    <value>ID khách hàng</value>
+    <comment>TeleSign label for ID</comment>
+  </data>
+  <data name="OC_TwilioAccountInformationSectionLabel" xml:space="preserve">
+    <value>Thông tin tài khoản Twilio</value>
+    <comment>Account information label for Twilio</comment>
+  </data>
+  <data name="OC_TwilioAccountSIDLabel" xml:space="preserve">
+    <value>SID tài khoản</value>
+    <comment>Twilio label for ID</comment>
+  </data>
+  <data name="OC_TwilioAuthTokenLabel" xml:space="preserve">
+    <value>Mã thông báo xác thực</value>
+    <comment>Twilio label for key</comment>
+  </data>
+  <data name="OC_TwilioLegalDisclaimerPreviewTerms" xml:space="preserve">
+    <value>Điều khoản của bản xem trước</value>
+  </data>
+  <data name="OC_TwilioLegalDisclaimerText" xml:space="preserve">
+    <value>Bằng việc cung cấp thông tin tài khoản Twilio để bật SMS, bạn xác nhận rằng tính năng này đang ở giai đoạn bản xem trước và bạn đồng ý với {0}.</value>
+    <comment>DO NOT CHANGE {0} as it will be replaced with OC_TwilioLegalDisclaimerPreviewTerms.</comment>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Không tìm thấy vấn đề nào.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>Đã xảy ra lỗi trong {0}.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.ResultEntityMessage" xml:space="preserve">
+    <value>Cấu hình kênh SMS không có luồng công việc hiện hoạt.</value>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Có 1 cấu hình kênh SMS không có luồng công việc hiện hoạt.</value>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Có {0} cấu hình kênh SMS không có luồng công việc hiện hoạt.</value>
+    <comment>The error message for SmsChannelConfigurationShouldHaveWorkStream rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.ResultEntityMessage" xml:space="preserve">
+    <value>Cấu hình kênh SMS cho nhà cung cấp dịch vụ {0} có {1} để trống.</value>
+    <comment>The error message for SmsSettingsShouldHaveAllRequiredFields rule where placeholder {0} is SMS provider name, 
+    and {1} is an invalid field name or names</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Có 1 cấu hình kênh SMS có thiết đặt chưa đầy đủ.</value>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Có {0} cấu hình kênh SMS có thiết đặt chưa đầy đủ.</value>
+    <comment>The error message for SmsSettingsShouldHaveAllRequiredFields rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.CustomerIdProperty" xml:space="preserve">
+    <value>ID Khách hàng</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_customerid"] property for TeleSign</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.APIKeyProperty" xml:space="preserve">
+    <value>Khóa API</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_apikey"] property for TeleSign</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.AccountSIDProperty" xml:space="preserve">
+    <value>SID tài khoản</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_customerid"] property for Twilio</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.AuthTokenProperty" xml:space="preserve">
+    <value>Mã thông báo xác thực</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_apikey"] property for Twilio</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.LastValidationStatus" xml:space="preserve">
+    <value>Trạng thái xác thực lần gần nhất</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_lastvalidationstatus"] property</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.smsProviderMessage" xml:space="preserve">
+    <value>Chưa đặt nhà cung cấp dịch vụ SMS</value>
+    <comment>SMS provider is not set message</comment>
+  </data>
+</root>

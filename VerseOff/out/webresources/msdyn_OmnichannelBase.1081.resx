@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OC_LimitQuestions_AlertDialogConfirmButton" xml:space="preserve">
+    <value>ठीक</value>
+  </data>
+  <data name="OC_RecordPermissions_AlertDialogText" xml:space="preserve">
+    <value>आपके पास इस क्रिया को करने की अनुमति नहीं है.</value>
+  </data>
+  <data name="OC_LimitQuestions_AlertDialogText" xml:space="preserve">
+    <value>आप पाँच प्रश्नों से अधिक नहीं जोड़ सकते. और प्रश्न जोड़ने के लिए कृपया कुछ प्रश्न हटाएँ.</value>
+  </data>
+  <data name="OC_PickAuthFailed" xml:space="preserve">
+    <value>प्रमाणन विफलता के कारण चयन विफल रहा. बाद में पुनः प्रयास करें. कार्य आइटम: {0}</value>
+  </data>
+  <data name="OC_PickedByAnotherAgent" xml:space="preserve">
+    <value>चयन विफल रहा. आइटम को अन्य एजेंट द्वारा चुना गया था. कार्य आइटम: {0}</value>
+  </data>
+  <data name="OC_PickInternalError" xml:space="preserve">
+    <value>चयन विफल रहा. आइटम को पुनः चुनने का प्रयास करें. कार्य आइटम: {0}</value>
+  </data>
+  <data name="OC_PickMaxCapacityReached" xml:space="preserve">
+    <value>चयन विफल रहा. आप अधिकतम क्षमता पर पहुँच गए हैं. कार्य आइटम: {0}</value>
+  </data>
+  <data name="OC_PickMaxConcurrencyReached" xml:space="preserve">
+    <value>चयन विफल रहा. आप अधिकतम सहसंगता पर पहुँच गए हैं. कार्य आइटम: {0}</value>
+  </data>
+  <data name="OC_PickNotAvailable" xml:space="preserve">
+    <value>चयन विफल रहा. आइटम उपलब्ध नहीं है. कार्य आइटम: {0}</value>
+  </data>
+  <data name="OC_PickPresenceError" xml:space="preserve">
+    <value>आपकी उपस्थिति स्थिति के कारण चयन विफल रहा. कार्य आइटम: {0}</value>
+  </data>
+  <data name="OC_PickSuccess" xml:space="preserve">
+    <value>कार्य आइटम सफलतापूर्वक चुना गया. कार्य आइटम: {0}</value>
+  </data>
+  <data name="OC_OpenFormFail" xml:space="preserve">
+    <value>प्रपत्र खोलना विफल रहा. प्रपत्र को खोलने का पुनः प्रयास करें, यदि समस्या बनी रहती है, तो अपने व्यवस्थापक से संपर्क करें.</value>
+  </data>
+  <data name="OC_OpenSessionFail" xml:space="preserve">
+    <value>सत्र खोलना विफल रहा. सत्र को खोलने का पुनः प्रयास करें, यदि समस्या बनी रहती है, तो अपने व्यवस्थापक से संपर्क करें.</value>
+  </data>
+  <data name="OC_InputTimeFormat" xml:space="preserve">
+    <value>कृपया समय को सही 24-घंटे के स्वरूप (HH:mm) में दर्ज करें.</value>
+  </data>
+  <data name="OC_InputTimesDifferenceValidation" xml:space="preserve">
+    <value>समाप्ति समय प्रारंभ होने के समय से पहले या {0} मिनट बाद सेट नहीं किया जा सकता.</value>
+  </data>
+  <data name="OC_SendMessageToConversationSuccessMessage" xml:space="preserve">
+    <value>हो गया! इस संदेश को वार्तालाप को भेजा गया.</value>
+  </data>
+  <data name="OC_SendMessageToConversationFailureMessage" xml:space="preserve">
+    <value>कुछ गलत हुआ. वार्तालाप को संदेश भेजना का पुनः प्रयास करें.</value>
+  </data>
+  <data name="OC_SupervisorOpenRecord" xml:space="preserve">
+    <value>वार्तालाप रिकॉर्ड केवल देखे जा सकते हैं, उन्हें खोला नहीं जा सकता.</value>
+  </data>
+  <data name="OC_LinkToConversationSuccessMessage" xml:space="preserve">
+    <value>हो गया! इस {0} को वार्तालाप से लिंक किया गया.</value>
+  </data>
+  <data name="OC_LinkToConversationFailureMessage" xml:space="preserve">
+    <value>कुछ गलत हुआ. वार्तालाप से लिंक करने का पुनः प्रयास करें.</value>
+  </data>
+  <data name="OC_LinkToConversationUpdatedMessage" xml:space="preserve">
+    <value>अद्यतन किया गया! यह {0} इस वार्तालाप से लिंक किए गए पिछले {0} को बदल देता है.</value>
+  </data>
+  <data name="OC_Presence_Available" xml:space="preserve">
+    <value>उपलब्ध</value>
+  </data>
+  <data name="OC_Presence_Busy" xml:space="preserve">
+    <value>व्यस्त</value>
+  </data>
+  <data name="OC_Presence_DoNotDisturb" xml:space="preserve">
+    <value>परेशान न करें</value>
+  </data>
+  <data name="OC_Presence_Away" xml:space="preserve">
+    <value>दूर दिखाई दें</value>
+  </data>
+  <data name="OC_Presence_Offline" xml:space="preserve">
+    <value>ऑफ़लाइन</value>
+  </data>
+  <data name="MaskingRule.LimitReached" xml:space="preserve">
+    <value>{0} मास्किंग नियमों से अधिक बनाने की अनुमति नहीं है, कृपया नियमों को हटाकर कुल मात्रा को {0} पर सीमित करें.</value>
+  </data>
+  <data name="MaskingRule.PluginError" xml:space="preserve">
+    <value>PreValidationMaskingRuleLimitPlugin प्लग-इन में एक त्रुटि उत्पन्न हुई.</value>
+  </data>
+  <data name="MaskingRule.RegexException.InvalidEscape" xml:space="preserve">
+    <value>SyntaxError: अमान्य नियमित व्यंजक: /{0}/: अमान्य एस्केप</value>
+  </data>
+  <data name="MaskingRule.RegexException.EndOfPattern" xml:space="preserve">
+    <value>SyntaxError: अमान्य नियमित व्यंजक: /{0}/: \ पैटर्न के अंत में</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedCharacterClass" xml:space="preserve">
+    <value>SyntaxError: अमान्य नियमित व्यंजक: /{0}/: अनिलंबित वर्ण श्रेणी</value>
+  </data>
+  <data name="MaskingRule.RegexException.IncompleteQuantifier" xml:space="preserve">
+    <value>SyntaxError: अमान्य नियमित व्यंजक: /{0}/: अपूर्ण क्वांटिफ़ायर</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedGroup" xml:space="preserve">
+    <value>SyntaxError: अमान्य नियमित व्यंजक: /{0}/: अनिलंबित समूह</value>
+  </data>
+  <data name="MaskingRule.RegexException.LoneQuantifierBrackets" xml:space="preserve">
+    <value>SyntaxError: अमान्य नियमित व्यंजक: /{0}/: लोन क्वांटिफ़ायर ब्रैकेट</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnmatchedParen" xml:space="preserve">
+    <value>SyntaxError: अमान्य नियमित व्यंजक: /{0}/: बेमेल ')'</value>
+  </data>
+  <data name="MaskingRule.RegexException.NothingToRepeat" xml:space="preserve">
+    <value>SyntaxError: अमान्य नियमित व्यंजक: /{0}/: दोहराने के लिए कुछ भी नहीं</value>
+  </data>
+  <data name="MaskingRule.RegexException.Timeout" xml:space="preserve">
+    <value>TimeoutError: नियमित व्यंजक ने मूल्यांकन में बहुत अधिक समय लिया: /{0}/: {1} मिनट के बाद बंद कर दिया गया.</value>
+  </data>
+  <data name="MaskingRule.MaskingInProgress" xml:space="preserve">
+    <value>नियमित व्यंजक वाला परीक्षण डेटा मास्क करना.</value>
+  </data>
+  <data name="SentimentAnalysis.WrongName" xml:space="preserve">
+    <value>रिकॉर्ड का नाम {0} होना चाहिए.</value>
+  </data>
+  <data name="SentimentAnalysis.DeleteNotAllowed" xml:space="preserve">
+    <value>रिकॉर्ड हटाने की अनुमति नहीं है.</value>
+  </data>
+  <data name="Entity.OnlyOneAllowed" xml:space="preserve">
+    <value>इस प्रकार के केवल एक रिकॉर्ड की अनुमति है.</value>
+  </data>
+  <data name="Entity.DeleteNotAllowed" xml:space="preserve">
+    <value>रिकॉर्ड हटाने की अनुमति नहीं है.</value>
+  </data>
+  <data name="DefaultQueue.DeleteNotAllowed" xml:space="preserve">
+    <value>आप DefaultQueue को हटा नहीं सकते, क्योंकि क्यू केवल-पठन के लिए है.</value>
+  </data>
+  <data name="DefaultQueue.UpdateNotAllowed" xml:space="preserve">
+    <value>आप DefaultQueue को संपादित नहीं सकते, क्योंकि क्यू केवल-पठन के लिए है.</value>
+  </data>
+  <data name="Queue.IncorrectEntityError" xml:space="preserve">
+    <value>प्लग-इन पंजीकरण त्रुटि : निकाय तार्किक नाम Queue नहीं है.</value>
+  </data>
+  <data name="Queue.QueueTypeUpdateError" xml:space="preserve">
+    <value>आप क्यू प्रकार अद्यतन नहीं कर सकते.</value>
+  </data>
+  <data name="Queue.NonEntityQueueSelected" xml:space="preserve">
+    <value>रूटिंग नियम आइटम नहीं बनाया जा सकता, क्योंकि चयनित क्यू निकाय प्रकार की नहीं है. आप केवल निकाय प्रकार क्यू पर रूट कर सकते हैं.</value>
+  </data>
+  <data name="RoutingRuleItem.NonEntityQueueSelected" xml:space="preserve">
+    <value>चयनित क्यू में रिकॉर्ड नहीं जोड़ा जा सकता, क्योंकि चयनित क्यू निकाय प्रकार की नहीं है. एक निकाय क्यू चुनें और पुनः प्रयास करें.</value>
+  </data>
+  <data name="OC_Refresh_Grid" xml:space="preserve">
+    <value>रिकॉर्ड ले जाने में असमर्थ, क्योंकि ग्रिड सॉर्ट मोड में है. ग्रिड रीफ़्रेश करके पुनः प्रयास करें.</value>
+  </data>
+  <data name="GeoLocationProvider.IncorrectEntityError" xml:space="preserve">
+    <value>प्लग-इन पंजीकरण त्रुटि : निकाय तार्किक नाम GeoLocationProvider नहीं है.</value>
+  </data>
+  <data name="GeoLocationProvider.PluginError" xml:space="preserve">
+    <value>GeoLocationProviderPlugIn प्लग-इन में कोई त्रुटि हुई.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelsNotSupported" xml:space="preserve">
+    <value>इस रिलीज़ में निकाय चैनल समर्थित नहीं हैं. अधिक जानकारी के लिए रीडमी देखें.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelTypeNotSupported" xml:space="preserve">
+    <value>इस रिलीज़ में निकाय चैनल समर्थित नहीं है. कृपया अन्य चैनल प्रकार चुनें. अधिक जानकारी के लिए रीडमी देखें.</value>
+  </data>
+  <data name="EntityRouting.EntityWorkStreamsNotSupported" xml:space="preserve">
+    <value>इस रिलीज़ में निकाय कार्य स्ट्रीम चैनल समर्थित नहीं हैं. अधिक जानकारी के लिए रीडमी देखें.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForDSF" xml:space="preserve">
+    <value>ओमनीचैनल कॉन्फ़िगरेशन परिवर्तनों को दिखाई देने में 15 मिनट तक का समय लगता है.</value>
+  </data>
+  <data name="OC_CaseRoutingFormNotificationMessage" xml:space="preserve">
+    <value>इस रिलीज़ में केवल मामला रूटिंग समर्थित है. अन्य निकाय रिकॉर्ड भावी रिलीज़ में समर्थित होंगे.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForRoutingSolutionDep" xml:space="preserve">
+    <value>मामला निकाय रूटिंग का उपयोग करने के लिए आपको रूटिंग नियम - पूर्वावलोकन समाधान स्थापित करना होगा, {0} देखें</value>
+  </data>
+  <data name="OC_Preview_Message" xml:space="preserve">
+    <value>इस सुविधा को सक्षम करके, आप स्वीकार करते हैं कि यह सुविधा पूर्वावलोकन में है और आप {0} से सहमत होते हैं. {1}</value>
+    <comment>Template Preview Text for all features</comment>
+  </data>
+  <data name="OC_Preview_Link_Label" xml:space="preserve">
+    <value>पूर्वावलोकन शर्तें</value>
+    <comment>Preview Terms label to point to the relevant Preview Terms</comment>
+  </data>
+  <data name="OC_LearnMore_Link_Label" xml:space="preserve">
+    <value>अधिक जानें</value>
+    <comment>Hyperlink label to point to the relevant feature documentation</comment>
+  </data>
+  <data name="AutomaticQueueName" xml:space="preserve">
+    <value>स्वचालित वितरण क्यू</value>
+  </data>
+  <data name="AutomaticQueueSelectionRecommendation" xml:space="preserve">
+    <value>एजेंटों को कार्य आइटम स्वचालित रूप से वितरित करने और असाइन करने के लिए एक क्यू चुनें.</value>
+  </data>
+  <data name="ConfigureRoutingRulesAtERCNotification" xml:space="preserve">
+    <value>निकाय रिकॉर्ड कार्य स्ट्रीम के लिए, रूटिंग नियम चैनल स्तर पर कॉन्फ़िगर किए जाते हैं. चैनल &gt; निकाय रिकॉर्ड &gt; {0} &gt; कॉन्फ़िगर किए जाने वाले रूटिंग नियम पर जाएँ.</value>
+  </data>
+  <data name="isOmnichannelQueueGuidanceNotification" xml:space="preserve">
+    <value>ओमनीचैनल स्वचालित कार्य वितरण के लिए क्यू को सक्षम करने हेतु हाँ पर सेट करें. अधिक जानने के लिए, {0} देखें</value>
+  </data>
+  <data name="ManualQueueName" xml:space="preserve">
+    <value>मैन्युअल क्यू</value>
+  </data>
+  <data name="ManualQueueSelectionRecommendation" xml:space="preserve">
+    <value>एजेंटों को निकाय रिकॉर्ड स्वचालित रूप से असाइन करने के लिए स्वचालित कार्य वितरण हेतु क्यू चुनें.</value>
+  </data>
+  <data name="ERCDeletionWarningMessage" xml:space="preserve">
+    <value>{1} रिकॉर्ड को हटाना, {0} निकाय के लिए निकाय रिकॉर्ड रूटिंग को अक्षम कर देगा. क्या आप वाकई इसे हटाना चाहते हैं?</value>
+  </data>
+  <data name="InstallRoutingRuleForERCNotification" xml:space="preserve">
+    <value>निकाय रिकॉर्ड रूटिंग का उपयोग करने के लिए आपको रूटिंग नियम समाधान स्थापित करना होगा. अधिक जानने के लिए, {0} देखें.</value>
+  </data>
+  <data name="EntityRoutingPlugins.GenericError" xml:space="preserve">
+    <value>किसी त्रुटि के कारण कार्रवाई पूर्ण करने में असमर्थ. बाद में पुनः प्रयास करें. यदि समस्‍या बनी रहती है, तो Microsoft सहायता से संपर्क करें.</value>
+  </data>
+  <data name="EntityRoutingPlugins.CreateError" xml:space="preserve">
+    <value>{0} को बनाने में असमर्थ. बाद में पुनः प्रयास करें. यदि समस्‍या बनी रहती है, तो Microsoft सहायता से संपर्क करें.</value>
+  </data>
+  <data name="EntityRoutingPlugins.SaveError" xml:space="preserve">
+    <value>{0} को सहेजने में असमर्थ. बाद में पुनः प्रयास करें. यदि समस्‍या बनी रहती है, तो Microsoft सहायता से संपर्क करें.</value>
+  </data>
+  <data name="EntityRoutingPlugins.DeleteError" xml:space="preserve">
+    <value>{0} को हटाने में असमर्थ. बाद में पुनः प्रयास करें. यदि समस्‍या बनी रहती है, तो Microsoft सहायता से संपर्क करें.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityMissing" xml:space="preserve">
+    <value>निकाय फ़ील्ड रिक्त है. निकाय फ़ील्ड के लिए एक मान चुनें और पुनः प्रयास करें.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityNotRequired" xml:space="preserve">
+    <value>निकाय फ़ील्ड में एक मान है. निकाय फ़ील्ड को रिक्त छोड़ दें और पुनः प्रयास करें.</value>
+  </data>
+  <data name="EntityRoutingPlugins.BothEntityConfigurationsNotRequired" xml:space="preserve">
+    <value>दोनों निकाय कॉन्फ़िगरेशन फ़ील्ड का मान है. किसी भी एक निकाय कॉन्फ़िगरेशन फ़ील्ड को खाली छोड़ दें और पुनः प्रयास करें.</value>
+    <comment>Liveworkstream has ercId and mercId fields, and only one can have value</comment>
+  </data>
+  <data name="EntityRoutingPlugins.DefaultWorkStreamName" xml:space="preserve">
+    <value>{0} कार्य स्ट्रीम</value>
+  </data>
+  <data name="EntityRoutingPlugins.FlowConfigurationError" xml:space="preserve">
+    <value>निकाय रिकॉर्ड वितरण प्रवाह में गलत कॉन्फ़िगरेशन के कारण कार्रवाई विफल रही. सुनिश्चित करें कि {0} को नहीं हटाया गया है या उसका नाम नहीं बदला गया है.</value>
+  </data>
+  <data name="EntityRoutingPlugins.TroubleshootingLearnMore" xml:space="preserve">
+    <value>अधिक जानने के लिए, ओमनीचैनल समस्या निवारण विषय देखें - {0}</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>पुष्टि करें</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>हटाएँ</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
+  <data name="OC_IncidentQueueItemWarningNessage" xml:space="preserve">
+    <value>इस रिकॉर्ड को ओमनीचैनल क्यू में स्थानांतरित कर दिया गया था और अब यहां देखने योग्य नहीं है. इस रिकॉर्ड को देखने के लिए, इसे ओमनीचैनल डैशबोर्ड से खोलें.</value>
+  </data>
+  <data name="OC_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsoft गोपनीयता कथन</value>
+  </data>
+  <data name="OC_ChannelPreviewDisclaimer" xml:space="preserve">
+    <value>इस चैनल का इस्तेमाल करने के बाद, आप स्वीकार करते हैं कि यह सुविधा पूर्वावलोकन में है और आप पूर्वावलोकन की शर्तों से सहमत हैं.</value>
+  </data>
+  <data name="OC_SeePreviewTerms" xml:space="preserve">
+    <value>पूर्वावलोकन शर्तें देखें</value>
+  </data>
+  <data name="OC_ThirdPartyChannelPrivacyDisclaimer" xml:space="preserve">
+    <value>इस चैनल सुविधा को सक्षम करके, आप अपने डेटा को तृतीय-पक्ष सिस्टम के साथ साझा करने और अपने संगठन की अनुपालन सीमा और जियो सीमाओं से बाहर ले जाने की सहमति देते हैं. (इसमें Government Cloud परिवेश भी शामिल हैं.) {0} में अधिक जानें.</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_FeatureDocumentation" xml:space="preserve">
+    <value>रीयल टाइम अनुवाद</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsoft गोपनीयता कथन</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_Text" xml:space="preserve">
+    <value>इस सुविधा को सक्षम करके, आप स्वीकार करते हैं कि आपका डेटा आपके संगठन के अनुपालन और जियो सीमाओं के बाहर प्रवाहित हो सकता है. इसमें Government Cloud परिवेश शामिल नहीं हैं. {0} और {1} के बारे में अधिक जानें.</value>
+    <comment>DO NOT CHANGE {0} and {1}, as they will be replaced with OC_LanguageTranslation_Disclaimer_FeatureDocumentation and OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement respectively.</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_DocumentFeature_Text" xml:space="preserve">
+    <value>सुविधा दस्तावेज़ीकरण के लिए यहां क्लिक करें</value>
+    <comment>Indicates this is the link for feature documentation</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Link" xml:space="preserve">
+    <value>वेब संसाधन कॉन्फ़िगरेशन</value>
+    <comment>  This is the link for real time translation webresource documentation </comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Text" xml:space="preserve">
+    <value>अपना URL जनरेट करने के लिए वेब संसाधन कॉन्फ़िगर करें. उसके बाद, नीचे उस URL को कॉपी और पेस्ट करें. {0} के बारे में अधिक जानें.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder "0" will be replaced by a OC_LanguageTranslation_Webresource_Disclaimer_Link. Link text is "here".</comment>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_Text" xml:space="preserve">
+    <value>इस सुविधा को चालू करके, आप स्वीकार करते हैं कि यह सुविधा पूर्वावलोकन में है और आप इससे सहमत हैं </value>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_LinkText" xml:space="preserve">
+    <value>पूर्वावलोकन शर्तें</value>
+  </data>
+  <data name="LanguageTranslation_Invalid_webresource_url" xml:space="preserve">
+    <value>आपके द्वारा दर्ज किया गया URL आपके वेब संसाधन से मेल नहीं खाता है. कृपया अपने वेब संसाधन URL की फिर से प्रतिलिपि बनाने और पेस्ट करने का प्रयास करें.</value>
+  </data>
+  <data name="DeprecationBanner" xml:space="preserve">
+    <value>जुलाई 2022 से शुरू होकर, यह ऐप अब उपयोग के लिए उपलब्ध नहीं होगा. Customer Service के लिए ओमनीचैनल का उपयोग जारी रखने के लिए अपनी वर्कस्ट्रीम को ओमनीचैनल व्यवस्थापक केंद्र में माइग्रेट करें.</value>
+  </data>
+  <data name="OC_Deprecation_Title_Text" xml:space="preserve">
+    <value>ओमनीचैनल व्यवस्थापन अब समर्थित नहीं है</value>
+  </data>
+  <data name="OC_Deprecation_Description_Text" xml:space="preserve">
+    <value>ओमनीचैनल व्यवस्थापन ऐप के लिए समर्थन 30 अप्रैल, 2022 को समाप्त हो गया. Customer Service को कॉन्फ़िगर करने के लिए, Customer Service व्यवस्थापन केंद्र ऐप का उपयोग करना शुरू करें. कृपया सभी वर्कस्ट्रीम परिभाषाओं को ओमनीचैनल व्यवस्थापन ऐप से Customer Service व्यवस्थापन केंद्र ऐप पर तुरंत माइग्रेट करें. {0}</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More" xml:space="preserve">
+    <value>अधिक जानें</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More_Aria_Label" xml:space="preserve">
+    <value>ओमनीचैनल व्यवस्थापन अप्रचलन के बारे में अधिक जानें</value>
+  </data>
+  <data name="OC_Deprecation_Acknowledge_Checkbox_Label" xml:space="preserve">
+    <value>मैं जानता हूँ कि अब ओमनीचैनल व्यवस्थापन ऐप समर्थित नहीं है.</value>
+  </data>
+  <data name="OC_Deprecation_Redirect_Button_Text" xml:space="preserve">
+    <value>Customer Service व्यवस्थापन केंद्र खोलें</value>
+  </data>
+  <data name="OC_Deprecation_Dismiss_Button_Text" xml:space="preserve">
+    <value>ओमनीचैनल व्यवस्थापन में जारी रखें</value>
+  </data>
+  <data name="PostConversationSurveyMessage" xml:space="preserve">
+    <value>आपका अनुभव कैसा रहा? कृपया इस सर्वेक्षण में अपनी प्रतिक्रिया साझा करें. </value>
+  </data>
+  <data name="OC_FormsProSurvey_Disclaimer" xml:space="preserve">
+    <value>इसे Microsoft Dynamics 365 Customer Voice द्वारा संचालित किया जाएगा.</value>
+  </data>
+  <data name="Presence.InactivePresenceUpdateNotAllowed" xml:space="preserve">
+    <value>इस रिकॉर्ड के लिए इस फ़ील्ड के लिए अपडेट अक्षम कर दिए गए हैं.</value>
+  </data>
+  <data name="Presence.IncorrectEntityError" xml:space="preserve">
+    <value>प्लग-इन पंजीकरण त्रुटि: निकाय तार्किक नाम msdyn_presence नहीं है.</value>
+  </data>
+  <data name="OperatingHours.Hours" xml:space="preserve">
+    <value> घंटा (घंटे)</value>
+  </data>
+  <data name="OperatingHours.Minutes" xml:space="preserve">
+    <value> मिनट</value>
+  </data>
+  <data name="OperatingHours.TotalOperatingHours" xml:space="preserve">
+    <value>कुल प्रचालन घंटे: </value>
+  </data>
+  <data name="Presence.DefaultDeletePlugin" xml:space="preserve">
+    <value>डिफ़ॉल्ट उपस्थिती को मिटाया नहीं जा सकता</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>कोई समस्या नहीं मिली.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>{0} में कोई त्रुटि हुई.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>अमान्य एजेंट क्षमता. मान 0 से अधिक होना चाहिए.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>गलत तरीके से कॉन्फ़िगर किया गया एजेंट मिला. एजेंट की क्षमता एक ऐसे मान पर सेट होनी चाहिए, जो 0 से अधिक हो.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>गलत तरीके से कॉन्फ़िगर किए गए {0} एजेंट मिले. एजेंटों की क्षमता 0 से अधिक होनी चाहिए.</value>
+    <comment>The error message for OcAgentsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>अमान्य बॉट क्षमता. मान 0 से अधिक होना चाहिए.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>गलत तरीके से कॉन्फ़िगर किया गया बॉट मिला. बॉट की क्षमता एक ऐसे मान पर सेट होनी चाहिए, जो 0 से अधिक हो.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>गलत तरीके से कॉन्फ़िगर किए गए {0} बॉट मौजूद हैं. बॉट की क्षमता 0 से अधिक होनी चाहिए.</value>
+    <comment>The error message for OcBotsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>बिना एजेंटों वाली 1 क्यू मौजूद है.</value>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>बिना एजेंटों वाली {0} क्यू मौजूद हैं.</value>
+    <comment>The error message for OcQueuesShouldHaveAgentsRule rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ErrorMessage" xml:space="preserve">
+    <value>ओमनीचैनल पूरी तरह से कार्यशील नहीं है, कुछ संदेश संसाधन चरण अक्षम हैं.</value>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ResultEntityMessage" xml:space="preserve">
+    <value>यह सुनिश्चित करने के लिए कि ओमनीचैनल सही से कार्य करें, संदेश संसाधन चरण सक्षम करना आवश्यक है.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointIsNotConfigured" xml:space="preserve">
+    <value>OC सेवा समाप्ति बिंदु कॉन्फ़िगर नहीं है.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointPathIsEmpty" xml:space="preserve">
+    <value>OC सेवा समाप्ति बिंदु पथ रिक्त है.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.ResultEntityMessage" xml:space="preserve">
+    <value>एजेंट: {0} (id: {1})</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is agent name and {1} is agent Id</comment>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>1 ऐसी कार्य स्ट्रीम मौजूद है, जिसकी क्षमता उसके एजेंटों की क्षमता से अधिक है.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} ऐसी कार्य स्ट्रीम मौजूद हैं, जिनकी क्षमता उनके एजेंटों की क्षमता से अधिक है.</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.ResultEntityMessage" xml:space="preserve">
+    <value>कार्य स्ट्रीम में कुछ सूचना टेम्पलेट सेट नहीं हैं.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>यहाँ सूचना टेम्पलेट के बिना 1 कार्य स्ट्रीम है.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>यहाँ सूचना टेम्पलेट के बिना {0} कार्य स्ट्रीम हैं.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoSessionTemplates" xml:space="preserve">
+    <value>कार्य स्ट्रीम {0} में बिना सत्र टेम्पलेट वाले परिदृश्य मौजूद हैं.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoScenarios" xml:space="preserve">
+    <value>कार्य स्ट्रीम {0} में परिदृश्य नहीं हैं.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>बिना सत्र टेम्पलेट वाली 1 कार्य स्ट्रीम मौजूद है.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>बिना सत्र टेम्पलेट वाली {0} कार्य स्ट्रीम मौजूद हैं.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.ResultEntityMessage" xml:space="preserve">
+    <value>कार्य स्ट्रीम में डुप्लिकेट संदर्भ चर हैं: {0}</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is duplicated context names</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.InvalidEntityMessage" xml:space="preserve">
+    <value>डुप्लिकेट संदर्भ चर वाली 1 कार्य स्ट्रीम मौजूद है.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>डुप्लिकेट संदर्भ चर वाली {0} कार्य स्ट्रीम मौजूद हैं.</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.ResultEntityMessage" xml:space="preserve">
+    <value>बिना शर्तों वाले रूटिंग नियम: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities list</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.InvalidEntityMessage" xml:space="preserve">
+    <value>शर्त वाले नियमों के ऊपर रिक्त रूटिंग नियमों वाली {0} कार्य स्ट्रीम मौजूद हैं.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>शर्त वाले नियमों के ऊपर रिक्त रूटिंग नियमों वाली 1 कार्य स्ट्रीम मौजूद है.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.InvalidEntityMessage" xml:space="preserve">
+    <value>पुश मोड वाली 1 कार्य स्ट्रीम मौजूद है, जो ऑफ़लाइन मोड की अनुमति देती है.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>पुश मोड वाली {0} कार्य स्ट्रीम मौजूद हैं, जो ऑफ़लाइन मोड की अनुमति देती हैं.</value>
+    <comment>The error message for WorkstreamWithPushModeShouldNotAllowOfflineMode rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>बॉट की संभावित रूप से कम क्षमता है.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>1 ऐसे बॉट मौजूद है, जिसकी संभावित रूप से कम क्षमता है.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} ऐसे बॉट मौजूद हैं, जिनकी संभावित रूप से कम क्षमता है.</value>
+    <comment>The error message for OcBotsShouldNotHavePotentiallyLowCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.EntityMessage" xml:space="preserve">
+    <value>डुप्लिकेट किया गया चैनल प्रदाता कॉन्फ़िगरेशन.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultDuplicatedChannel" xml:space="preserve">
+    <value>डुप्लिकेट किए गए चैनल प्रदाता कॉन्फ़िगरेशन मिले.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ProviderNotFound" xml:space="preserve">
+    <value>ओमनीचैनल चैनल प्रदाता नहीं मिला है.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsEmpty" xml:space="preserve">
+    <value>चैनल URL फ़ील्ड रिक्त है</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsInvalid" xml:space="preserve">
+    <value>चैनल URL फ़ील्ड अमान्य है</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.UnifiedInterfaceAppsFieldNoOCApp" xml:space="preserve">
+    <value>एकीकृत इंटरफ़ेस ऐप फ़ील्ड में ओमनीचैनल एप्लिकेशन शामिल नहीं है</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AgentRoleNotAssigned" xml:space="preserve">
+    <value>ओमनीचैनल एजेंट भूमिका असाइन नहीं की गई है</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.SupervisorRoleNotAssigned" xml:space="preserve">
+    <value>ओमनीचैनल पर्यवेक्षक भूमिका असाइन नहीं की गई है</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AdministratorRoleNotAssigned" xml:space="preserve">
+    <value>ओमनीचैनल व्यवस्थापक भूमिका असाइन नहीं की गई.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultImproperlyConfigured" xml:space="preserve">
+    <value>ओमनीचैनल चैनल प्रदाता गलत तरीके से कॉन्फ़िगर किया गया है.</value>
+  </data>
+  <data name="OC_OH_Preview_Message" xml:space="preserve">
+    <value>इस सुविधा का उपयोग करके, आप स्वीकार करते हैं कि यह सुविधा पूर्वावलोकन में है और आप {0} से सहमत होते हैं. {1}</value>
+    <comment>Template Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_OH_Preview_Notification" xml:space="preserve">
+    <value>इस सुविधा का उपयोग करके, आप स्वीकार करते हैं कि यह सुविधा पूर्वावलोकन में है और आप पूर्वावलोकन की शर्तों से सहमत हैं.</value>
+    <comment>Notification Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_InstanceLevelBanner" xml:space="preserve">
+    <value>{0} के लिए आपकी स्वचालित संदेश सेटिंग लागू की गई थीं. {1} के लिए एक स्वचालित संदेश बनाने के लिए, "नया" चुनें.</value>
+  </data>
+  <data name="OC_CustomSystemMessage_ConfirmDelete" xml:space="preserve">
+    <value>क्या आप वाकई यह संदेश हटाना चाहते हैं? इसे हटाने पर, हम आपको {0} के लिए आपकी स्वचालित संदेश सेटिंग पर वापस ले जाएंगे.</value>
+  </data>
+  <data name="OC_Channel_Chat" xml:space="preserve">
+    <value>चैट</value>
+    <comment>Messaging channel chat</comment>
+  </data>
+  <data name="OC_Channel_Custom" xml:space="preserve">
+    <value>कस्टम</value>
+    <comment>Messaging channel Custom</comment>
+  </data>
+  <data name="OC_Channel_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>Messaging channel Facebook</comment>
+  </data>
+  <data name="OC_Channel_LINE" xml:space="preserve">
+    <value>LINE</value>
+    <comment>Messaging channel LINE</comment>
+  </data>
+  <data name="OC_Channel_SMS" xml:space="preserve">
+    <value>SMS</value>
+    <comment>Messaging channel SMS</comment>
+  </data>
+  <data name="OC_Channel_Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+    <comment>Messaging channel Microsoft Teams</comment>
+  </data>
+  <data name="OC_Channel_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Messaging channel Twitter</comment>
+  </data>
+  <data name="OC_Channel_unknown" xml:space="preserve">
+    <value>अज्ञात चैनल</value>
+    <comment>Messaging channel unknown channel</comment>
+  </data>
+  <data name="OC_Channel_WeChat" xml:space="preserve">
+    <value>WeChat</value>
+    <comment>Messaging channel WeChat</comment>
+  </data>
+  <data name="OC_Channel_WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+    <comment>Messaging channel WhatsApp</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_DuplicateNameMessage" xml:space="preserve">
+    <value>स्वचालित संदेश या समान नाम वाला संदेश टेम्पलेट पहले ही बनाया जा चुका है.</value>
+  </data>
+  <data name="OC_FeaturePreviewDisclaimer" xml:space="preserve">
+    <value>इस सुविधा का उपयोग करके, आप स्वीकार करते हैं कि यह सुविधा पूर्वावलोकन में है और आप पूर्वावलोकन की शर्तों से सहमत हैं.</value>
+  </data>
+  <data name="OC_ProgressIndicator_Loading" xml:space="preserve">
+    <value>लोड किया जा रहा है...</value>
+    <comment>Progress indicator message</comment>
+  </data>
+  <data name="OC_TokenAcquireFailed_AlertText" xml:space="preserve">
+    <value>टोकन प्राप्त करना विफल रहा</value>
+    <comment>Alert message for token acquire failures</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationTitle" xml:space="preserve">
+    <value>पहले से कॉन्फ़िगर कार्यस्थान पर स्विच करें</value>
+    <comment>Analytics PaaS feature confirmation dialog body text</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationText" xml:space="preserve">
+    <value>पहले से कॉन्फिगर पर स्विच करने से आपकी कस्टम कार्यस्थान सेटिंग मिट जाएगी. आप किसी भी समय कस्टम कार्यस्थान पर वापस जा सकते हैं, लेकिन आपको अपने कार्यस्थान को फिर से कॉन्फ़िगर करना होगा.</value>
+    <comment>Analytics PaaS feature confirmation dialog title</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationButtonLabel" xml:space="preserve">
+    <value>पहले से कॉन्फ़िगर पर स्विच करें</value>
+    <comment>Analytics PaaS feature confirmation dialog confirm button label</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimer" xml:space="preserve">
+    <value>WhatsApp के पास जवाब देने वाली 24 घंटे खुली विंडो है. यदि ग्राहक के अंतिम संदेश के बाद 24 घंटे बीत जाते हैं, तो एजेंट ग्राहक के जवाब देने तक केवल WhatsApp-स्वीकृत संदेश टेम्पलेट ही भेज सकेंगे. अपने संदेश टेम्पलेट यहाँ जोड़ने से पहले सुनिश्चित करें कि WhatsApp ने उन्हें स्वीकृति दी है. {0}</value>
+    <comment>{0} will be replaced by a link "learn more"</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimerLearnMore" xml:space="preserve">
+    <value>अधिक जानें</value>
+    <comment>learn more link for OC_WhatsAppMessageTemplateDisclaimer</comment>
+  </data>
+  <data name="MessageTemplateFeatureName" xml:space="preserve">
+    <value>संदेश टेम्पलेट</value>
+    <comment>This should be the same as what we show in the sitemap</comment>
+  </data>
+  <data name="AutomatedMessageRequiredFieldNotFilled" xml:space="preserve">
+    <value>आवश्यक फ़ील्ड भरी जानी चाहिए.</value>
+    <comment>Shown in banner when required fields are not populated</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitor" xml:space="preserve">
+    <value>आगंतुक</value>
+    <comment>Used when user name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleLiveWorkStream" xml:space="preserve">
+    <value>लाइव कार्य स्ट्रीम</value>
+    <comment>Used when live work stream name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitorFormatter" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} and {1} should not be changed. They will be replaced by customer name and workstream name respectively. Example, James: WorkStream1</comment>
+  </data>
+  <data name="DefaultFieldsRquiredForMessageTemplate" xml:space="preserve">
+    <value>एक संदेश टेम्प्लेट के लिए डिफ़ॉल्ट भाषा और डिफ़ॉल्ट संदेश पाठ की आवश्यकता होती है.</value>
+  </data>
+  <data name="DefaultLocalizationDataNotFoundForMessageTemplate" xml:space="preserve">
+    <value>इस संदेश टेम्पलेट के लिए डिफ़ॉल्ट स्थानीयकरण डेटा नहीं मिला.</value>
+  </data>
+  <data name="SavingPrivacyTerms" xml:space="preserve">
+    <value>लोड किया जा रहा है...</value>
+    <comment>Shown after user agrees to privacy terms</comment>
+  </data>
+  <data name="ConversationFormReadonlyNotificationText" xml:space="preserve">
+    <value>केवल पढ़ने के लिए. इस रिकॉर्ड की स्थिति विवरण: {0}</value>
+    <comment>{0} will be replaced with statuscode text. Any changes to this will have an impact on msdyn_customersummaryscripts.ts</comment>
+  </data>
+  <data name="OC_IntradayInsights_ConfigTitle" xml:space="preserve">
+    <value>इंट्राडे इनसाइट कॉन्फ़िगरेशन</value>
+    <comment>Title for Intraday insights configuration</comment>
+  </data>
+  <data name="OC_FormsPro_Button_Text" xml:space="preserve">
+    <value>Dynamics 365 Customer Voice को खोलें</value>
+  </data>
+  <data name="FbAppNotFound" xml:space="preserve">
+    <value>Facebook एप्लिकेशन ID नहीं मिली. कृपया किसी अन्य को आज़माएं.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PrivacyNotFound" xml:space="preserve">
+    <value>चैनल के लिए गोपनीयता शर्तें स्वीकार नहीं की गई.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="CantProvisionFBPage" xml:space="preserve">
+    <value>हम आपका Facebook पृष्ठ प्रोविज़न नहीं कर सके. कृपया आपके द्वारा प्रदान की गई सभी जानकारी की दोबारा जांच करें और पुनः प्रयास करें.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PreValidationFacebookApplicationCreatePluginFailure" xml:space="preserve">
+    <value>Facebook एप्लिकेशन बनाते समय कोई अनपेक्षित त्रुटि हुई. कृपया बाद में पुनः प्रयास करें.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageCreatePluginFailure" xml:space="preserve">
+    <value>Facebook पृष्ठ बनाते समय कोई अनपेक्षित त्रुटि हुई. कृपया बाद में पुनः प्रयास करें.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageUpdatePluginFailure" xml:space="preserve">
+    <value>Facebook पृष्ठ अद्यतन करते समय कोई अनपेक्षित त्रुटि हुई. कृपया बाद में पुनः प्रयास करें.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ExistingFbPageFound" xml:space="preserve">
+    <value>आपने यह Facebook पृष्ठ पहले ही सेट अप कर लिया है. कोई भिन्न पृष्ठ दर्ज करें और पुनः प्रयास करें.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ErrorProcessingRequestParameter" xml:space="preserve">
+    <value>अनुरोध पैरामीटर संसाधित करने में त्रुटि. त्रुटि: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="InvalidContextVariable" xml:space="preserve">
+    <value>ContextVariables मान्य नहीं है. त्रुटि: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="MissingRequestId" xml:space="preserve">
+    <value>RequestId अनुपलब्ध है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingVersion" xml:space="preserve">
+    <value>Version मान्य नहीं है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingChannelInstance" xml:space="preserve">
+    <value>ChannelInstance अनुपलब्ध है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingDirection" xml:space="preserve">
+    <value>Direction अनुपलब्ध है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidDirection" xml:space="preserve">
+    <value>Direction मान्य नहीं है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingContextVariables" xml:space="preserve">
+    <value>ContextVariables अनुपलब्ध है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingMessageText" xml:space="preserve">
+    <value>MessageText अनुपलब्ध है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingOffsetTime" xml:space="preserve">
+    <value>OffsetTime अनुपलब्ध है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidChannelInstance" xml:space="preserve">
+    <value>चैनल आवृत्ति पेलोड अमान्य है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiParameterMissing" xml:space="preserve">
+    <value>{0} अनुपलब्ध है या अमान्य है.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays parameter value.</comment>
+  </data>
+  <data name="ChannelApiUnsupportedVersion" xml:space="preserve">
+    <value>ApiVersion {0} समर्थित नहीं है.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays version number.</comment>
+  </data>
+  <data name="ChannelApiInternalError" xml:space="preserve">
+    <value>कोई आंतरिक त्रुटि हुई. {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the exception message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationSend" xml:space="preserve">
+    <value>वार्तालाप मौजूद नहीं है या वार्तालाप बंद है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiMessageNullSend" xml:space="preserve">
+    <value>संदेश पाठ नल या रिक्त नहीं हो सकता.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationGet" xml:space="preserve">
+    <value>वार्तालाप मौजूद नहीं है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationEnd" xml:space="preserve">
+    <value>वार्तालाप मौजूद नहीं है या वार्तालाप बंद है.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Title" xml:space="preserve">
+    <value>वार्तालाप को बलपूर्वक बंद करें</value>
+    <comment>Title of the confirmation window displayed before force close is triggered</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Text" xml:space="preserve">
+    <value>क्या आप वाकई कार्य आइटम बंद करना चाहते हैं?</value>
+    <comment>Confirmation text for force close</comment>
+  </data>
+  <data name="ForceClose_Confirmation_OKButtonLabel" xml:space="preserve">
+    <value>आगे बढ़ें</value>
+    <comment>Proceed</comment>
+  </data>
+  <data name="NewCase_Label">
+    <value>नया मामला</value>
+    <comment>Label for Create a Case button</comment>
+  </data>
+</root>

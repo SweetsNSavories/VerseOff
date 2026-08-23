@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Dispozitivul este înregistrat pe fundal. Puteți continua să utilizați Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Se extrag date despre dispozitiv în fundal. Puteți continua să utilizați Microsoft Dynamics 365.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>A survenit o eroare la efectuarea acțiunii. Încercați din nou mai târziu.</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Selectați cel puțin o înregistrare.</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Înregistrați dispozitivul înainte de a încerca să extrageți date despre dispozitiv.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Se extrag date despre dispozitiv în fundal. Puteți continua să utilizați Microsoft Dynamics 365. Câteva dintre dispozitive nu au fost înregistrate, așa că nu pot fi regăsite datele.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>Dispozitivele selectate sunt înregistrate pe fundal. Puteți continua să utilizați Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Se extrag date despre dispozitiv în fundal. Puteți continua să utilizați Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Se extrag date despre dispozitiv în fundal. Puteți continua să utilizați Microsoft Dynamics 365.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Se importă toate dispozitivele noi în fundal. Navigați la pagina de dispozitive pentru a vizualiza noile dispozitive de la furnizorul IoT.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Se importă toate dispozitivele noi în fundal. Reîmprospătați lista pentru a vizualiza noile dispozitive.</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Selectați o înregistrare.</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Autentificarea nu a reușit. Trebuie să vă conectați la contul Power BI pentru a vizualiza sau a edita dale Power BI.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Conectare</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Nu a fost găsit un dispozitiv înregistrat.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>Nu s-au găsit dispozitivele conectate înregistrate.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>Nu s-a găsit un ID de dispozitiv. Adăugați un ID de dispozitiv pentru a vedea dala Power BI.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Dală Power BI</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Tabloul de bord Power BI</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Dală</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Nu se poate prelua fișierul de configurare pentru PowerBI embedded salvat</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>A avut loc o eroare și nu am reușit să vă salvăm particularizarea. Detalii eroare: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>Entitatea curentă nu a fost configurată pentru a accepta aplicarea unui filtru de ID de dispozitiv la o dală Power BI.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Alegeți dala Power BI pe care doriți să o adăugați la formular.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Dală Power BI</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Salvați</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Anulare</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Adăugați o dală Power BI pentru dispozitivul conectat.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Se publică particularizarea</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>Dala Power BI va fi filtrată pentru a afișa datele curente ale dispozitivului.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>Salvarea acestei comenzi va avea ca rezultat trimiterea comenzii la dispozitive, continuați?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Etichetă</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Proprietate</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Aflați mai multe despre integrarea cu Azure IoT Central, o soluție IoT SaaS globală, complet gestionată.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Faceți integrarea cu Hubul IoT existent sau implementați unul nou și gestionați soluția preconfigurată IoT PaaS din cadrul abonamentului Azure pe care îl aveți.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>O comandă nu poate fi trimisă. Trebuie asociată o alertă IoT la această înregistrare pentru a trimite o comandă.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Dispozitivul este înregistrat în fundal. Reîmprospătați pentru a vedea starea de înregistrare actualizată.</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>Acest dispozitiv este în curs de înregistrare. Doriți să înregistrați din nou acest dispozitiv?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Nu</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>Acest dispozitiv este deja înregistrat. Doriți să înregistrați din nou acest dispozitiv?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Înregistrare dispozitiv</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>Dispozitivele selectate sunt în curs de înregistrare. Reîmprospătați pentru a vedea starea de înregistrare actualizată.</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Trimiteți comanda la {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Trimiteți comanda</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0} trimis la {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Comandă trimisă la {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>Comenzi pentru {0}</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Dispozitive conectate</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>S-a trimis comanda.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Vizualizați starea comenzii</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>Nu se poate trimite comanda.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Trebuie specificată comanda sau mesajul.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Imposibil de conectat dispozitivul.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Dispozitive</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Conectați dispozitivul la {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Calea dispozitivului</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Calea cheie</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Nu sunt asociate comenzi predefinite cu acest dispozitiv. Configurați categoria de dispozitiv pentru a vizualiza comenzile predefinite.</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>Caracteristica Sugestii IoT este activată și vă rugăm să așteptați 24 de ore pentru ca modificările de configurare să se aplice pentru instruirea modelului. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Confirmați pentru a dezactiva caracteristica Sugestii IoT.</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>Confirmați dezactivarea Sugestii IoT</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>Prin activarea acestei caracteristici, luați la cunoștință faptul că această caracteristică este în versiune preliminară și sunteți de acord cu {0}.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Condiții pentru versiuni preliminare</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>Aflați mai multe</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Vizualizare dispozitiv particularizat</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Introduceți un dispozitiv IoT valid pentru a continua.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>Contorul este singura opțiune de agregare disponibilă pentru evenimente de dispozitiv.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>Nu se pot crea mai mult de 6 dale pentru dispozitivul curent.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Asigurați-vă că măsura selectată este o măsură raportată pentru dispozitivul curent.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Citiri dispozitive conectate</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Buton de configurare Power BI</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Comanda a fost trimisă cu succes la server. Sincronizați dispozitivul pentru a vedea starea comenzii.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Comanda nu a fost trimisă la server din cauza problemelor de conectivitate, comanda va fi trimisă data viitoare când dispozitivul dvs. se sincronizează.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>Trebuie să fiți online pentru a extrage date.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>Pentru efectuarea acestei acțiuni este necesară conexiunea la internet.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>Trebuie să sincronizați această înregistrare pentru a efectua această acțiune.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Înregistrarea dispozitivului a fost trimisă cu succes. Puteți vedea starea înregistrării data viitoare când sincronizați sau treceți în modul online.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Înregistrarea dispozitivului nu a fost trimisă la server din cauza problemelor de conectivitate. Înregistrarea va fi trimisă data viitoare când dispozitivul dvs. se sincronizează.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Cererea de extragere a datelor dispozitivului a fost trimisă cu succes. Puteți vedea rezultatul în fila istoricul dispozitivului data viitoare când dispozitivul dvs. se sincronizează.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>Trebuie să aveți o conexiune la internet pentru a trimite comenzi.</value>
+  </data>
+</root>

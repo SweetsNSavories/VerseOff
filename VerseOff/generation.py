@@ -89,6 +89,9 @@ class GenerationRequest:
     sync_interval: int = 300
     max_workers: int = 4
     bpf_definitions: dict | None = None
+    modified_sitemap: dict | None = None
+    selected_components: dict | None = None
+    full_schema_topology: bool = True
 
 
 @dataclass(frozen=True)
@@ -240,7 +243,10 @@ class SourceProjectBuilder:
                 progress(current, total_steps, message)
 
         report(1, "Reading the selected app SiteMap and business processes...")
-        sitemap = fetcher.get_app_sitemap(request.selected_app.app_module_id)
+        if request.modified_sitemap:
+            sitemap = request.modified_sitemap
+        else:
+            sitemap = fetcher.get_app_sitemap(request.selected_app.app_module_id)
         timeline_settings = fetcher.get_timeline_organization_settings()
         client_context = fetcher.get_client_context()
 
@@ -363,19 +369,20 @@ class SourceProjectBuilder:
                         try:
                             resource = future.result()
                         except Exception as exc:
-                            for pending in futures:
-                                pending.cancel()
-                            raise RuntimeError(
-                                "Failed to download web resource "
-                                f"{resource_name}: {exc}"
-                            ) from exc
-                        if resource is None:
-                            raise RuntimeError(
-                                "Required web resource was not found: "
-                                f"{resource_name}"
+                            logger.warning(
+                                "Failed to download web resource %s: %s",
+                                resource_name,
+                                exc,
                             )
+                            resource = None
+                        if resource is None:
+                            logger.warning(
+                                "Referenced web resource was not found in Dataverse: %s",
+                                resource_name,
+                            )
+                            continue
                         batch_results[resource_name] = resource
-                    for resource_name in batch:
+                    for resource_name in list(batch_results.keys()):
                         resource = batch_results[resource_name]
                         resources_by_name[resource_name] = resource
                         ordered_resource_names.append(resource_name)

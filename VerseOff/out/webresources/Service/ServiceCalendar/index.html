@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="theme-color" content="#000000" />
+        <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+        <link rel="manifest" href="manifest.json" />
+        <link rel="shortcut icon" href="favicon.ico" />
+
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="libs/old/themed/scheduler-century-all-rtl.css"
+        />
+
+        <style type="text/css">
+            @font-face {
+                font-family: "FontAwesome";
+                src: url(https://d365-urs-assets.azurewebsites.net/assets/font-awesome/fonts/fontawesome-webfont.woff2)
+                    format("woff2");
+            }
+            @font-face {
+                font-family: "ExtJS";
+                src: url(https://d365-urs-assets.azurewebsites.net/assets/font-ext/fonts/ExtJS.eot?-tqegh9);
+                src: url(https://d365-urs-assets.azurewebsites.net/assets/font-ext/fonts/ExtJS.eot?#iefix-tqegh9)
+                        format("embedded-opentype"),
+                    url(https://d365-urs-assets.azurewebsites.net/assets/font-ext/fonts/ExtJS.ttf?-tqegh9)
+                        format("truetype"),
+                    url(https://d365-urs-assets.azurewebsites.net/assets/font-ext/fonts/ExtJS.woff?-tqegh9)
+                        format("woff"),
+                    url(https://d365-urs-assets.azurewebsites.net/assets/font-ext/fonts/ExtJS.svg?-tqegh9#ExtJS)
+                        format("svg");
+                font-weight: normal;
+                font-style: normal;
+            }
+            .h1NoFormat {
+                display: block;
+                font-size: 1em;
+                margin-top: 0em;
+                margin-bottom: 0em;
+                margin-left: 0;
+                margin-right: 0;
+                font-weight: normal;
+            }
+
+            .h2NoFormat {
+                display: block;
+                font-size: 1em;
+                margin-top: 0em;
+                margin-bottom: 0em;
+                margin-left: 0;
+                margin-right: 0;
+                font-weight: normal;
+            }
+
+            .h3NoFormat {
+                display: block;
+                font-size: 1em;
+                margin-top: 0em;
+                margin-bottom: 0em;
+                margin-left: 0;
+                margin-right: 0;
+                font-weight: normal;
+            }
+            ::-webkit-scrollbar-button:horizontal:increment {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEXM09b///8OmaLeAAAAAnRSTlP/AOW3MEoAAAAgSURBVHgBY2BEA+QLMGAIMGAIMGAIMBAUIGQoZU5HAwB+ZgDtGYq3fgAAAABJRU5ErkJggg==);
+            }
+            ::-webkit-scrollbar-button:horizontal:increment:hover {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEWdtMT///8YSU3FAAAAAnRSTlP/AOW3MEoAAAAgSURBVHgBY2BEA+QLMGAIMGAIMGAIMBAUIGQoZU5HAwB+ZgDtGYq3fgAAAABJRU5ErkJggg==);
+            }
+            ::-webkit-scrollbar-button:horizontal:decrement {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEXM09b///8OmaLeAAAAAnRSTlP/AOW3MEoAAAAiSURBVHgBY2BEAxQJMKAJMKAJMKAJMOATgIkQMBTBooZfAH56AO2yINTrAAAAAElFTkSuQmCC);
+            }
+            ::-webkit-scrollbar-button:horizontal:decrement:hover {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEWdtMT///8YSU3FAAAAAnRSTlP/AOW3MEoAAAAiSURBVHgBY2BEAxQJMKAJMKAJMKAJMOATgIkQMBTBooZfAH56AO2yINTrAAAAAElFTkSuQmCC);
+            }
+            ::-webkit-scrollbar-button:vertical:increment {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEXM09b///8OmaLeAAAAAnRSTlP/AOW3MEoAAAAfSURBVHgBY2BEA7QTYIAChAoYH6EFxkeYwQBj0MelAH3GAO2C9+AaAAAAAElFTkSuQmCC);
+            }
+            ::-webkit-scrollbar-button:vertical:increment:hover {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEWdtMT///8YSU3FAAAAAnRSTlP/AOW3MEoAAAAfSURBVHgBY2BEA7QTYIAChAoYH6EFxkeYwQBj0MelAH3GAO2C9+AaAAAAAElFTkSuQmCC);
+            }
+            ::-webkit-scrollbar-button:vertical:decrement {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEXM09b///8OmaLeAAAAAnRSTlP/AOW3MEoAAAAgSURBVHgBY2BEAzQVYIAzYHwGGAvOZ4AyIXyECH1cCgB/GgDtpWTgqAAAAABJRU5ErkJggg==);
+            }
+            ::-webkit-scrollbar-button:vertical:decrement:hover {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABlBMVEWdtMT///8YSU3FAAAAAnRSTlP/AOW3MEoAAAAgSURBVHgBY2BEAzQVYIAzYHwGGAvOZ4AyIXyECH1cCgB/GgDtpWTgqAAAAABJRU5ErkJggg==);
+            }
+        </style>
+        <script type="text/javascript" src="libs/old/ext-all-rtl.js"></script>
+        <script type="text/javascript" src="libs/old/sch-all.js"></script>
+
+        <title>Schedule Board</title>
+    </head>
+    <body>
+        <noscript>
+            You need to enable JavaScript to run this app.
+        </noscript>
+        <div id="root"></div>
+        <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    --></body>
+    <script src="./bundle.js"></script>
+    <script type="text/javascript">
+        // Run the main code.
+        initServiceCalendar();
+    </script>
+</html>

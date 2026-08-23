@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Close_Opp_Dlg_Desc" xml:space="preserve">
+    <value>Наведите следеће информације о томе зашто је ова могућност за пословање затворена.</value>
+  </data>
+  <data name="Error_Message_0x80040515" xml:space="preserve">
+    <value>Могућност за пословање је већ затворена.</value>
+    <comment>IDS_OPPORTUNITY_IS_ALREADY_CLOSED</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_37" xml:space="preserve">
+    <value>стварни приход је нетачно постављен за надређену могућност за пословање. Морате да унесете број између "{0}" и "{1}".</value>
+    <comment>Error message displayed to the user in the close opportunity dialog page when the actual revenue is set incorrectly on the opportunity. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible revenue amount and Placeholder 1 is a number specifing maximum permissible revenue amount.</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_67" xml:space="preserve">
+    <value>Морате да одредите датум затварања.</value>
+    <comment>Error message displayed when the user clicks on the ok button without entering a value in the close date field in close opportunity dialog box.</comment>
+  </data>
+  <data name="Suggestions_Dlg_Add_Selected_Text" xml:space="preserve">
+    <value>Додај</value>
+    <comment>Label text for the "Add Selected" button in the product suggestions dialog.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="Suggestions_Dlg_Error_Moca_Offline" xml:space="preserve">
+    <value>Предлоге можете да видите само када је апликација на мрежи.</value>
+    <comment>Error text for when users attempts to view or add suggestions when Moca is offline.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Selection" xml:space="preserve">
+    <value>Изаберите бар један предлог за додавање.</value>
+    <comment>Error text for when users attempts to click add suggestions button without selecting any suggestion.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_Add_Suggestions" xml:space="preserve">
+    <value>Нисмо успели да додамо предлоге. Покушајте поново. {0}</value>
+    <comment>Error text for when adding suggestion fails.[Category="MoCA Client"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Price_List" xml:space="preserve">
+    <value>Морате да изаберете ценовник да бисте видели предлоге.</value>
+    <comment>Error text for when user opens Suggestions dialog without a price list selected.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_NoParentRecordFound" xml:space="preserve">
+    <value>Није пронађен ниједан надређени запис.</value>
+  </data>
+  <data name="Quote_Closed_Subject" xml:space="preserve">
+    <value>Затворена понуда ({0}) – {1}</value>
+    <comment>Subject for the quote close activity. Whenever a quote is closed a quote closed activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was closed. Eg: Lost, Canceled or Revised. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Quote_Won_Subject" xml:space="preserve">
+    <value>Понуда реализована ({0}) – {1}</value>
+    <comment>Subject for the quote won activity. Whenever a quote is won a quote won activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was won. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Close_Opportunity_Activity_Subject" xml:space="preserve">
+    <value>Затворена могућност за пословање: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is name of object.</comment>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>Желите ли да избришете овај {0}? Ову радњу не можете опозвати.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Eg: Deleting a product. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Quote_Lines" xml:space="preserve">
+    <value>Желите ли да избришете ове редове понуде? Ову радњу не можете опозвати.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple quote products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Quote_Line" xml:space="preserve">
+    <value>Желите ли да избришете овај ред понуде? Ову радњу не можете опозвати.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single quote product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Order_Lines" xml:space="preserve">
+    <value>Желите ли да избришете ове редове поруџбине? Ову радњу не можете опозвати.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple order products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Order_Line" xml:space="preserve">
+    <value>Желите ли да избришете овај ред поруџбине? Ову радњу не можете опозвати.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single order product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Invoice_Lines" xml:space="preserve">
+    <value>Желите ли да избришете ове редове на фактури? Ову радњу не можете опозвати.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple invoice products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Invoice_Line" xml:space="preserve">
+    <value>Желите ли да избришете овај ред на фактури? Ову радњу не можете опозвати.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single invoice product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Opportunity_Lines" xml:space="preserve">
+    <value>Желите ли да избришете ове редове могућности за пословање? Ову радњу не можете опозвати.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple opportunity products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Opportunity_Line" xml:space="preserve">
+    <value>Желите ли да избришете овај ред могућности за пословање? Ову радњу не можете опозвати.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single opportunity product</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>Обриши</value>
+  </data>
+  <data name="ViewDuplicates_aspx_Button_Label_CancelUpdateRecord" xml:space="preserve">
+    <value>&amp;Откажи</value>
+    <comment>The label of the Cancel Update button</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>Потврда брисања</value>
+  </data>
+  <data name="Web.SFA.QOI.QuantityAndPriceNegativeAlert" xml:space="preserve">
+    <value>Није могуће навести негативне вредности за количину и цену по јединици. Промените неку од ових вредности и покушајте поново.</value>
+    <comment>Alert message that is displayed in QOI forms when the both Quantity and Price Per Unit fields are filled up with negative values. [Category="SFA: Negative prices"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Морате да изаберете један или више записа пре него што можете да извршите ову радњу.</value>
+  </data>
+  <data name="Web.SFA.quotes.EffectiveToEarlierThanEffectiveFrom" xml:space="preserve">
+    <value>Датум „Ефективно до“ не може да буде касније од датума „Ефективно од“.</value>
+    <comment>Error message to display if effective to date supplied in the quote form is earlier than effective from date.</comment>
+  </data>
+  <data name="Web.SFA.QOI.CurrencyChangeAlert" xml:space="preserve">
+    <value>Прегледајте сва поља новца у обрасцу пре него што наставите.</value>
+    <comment>Alert message that is displayed in Quote and Opportunity forms when transaction currency is changed. [Category="Business Modules"]</comment>
+  </data>
+  <data name="QUOTE_EXPIRED" xml:space="preserve">
+    <value>Датум „Важи до“ је прошао. Ако желите поново да активирате понуду, можете поставити будући датум.</value>
+    <comment>quote is expired.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Suggestions_Notification_Available_Message" xml:space="preserve">
+    <value>Доступни предлози за производе ({0})</value>
+    <comment>Text for the notification that product suggestions are available.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Notification_See_Link_Text" xml:space="preserve">
+    <value>Прикажи</value>
+    <comment>Text for clickable link in suggestion notification.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_340" xml:space="preserve">
+    <value>Конвертовање ове понуде у улазну поруџбину биће извршено аутоматски само када се поново прикључите на мрежу. Да бисте наставили, кликните на дугме „У реду“.</value>
+    <comment>Confirmation message displayed when the user attempts to create an order from a quote in outlook client when the outlook client is in offline mode.</comment>
+  </data>
+  <data name="Web.SFA.QOI.QuantityChangedDueToChangeInAccuracy" xml:space="preserve">
+    <value>Вредност у пољу количине је промењена из „{0}“ у „{1}“ због ажурирања децимала подржаних у производу.
+Да бисте сачували промене, кликните на дугме „У реду“, а затим на „Сачувај“ или „Сачувај и затвори“.</value>
+    <comment>Header of Message to prompt the user about change in qunatity due to change in decimal accuracy supported by the product. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 and Placeholder 1 are numbers.</comment>
+  </data>
+  <data name="Close_Quote_Dlg_Title" xml:space="preserve">
+    <value>Затвори понуду</value>
+  </data>
+  <data name="Close_Quote_Dlg_Desc" xml:space="preserve">
+    <value>Затварате ову понуду.</value>
+    <comment>Close quote dialog description.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.dlg_close.aspx_155" xml:space="preserve">
+    <value>Датум затварања</value>
+    <comment>Label for the close date field in the close quote dialog box. Represents the quote close date.</comment>
+  </data>
+  <data name="Dialog_PaidInvoice_Title" xml:space="preserve">
+    <value>Плаћена фактура</value>
+  </data>
+  <data name="Dialog_PaidInvoice_Description" xml:space="preserve">
+    <value>Изаберите информације за плаћање ове фактуре.</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Title" xml:space="preserve">
+    <value>Откажи фактуру</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Description" xml:space="preserve">
+    <value>Изаберите информације за отказивање ове фактуре.</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Title" xml:space="preserve">
+    <value>Откажи поруџбину</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Desc" xml:space="preserve">
+    <value>Наведите информације о отказивању за ову поруџбину.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_ConfirmButton.dlg_close" xml:space="preserve">
+    <value>Потврди</value>
+    <comment>OK Button text when Order close dialog when the order is canceled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_50.dlg_close" xml:space="preserve">
+    <value>Датум отказивања</value>
+    <comment>Label for the sales order cancel date field in cancel order dialog page.</comment>
+  </data>
+  <data name="Order_Fulfill_Dlg_Title" xml:space="preserve">
+    <value>Испуни поруџбину</value>
+  </data>
+  <data name="Order_Fulfill_Dlg_Desc" xml:space="preserve">
+    <value>Наведите информације о испуњавању за ову поруџбину.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_FulfillButton.dlg_close" xml:space="preserve">
+    <value>Испуни</value>
+    <comment>OK Button text when Order close dialog when the order is fulfilled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_51.dlg_close" xml:space="preserve">
+    <value>Датум доставе</value>
+    <comment>Label for the sales order fulfill date field in fulfill order dialog page.</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_155" xml:space="preserve">
+    <value>Морате да изаберете ценовник пре него што покушате да додате производ.</value>
+    <comment>Error message displayed in the opportunity form when the user attempts to add a product to the opportunity without choosing a price list for the opportunity.</comment>
+  </data>
+  <data name="notEligibleBulkEdit" xml:space="preserve">
+    <value>Контроле не могу да се уређују масовно.</value>
+  </data>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>Затворите образац е-поште</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>Промените статус {0} у завршено и затворите образац</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>Морате да изаберете клијента.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>Морате сачувати промене пре него што можете да конвертујете ову активност.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="LOCID_PROVIDE_VALUE_ADDRESS" xml:space="preserve">
+    <value>Морате да унесете вредност {0} пре него што будете могли да потражите адресу.</value>
+    <comment>{NumberedPlaceholder="{0}"}. AlertMessage.Message on omission of value for address lookup.</comment>
+  </data>
+  <data name="LOCID_SALESLIT_NO_DOCUMENTS" xml:space="preserve">
+    <value>{0} не садржи ниједан {1}</value>
+    <comment>Text in alert when sales literature does not contain any documents. [Category="Business Modules"] {NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with salesliterature entity display name. {NumberedPlaceholder="{1}"} Placeholder 1 will be replaced with salesliteratureitem entity display name</comment>
+  </data>
+  <data name="Web.SFA.invoice.edit.aspx_163" xml:space="preserve">
+    <value>Дошло је до следеће грешке: {0}</value>
+    <comment>Message displayed with price error messages.</comment>
+  </data>
+  <data name="SalesAttachmentDisplayName" xml:space="preserve">
+    <value>Прилози продаје</value>
+    <comment>Sales Attachment display name.</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Брзе кампање не подржавају масовно уређивање.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="Admin_Settings_Error_Saving_Data" xml:space="preserve">
+    <value>Дошло је до грешке током чувања података на сервер, покушајте поново</value>
+    <comment>error message on saving data.</comment>
+  </data>
+  <data name="Admin_Settings_Error_Loading_Data" xml:space="preserve">
+    <value>Дошло је до грешке током преузимања података са сервера, покушајте поново да учитате страницу</value>
+    <comment>error message on fetching data</comment>
+  </data>
+  <data name="Sales_DeleteSingleProductsFromQOOI" xml:space="preserve">
+    <value>Брисање производа</value>
+    <comment>Message to show while deleting the products from QOOI Entities.</comment>
+  </data>
+  <data name="Sales_DeleteMultipleProductsFromQOOI" xml:space="preserve">
+    <value>Брисање производа</value>
+    <comment>Message to show while deleting the products from QOOI Entities.</comment>
+  </data>
+  <data name="Admin_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Успешно сачувано</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+  <data name="Admin_Settings_Sales_Title" xml:space="preserve">
+    <value>Подешавања каталога производа</value>
+    <comment>Sales Setting Page title</comment>
+  </data>
+  <data name="Admin_Settings_Goal_Title" xml:space="preserve">
+    <value>Подешавања циља</value>
+    <comment>Goal Setting Page title</comment>
+  </data>
+  <data name="Web.products.discounttypeitem.edit.aspx_21" xml:space="preserve">
+    <value>Завршна количина мора да буде већа од или једнака почетној количини.</value>
+    <comment>Error message displayed to the user if the begin quantity supplied in the discount form is more than the end quantity.</comment>
+  </data>
+  <data name="Sales_GeneratePDF" xml:space="preserve">
+    <value>Извоз у PDF</value>
+    <comment>Message to show when exporting record to PDF </comment>
+  </data>
+  <data name="Sales_PersonalTemplates" xml:space="preserve">
+    <value>Лични предлошци</value>
+    <comment>Sub sections header for command create PDF </comment>
+  </data>
+  <data name="Sales_EmailAsPDF" xml:space="preserve">
+    <value>Отварање е-поруке</value>
+    <comment>Message to show when opening email record with PDF attached.</comment>
+  </data>
+  <data name="Sales_CreatePDF_Downloaded_Notification" xml:space="preserve">
+    <value>Успешно преузето!</value>
+    <comment>Notificaiton message shown when PDF download is complete.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_Add_Notification_Text" xml:space="preserve">
+    <value>Није могуће додати производ – не налази се на ценовнику за ову {0}.</value>
+    <comment>Error message displayed in the OQOI Product forms when the user attempts to add a product to the opportunity which doesn't belong to the chosen price list.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_Active_Products_Error" xml:space="preserve">
+    <value>Можете да додате само активне производе.</value>
+    <comment>Only active products can be added.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_ProductFamily_Lookup_Error" xml:space="preserve">
+    <value>Можете да додате само производе и пакете производа.</value>
+    <comment>Product Family should not be allowed to be selected in Opportunity Product lookup.</comment>
+  </data>
+  <data name="Sales_BusinessCardScanner_ButtonText" xml:space="preserve">
+    <value>Скенирај визиткарту</value>
+    <comment>Button Text displayed for Business Card Reader Control</comment>
+  </data>
+  <data name="Sales_Quote_Activated_ToastNotification" xml:space="preserve">
+    <value>Успех! Ваша {0} је сада активирана и нећете је моћи уређивати</value>
+    <comment>Toast Notificaiton message for successful Quote Activate action.</comment>
+  </data>
+  <data name="Sales_Quote_Closed_ToastNotification" xml:space="preserve">
+    <value>Успешно затворено: {0}</value>
+    <comment>Toast Notificaiton message for successful Quote Close action.</comment>
+  </data>
+  <data name="Sales_Quote_Revised_ToastNotification" xml:space="preserve">
+    <value>Сада можете да уређујете вашу {0}</value>
+    <comment>Toast Notificaiton message for successful Quote Revise action.</comment>
+  </data>
+  <data name="Sales_OrderToInvoice_Created_ToastNotification" xml:space="preserve">
+    <value>Успешно генерисано: {0}</value>
+    <comment>Toast Notificaiton message for successful entity creation</comment>
+  </data>
+  <data name="Sales_ToastNotification_EntityCreation" xml:space="preserve">
+    <value>Успешно креирано: {0}</value>
+    <comment>Toast Notificaiton message for successful entity creation</comment>
+  </data>
+  <data name="Sales_ToastNotification_CreateQuoteFromOpty" xml:space="preserve">
+    <value>Направили сте нацрт нове {0}. За завршетак, кликните на Активирај у горњем менију</value>
+    <comment>Toast Notificaiton message for successful quote creation from opportunity</comment>
+  </data>
+  <data name="Sales_CreatePDF_AttachPDFToNote" xml:space="preserve">
+    <value>Чување у временску осу</value>
+    <comment>Message to show when saving document PDF as an attachment to Note.</comment>
+  </data>
+  <data name="Sales_CreatePDF_SavePDFAsAttachmentToNote_Notification" xml:space="preserve">
+    <value>„Ваш документ {0}“ је сачуван у временској оси.</value>
+    <comment>Notificaiton message shown when PDF attachment to timeline -&gt; note is complete. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing document template name. E.g.: “Quote Summary”</comment>
+  </data>
+  <data name="Sales_CreatePDF_SaveToSharepoint" xml:space="preserve">
+    <value>Чување у услузи Sharepoint</value>
+    <comment>Message to show when saving document PDF to Sharepoint.</comment>
+  </data>
+  <data name="Sales_CreatePDF_SaveToSharePoint_Notification" xml:space="preserve">
+    <value>„Ваш документ {0}“ је сачуван у услузи Sharepoint</value>
+    <comment>Notificaiton message shown when PDF upload to sharepoint is complete. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing document template name. E.g.: “Quote Summary”</comment>
+  </data>
+  <data name="Button_Label_Download" xml:space="preserve">
+    <value>Преузми</value>
+  </data>
+  <data name="Button_Label_Save" xml:space="preserve">
+    <value>Сачувај</value>
+  </data>
+  <data name="cannotReviseQuote" xml:space="preserve">
+    <value>Није могуће ревидирати понуду.
+    Вредност власника није пронађена.</value>
+    <comment>Cannot revise the Quote.</comment>
+  </data>
+  <data name="Dialog_CreatePDF_Description" xml:space="preserve">
+    <value>Ваш документ {0} је сада спреман. Да ли желите да га сачувате у услузи {1} или да преузмете копију?</value>
+    <comment>Dialog page description for Create PDF confirmation dialog page. Eg: Creating PDF document. {NumberedPlaceholder="{0}", NumberedPlaceholder="{1}"}. Placeholder 0 is a text representing an entity name Eg: Quote and Placeholder 1 is a text representing either Dynamics or Sharepoint</comment>
+  </data>
+  <data name="CreatePDF_Dlg_Title" xml:space="preserve">
+    <value>Опција испоруке PDF-а</value>
+    <comment>Create PDF Dialog title</comment>
+  </data>
+  <data name="RequiredFieldsNotFilledError" xml:space="preserve">
+    <value>Уверите се да су испуњени сви захтеви за поље.</value>
+    <comment>Message shown when required fields are not filled</comment>
+  </data>
+  <data name="Read_More" xml:space="preserve">
+    <value>Прочитајте више</value>
+    <comment>Label for Read More button in notification.</comment>
+  </data>
+  <data name="Web.SFA.requiredproductbundle.edit.aspx_92" xml:space="preserve">
+    <value>Ажурирање поља повезаног са ценама на обавезном обрасцу пакета производа није подржано.</value>
+    <comment>Alert message that is displayed to the user in the required product bundle form when user opens required bundle product</comment>
+  </data>
+  <data name="ParentReadOnly" xml:space="preserve">
+    <value>Није могуће избрисати производ јер је надређени у статусу само за читање</value>
+    <comment>Error message when the parent entity is read only</comment>
+  </data>
+  <data name="COPY_CONTACTS" xml:space="preserve">
+    <value>Копирање информација о: {contact}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="COPY_SHAREPOINT_DOCS" xml:space="preserve">
+    <value>Копирање информација о: {sharepointdocument}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_SALESORDER" xml:space="preserve">
+    <value>Креирање: {salesorder}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_SALESORDERDETAIL" xml:space="preserve">
+    <value>Креирање: {salesorderdetail}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="PROCESS_BPF" xml:space="preserve">
+    <value>Процес тока пословног процеса</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVE_QUOTE_LINEITEMS" xml:space="preserve">
+    <value>Преузимање ставки предмета за {quote}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVING_QUOTE" xml:space="preserve">
+    <value>Преузимање: {quote}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="TRIGGER_PRICE_CALCULATIONS" xml:space="preserve">
+    <value>Покретање израчунавања цена</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_INVOICE" xml:space="preserve">
+    <value>Креирање: {invoice}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_INVOICEDETAIL" xml:space="preserve">
+    <value>Креирање: {invoicedetail}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="VALIDATE_SALESORDER" xml:space="preserve">
+    <value>Провера ваљаности: {salesorder}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_QOI" xml:space="preserve">
+    <value>Креирање QOI ентитета</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_QOI_PRODUCTS" xml:space="preserve">
+    <value>Креирање QOI за {product}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVE_CUSTOMER_INFO" xml:space="preserve">
+    <value>Преузимање информација о: {contact}/{account}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="UPDATE_QUOTE" xml:space="preserve">
+    <value>Ажурирање: {quote}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="Add_Multiple_Products_Description" xml:space="preserve">
+    <value>Изаберите, прегледајте и додајте више производа у ентитет {0} одједном</value>
+    <comment>Subheading for Add product dialog for OQOI entities. {0} is placeholder for the respective OQOI entity.</comment>
+  </data>
+  <data name="Add_Multiple_Products_ButtonText" xml:space="preserve">
+    <value>Додај у ентитет {0}</value>
+    <comment>Add Product button text for OQOI AddProducts dialog. {0} is placeholder for the respective OQOI entity.</comment>
+  </data>
+  <data name="Cancel_Fulfill_PotentialCustomerHidden" xml:space="preserve">
+    <value>Додајте поље „Потенцијални клијент“ као обавезно поље у обрасцу како бисте испунили или отказали поруџбину.</value>
+    <comment>Alert message to notify that mandatory field Potential Customer is hidden.</comment>
+  </data>
+  <data name="CopyOpportunity_Warning_Title" xml:space="preserve">
+    <value>Сачувајте прилику да бисте видели више информација</value>
+    <comment>Copy Opportunity: pre-save warning banner title.</comment>
+  </data>
+  <data name="CopyOpportunity_Warning_Message" xml:space="preserve">
+    <value>  Могућност за пословање је копирана из „{0}“. Преостала поља, производи и заинтересоване стране ће бити додати тек након чувања.</value>
+    <comment>Copy Opportunity: pre-save warning banner message. {0} is the source opportunity name.</comment>
+  </data>
+  <data name="CopyOpportunity_SaveButton_Label" xml:space="preserve">
+    <value>Чување могућности за пословање</value>
+    <comment>Copy Opportunity: label for the Save button on the pre-save warning banner.</comment>
+  </data>
+  <data name="CopyOpportunity_Success_Title" xml:space="preserve">
+    <value>Могућност за пословање је копирана</value>
+    <comment>Copy Opportunity: post-save success banner title.</comment>
+  </data>
+  <data name="CopyOpportunity_Success_Message" xml:space="preserve">
+    <value>  Копирано је из „{0}“. Проверите временску осу да бисте видели шта је обухваћено, а шта није.</value>
+    <comment>Copy Opportunity: post-save success banner message. {0} is an in-text link to the source opportunity.</comment>
+  </data>
+  <data name="CopyOpportunity_UnnamedSource" xml:space="preserve">
+    <value>(неименоване)</value>
+    <comment>Copy Opportunity: fallback label shown when the source opportunity has no name.</comment>
+  </data>
+  <data name="CopyOpportunity_Preparing" xml:space="preserve">
+    <value>Припрема копије...</value>
+    <comment>Copy Opportunity: progress indicator shown while fetching the source and opening the create form.</comment>
+  </data>
+</root>

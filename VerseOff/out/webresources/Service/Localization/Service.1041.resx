@@ -1,0 +1,1346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>顧客を選択してください。</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="Banner_Notification_Heading" xml:space="preserve">
+    <value>メールからケースが更新されました (プレビュー)</value>
+    <comment>Banner heading for notification message</comment>
+  </data>
+  <data name="Banner_Notification_Message" xml:space="preserve">
+    <value>一部の情報は AI を使用して完了されました。このケースに含まれる情報をすべて確認してください。AI で生成されたコンテンツは不適切な場合があります。</value>
+    <comment>Banner text for notification message</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Button_Label_Confirm" xml:space="preserve">
+    <value>確認</value>
+    <comment>Button text for the Confirm button</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>削除</value>
+    <comment>Delete button label</comment>
+  </data>
+  <data name="Associate_Child_Title" xml:space="preserve">
+    <value>親子リレーションシップの設定</value>
+    <comment>Title of the page will be that will be shown when cases selected for parent-child association.[Category="Servicing"]</comment>
+  </data>
+  <data name="Button_Label_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Button_Label_Reactivate" xml:space="preserve">
+    <value>再アクティブ化</value>
+  </data>
+  <data name="Button_Label_Route" xml:space="preserve">
+    <value>ルーティング</value>
+    <comment>Label for the Route button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="CancelCaseAction_Title" xml:space="preserve">
+    <value>サポート案件の取り消し</value>
+  </data>
+  <data name="CancelCaseConfirm" xml:space="preserve">
+    <value>このサポート案件にはオープンな活動が関連付けられています。このサポート案件を取り消した場合、オープンな活動は取り消されます。サポート案件を取り消しますか?</value>
+    <comment>This is the text that will appear on the ConfirmCancel Dialog Screen</comment>
+  </data>
+  <data name="Cancel_Case" xml:space="preserve">
+    <value>サポート案件の取り消し</value>
+  </data>
+  <data name="Case_Reactivate_Dlg_Title" xml:space="preserve">
+    <value>再アクティブ化 {0}</value>
+    <comment>Title for Reactivate Case Dialog.</comment>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_Allotments" xml:space="preserve">
+    <value>このサポート案件を解決するための十分な契約品目のサービス単位がありません。このサポート案件を解決しますか?</value>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_ContractDetailState" xml:space="preserve">
+    <value>このサポート案件の上位契約品目が取り消されたか、または期限切れになっています。このサポート案件を解決しますか?</value>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_Parent" xml:space="preserve">
+    <value>このサポート案件の上位契約がアクティブではありません。このサポート案件を解決しますか?</value>
+  </data>
+  <data name="ConvCaseSaveWarning" xml:space="preserve">
+    <value>このサポート案件を変換するには、あらかじめ変更を保存しておく必要があります。</value>
+    <comment>on convert case to knowledge article</comment>
+  </data>
+  <data name="Dialog_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Dialog_Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>この{0}を削除しますか? この操作は元に戻すことができません。</value>
+    <comment>Dialog page description for delete confirmation dialog page. Placeholder {0} is the display name of incident entity.</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirmForMultipleCase_Body" xml:space="preserve">
+    <value>選択した {0} 個のサポート案件を、アクティブなルーティング規則に基づいてルーティングしますか? 規則の条件を満たすサポート案件が適切にルーティングされます。</value>
+    <comment>Confirmation Message for Routing Mulitiple case. Placeholder {0} is the number of selected records.</comment>
+  </data>
+  <data name="Dlg_UR_RouteCase_AddRequiredConfirmForMultipleCase_Body" xml:space="preserve">
+    <value>選択した {0} 個のサポート案件をルーティングしますか? 規則の条件を満たすサポート案件が適切にルーティングされます。</value>
+    <comment>Confirmation Message for Routing Mulitiple case when unified routing is enabled. Placeholder {0} is the number of selected records.</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirmForSingleCase_Body" xml:space="preserve">
+    <value>このサポート案件をアクティブなルーティング規則セットに基づいてルーティングしますか?</value>
+    <comment>Confirmation Message for Routing Single case. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_UR_RouteCase_AddRequiredConfirmForSingleCase_Body" xml:space="preserve">
+    <value>このサポート案件をルーティングしますか?</value>
+    <comment>Confirmation Message for Routing Single case when unified routing is enabled. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirm_Title" xml:space="preserve">
+    <value>サポート案件のルーティング</value>
+    <comment>Apply Route to Case Confirmation Dialog Title. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_ActiveRouteRuleReqdMsg" xml:space="preserve">
+    <value>このサポート案件をルーティングするためのアクティブなルールがありません。</value>
+    <comment>There is no associated active routing rule set.</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_RecordRoutingHeaderMessage" xml:space="preserve">
+    <value>ルーティングを完了できませんでした</value>
+    <comment>Header message if there is no associated record routing.</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_RecordRoutingBodyMessage" xml:space="preserve">
+    <value>インシデントのレコード ルーティングが設定されていません。</value>
+    <comment>Body message if there is no associated record routing for incident.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_RecordAssociated_CaseTerms_DecrementedAlready_DialogMessage" xml:space="preserve">
+    <value>関連付けられた権利の条件は既に減少しています。これにより、関連付けられた権利および権利チャネルに条件が追加されます。続行しますか?</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is already associated to the case and terms already decremented dialog message.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_RecordAssociated_CaseTerms_DecrementedAlready_DialogTitle" xml:space="preserve">
+    <value>権利条件を元に戻す確認</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is already associated to the case and terms already decremented dialog title.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_Record_NotYet_Associated_CaseTerms_NotDecremented_Yet_DialogMessage" xml:space="preserve">
+    <value>権利レコードがこのサポート案件レコードに関連付けられるとき、これにより、関連付けられた権利および権利チャネルから条件が減少しないことが保証されます。続行しますか?</value>
+    <comment>ecrementEntitlementTerms is set to yes and entitlement record is not yet associated to the case dialog message.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_Record_Not_Yet_Associated_CaseTerms_NotDecremented_Yet_DialogTitle" xml:space="preserve">
+    <value>権利条件の減少防止の確認</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is not yet associated to the case dialog title.</comment>
+  </data>
+  <data name="DontDecrementTerms_Not_Set_DialogMessage" xml:space="preserve">
+    <value>このサポート案件レコードの権利期間の減少は、既に停止されました。権利期間は減少しません。</value>
+    <comment>Decrement EntitlementTerms is set to no dialog message.</comment>
+  </data>
+  <data name="DontDecrementTerms_Not_Set_DialogTitle" xml:space="preserve">
+    <value>権利期間の減少は停止されました</value>
+    <comment>Decrement EntitlementTerms is set to No dialog title.</comment>
+  </data>
+  <data name="Error_Message_0x80044411" xml:space="preserve">
+    <value>サポート案件はクローズされています。クローズされたサポート案件は、解決したりキャンセルできません。</value>
+    <comment>ror message shown when trying to cancel or resolve a Case which has already been closed. </comment>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>エラーが発生しました。選択した操作が完了していないレコードが 1 件以上あります。</value>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>この操作を実行する前に、1 つまたは複数のレコードを選択してください。</value>
+  </data>
+  <data name="Error_Message_DifferentPartitions" xml:space="preserve">
+    <value>このアクションは、異なるパーティションに属するレコードに対してはサポートされていません。</value>
+    <comment>This error message is shown when a user attempts an operation (such as merge or associate child cases) on records that are not in the same partition.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>サポート案件のタイトル</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>作成日</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>顧客</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>優先度</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="LOCID_ASSCO_LESS_RECORDS" xml:space="preserve">
+    <value>親子リレーションシップを関連付けるには少なくとも 2 個のレコードを選択してください。</value>
+    <comment>This is the message shown when trying to associate less records than allowed.</comment>
+  </data>
+  <data name="LOCID_ASSCO_TOOMANY_RECORDS" xml:space="preserve">
+    <value>{0} 個を超える子サポート案件を親サポート案件に割り当てることはできません。詳細については、管理者にお問い合わせください。</value>
+    <comment>This is the message shown when trying to associate less records than required.</comment>
+  </data>
+  <data name="LOCID_CONTRACT_ED_DT_LT_ST_DT" xml:space="preserve">
+    <value>契約の終了日は、開始日以前にすることはできません。</value>
+  </data>
+  <data name="LOCID_ENDDATE_LT_STARTDATE" xml:space="preserve">
+    <value>終了日は、開始日以前にすることはできません。</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_CONTRACT" xml:space="preserve">
+    <value>最初に契約を選択してください。</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_CUSTOMER" xml:space="preserve">
+    <value>最初に顧客を選択する必要があります。</value>
+  </data>
+  <data name="LOCID_MERGE_CASE_TOOMANY_RECORDS" xml:space="preserve">
+    <value>同時に統合できるサポート案件は {0} 個までです。</value>
+    <comment>This is the message shown when trying to merge more records than allowed. </comment>
+  </data>
+  <data name="LOCID_MERGE_LESS_RECORDS" xml:space="preserve">
+    <value>統合する 2 個以上のレコードを選択してください。</value>
+    <comment>This is the message shown when trying to merge less records than required. </comment>
+  </data>
+  <data name="LOCID_CONV_ACT_SAVE_WARNING" xml:space="preserve">
+    <value>この活動を変換するには、変更を保存しておく必要があります。</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Entitlement_Default_Confirmation_DialogTitle" xml:space="preserve">
+    <value>既定の設定の確認</value>
+    <comment>Default Entitlement confirmation dailog title.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="Entitlement_Default_Change_Confirmation_Message" xml:space="preserve">
+    <value>別の権利がこの顧客の既定として既に設定されています。この権利レコードを代わりに既定として設定しますか?</value>
+    <comment>Default Entitlement confirmation dailog message.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="Entitlement_Default_Confirmation_Message" xml:space="preserve">
+    <value>この権利レコードを、選択した顧客の既定として設定しますか?</value>
+    <comment>Default Entitlement confirmation dailog message.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_INACTIVE_MSG" xml:space="preserve">
+    <value>既定として設定できるのは、アクティブな権利レコードのみです。</value>
+    <comment>Default Entitlement confirmation dialog message.[Category="Servicing"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_DIALOG_WIDTH" xml:space="preserve">
+    <value>1000</value>
+    <comment>Default Entitlement confirmation dialog width.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_DIALOG_HEIGHT" xml:space="preserve">
+    <value>200</value>
+    <comment>Default Entitlement confirmation dialog height.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ACTION_NOITEMSELECTED" xml:space="preserve">
+    <value>この操作を実行する前に、1 つまたは複数のレコードを選択してください。</value>
+    <comment>Default Entitlement confirmation dialog height.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENTITLEMENT_CANCEL_TH_LT" xml:space="preserve">
+    <value>50</value>
+    <comment>Entitlement cancellation record Threshhold limit.</comment>
+  </data>
+  <data name="LOCID_ENTITLEMENT_CANCEL_TH_MSG" xml:space="preserve">
+    <value>レコード数が、この操作の上限を超えました。レコード数を {0} に減らしてください。</value>
+    <comment>Dialog alert description for cancellation record limit. {NumberedPlaceholder="{0}"}. Placeholder 0 is a number representing the number of records selected Eg: Entitlement[Category="Servicing"]</comment>
+  </data>
+  <data name="LOCID_FORMS_SAVE_CONFIRM_TITLE" xml:space="preserve">
+    <value>変更は保存されていません。変更を保存するためにこのページに留まるには、[キャンセル] をクリックします。</value>
+    <comment>Error message to show when no records selected</comment>
+  </data>
+  <data name="Multiple_Merge_Title" xml:space="preserve">
+    <value>サポート案件の統合</value>
+    <comment>Title of the page will be that will be shown when cases selected to merge.[Category="Servicing"]</comment>
+  </data>
+  <data name="NoValidStatusReasonTransition02" xml:space="preserve">
+    <value>状態の移行ルールにより、現在の状態のサポート案件を取り消すことはできません。サポート案件の状態を変更してから取り消すか、システム管理者に問い合わせてください。</value>
+    <comment>Because of the status transition rules, you cannot cancel the case in the current status. Change the case status, and then try canceling it, or contact your system administrator.</comment>
+  </data>
+  <data name="ResolveCaseAction_Title" xml:space="preserve">
+    <value>サポート案件の解決</value>
+  </data>
+  <data name="Web.CS.cases.dlg_closecase.aspx_27" xml:space="preserve">
+    <value>請求可能な時間に無効な値が含まれています。値を確認して、やり直してください。</value>
+  </data>
+  <data name="Web.CS.cases.dlg_closecase.aspx_50" xml:space="preserve">
+    <value>このサポート案件を解決する前に、[解決] ボックスに情報を入力してください。</value>
+  </data>
+  <data name="Web.CS.cases.dlg_reactivate.aspx_50" xml:space="preserve">
+    <value>この操作を実行すると、解決済みまたはキャンセル済みのサポート案件が再アクティブ化されます。続行しますか?</value>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition01" xml:space="preserve">
+    <value>状態の移行ルールにより、現在の状態のサポート案件を解決できません。サポート案件の状態を変更してから解決するか、システム管理者に問い合わせてください。</value>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition02" xml:space="preserve">
+    <value>状態の移行ルールにより、現在の状態のサポート案件を取り消すことはできません。サポート案件の状態を変更してから取り消すか、システム管理者に問い合わせてください。</value>
+    <comment>Because of the status transition rules, you cannot cancel the case in the current status. Change the case status, and then try canceling it, or contact your system administrator.</comment>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition03" xml:space="preserve">
+    <value>状態の移行ルールのため、現在の状態からサポート案件をアクティブ化することはできません。システム管理者に問い合わせてください。</value>
+    <comment>Because of the status transition rules, you can't activate the case from the current status. Contact your system administrator.</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmCancel.aspx_2" xml:space="preserve">
+    <value>サポート案件の取り消し</value>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_1" xml:space="preserve">
+    <value>サポート案件の解決</value>
+    <comment>This is the title that will appear on the ConfirmResolve Dialog Screen</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_3" xml:space="preserve">
+    <value>このサポート案件にはオープンな活動が関連付けられています。このサポート案件を解決した場合、オープンな活動は取り消されます。サポート案件を解決しますか?</value>
+    <comment>This is the text that will appear on the ConfirmResolve Dialog Screen</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_4" xml:space="preserve">
+    <value>このサポート案件にはオープンな活動が関連付けられています。このサポート案件を取り消した場合、オープンな活動は取り消されます。サポート案件を取り消しますか?</value>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>削除の確認</value>
+  </data>
+  <data name="ParentChild_Cases_Associate_Success" xml:space="preserve">
+    <value>選択した {0} 個のサポート案件の間で親子リレーションシップが確立されています。</value>
+    <comment>Message that will be shown to the user when parent-child association created between multiple cases.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases for which parent-child realtionship established.Ex:2,3 etc.[Category="Servicing"]</comment>
+  </data>
+  <data name="ParentChild_Cases_NoSuccess_Fail" xml:space="preserve">
+    <value>{0} 個のサポート案件を関連付けることができませんでした。</value>
+    <comment>Error message that will be shown to the user when parent-child association failed to create between multiple cases.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases that were failed.Ex:2,3 etc.[Category="Parent-Child Asscociation  of Cases"]</comment>
+  </data>
+  <data name="MergeRecords_Cases_Merged_Fail" xml:space="preserve">
+    <value>{0} 個のサポート案件を統合できませんでした。</value>
+    <comment>Error message that will be shown to the user has no sufficient privileges to merge more than one case{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases that couldn't be merged.Ex:2,3 etc.[Category="Servicing"]</comment>
+  </data>
+  <data name="MergeRecords_Cases_Merged_Success" xml:space="preserve">
+    <value>{0} 件のケースが {1} に正しく統合されました。</value>
+    <comment>Message that will be shown to the user when more than one case merged successfully.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases merged successfully.Ex:2,3 etc.{NumberedPlaceholder="{1}"} Placeholder 1 is the title of the case into which the selected cases were merged.[Category="Servicing"]</comment>
+  </data>
+  <data name="MergeRecords_Case_Merged_Success" xml:space="preserve">
+  <value>1 件のケースが {0} に正しく統合されました。</value>
+  <comment>Message that will be shown to the user when exactly one case is merged successfully. Placeholder {0} is the title of the case into which the selected case was merged. [Category="Servicing"]</comment>
+</data>
+  <data name="Web.cs.contracts.end_date_earlier_than_start_date" xml:space="preserve">
+    <value>契約の終了日は、開始日以前にすることはできません。</value>
+    <comment>Error message to show when the end date of the contract is before the start date.</comment>
+  </data>
+  <data name="Dialog_Activate_Title" xml:space="preserve">
+    <value>{0}のアクティブ化の確認</value>
+    <comment>Dialog page title for the activate/deactivate dialog page. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name.</comment>
+  </data>
+  <data name="Dialog_Activate_Description_Activate" xml:space="preserve">
+    <value>選択した {0} 個の{1}をアクティブ化しますか?</value>
+    <comment>Dialog page description for the activate record dialog page. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 is a number representing number of records selected, Placeholder 1 is a text representing a singular or plural entity name depending upon whether one or more records are selected. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_activate.aspx_55" xml:space="preserve">
+    <value>{0} が{1}状態に設定されます。</value>
+    <comment>
+		{NumberedPlaceholder="{0}", "{1}"} Placeholder 0 will be replaced with a proper noun indicating which entity is being activated.
+		Placeholder 1 will be replaced with 'active' or 'inactive'.  Example : This operation will set the selected Account as active.
+	</comment>
+  </data>
+  <data name="Dialog_Label_Active" xml:space="preserve">
+    <value>アクティブ</value>
+    <comment>This is used as a parameter in other resource strings.  Such as "This operation will set the selected Account as Active".</comment>
+  </data>
+  <data name="Button_Label_Activate" xml:space="preserve">
+    <value>アクティブ化</value>
+    <comment>Label for the Activate button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web.cs.contracts.edit.aspx_74" xml:space="preserve">
+    <value>最初に顧客を選択する必要があります。</value>
+    <comment>Error message to show when customer is not selected</comment>
+  </data>
+  <data name="Web.cs.contracts.edit.aspx_75" xml:space="preserve">
+    <value>最初に請求先顧客を選択する必要があります。</value>
+    <comment>Error message to show when bill to customer is not selected</comment>
+  </data>
+  <data name="FB5A9CDE-C002-418F-BD0C-2CB25431E5CD" xml:space="preserve">
+    <value>この操作は元に戻せません。続行するには、[OK] をクリックします。</value>
+    <comment>AlertMessage.Cannot undo confirmation </comment>
+  </data>
+  <data name="Dialog_Single_Cancel_Description_Entitlement" xml:space="preserve">
+    <value>この権利をキャンセルしますか?</value>
+    <comment>Dialog page description for canceling single entitlement.Contracts[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_Cancel_Description_Entitlement" xml:space="preserve">
+    <value>選択した {0} 個の権利をキャンセルしますか? 権利はキャンセル状態になります</value>
+    <comment>Dialog page description for cancel confirmation dialog page. Eg: Cancelling a contract. {NumberedPlaceholder="{0}"}. Placeholder 0 is a number representing the number of records selected Eg: Contracts[Category="Servicing"]</comment>
+  </data>
+  <data name="Web.CS.cases.dlg_cancel.aspx_20" xml:space="preserve">
+    <value>キャンセルの確認</value>
+    <comment>Cancellation dialog title</comment>
+  </data>
+  <data name="Web.CS.contractdetails.edit.aspx_dis" xml:space="preserve">
+    <value>合計価格を超える割引額は設定できません。値を確認して、やり直してください。</value>
+    <comment>
+		This is a validation for the contract lines that the discount cannot be greater than the
+		Total price, this is related to bug#1752.
+	</comment>
+  </data>
+  <data name="Dialog_RenewEntitlement_Title" xml:space="preserve">
+    <value>更新の確認</value>
+    <comment>Renewal dialog title</comment>
+  </data>
+  <data name="Dialog_RenewEntitlement_Description" xml:space="preserve">
+    <value>この権利を更新しますか?</value>
+    <comment>Renewal dialog text</comment>
+  </data>
+  <data name="Button_Label_Renew" xml:space="preserve">
+    <value>更新</value>
+    <comment>Button text for the Renew button [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Error_Message_0x80060607" xml:space="preserve">
+    <value>状態が "下書き" または "期限切れ" である権利はキャンセルできません。</value>
+    <comment>IDS_ENTITLEMENT_INVALIDENTITLEMENTCANCEL[Category="Servicing"]</comment>
+  </data>
+  <data name="Error_Message_0x80044208" xml:space="preserve">
+    <value>キャンセル状態にある権利を取り消すことはできません。</value>
+    <comment>IDS_ENTITLEMENT_ENTITLEMENTALREADYINDRAFTSTATE[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_Deactivate_Title" xml:space="preserve">
+    <value>{0}の非アクティブ化の確認</value>
+    <comment>Dialog page title for deactivate confirmation dialog page. Eg: Confirm Product Deactivation. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product</comment>
+  </data>
+  <data name="Dialog_Deactivate_Description" xml:space="preserve">
+    <value>選択した {0} 個の{1}を非アクティブ化しますか? 必要に応じて、後で再アクティブ化できます。</value>
+    <comment>Dialog page description for deactivate dialog page. Eg: You have selected 5 products to deactivate. {NumberedPlaceholder="{0}","{1}"}. Placeholder 0 is a number representing the number of records selected and Placeholder 1 is a text representing a singular or plural entity name depending upon whether one or more records are selected Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_deactivate.aspx_55" xml:space="preserve">
+    <value>この操作を実行すると、選択された{0}の状態が非アクティブに設定されます。</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun, singular or plural, indicating an entity name.  Example : This action will change the status of the selected Contact to Inactive.  To continue, click OK.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Button_Label_Deactivate" xml:space="preserve">
+    <value>非アクティブ化</value>
+    <comment>Deactivate button label</comment>
+  </data>
+  <data name="Alert_Conv_Case_Owner_Must" xml:space="preserve">
+    <value>所有者を選択してください。</value>
+    <comment>on convert case to knowledge article dialog</comment>
+  </data>
+  <data name="Alert_Conv_Case_Title_Must" xml:space="preserve">
+    <value>タイトルを入力してください</value>
+    <comment>on convert case to knowledge article dialog</comment>
+  </data>
+  <data name="Error_Message_Fail" xml:space="preserve">
+    <value>{0} 個のサポート案件でエラーが発生しました:</value>
+    <comment>
+		Error message that will be shown to user when cases did not get merged.
+		{NumberedPlaceholder="{0}"} Placeholder 0 is for the total number of cases failed to merged.[Category="Servicing"]
+	</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMembers_Title" xml:space="preserve">
+    <value>サービス拠点からのリソースの削除</value>
+    <comment>"Remove Resources From Site" dialog title</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMember_Description" xml:space="preserve">
+    <value>削除するリソースを 1 個選択しました。</value>
+    <comment>singular version of Dialog_RemoveSiteMembers_Description</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMember_Confirmation" xml:space="preserve">
+    <value>この操作を実行すると、選択したリソースがサービス拠点から削除されます。この操作は元に戻せません。ただし、必要に応じてサービス拠点にリソースを追加し直すことはできます。続行するには、[OK] をクリックします。</value>
+    <comment>Message that will be shown to the user when removing resources from Site.</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMembers_Description" xml:space="preserve">
+    <value>削除するリソースを {0} 個選択しました。</value>
+    <comment>{NumberedPlaceholder="{0}"} parameter 0 is a number of members to be removed from the site.</comment>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>エラーが発生しました。ホーム ページに戻り、再度実行してください。</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>このクライアントはオフラインであるため、この要求を処理できません。</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>処理中...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="OperationFailed_SelectOnlyOneCase" xml:space="preserve">
+    <value>操作が失敗しました。サポート案件は 1 つだけ選択できます。</value>
+    <comment>If more than one record is selected, displays this alert message to inform user to only select one</comment>
+  </data>
+  <data name="Alert_TopicModel_Test_ConfigurationUsed_Required" xml:space="preserve">
+    <value>構成が必要です。</value>
+    <comment>Error message to show when configuration is empty</comment>
+  </data>
+  <data name="Alert_TopicModel_Test_MaxTopics_Required" xml:space="preserve">
+    <value>トピックの最大数を入力してください</value>
+    <comment>Error message to show when maximum number of topics is empty</comment>
+  </data>
+  <data name="Dialog_ConvertToCase_ChangeTaskStatus" xml:space="preserve">
+    <value>{0} の状態を "完了" に変更して、フォームを閉じる</value>
+    <comment>Label to show on ConvertToCase dialog for general activities</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_casehierarchy.aspx_6" xml:space="preserve">
+    <value>子サポート案件が適切に作成されるように、継承に対してすべての必須フィールドを選択する</value>
+    <comment>Label for Case Settings Dialog</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Header" xml:space="preserve">
+    <value>顧客サービス ハブ アプリケーションでサポート情報記事を管理する</value>
+    <comment>Header for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Para1" xml:space="preserve">
+    <value>顧客サービス ハブ アプリケーションにサポート情報記事が新しいタブで開かれています。高度な機能を使用したサポート情報記事のアクセス、作成、管理については、ブラウザーで新しいタブを参照してください。</value>
+    <comment>Second Paragraph for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Para2" xml:space="preserve">
+    <value>新しいタブが自動的に表示されない場合は、ブラウザーの設定でポップアップが許可されていることを確認してください。また、顧客サービス ハブ アプリケーションにアクセスするためのセキュリティ規則の特権を確認します。問題が解決しない場合は、Dynamics 365 管理者または Microsoft サポートにお問い合わせください。</value>
+    <comment>Third Paragraph for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.MoreHelp" xml:space="preserve">
+    <value>詳細:</value>
+    <comment>More Help Text for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.LinkText" xml:space="preserve">
+    <value>顧客サービス ハブでサポート情報記事を利用して通話処理時間を削減する</value>
+    <comment>Text for KM Redirection Notice Help Link</comment>
+  </data>
+  <data name="Error_Message_Deactivate_Service" xml:space="preserve">
+    <value>これらのサービスは、関連付けられたスケジュール済みのサービス活動があるため、非アクティブ化できません。非アクティブ化するには、サービス活動をクローズまたはキャンセルしてください。</value>
+    <comment>Error message shown when trying to deactivate the service with associated scheduled service activities.</comment>
+  </data>
+  <data name="MultilevelParentChildRelationshipNotAllowed" xml:space="preserve">
+    <value>子サポート案件に対して子サポート案件を作成することはできません</value>
+    <comment>Error message when child incident is created for child inicident</comment>
+  </data>
+  <data name="Info_Message_Legacy_Service_scheduling_Deprecated" xml:space="preserve">
+    <value>従来のサービス スケジュールは、Universal Resource Scheduling で構築された新しい機能に置き換えられています。移行方法の詳細については、http://aka.ms/ServiceScheduling を参照してください。</value>
+    <comment>Legacy service scheduling is deprecated in legacy web client.</comment>
+  </data>
+  <data name="Case_Resolve_Dlg_Incident_Not_Active" xml:space="preserve">
+    <value>サポート案件は既に解決されています。</value>
+    <comment>Alert message to show when an attempt is made to resolve a case when it has already been resolved.</comment>
+  </data>
+  <data name="No_Incident_Id" xml:space="preserve">
+    <value>関連付けられているサポート案件が見つかりません。</value>
+    <comment>Error message to show when an incident id cannot be found.</comment>
+  </data>
+  <data name="SCH_Year_Single" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="SCH_Year_Plural" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="SCH_Year_Abbrev" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="SCH_Quarter_Single" xml:space="preserve">
+    <value>四半期</value>
+  </data>
+  <data name="SCH_Quarter_Plural" xml:space="preserve">
+    <value>四半期</value>
+  </data>
+  <data name="SCH_Quarter_Abbrev" xml:space="preserve">
+    <value>四半期</value>
+  </data>
+  <data name="SCH_Month_Single" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="SCH_Month_Plural" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="SCH_Month_Abbrev" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="SCH_Week_Single" xml:space="preserve">
+    <value>週</value>
+  </data>
+  <data name="SCH_Week_Plural" xml:space="preserve">
+    <value>週</value>
+  </data>
+  <data name="SCH_Week_Abbrev" xml:space="preserve">
+    <value>週</value>
+  </data>
+  <data name="SCH_Day_Single" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="SCH_Day_Plural" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="SCH_Day_Abbrev" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="SCH_Hour_Single" xml:space="preserve">
+    <value>時間</value>
+  </data>
+  <data name="SCH_Hour_Plural" xml:space="preserve">
+    <value>時間</value>
+  </data>
+  <data name="SCH_Hour_Abbrev" xml:space="preserve">
+    <value>時間</value>
+  </data>
+  <data name="SCH_Minute_Single" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="SCH_Minute_Plural" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="SCH_Minute_Abbrev" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="SCH_Minutes_Abbrev" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="SCH_Minute_Abbrev_Short" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="SCH_Second_Single" xml:space="preserve">
+    <value>第 2</value>
+  </data>
+  <data name="SCH_Sec_Single" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="SCH_Second_Plural" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="SCH_Second_Abbrev" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="SCH_MilliSecond" xml:space="preserve">
+    <value>ミリ秒</value>
+  </data>
+  <data name="Duration_FormatHour" xml:space="preserve">
+    <value>{0} 時間</value>
+    <comment>Single hour duration formatting on booking bars. Placeholder {0} is the number of hours booked</comment>
+  </data>
+  <data name="Duration_FormatHours" xml:space="preserve">
+    <value>{0} 時間</value>
+    <comment>Multiple hour duration formatting on booking bars. Placeholder {0} is the number of hours booked</comment>
+  </data>
+  <data name="Duration_FormatHour_Minutes" xml:space="preserve">
+    <value>{0} 時間 {1} 分</value>
+    <comment>Single hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_FormatHours_Minutes" xml:space="preserve">
+    <value>{0} 時間 {1} 分</value>
+    <comment>Multiple hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_Format_Minutes" xml:space="preserve">
+    <value>{0} 分</value>
+    <comment>Zero hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_FormatHours_Minutes_Short" xml:space="preserve">
+    <value>{0}:{1} 分</value>
+    <comment>Multiple hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_HrsSuffix" xml:space="preserve">
+    <value>時間</value>
+    <comment>Abbreviation for the word "hours", e.g. "100 hrs"</comment>
+  </data>
+  <data name="Duration_HrSuffix" xml:space="preserve">
+    <value> 時間</value>
+    <comment>Abbreviation for the word "hour", e.g. "1 hr"</comment>
+  </data>
+  <data name="Duration_Format_Minutes_Short" xml:space="preserve">
+    <value>{0} 分</value>
+    <comment>Placeholder {0} is the number of minutes booked.</comment>
+  </data>
+  <data name="Duration_FormatHours_Short" xml:space="preserve">
+    <value>{0}h</value>
+    <comment>Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatHours_Long" xml:space="preserve">
+    <value>{0} 時間</value>
+    <comment>Multiple hour long formatting. Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatOneHour_Long" xml:space="preserve">
+    <value>1 時間</value>
+    <comment>Single hour formatting.</comment>
+  </data>
+  <data name="Duration_FormatMinutes_Long" xml:space="preserve">
+    <value>{0} 分</value>
+    <comment>Multiple hour long formatting. Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatOneMinute_Long" xml:space="preserve">
+    <value>1 分</value>
+    <comment>Single minute formatting.</comment>
+  </data>
+  <data name="EndTimeLaterThanStartTime" xml:space="preserve">
+    <value>終了時間は開始時間よりも後になるように指定してください。</value>
+  </data>
+  <data name="DateFieldCannotBeNull" xml:space="preserve">
+    <value>日付フィールドを null にすることはできません</value>
+  </data>
+  <data name="SC_Pagging_Label" xml:space="preserve">
+    <value>{0} - {1}/{2}</value>
+  </data>
+  <data name="SC_Header_HourlyView" xml:space="preserve">
+    <value>時間単位ビュー</value>
+  </data>
+  <data name="SC_ViewMode_Tooltip" xml:space="preserve">
+    <value>ビュー モード</value>
+  </data>
+  <data name="SC_Legend" xml:space="preserve">
+    <value>凡例</value>
+  </data>
+  <data name="SC_HideLegend" xml:space="preserve">
+    <value>凡例の非表示</value>
+  </data>
+  <data name="SC_PreviousButton_ActionBarCalendar_AriaLabel" xml:space="preserve">
+    <value>前の日付範囲、{0} から {1} まで</value>
+    <comment>Aria-label for the action bar calendar previous button</comment>
+  </data>
+  <data name="SC_NextButton_ActionBarCalendar_AriaLabel" xml:space="preserve">
+    <value>次の日付範囲、{0} から {1} まで</value>
+    <comment>Aria-label for the action bar calendar next button</comment>
+  </data>
+  <data name="SC_CalendarPreviousButton_Tooltip" xml:space="preserve">
+    <value>前の範囲</value>
+  </data>
+  <data name="SC_CalendarNextButton_Tooltip" xml:space="preserve">
+    <value>次の範囲</value>
+  </data>
+  <data name="SC_CalendarIcon_Tooltip" xml:space="preserve">
+    <value>日付を選択します</value>
+  </data>
+  <data name="SC_Refresh_Tooltip" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="SC_SortForm_Apply" xml:space="preserve">
+    <value>適用</value>
+  </data>
+  <data name="SC_SortForm_Apply_Tooltip" xml:space="preserve">
+    <value>変更を適用します</value>
+  </data>
+  <data name="SC_SortForm_Clear" xml:space="preserve">
+    <value>クリア</value>
+  </data>
+  <data name="SC_SortForm_Clear_Tooltip" xml:space="preserve">
+    <value>変更をクリアします</value>
+  </data>
+  <data name="SC_SomethingWentWrong" xml:space="preserve">
+    <value>問題が発生しました</value>
+  </data>
+  <data name="SC_ReloadToFix" xml:space="preserve">
+    <value>ページを再読み込みしてください。このメッセージが引き続き表示される場合は、システム管理者に問い合わせてサポートを依頼してください。</value>
+  </data>
+  <data name="SC_PreviousButton_AriaLabel" xml:space="preserve">
+    <value>[前のページ] ボタンです。現在表示されているレコード: {2} 中 {0} ～ {1}</value>
+    <comment>Aria-label for a paging previous button</comment>
+  </data>
+  <data name="SC_NextButton_AriaLabel" xml:space="preserve">
+    <value>[次のページ] ボタンです。現在表示されているレコード: {2} 中 {0} ～ {1}</value>
+    <comment>Aria-label for a paging next button</comment>
+  </data>
+  <data name="SC_PreviousButton_Tooltip" xml:space="preserve">
+    <value>前のページ</value>
+  </data>
+  <data name="SC_NextButton_Tooltip" xml:space="preserve">
+    <value>次のページ</value>
+  </data>
+  <data name="SC_CalendarIcon_AriaLabel" xml:space="preserve">
+    <value>日付を選択してください。現在選択されている日付範囲は {0} から {1} までです</value>
+    <comment>Aria-label for the action bar calendar button</comment>
+  </data>
+  <data name="SC_Refresh_Announcement" xml:space="preserve">
+    <value>更新がトリガーされました</value>
+  </data>
+  <data name="SC_SortForm_Ascending" xml:space="preserve">
+    <value>昇順</value>
+  </data>
+  <data name="SC_SortForm_Descending" xml:space="preserve">
+    <value>降順</value>
+  </data>
+  <data name="SC_Appointment" xml:space="preserve">
+    <value>予定​​</value>
+  </data>
+  <data name="SC_ServiceActivity" xml:space="preserve">
+    <value>サービス活動​​</value>
+  </data>
+  <data name="SC_SortForm_Selection_Placeholder" xml:space="preserve">
+    <value>オプションを選択</value>
+  </data>
+  <data name="SC_SortForm_Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="SC_Zoom_Slider" xml:space="preserve">
+    <value>ズーム スライダー</value>
+    <comment>Name of the zoom slider on service calendar. Used in the aria-label and tooltip.</comment>
+  </data>
+  <data name="SC_SortForm_FormLabel" xml:space="preserve">
+    <value>並べ替え</value>
+  </data>
+  <data name="SC_Search" xml:space="preserve">
+    <value>名前で検索</value>
+    <comment>Placeholder text on Service Calendar Search Box.</comment>
+  </data>
+  <data name="SC_Filters" xml:space="preserve">
+    <value>フィルター</value>
+  </data>
+  <data name="SC_Filters_Close_Tooltip" xml:space="preserve">
+    <value>閉じる​​</value>
+    <comment>When the button is pressed, closes the filter panel.</comment>
+  </data>
+  <data name="SC_FilterPanel_Apply" xml:space="preserve">
+    <value>適用</value>
+    <comment>When the button is pressed, applies the currently selected filters.</comment>
+  </data>
+  <data name="SC_FilterPanel_Clear" xml:space="preserve">
+    <value>クリア</value>
+    <comment>When the button is pressed, clears the currently selected filters.</comment>
+  </data>
+  <data name="SC_Type" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="SC_View" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="SC_Today" xml:space="preserve">
+    <value>今日</value>
+  </data>
+  <data name="SC_NoResources" xml:space="preserve">
+    <value>このビューに表示するリソースがありません。開始するには 1 つ以上のリソースを作成してください。</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize" xml:space="preserve">
+    <value>パネルのサイズ変更。</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize_Horizontal" xml:space="preserve">
+    <value>上下分割: パネルのサイズ変更。</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize_Vertical" xml:space="preserve">
+    <value>左右分割: パネルのサイズ変更。</value>
+  </data>
+  <data name="Splitter_AriaLabel_ExpandCollapse" xml:space="preserve">
+    <value>パネルの展開/折りたたみ。</value>
+  </data>
+  <data name="Alert_ServiceActivity_Check_StartOrEnd" xml:space="preserve">
+    <value>開始日または終了日を確認する必要があります。</value>
+    <comment>Error message to make sure start or end date is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Include_Future_Dates" xml:space="preserve">
+    <value>日付の範囲には将来の日付を含めてください。</value>
+    <comment>Error message to make sure future date range is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_Date_Range" xml:space="preserve">
+    <value>無効な日付の範囲</value>
+    <comment>Error message to make sure correct date range is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_End_Time" xml:space="preserve">
+    <value>無効な終了時刻です。</value>
+    <comment>Error message to make sure end time is in the correct format</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_Start_Time" xml:space="preserve">
+    <value>無効な開始時刻です。</value>
+    <comment>Error message to make sure start time is in the correct format</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Select_Days" xml:space="preserve">
+    <value>曜日を選択してください。</value>
+    <comment>Error message to make sure atleast one day is selected</comment>
+  </data>
+  <data name="Alert_ServiceActivity_StartTime_Before_EndTime" xml:space="preserve">
+    <value>開始時間は終了時間より前に設定してください。</value>
+    <comment>Error message to make sure start time is lesser than end time</comment>
+  </data>
+  <data name="Confirm_Remove_Resource_From_ResourceGroup" xml:space="preserve">
+    <value>この操作を実行すると、選択したリソースがグループから削除されます。この操作は元に戻せません。ただし、必要に応じてグループにリソースを追加し直すことはできます。続行するには、[OK] をクリックします。</value>
+    <comment>Confirm dialog for removal of resource from resource group</comment>
+  </data>
+  <data name="Dialog_Cycle_Bottom_Plural" xml:space="preserve">
+    <value>既に現在のリソース グループまたはその上位のリソース グループに存在するので、追加できません。</value>
+    <comment>Resource group cyclic dependency error dialog bottom message for multiple RG</comment>
+  </data>
+  <data name="Dialog_Cycle_Bottom_Singular" xml:space="preserve">
+    <value>既に現在のリソース グループまたはその上位のリソース グループに存在するので、追加できません。</value>
+    <comment>Resource group cyclic dependency error dialog bottom message for single RG</comment>
+  </data>
+  <data name="Dialog_Cycle_Top_Plural" xml:space="preserve">
+    <value>次のリソース グループ:</value>
+    <comment>Resource group cyclic dependency error dialog top message for multiple RGs</comment>
+  </data>
+  <data name="Dialog_Cycle_Top_Singular" xml:space="preserve">
+    <value>次のリソース グループ:</value>
+    <comment>Resource group cyclic dependency error dialog top message for single RG</comment>
+  </data>
+  <data name="ErrorCode.ResourceConstraints" xml:space="preserve">
+    <value>リソース制約により、{0}は使用できません。</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceBusy" xml:space="preserve">
+    <value>{0}はこの時間に別の予定が入っています。</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceOverCapacity" xml:space="preserve">
+    <value>{0} には必要な空きがありません。</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceNonBusinessHours" xml:space="preserve">
+    <value>{0} は作業時間外にスケジュールされています。</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.SearchInvalid" xml:space="preserve">
+    <value>指定された時間は無効です。</value>
+  </data>
+  <data name="ErrorCode.DifferentEffort" xml:space="preserve">
+    <value>このサービスに必要なキャパシティがリソース {0} のキャパシティに一致しません。</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.NotSameSitePartyMembers" xml:space="preserve">
+    <value>すべてのリソースは同じサービス拠点に存在する必要があります。</value>
+  </data>
+  <data name="ErrorCode.EmptyAppointment" xml:space="preserve">
+    <value>この活動に対してリソースが選択されていません。</value>
+  </data>
+  <data name="ErrorCode.RequiredResourceMisMatch" xml:space="preserve">
+    <value>選択した 1 つまたは複数のリソースの正しい選択ルールを特定できません。[スケジュール] ボタンをクリックした後で、[使用可能なスロット] グリッドからリソースを選択し直してください。</value>
+  </data>
+  <data name="ErrorCode.MissingMandatory" xml:space="preserve">
+    <value>サービス選択ルールに必要なリソース{0}が含まれていません。選択ルールを確認するには、このサービスのレコードを開いてください。</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSave_Button" xml:space="preserve">
+    <value>無視して保存</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSave Button</comment>
+  </data>
+  <data name="ErrorCode.InvalidAppointmentDuration" xml:space="preserve">
+    <value>予定の期間が無効です。</value>
+    <comment>appointment duration more than MaxAppointmentDurationDays in user settings</comment>
+  </data>
+  <data name="ErrorCode.NotEnoughResources" xml:space="preserve">
+    <value>選択した日付や時刻に利用できるリソースが、このサービスのリソースに求められる最低要件を満たしていません。</value>
+  </data>
+  <data name="ErrorCode.MandatoryResourceOverSpecification" xml:space="preserve">
+    <value>サービスで必要とする以上のリソースが指定されています。</value>
+  </data>
+  <data name="Root_Resource_Spec_Name_Format" xml:space="preserve">
+    <value>{1} から {0} 個を選択</value>
+    <comment>Root selection rule label</comment>
+  </data>
+  <data name="Resource_Spec_Name_Format" xml:space="preserve">
+    <value>以下から {0} 個を選択</value>
+    <comment>Selection rule label</comment>
+  </data>
+  <data name="Resource_Selection_Resouce_Group_Label" xml:space="preserve">
+    <value>{0}のメンバー</value>
+    <comment>Resouce groups label</comment>
+  </data>
+  <data name="Button_Label_Add_Selection_Rule" xml:space="preserve">
+    <value>選択ルールの追加</value>
+    <comment>Add selection rule</comment>
+  </data>
+  <data name="Button_Label_Add_Resources" xml:space="preserve">
+    <value>リソースの追加</value>
+    <comment>Add resources</comment>
+  </data>
+  <data name="Button_Label_Edit" xml:space="preserve">
+    <value>編集​​</value>
+    <comment>Edit button label</comment>
+  </data>
+  <data name="Dialog_Title_Add_Selection_Rule" xml:space="preserve">
+    <value>選択ルールの追加</value>
+    <comment>Add selection rule dialog label</comment>
+  </data>
+  <data name="Dialog_Title_Edit_Selection_Rule" xml:space="preserve">
+    <value>選択ルールの編集</value>
+    <comment>Edit selection rule dialog label</comment>
+  </data>
+  <data name="Service_Form_Save_Progress" xml:space="preserve">
+    <value>保存中です</value>
+    <comment>Save in progress</comment>
+  </data>
+  <data name="Service_Resource_Tree_Load_Message" xml:space="preserve">
+    <value>設定済みのリソースを読み込んでいます</value>
+    <comment>Loading configured resources</comment>
+  </data>
+  <data name="Resource_Selection_Notification" xml:space="preserve">
+    <value>選択ルールの一部で必要なリソースが定義されていません。ルールを完全に設定するには、[必要なリソース] をクリックします。</value>
+    <comment>Empty selection rule notification</comment>
+  </data>
+  <data name="Delete_Dialog_Title" xml:space="preserve">
+    <value>削除の確認</value>
+    <comment>Delete dialog title</comment>
+  </data>
+  <data name="Resource_Rule_Delete_Confirmation" xml:space="preserve">
+    <value>このノードと、ノード内のすべてのサブノードを削除しますか?</value>
+    <comment>Resource rule delete confirmation message</comment>
+  </data>
+  <data name="Resource_Delete_Confirmation" xml:space="preserve">
+    <value>このノードを削除しますか?</value>
+    <comment>Resource delete confirmation message</comment>
+  </data>
+  <data name="Resouce_Selection_Error" xml:space="preserve">
+    <value>同じ選択ルールで同じリソースを 2 回選択することはできません {0}</value>
+    <comment>Error message when adding same resource twice in same selection rule</comment>
+  </data>
+  <data name="Resource_Delete_Confirmation_Note" xml:space="preserve">
+    <value>注: リソースとリソース グループをツリーから削除しても、Microsoft Dynamics 365 からは削除されません。</value>
+    <comment>Note: Removing resources and resource groups from the tree will not delete them from Microsoft Dynamics 365.</comment>
+  </data>
+  <data name="Info_Message_Deprecated_Legacy_Contract_Entity_migrating_to_Entitlement" xml:space="preserve">
+    <value>この契約エンティティは廃止され、権利エンティティに置き換えられます。統一インターフェイスで契約エンティティにアクセスできません。2020 年 12 月 1 日より前にデータを権利エンティティに移行してください。詳細はこちらをご覧ください: https://go.microsoft.com/fwlink/p/?linkid=2135246</value>
+    <comment>Contract entity had been deprecated and won’t be accessible in Unified Interface. </comment>
+  </data>
+  <data name="Info_Message_Deprecated_Legacy_ContractTemplate_Entity_migrating_to_Entitlement" xml:space="preserve">
+    <value>この契約テンプレート エンティティは廃止され、権利エンティティに置き換えられます。統一インターフェイスで契約テンプレート エンティティにアクセスできません。2020 年 12 月 1 日より前にデータを権利エンティティに移行してください。詳細はこちらをご覧ください: https://go.microsoft.com/fwlink/p/?linkid=2135246</value>
+    <comment>Contract template entity had been deprecated and won’t be accessible in Unified Interface. </comment>
+  </data>
+  <data name="UCI.Form.Saving" xml:space="preserve">
+    <value>保存中...</value>
+    <comment>Message which is displayed while UCI main form is getting saved.</comment>
+  </data>
+  <data name="Days_Of_Week_Friday" xml:space="preserve">
+    <value>金曜日</value>
+  </data>
+  <data name="Days_Of_Week_Monday" xml:space="preserve">
+    <value>月曜日</value>
+  </data>
+  <data name="Days_Of_Week_Saturday" xml:space="preserve">
+    <value>土曜日</value>
+  </data>
+  <data name="Days_Of_Week_Sunday" xml:space="preserve">
+    <value>日曜日</value>
+  </data>
+  <data name="Days_Of_Week_Thursday" xml:space="preserve">
+    <value>木曜日</value>
+  </data>
+  <data name="Days_Of_Week_Tuesday" xml:space="preserve">
+    <value>火曜日</value>
+  </data>
+  <data name="Days_Of_Week_Wednesday" xml:space="preserve">
+    <value>水曜日</value>
+  </data>
+  <data name="SC_SortForm_AriaButton" xml:space="preserve">
+    <value>並べ替え</value>
+  </data>
+  <data name="SC_FilterPanel_Applied_Announce" xml:space="preserve">
+    <value>フィルターを適用しました</value>
+  </data>
+  <data name="SC_FilterPanel_Cleared_Announce" xml:space="preserve">
+    <value>フィルターをクリアしました</value>
+  </data>
+  <data name="SC_SearchBox_A11y" xml:space="preserve">
+    <value>リソースの検索</value>
+  </data>
+  <data name="SC_ListView_ViewType_ListView" xml:space="preserve">
+    <value>リスト ビュー</value>
+  </data>
+  <data name="SC_ListView_Column_Availability" xml:space="preserve">
+    <value>可用性</value>
+  </data>
+  <data name="SC_ListView_Column_Start_Time" xml:space="preserve">
+    <value>開始時間</value>
+  </data>
+  <data name="SC_ListView_Column_End_Time" xml:space="preserve">
+    <value>終了時間</value>
+  </data>
+  <data name="SC_ListView_Column_Duration" xml:space="preserve">
+    <value>期間</value>
+  </data>
+  <data name="SC_ListView_Column_Activity" xml:space="preserve">
+    <value>活動</value>
+  </data>
+  <data name="SC_ListView_Column_Status" xml:space="preserve">
+    <value>状態</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_Available" xml:space="preserve">
+    <value>使用可能</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_Scheduled" xml:space="preserve">
+    <value>スケジュール</value>
+  </data>
+  <data name="SC_ListView_ViewType_GridView" xml:space="preserve">
+    <value>グリッド ビュー</value>
+  </data>
+  <data name="Alert_Failed_Updating_ServiceActivity_Status" xml:space="preserve">
+    <value>StateAttributeMetadata が null 値のため、サービス活動の状態を更新できませんでした。</value>
+    <comment>Failure when setting default status for given service activity state due to empty StateAttributeMetadata.</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Failed" xml:space="preserve">
+    <value>統合ルーティングをプロビジョニングできませんでした。やり直すか、Microsoft サポートにお問い合わせください。https://go.microsoft.com/fwlink/?linkid=2155040</value>
+    <comment>Label for failed provisioning</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Started" xml:space="preserve">
+    <value>統合ルーティングをプロビジョニングしています。このプロセスが完了するまで数時間お待ちください。</value>
+    <comment>Label for in progress provisioning</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Completed" xml:space="preserve">
+    <value>統合ルーティングが正常にプロビジョニングされました。</value>
+    <comment>Label for successful provisioning</comment>
+  </data>
+  <data name="SC_ListView_Availability_Option_PartiallyAvailable" xml:space="preserve">
+    <value>部分的に使用可能</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_OutsideWorkingHours" xml:space="preserve">
+    <value>使用不可</value>
+  </data>
+  <data name="SC_SearchBox_MoreRecords_Announce" xml:space="preserve">
+    <value>{0} 件のレコードが見つかりました</value>
+  </data>
+  <data name="SC_SearchBox_OneRecord_Announce" xml:space="preserve">
+    <value>{0} 件のレコードが見つかりました</value>
+  </data>
+  <data name="SC_SortForm_Cleared_Announce" xml:space="preserve">
+    <value>選択した並べ替えオプションがクリアされています</value>
+  </data>
+  <data name="SC_SortForm_Apply_Ascending" xml:space="preserve">
+    <value>リソースは名前で昇順に並べ替えられています</value>
+  </data>
+  <data name="SC_SortForm_Apply_Descending" xml:space="preserve">
+    <value>リソースは名前で降順に並べ替えられています</value>
+  </data>
+  <data name="SC_Notifications_of" xml:space="preserve">
+    <value>{0} / {1}</value>
+    <comment>{Placeholder='{0}','{1}'} Placeholder 0 is the number of current notifications and Placeholder 1 is the total number of notifications</comment>
+  </data>
+  <data name="SC_AlertWindow_DismissButton" xml:space="preserve">
+    <value>無視</value>
+    <comment>Label for the dismiss button on the notification item</comment>
+  </data>
+  <data name="SC_ChangeStatus_Text" xml:space="preserve">
+    <value>状態の変更</value>
+  </data>
+  <data name="SC_ListView_More_Options" xml:space="preserve">
+    <value>その他のオプション</value>
+    <comment>Label for more option button for list view</comment>
+  </data>
+  <data name="SLA_Recalculation_Text" xml:space="preserve">
+    <value>SLA は、ターミナル状態に達すると再計算されます。{0}。</value>
+  </data>
+  <data name="SLA_Recalculation_HyperLinkText" xml:space="preserve">
+    <value>詳細情報</value>
+  </data>
+  <data name="CalendarImportExportHyperLinkText" xml:space="preserve">
+    <value>詳細情報</value>
+  </data>
+  <data name="SlaCalendarExportImportHelpText" xml:space="preserve">
+    <value>ソリューションの一部として、エクスポートまたはインポートされた SLA にリンクされた祝日スケジュールと顧客サービス スケジュールを含みます。{0}</value>
+  </data>
+  <data name="Hard_Refresh_Save_Notification_Msg" xml:space="preserve">
+    <value>ハード更新して更新を反映してください</value>
+    <comment>for showing the user message to hard refresh the page when the insert dialog setting is changed</comment>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>2023 年 4 月 1 日をもって、以前に非推奨になった Web クライアントのレガシ サービス レベル アグリーメント (SLA) が、サポート終了 (EoS) を向かえます。機能の損失を避けるために、Web クライアントで作成したレガシ SLA を、今すぐ必ず統一インターフェイス エクスペリエンスに移行してください。項目の移行方法の詳細については {0} を参照してください</value>
+    <comment>Notification message about SLA and ARC web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="Entitlement_AllocationTypeNotification" xml:space="preserve">
+    <value>権利のエンティティ割り当てタイプのマッピングに使用するレコードが見つかりません。権利のエンティティ割り当てタイプのマッピングを追加してください。詳細については、{0} を参照してください</value>
+    <comment>Notification message about entitlement's entity allocation type mapping. {Placeholder='{0}'} Placeholder '0' is a documentation link for more information.</comment>
+  </data>
+  <data name="CancelCaseWithActivityNumber" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープンな活動があります&lt;p&gt;。確認すると、オープンなすべての活動がキャンセルされます。</value>
+    <comment>Notification message about cancelling open activities if case is resolved. {Placeholder='{0}'}, {Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities.</comment>
+  </data>
+  <data name="CaseCancellationToastNotification" xml:space="preserve">
+    <value>サポート案件がキャンセルされました。</value>
+    <comment>Toast notification message when case has been cancelled.</comment>
+  </data>
+  <data name="CaseResolutionToastNotification" xml:space="preserve">
+    <value>サポート案件が解決されました。</value>
+    <comment>Toast notification message when case has been resolved.</comment>
+  </data>
+  <data name="ResolveCaseWithActivityNumber" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープンな活動があります&lt;p&gt;。確認すると、オープンなすべての活動がキャンセルされます。</value>
+    <comment>Notification message about cancelling open activities if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivity" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープンな活動があります&lt;p&gt;。確認すると、オープンな活動がキャンセルされます。</value>
+    <comment>Notification message about cancelling open activity if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities. It will be 1 in this case</comment>
+  </data>
+  <data name="NewCase" xml:space="preserve">
+    <value>新規サポート案件</value>
+    <comment>Title of Panel to create a case record.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleOpenSwarms" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態のスウォーム&lt;p&gt;が存在します。確認を選択すると、オープン状態のスウォームがすべて解決されます。</value>
+    <comment>Notification message about resolving open swarms if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneOpenSwarm" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態のスウォーム&lt;p&gt;が存在します。確認を選択すると、オープン状態のスウォームがすべて解決されます。</value>
+    <comment>Notification message about resolving open swarms if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleOpenSwarms" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態のスウォーム&lt;p&gt;が存在します。確認を選択すると、オープン状態のスウォームがすべてキャンセルされます。</value>
+    <comment>Notification message about cancelling open swarms if case is cancelled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneOpenSwarm" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態のスウォーム&lt;p&gt;が存在します。確認を選択すると、オープン状態のスウォームがすべてキャンセルされます。</value>
+    <comment>Notification message about cancelling open swarms if case is cancelled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivityAndOneSwarm" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態の活動&lt;p&gt;と &lt;p&gt;{1} 件のオープン状態のスウォーム&lt;p&gt;が存在します。サポート案件を解決すると、オープン状態の活動がキャンセルされ、オープン状態のスウォームが解決されます。</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleActivitiesAndOneSwarm" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態の活動&lt;p&gt;と &lt;p&gt;{1} 件のオープン状態のスウォーム&lt;p&gt;が存在します。サポート案件を解決すると、オープン状態の活動とスウォームがキャンセルされます。</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivityAndMultipleSwarms" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態の活動&lt;p&gt;と &lt;p&gt;{1} 件のオープン状態のスウォーム&lt;p&gt;が存在します。サポート案件を解決すると、オープン状態の活動がキャンセルされ、オープン状態のスウォームが解決されます。</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleActivitiesAndMultipleSwarms" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態の活動&lt;p&gt;と &lt;p&gt;{1} 件のオープン状態のスウォーム&lt;p&gt;が存在します。サポート案件を解決すると、オープン状態の活動がキャンセルされ、オープン状態のスウォームが解決されます。</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneActivityAndOneSwarm" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態の活動&lt;p&gt;と &lt;p&gt;{1} 件のオープン状態のスウォーム&lt;p&gt;が存在します。サポート案件をキャンセルすると、オープン状態の活動とスウォームがキャンセルされます。</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleActivitiesAndOneSwarm" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態の活動&lt;p&gt;と &lt;p&gt;{1} 件のオープン状態のスウォーム&lt;p&gt;が存在します。サポート案件をキャンセルすると、オープン状態の活動とスウォームがキャンセルされます。</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneActivityAndMultipleSwarms" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態の活動&lt;p&gt;と &lt;p&gt;{1} 件のオープン状態のスウォーム&lt;p&gt;が存在します。サポート案件をキャンセルすると、オープン状態の活動とスウォームがキャンセルされます。</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleActivitiesAndMultipleSwarms" xml:space="preserve">
+    <value>&lt;p&gt;{0} 件のオープン状態の活動&lt;p&gt;と &lt;p&gt;{1} 件のオープン状態のスウォーム&lt;p&gt;が存在します。サポート案件をキャンセルすると、オープン状態の活動とスウォームがキャンセルされます。</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOpenSwarmWhenFCSOff" xml:space="preserve">
+    <value>このサポート案件にはオープン状態のスウォームが関連付けられています。サポート案件をキャンセルすると、オープン状態のスウォームがキャンセルされます。サポート案件をキャンセルしますか?</value>
+    <comment>Notification message about cancelling open swarm if case is cancelled.</comment>
+  </data>
+  <data name="ResolveCaseWithOpenSwarmWhenFCSOff" xml:space="preserve">
+    <value>このサポート案件にはオープン状態のスウォームが関連付けられています。サポート案件を解決すると、オープン状態のスウォームが解決されます。サポート案件を解決しますか?</value>
+    <comment>Notification message about resolving open swarm if case is resolved.</comment>
+  </data>
+  <data name="CancelCaseWithOpenSwarmAndActivityWhenFCSOff" xml:space="preserve">
+    <value>このサポート案件にはオープン状態の活動とスウォームが関連付けられています。サポート案件をキャンセルすると、オープン状態の活動とスウォームがキャンセルされます。サポート案件をキャンセルしますか?</value>
+    <comment>Notification message about cancelling open swarm and activities if case is cancelled.</comment>
+  </data>
+  <data name="ResolveCaseWithOpenSwarmAndActivityWhenFCSOff" xml:space="preserve">
+    <value>このサポート案件にはオープン状態の活動とスウォームが関連付けられています。サポート案件を解決すると、オープン状態の活動がキャンセルされ、オープン状態のスウォームが解決されます。サポート案件を解決しますか?</value>
+    <comment>Notification message about cancelling open swarm and activities if case is resolved.</comment>
+  </data>
+  <data name="EntitlementWorkflowNotInActiveState" xml:space="preserve">
+    <value>関連付けられたワークフロー {0} がアクティブ状態ではありません。権利をアクティブ化する前にワークフローをアクティブ化してください。</value>
+    <comment>Error message when dependent Workflow/CustomAction is not enabled. {Placeholder='{0}'} Placeholder '0' is the entitlement's workflow name</comment>
+  </data>
+  <data name="SeeTermsText" xml:space="preserve">
+    <value>プレビュー条件を確認する</value>
+    <comment>Link to preview terms</comment>
+  </data>
+  <data name="LOBHasNotChanged" xml:space="preserve">
+    <value>ケースの新しい意図が既知である場合は以下のドロップダウンから選択します。不明な場合は [保存してルーティングする] をクリックすると意図が再決定されます。</value>
+    <comment>Label in Save And ReRoute Dialog when LOB Has not changed</comment>
+  </data>
+  <data name="LOBHasChanged" xml:space="preserve">
+    <value>ケースの新しい意図が既知である場合は以下のドロップダウンから選択します。不明な場合は [保存してルーティングする] をクリックすると意図が再決定されます。</value>
+    <comment>Label in Save And ReRoute Dialog when LOB has changed</comment>
+  </data>
+  <data name="CaseResolutionFormFillSourceTitle" xml:space="preserve">
+    <value>ケース</value>
+    <comment>Label to be shown in source pill of AI toolbar when manual form fill of case resolution</comment>
+  </data>
+  <data name="EmailToCaseFormFillSourceTitle" xml:space="preserve">
+    <value>メール</value>
+    <comment>Label to be shown in source pill of AI toolbar when manual form fill of case</comment>
+  </data>
+  <data name="AIToolBarPillChat" xml:space="preserve">
+    <value>ケースには会話に基づく保存された AI の変更が含まれます</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on conversation.</comment>
+  </data>
+  <data name="AIToolBarPillEmail" xml:space="preserve">
+    <value>ケースにはメールに基づく保存された AI の変更が含まれます</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on Email.</comment>
+  </data>
+  <data name="AIToolBarPillChatAndEmail" xml:space="preserve">
+    <value>ケースには会話とメールに基づく保存された AI の変更が含まれます</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on conversation and emails.</comment>
+  </data>
+  <data name="viewInAuditHistoryLink" xml:space="preserve">
+    <value>監査履歴で表示する</value>
+    <comment>View in audit history.</comment>
+  </data>
+</root>

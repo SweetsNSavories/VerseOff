@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Close_Opp_Dlg_Desc" xml:space="preserve">
+    <value>Bu fırsatın kapatılma nedeniyle ilgili olarak aşağıdaki bilgileri sağlayın.</value>
+  </data>
+  <data name="Error_Message_0x80040515" xml:space="preserve">
+    <value>Fırsat zaten kapanmış.</value>
+    <comment>IDS_OPPORTUNITY_IS_ALREADY_CLOSED</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_37" xml:space="preserve">
+    <value>Gerçek Gelir ana fırsatta yanlış ayarlandı. "{0}" ile "{1}" arasında bir sayı girmelisiniz.</value>
+    <comment>Error message displayed to the user in the close opportunity dialog page when the actual revenue is set incorrectly on the opportunity. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible revenue amount and Placeholder 1 is a number specifing maximum permissible revenue amount.</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_67" xml:space="preserve">
+    <value>Kapanış tarihi belirtmelisiniz.</value>
+    <comment>Error message displayed when the user clicks on the ok button without entering a value in the close date field in close opportunity dialog box.</comment>
+  </data>
+  <data name="Suggestions_Dlg_Add_Selected_Text" xml:space="preserve">
+    <value>Ekle</value>
+    <comment>Label text for the "Add Selected" button in the product suggestions dialog.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="Suggestions_Dlg_Error_Moca_Offline" xml:space="preserve">
+    <value>Önerileri yalnızca uygulama çevrimiçi durumdayken görüntüleyebilirsiniz.</value>
+    <comment>Error text for when users attempts to view or add suggestions when Moca is offline.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Selection" xml:space="preserve">
+    <value>Lütfen eklemek üzere en az bir öneri seçin.</value>
+    <comment>Error text for when users attempts to click add suggestions button without selecting any suggestion.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_Add_Suggestions" xml:space="preserve">
+    <value>Önerileri ekleyemedik. Lütfen yeniden deneyin. {0}</value>
+    <comment>Error text for when adding suggestion fails.[Category="MoCA Client"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Price_List" xml:space="preserve">
+    <value>Önerileri görüntülemek için bir fiyat listesi seçmelisiniz.</value>
+    <comment>Error text for when user opens Suggestions dialog without a price list selected.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_NoParentRecordFound" xml:space="preserve">
+    <value>Ana kayıt bulunamadı.</value>
+  </data>
+  <data name="Quote_Closed_Subject" xml:space="preserve">
+    <value>Teklif Kapalı ({0}) - {1}</value>
+    <comment>Subject for the quote close activity. Whenever a quote is closed a quote closed activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was closed. Eg: Lost, Canceled or Revised. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Quote_Won_Subject" xml:space="preserve">
+    <value>Teklif Kazanıldı ({0}) - {1}</value>
+    <comment>Subject for the quote won activity. Whenever a quote is won a quote won activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was won. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Close_Opportunity_Activity_Subject" xml:space="preserve">
+    <value>Kapanan Fırsat: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is name of object.</comment>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>Bu {0} öğesini silmek istiyor musunuz? Bu eylemi geri alamazsınız.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Eg: Deleting a product. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="ViewDuplicates_aspx_Button_Label_CancelUpdateRecord" xml:space="preserve">
+    <value>&amp;İptal</value>
+    <comment>The label of the Cancel Update button</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>Silmeyi Onayla</value>
+  </data>
+  <data name="Web.SFA.QOI.QuantityAndPriceNegativeAlert" xml:space="preserve">
+    <value>Hem Miktar hem de Birim Fiyatı için negatif değer belirtemezsiniz. Bu değerlerden birini değiştirip yeniden deneyin.</value>
+    <comment>Alert message that is displayed in QOI forms when the both Quantity and Price Per Unit fields are filled up with negative values. [Category="SFA: Negative prices"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Bu eylemi gerçekleştirebilmek için bir veya daha fazla kayıt seçmelisiniz.</value>
+  </data>
+  <data name="Web.SFA.quotes.EffectiveToEarlierThanEffectiveFrom" xml:space="preserve">
+    <value>Son Geçerlilik tarihi İlk Geçerlilik tarihinden önce olamaz.</value>
+    <comment>Error message to display if effective to date supplied in the quote form is earlier than effective from date.</comment>
+  </data>
+  <data name="Web.SFA.QOI.CurrencyChangeAlert" xml:space="preserve">
+    <value>Devam etmeden önce formdaki tüm para alanlarını gözden geçirin.</value>
+    <comment>Alert message that is displayed in Quote and Opportunity forms when transaction currency is changed. [Category="Business Modules"]</comment>
+  </data>
+  <data name="QUOTE_EXPIRED" xml:space="preserve">
+    <value>"Son Geçerlilik Tarihi" geçti. Teklifi yeniden etkinleştirmek istiyorsanız, bu tarihi gelecekteki bir tarihe ayarlayabilirsiniz.</value>
+    <comment>quote is expired.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Suggestions_Notification_Available_Message" xml:space="preserve">
+    <value>Kullanılabilir ürün önerileri ({0})</value>
+    <comment>Text for the notification that product suggestions are available.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Notification_See_Link_Text" xml:space="preserve">
+    <value>Görüntüle</value>
+    <comment>Text for clickable link in suggestion notification.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_340" xml:space="preserve">
+    <value>Bu teklifi satış siparişine dönüştürme işlemi ancak yeniden çevrimiçi olduğunuzda otomatik olarak yapılacaktır. Devam etmek için Tamam'a tıklayın.</value>
+    <comment>Confirmation message displayed when the user attempts to create an order from a quote in outlook client when the outlook client is in offline mode.</comment>
+  </data>
+  <data name="Web.SFA.QOI.QuantityChangedDueToChangeInAccuracy" xml:space="preserve">
+    <value>Üründe desteklenen ondalık basamak sayısındaki bir güncelleştirme nedeniyle Miktar kutusundaki "{0}" değeri "{1}" olarak değiştirildi.
+  Değişiklikleri kaydetmek için Tamam'a ve ardından Kaydet'e ya da Kaydet ve Kapat'a tıklayın.</value>
+    <comment>Header of Message to prompt the user about change in qunatity due to change in decimal accuracy supported by the product. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 and Placeholder 1 are numbers.</comment>
+  </data>
+  <data name="Close_Quote_Dlg_Title" xml:space="preserve">
+    <value>Teklifi Kapat</value>
+  </data>
+  <data name="Close_Quote_Dlg_Desc" xml:space="preserve">
+    <value>Bu teklifi kapatıyorsunuz.</value>
+    <comment>Close quote dialog description.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.dlg_close.aspx_155" xml:space="preserve">
+    <value>Kapanış Tarihi</value>
+    <comment>Label for the close date field in the close quote dialog box. Represents the quote close date.</comment>
+  </data>
+  <data name="Dialog_PaidInvoice_Title" xml:space="preserve">
+    <value>Ödenen Fatura</value>
+  </data>
+  <data name="Dialog_PaidInvoice_Description" xml:space="preserve">
+    <value>Bu faturanın ödemesiyle ilgili bilgileri seçin.</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Title" xml:space="preserve">
+    <value>Faturayı İptal Et</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Description" xml:space="preserve">
+    <value>Bu faturanın iptaliyle ilgili bilgileri seçin.</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Title" xml:space="preserve">
+    <value>Siparişi İptal Et</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Desc" xml:space="preserve">
+    <value>Bu sipariş için iptal bilgisi sağlar.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_ConfirmButton.dlg_close" xml:space="preserve">
+    <value>Onayla</value>
+    <comment>OK Button text when Order close dialog when the order is canceled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_50.dlg_close" xml:space="preserve">
+    <value>Tarihi İptal Et</value>
+    <comment>Label for the sales order cancel date field in cancel order dialog page.</comment>
+  </data>
+  <data name="Order_Fulfill_Dlg_Title" xml:space="preserve">
+    <value>Siparişi Karşıla</value>
+  </data>
+  <data name="Order_Fulfill_Dlg_Desc" xml:space="preserve">
+    <value>Bu sipariş için karşılama bilgilerini girin.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_FulfillButton.dlg_close" xml:space="preserve">
+    <value>Yerine Getir</value>
+    <comment>OK Button text when Order close dialog when the order is fulfilled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_51.dlg_close" xml:space="preserve">
+    <value>Karşılandığı Tarih</value>
+    <comment>Label for the sales order fulfill date field in fulfill order dialog page.</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_155" xml:space="preserve">
+    <value>Ürün eklemeye çalışmadan önce fiyat listesi seçmelisiniz.</value>
+    <comment>Error message displayed in the opportunity form when the user attempts to add a product to the opportunity without choosing a price list for the opportunity.</comment>
+  </data>
+  <data name="notEligibleBulkEdit" xml:space="preserve">
+    <value>Denetimler, Toplu Düzenle işlemi için uygun değil.</value>
+  </data>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>E-posta formunu kapat</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>{0} durumunu, Tamamlandı olarak değiştir ve formu kapat</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>Müşteri seçmelisiniz.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>Bu etkinliği dönüştürebilmek için önce değişiklikleri kaydetmelisiniz.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="LOCID_PROVIDE_VALUE_ADDRESS" xml:space="preserve">
+    <value>Adres arayabilmek için önce {0} için bir değer sağlamalısınız.</value>
+    <comment>{NumberedPlaceholder="{0}"}. AlertMessage.Message on omission of value for address lookup.</comment>
+  </data>
+  <data name="LOCID_SALESLIT_NO_DOCUMENTS" xml:space="preserve">
+    <value>{0} herhangi bir {1} içermiyor.</value>
+    <comment>Text in alert when sales literature does not contain any documents. [Category="Business Modules"] {NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with salesliterature entity display name. {NumberedPlaceholder="{1}"} Placeholder 1 will be replaced with salesliteratureitem entity display name</comment>
+  </data>
+  <data name="Web.SFA.invoice.edit.aspx_163" xml:space="preserve">
+    <value>Aşağıdaki hata oluştu: {0}</value>
+    <comment>Message displayed with price error messages.</comment>
+  </data>
+  <data name="SalesAttachmentDisplayName" xml:space="preserve">
+    <value>Satış Eki</value>
+    <comment>Sales Attachment display name.</comment>
+  </data>
+  <data name="LiveWorkStream.ProviderInvalid" xml:space="preserve">
+    <value>SMS sağlayıcı geçersiz</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid provider</comment>
+  </data>
+  <data name="LiveWorkStream.APIKeyInvalid" xml:space="preserve">
+    <value>Yetkilendirme Anahtarı geçersiz</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid authorization Key</comment>
+  </data>
+  <data name="LiveWorkStream.OCEndpointMissing" xml:space="preserve">
+    <value>Kuruluş URL'si uç noktası eksik olduğundan SMS gelen URL'si oluşturulamadı. Lütfen sistem yöneticinize başvurun.</value>
+    <comment>Error message displayed when the sms inbound URL is not displayed as the OCEndPoint is not set correctly</comment>
+  </data>
+  <data name="LiveWorkStream.CustomerIdInvalid" xml:space="preserve">
+    <value>Yetkilendirme kimliği geçersiz</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid authorization Id</comment>
+  </data>
+  <data name="LiveWorkStream.DoesNotExist" xml:space="preserve">
+    <value>Belirtilen İş Akışı yok</value>
+    <comment>Error text for when users specify a non-existant Work Stream to validate its SMS connection</comment>
+  </data>
+  <data name="LiveWorkStream.InsufficientInputs" xml:space="preserve">
+    <value>Yapılan girişten gerekli İş Akışı özellikleri belirlenemedi</value>
+    <comment>Error message displayed when not enough inputs have been passed to the Work Stream SMS connection validation workflow to determine the necessary Work Stream SMS settings to validate the connection</comment>
+  </data>
+  <data name="LiveWorkStream.InvalidInputData" xml:space="preserve">
+    <value>Giriş tanınmayan bir biçimdeydi</value>
+    <comment>Error text for when there is an error deserializing the input to the Work Stream SMS connection validation workflow</comment>
+  </data>
+  <data name="LiveWorkStream.NoAssociatedSMSNumbers" xml:space="preserve">
+    <value>İş Akışı en az bir adet SMS numarasıyla ilişkilendirilmelidir</value>
+    <comment>Error text for when users try to validate a Work Stream not associated to any SMS Numbers</comment>
+  </data>
+  <data name="LiveWorkStream.SourceNotSMS" xml:space="preserve">
+    <value>Bu eylem yalnızca SMS İş Akışları için geçerlidir</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with a source other than SMS</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignError" xml:space="preserve">
+    <value>Doğrulama iletisi gönderilemedi</value>
+    <comment>Error message displayed for generic errors encountered calling provider when validating an SMS Work Steam connection</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignErrorWithArgument" xml:space="preserve">
+    <value>Doğrulama iletisi gönderilemedi: {0}</value>
+    <comment>Error message displayed for errors with additional content encountered calling provider when validating an SMS Work Steam connection</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignTimeout" xml:space="preserve">
+    <value>Doğrulama iletisinin teslim edilmesi beklenirken zaman aşımına uğradı</value>
+    <comment>Error message displayed when provider does not successfully or unsuccessfully deliver the verification message in a set amount of time</comment>
+  </data>
+  <data name="LiveWorkStream.Validating" xml:space="preserve">
+    <value>SMS Rest API Ayrıntıları Doğrulanıyor</value>
+    <comment>Informational message shown to the user when they click on any of the buttons to validate an SMS Work Stream connection</comment>
+  </data>
+  <data name="LiveWorkStream.ValidationError" xml:space="preserve">
+    <value>Doğrulama iş akışı yürütülemedi</value>
+    <comment>Error message displayed for generic errors executing the Work Stream SMS validation workflows</comment>
+  </data>
+  <data name="LiveWorkStream.ValidationSuccess" xml:space="preserve">
+    <value>SMS API Ayrıntıları başarıyla doğrulandı</value>
+    <comment>Message shown when the SMS connection is successfully validated</comment>
+  </data>
+  <data name="LiveWorkStream.VerificationSMSMessageText" xml:space="preserve">
+    <value>Doğrulama iletisi. Lütfen dikkate almayın.</value>
+    <comment>The SMS Number verification message text sent when validating a given SMS Work Stream</comment>
+  </data>
+  <data name="LiveWorkStream.WrongEntity" xml:space="preserve">
+    <value>İş Akışı olarak geçirilen varlık yanlış varlık türünde</value>
+    <comment>Error message displayed when the Work Stream passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="SMSNumber.DoesNotExist" xml:space="preserve">
+    <value>Belirtilen SMS Numarası yok.</value>
+    <comment>Error text for when users specify a non-existant SMS Number for validating an SMS Work Stream SMS connection</comment>
+  </data>
+  <data name="SMSNumber.InsufficientInputs" xml:space="preserve">
+    <value>Yapılan girişten gerekli SMS Numarası özellikleri belirlenemedi</value>
+    <comment>Error message displayed when not enough inputs have been passed to the Work Stream SMS connection validation workflow to determine the necessary SMS Number settings to validate the connection</comment>
+  </data>
+  <data name="SMSNumber.InvalidOrMissingLiveWorkStream" xml:space="preserve">
+    <value>SMS Numarası bir SMS İş Akışıyla ilişkilendirilmelidir</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for an SMS Number not associated to a Work Stream or associated to a Work Stream with a Stream Source other than SMS</comment>
+  </data>
+  <data name="SMSNumber.NumberInvalid" xml:space="preserve">
+    <value>SMS Numarası geçersiz</value>
+    <comment>Error message displayed when an invalid validating SMS Rest API is due to the number being invalid</comment>
+  </data>
+  <data name="SMSNumber.ProviderInvalid" xml:space="preserve">
+    <value>SMS Numarası Sağlayıcı geçersiz</value>
+    <comment>Error message displayed when an invalid provider is selected for an SMS Number</comment>
+  </data>
+  <data name="SMSNumber.Telesign.LongCodeInvalid" xml:space="preserve">
+    <value>Uzun Kod numaraları 8-15 basamak içermelidir</value>
+    <comment>Error message displayed when an invalid long code SMS Number has been entered</comment>
+  </data>
+  <data name="SMSNumber.Telesign.ShortCodeInvalid" xml:space="preserve">
+    <value>Kısa Kod numaraları 3-8 alfa veya sayısal karakterden oluşmalıdır. Ek biçimlendirme karakterlerine izin verilmez.</value>
+    <comment>Error message displayed when an invalid short code SMS number has been entered</comment>
+  </data>
+  <data name="SMSNumber.Telesign.TollFreeInvalid" xml:space="preserve">
+    <value>Ücretsiz numaraların 1 ile başlaması ve 8-15 basamak içermesi gerekir</value>
+    <comment>Error message displayed when an invalid toll free SMS Number has been entered</comment>
+  </data>
+  <data name="SMSNumber.TypeInvalid" xml:space="preserve">
+    <value>SMS Numarası Türü geçersiz</value>
+    <comment>Error message displayed when an invalid number type is selected for an SMS Number</comment>
+  </data>
+  <data name="SMSNumber.WrongEntity" xml:space="preserve">
+    <value>SMS Numarası olarak geçirilen varlık yanlış varlık türünde</value>
+    <comment>Error message displayed when the SMS Number passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="LiveWorkStream.ValidateFailed" xml:space="preserve">
+    <value>Başarısız</value>
+    <comment>Failure validation status of the last SMS provider validation.</comment>
+  </data>
+  <data name="LiveWorkStream.ValidateSuccess" xml:space="preserve">
+    <value>Başarılı</value>
+    <comment>Success validation status of the last SMS provider validation.</comment>
+  </data>
+  <data name="PhoneNumber.DoesNotExists" xml:space="preserve">
+    <value>Belirtilen Telefon Numarası yok</value>
+    <comment>Error text when users specify a non-existent Phone Number.</comment>
+  </data>
+  <data name="PhoneNumber.WrongEntity" xml:space="preserve">
+    <value>Telefon Numarası olarak geçirilen varlık yanlış varlık türünde</value>
+    <comment>Error message displayed when the Phone Number passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="OC_FormNotificationMessageForSMSProvider" xml:space="preserve">
+    <value>SMS kanalı kurulumunu tamamlamak için lütfen SMS Ayarları bölümündeki tüm ayarları doldurun.</value>
+    <comment>Warning notification message at the form level when the sms provider is not selected, api key, customer id are not filled.</comment>
+  </data>
+  <data name="OC_TeleSignAccountInformationSectionLabel" xml:space="preserve">
+    <value>TeleSign hesap bilgileri</value>
+    <comment>Account information label for TeleSign</comment>
+  </data>
+  <data name="OC_TeleSignApiKeyLabel" xml:space="preserve">
+    <value>API anahtarı</value>
+    <comment>TeleSign label for key</comment>
+  </data>
+  <data name="OC_TeleSignCustomerIdLabel" xml:space="preserve">
+    <value>Müşteri Kimliği</value>
+    <comment>TeleSign label for ID</comment>
+  </data>
+  <data name="OC_TwilioAccountInformationSectionLabel" xml:space="preserve">
+    <value>Twilio hesabı bilgileri</value>
+    <comment>Account information label for Twilio</comment>
+  </data>
+  <data name="OC_TwilioAccountSIDLabel" xml:space="preserve">
+    <value>Hesap SID'i</value>
+    <comment>Twilio label for ID</comment>
+  </data>
+  <data name="OC_TwilioAuthTokenLabel" xml:space="preserve">
+    <value>Kimlik Doğrulama Belirteci</value>
+    <comment>Twilio label for key</comment>
+  </data>
+  <data name="OC_TwilioLegalDisclaimerPreviewTerms" xml:space="preserve">
+    <value>Önizleme Koşulları</value>
+  </data>
+  <data name="OC_TwilioLegalDisclaimerText" xml:space="preserve">
+    <value>SMS özelliğini etkinleştirmek için Twilio hesabı bilgilerini sağlayarak, bu özelliğin önizlemede olduğunu ve {0} içeriğini kabul edersiniz.</value>
+    <comment>DO NOT CHANGE {0} as it will be replaced with OC_TwilioLegalDisclaimerPreviewTerms.</comment>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Sorun bulunamadı.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>{0} öğesinde bir hata oluştu.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.ResultEntityMessage" xml:space="preserve">
+    <value>SMS kanalı yapılandırması etkin iş akışı içermiyor.</value>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Etkin iş akışı bulunmayan 1 SMS kanalı yapılandırması var.</value>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Etkin iş akışı bulunmayan {0} SMS kanalı yapılandırması var.</value>
+    <comment>The error message for SmsChannelConfigurationShouldHaveWorkStream rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.ResultEntityMessage" xml:space="preserve">
+    <value>{0} sağlayıcısı için SMS kanalı yapılandırması boş {1} öğesine sahip.</value>
+    <comment>The error message for SmsSettingsShouldHaveAllRequiredFields rule where placeholder {0} is SMS provider name, 
+    and {1} is an invalid field name or names</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Eksik ayarları olan 1 SMS kanalı yapılandırması var.</value>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Eksik ayarları olan {0} SMS kanalı yapılandırması var.</value>
+    <comment>The error message for SmsSettingsShouldHaveAllRequiredFields rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.CustomerIdProperty" xml:space="preserve">
+    <value>Müşteri Kimliği</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_customerid"] property for TeleSign</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.APIKeyProperty" xml:space="preserve">
+    <value>API anahtarı</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_apikey"] property for TeleSign</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.AccountSIDProperty" xml:space="preserve">
+    <value>Hesap SID'si</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_customerid"] property for Twilio</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.AuthTokenProperty" xml:space="preserve">
+    <value>Kimlik Doğrulama Belirteci</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_apikey"] property for Twilio</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.LastValidationStatus" xml:space="preserve">
+    <value>Son Doğrulama Durumu</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_lastvalidationstatus"] property</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.smsProviderMessage" xml:space="preserve">
+    <value>SMS sağlayıcı ayarlanmadı</value>
+    <comment>SMS provider is not set message</comment>
+  </data>
+</root>

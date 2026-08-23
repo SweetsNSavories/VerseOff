@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Het apparaat wordt op de achtergrond geregistreerd. U kunt Microsoft Dynamics 365 blijven gebruiken.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Apparaatgegevens worden op de achtergrond opgehaald. U kunt Microsoft Dynamics 365 blijven gebruiken.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>Er is een fout opgetreden bij het uitvoeren van de actie. Probeer het later opnieuw.</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Selecteer ten minste één record.</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Registreer het apparaat voordat u probeert apparaatgegevens op te halen.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Er worden apparaatgegevens opgehaald op de achtergrond. U kunt Microsoft Dynamics 365 blijven gebruiken. Enkele van deze apparaten zijn niet geregistreerd, dus kunnen er geen gegevens worden opgehaald.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>De geselecteerde apparaten worden op de achtergrond geregistreerd. U kunt Microsoft Dynamics 365 blijven gebruiken.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Apparaatgegevens worden op de achtergrond opgehaald. U kunt Microsoft Dynamics 365 blijven gebruiken.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Apparaatgegevens worden op de achtergrond opgehaald. U kunt Microsoft Dynamics 365 blijven gebruiken.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Alle nieuwe apparaten worden op de achtergrond geïmporteerd. Navigeer naar de apparatenpagina om de nieuwe apparaten van de IoT-provider weer te geven.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Alle nieuwe apparaten worden op de achtergrond geïmporteerd. Vernieuw de lijst om de nieuwe apparaten weer te geven.</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Selecteer één record.</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Verificatie is mislukt. U moet zich aanmelden bij uw Power BI-account om Power BI-tegels te kunnen bekijken of bewerken.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Aanmelden</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Er is geen geregistreerd apparaat gevonden.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>Er zijn geen geregistreerde verbonden apparaten gevonden.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>Er is geen apparaat-id gevonden. Voeg een apparaat-id toe om de Power BI-tegel weer te geven.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Power BI-tegel</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Power BI-dashboard</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Tegel</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Kan het configuratiebestand voor de opgeslagen PowerBI embedded niet ophalen</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>Er is een fout opgetreden en wij hebben uw aanpassing niet kunnen opslaan. Foutdetails: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>De huidige entiteit is niet geconfigureerd om het toepassen van een apparaat-id-filter op een Power BI-tegel te ondersteunen.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Selecteer de Power BI-tegel die u aan het formulier wilt toevoegen.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Power BI-tegel</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Voeg een Power BI-tegel toe voor het verbonden apparaat.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Aanpassing publiceren</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>De Power BI-tegel wordt gefilterd om de huidige apparaatgegevens weer te geven.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>Als deze opdracht wordt opgeslagen wordt de opdracht ook naar het apparaat of de apparaten verzonden. Wilt u doorgaan?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Eigenschap</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Meer informatie over integratie met Azure IoT Central, een volledig beheerde algemene IoT SaaS-oplossing.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Integreer met uw bestaande IoT-hub of implementeer een nieuwe en beheer de vooraf geconfigureerde IoT PaaS-oplossing vanuit uw eigen Azure-abonnement.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>Een opdracht kan niet worden verzonden. Een IoT-waarschuwing moet aan deze record zijn gekoppeld om een opdracht te kunnen verzenden.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Het apparaat wordt op de achtergrond geregistreerd. Vernieuw de weergave om de bijgewerkte statusregistratie te zien.</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>Dit apparaat wordt geregistreerd. Wilt u dit apparaat opnieuw registreren?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Nee</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>Dit apparaat is al geregistreerd. Wilt u dit apparaat opnieuw registreren?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Apparaat registreren</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>De geselecteerde apparaten worden geregistreerd. Vernieuw de weergave om de bijgewerkte statusregistratie te zien.</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Opdracht verzenden naar {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Opdracht verzenden</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0} verzonden naar {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Opdracht verzonden naar {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>Opdrachten voor {0}</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Verbonden apparaten</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>Opdracht verzonden.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Opdrachtstatus weergeven</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>Opdracht kan niet worden verzonden.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Opdracht of Bericht moet worden opgegeven.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Kan apparaat niet verbinden.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Apparaten</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Apparaat verbinden met {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Apparaatpad</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Sleutelpad</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Er zijn geen vooraf gedefinieerde opdrachten aan dit apparaat gekoppeld. Configureer de apparaatcategorie om vooraf gedefinieerde opdrachten weer te geven.</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>De functie voor IoT-suggesties is ingeschakeld. Wacht 24 uur totdat configuratiewijzigingen zijn toegepast voor het trainen van het model. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Bevestig dat u de functie IoT-suggesties wilt uitschakelen.</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>Uitschakelen van IoT-suggesties bevestigen</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>Door deze functie in te schakelen, erkent u dat deze functie in preview is en gaat u akkoord met de {0}.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Voorwaarden voor preview</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>Meer informatie</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Aangepaste apparatenweergave</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Voer een geldig IoT-apparaat in om door te gaan.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>Aantal is de enige beschikbare aggregatieoptie voor apparaatgebeurtenissen.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>Er kunnen niet meer dan 6 tegels voor het huidige apparaat worden gemaakt.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Zorg ervoor dat de geselecteerde meting een gerapporteerde meting is voor het huidige apparaat.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Gegevens van verbonden apparaten</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Knop Power BI-configuratie</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Opdracht is naar de server verzonden. Controleer het apparaat om de status van de opdracht te bekijken.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Opdracht is niet naar de server verzonden vanwege connectiviteitsproblemen. De volgende keer dat uw apparaat wordt gesynchroniseerd, wordt de opdracht verzonden.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>U moet online zijn om gegevens te kunnen ophalen.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>Er is een internetverbinding vereist om deze actie te kunnen uitvoeren.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>U moet deze record synchroniseren om deze actie te kunnen uitvoeren.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Apparaatregistratie is verzonden. U kunt de status van de registratie bekijken wanneer u de volgende keer synchroniseert of de online modus activeert.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Apparaatregistratie is niet naar de server verzonden vanwege connectiviteitsproblemen. De volgende keer dat uw apparaat wordt gesynchroniseerd, wordt de registratie verzonden.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Aanvraag van pull-apparaatgegevens is verzonden. U kunt de resultaten bekijken op het tabblad Apparaatgeschiedenis wanneer uw apparaat de volgende keer wordt gesynchroniseerd.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>U moet een internetverbinding hebben om opdrachten te kunnen verzenden.</value>
+  </data>
+</root>

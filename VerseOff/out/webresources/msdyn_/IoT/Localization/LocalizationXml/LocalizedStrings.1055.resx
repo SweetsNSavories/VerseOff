@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Cihaz arka planda kaydediliyor. Microsoft Dynamics 365 kullanmaya devam edebilirsiniz.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Cihaz verileri arka planda alınıyor. Microsoft Dynamics 365 kullanmaya devam edebilirsiniz.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>Eylemi gerçekleştirirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Lütfen en az bir kayıt seçin.</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Cihaz verilerini almadan önce lütfen cihazı kaydedin.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Cihaz verileri arka planda alınıyor. Microsoft Dynamics 365 kullanmaya devam edebilirsiniz. Bu cihazlardan bazıları kayıtlı olmadığından veriler alınamıyor.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>Seçili cihazlar arka planda kaydediliyor. Microsoft Dynamics 365 kullanmaya devam edebilirsiniz.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Cihaz verileri arka planda alınıyor. Microsoft Dynamics 365 kullanmaya devam edebilirsiniz.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Cihaz verileri arka planda alınıyor. Microsoft Dynamics 365 kullanmaya devam edebilirsiniz.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Tüm yeni cihazlar arka planda içeri aktarılıyor. IoT sağlayıcısından gelen yeni cihazları görmek için cihazlar sayfasına gidin.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Tüm yeni cihazlar arka planda içeri aktarılıyor. Yeni cihazları görmek için listeyi yenileyin.</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Lütfen bir kayıt seçin.</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Kimlik doğrulama başarısız oldu. Power BI kutucuklarını görüntülemek veya düzenlemek için Power BI hesabınızda oturum açmanız gerekir.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Oturum aç</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Kayıtlı cihaz bulunamadı.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>Kayıtlı bağlı cihazlar bulunamadı.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>Cihaz kimliği bulunamadı. Power BI kutucuğunu görüntülemek için bir cihaz kimliği ekleyin.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Power BI Kutucuğu</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Power BI Panosu</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Kutucuk</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Kaydedilen PowerBI Embedded için yapılandırma dosyası alınamadı</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>Bir hata oluştu ve özelleştirmenizi kaydedemedik. Hata ayrıntıları: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>Geçerli varlık bir Power BI kutucuğuna cihaz kimliği filtresi uygulanmasını destekleyecek şekilde yapılandırılmamış.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Formu eklemek istediğiniz Power BI kutucuğunu seçin.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Power BI Kutucuğu</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Bağlı cihaz için bir Power BI kutucuğu ekleyin.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Özelleştirme yayımlanıyor</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>Power BI kutucuğu geçerli cihaz verilerini göstermek üzere filtrelenecek.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>Bu komutu kaydettiğinizde komut cihazlara da gönderilir. Devam etmek istiyor musunuz?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Etiket</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Özellik</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Tamamen yönetilen genel bir IoT SaaS çözümü olan Azure IoT Central ile tümleştirme hakkında daha fazla bilgi edinin.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Var olan IoT Hub'ınızla tümleştirin veya yeni bir merkez dağıtıp önceden yapılandırılmış IoT PaaS çözümünüzü kendi Azure aboneliğinizden yönetin.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>Komut gönderilemiyor. Komut gönderebilmek için bu kayıtla bir IoT Uyarısı ilişkilendirilmelidir.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Cihaz arka planda kaydediliyor. Güncelleştirilen kayıt durumunu görmek için yenileyin.</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>Bu cihaz kaydediliyor. Bu cihazı yeniden kaydetmek istiyor musunuz?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Evet</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Hayır</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>Bu cihaz zaten kayıtlı. Bu cihazı yeniden kaydetmek istiyor musunuz?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Cihazı Kaydet</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>Seçili cihazlar kaydediliyor. Güncelleştirilen kayıt durumunu görmek için yenileyin.</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Komutu Şuraya Gönder: {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Komut Gönder</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0}, {1} hedefine gönderildi</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Komut {0} hedefine gönderildi</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>{0} komutları</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Bağlı cihazlar</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>Komut gönderildi.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Komut durumunu görüntüle</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>Komut gönderilemiyor.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Komut veya İleti belirtilmelidir.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Cihaz bağlanamıyor.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Cihazlar</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Cihazı {0} Varlığına Bağla</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Cihaz Yolu</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Anahtar Yolu</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Bu cihazla ilişkili önceden tanımlanmış komut yok. Önceden tanımlanmış komutları görmek için lütfen cihaz kategorisini yapılandırın.</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>IoT Önerileri özelliği etkin. Yapılandırma değişikliklerinin model eğitimine uygulanması için lütfen 24 saat bekleyin. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Lütfen, IoT Önerileri'ni devre dışı bırakmayı onaylayın.</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>IoT Önerileri'ni devre dışı bırakmayı onayla</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>Bu özelliği etkinleştirerek bu özelliğin önizlemede olduğunu ve {0} içeriğini kabul ettiğinizi onaylarsınız.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Önizleme Koşulları</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>Daha fazla bilgi edinin</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Özel Cihaz Görünümü</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Devam etmek için lütfen geçerli bir IoT cihazı girin.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>Sayı, cihaz etkinlikleri için kullanılabilir tek toplama seçeneğidir.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>Geçerli cihaz için 6'dan fazla kutucuk oluşturulamaz.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Seçilen ölçümün geçerli cihaz için bildirilen bir ölçü olduğundan emin olun.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Bağlı cihaz okumaları</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Power BI yapılandırma düğmesi</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Komut sunucuya başarıyla gönderildi. Lütfen komutun durumunu görmek için cihazı eşitleyin.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Bağlantı sorunları nedeniyle sunucuya komut gönderilemedi; komut, cihazınızın bir sonraki eşitlemesinde gönderilecek.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>Veri almak için çevrimiçi olmanız gerekiyor.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>Bu eylemi gerçekleştirmek için İnternet bağlantısı gerekiyor.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>Bu eylemi gerçekleştirmek için bu kaydı eşitlemeniz gerekiyor.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Cihaz kaydı başarıyla gönderildi. Bir sonraki eşitlemede veya çevrimiçi moda geçtiğinizde kaydın durumunu görebilirsiniz.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Bağlantı sorunları nedeniyle sunucuya cihaz kaydı gönderilmedi. Kayıt, cihazınızın bir sonraki eşitlemesinde gönderilecek.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Cihaz verilerini alma isteği başarıyla gönderildi. Sonucu, cihazınızın bir sonraki eşitlemesinde cihaz geçmişi sekmesinde görebilirsiniz.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>Komut göndermek için internet bağlantınız olması gerekir.</value>
+  </data>
+</root>

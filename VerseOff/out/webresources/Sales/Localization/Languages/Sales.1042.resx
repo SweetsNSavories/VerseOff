@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Close_Opp_Dlg_Desc" xml:space="preserve">
+    <value>이 영업 기회를 종료하는 이유에 대해 다음 정보를 제공하십시오.</value>
+  </data>
+  <data name="Error_Message_0x80040515" xml:space="preserve">
+    <value>영업 기회가 이미 종료되었습니다.</value>
+    <comment>IDS_OPPORTUNITY_IS_ALREADY_CLOSED</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_37" xml:space="preserve">
+    <value>실제 매출이 상위 영업 기회에서 올바르지 않게 설정되어 있습니다. "{0}"에서 "{1}" 사이의 숫자를 입력해야 합니다.</value>
+    <comment>Error message displayed to the user in the close opportunity dialog page when the actual revenue is set incorrectly on the opportunity. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible revenue amount and Placeholder 1 is a number specifing maximum permissible revenue amount.</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_67" xml:space="preserve">
+    <value>종료 날짜를 지정해야 합니다.</value>
+    <comment>Error message displayed when the user clicks on the ok button without entering a value in the close date field in close opportunity dialog box.</comment>
+  </data>
+  <data name="Suggestions_Dlg_Add_Selected_Text" xml:space="preserve">
+    <value>추가</value>
+    <comment>Label text for the "Add Selected" button in the product suggestions dialog.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="Suggestions_Dlg_Error_Moca_Offline" xml:space="preserve">
+    <value>앱이 온라인인 경우에만 제안을 볼 수 있습니다.</value>
+    <comment>Error text for when users attempts to view or add suggestions when Moca is offline.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Selection" xml:space="preserve">
+    <value>추가할 제안을 하나 이상 선택하십시오.</value>
+    <comment>Error text for when users attempts to click add suggestions button without selecting any suggestion.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_Add_Suggestions" xml:space="preserve">
+    <value>제안을 추가할 수 없었습니다. 다시 시도하십시오. {0}</value>
+    <comment>Error text for when adding suggestion fails.[Category="MoCA Client"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Price_List" xml:space="preserve">
+    <value>제안을 보려면 가격표를 선택해야 합니다.</value>
+    <comment>Error text for when user opens Suggestions dialog without a price list selected.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_NoParentRecordFound" xml:space="preserve">
+    <value>상위 레코드가 없습니다.</value>
+  </data>
+  <data name="Quote_Closed_Subject" xml:space="preserve">
+    <value>종료된 견적({0}) - {1}</value>
+    <comment>Subject for the quote close activity. Whenever a quote is closed a quote closed activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was closed. Eg: Lost, Canceled or Revised. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Quote_Won_Subject" xml:space="preserve">
+    <value>성공한 견적({0}) - {1}</value>
+    <comment>Subject for the quote won activity. Whenever a quote is won a quote won activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was won. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Close_Opportunity_Activity_Subject" xml:space="preserve">
+    <value>종료된 영업 기회: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is name of object.</comment>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>{0}을(를) 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Eg: Deleting a product. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Quote_Lines" xml:space="preserve">
+    <value>이 견적 내용을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple quote products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Quote_Line" xml:space="preserve">
+    <value>이 견적 내용을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single quote product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Order_Lines" xml:space="preserve">
+    <value>이 주문 내용을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple order products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Order_Line" xml:space="preserve">
+    <value>이 주문 내용을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single order product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Invoice_Lines" xml:space="preserve">
+    <value>이 인보이스 내용을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple invoice products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Invoice_Line" xml:space="preserve">
+    <value>이 인보이스 내용을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single invoice product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Opportunity_Lines" xml:space="preserve">
+    <value>이 영업 기회 내용을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple opportunity products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Opportunity_Line" xml:space="preserve">
+    <value>이 영업 기회 내용을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single opportunity product</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="ViewDuplicates_aspx_Button_Label_CancelUpdateRecord" xml:space="preserve">
+    <value>취소(&amp;C)</value>
+    <comment>The label of the Cancel Update button</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>삭제 확인</value>
+  </data>
+  <data name="Web.SFA.QOI.QuantityAndPriceNegativeAlert" xml:space="preserve">
+    <value>수량 및 단가에 대해 음의 값을 지정할 수 없습니다. 해당 값을 변경하고 다시 시도하십시오.</value>
+    <comment>Alert message that is displayed in QOI forms when the both Quantity and Price Per Unit fields are filled up with negative values. [Category="SFA: Negative prices"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>이 작업을 수행하려면 먼저 하나 이상의 레코드를 선택해야 합니다.</value>
+  </data>
+  <data name="Web.SFA.quotes.EffectiveToEarlierThanEffectiveFrom" xml:space="preserve">
+    <value>[유효 기간 끝] 날짜는 [유효 기간 시작] 날짜 이전일 수 없습니다.</value>
+    <comment>Error message to display if effective to date supplied in the quote form is earlier than effective from date.</comment>
+  </data>
+  <data name="Web.SFA.QOI.CurrencyChangeAlert" xml:space="preserve">
+    <value>계속하기 전에 모든 금액 필드를 검토하십시오.</value>
+    <comment>Alert message that is displayed in Quote and Opportunity forms when transaction currency is changed. [Category="Business Modules"]</comment>
+  </data>
+  <data name="QUOTE_EXPIRED" xml:space="preserve">
+    <value>"유효 기간 끝" 날짜가 지났습니다. 견적을 다시 활성화하려면 날짜를 이후 날짜로 설정할 수 있습니다.</value>
+    <comment>quote is expired.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Suggestions_Notification_Available_Message" xml:space="preserve">
+    <value>사용할 수 있는 제품 제안({0})</value>
+    <comment>Text for the notification that product suggestions are available.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Notification_See_Link_Text" xml:space="preserve">
+    <value>보기</value>
+    <comment>Text for clickable link in suggestion notification.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_340" xml:space="preserve">
+    <value>이 견적이 판매 주문으로 변환되는 작업은 온라인으로 전환할 때 자동으로 수행됩니다. 계속하려면 [확인]을 클릭하십시오.</value>
+    <comment>Confirmation message displayed when the user attempts to create an order from a quote in outlook client when the outlook client is in offline mode.</comment>
+  </data>
+  <data name="Web.SFA.QOI.QuantityChangedDueToChangeInAccuracy" xml:space="preserve">
+    <value>제품에서 지원되는 소수 자릿수가 업데이트되어 [수량] 상자의 값이 "{0}"에서 "{1}"(으)로 변경되었습니다.
+변경 내용을 저장하려면 [확인]을 클릭한 다음 [저장] 또는 [저장 후 닫기]를 클릭하십시오.</value>
+    <comment>Header of Message to prompt the user about change in qunatity due to change in decimal accuracy supported by the product. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 and Placeholder 1 are numbers.</comment>
+  </data>
+  <data name="Close_Quote_Dlg_Title" xml:space="preserve">
+    <value>견적 종료</value>
+  </data>
+  <data name="Close_Quote_Dlg_Desc" xml:space="preserve">
+    <value>이 견적을 종료하고 있습니다.</value>
+    <comment>Close quote dialog description.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.dlg_close.aspx_155" xml:space="preserve">
+    <value>종료 날짜</value>
+    <comment>Label for the close date field in the close quote dialog box. Represents the quote close date.</comment>
+  </data>
+  <data name="Dialog_PaidInvoice_Title" xml:space="preserve">
+    <value>지불된 송장</value>
+  </data>
+  <data name="Dialog_PaidInvoice_Description" xml:space="preserve">
+    <value>이 송장의 지불에 대한 정보를 선택하십시오.</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Title" xml:space="preserve">
+    <value>송장 취소</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Description" xml:space="preserve">
+    <value>이 송장을 취소하기 위한 정보를 선택하십시오.</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Title" xml:space="preserve">
+    <value>주문 취소</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Desc" xml:space="preserve">
+    <value>이 주문에 대한 취소 정보를 제공하십시오.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_ConfirmButton.dlg_close" xml:space="preserve">
+    <value>확인</value>
+    <comment>OK Button text when Order close dialog when the order is canceled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_50.dlg_close" xml:space="preserve">
+    <value>취소 날짜</value>
+    <comment>Label for the sales order cancel date field in cancel order dialog page.</comment>
+  </data>
+  <data name="Order_Fulfill_Dlg_Title" xml:space="preserve">
+    <value>주문 처리</value>
+  </data>
+  <data name="Order_Fulfill_Dlg_Desc" xml:space="preserve">
+    <value>이 주문에 대한 처리 정보를 제공하십시오.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_FulfillButton.dlg_close" xml:space="preserve">
+    <value>처리</value>
+    <comment>OK Button text when Order close dialog when the order is fulfilled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_51.dlg_close" xml:space="preserve">
+    <value>처리된 날짜</value>
+    <comment>Label for the sales order fulfill date field in fulfill order dialog page.</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_155" xml:space="preserve">
+    <value>제품을 추가하려면 먼저 가격표를 선택해야 합니다.</value>
+    <comment>Error message displayed in the opportunity form when the user attempts to add a product to the opportunity without choosing a price list for the opportunity.</comment>
+  </data>
+  <data name="notEligibleBulkEdit" xml:space="preserve">
+    <value>대량 편집에 적합하지 않은 컨트롤입니다.</value>
+  </data>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>전자 메일 양식 닫기</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>{0} 상태를 완료됨으로 변경하고 양식 닫기</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>고객을 선택해야 합니다.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>이 활동을 변환하기 전에 변경 내용을 저장해야 합니다.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="LOCID_PROVIDE_VALUE_ADDRESS" xml:space="preserve">
+    <value>주소를 조회하려면 먼저 {0}의 값을 지정해야 합니다.</value>
+    <comment>{NumberedPlaceholder="{0}"}. AlertMessage.Message on omission of value for address lookup.</comment>
+  </data>
+  <data name="LOCID_SALESLIT_NO_DOCUMENTS" xml:space="preserve">
+    <value>{0}에 {1}이(가) 포함되지 않습니다.</value>
+    <comment>Text in alert when sales literature does not contain any documents. [Category="Business Modules"] {NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with salesliterature entity display name. {NumberedPlaceholder="{1}"} Placeholder 1 will be replaced with salesliteratureitem entity display name</comment>
+  </data>
+  <data name="Web.SFA.invoice.edit.aspx_163" xml:space="preserve">
+    <value>다음 오류 발생: {0}</value>
+    <comment>Message displayed with price error messages.</comment>
+  </data>
+  <data name="SalesAttachmentDisplayName" xml:space="preserve">
+    <value>영업 첨부 파일</value>
+    <comment>Sales Attachment display name.</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>퀵 캠페인에서는 대량 편집을 지원하지 않습니다.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="Admin_Settings_Error_Saving_Data" xml:space="preserve">
+    <value>서버에 데이터를 저장하는 동안 오류가 발생했습니다. 다시 시도하십시오.</value>
+    <comment>error message on saving data.</comment>
+  </data>
+  <data name="Admin_Settings_Error_Loading_Data" xml:space="preserve">
+    <value>서버에서 데이터를 가져오는 동안 오류가 발생했습니다. 페이지를 다시 로드해 보십시오.</value>
+    <comment>error message on fetching data</comment>
+  </data>
+  <data name="Sales_DeleteSingleProductsFromQOOI" xml:space="preserve">
+    <value>제품 삭제</value>
+    <comment>Message to show while deleting the products from QOOI Entities.</comment>
+  </data>
+  <data name="Sales_DeleteMultipleProductsFromQOOI" xml:space="preserve">
+    <value>제품 삭제</value>
+    <comment>Message to show while deleting the products from QOOI Entities.</comment>
+  </data>
+  <data name="Admin_Settings_Saved_Successfully" xml:space="preserve">
+    <value>성공적으로 저장됨</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+  <data name="Admin_Settings_Sales_Title" xml:space="preserve">
+    <value>제품 카탈로그 설정</value>
+    <comment>Sales Setting Page title</comment>
+  </data>
+  <data name="Admin_Settings_Goal_Title" xml:space="preserve">
+    <value>목표 설정</value>
+    <comment>Goal Setting Page title</comment>
+  </data>
+  <data name="Web.products.discounttypeitem.edit.aspx_21" xml:space="preserve">
+    <value>종료 수량은 시작 수량보다 크거나 같아야 합니다.</value>
+    <comment>Error message displayed to the user if the begin quantity supplied in the discount form is more than the end quantity.</comment>
+  </data>
+  <data name="Sales_GeneratePDF" xml:space="preserve">
+    <value>PDF로 내보내는 중</value>
+    <comment>Message to show when exporting record to PDF </comment>
+  </data>
+  <data name="Sales_PersonalTemplates" xml:space="preserve">
+    <value>개인 템플릿</value>
+    <comment>Sub sections header for command create PDF </comment>
+  </data>
+  <data name="Sales_EmailAsPDF" xml:space="preserve">
+    <value>전자 메일 여는 중</value>
+    <comment>Message to show when opening email record with PDF attached.</comment>
+  </data>
+  <data name="Sales_CreatePDF_Downloaded_Notification" xml:space="preserve">
+    <value>다운로드했습니다.</value>
+    <comment>Notificaiton message shown when PDF download is complete.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_Add_Notification_Text" xml:space="preserve">
+    <value>제품을 추가할 수 없습니다. 이 {0}의 가격표에 없습니다.</value>
+    <comment>Error message displayed in the OQOI Product forms when the user attempts to add a product to the opportunity which doesn't belong to the chosen price list.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_Active_Products_Error" xml:space="preserve">
+    <value>활성 제품만 추가할 수 있습니다.</value>
+    <comment>Only active products can be added.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_ProductFamily_Lookup_Error" xml:space="preserve">
+    <value>제품과 제품 번들만 추가할 수 있습니다.</value>
+    <comment>Product Family should not be allowed to be selected in Opportunity Product lookup.</comment>
+  </data>
+  <data name="Sales_BusinessCardScanner_ButtonText" xml:space="preserve">
+    <value>명함 검사</value>
+    <comment>Button Text displayed for Business Card Reader Control</comment>
+  </data>
+  <data name="Sales_Quote_Activated_ToastNotification" xml:space="preserve">
+    <value>성공! 이제 {0}이(가) 활성화되었으므로 편집할 수 없습니다.</value>
+    <comment>Toast Notificaiton message for successful Quote Activate action.</comment>
+  </data>
+  <data name="Sales_Quote_Closed_ToastNotification" xml:space="preserve">
+    <value>{0} 닫기에 성공했습니다.</value>
+    <comment>Toast Notificaiton message for successful Quote Close action.</comment>
+  </data>
+  <data name="Sales_Quote_Revised_ToastNotification" xml:space="preserve">
+    <value>이제 {0}을(를) 편집할 수 있습니다.</value>
+    <comment>Toast Notificaiton message for successful Quote Revise action.</comment>
+  </data>
+  <data name="Sales_OrderToInvoice_Created_ToastNotification" xml:space="preserve">
+    <value>{0} 생성에 성공했습니다.</value>
+    <comment>Toast Notificaiton message for successful entity creation</comment>
+  </data>
+  <data name="Sales_ToastNotification_EntityCreation" xml:space="preserve">
+    <value>{0} 생성에 성공했습니다.</value>
+    <comment>Toast Notificaiton message for successful entity creation</comment>
+  </data>
+  <data name="Sales_ToastNotification_CreateQuoteFromOpty" xml:space="preserve">
+    <value>새로운 {0}의 초안을 작성했습니다. 마치려면 맨 위 메뉴에서 활성화를 클릭합니다.</value>
+    <comment>Toast Notificaiton message for successful quote creation from opportunity</comment>
+  </data>
+  <data name="Sales_CreatePDF_AttachPDFToNote" xml:space="preserve">
+    <value>Timeline에 저장</value>
+    <comment>Message to show when saving document PDF as an attachment to Note.</comment>
+  </data>
+  <data name="Sales_CreatePDF_SavePDFAsAttachmentToNote_Notification" xml:space="preserve">
+    <value>"{0}"이(가) Timeline에 저장되었습니다.</value>
+    <comment>Notificaiton message shown when PDF attachment to timeline -&gt; note is complete. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing document template name. E.g.: “Quote Summary”</comment>
+  </data>
+  <data name="Sales_CreatePDF_SaveToSharepoint" xml:space="preserve">
+    <value>Sharepoint에 저장</value>
+    <comment>Message to show when saving document PDF to Sharepoint.</comment>
+  </data>
+  <data name="Sales_CreatePDF_SaveToSharePoint_Notification" xml:space="preserve">
+    <value>"{0}"이(가) SharePoint에 저장되었습니다.</value>
+    <comment>Notificaiton message shown when PDF upload to sharepoint is complete. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing document template name. E.g.: “Quote Summary”</comment>
+  </data>
+  <data name="Button_Label_Download" xml:space="preserve">
+    <value>다운로드</value>
+  </data>
+  <data name="Button_Label_Save" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="cannotReviseQuote" xml:space="preserve">
+    <value>견적을 수정할 수 없습니다.
+    담당자 값이 없습니다.</value>
+    <comment>Cannot revise the Quote.</comment>
+  </data>
+  <data name="Dialog_CreatePDF_Description" xml:space="preserve">
+    <value>이제 {0} 문서가 준비되었습니다. 이 문서를 {1}에 저장하시겠습니까? 아니면 복사본을 다운로드하시겠습니까?</value>
+    <comment>Dialog page description for Create PDF confirmation dialog page. Eg: Creating PDF document. {NumberedPlaceholder="{0}", NumberedPlaceholder="{1}"}. Placeholder 0 is a text representing an entity name Eg: Quote and Placeholder 1 is a text representing either Dynamics or Sharepoint</comment>
+  </data>
+  <data name="CreatePDF_Dlg_Title" xml:space="preserve">
+    <value>PDF 배달 옵션</value>
+    <comment>Create PDF Dialog title</comment>
+  </data>
+  <data name="RequiredFieldsNotFilledError" xml:space="preserve">
+    <value>모든 필드 요구 사항이 충족되었는지 확인하십시오.</value>
+    <comment>Message shown when required fields are not filled</comment>
+  </data>
+  <data name="Read_More" xml:space="preserve">
+    <value>자세히 알아보기</value>
+    <comment>Label for Read More button in notification.</comment>
+  </data>
+  <data name="Web.SFA.requiredproductbundle.edit.aspx_92" xml:space="preserve">
+    <value>필수 번들 제품 양식의 가격 산정 관련 필드 업데이트는 지원되지 않습니다.</value>
+    <comment>Alert message that is displayed to the user in the required product bundle form when user opens required bundle product</comment>
+  </data>
+  <data name="ParentReadOnly" xml:space="preserve">
+    <value>부모가 읽기 전용 상태이므로 제품을 삭제할 수 없습니다.</value>
+    <comment>Error message when the parent entity is read only</comment>
+  </data>
+  <data name="COPY_CONTACTS" xml:space="preserve">
+    <value>{contact} 정보를 복사하는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="COPY_SHAREPOINT_DOCS" xml:space="preserve">
+    <value>{sharepointdocument} 정보를 복사하는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_SALESORDER" xml:space="preserve">
+    <value>{salesorder}을(를) 만드는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_SALESORDERDETAIL" xml:space="preserve">
+    <value>{salesorderdetail}을(를) 만드는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="PROCESS_BPF" xml:space="preserve">
+    <value>비즈니스 프로세스 흐름 처리</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVE_QUOTE_LINEITEMS" xml:space="preserve">
+    <value>{quote} 품목을 검색하는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVING_QUOTE" xml:space="preserve">
+    <value>{quote}을(를) 검색하는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="TRIGGER_PRICE_CALCULATIONS" xml:space="preserve">
+    <value>가격 계산을 트리거하는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_INVOICE" xml:space="preserve">
+    <value>{invoice}을(를) 만드는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_INVOICEDETAIL" xml:space="preserve">
+    <value>{invoicedetail}을(를) 만드는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="VALIDATE_SALESORDER" xml:space="preserve">
+    <value>{salesorder}의 유효성을 검사하는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_QOI" xml:space="preserve">
+    <value>QOI 엔터티를 만드는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_QOI_PRODUCTS" xml:space="preserve">
+    <value>QOI {product}을(를) 만드는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVE_CUSTOMER_INFO" xml:space="preserve">
+    <value>{contact}/{account} 정보를 검색하는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="UPDATE_QUOTE" xml:space="preserve">
+    <value>{quote}을(를) 업데이트하는 중</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="Add_Multiple_Products_Description" xml:space="preserve">
+    <value>한 번에 여러 제품을 선택하고, 검토하고, {0}에 추가합니다</value>
+    <comment>Subheading for Add product dialog for OQOI entities. {0} is placeholder for the respective OQOI entity.</comment>
+  </data>
+  <data name="Add_Multiple_Products_ButtonText" xml:space="preserve">
+    <value>{0}에 추가</value>
+    <comment>Add Product button text for OQOI AddProducts dialog. {0} is placeholder for the respective OQOI entity.</comment>
+  </data>
+  <data name="Cancel_Fulfill_PotentialCustomerHidden" xml:space="preserve">
+    <value>주문을 처리하거나 취소하기 위해 양식에 필수 잠재 고객 필드를 추가하세요.</value>
+    <comment>Alert message to notify that mandatory field Potential Customer is hidden.</comment>
+  </data>
+  <data name="CopyOpportunity_Warning_Title" xml:space="preserve">
+    <value>추가 정보를 볼 수 있는 기회 저장</value>
+    <comment>Copy Opportunity: pre-save warning banner title.</comment>
+  </data>
+  <data name="CopyOpportunity_Warning_Message" xml:space="preserve">
+    <value>  기회가 “{0}”에서 복사되었습니다. 저장한 후 나머지 필드, 제품 및 관련자가 추가됩니다.</value>
+    <comment>Copy Opportunity: pre-save warning banner message. {0} is the source opportunity name.</comment>
+  </data>
+  <data name="CopyOpportunity_SaveButton_Label" xml:space="preserve">
+    <value>영업 기회 저장</value>
+    <comment>Copy Opportunity: label for the Save button on the pre-save warning banner.</comment>
+  </data>
+  <data name="CopyOpportunity_Success_Title" xml:space="preserve">
+    <value>영업 기회 복사됨</value>
+    <comment>Copy Opportunity: post-save success banner title.</comment>
+  </data>
+  <data name="CopyOpportunity_Success_Message" xml:space="preserve">
+    <value>  “{0}”에서 복사되었습니다. 타임라인에서 무엇이 포함되었고 무엇이 포함되지 않았는지 확인하세요.</value>
+    <comment>Copy Opportunity: post-save success banner message. {0} is an in-text link to the source opportunity.</comment>
+  </data>
+  <data name="CopyOpportunity_UnnamedSource" xml:space="preserve">
+    <value>(이름 지정 안됨)</value>
+    <comment>Copy Opportunity: fallback label shown when the source opportunity has no name.</comment>
+  </data>
+  <data name="CopyOpportunity_Preparing" xml:space="preserve">
+    <value>복사본 준비 중...</value>
+    <comment>Copy Opportunity: progress indicator shown while fetching the source and opening the create form.</comment>
+  </data>
+</root>

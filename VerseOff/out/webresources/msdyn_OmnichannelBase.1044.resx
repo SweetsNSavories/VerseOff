@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OC_LimitQuestions_AlertDialogConfirmButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OC_RecordPermissions_AlertDialogText" xml:space="preserve">
+    <value>Du har ikke tillatelser til å utføre denne handlingen.</value>
+  </data>
+  <data name="OC_LimitQuestions_AlertDialogText" xml:space="preserve">
+    <value>Du kan ikke legge til mer enn fem spørsmål. Slett noen spørsmål for å legge til flere.</value>
+  </data>
+  <data name="OC_PickAuthFailed" xml:space="preserve">
+    <value>Valget mislyktes på grunn av en godkjenningsfeil. Prøv på nytt senere. Arbeidselement: {0}</value>
+  </data>
+  <data name="OC_PickedByAnotherAgent" xml:space="preserve">
+    <value>Valget mislyktes. Elementet ble valgt av en annen agent. Arbeidselement: {0}</value>
+  </data>
+  <data name="OC_PickInternalError" xml:space="preserve">
+    <value>Valget mislyktes. Prøv å velge elementet på nytt. Arbeidselement: {0}</value>
+  </data>
+  <data name="OC_PickMaxCapacityReached" xml:space="preserve">
+    <value>Valget mislyktes. Du har nådd maksimal kapasitet. Arbeidselement: {0}</value>
+  </data>
+  <data name="OC_PickMaxConcurrencyReached" xml:space="preserve">
+    <value>Valget mislyktes. Du har nådd maksimal samtidighet. Arbeidselement: {0}</value>
+  </data>
+  <data name="OC_PickNotAvailable" xml:space="preserve">
+    <value>Valget mislyktes. Elementet er ikke tilgjengelig. Arbeidselement: {0}</value>
+  </data>
+  <data name="OC_PickPresenceError" xml:space="preserve">
+    <value>Valget mislyktes på grunn av tilgjengelighetsstatusen din. Arbeidselement: {0}</value>
+  </data>
+  <data name="OC_PickSuccess" xml:space="preserve">
+    <value>Arbeidselementet ble valgt. Arbeidselement: {0}</value>
+  </data>
+  <data name="OC_OpenFormFail" xml:space="preserve">
+    <value>Kunne ikke åpne skjemaet. Prøv å åpne skjemaet på nytt. Kontakt administratoren hvis problemet vedvarer.</value>
+  </data>
+  <data name="OC_OpenSessionFail" xml:space="preserve">
+    <value>Kunne ikke åpne økten. Prøv å åpne økten på nytt. Kontakt administratoren hvis problemet vedvarer.</value>
+  </data>
+  <data name="OC_InputTimeFormat" xml:space="preserve">
+    <value>Skriv inn klokkeslett i riktig 24-timers format (TT:mm).</value>
+  </data>
+  <data name="OC_InputTimesDifferenceValidation" xml:space="preserve">
+    <value>Sluttidspunktet kan ikke være tidligere enn eller mindre enn {0} minutter etter starttidspunktet.</value>
+  </data>
+  <data name="OC_SendMessageToConversationSuccessMessage" xml:space="preserve">
+    <value>Fullført! Denne meldingen ble sendt til samtalen.</value>
+  </data>
+  <data name="OC_SendMessageToConversationFailureMessage" xml:space="preserve">
+    <value>Noe gikk galt. Prøv å sende melding til samtalen på nytt.</value>
+  </data>
+  <data name="OC_SupervisorOpenRecord" xml:space="preserve">
+    <value>Diskusjonsoppføringene vises bare og kan ikke åpnes.</value>
+  </data>
+  <data name="OC_LinkToConversationSuccessMessage" xml:space="preserve">
+    <value>Fullført! Denne {0} ble koblet til diskusjonen.</value>
+  </data>
+  <data name="OC_LinkToConversationFailureMessage" xml:space="preserve">
+    <value>Noe gikk galt. Prøv å koble til diskusjonen på nytt.</value>
+  </data>
+  <data name="OC_LinkToConversationUpdatedMessage" xml:space="preserve">
+    <value>Oppdatert! Denne {0} erstattet den forrige {0} som var knyttet til denne diskusjonen.</value>
+  </data>
+  <data name="OC_Presence_Available" xml:space="preserve">
+    <value>Tilgjengelig</value>
+  </data>
+  <data name="OC_Presence_Busy" xml:space="preserve">
+    <value>Opptatt</value>
+  </data>
+  <data name="OC_Presence_DoNotDisturb" xml:space="preserve">
+    <value>Ikke forstyrr</value>
+  </data>
+  <data name="OC_Presence_Away" xml:space="preserve">
+    <value>Ikke til stede</value>
+  </data>
+  <data name="OC_Presence_Offline" xml:space="preserve">
+    <value>Frakoblet</value>
+  </data>
+  <data name="MaskingRule.LimitReached" xml:space="preserve">
+    <value>Kan ikke opprette mer enn {0} maskeringsregler. Slett regler for å begrense totalt antall til {0}.</value>
+  </data>
+  <data name="MaskingRule.PluginError" xml:space="preserve">
+    <value>Det oppstod en feil i plugin-modulen PreValidationMaskingRuleLimitPlugin.</value>
+  </data>
+  <data name="MaskingRule.RegexException.InvalidEscape" xml:space="preserve">
+    <value>SyntaxError: Ugyldig vanlig uttrykk: /{0}/: ugyldig escape</value>
+  </data>
+  <data name="MaskingRule.RegexException.EndOfPattern" xml:space="preserve">
+    <value>SyntaxError: Ugyldig vanlig uttrykk: /{0}/: \ på slutten av mønster</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedCharacterClass" xml:space="preserve">
+    <value>SyntaxError: Ugyldig vanlig uttrykk: /{0}/: uavsluttet tegnklasse</value>
+  </data>
+  <data name="MaskingRule.RegexException.IncompleteQuantifier" xml:space="preserve">
+    <value>SyntaxError: Ugyldig vanlig uttrykk: /{0}/: ufullstendig kvantifikator</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedGroup" xml:space="preserve">
+    <value>SyntaxError: Ugyldig vanlig uttrykk: /{0}/: uavsluttet gruppe</value>
+  </data>
+  <data name="MaskingRule.RegexException.LoneQuantifierBrackets" xml:space="preserve">
+    <value>SyntaxError: Ugyldig vanlig uttrykk: /{0}/: bare én kvantifikatorparentes</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnmatchedParen" xml:space="preserve">
+    <value>SyntaxError: Ugyldig vanlig uttrykk: /{0}/: ikke-samsvarende ')'</value>
+  </data>
+  <data name="MaskingRule.RegexException.NothingToRepeat" xml:space="preserve">
+    <value>SyntaxError: Ugyldig vanlig uttrykk: /{0}/: ikke noe å gjenta</value>
+  </data>
+  <data name="MaskingRule.RegexException.Timeout" xml:space="preserve">
+    <value>TimeoutError: Det tok for lang tid å evaluere det vanlige uttrykket: /{0}/: Avsluttet etter {1} ms.</value>
+  </data>
+  <data name="MaskingRule.MaskingInProgress" xml:space="preserve">
+    <value>Maskere testdata med vanlig uttrykk.</value>
+  </data>
+  <data name="SentimentAnalysis.WrongName" xml:space="preserve">
+    <value>Oppføringsnavnet må være {0}.</value>
+  </data>
+  <data name="SentimentAnalysis.DeleteNotAllowed" xml:space="preserve">
+    <value>Sletting av oppføring er ikke tillatt.</value>
+  </data>
+  <data name="Entity.OnlyOneAllowed" xml:space="preserve">
+    <value>Bare én oppføring av denne typen er tillatt.</value>
+  </data>
+  <data name="Entity.DeleteNotAllowed" xml:space="preserve">
+    <value>Sletting av oppføring er ikke tillatt.</value>
+  </data>
+  <data name="DefaultQueue.DeleteNotAllowed" xml:space="preserve">
+    <value>Du kan ikke slette DefaultQueue fordi køen er skrivebeskyttet.</value>
+  </data>
+  <data name="DefaultQueue.UpdateNotAllowed" xml:space="preserve">
+    <value>Du kan ikke redigere DefaultQueue fordi køen er skrivebeskyttet.</value>
+  </data>
+  <data name="Queue.IncorrectEntityError" xml:space="preserve">
+    <value>Feil ved registrering av plugin-modul: Det logiske enhetsnavnet er ikke Queue.</value>
+  </data>
+  <data name="Queue.QueueTypeUpdateError" xml:space="preserve">
+    <value>Du kan ikke oppdatere køtypen.</value>
+  </data>
+  <data name="Queue.NonEntityQueueSelected" xml:space="preserve">
+    <value>Kan ikke opprette rutingsregelelementet fordi den valgte køen ikke er av enhetstypen. Du kan bare rute til enhetstypekøen.</value>
+  </data>
+  <data name="RoutingRuleItem.NonEntityQueueSelected" xml:space="preserve">
+    <value>Kan ikke legge til oppføring i den valgte køen fordi den valgte køen ikke er av enhetstypen. Velg en enhetskø og prøv på nytt.</value>
+  </data>
+  <data name="OC_Refresh_Grid" xml:space="preserve">
+    <value>Kan ikke flytte oppføringen fordi rutenettet er i sorteringsmodus. Oppdater rutenettet og prøv på nytt</value>
+  </data>
+  <data name="GeoLocationProvider.IncorrectEntityError" xml:space="preserve">
+    <value>Feil ved registrering av plugin-modul: Det logiske enhetsnavnet er ikke GeoLocationProvider.</value>
+  </data>
+  <data name="GeoLocationProvider.PluginError" xml:space="preserve">
+    <value>Det oppstod en feil i plugin-modulen GeoLocationProviderPlugIn.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelsNotSupported" xml:space="preserve">
+    <value>Enhetskanaler støttes ikke i denne utgivelsen. Se viktig-filen hvis du vil ha mer informasjon.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelTypeNotSupported" xml:space="preserve">
+    <value>Enhetskanalen støttes ikke i denne utgivelsen. Velg andre kanaltyper. Se viktig-filen hvis du vil ha mer informasjon.</value>
+  </data>
+  <data name="EntityRouting.EntityWorkStreamsNotSupported" xml:space="preserve">
+    <value>Arbeidsflyter for enhet støttes ikke i denne utgivelsen. Se viktig-filen hvis du vil ha mer informasjon.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForDSF" xml:space="preserve">
+    <value>Det tar opptil 15 minutter å gjenspeile konfigurasjonsendringer for omnikanal.</value>
+  </data>
+  <data name="OC_CaseRoutingFormNotificationMessage" xml:space="preserve">
+    <value>Bare saksruting støttes i denne versjonen. Andre enhetsoppføringer vil bli støttet i den fremtidige versjonen.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForRoutingSolutionDep" xml:space="preserve">
+    <value>Du må installere løsningen Rutingsregler – forhåndsversjon for å bruke ruting av saksenhet. Hvis du vil ha mer informasjon, kan du se {0}</value>
+  </data>
+  <data name="OC_Preview_Message" xml:space="preserve">
+    <value>Ved å aktivere denne funksjonen godtar du at denne funksjonen er i forhåndsversjon, og du godtar {0}. {1}</value>
+    <comment>Template Preview Text for all features</comment>
+  </data>
+  <data name="OC_Preview_Link_Label" xml:space="preserve">
+    <value>Vilkår for forhåndsversjon</value>
+    <comment>Preview Terms label to point to the relevant Preview Terms</comment>
+  </data>
+  <data name="OC_LearnMore_Link_Label" xml:space="preserve">
+    <value>Finn ut mer</value>
+    <comment>Hyperlink label to point to the relevant feature documentation</comment>
+  </data>
+  <data name="AutomaticQueueName" xml:space="preserve">
+    <value>Automatisk fordelingskø</value>
+  </data>
+  <data name="AutomaticQueueSelectionRecommendation" xml:space="preserve">
+    <value>Velg en kø for å distribuere og tilordne arbeidselementer til agenter automatisk.</value>
+  </data>
+  <data name="ConfigureRoutingRulesAtERCNotification" xml:space="preserve">
+    <value>Rutingsregler for arbeidsflyter for enhetsoppføringer konfigureres på kanalnivå. Gå til Kanaler &gt; Enhetsoppføringer &gt; {0} &gt; Rutingsregler for å konfigurere.</value>
+  </data>
+  <data name="isOmnichannelQueueGuidanceNotification" xml:space="preserve">
+    <value>Sett til Ja for å aktivere køen for automatisk arbeidsdistribusjon for omnikanal. Hvis du vil vite mer, kan du se {0}</value>
+  </data>
+  <data name="ManualQueueName" xml:space="preserve">
+    <value>Manuell kø</value>
+  </data>
+  <data name="ManualQueueSelectionRecommendation" xml:space="preserve">
+    <value>Velg Kø for automatisk arbeidsdistribusjon for å tilordne enhetsoppføringer til agenter automatisk.</value>
+  </data>
+  <data name="ERCDeletionWarningMessage" xml:space="preserve">
+    <value>Hvis du sletter oppføringen {0}, deaktiveres rutingen for enhetsoppføringer for enheten {1}. Er du sikker på at du vil slette?</value>
+  </data>
+  <data name="InstallRoutingRuleForERCNotification" xml:space="preserve">
+    <value>Du må installere Rutingsregler-løsningen for å bruke ruting av enhetsoppføring. Hvis du vil ha mer informasjon, kan du se {0}.</value>
+  </data>
+  <data name="EntityRoutingPlugins.GenericError" xml:space="preserve">
+    <value>Kan ikke fullføre operasjonen på grunn av en feil. Prøv på nytt senere. Kontakt Microsofts kundestøtte hvis problemet vedvarer.</value>
+  </data>
+  <data name="EntityRoutingPlugins.CreateError" xml:space="preserve">
+    <value>Kan ikke opprette {0}. Prøv på nytt senere. Kontakt Microsofts kundestøtte hvis problemet vedvarer.</value>
+  </data>
+  <data name="EntityRoutingPlugins.SaveError" xml:space="preserve">
+    <value>Kan ikke lagre {0}. Prøv på nytt senere. Kontakt Microsofts kundestøtte hvis problemet vedvarer.</value>
+  </data>
+  <data name="EntityRoutingPlugins.DeleteError" xml:space="preserve">
+    <value>Kan ikke slette {0}. Prøv på nytt senere. Kontakt Microsofts kundestøtte hvis problemet vedvarer.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityMissing" xml:space="preserve">
+    <value>Enhetsfeltet er tomt. Velg en verdi for enhetsfeltet, og prøv på nytt.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityNotRequired" xml:space="preserve">
+    <value>Enhetsfeltet har en verdi. La enhetsfeltet være tomt, og prøv på nytt.</value>
+  </data>
+  <data name="EntityRoutingPlugins.BothEntityConfigurationsNotRequired" xml:space="preserve">
+    <value>Begge enhetskonfigurasjonsfeltene har verdi. La et av enhetskonfigurasjonsfeltene stå tomt, og prøv på nytt.</value>
+    <comment>Liveworkstream has ercId and mercId fields, and only one can have value</comment>
+  </data>
+  <data name="EntityRoutingPlugins.DefaultWorkStreamName" xml:space="preserve">
+    <value>{0}-arbeidsflyt</value>
+  </data>
+  <data name="EntityRoutingPlugins.FlowConfigurationError" xml:space="preserve">
+    <value>Operasjonen mislyktes på grunn av en feil konfigurasjon i distribusjonsflyten for enhetsoppføringer. Sørg for at {0} ikke slettes eller får nytt navn.</value>
+  </data>
+  <data name="EntityRoutingPlugins.TroubleshootingLearnMore" xml:space="preserve">
+    <value>Hvis du vil ha mer informasjon, kan du se emnet Feilsøking av omnikanal – {0}</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>Bekreft</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Slett</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="OC_IncidentQueueItemWarningNessage" xml:space="preserve">
+    <value>Denne oppføringen ble overført til omnikanalkøen og kan ikke lenger vises her. Hvis du vil se denne oppføringen, kan du åpne den fra instrumentbordet for omnikanal.</value>
+  </data>
+  <data name="OC_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsofts personvernerklæring</value>
+  </data>
+  <data name="OC_ChannelPreviewDisclaimer" xml:space="preserve">
+    <value>Ved å bruke denne kanalen godtar du at denne funksjonen er i forhåndsversjon, og du godtar vilkårene for forhåndsversjon.</value>
+  </data>
+  <data name="OC_SeePreviewTerms" xml:space="preserve">
+    <value>Se vilkår for forhåndsversjon</value>
+  </data>
+  <data name="OC_ThirdPartyChannelPrivacyDisclaimer" xml:space="preserve">
+    <value>Når du aktiverer denne kanalen, godtar du at dataene dine deles med tredjepartssystemer og flyter utenfor organisasjonens samsvars- og geogrense (inkludert Government Cloud-miljøer). Finn ut mer i {0}.</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_FeatureDocumentation" xml:space="preserve">
+    <value>sanntidsoversetting</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsofts personvernerklæring</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_Text" xml:space="preserve">
+    <value>Ved å aktivere denne funksjonen godtar du at opplysningene dine kan flyte utenfor organisasjonens samsvarsgrenser og geografiske grenser. Dette omfatter Government Cloud-miljøer. Finn ut mer om {0} og om {1}.</value>
+    <comment>DO NOT CHANGE {0} and {1}, as they will be replaced with OC_LanguageTranslation_Disclaimer_FeatureDocumentation and OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement respectively.</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_DocumentFeature_Text" xml:space="preserve">
+    <value>Klikk her for aktuell dokumentasjon</value>
+    <comment>Indicates this is the link for feature documentation</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Link" xml:space="preserve">
+    <value>konfigurasjon av nettressurs</value>
+    <comment>  This is the link for real time translation webresource documentation </comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Text" xml:space="preserve">
+    <value>Konfigurer en nettressurs for å generere nettadressen. Kopier og lim inn denne nettadressen nedenfor. Finn ut mer om {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder "0" will be replaced by a OC_LanguageTranslation_Webresource_Disclaimer_Link. Link text is "here".</comment>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_Text" xml:space="preserve">
+    <value>Hvis du aktiverer denne funksjonen, godtar du at denne funksjonen er i forhåndsversjon, og du godtar </value>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_LinkText" xml:space="preserve">
+    <value>Vilkår for forhåndsversjon</value>
+  </data>
+  <data name="LanguageTranslation_Invalid_webresource_url" xml:space="preserve">
+    <value>Nettadressen du har angitt, samsvarer ikke med nettressursen. Prøv å kopiere og lime inn nettadressen til nettressursen på nytt.</value>
+  </data>
+  <data name="DeprecationBanner" xml:space="preserve">
+    <value>Fra og med juli 2022 er ikke denne appen lenger tilgjengelig for bruk. Overfør arbeidsstrømmene dine til administrasjonssenteret for omnikanal for å fortsette å bruke Omnikanal for Customer Service.</value>
+  </data>
+  <data name="OC_Deprecation_Title_Text" xml:space="preserve">
+    <value>Administrasjon av omnikanal støttes ikke lenger</value>
+  </data>
+  <data name="OC_Deprecation_Description_Text" xml:space="preserve">
+    <value>Støtte for appen Administrasjon av omnikanal ble avviklet 30. desember 2022. Hvis du vil konfigurere Customer Service, må du begynne å bruke appen Administrasjonssenter for Customer Service. Flytt alle arbeidstrømsdefinisjoner fra appen Administrasjon av omnikanal til appen Administrasjonssenter for Customer Service umiddelbart. {0}</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More" xml:space="preserve">
+    <value>Finn ut mer</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More_Aria_Label" xml:space="preserve">
+    <value>Finn ut mer om avskriving av Administrasjon av omnikanal</value>
+  </data>
+  <data name="OC_Deprecation_Acknowledge_Checkbox_Label" xml:space="preserve">
+    <value>Jeg forstår at appen Administrasjon av omnikanal ikke lenger støttes.</value>
+  </data>
+  <data name="OC_Deprecation_Redirect_Button_Text" xml:space="preserve">
+    <value>Åpne administrasjonssenteret for Customer Service</value>
+  </data>
+  <data name="OC_Deprecation_Dismiss_Button_Text" xml:space="preserve">
+    <value>Fortsett i Administrasjon av omnikanal</value>
+  </data>
+  <data name="PostConversationSurveyMessage" xml:space="preserve">
+    <value>Hvordan var opplevelsen? Del tilbakemeldingen i denne evalueringen. </value>
+  </data>
+  <data name="OC_FormsProSurvey_Disclaimer" xml:space="preserve">
+    <value>Dette blir styrt av Microsoft Dynamics 365 Customer Voice.</value>
+  </data>
+  <data name="Presence.InactivePresenceUpdateNotAllowed" xml:space="preserve">
+    <value>Oppdateringer av dette feltet for denne oppføringen er deaktivert.</value>
+  </data>
+  <data name="Presence.IncorrectEntityError" xml:space="preserve">
+    <value>Feil ved registrering av plugin-modul: Det logiske enhetsnavnet er ikke msdyn_presence.</value>
+  </data>
+  <data name="OperatingHours.Hours" xml:space="preserve">
+    <value> time(r)</value>
+  </data>
+  <data name="OperatingHours.Minutes" xml:space="preserve">
+    <value> minutt(er)</value>
+  </data>
+  <data name="OperatingHours.TotalOperatingHours" xml:space="preserve">
+    <value>Totalt antall driftstimer. </value>
+  </data>
+  <data name="Presence.DefaultDeletePlugin" xml:space="preserve">
+    <value>Kan ikke slette en standard tilstedeværelse</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Finner ingen feil.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>Det har oppstått en feil i {0}.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Ugyldig agentkapasitet. Verdien må være større enn 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Det ble funnet en feilkonfigurert agent. Agentens kapasitet må settes til en verdi som er større enn 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Det ble funnet {0} feilkonfigurerte agenter. Agentenes kapasitet må være større enn 0.</value>
+    <comment>The error message for OcAgentsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Ugyldig robotkapasitet. Verdien må være større enn 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Det ble funnet en feilkonfigurert robot. Robotens kapasitet må settes til en verdi som er større enn 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Det er {0} feilkonfigurerte roboter. Robotenes kapasitet må være større enn 0.</value>
+    <comment>The error message for OcBotsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Det finnes 1 kø uten agenter.</value>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Det finnes {0} køer uten agenter.</value>
+    <comment>The error message for OcQueuesShouldHaveAgentsRule rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ErrorMessage" xml:space="preserve">
+    <value>Omnikanal er ikke fullstendig funksjonell. Noen behandlingstrinn for meldinger er deaktivert.</value>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ResultEntityMessage" xml:space="preserve">
+    <value>Du må aktivere behandlingstrinnet for melding for å sikre at Omnikanal fungerer som den skal.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointIsNotConfigured" xml:space="preserve">
+    <value>Endepunkt for OC-tjeneste er ikke konfigurert.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointPathIsEmpty" xml:space="preserve">
+    <value>Endepunktbanen for OC-tjenesten er tom.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.ResultEntityMessage" xml:space="preserve">
+    <value>Agenter: {0} (ID: {1})</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is agent name and {1} is agent Id</comment>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Det finnes 1 arbeidsflyt med kapasitet som er større enn agentene.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Det finnes {0} arbeidsflyter med kapasitet som er større enn agentene.</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.ResultEntityMessage" xml:space="preserve">
+    <value>Arbeidsflyten har ikke noen varslingsmaler angitt.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Det er én arbeidsflyt uten varslingsmal.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Det er {0} arbeidsflyter uten varslingsmaler.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoSessionTemplates" xml:space="preserve">
+    <value>Arbeidsflyten {0} har scenarier uten øktmal.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoScenarios" xml:space="preserve">
+    <value>Arbeidsflyten {0} har ikke scenarier.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Det finnes 1 arbeidsflyt uten øktmal.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Det finnes {0} arbeidsflyter uten øktmal.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.ResultEntityMessage" xml:space="preserve">
+    <value>Arbeidsflyten har dupliserte kontekstvariabler: {0}</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is duplicated context names</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Det finnes 1 arbeidsflyt med dupliserte kontekstvariabler.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Det finnes {0} arbeidsflyter med dupliserte kontekstvariabler.</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.ResultEntityMessage" xml:space="preserve">
+    <value>Rutingsregler uten betingelser: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities list</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Det finnes {0} arbeidsflyter med tomme rutingsregler over regler med betingelse.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Det finnes 1 arbeidsflyt med tomme rutingsregler over regler med betingelse.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Det finnes 1 arbeidsflyt med overfør-modus som tillater frakoblet modus.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Det finnes {0} arbeidsflyter med overfør-modus som tillater frakoblet modus.</value>
+    <comment>The error message for WorkstreamWithPushModeShouldNotAllowOfflineMode rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Roboten har potensielt lav kapasitet.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Det finnes 1 robot som har potensielt lav kapasitet.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Det finnes {0} roboter som har potensielt lav kapasitet.</value>
+    <comment>The error message for OcBotsShouldNotHavePotentiallyLowCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.EntityMessage" xml:space="preserve">
+    <value>Duplisert kanalleverandørkonfigurasjon.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultDuplicatedChannel" xml:space="preserve">
+    <value>Det ble funnet dupliserte kanalleverandørkonfigurasjoner.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ProviderNotFound" xml:space="preserve">
+    <value>Finner ikke leverandøren av omnikanalen.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsEmpty" xml:space="preserve">
+    <value>Feltet URL-adresse for kanal er tomt</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsInvalid" xml:space="preserve">
+    <value>Feltet URL-adresse for kanal er ugyldig</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.UnifiedInterfaceAppsFieldNoOCApp" xml:space="preserve">
+    <value>Feltet Enhetlig grensesnitt-apper inneholder ikke omnikanalappen</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AgentRoleNotAssigned" xml:space="preserve">
+    <value>Omnikanal-agentrollen er ikke tilordnet</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.SupervisorRoleNotAssigned" xml:space="preserve">
+    <value>Lederrollen for omnikanalen er ikke tilordnet</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AdministratorRoleNotAssigned" xml:space="preserve">
+    <value>Omnikanal-administratorrollen er ikke tilordnet.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultImproperlyConfigured" xml:space="preserve">
+    <value>Omnikanal-kanalleverandøren er feilkonfigurert.</value>
+  </data>
+  <data name="OC_OH_Preview_Message" xml:space="preserve">
+    <value>Ved å bruke denne funksjonen godtar du at denne funksjonen er i forhåndsversjon, og du godtar {0}. {1}</value>
+    <comment>Template Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_OH_Preview_Notification" xml:space="preserve">
+    <value>Ved å bruke denne funksjonen godtar du at denne funksjonen er i forhåndsversjon, og du godtar vilkårene for forhåndsversjon.</value>
+    <comment>Notification Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_InstanceLevelBanner" xml:space="preserve">
+    <value>De automatiske meldingsinnstillingene for {0} ble brukt. Hvis du vil opprette en automatisert melding for {1}, må du velge Ny.</value>
+  </data>
+  <data name="OC_CustomSystemMessage_ConfirmDelete" xml:space="preserve">
+    <value>Er du sikker på at du vil slette denne meldingen? Når du sletter denne, går vi tilbake til de automatiske meldingsinnstillingene for {0}.</value>
+  </data>
+  <data name="OC_Channel_Chat" xml:space="preserve">
+    <value>Chat</value>
+    <comment>Messaging channel chat</comment>
+  </data>
+  <data name="OC_Channel_Custom" xml:space="preserve">
+    <value>Egendefinert</value>
+    <comment>Messaging channel Custom</comment>
+  </data>
+  <data name="OC_Channel_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>Messaging channel Facebook</comment>
+  </data>
+  <data name="OC_Channel_LINE" xml:space="preserve">
+    <value>LINE</value>
+    <comment>Messaging channel LINE</comment>
+  </data>
+  <data name="OC_Channel_SMS" xml:space="preserve">
+    <value>SMS</value>
+    <comment>Messaging channel SMS</comment>
+  </data>
+  <data name="OC_Channel_Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+    <comment>Messaging channel Microsoft Teams</comment>
+  </data>
+  <data name="OC_Channel_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Messaging channel Twitter</comment>
+  </data>
+  <data name="OC_Channel_unknown" xml:space="preserve">
+    <value>Ukjent kanal</value>
+    <comment>Messaging channel unknown channel</comment>
+  </data>
+  <data name="OC_Channel_WeChat" xml:space="preserve">
+    <value>WeChat</value>
+    <comment>Messaging channel WeChat</comment>
+  </data>
+  <data name="OC_Channel_WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+    <comment>Messaging channel WhatsApp</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_DuplicateNameMessage" xml:space="preserve">
+    <value>Automatisert melding eller meldingsmal med samme navn er allerede opprettet.</value>
+  </data>
+  <data name="OC_FeaturePreviewDisclaimer" xml:space="preserve">
+    <value>Ved å bruke denne funksjonen godtar du at denne funksjonen er i forhåndsversjon, og du godtar vilkårene for forhåndsversjon.</value>
+  </data>
+  <data name="OC_ProgressIndicator_Loading" xml:space="preserve">
+    <value>Laster inn ...</value>
+    <comment>Progress indicator message</comment>
+  </data>
+  <data name="OC_TokenAcquireFailed_AlertText" xml:space="preserve">
+    <value>Mislykket innhenting av token</value>
+    <comment>Alert message for token acquire failures</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationTitle" xml:space="preserve">
+    <value>Bytt til forhåndskonfigurert arbeidsområde</value>
+    <comment>Analytics PaaS feature confirmation dialog body text</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationText" xml:space="preserve">
+    <value>Hvis du bytter til forhåndskonfigurert, slettes innstillingene for egendefinert arbeidsområde. Du kan bytte tilbake til egendefinert arbeidsområde når som helst, men du må konfigurere arbeidsområdet på nytt.</value>
+    <comment>Analytics PaaS feature confirmation dialog title</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationButtonLabel" xml:space="preserve">
+    <value>Bytt til forhåndskonfigurert</value>
+    <comment>Analytics PaaS feature confirmation dialog confirm button label</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimer" xml:space="preserve">
+    <value>WhatsApp har et åpent svarvindu på 24 timer. Hvis det går 24 timer etter kundens siste melding, kan agenter bare sende WhatsApp-godkjente meldingsmaler før kunden svarer. Sørg for at WhatsApp godkjenner meldingsmalene før du legger dem til her. {0}</value>
+    <comment>{0} will be replaced by a link "learn more"</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimerLearnMore" xml:space="preserve">
+    <value>Finn ut mer</value>
+    <comment>learn more link for OC_WhatsAppMessageTemplateDisclaimer</comment>
+  </data>
+  <data name="MessageTemplateFeatureName" xml:space="preserve">
+    <value>Meldingsmal</value>
+    <comment>This should be the same as what we show in the sitemap</comment>
+  </data>
+  <data name="AutomatedMessageRequiredFieldNotFilled" xml:space="preserve">
+    <value>Obligatoriske felter må fylles ut.</value>
+    <comment>Shown in banner when required fields are not populated</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitor" xml:space="preserve">
+    <value>Besøkende</value>
+    <comment>Used when user name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleLiveWorkStream" xml:space="preserve">
+    <value>Direkte arbeidsflyt</value>
+    <comment>Used when live work stream name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitorFormatter" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} and {1} should not be changed. They will be replaced by customer name and workstream name respectively. Example, James: WorkStream1</comment>
+  </data>
+  <data name="DefaultFieldsRquiredForMessageTemplate" xml:space="preserve">
+    <value>Tekst for standardspråket og standardmeldingen er obligatorisk for en meldingsmal.</value>
+  </data>
+  <data name="DefaultLocalizationDataNotFoundForMessageTemplate" xml:space="preserve">
+    <value>Finner ikke standard lokaliseringsdata for denne meldingsmalen.</value>
+  </data>
+  <data name="SavingPrivacyTerms" xml:space="preserve">
+    <value>Laster inn ...</value>
+    <comment>Shown after user agrees to privacy terms</comment>
+  </data>
+  <data name="ConversationFormReadonlyNotificationText" xml:space="preserve">
+    <value>Skrivebeskyttet. Statusårsaken for denne oppføringen: {0}</value>
+    <comment>{0} will be replaced with statuscode text. Any changes to this will have an impact on msdyn_customersummaryscripts.ts</comment>
+  </data>
+  <data name="OC_IntradayInsights_ConfigTitle" xml:space="preserve">
+    <value>Konfigurasjon for Intraday-innsikt</value>
+    <comment>Title for Intraday insights configuration</comment>
+  </data>
+  <data name="OC_FormsPro_Button_Text" xml:space="preserve">
+    <value>Åpne Dynamics 365 Customer Voice</value>
+  </data>
+  <data name="FbAppNotFound" xml:space="preserve">
+    <value>Finner ikke program-ID-en for Facebook. Prøv en annen.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PrivacyNotFound" xml:space="preserve">
+    <value>Personvernvilkår er ikke godtatt for kanalen.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="CantProvisionFBPage" xml:space="preserve">
+    <value>Kan ikke klargjøre Facebook-siden. Dobbeltsjekk all informasjonen du har angitt, og prøv på nytt.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PreValidationFacebookApplicationCreatePluginFailure" xml:space="preserve">
+    <value>Det oppstod en uventet feil under oppretting av Facebook-programmet. Prøv på nytt senere.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageCreatePluginFailure" xml:space="preserve">
+    <value>Det oppstod en uventet feil under oppretting av Facebook-siden. Prøv på nytt senere.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageUpdatePluginFailure" xml:space="preserve">
+    <value>Det oppstod en uventet feil under oppdatering av Facebook-siden. Prøv på nytt senere.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ExistingFbPageFound" xml:space="preserve">
+    <value>Du har allerede konfigurert denne Facebook-siden. Angi en annen side og prøv på nytt.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ErrorProcessingRequestParameter" xml:space="preserve">
+    <value>Feil under behandling av forespørselsparametere. Feil: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="InvalidContextVariable" xml:space="preserve">
+    <value>ContextVariables er ugyldig. Feil: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="MissingRequestId" xml:space="preserve">
+    <value>RequestId mangler.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingVersion" xml:space="preserve">
+    <value>Version er ugyldig.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingChannelInstance" xml:space="preserve">
+    <value>ChannelInstance mangler.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingDirection" xml:space="preserve">
+    <value>Direction mangler.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidDirection" xml:space="preserve">
+    <value>Direction er ugyldig.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingContextVariables" xml:space="preserve">
+    <value>ContextVariables mangler.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingMessageText" xml:space="preserve">
+    <value>MessageText mangler.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingOffsetTime" xml:space="preserve">
+    <value>OffsetTime mangler.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidChannelInstance" xml:space="preserve">
+    <value>Nyttelasten for kanalforekomsten er ugyldig.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiParameterMissing" xml:space="preserve">
+    <value>{0} mangler eller er ugyldig.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays parameter value.</comment>
+  </data>
+  <data name="ChannelApiUnsupportedVersion" xml:space="preserve">
+    <value>ApiVersion {0} støttes ikke.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays version number.</comment>
+  </data>
+  <data name="ChannelApiInternalError" xml:space="preserve">
+    <value>Det oppstod en intern feil. {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the exception message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationSend" xml:space="preserve">
+    <value>Samtalen finnes ikke, eller samtalen er lukket.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiMessageNullSend" xml:space="preserve">
+    <value>Meldingsteksten kan ikke være null eller tom.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationGet" xml:space="preserve">
+    <value>Samtalen finnes ikke.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationEnd" xml:space="preserve">
+    <value>Samtalen finnes ikke, eller samtalen er lukket.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Title" xml:space="preserve">
+    <value>Tvangslukk samtalen</value>
+    <comment>Title of the confirmation window displayed before force close is triggered</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Text" xml:space="preserve">
+    <value>Er du sikker på at du vil lukke arbeidselementet?</value>
+    <comment>Confirmation text for force close</comment>
+  </data>
+  <data name="ForceClose_Confirmation_OKButtonLabel" xml:space="preserve">
+    <value>Fortsett</value>
+    <comment>Proceed</comment>
+  </data>
+  <data name="NewCase_Label">
+    <value>Ny sak</value>
+    <comment>Label for Create a Case button</comment>
+  </data>
+</root>

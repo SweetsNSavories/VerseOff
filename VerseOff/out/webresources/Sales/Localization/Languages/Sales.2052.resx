@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Close_Opp_Dlg_Desc" xml:space="preserve">
+    <value>提供以下有关此商机结束原因的信息。</value>
+  </data>
+  <data name="Error_Message_0x80040515" xml:space="preserve">
+    <value>商机已经结束。</value>
+    <comment>IDS_OPPORTUNITY_IS_ALREADY_CLOSED</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_37" xml:space="preserve">
+    <value>父商机上的“实际收入”设置不正确。必须输入介于 "{0}" 和 "{1}" 之间的数字。</value>
+    <comment>Error message displayed to the user in the close opportunity dialog page when the actual revenue is set incorrectly on the opportunity. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible revenue amount and Placeholder 1 is a number specifing maximum permissible revenue amount.</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_67" xml:space="preserve">
+    <value>必须指定结束日期。</value>
+    <comment>Error message displayed when the user clicks on the ok button without entering a value in the close date field in close opportunity dialog box.</comment>
+  </data>
+  <data name="Suggestions_Dlg_Add_Selected_Text" xml:space="preserve">
+    <value>添加</value>
+    <comment>Label text for the "Add Selected" button in the product suggestions dialog.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Suggestions_Dlg_Error_Moca_Offline" xml:space="preserve">
+    <value>仅当应用程序处于联机状态时可查看建议。</value>
+    <comment>Error text for when users attempts to view or add suggestions when Moca is offline.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Selection" xml:space="preserve">
+    <value>请至少选择一个要添加的建议。</value>
+    <comment>Error text for when users attempts to click add suggestions button without selecting any suggestion.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_Add_Suggestions" xml:space="preserve">
+    <value>我们无法添加建议。请重试。{0}</value>
+    <comment>Error text for when adding suggestion fails.[Category="MoCA Client"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Price_List" xml:space="preserve">
+    <value>您必须选择价目表才能查看建议。</value>
+    <comment>Error text for when user opens Suggestions dialog without a price list selected.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_NoParentRecordFound" xml:space="preserve">
+    <value>未找到父记录。</value>
+  </data>
+  <data name="Quote_Closed_Subject" xml:space="preserve">
+    <value>报价单结束 ({0}) - {1}</value>
+    <comment>Subject for the quote close activity. Whenever a quote is closed a quote closed activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was closed. Eg: Lost, Canceled or Revised. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Quote_Won_Subject" xml:space="preserve">
+    <value>报价单赢得 ({0}) - {1}</value>
+    <comment>Subject for the quote won activity. Whenever a quote is won a quote won activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was won. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Close_Opportunity_Activity_Subject" xml:space="preserve">
+    <value>已结束的商机:{0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is name of object.</comment>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>是否要删除此 {0}? 您无法撤消此操作。</value>
+    <comment>Dialog page description for delete confirmation dialog page. Eg: Deleting a product. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Quote_Lines" xml:space="preserve">
+    <value>是否要删除这些报价单明细? 此操作无法撤消。</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple quote products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Quote_Line" xml:space="preserve">
+    <value>是否要删除此报价单明细? 此操作无法撤消。</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single quote product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Order_Lines" xml:space="preserve">
+    <value>是否要删除这些订单明细? 此操作无法撤消。</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple order products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Order_Line" xml:space="preserve">
+    <value>是否要删除此订单明细? 此操作无法撤消。</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single order product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Invoice_Lines" xml:space="preserve">
+    <value>是否要删除这些发票明细? 此操作无法撤消。</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple invoice products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Invoice_Line" xml:space="preserve">
+    <value>是否要删除此发票明细? 此操作无法撤消。</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single invoice product</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Opportunity_Lines" xml:space="preserve">
+    <value>是否要删除这些商机明细? 此操作无法撤消。</value>
+    <comment>Dialog page description for delete confirmation dialog page for multiple opportunity products</comment>
+  </data>
+  <data name="Dialog_Delete_Description_Opportunity_Line" xml:space="preserve">
+    <value>是否要删除此商机明细? 此操作无法撤消。</value>
+    <comment>Dialog page description for delete confirmation dialog page for a single opportunity product</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="ViewDuplicates_aspx_Button_Label_CancelUpdateRecord" xml:space="preserve">
+    <value>取消(&amp;C)</value>
+    <comment>The label of the Cancel Update button</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>确认删除</value>
+  </data>
+  <data name="Web.SFA.QOI.QuantityAndPriceNegativeAlert" xml:space="preserve">
+    <value>不能为“数量”和“单价”指定负值。请更改这些值并重试。</value>
+    <comment>Alert message that is displayed in QOI forms when the both Quantity and Price Per Unit fields are filled up with negative values. [Category="SFA: Negative prices"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>您必须先选择一个或多个记录才能执行此操作。</value>
+  </data>
+  <data name="Web.SFA.quotes.EffectiveToEarlierThanEffectiveFrom" xml:space="preserve">
+    <value>“有效截止时间”日期不能发生在“有效起始时间”日期之前。</value>
+    <comment>Error message to display if effective to date supplied in the quote form is earlier than effective from date.</comment>
+  </data>
+  <data name="Web.SFA.QOI.CurrencyChangeAlert" xml:space="preserve">
+    <value>查看窗体中的所有货币字段，然后继续。</value>
+    <comment>Alert message that is displayed in Quote and Opportunity forms when transaction currency is changed. [Category="Business Modules"]</comment>
+  </data>
+  <data name="QUOTE_EXPIRED" xml:space="preserve">
+    <value>“有效截止时间”日期已过。若要重新激活此报价单，可以将日期设置为将来日期。</value>
+    <comment>quote is expired.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Suggestions_Notification_Available_Message" xml:space="preserve">
+    <value>产品建议可用({0})</value>
+    <comment>Text for the notification that product suggestions are available.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Notification_See_Link_Text" xml:space="preserve">
+    <value>视图</value>
+    <comment>Text for clickable link in suggestion notification.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_340" xml:space="preserve">
+    <value>仅当返回联机状态时，此报价单才能自动转换为销售订单。若要继续，请单击“确定”。</value>
+    <comment>Confirmation message displayed when the user attempts to create an order from a quote in outlook client when the outlook client is in offline mode.</comment>
+  </data>
+  <data name="Web.SFA.QOI.QuantityChangedDueToChangeInAccuracy" xml:space="preserve">
+    <value>由于产品所支持小数的更新，“数量”框中的值已由“{0}”更改为“{1}”。
+  要保存更改，请单击“确定”，然后单击“保存”或“保存并关闭”。</value>
+    <comment>Header of Message to prompt the user about change in qunatity due to change in decimal accuracy supported by the product. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 and Placeholder 1 are numbers.</comment>
+  </data>
+  <data name="Close_Quote_Dlg_Title" xml:space="preserve">
+    <value>结束报价单</value>
+  </data>
+  <data name="Close_Quote_Dlg_Desc" xml:space="preserve">
+    <value>您将关闭此报价单。</value>
+    <comment>Close quote dialog description.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.dlg_close.aspx_155" xml:space="preserve">
+    <value>结束日期</value>
+    <comment>Label for the close date field in the close quote dialog box. Represents the quote close date.</comment>
+  </data>
+  <data name="Dialog_PaidInvoice_Title" xml:space="preserve">
+    <value>已付发票</value>
+  </data>
+  <data name="Dialog_PaidInvoice_Description" xml:space="preserve">
+    <value>选择支付此发票的信息。</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Title" xml:space="preserve">
+    <value>取消发票</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Description" xml:space="preserve">
+    <value>选择取消此发票的信息。</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Title" xml:space="preserve">
+    <value>取消订单</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Desc" xml:space="preserve">
+    <value>提供此订单的取消信息。</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_ConfirmButton.dlg_close" xml:space="preserve">
+    <value>确认</value>
+    <comment>OK Button text when Order close dialog when the order is canceled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_50.dlg_close" xml:space="preserve">
+    <value>取消日期</value>
+    <comment>Label for the sales order cancel date field in cancel order dialog page.</comment>
+  </data>
+  <data name="Order_Fulfill_Dlg_Title" xml:space="preserve">
+    <value>完成订单</value>
+  </data>
+  <data name="Order_Fulfill_Dlg_Desc" xml:space="preserve">
+    <value>提供此订单履行状况的信息。</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_FulfillButton.dlg_close" xml:space="preserve">
+    <value>完成</value>
+    <comment>OK Button text when Order close dialog when the order is fulfilled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_51.dlg_close" xml:space="preserve">
+    <value>完成日期</value>
+    <comment>Label for the sales order fulfill date field in fulfill order dialog page.</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_155" xml:space="preserve">
+    <value>添加产品前必须先选择价目表。</value>
+    <comment>Error message displayed in the opportunity form when the user attempts to add a product to the opportunity without choosing a price list for the opportunity.</comment>
+  </data>
+  <data name="notEligibleBulkEdit" xml:space="preserve">
+    <value>控件不适用于批量编辑。</value>
+  </data>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>关闭电子邮件窗体</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>将{0}的状态更改为“已完成”并关闭该窗体</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>您必须选择客户。</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>您必须先保存更改才能转换该活动。</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="LOCID_PROVIDE_VALUE_ADDRESS" xml:space="preserve">
+    <value>必须先提供 {0} 的值才能查找地址。</value>
+    <comment>{NumberedPlaceholder="{0}"}. AlertMessage.Message on omission of value for address lookup.</comment>
+  </data>
+  <data name="LOCID_SALESLIT_NO_DOCUMENTS" xml:space="preserve">
+    <value>{0} 不包含任何 {1}。</value>
+    <comment>Text in alert when sales literature does not contain any documents. [Category="Business Modules"] {NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with salesliterature entity display name. {NumberedPlaceholder="{1}"} Placeholder 1 will be replaced with salesliteratureitem entity display name</comment>
+  </data>
+  <data name="Web.SFA.invoice.edit.aspx_163" xml:space="preserve">
+    <value>出现下列错误: {0}</value>
+    <comment>Message displayed with price error messages.</comment>
+  </data>
+  <data name="SalesAttachmentDisplayName" xml:space="preserve">
+    <value>销售附件</value>
+    <comment>Sales Attachment display name.</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>快速市场活动不支持批量编辑。</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="Admin_Settings_Error_Saving_Data" xml:space="preserve">
+    <value>将数据保存到服务器时出错，请重试</value>
+    <comment>error message on saving data.</comment>
+  </data>
+  <data name="Admin_Settings_Error_Loading_Data" xml:space="preserve">
+    <value>从服务器获取数据时出错，请尝试重新加载页面</value>
+    <comment>error message on fetching data</comment>
+  </data>
+  <data name="Sales_DeleteSingleProductsFromQOOI" xml:space="preserve">
+    <value>正在删除产品</value>
+    <comment>Message to show while deleting the products from QOOI Entities.</comment>
+  </data>
+  <data name="Sales_DeleteMultipleProductsFromQOOI" xml:space="preserve">
+    <value>正在删除产品</value>
+    <comment>Message to show while deleting the products from QOOI Entities.</comment>
+  </data>
+  <data name="Admin_Settings_Saved_Successfully" xml:space="preserve">
+    <value>已成功保存</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+  <data name="Admin_Settings_Sales_Title" xml:space="preserve">
+    <value>产品目录设置</value>
+    <comment>Sales Setting Page title</comment>
+  </data>
+  <data name="Admin_Settings_Goal_Title" xml:space="preserve">
+    <value>目标设置</value>
+    <comment>Goal Setting Page title</comment>
+  </data>
+  <data name="Web.products.discounttypeitem.edit.aspx_21" xml:space="preserve">
+    <value>购物量上限必须大于或等于购物量下限。</value>
+    <comment>Error message displayed to the user if the begin quantity supplied in the discount form is more than the end quantity.</comment>
+  </data>
+  <data name="Sales_GeneratePDF" xml:space="preserve">
+    <value>正在导出为 PDF</value>
+    <comment>Message to show when exporting record to PDF </comment>
+  </data>
+  <data name="Sales_PersonalTemplates" xml:space="preserve">
+    <value>个人模板</value>
+    <comment>Sub sections header for command create PDF </comment>
+  </data>
+  <data name="Sales_EmailAsPDF" xml:space="preserve">
+    <value>正在打开电子邮件</value>
+    <comment>Message to show when opening email record with PDF attached.</comment>
+  </data>
+  <data name="Sales_CreatePDF_Downloaded_Notification" xml:space="preserve">
+    <value>已成功下载!</value>
+    <comment>Notificaiton message shown when PDF download is complete.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_Add_Notification_Text" xml:space="preserve">
+    <value>不能添加产品 – 此 {0} 的价目表中无此产品。</value>
+    <comment>Error message displayed in the OQOI Product forms when the user attempts to add a product to the opportunity which doesn't belong to the chosen price list.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_Active_Products_Error" xml:space="preserve">
+    <value>您只能添加可用产品。</value>
+    <comment>Only active products can be added.</comment>
+  </data>
+  <data name="Sales_OQOIProduct_ProductFamily_Lookup_Error" xml:space="preserve">
+    <value>您只能添加产品和产品捆绑销售。</value>
+    <comment>Product Family should not be allowed to be selected in Opportunity Product lookup.</comment>
+  </data>
+  <data name="Sales_BusinessCardScanner_ButtonText" xml:space="preserve">
+    <value>扫描名片</value>
+    <comment>Button Text displayed for Business Card Reader Control</comment>
+  </data>
+  <data name="Sales_Quote_Activated_ToastNotification" xml:space="preserve">
+    <value>成功! 您的 {0} 现已激活并且无法编辑</value>
+    <comment>Toast Notificaiton message for successful Quote Activate action.</comment>
+  </data>
+  <data name="Sales_Quote_Closed_ToastNotification" xml:space="preserve">
+    <value>{0} 已成功关闭</value>
+    <comment>Toast Notificaiton message for successful Quote Close action.</comment>
+  </data>
+  <data name="Sales_Quote_Revised_ToastNotification" xml:space="preserve">
+    <value>您的 {0} 现在可以进行编辑</value>
+    <comment>Toast Notificaiton message for successful Quote Revise action.</comment>
+  </data>
+  <data name="Sales_OrderToInvoice_Created_ToastNotification" xml:space="preserve">
+    <value>{0} 已成功生成</value>
+    <comment>Toast Notificaiton message for successful entity creation</comment>
+  </data>
+  <data name="Sales_ToastNotification_EntityCreation" xml:space="preserve">
+    <value>{0} 已成功创建</value>
+    <comment>Toast Notificaiton message for successful entity creation</comment>
+  </data>
+  <data name="Sales_ToastNotification_CreateQuoteFromOpty" xml:space="preserve">
+    <value>您已经草拟了一个新的 {0}。要完成该操作，请单击顶部菜单中的“激活”</value>
+    <comment>Toast Notificaiton message for successful quote creation from opportunity</comment>
+  </data>
+  <data name="Sales_CreatePDF_AttachPDFToNote" xml:space="preserve">
+    <value>正在保存到日程表</value>
+    <comment>Message to show when saving document PDF as an attachment to Note.</comment>
+  </data>
+  <data name="Sales_CreatePDF_SavePDFAsAttachmentToNote_Notification" xml:space="preserve">
+    <value>“您的 {0}”已保存到日程表。</value>
+    <comment>Notificaiton message shown when PDF attachment to timeline -&gt; note is complete. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing document template name. E.g.: “Quote Summary”</comment>
+  </data>
+  <data name="Sales_CreatePDF_SaveToSharepoint" xml:space="preserve">
+    <value>正在保存到 Sharepoint</value>
+    <comment>Message to show when saving document PDF to Sharepoint.</comment>
+  </data>
+  <data name="Sales_CreatePDF_SaveToSharePoint_Notification" xml:space="preserve">
+    <value>“您的 {0}”已保存到 SharePoint</value>
+    <comment>Notificaiton message shown when PDF upload to sharepoint is complete. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing document template name. E.g.: “Quote Summary”</comment>
+  </data>
+  <data name="Button_Label_Download" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="Button_Label_Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="cannotReviseQuote" xml:space="preserve">
+    <value>无法修订报价单。
+    未找到负责人值。</value>
+    <comment>Cannot revise the Quote.</comment>
+  </data>
+  <data name="Dialog_CreatePDF_Description" xml:space="preserve">
+    <value>您的 {0} 文档现已准备就绪。是否要将其保存到 {1} 或下载副本?</value>
+    <comment>Dialog page description for Create PDF confirmation dialog page. Eg: Creating PDF document. {NumberedPlaceholder="{0}", NumberedPlaceholder="{1}"}. Placeholder 0 is a text representing an entity name Eg: Quote and Placeholder 1 is a text representing either Dynamics or Sharepoint</comment>
+  </data>
+  <data name="CreatePDF_Dlg_Title" xml:space="preserve">
+    <value>PDF 传送选项</value>
+    <comment>Create PDF Dialog title</comment>
+  </data>
+  <data name="RequiredFieldsNotFilledError" xml:space="preserve">
+    <value>请确保满足所有字段要求。</value>
+    <comment>Message shown when required fields are not filled</comment>
+  </data>
+  <data name="Read_More" xml:space="preserve">
+    <value>阅读详细信息</value>
+    <comment>Label for Read More button in notification.</comment>
+  </data>
+  <data name="Web.SFA.requiredproductbundle.edit.aspx_92" xml:space="preserve">
+    <value>不支持必需捆绑销售产品窗体上的定价相关字段更新。</value>
+    <comment>Alert message that is displayed to the user in the required product bundle form when user opens required bundle product</comment>
+  </data>
+  <data name="ParentReadOnly" xml:space="preserve">
+    <value>由于父级处于只读状态，无法删除产品</value>
+    <comment>Error message when the parent entity is read only</comment>
+  </data>
+  <data name="COPY_CONTACTS" xml:space="preserve">
+    <value>正在复制 {contact} 信息</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="COPY_SHAREPOINT_DOCS" xml:space="preserve">
+    <value>正在复制 {sharepointdocument} 信息</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_SALESORDER" xml:space="preserve">
+    <value>正在创建 {salesorder}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_SALESORDERDETAIL" xml:space="preserve">
+    <value>正在创建 {salesorderdetail}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="PROCESS_BPF" xml:space="preserve">
+    <value>处理业务流程</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVE_QUOTE_LINEITEMS" xml:space="preserve">
+    <value>正在检索 {quote} 行项目</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVING_QUOTE" xml:space="preserve">
+    <value>正在检索 {quote}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="TRIGGER_PRICE_CALCULATIONS" xml:space="preserve">
+    <value>正在触发价格计算</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_INVOICE" xml:space="preserve">
+    <value>正在创建 {invoice}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_INVOICEDETAIL" xml:space="preserve">
+    <value>正在创建 {invoicedetail}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="VALIDATE_SALESORDER" xml:space="preserve">
+    <value>正在验证 {salesorder}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_QOI" xml:space="preserve">
+    <value>正在创建 QOI 实体</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="CREATE_QOI_PRODUCTS" xml:space="preserve">
+    <value>正在创建 QOI {product}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="RETRIEVE_CUSTOMER_INFO" xml:space="preserve">
+    <value>正在检索 {contact}/{account} 信息</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="UPDATE_QUOTE" xml:space="preserve">
+    <value>正在更新 {quote}</value>
+    <comment>Error text to be used in Enhanced Error Dialog Step details</comment>
+  </data>
+  <data name="Add_Multiple_Products_Description" xml:space="preserve">
+    <value>一次选择、查看和添加多个产品到 {0}</value>
+    <comment>Subheading for Add product dialog for OQOI entities. {0} is placeholder for the respective OQOI entity.</comment>
+  </data>
+  <data name="Add_Multiple_Products_ButtonText" xml:space="preserve">
+    <value>添加到 {0}</value>
+    <comment>Add Product button text for OQOI AddProducts dialog. {0} is placeholder for the respective OQOI entity.</comment>
+  </data>
+  <data name="Cancel_Fulfill_PotentialCustomerHidden" xml:space="preserve">
+    <value>请向窗体添加必要的“潜在客户”字段，以完成或取消订单。</value>
+    <comment>Alert message to notify that mandatory field Potential Customer is hidden.</comment>
+  </data>
+  <data name="CopyOpportunity_Warning_Title" xml:space="preserve">
+    <value>保存商机以查看更多信息</value>
+    <comment>Copy Opportunity: pre-save warning banner title.</comment>
+  </data>
+  <data name="CopyOpportunity_Warning_Message" xml:space="preserve">
+    <value>  商机已从“{0}”复制。保存后，系统会添加其余字段、产品和利益干系人。</value>
+    <comment>Copy Opportunity: pre-save warning banner message. {0} is the source opportunity name.</comment>
+  </data>
+  <data name="CopyOpportunity_SaveButton_Label" xml:space="preserve">
+    <value>保存商机</value>
+    <comment>Copy Opportunity: label for the Save button on the pre-save warning banner.</comment>
+  </data>
+  <data name="CopyOpportunity_Success_Title" xml:space="preserve">
+    <value>已复制商机</value>
+    <comment>Copy Opportunity: post-save success banner title.</comment>
+  </data>
+  <data name="CopyOpportunity_Success_Message" xml:space="preserve">
+    <value>  它已从“{0}”复制。检查时间线以查看包含的内容和未包含的内容。</value>
+    <comment>Copy Opportunity: post-save success banner message. {0} is an in-text link to the source opportunity.</comment>
+  </data>
+  <data name="CopyOpportunity_UnnamedSource" xml:space="preserve">
+    <value>(未命名)</value>
+    <comment>Copy Opportunity: fallback label shown when the source opportunity has no name.</comment>
+  </data>
+  <data name="CopyOpportunity_Preparing" xml:space="preserve">
+    <value>正在准备复制...</value>
+    <comment>Copy Opportunity: progress indicator shown while fetching the source and opening the create form.</comment>
+  </data>
+</root>

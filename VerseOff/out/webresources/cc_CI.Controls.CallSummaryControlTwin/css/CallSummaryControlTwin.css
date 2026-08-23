@@ -1,0 +1,33 @@
+#tab_ci_section_call_summary, #tab_ci_section_notes {
+  position: relative;
+}
+
+#tab_ci_section_call_summary::before, #tab_ci_section_notes::before {
+  position: relative;
+  content: "Loading...";
+  top: 20px;
+}
+
+#tab_ci_section_call_summary.loaded::before, #tab_ci_section_notes.loaded::before {
+  display: none;
+}
+
+#tab_ci_section_call_summary > section, #tab_ci_section_notes > section {
+  border: none;
+  height: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+#tab_ci_section_call_summary [data-id="subject-FieldSectionItemContainer"], #tab_ci_section_notes [data-id="subject-FieldSectionItemContainer"] {
+  border: none;
+}
+
+#tab_ci_section_call_summary .customControl, #tab_ci_section_notes .customControl {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

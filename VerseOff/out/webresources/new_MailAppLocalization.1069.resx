@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+							<xsd:attribute ref="xml:space"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string"/>
+							<xsd:attribute name="name" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+							<xsd:attribute ref="xml:space"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Brand_Name" xml:space="preserve">
+    <value>Dynamics 365</value>
+    <comment>Branding for CRM.</comment>
+  </data>
+	<data name="APPOINTMENT_ACTIVITY_DELETION" xml:space="preserve">
+    <value>Dynamics 365-eko hitzordu hau ere ezabatu nahi duzu ala jarraipena egiteari utzi nahi diozu soilik eta hitzordua mantendu?</value>
+    <comment>Confirmation dialog message is shown when try to untrack event.</comment>
+  </data>
+	<data name="CONFIRM_TEMPLATE_REGARDINGS_RECHECK" xml:space="preserve">
+    <value>Mezu elektronikoan txantiloi bat erabiltzeko, zehaztu mezuaren erlazioa edo gehitu kontaktua, bezerogaia edo erabiltzailea den hartzaile bat gutxienez; ondoren, sakatu "Saiatu berriro".</value>
+    <comment>Confirmation dialog message is shown when try to add email template.</comment>
+  </data>
+	<data name="EMAIL_ACTIVITY_DELETION" xml:space="preserve">
+    <value>Dynamics 365-ko posta elektronikoko jarduera ere ezabatu nahi duzu?</value>
+    <comment>Confirmation dialog message is shown when try to untrack email.</comment>
+  </data>
+	<data name="EMAIL_TO_BE_DELETED" xml:space="preserve">
+    <value>Mezu elektronikoa ezabatu egingo da</value>
+    <comment>Popup message shown after success untrack of email</comment>
+  </data>
+	<data name="APPT_TO_BE_DELETED" xml:space="preserve">
+    <value>Hitzordua Dynamics 365-etik ezabatuko da</value>
+    <comment>Popup message shown after success untrack of event</comment>
+  </data>
+	<data name="UNTRACK_EMAIL_FAILURE" xml:space="preserve">
+    <value>Ezin diozu utzi mezu elektroniko hau jarraitzeari</value>
+    <comment>Text displayed to the user when the app is unable to set the untracked state in Exchange.</comment>
+  </data>
+	<data name="UNTRACK_APPOINTMENT_FAILURE" xml:space="preserve">
+    <value>Ezin diozu utzi hitzordu hau jarraitzeari</value>
+    <comment>Text displayed to the user when the app is unable to set the tracked state in Exchange.</comment>
+  </data>
+	<data name="PENDING_UNTRACK" xml:space="preserve">
+    <value>Elementu hau jarraitzeari uzteko gisa dago markatuta, eta une honetan zain dago</value>
+    <comment>Text displayed to the user when untracking is in pending untracked state.</comment>
+  </data>
+	<data name="SUCCESS_UNTRACK" xml:space="preserve">
+    <value>Jada ez da egiten elementu honen jarraipena</value>
+    <comment>Text displayed to the user when untracking is in success untracked state.</comment>
+  </data>
+	<data name="PENDING_UNTRACK_AND_DELETE" xml:space="preserve">
+    <value>Jarraitzeari uzteko eta ezabatzeko prozesuak zain daude</value>
+    <comment>Text displayed to the user when untracking is in pending untracked+delete state.</comment>
+  </data>
+	<data name="FUTURE_APPPOINTMENT_DELETION" xml:space="preserve">
+    <value>Serie honetako etorkizuneko hitzorduak ere ezabatu nahi dituzu ala jarraitzeari utzi nahi diozu soilik, baina hitzorduak mantendu?</value>
+    <comment>Confirmation dialog message is shown when try to untrack recurrent event.</comment>
+  </data>
+	<data name="UNFOLLOW_CONFIRMATION" xml:space="preserve">
+    <value>Ziur mezuaren segimendua bertan behera utzi nahi duzula?</value>
+    <comment>Confirmation dialog message is shown when try to unfollow email.</comment>
+  </data>
+	<data name="NO" xml:space="preserve">
+    <value>Ez</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="RETRY" xml:space="preserve">
+    <value>Saiatu berriro</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="TRACK_FAILED" xml:space="preserve">
+    <value>Ezin izan dugu {0} honen jarraipena egin</value>
+    <comment>Popup message shown after fail track</comment>
+  </data>
+	<data name="TRACK_SUCCEEDED" xml:space="preserve">
+    <value>Hasi da jarraipena egiten</value>
+    <comment>Popup message shown after success track</comment>
+  </data>
+	<data name="UNFOLLOW_SUCCEEDED" xml:space="preserve">
+    <value>Utzi zaio segimendua egiteari</value>
+    <comment>Popup message shown after success unfollow</comment>
+  </data>
+	<data name="UNTRACK_FOLLOWED" xml:space="preserve">
+    <value>Mezu elektronikoaren segimendua egiten ari da. Bertan behera uzten baduzu jarraipena, ez zaio egingo segimendua mezuari. Ziur mezuaren jarraipena bertan behera utzi nahi duzula?</value>
+    <comment>Confirmation dialog message is shown when try to untrack already followed email</comment>
+  </data>
+	<data name="YES" xml:space="preserve">
+    <value>Bai</value>
+    <comment>Confirm button label</comment>
+  </data>
+	<data name="UNTRACK" xml:space="preserve">
+    <value>Utzi jarraitzeari</value>
+    <comment>Text used for appointment untrack button.</comment>
+  </data>
+	<data name="INSUFFICIENT_RECORD_PERMISSIONS" xml:space="preserve">
+    <value>Ez duzu baimenik erregistro horiek atzitzeko. Jarri harremanetan Dynamics 365-en administratzailearekin.</value>
+    <comment>Message that being displayed if user don't have permissions for record deletion</comment>
+  </data>
+	<data name="EWS_FAILURE" xml:space="preserve">
+    <value>Ezin da konektatu Exchange-ra</value>
+    <comment>Message that being displayed if we were not able to perform ews operation.</comment>
+  </data>
+	<data name="DELETE" xml:space="preserve">
+    <value>Ezabatu</value>
+    <comment>Confirm button label for deleted in Dynamics 365 action</comment>
+  </data>
+	<data name="EMAIL_IS_NOT_FOLLOWED" xml:space="preserve">
+    <value>Mezu elektroniko honi ez zaio segimendurik egiten</value>
+    <comment>Status text used for email engagement follow tab page when email is not followed.</comment>
+  </data>
+	<data name="FOLLOW_RIGHT_BEFORE_SEND" xml:space="preserve">
+    <value>Mezu elektronikoa bidali baino lehen, "Egin segimendua" aukera sakatzea gomendatzen dizugu.</value>
+    <comment>Recommendation text used for email engagement follow tab page when email is not follow.</comment>
+  </data>
+	<data name="EMAIL_CANNOT_BE_FOLLOWED" xml:space="preserve">
+    <value>Ezin da egin mezu elektroniko honen segimendua</value>
+    <comment>Message that displayed when email connot be followed.</comment>
+  </data>
+	<data name="TRACK_BEFORE_FOLLOWING" xml:space="preserve">
+    <value>Aurrera egin ahal izateko, mezuaren segimendua aktibatu behar duzu.</value>
+    <comment>Message that explanes that email should be tracked before following.</comment>
+  </data>
+	<data name="FOLLOW_IN_PROCESS_MESSAGE" xml:space="preserve">
+    <value>Utzi leiho hau zabalik hau egiten dugun bitartean...</value>
+    <comment>Status message that displayed on the follow MDD while following is in process.</comment>
+  </data>
+	<data name="EMAIL_WILL_BE_FOLLOWED" xml:space="preserve">
+    <value>Mezu elektronikoaren segimendua egingo da</value>
+    <comment>Email will be followed message.</comment>
+  </data>
+	<data name="DONT_EDIT_AFTER_FOLLOW" xml:space="preserve">
+    <value>Mezu elektronikoaren segimendua egiten hasi ostean, mezua ez editatzea edo hartzaileak ez aldatzea gomendatzen dizugu.</value>
+    <comment>Message that displayed after followed succeeded.</comment>
+  </data>
+	<data name="FOLLOW_ERROR" xml:space="preserve">
+    <value>Ezin izan dugu egin mezuaren segimendua. Saiatu berriro segimendua egiten. Arazoak badirau, jarri harremanetan sistemaren administratzailearekin.</value>
+    <comment>Message that displayed if message follow failed.</comment>
+  </data>
+	<data name="UNFOLLOW_ERROR" xml:space="preserve">
+    <value>Ezin izan dugu utzi bertan behera mezuaren segimendua. Saiatu berriro bertan behera uzten segimendua. Arazoak badirau, ezabatu mezua segitutako mezu gisa bidal ez dadin.</value>
+    <comment>Message that displayed if message unfollow failed.</comment>
+  </data>
+	<data name="FOLLOW_HELP_LINK_URL_1">
+		<value>https://go.microsoft.com/fwlink/p/?linkid=867623</value>
+		<comment>Recommendation link used for email engagement follow tab page.[Category="MoCA OWA"]</comment>
+	</data>
+	<data name="ADD_TEMPLATE_FAILED" xml:space="preserve">
+    <value>Arazo bat izan da "Gehitu txantiloia" komandoarekin</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_SALES_LITERATURE_FAILED" xml:space="preserve">
+    <value>Arazo bat izan da "Gehitu salmenta-dokumentazioa" komandoarekin</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_KNOWLEDGE_ARTICLE_FAILED" xml:space="preserve">
+    <value>Arazo bat izan da "Gehitu jakintza-artikulua" komandoarekin</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="VIEW_ACTIVITY_FAILED" xml:space="preserve">
+    <value>Arazo bat izan da "Ikusi jarduera" komandoarekin</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_TASK_FAILED" xml:space="preserve">
+    <value>Arazo bat izan da "Gehitu zeregina" komandoarekin</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_APPOINTMENT_FAILED" xml:space="preserve">
+    <value>Arazo bat izan da "Gehitu hitzordua" komandoarekin</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="ADD_PHONE_CALL_FAILED" xml:space="preserve">
+    <value>Arazo bat izan da "Gehitu telefono-deia" komandoarekin</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="FOLLOW_FAILED" xml:space="preserve">
+    <value>Arazo bat izan da "Egin segimendua" komandoarekin</value>
+    <comment>Error Dialog message in case the command failed</comment>
+  </data>
+	<data name="EMAIL" xml:space="preserve">
+    <value>Helbide elektronikoa</value>
+    <comment>Track item type name</comment>
+  </data>
+	<data name="APPOINTMENT" xml:space="preserve">
+     <value>Hitzordua</value>
+     <comment>Track item type name</comment>
+  </data>
+</root>

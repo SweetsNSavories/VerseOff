@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Close_Opp_Dlg_Desc" xml:space="preserve">
+    <value>이 영업 기회를 종료하는 이유에 대해 다음 정보를 제공하십시오.</value>
+  </data>
+  <data name="Error_Message_0x80040515" xml:space="preserve">
+    <value>영업 기회가 이미 종료되었습니다.</value>
+    <comment>IDS_OPPORTUNITY_IS_ALREADY_CLOSED</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_37" xml:space="preserve">
+    <value>실제 매출이 상위 영업 기회에서 올바르지 않게 설정되어 있습니다. "{0}"에서 "{1}" 사이의 숫자를 입력해야 합니다.</value>
+    <comment>Error message displayed to the user in the close opportunity dialog page when the actual revenue is set incorrectly on the opportunity. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible revenue amount and Placeholder 1 is a number specifing maximum permissible revenue amount.</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_67" xml:space="preserve">
+    <value>종료 날짜를 지정해야 합니다.</value>
+    <comment>Error message displayed when the user clicks on the ok button without entering a value in the close date field in close opportunity dialog box.</comment>
+  </data>
+  <data name="Suggestions_Dlg_Add_Selected_Text" xml:space="preserve">
+    <value>추가</value>
+    <comment>Label text for the "Add Selected" button in the product suggestions dialog.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="Suggestions_Dlg_Error_Moca_Offline" xml:space="preserve">
+    <value>앱이 온라인인 경우에만 제안을 볼 수 있습니다.</value>
+    <comment>Error text for when users attempts to view or add suggestions when Moca is offline.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Selection" xml:space="preserve">
+    <value>추가할 제안을 하나 이상 선택하십시오.</value>
+    <comment>Error text for when users attempts to click add suggestions button without selecting any suggestion.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_Add_Suggestions" xml:space="preserve">
+    <value>제안을 추가할 수 없었습니다. 다시 시도하십시오. {0}</value>
+    <comment>Error text for when adding suggestion fails.[Category="MoCA Client"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Price_List" xml:space="preserve">
+    <value>제안을 보려면 가격표를 선택해야 합니다.</value>
+    <comment>Error text for when user opens Suggestions dialog without a price list selected.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_NoParentRecordFound" xml:space="preserve">
+    <value>상위 레코드가 없습니다.</value>
+  </data>
+  <data name="Quote_Closed_Subject" xml:space="preserve">
+    <value>종료된 견적({0}) - {1}</value>
+    <comment>Subject for the quote close activity. Whenever a quote is closed a quote closed activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was closed. Eg: Lost, Canceled or Revised. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Quote_Won_Subject" xml:space="preserve">
+    <value>성공한 견적({0}) - {1}</value>
+    <comment>Subject for the quote won activity. Whenever a quote is won a quote won activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was won. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Close_Opportunity_Activity_Subject" xml:space="preserve">
+    <value>종료된 영업 기회: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is name of object.</comment>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>{0}을(를) 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Eg: Deleting a product. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="ViewDuplicates_aspx_Button_Label_CancelUpdateRecord" xml:space="preserve">
+    <value>취소(&amp;C)</value>
+    <comment>The label of the Cancel Update button</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>삭제 확인</value>
+  </data>
+  <data name="Web.SFA.QOI.QuantityAndPriceNegativeAlert" xml:space="preserve">
+    <value>수량 및 단가에 대해 음의 값을 지정할 수 없습니다. 해당 값을 변경하고 다시 시도하십시오.</value>
+    <comment>Alert message that is displayed in QOI forms when the both Quantity and Price Per Unit fields are filled up with negative values. [Category="SFA: Negative prices"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>이 작업을 수행하려면 먼저 하나 이상의 레코드를 선택해야 합니다.</value>
+  </data>
+  <data name="Web.SFA.quotes.EffectiveToEarlierThanEffectiveFrom" xml:space="preserve">
+    <value>[유효 기간 끝] 날짜는 [유효 기간 시작] 날짜 이전일 수 없습니다.</value>
+    <comment>Error message to display if effective to date supplied in the quote form is earlier than effective from date.</comment>
+  </data>
+  <data name="Web.SFA.QOI.CurrencyChangeAlert" xml:space="preserve">
+    <value>계속하기 전에 모든 금액 필드를 검토하십시오.</value>
+    <comment>Alert message that is displayed in Quote and Opportunity forms when transaction currency is changed. [Category="Business Modules"]</comment>
+  </data>
+  <data name="QUOTE_EXPIRED" xml:space="preserve">
+    <value>"유효 기간 끝" 날짜가 지났습니다. 견적을 다시 활성화하려면 날짜를 이후 날짜로 설정할 수 있습니다.</value>
+    <comment>quote is expired.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Suggestions_Notification_Available_Message" xml:space="preserve">
+    <value>사용할 수 있는 제품 제안({0})</value>
+    <comment>Text for the notification that product suggestions are available.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Notification_See_Link_Text" xml:space="preserve">
+    <value>보기</value>
+    <comment>Text for clickable link in suggestion notification.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_340" xml:space="preserve">
+    <value>이 견적이 판매 주문으로 변환되는 작업은 온라인으로 전환할 때 자동으로 수행됩니다. 계속하려면 [확인]을 클릭하십시오.</value>
+    <comment>Confirmation message displayed when the user attempts to create an order from a quote in outlook client when the outlook client is in offline mode.</comment>
+  </data>
+  <data name="Web.SFA.QOI.QuantityChangedDueToChangeInAccuracy" xml:space="preserve">
+    <value>제품에서 지원되는 소수 자릿수가 업데이트되어 [수량] 상자의 값이 "{0}"에서 "{1}"(으)로 변경되었습니다.
+변경 내용을 저장하려면 [확인]을 클릭한 다음 [저장] 또는 [저장 후 닫기]를 클릭하십시오.</value>
+    <comment>Header of Message to prompt the user about change in qunatity due to change in decimal accuracy supported by the product. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 and Placeholder 1 are numbers.</comment>
+  </data>
+  <data name="Close_Quote_Dlg_Title" xml:space="preserve">
+    <value>견적 종료</value>
+  </data>
+  <data name="Close_Quote_Dlg_Desc" xml:space="preserve">
+    <value>이 견적을 종료하고 있습니다.</value>
+    <comment>Close quote dialog description.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.dlg_close.aspx_155" xml:space="preserve">
+    <value>종료 날짜</value>
+    <comment>Label for the close date field in the close quote dialog box. Represents the quote close date.</comment>
+  </data>
+  <data name="Dialog_PaidInvoice_Title" xml:space="preserve">
+    <value>지불된 송장</value>
+  </data>
+  <data name="Dialog_PaidInvoice_Description" xml:space="preserve">
+    <value>이 송장의 지불에 대한 정보를 선택하십시오.</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Title" xml:space="preserve">
+    <value>송장 취소</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Description" xml:space="preserve">
+    <value>이 송장을 취소하기 위한 정보를 선택하십시오.</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Title" xml:space="preserve">
+    <value>주문 취소</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Desc" xml:space="preserve">
+    <value>이 주문에 대한 취소 정보를 제공하십시오.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_ConfirmButton.dlg_close" xml:space="preserve">
+    <value>확인</value>
+    <comment>OK Button text when Order close dialog when the order is canceled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_50.dlg_close" xml:space="preserve">
+    <value>취소 날짜</value>
+    <comment>Label for the sales order cancel date field in cancel order dialog page.</comment>
+  </data>
+  <data name="Order_Fulfill_Dlg_Title" xml:space="preserve">
+    <value>주문 처리</value>
+  </data>
+  <data name="Order_Fulfill_Dlg_Desc" xml:space="preserve">
+    <value>이 주문에 대한 처리 정보를 제공하십시오.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_FulfillButton.dlg_close" xml:space="preserve">
+    <value>처리</value>
+    <comment>OK Button text when Order close dialog when the order is fulfilled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_51.dlg_close" xml:space="preserve">
+    <value>처리된 날짜</value>
+    <comment>Label for the sales order fulfill date field in fulfill order dialog page.</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_155" xml:space="preserve">
+    <value>제품을 추가하려면 먼저 가격표를 선택해야 합니다.</value>
+    <comment>Error message displayed in the opportunity form when the user attempts to add a product to the opportunity without choosing a price list for the opportunity.</comment>
+  </data>
+  <data name="notEligibleBulkEdit" xml:space="preserve">
+    <value>대량 편집에 적합하지 않은 컨트롤입니다.</value>
+  </data>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>전자 메일 양식 닫기</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>{0} 상태를 완료됨으로 변경하고 양식 닫기</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>고객을 선택해야 합니다.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>이 활동을 변환하기 전에 변경 내용을 저장해야 합니다.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="LOCID_PROVIDE_VALUE_ADDRESS" xml:space="preserve">
+    <value>주소를 조회하려면 먼저 {0}의 값을 지정해야 합니다.</value>
+    <comment>{NumberedPlaceholder="{0}"}. AlertMessage.Message on omission of value for address lookup.</comment>
+  </data>
+  <data name="LOCID_SALESLIT_NO_DOCUMENTS" xml:space="preserve">
+    <value>{0}에 {1}이(가) 포함되지 않습니다.</value>
+    <comment>Text in alert when sales literature does not contain any documents. [Category="Business Modules"] {NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with salesliterature entity display name. {NumberedPlaceholder="{1}"} Placeholder 1 will be replaced with salesliteratureitem entity display name</comment>
+  </data>
+  <data name="Web.SFA.invoice.edit.aspx_163" xml:space="preserve">
+    <value>다음 오류 발생: {0}</value>
+    <comment>Message displayed with price error messages.</comment>
+  </data>
+  <data name="SalesAttachmentDisplayName" xml:space="preserve">
+    <value>영업 첨부 파일</value>
+    <comment>Sales Attachment display name.</comment>
+  </data>
+  <data name="LiveWorkStream.ProviderInvalid" xml:space="preserve">
+    <value>SMS 공급자가 잘못되었습니다.</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid provider</comment>
+  </data>
+  <data name="LiveWorkStream.APIKeyInvalid" xml:space="preserve">
+    <value>인증 키가 잘못되었습니다.</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid authorization Key</comment>
+  </data>
+  <data name="LiveWorkStream.OCEndpointMissing" xml:space="preserve">
+    <value>조직 URL 끝점이 없으므로 SMS 인바운드 URL을 생성할 수 없습니다. 시스템 관리자에게 문의하십시오.</value>
+    <comment>Error message displayed when the sms inbound URL is not displayed as the OCEndPoint is not set correctly</comment>
+  </data>
+  <data name="LiveWorkStream.CustomerIdInvalid" xml:space="preserve">
+    <value>인증 ID가 잘못되었습니다.</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid authorization Id</comment>
+  </data>
+  <data name="LiveWorkStream.DoesNotExist" xml:space="preserve">
+    <value>지정한 작업 스트림이 없습니다.</value>
+    <comment>Error text for when users specify a non-existant Work Stream to validate its SMS connection</comment>
+  </data>
+  <data name="LiveWorkStream.InsufficientInputs" xml:space="preserve">
+    <value>제공된 입력에서 필요한 작업 스트림 속성을 확인할 수 없습니다.</value>
+    <comment>Error message displayed when not enough inputs have been passed to the Work Stream SMS connection validation workflow to determine the necessary Work Stream SMS settings to validate the connection</comment>
+  </data>
+  <data name="LiveWorkStream.InvalidInputData" xml:space="preserve">
+    <value>입력이 인식할 수 없는 형식입니다.</value>
+    <comment>Error text for when there is an error deserializing the input to the Work Stream SMS connection validation workflow</comment>
+  </data>
+  <data name="LiveWorkStream.NoAssociatedSMSNumbers" xml:space="preserve">
+    <value>작업 스트림은 하나 이상의 SMS 번호에 연결되어야 합니다.</value>
+    <comment>Error text for when users try to validate a Work Stream not associated to any SMS Numbers</comment>
+  </data>
+  <data name="LiveWorkStream.SourceNotSMS" xml:space="preserve">
+    <value>이 작업은 SMS 작업 스트림에 대해서만 유효합니다.</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with a source other than SMS</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignError" xml:space="preserve">
+    <value>확인 메시지를 보내지 못했습니다.</value>
+    <comment>Error message displayed for generic errors encountered calling provider when validating an SMS Work Steam connection</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignErrorWithArgument" xml:space="preserve">
+    <value>확인 메시지를 보내지 못했습니다. {0}</value>
+    <comment>Error message displayed for errors with additional content encountered calling provider when validating an SMS Work Steam connection</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignTimeout" xml:space="preserve">
+    <value>확인 메시지가 전달될 때까지 대기 시간이 초과되었습니다.</value>
+    <comment>Error message displayed when provider does not successfully or unsuccessfully deliver the verification message in a set amount of time</comment>
+  </data>
+  <data name="LiveWorkStream.Validating" xml:space="preserve">
+    <value>SMS Rest API 세부 정보 검사 중</value>
+    <comment>Informational message shown to the user when they click on any of the buttons to validate an SMS Work Stream connection</comment>
+  </data>
+  <data name="LiveWorkStream.ValidationError" xml:space="preserve">
+    <value>유효성 검사 워크플로를 실행하지 못했습니다.</value>
+    <comment>Error message displayed for generic errors executing the Work Stream SMS validation workflows</comment>
+  </data>
+  <data name="LiveWorkStream.ValidationSuccess" xml:space="preserve">
+    <value>SMS API 세부 정보의 유효성을 검사했습니다.</value>
+    <comment>Message shown when the SMS connection is successfully validated</comment>
+  </data>
+  <data name="LiveWorkStream.VerificationSMSMessageText" xml:space="preserve">
+    <value>확인 메시지입니다. 무시하십시오.</value>
+    <comment>The SMS Number verification message text sent when validating a given SMS Work Stream</comment>
+  </data>
+  <data name="LiveWorkStream.WrongEntity" xml:space="preserve">
+    <value>작업 스트림으로 전달된 엔터티의 엔터티 유형이 잘못되었습니다.</value>
+    <comment>Error message displayed when the Work Stream passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="SMSNumber.DoesNotExist" xml:space="preserve">
+    <value>지정한 SMS 번호가 없습니다.</value>
+    <comment>Error text for when users specify a non-existant SMS Number for validating an SMS Work Stream SMS connection</comment>
+  </data>
+  <data name="SMSNumber.InsufficientInputs" xml:space="preserve">
+    <value>제공된 입력에서 필요한 SMS 번호 속성을 확인할 수 없습니다.</value>
+    <comment>Error message displayed when not enough inputs have been passed to the Work Stream SMS connection validation workflow to determine the necessary SMS Number settings to validate the connection</comment>
+  </data>
+  <data name="SMSNumber.InvalidOrMissingLiveWorkStream" xml:space="preserve">
+    <value>SMS 번호는 SMS 작업 스트림에 연결되어야 합니다.</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for an SMS Number not associated to a Work Stream or associated to a Work Stream with a Stream Source other than SMS</comment>
+  </data>
+  <data name="SMSNumber.NumberInvalid" xml:space="preserve">
+    <value>SMS 번호가 잘못되었습니다.</value>
+    <comment>Error message displayed when an invalid validating SMS Rest API is due to the number being invalid</comment>
+  </data>
+  <data name="SMSNumber.ProviderInvalid" xml:space="preserve">
+    <value>SMS 번호 공급자가 잘못되었습니다.</value>
+    <comment>Error message displayed when an invalid provider is selected for an SMS Number</comment>
+  </data>
+  <data name="SMSNumber.Telesign.LongCodeInvalid" xml:space="preserve">
+    <value>긴 코드 번호는 8~15자리여야 합니다.</value>
+    <comment>Error message displayed when an invalid long code SMS Number has been entered</comment>
+  </data>
+  <data name="SMSNumber.Telesign.ShortCodeInvalid" xml:space="preserve">
+    <value>짧은 코드 번호는 3~8개의 영문자 또는 숫자로 구성되어야 합니다. 추가 서식 문자는 사용할 수 없습니다.</value>
+    <comment>Error message displayed when an invalid short code SMS number has been entered</comment>
+  </data>
+  <data name="SMSNumber.Telesign.TollFreeInvalid" xml:space="preserve">
+    <value>무료 전화번호는 1로 시작해야 하며, 8~15자리를 포함해야 합니다.</value>
+    <comment>Error message displayed when an invalid toll free SMS Number has been entered</comment>
+  </data>
+  <data name="SMSNumber.TypeInvalid" xml:space="preserve">
+    <value>SMS 번호 유형이 잘못되었습니다.</value>
+    <comment>Error message displayed when an invalid number type is selected for an SMS Number</comment>
+  </data>
+  <data name="SMSNumber.WrongEntity" xml:space="preserve">
+    <value>SMS 번호로 전달된 엔터티의 엔터티 유형이 잘못되었습니다.</value>
+    <comment>Error message displayed when the SMS Number passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="LiveWorkStream.ValidateFailed" xml:space="preserve">
+    <value>실패함</value>
+    <comment>Failure validation status of the last SMS provider validation.</comment>
+  </data>
+  <data name="LiveWorkStream.ValidateSuccess" xml:space="preserve">
+    <value>성공</value>
+    <comment>Success validation status of the last SMS provider validation.</comment>
+  </data>
+  <data name="PhoneNumber.DoesNotExists" xml:space="preserve">
+    <value>지정한 전화번호가 없습니다.</value>
+    <comment>Error text when users specify a non-existent Phone Number.</comment>
+  </data>
+  <data name="PhoneNumber.WrongEntity" xml:space="preserve">
+    <value>전화번호로 전달된 엔터티의 엔터티 유형이 잘못됨</value>
+    <comment>Error message displayed when the Phone Number passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="OC_FormNotificationMessageForSMSProvider" xml:space="preserve">
+    <value>SMS 채널에 대한 설정을 완료하려면 SMS 설정의 모든 설정을 입력하십시오.</value>
+    <comment>Warning notification message at the form level when the sms provider is not selected, api key, customer id are not filled.</comment>
+  </data>
+  <data name="OC_TeleSignAccountInformationSectionLabel" xml:space="preserve">
+    <value>TeleSign 계정 정보</value>
+    <comment>Account information label for TeleSign</comment>
+  </data>
+  <data name="OC_TeleSignApiKeyLabel" xml:space="preserve">
+    <value>API 키</value>
+    <comment>TeleSign label for key</comment>
+  </data>
+  <data name="OC_TeleSignCustomerIdLabel" xml:space="preserve">
+    <value>고객 ID</value>
+    <comment>TeleSign label for ID</comment>
+  </data>
+  <data name="OC_TwilioAccountInformationSectionLabel" xml:space="preserve">
+    <value>Twilio 계정 정보</value>
+    <comment>Account information label for Twilio</comment>
+  </data>
+  <data name="OC_TwilioAccountSIDLabel" xml:space="preserve">
+    <value>계정 SID</value>
+    <comment>Twilio label for ID</comment>
+  </data>
+  <data name="OC_TwilioAuthTokenLabel" xml:space="preserve">
+    <value>인증 토큰</value>
+    <comment>Twilio label for key</comment>
+  </data>
+  <data name="OC_TwilioLegalDisclaimerPreviewTerms" xml:space="preserve">
+    <value>프리뷰 사용 약관</value>
+  </data>
+  <data name="OC_TwilioLegalDisclaimerText" xml:space="preserve">
+    <value>SMS를 사용하기 위해 Twilio 계정 정보를 제공함으로써 이 기능이 프리뷰에 있음을 인지하고 {0}에 동의하는 것입니다.</value>
+    <comment>DO NOT CHANGE {0} as it will be replaced with OC_TwilioLegalDisclaimerPreviewTerms.</comment>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>문제가 없습니다.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>{0}에 오류가 발생했습니다.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.ResultEntityMessage" xml:space="preserve">
+    <value>SMS 채널 구성에 활성 작업 스트림이 없습니다.</value>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.InvalidEntityMessage" xml:space="preserve">
+    <value>활성 작업 스트림이 없는 SMS 채널 구성이 1개 있습니다.</value>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>활성 작업 스트림이 없는 SMS 채널 구성이 {0}개 있습니다.</value>
+    <comment>The error message for SmsChannelConfigurationShouldHaveWorkStream rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.ResultEntityMessage" xml:space="preserve">
+    <value>{0} 공급자에 대한 SMS 채널 구성에 빈 {1}이(가) 있습니다.</value>
+    <comment>The error message for SmsSettingsShouldHaveAllRequiredFields rule where placeholder {0} is SMS provider name, 
+    and {1} is an invalid field name or names</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>설정이 불완전한 SMS 채널 구성이 1개 있습니다.</value>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>설정이 불완전한 SMS 채널 구성이 {0}개 있습니다.</value>
+    <comment>The error message for SmsSettingsShouldHaveAllRequiredFields rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.CustomerIdProperty" xml:space="preserve">
+    <value>고객 ID</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_customerid"] property for TeleSign</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.APIKeyProperty" xml:space="preserve">
+    <value>API 키</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_apikey"] property for TeleSign</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.AccountSIDProperty" xml:space="preserve">
+    <value>계정 SID</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_customerid"] property for Twilio</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.AuthTokenProperty" xml:space="preserve">
+    <value>인증 토큰</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_apikey"] property for Twilio</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.LastValidationStatus" xml:space="preserve">
+    <value>마지막 유효성 검사 상태</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_lastvalidationstatus"] property</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.smsProviderMessage" xml:space="preserve">
+    <value>SMS 공급자가 설정되어 있지 않습니다.</value>
+    <comment>SMS provider is not set message</comment>
+  </data>
+</root>

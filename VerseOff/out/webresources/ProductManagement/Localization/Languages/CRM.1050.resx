@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DynamicProperty_OverrideDialog_SubTitle" xml:space="preserve">
+    <value>Želite li zamijeniti ovo svojstvo?</value>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Text" xml:space="preserve">
+    <value>To će omogućiti unos promjena u naslijeđenu verziju ovog svojstva. Izvorna naslijeđena verzija ovog svojstva također će se sačuvati.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to override the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Title" xml:space="preserve">
+    <value>Potvrda zamjene</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_SubTitle" xml:space="preserve">
+    <value>Želite li pisati preko ovog svojstva?</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Text" xml:space="preserve">
+    <value>To će omogućiti unos dodatnih promjena u prethodno objavljenu verziju ovog svojstva. Prethodna verzija ovog svojstva također će se sačuvati.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to overwrite the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Title" xml:space="preserve">
+    <value>Potvrda prebrisivanja</value>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_39" xml:space="preserve">
+    <value>Unesite vrijednost od {0} do {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_9" xml:space="preserve">
+    <value>Morate unijeti cijeli broj između {0} i {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvaluestring.warning" xml:space="preserve">
+    <value>Duljina niza zadane vrijednosti mora biti manja od maksimalne dopuštene duljine niza ili jednaka njoj.</value>
+    <comment>Warning message for Default Value string lenght of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvalue.warning" xml:space="preserve">
+    <value>Zadana vrijednost mora biti veća od minimalne vrijednosti ili jednaka njoj te manja od maksimalne vrijednosti ili jednaka njoj.</value>
+    <comment>Warning message for Default value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.minvalue.warning" xml:space="preserve">
+    <value>Minimalna vrijednost ne može biti veća od maksimalne vrijednosti.</value>
+    <comment>Warning message for Minimum value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.optionset.warning" xml:space="preserve">
+    <value>Ne možete postaviti svojstvo za skup mogućnosti na vrijednosti obavezno i samo za čitanje dok ne dodate stavke skupa mogućnosti i navedete zadanu vrijednost.</value>
+    <comment>Warning message for Dynamic Property of type Option Set.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.readonlyrequired.warning" xml:space="preserve">
+    <value>Morate navesti zadanu vrijednost jer je ovo svojstvo obavezno i samo za čitanje.</value>
+    <comment>Warning message for Default Value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Web.products.ValidToEarlierThanValidFromDate" xml:space="preserve">
+    <value>Datum „Valjano do” ne može biti prije datuma „Valjano od”.</value>
+    <comment>Error message to display if the valid to date supplied  is earlier than the valid from date.</comment>
+  </data>
+  <data name="Kit_Products_Section_Name" xml:space="preserve">
+    <value>PROIZVODI IZ KOMPLETA</value>
+    <comment>Kit Products section name in product kit form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Product_Family_Hierarchy_Label_Value" xml:space="preserve">
+    <value>Hijerarhija skupine</value>
+    <comment>Label text for Product Family Hierarchy Control.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Product_Bundle_Form_Title" xml:space="preserve">
+    <value>Novi komplet</value>
+    <comment>Title text for Product Bundle Form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="ProductFamilyQuickCreate.DisplayName" xml:space="preserve">
+    <value>Nova skupina proizvoda</value>
+  </data>
+  <data name="Object_Singular_Kit" xml:space="preserve">
+    <value>Komplet</value>
+    <comment>Singular Name of Product Kit.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Object_Singular_Bundle" xml:space="preserve">
+    <value>Komplet</value>
+    <comment>Singular Name of Product Bundle.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Object_Singular_Product_Family" xml:space="preserve">
+    <value>Skupina proizvoda</value>
+    <comment>Singular Name of Product Family.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Object_Singular_Product" xml:space="preserve">
+    <value>Proizvod</value>
+    <comment>Singular Name of Product.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_90" xml:space="preserve">
+    <value>Upozorenje:</value>
+    <comment>Label that is prefixed to a warning message.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_91" xml:space="preserve">
+    <value>Nije postavljen zadani cjenik.</value>
+    <comment>Error message that is displayed to the user in the product form when the default price list for the product is not specified.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_92" xml:space="preserve">
+    <value>Omogućeno je automatsko objavljivanje.</value>
+    <comment>Alert message that is displayed to the user in the product form when System Settings Sales enabled with Create products in active state. </comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_93" xml:space="preserve">
+    <value>Proizvod je stvoren i objavljen.</value>
+    <comment>Alert message that is displayed to the user in the product form when System Settings Sales enabled with Create products in active state and product is creating.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_12" xml:space="preserve">
+    <value>Najprije morate odabrati proizvod.</value>
+    <comment>Error message displayed in the price list form if the user tries to choose the unit without choosing the product.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_153" xml:space="preserve">
+    <value>Postotak za metodu određivanja cijena prema postotku kataloške cijene mora biti između {0} i {1} posto. Navedite novi postotak.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent of List". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_157" xml:space="preserve">
+    <value>Postotak za metodu određivanja cijena prema profitnoj marži mora biti između {0} i {1} posto. Navedite novi postotak.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Markup". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_161" xml:space="preserve">
+    <value>Postotak za metodu određivanja cijena prema marži u postotku mora biti između {0} i {1} posto. Navedite novi postotak.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Margin". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_113" xml:space="preserve">
+    <value>Iznos zaokruživanja za „završava sa” u mogućnostima zaokruživanja mora biti između {0} i {1}. Navedite novi iznos zaokruživanja.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Ends in". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_106" xml:space="preserve">
+    <value>Iznos zaokruživanja za "više" u mogućnostima zaokruživanja mora biti između {0} i {1}. Navedite novi iznos zaokruživanja.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Multiple of". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifying minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Kit_Products_Form_Title" xml:space="preserve">
+    <value>Proizvod iz paketa</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Bundle_Product_Form_Value" xml:space="preserve">
+    <value>Proizvod iz kompleta</value>
+    <comment>Bundle Product Form Title Value.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Kit_Product_Label_Value" xml:space="preserve">
+    <value>Komplet</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>Došlo je do pogreške. Vratite se na početnu stranicu i pokušajte ponovno.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Morate odabrati jedan ili više zapisa da biste mogli izvršiti tu akciju.</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Pojavila se pogreška. Odabrana akcija nije dovršena za jedan ili više zapisa.</value>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleArticle_DialogText" xml:space="preserve">
+    <value>Morate odabrati članak</value>
+    <comment>select an article to associate.[Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleProduct_DialogText" xml:space="preserve">
+    <value>Morate odabrati proizvod.</value>
+    <comment>select a product to associate.[Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>Ovaj se zahtjev ne može obraditi jer je klijent izvan mreže.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>Obrada...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="Web.products.pricelevel.EndDateEarlierThanStartDate" xml:space="preserve">
+    <value>Datum završetka ne može biti prije datuma početka.</value>
+    <comment>Error message to display if the end date supplied in the price list form is earlier than the start date.</comment>
+  </data>
+  <data name="Web.Products.UoM.edit.aspx_71" xml:space="preserve">
+    <value>Ovo je primarna jedinica.</value>
+    <comment>Informational message displayed to the user in the primary unit form.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>Naslov slučaja</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>Klijent</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>Prioritet</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>Izrađeno:</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="ConfirmRevise" xml:space="preserve">
+    <value>Potvrda revidiranja</value>
+  </data>
+  <data name="ConfirmPublish" xml:space="preserve">
+    <value>Potvrda objavljivanja</value>
+  </data>
+  <data name="ConfirmHierarchyPublish" xml:space="preserve">
+    <value>Potvrda objavljivanja hijerarhije</value>
+  </data>
+  <data name="ConfirmRevert" xml:space="preserve">
+    <value>Potvrda vraćanja</value>
+  </data>
+  <data name="ConfirmRetire" xml:space="preserve">
+    <value>Potvrda opoziva</value>
+  </data>
+  <data name="CloneProduct" xml:space="preserve">
+    <value>Kloniranje proizvoda</value>
+  </data>
+  <data name="ConfirmReviseMessage" xml:space="preserve">
+    <value>Želite li vratiti revidirati zapis? To će vam omogućiti da promijenite svojstva ovog zapisa.</value>
+  </data>
+  <data name="ConfirmRetireMessage" xml:space="preserve">
+    <value>Želite li objaviti opozvati zapis? Ova operacija postavit će sve odabrane zapise u opozvano stanje.</value>
+  </data>
+  <data name="ConfirmPublishMessage" xml:space="preserve">
+    <value>Želite li objaviti odabrani zapis? Ova operacija postavit će sve odabrane zapise u aktivno stanje.</value>
+  </data>
+  <data name="ConfirmCloneMessage" xml:space="preserve">
+    <value>Stvorite novi proizvod pomoću ovog proizvoda.</value>
+  </data>
+  <data name="ConfirmRevertMessage" xml:space="preserve">
+    <value>Želite li vratiti odabrani zapis? To će odbaciti sve promjene unesene u svojstva ovog zapisa.</value>
+  </data>
+  <data name="ConfirmHierarchyPublishMessage" xml:space="preserve">
+    <value>Želite li objaviti hijerarhiju skupine proizvoda? Ta će operacija postaviti sve podređene zapise odabrane skupine proizvoda u aktivno stanje. </value>
+  </data>
+  <data name="Revert_after_reparent_error_message" xml:space="preserve">
+    <value>Ne možete poništiti promjene u svojstvima proizvoda jer je nadređeni član proizvoda promijenjen.</value>
+    <comment>You can’t revert the changes to the product properties because the parent of the product was changed.</comment>
+  </data>
+  <data name="Viewpublished_after_reparent_error_message" xml:space="preserve">
+    <value>Ne možete vidjeti objavljeni proizvod jer je nadređeni član proizvoda promijenjen.</value>
+    <comment>You can’t view the published product because the parent of the product has been changed.</comment>
+  </data>
+  <data name="Save_Before_Publishing_Product_message" xml:space="preserve">
+    <value>Spremite nadređene promjene proizvoda prije objave.</value>
+    <comment>Please save product parent changes before publishing.</comment>
+  </data>
+  <data name="MissingCostOnProductError" xml:space="preserve">
+    <value>Za upotrebu metode određivanja cijena koja se odnosi na {0}, polje {1} treba biti dostupno i popunjeno na obrascu proizvoda.</value>
+    <comment>Selected Pricing method's field should be available and filled on product form. Placeholder {0} represents pricing method and {1} represents atrribute name related to selected pricing method.</comment>
+  </data>
+  <data name="Entity_set_to_readonly" xml:space="preserve">
+    <value>Postavka za mobilno čitanje omogućena je za UCI, vidjet ćete da nedostaju neki gumbi, a obrazac će biti samo za čitanje. Vaš administrator može promijeniti tu postavku. Pročitajte više</value>
+    <comment>As entity is set to readonly some functionalities will be unavailable.</comment>
+  </data>
+  <data name="Read_More" xml:space="preserve">
+    <value>Pročitajte više</value>
+    <comment>Label for Read More button in notification.</comment>
+  </data>
+  <data name="CannotSetPrecisionValue" xml:space="preserve">
+    <value>Ne može se postaviti preciznost za {0} na vrijednost veću od zadane vrijednosti preciznosti u sustavu, a to je {1}. Povećajte zadanu vrijednost ili smanjite vrijednost preciznosti.</value>
+    <comment>Error message when an attribute's precision is being set to a value greater than its system default precision. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 represents the attribute name and Placeholder 1 represents its default precision value.</comment>
+  </data>
+  <data name="Reparenting_Attribute_Missing" xml:space="preserve">
+    <value>Polje {0} je skriveno jer povezana polja nedostaju u obrascu. Da biste prikazali {1} polje, dodajte sva povezana polja u obrazac.</value>
+    <comment>Parent field is hidden because related fields are missing in the form. To show the Parent field, add all related fields to the form.</comment>
+  </data>
+  <data name="Product_has_been_cloned_Successfully" xml:space="preserve">
+    <value>Proizvod je uspješno kloniran.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is cloned</comment>
+  </data>
+  <data name="Product_has_been_retired_Successfully" xml:space="preserve">
+    <value>Proizvod je uspješno povučen.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is retired</comment>
+  </data>
+  <data name="Product_has_been_published_Successfully" xml:space="preserve">
+    <value>Proizvod je uspješno objavljen.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is published</comment>
+  </data>
+  <data name="Product_has_been_revised_Successfully" xml:space="preserve">
+    <value>Proizvod je uspješno revidiran.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is revised</comment>
+  </data>
+</root>

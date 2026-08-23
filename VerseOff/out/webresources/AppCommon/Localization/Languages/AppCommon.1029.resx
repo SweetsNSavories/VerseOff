@@ -1,0 +1,1493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddToQueueDialog_NoQueueSelected" xml:space="preserve">
+    <value>Nevybrali jste frontu, do které chcete záznamy přidat. Vyberte frontu a potom akci opakujte.</value>
+    <comment>The above error message is displayed when the user has selected no queue to add the current item to [Category="Servicing"].</comment>
+  </data>
+  <data name="AssignToQueue_noSelectedUser" xml:space="preserve">
+    <value>Není vybrán žádný uživatel, kterému mají být přiřazeny záznamy tohoto uživatele. Vyberte uživatele, kterému mají být záznamy přiřazeny, a opakujte akci.</value>
+  </data>
+  <data name="Dialog_AssignQueue_Description_Plural" xml:space="preserve">
+    <value>Vybrané položky: {0}. Komu je chcete přiřadit?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_AssignQueue_Description_Single" xml:space="preserve">
+    <value>Vybraná položka: {0}. Komu ji chcete přiřadit?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is "1".</comment>
+  </data>
+  <data name="Dialog_QueueItemRoute_Description_Plural" xml:space="preserve">
+    <value>Vybrali jste tento počet položek: {0}. Jak je chcete směrovat?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_QueueItemRoute_Description_Single" xml:space="preserve">
+    <value>Vybrali jste 1 položku. Jak chcete tuto položku směrovat?</value>
+  </data>
+  <data name="Dialog_RejectEmail_Title" xml:space="preserve">
+    <value>Zamítnout primární e-mail</value>
+  </data>
+  <data name="Dialog_RejectEmail_Description_Plural" xml:space="preserve">
+    <value>Chcete zamítnout primární e-mailovou adresu {0} front?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_RejectEmail_Description_Single" xml:space="preserve">
+    <value>Chcete zamítnout primární e-mailovou adresu {0} fronty?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_RejectEmail_Text" xml:space="preserve">
+    <value>Tato operace zamítne primární e-mailové adresy vybraných front.</value>
+  </data>
+  <data name="Dialog_ApproveEmail_Title" xml:space="preserve">
+    <value>Schválit primární e-mail</value>
+  </data>
+  <data name="Dialog_ApproveEmail_Description_Plural" xml:space="preserve">
+    <value>Chcete schválit primární e-mailovou adresu {0} front?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_ApproveEmail_Description_Single" xml:space="preserve">
+    <value>Chcete schválit primární e-mailovou adresu {0} fronty?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_ApproveEmail_Text" xml:space="preserve">
+    <value>Tímto krokem poskytujete souhlas se sdílením dat z Microsoft Exchange nebo jakéhokoli jiného nakonfigurovaného e-mailového systému s Microsoft Dynamics 365. Pro Microsoft Dynamics 365 platí samostatné prohlášení o zásadách ochrany osobních údajů, které si můžete zobrazit tak, že dole kliknete na tlačítko Smlouva o ochraně osobních údajů.</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Došlo k chybě. Vybraná akce nebyla dokončena u nejméně jednoho záznamu.</value>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage" xml:space="preserve">
+    <value>Pokud jste zákazníkem Office 365 s předplatným Exchange, nakonfigurujeme integraci Dynamics 365 se systémem Exchange a povolíme aplikaci Dynamics 365 App for Outlook.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 1.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage1" xml:space="preserve">
+    <value>Před zahájením instalace si prosím přečtěte a přijměte následující dokumenty:</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 2.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage2" xml:space="preserve">
+    <value>Tím, že povolíte automatickou konfiguraci, souhlasíte se sdílením vašich dat s externím systémem. Na data importovaná do Microsoft Dynamics 365 z externích systémů se vztahuje naše prohlášení o zásadách ochrany osobních údajů, které najdete</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 3.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage3" xml:space="preserve">
+    <value>tady.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 4.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage4" xml:space="preserve">
+    <value>Další informace najdete v naší</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 5.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage5" xml:space="preserve">
+    <value>dokumentaci.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 6.</comment>
+  </data>
+  <data name="SMBAdvSettings_ProgressIndicatorMessage" xml:space="preserve">
+    <value>Probíhá zpracování.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ErrorStrings" xml:space="preserve">
+    <value>Vyberte prosím uživatele nebo tým.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ReassigningRecords" xml:space="preserve">
+    <value>Přeřazují se záznamy.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeactivationOfDefaultView" xml:space="preserve">
+    <value>Výchozí zobrazení nelze deaktivovat.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeleteConfirmation" xml:space="preserve">
+    <value>Chcete odstranit toto zobrazení? Tuto akci nelze vrátit zpět.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeletionOfDefaultView" xml:space="preserve">
+    <value>Výchozí zobrazení nelze odstranit, dokud neurčíte jiné zobrazení jako výchozí.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeletionOfSystemDefinedView" xml:space="preserve">
+    <value>Systémem definovaná zobrazení nelze odstranit.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_SetAsDefaultForDeactivatedView" xml:space="preserve">
+    <value>Pouze aktivní zobrazení lze nastavit jako výchozí zobrazení.</value>
+  </data>
+  <data name="SMBAdvSettings_UnknownErrorMessage" xml:space="preserve">
+    <value>Došlo k chybě. Vybraná akce nebyla dokončena u nejméně jednoho záznamu.</value>
+  </data>
+  <data name="UserErrorExecutingAssociations" xml:space="preserve">
+    <value>Při provádění žádostí o aktualizaci přidružení uživatelů k rolím došlo k chybě.</value>
+  </data>
+  <data name="TeamErrorExecutingAssociations" xml:space="preserve">
+    <value>Při provádění žádostí o aktualizaci přidružení týmů k rolím došlo k chybě.</value>
+  </data>
+  <data name="Dialog_QueueItemPick_Description_Plural" xml:space="preserve">
+    <value>Vybrali jste následující počet položek: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_QueueItemPick_Description_Single" xml:space="preserve">
+    <value>Vybrali jste 1 položku.</value>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="Button_Label_Release" xml:space="preserve">
+    <value>Uvolnit</value>
+    <comment>Label for the Release button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Button_Label_Remove" xml:space="preserve">
+    <value>Odebrat</value>
+  </data>
+  <data name="Dialog_QueueItemRelease_Label_Single" xml:space="preserve">
+    <value>Položky se přiřadí zpátky vlastníkovi fronty, aby je mohli vybrat ostatní členové.</value>
+  </data>
+  <data name="Dialog_QueueItemRelease_Title" xml:space="preserve">
+    <value>Uvolnit položku fronty</value>
+  </data>
+  <data name="Dialog_QueueItemRemoveNew_Description_Plural" xml:space="preserve">
+    <value>Chcete z fronty odebrat tento počet vybraných položek: {0}?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemRemoveNew_Description_Single" xml:space="preserve">
+    <value>Chcete z fronty odebrat vybranou položku?</value>
+    <comment>instruction text.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemRemove_Title" xml:space="preserve">
+    <value>Odebrat položku fronty</value>
+    <comment>Dialog title for the Queue Item Remove dialog. [Category="Servicing"]</comment>
+  </data>
+  <data name="SMBAdvSettings_ActionOnMultipleRecordsFailed" xml:space="preserve">
+    <value>Došlo k chybě. Vybraná akce nebyla dokončena u nejméně jednoho záznamu.</value>
+  </data>
+  <data name="SMBAdvSettings_ActivatedBPFDeletionError" xml:space="preserve">
+    <value>Aktivovaný tok obchodního procesu nelze odstranit.</value>
+    <comment>Message that needs to be displayed when user tries to delete the activated BPF</comment>
+  </data>
+  <data name="SMBAdvSettings_GenericErrorOccurred" xml:space="preserve">
+    <value>Neočekávaná chyba. Zkuste to prosím znovu. Pokud se tento problém bude opakovat, vyhledejte v komunitě Microsoft Dynamics 365 řešení nebo se obraťte na správce vaší organizace. Pokud potřebujete další pomoc, obraťte se na podporu Microsoftu a sdělte technické podrobnosti chyby.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_NoRecordSelected" xml:space="preserve">
+    <value>Není vybraný žádný záznam.</value>
+    <comment>Message when no user is selected from grid and Enabling or Disabling of User is attempted.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ChangeManager_HeaderDescription" xml:space="preserve">
+    <value>Vybrali jste tento počet uživatelů: {0}. Určete manažera, ke kterému chcete přiřadit vybraný počet uživatelů ({0}).</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_ChangeManager_HeaderDescription" xml:space="preserve">
+    <value>Vybrali jste tento počet uživatelů: {0}. Určete manažera, ke kterému chcete přiřadit vybraný počet uživatelů ({0}).</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_JoinTeam_HeaderDescription" xml:space="preserve">
+    <value>Jaké týmy chcete použít pro vybrané uživatele ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_JoinTeam_HeaderDescription" xml:space="preserve">
+    <value>Jaké týmy chcete použít pro vybrané uživatele ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>Jaké role chcete použít pro vybrané uživatele ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>Jaké role chcete použít pro vybrané uživatele ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>Jaké role chcete použít pro vybrané týmy ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Teams_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>Jaké role chcete použít pro vybrané týmy ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="EditTeam_UpdateSuccessful_Notification" xml:space="preserve">
+    <value>Tým byl úspěšně aktualizován.</value>
+  </data>
+  <data name="ExcelWordTemplate_FileUploadErrorLabel" xml:space="preserve">
+    <value>Při nahrávání souboru na server došlo k chybě.</value>
+  </data>
+  <data name="ExcelWordTemplate_FileErrorLabel" xml:space="preserve">
+    <value>Neplatný typ souboru. Zvolte prosím soubor s příponou xlsx nebo docx.</value>
+  </data>
+  <data name="ExcelWordTemplate_OkButtonLabel" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ExcelWordTemplate_UploadLabel" xml:space="preserve">
+    <value>Nahrát</value>
+  </data>
+  <data name="ExcelWordTemplate_NextLabel" xml:space="preserve">
+    <value>Další</value>
+  </data>
+  <data name="ExcelWordtemplate_DoneLabel" xml:space="preserve">
+    <value>Hotovo</value>
+  </data>
+  <data name="ExcelWordTemplate_SelectEntityLabel" xml:space="preserve">
+    <value>Vyberte prosím entitu.</value>
+  </data>
+  <data name="ExcelWordTemplate_SelectTemplateLabel" xml:space="preserve">
+    <value>Vyberte šablonu.</value>
+  </data>
+  <data name="ExcelWordTemplate_TabErrorLabel" xml:space="preserve">
+    <value>Neočekávaný název karty:</value>
+  </data>
+  <data name="SubjectTreeTemplate_OkButtonLabel" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="SubjectTreeTemplate_SubjectEmptyTitleError" xml:space="preserve">
+    <value>Zadejte prosím název předmětu.</value>
+  </data>
+  <data name="SWITCHSCENARIO_NOTE" xml:space="preserve">
+    <value>Upozornění: Při přepnutí scénářů může dojít ke ztrátě dat, která byla součástí předchozího scénáře. Také ukázková data mohou být u nového scénáře odlišná.</value>
+  </data>
+  <data name="SWITCHSCENARIO_ALL_SCENARIOS" xml:space="preserve">
+    <value>Všechny scénáře</value>
+  </data>
+  <data name="SWITCHSCENARIO_FIELD_SERVICE" xml:space="preserve">
+    <value>Field Service</value>
+  </data>
+  <data name="SWITCHSCENARIO_MARKETING" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+  <data name="SWITCHSCENARIO_PROJECT_SERVICE" xml:space="preserve">
+    <value>Project Service Automation</value>
+  </data>
+  <data name="SWITCHSCENARIO_SUCCESS_NOTIFICATION" xml:space="preserve">
+    <value>Akce je dokončená.</value>
+  </data>
+  <data name="SWITCHSCENARIO_SALES" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="SWITCHSCENARIO_SERVICE" xml:space="preserve">
+    <value>Customer Service</value>
+  </data>
+  <data name="SMBAdvSettings_EmailSetup_TestAndEnableAsyncJobSubmitted" xml:space="preserve">
+    <value>Testování a povolování vybraných záznamů běží na pozadí.</value>
+  </data>
+  <data name="SMBAdvSettings_NewDialog_EmptyBPFName" xml:space="preserve">
+    <value>Zadejte prosím název.</value>
+  </data>
+  <data name="SMBAdvSettings_NewDialog_EmptyEntityName" xml:space="preserve">
+    <value>Vyberte prosím entitu.</value>
+  </data>
+  <data name="SMBAdvSettings_Team_AddMembers_HeaderDescription" xml:space="preserve">
+    <value>Rozhodli jste se přidat členy do tohoto počtu týmů: {0}. Klikněte na tlačítko Vyhledávání vedle pole Uživatelé a vyberte, které členy chcete přidat.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Teams_AddMembers_HeaderDescription" xml:space="preserve">
+    <value>Rozhodli jste se přidat členy do tohoto počtu týmů: {0}. Klikněte na tlačítko Vyhledávání vedle pole Uživatelé a vyberte, které členy chcete přidat.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMembers_HeaderDescription" xml:space="preserve">
+    <value>Rozhodli jste se odebrat členy z tohoto počtu týmů: {0}. Klikněte na tlačítko Vyhledávání vedle pole Uživatelé a vyberte, které členy chcete odebrat.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMultipleMembers_HeaderDescription" xml:space="preserve">
+    <value>Rozhodli jste se odebrat členy z tohoto počtu týmů: {0}. Klikněte na tlačítko Vyhledávání vedle pole Uživatelé a vyberte, které členy chcete odebrat.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ChangeManager_SuccessNotification" xml:space="preserve">
+    <value>Akce je dokončená.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_JoinTeams_SuccessNotification" xml:space="preserve">
+    <value>Akce je dokončená.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ManageRoles_SuccessNotification" xml:space="preserve">
+    <value>Akce je dokončená.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ReassignRecords_SuccessNotification" xml:space="preserve">
+    <value>Akce je dokončená.</value>
+  </data>
+  <data name="SMBAdvSettings_Team_AddMembers_SuccessNotification" xml:space="preserve">
+    <value>Akce je dokončená.</value>
+  </data>
+  <data name="SMBAdvSettings_Team_ManageRoles_SuccessNotification" xml:space="preserve">
+    <value>Akce je dokončená.</value>
+  </data>
+  <data name="SMBAdvSettings_Team_ReassignRecords_SuccessNotification" xml:space="preserve">
+    <value>Akce je dokončená.</value>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMembers_SuccessNotification" xml:space="preserve">
+    <value>Akce je dokončená.</value>
+  </data>
+  <data name="SMBAdvSettings_FormFactorOrDeviceNotSupportedMessage" xml:space="preserve">
+    <value>Konfigurace upřesňujícího nastavení není u tohoto provedení nebo zařízení podporovaná.</value>
+  </data>
+  <data name="SMBAdvSettings_ManageRoles_TableHeader" xml:space="preserve">
+    <value>Název role</value>
+  </data>
+  <data name="Dialog_QueueItemReleaseNew_Description_Plural" xml:space="preserve">
+    <value>Chcete uvolnit tento počet vybraných položek: {0}?</value>
+    <comment>&gt;{NumberedPlaceholder="{0}"}. Placeholder 0 is number.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemReleaseNew_Description_Single" xml:space="preserve">
+    <value>Chcete uvolnit vybranou položku?</value>
+    <comment>instruction text.[Category="Servicing"]</comment>
+  </data>
+  <data name="AlertDialog_Text_Territory_Warning" xml:space="preserve">
+    <value>Chystáte se změnit oblast přiřazenou uživateli. Tím bude uživatel odebrán z dříve přiřazených oblastí. Chcete pokračovat?</value>
+  </data>
+  <data name="Goal_Recalculate_Notification" xml:space="preserve">
+    <value>Shrnutí dat může chvíli trvat. Pokračujte kliknutím na tlačítko OK.</value>
+    <comment>Notification to be shown after click of Goal Recalculate</comment>
+  </data>
+  <data name="Goal_Recalculate_DialogTitle" xml:space="preserve">
+    <value>Potvrdit přepočet</value>
+    <comment>Confirm recalculation</comment>
+  </data>
+  <data name="GoalDateValidationErrorMessage" xml:space="preserve">
+    <value>Zadané časové období tohoto cíle je nesprávné. Datum Od musí být dřívější nebo stejné jako datum Do.</value>
+    <comment>Preview Records button text on the advanced find page used in the Goal Rollup Query form. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Text_GoalFormNotification">
+    <value>Došlo k následující chybě:</value>
+    <comment>Error message shown on goal form Notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="GoalFormNotification_HyperLinkText">
+    <value>Otevřít cíl</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_ActiveChildGoal_Deactivate_Warning">
+    <value>Aktuální cíl obsahuje nejméně jeden aktivní podřízený cíl. Cíl není doporučeno uzavírat, pokud existují aktivní podřízené cíle. Chcete tento cíl přesto uzavřít?</value>
+    <comment>Warning message shown to the user when he tries to deactivate a goal which has active child goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_Date_Change_Warning">
+    <value>Při změně časového období tohoto cíle dojde také ke změně jeho podřízených cílů. Pokračujte kliknutím na tlačítko OK.</value>
+    <comment>Warning message shown to the user when he tries to change the start date/end date of a goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044814">
+    <value>The fiscal settings of your organization have changed since the time this goal was changed. You might want to realign the dates to the new fiscal settings.</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="DocTemplate_Label_For_Dynamic_Excel" xml:space="preserve">
+    <value>Vybrat sloupce pro dynamický list Excelu</value>
+    <comment>Select Columns for Dynamic Excel Label</comment>
+  </data>
+  <data name="DocTemplate_Label_For_Pivot" xml:space="preserve">
+    <value>Vybrat sloupce pro kontingenční tabulku Excelu</value>
+    <comment>Select Columns for Pivot Label</comment>
+  </data>
+  <data name="ExportToExcelOnline_CancelLabel" xml:space="preserve">
+    <value>Zrušit</value>
+    <comment>Return to Excel Online</comment>
+  </data>
+  <data name="ExportToExcelOnline_ConfirmLabel" xml:space="preserve">
+    <value>OK</value>
+    <comment>Return to Dynamics 365</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Info" xml:space="preserve">
+    <value>Pokud chcete zjistit stav importu, přejděte na Nastavení &gt; Správa dat &gt; Importy.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Text" xml:space="preserve">
+    <value>Vaše data byla odeslána k importu.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Title" xml:space="preserve">
+    <value>Data odeslaná k importu</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Warning" xml:space="preserve">
+    <value>Před dokončením importu prosím nedělejte žádné další úpravy těchto dat.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_ReturnToCrm_Text" xml:space="preserve">
+    <value>Změny, které uděláte v Excelu, budou ztraceny, pokud je neodešlete do Dynamics 365.</value>
+    <comment>Text</comment>
+   </data>
+  <data name="ExportToExcelOnline_DataSubmitted_StatusText" xml:space="preserve">
+    <value>Pokud chcete zkontrolovat stav importu, klikněte na tlačítko Sledovat průběh.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_ReturnToCrm_Title" xml:space="preserve">
+    <value>Všechny změny v Excelu se ztratí.</value>
+    <comment>Text</comment>
+   </data>
+  <data name="ExportToExcelOnline_Alert_Goto_ImportsPage" xml:space="preserve">
+    <value>Sledovat průběh</value>
+    <comment>Text</comment>
+   </data>
+  <data name="Error_Message_0x8004480c">
+    <value>Informace o nadřazeném cíli a metrice/období nelze aktualizovat současně.</value>
+    <comment>Error message shown when user tries to update parentgoalid and metric/period at same time.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044900">
+    <value>Metriku podřízeného cíle nelze aktualizovat.</value>
+    <comment>Error message shown when user tries to update goal metric on a child goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044901">
+    <value>Atributy týkající se období cíle nelze u podřízeného cíle aktualizovat.</value>
+    <comment>Error message shown when user tries to update goal period settings on a child goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044902">
+    <value>Nelze aktualizovat metriku cíle, ke kterému jsou přidruženy podřízené cíle.</value>
+    <comment>Error message shown when user tries to update goal metric on a root goal with associated child goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044903">
+    <value>U cíle typu fiskálního období musí být nastaven atribut fiskálního období.</value>
+    <comment>Error message shown when user does not provide fiscal year and fiscal period info for period type goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044905">
+    <value>Hodnoty metriky nebo časového období aktuálního cíle se neshodují s hodnotami jeho nadřazeného cíle. Změňte tyto hodnoty a zkuste to znovu.</value>
+    <comment>Error message shown when metric of goal and parent goal does not match.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044906">
+    <value>Hodnoty metriky nebo časového období aktuálního cíle se neshodují s hodnotami jeho nadřazeného cíle. Změňte tyto hodnoty a zkuste to znovu.</value>
+    <comment>Error message shown when time period of goal and parent goal does not match.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044907">
+    <value>U cíle typu vlastního období musí atributy počátečního data cíle a koncového data cíle obsahovat kalendářní data.</value>
+    <comment>Error message shown when user does not provide fiscal year and fiscal period info for period type goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044910">
+    <value>Časové období tohoto cíle nelze změnit, protože existuje nejméně jeden uzavřený podřízený cíl.</value>
+    <comment>Error message shown when user changes the period info of goal which has one or more closed subordinate goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f683">
+    <value>Definovali jste souhrnný dotaz pro pole, které není zadáno v metrice. Aktualizujte formulář a zkuste to znovu.</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9602</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f685">
+    <value>Vybraný souhrnný dotaz je neaktivní. Vyberte některý aktivní dotaz a zkuste to znovu.</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9602</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f686">
+    <value>Vybraná metrika cíle je neaktivní. Vyberte některou aktivní metriku cíle a zkuste to znovu.</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+      <ObjectType>9603</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalRollupCriteriaNotSpecifiedErrorMessage">
+    <value>Musíte zadat kritéria shrnutí.</value>
+    <comment>Error message shown on goal form if consider only goal owner records is false and no query is specified.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="GoalManagement_OverriddenGoal_Notification">
+    <value>Souhrnná data tohoto cíle byla aktualizována ručně. {#Brand_CRM} nebude data tohoto cíle shrnovat automaticky.</value>
+    <comment>Notification message shown on a goal form which has overridden the rolled up values.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_OnDemandRollup_Warning">
+    <value>Shrnutí dat může chvíli trvat. Pokračujte kliknutím na tlačítko OK.</value>
+    <comment>Warning message shown when user clicks the Recalculate button for a goal.[Category="Sales goal mgmt: Rollup"]</comment>
+  </data>
+  <data name="GoalManagement_RollupError_ErrorRecordLink">
+    <value>U cíle {0} došlo k chybě zahrnutí.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the name of the goal with an error[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x80041136">
+    <value>Při implementaci této stromové struktury cílů došlo k chybě. Souhrnná hodnota pro cíl {0} překročila maximální hodnotu.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the name of the goal with an error[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F681">
+    <value>Souhrnná data pro tento cíl nelze aktualizovat. U metriky cíle připojené k tomuto cíli nejsou definovány žádné souhrnné atributy.</value>
+    <comment>Rollup error message.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+      <ObjectType Singular="Goal Metric" Plural="Goal Metrics">9603</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F682">
+    <value>Hodnota dosaženého procenta byla nastavena na nulu, protože vypočtená hodnota není v přípustném rozsahu.</value>
+    <comment>Error shown if the percentage value computed is not a valid value.[Category="Sales goal mgmt: Rollup"]</comment>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F687">
+    <value>Typ záznamu nebo pole odkazované v této metrice cíle není platné.</value>
+    <comment>Rollup error message.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal Metric" Plural="Goal Metrics">9603</ObjectType>
+    </ObjectReferences>
+    <DoesNotReference>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </DoesNotReference>
+  </data>
+  <data name="Dialog_Close_Goal_Title">
+    <value>Potvrdit uzavření cíle</value>
+    <comment>Dialog page title for close goal confirmation dialog page.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Dialog_Delete_DeleteGoal">
+    <value>K některým vybraným cílům mohou být přidruženy podřízené cíle. Před odstraněním těchto cílů doporučujeme přiřadit podřízené cíle k jiným nadřazeným cílům. Chcete-li vybrané cíle odstranit, klikněte na tlačítko OK.</value>
+    <comment>Message displayed in the delete goal dialog page. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="AF_RollupQuery_Btn_Preview">
+    <value>&amp;Zobrazit záznamy</value>
+    <comment>Preview Records button text on the advanced find page used in the Goal Rollup Query form. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="AF_RollupQuery_Btn_Back">
+    <value>&amp;Zpět k dotazu</value>
+    <comment>Clicking on this button will take the user back to the advanced find screen. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Group_Salesperformance">
+    <value>Výkonnost prodeje</value>
+    <comment>Sitemap title for sales performance group.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Group_Sales">
+    <value>Prodej</value>
+    <comment>Sitemap title for sales group.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="NamePlural_Metric">
+    <value>Metriky cílů</value>
+    <comment>Title shown on Settings-Business Management Page for Metric.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+    </ObjectReferences>
+    <DoesNotReference>
+      <ObjectType>9600</ObjectType>
+    </DoesNotReference>
+  </data>
+  <data name="Web.Settings.BusinessManagement.Metric">
+    <value>Definice a správa druhů cílů, které organizace sleduje</value>
+    <comment>Description shown on Settings-Business Management Page for Metric.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_10">
+    <value>Nastavení fiskálního roku</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_37">
+    <value>Proveďte požadovaný výběr u všech nastavení.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_45">
+    <value>Zahájení fiskálního kalendáře 29. února přestupného roku není podporováno.</value>
+    <comment>Error message text when the user tries to set the start date of the fiscal calendar to February 29th of a leap year.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_48">
+    <value>Nastavení počátku fiskálního kalendáře po roce 2100 není podporováno.</value>
+    <comment>Error message text when the user tries to set the start date of the fiscal calendar to 2101 or greater.[Category="Sales goal mgmt: Quota/UI work/Charts/Reports"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_235">
+    <value>Nastavte fiskální období.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_104">
+    <value>Počáteční datum</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_109">
+    <value>Šablona fiskálního období</value>
+    <comment>Label for type of fiscal period[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_115">
+    <value>Pojmenovat podle</value>
+    <comment>Label to indicate whether the name of the fiscal year is based on the start date or end date.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_128">
+    <value>Jak má být zobrazeno?</value>
+    <comment>Label for display settings section on fiscal period dialog[Category="Sales goal mgmt: Quota/UI work/Charts/Reports"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_270">
+    <value>Fiskální rok</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_146">
+    <value>Jakým způsobem má být zobrazeno fiskální období?</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_149">
+    <value>Fiskální období</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_166">
+    <value>Jakým způsobem má být spojen fiskální rok a fiskální období?</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_169">
+    <value>Zobrazit jako</value>
+    <comment>Label to indicate how the fiscal year string should be displayed.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_170">
+    <value>Název měsíčního období založený na názvu měsíce</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.Title">
+    <value>Nastavte čas vypršení platnosti shrnutí a frekvenci shrnutí</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupExpiryTime">
+    <value>Počet dnů po koncovém datu cíle, kdy bude ukončeno shrnutí</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupExpiryTimeUnit">
+    <value>dnů</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupFrequency">
+    <value>Frekvence opakování shrnutí</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupFrequencyUnit">
+    <value>hod</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.ManageAttribute.Goal.DisplayNameUpdate.Info">
+    <value>Toto pole souvisí s polem {0}. Doporučujeme změnit také zobrazovaný název tohoto souvisejícího pole.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the attribute display name. Informational message show to the user when he updates the display names of any of the rollup related attributes in goal entity.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="ManageRoles.Goal.UpdateRoles.Warning">
+    <value>Při udělení vyšší úrovně oprávnění k záznamu cíle budou moci uživatelé s touto rolí zabezpečení zobrazit agregovaná data ze záznamů, ke kterým nemají přístup. Pokračujte kliknutím na tlačítko OK.</value>
+    <comment>Informational message show to the user when he increases the access settings of privileges in goal entity.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+      <ObjectType>8</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="SystemCustomization.SettingsPage.FiscalYearSettings.Help">
+    <value>Umožňuje nastavit počáteční datum, šablonu a možnosti zobrazení pro fiskální rok a fiskální období používané ke sledování prodejních cílů.</value>
+    <comment>Help text for fiscal settings link in the UI.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.Recalculate">
+    <value>Přepočítá skutečná data pro celou stromovou strukturu cílů.</value>
+    <comment>Super tooltip for a ribbon control. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.ToolTipTitle">
+    <value>Uzavřít cíl</value>
+    <comment>Tool tip title for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.ToolTipDescription">
+    <value>Uzavře tyto cíle. &lt;br&gt;&lt;br&gt;Tyto cíle lze opětovně aktivovat ze zobrazení Uzavřené cíle.</value>
+    <comment>Super tool tip text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.Alt">
+    <value>Uzavřít cíl</value>
+    <comment>Alt text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.LabelText">
+    <value>Uzavřít cíl</value>
+    <comment>Label text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.Recalculate">
+    <value>Přepočítat</value>
+    <comment>Label text for recalculate button on ribbon. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Ribbon.Goal.Alt.Recalculate">
+    <value>Přepočítat</value>
+    <comment>Alt text for recalculate button on ribbon. [Category="Application Infrastructure"].</comment>
+  </data>
+  <data name="Ribbon.Goal.ToolTipTitle.ChangeGoalOwner">
+    <value>Změnit manažera cíle</value>
+    <comment>Tooltip title on the goal ribbon for Change Goal Owner button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.ChangeGoalOwner">
+    <value>Učiní jiného uživatele manažerem tohoto cíle.</value>
+    <comment>Super tooltip on the goal ribbon for Change Goal Owner button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>8</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.ChangeGoalOwner">
+    <value>Změnit manažera cíle</value>
+    <comment>Label text for ChangeGoalOwner button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.Alt.ChangeGoalOwner">
+    <value>Změnit manažera cíle</value>
+    <comment>Alt text for ChangeGoalOwner button on ribbon.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"].</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipTitle.Realign">
+    <value>Přizpůsobit fiskálnímu období</value>
+    <comment>Tooltip title on the ribbon form for align button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.Realign">
+    <value>Přizpůsobí počáteční a koncové datum cíle podle nového nastavení fiskálního období.</value>
+    <comment>Super tooltip on the ribbon form for align button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.Realign">
+    <value>Přizpůsobit fiskálnímu období</value>
+    <comment>Label text for align button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Ribbon.Goal.Alt.Realign">
+    <value>Přizpůsobit fiskálnímu období</value>
+    <comment>Alt text for align button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Dialog_Title_Realign">
+    <value>Přizpůsobit počáteční a koncové datum</value>
+    <comment>Title for realign dialog. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Dialog_Desc_Realign">
+    <value>Tato akce přizpůsobí počáteční a koncové datum tohoto cíle podle nového nastavení fiskálního roku. Pokračujte kliknutím na tlačítko OK.</value>
+    <comment>Text for realign dialog. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044800">
+    <value>Tuto metriku cíle používají některé jiné cíle a nelze ji odstranit.</value>
+    <comment>Message shown when user tries to delete a metric associated with goal[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044801">
+    <value>Změny provedené v definici souhrnného pole nelze uložit, protože související metriku cíle používají některé jiné uzavřené cíle.</value>
+    <comment>Message shown when user tries to update Rollup Attribute which has associated closed goals[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044802">
+    <value>Metrika cíle se stejným názvem už existuje. Zadejte jiný název a zkuste to znovu.</value>
+    <comment>Message shown when user tries to create a metric with an already existing name[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044809">
+    <value>Metrika cíle, která používá toto souhrnné pole, je přidružena nejméně k jednomu cíli. Odeberte toto přidružení a zkuste to znovu.</value>
+    <comment>Message shown when user tries to delete Rollup Attribute which has associated goals[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalForm.RollupAttributes.NavigationBarHeader.Title">
+    <value>Zúčastněné záznamy</value>
+    <comment>Title of the Navigation Bar For Rollup attributes on Goal form.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="RollUpAttribute.Form.Alert">
+    <value>Musíte zadat hodnoty všech povinných polí.</value>
+    <comment>Alert shown when some fields are empty on Roll Up Attribute form.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Goal.UnSupported.Forms">
+    <value>Tato entita není momentálně podporovaná v aplikacích vytvořených na architektuře Sjednoceného rozhraní. K vytvoření nebo úpravě záznamů této entity použijte vlastní aplikaci Dynamics 365.</value>
+    <comment>Message for unsupported forms in UCI.</comment>
+  </data>
+  <data name="Error_Message_0x80044814">
+    <value>Od doby, kdy došlo ke změně tohoto cíle, bylo fiskální nastavení organizace změněno. Kalendářní data můžete přizpůsobit novému fiskálnímu nastavení.</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="DocTemplate_DialogUpload_exceltitle" xml:space="preserve">
+    <value>Vybrat soubor, který se má nahrát jako šablona</value>
+    <comment>Upload Title</comment>
+  </data>
+  <data name="DocTemplate_DialogUpload_wordtitle" xml:space="preserve">
+    <value>Vybrat soubor, který se má nahrát jako šablona</value>
+    <comment>Upload Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_exceltitle" xml:space="preserve">
+    <value>Stažení souboru pro vytvoření šablony</value>
+    <comment>Download Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_wordtitle" xml:space="preserve">
+    <value>Stažení souboru pro vytvoření šablony</value>
+    <comment>Download Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_exceldescription" xml:space="preserve">
+    <value>Podporované typy souborů: .xlsx</value>
+    <comment>Excel supported file type message</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_worddescription" xml:space="preserve">
+    <value>Podporované typy souborů: .docx</value>
+    <comment>Word supported file type message</comment>
+  </data>
+  <data name="DocTemplate_Label_For_View_My_Templates" xml:space="preserve">
+    <value>Zobrazit moje šablony</value>
+    <comment>View My Templates Label</comment>
+  </data>
+  <data name="DocTemplate_Not_Valid_File_Type" xml:space="preserve">
+    <value>Nepodporovaný typ souboru</value>
+    <comment>Not a Valid File Type Supported Error</comment>
+  </data>
+  <data name="DocTemplate_Empty_File_Uploaded" xml:space="preserve">
+    <value>Nahrání se nepodařilo, protože není vybrán žádný soubor. Zkuste to prosím znovu, až vyberete soubor.</value>
+    <comment>Empty file uploaded Error</comment>
+  </data>
+  <data name="DocTemplate_Invalid_File_Type_Uploaded" xml:space="preserve">
+    <value>Neplatný nahraný typ souboru</value>
+    <comment>Invalid File Type Uploaded Error</comment>
+  </data>
+  <data name="DocTemplate_Successfully_Uploaded" xml:space="preserve">
+    <value>Byla vytvořena osobní šablona.</value>
+    <comment>Successfully Uploaded Message</comment>
+  </data>
+  <data name="DocTemplate_Successfully_Downloaded" xml:space="preserve">
+    <value>Soubor byl úspěšně stažen. Šablonu vytvoříte jeho úpravou a nahráním.</value>
+    <comment>Successfully Downloaded Message</comment>
+  </data>
+  <data name="DocTemplate_Word_Successfully_Downloaded" xml:space="preserve">
+    <value>Úspěšně staženo.</value>
+    <comment>Successfully Downloaded Message</comment>
+  </data>
+  <data name="DocTemplate_Error_Displaying_Notification" xml:space="preserve">
+    <value>Chyba při zobrazení oznámení</value>
+    <comment>Error displaying notification</comment>
+  </data>
+  <data name="DocTemplate_Activate_Title" xml:space="preserve">
+    <value>Potvrdit aktivaci</value>
+    <comment>Title name</comment>
+  </data>
+  <data name="DocTemplate_Dectivate_Title" xml:space="preserve">
+    <value>Potvrdit deaktivaci</value>
+    <comment>Title name</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Activate_text" xml:space="preserve">
+    <value>Určitě chcete aktivovat vybranou šablonu dokumentu {0}?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Dectivate_text" xml:space="preserve">
+    <value>Chcete deaktivovat vybranou šablonu dokumentu {0}? Můžete ji znovu aktivovat později.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Activate_btn" xml:space="preserve">
+    <value>Aktivovat</value>
+    <comment>Activate button</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Deactivate_btn" xml:space="preserve">
+    <value>Deaktivovat</value>
+    <comment>Deactivate button</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Cancel_btn" xml:space="preserve">
+    <value>Zrušit</value>
+    <comment>Cancel button</comment>
+  </data>
+  <data name="DocTemplate_FormDialog_Activate_text" xml:space="preserve">
+    <value>Určitě chcete aktivovat vybranou šablonu dokumentu?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_FormDialog_Deactivate_text" xml:space="preserve">
+    <value>Určitě chcete deaktivovat vybranou šablonu dokumentu?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Error_Downloading_Message" xml:space="preserve">
+    <value>Při stahování šablony došlo k chybě.</value>
+    <comment>Downloading error message</comment>
+  </data>
+  <data name="DocTemplate_Confirm_Button" xml:space="preserve">
+    <value>OK</value>
+    <comment>Confirm Button</comment>
+  </data>
+  <data name="Dialog_Calendar_Duplicate_Name" xml:space="preserve">
+    <value>Plán s tímto názvem už existuje. Zadejte jiný název.</value>
+    <comment>This is the text that appears to prompt the user to select a different calndar name</comment>
+  </data>
+  <data name="CustomerServiceSchedule_Header_Label" xml:space="preserve">
+    <value>Vytvoření plánu služeb zákazníkům</value>
+    <comment>This is the text that appears on Customer Service Schedule MDD</comment>
+  </data>
+  <data name="HolidaySchedule_Header_Label" xml:space="preserve">
+    <value>Vytvoření kalendáře svátků</value>
+    <comment>This is the text that appears on Holiday Schedule MDD</comment>
+  </data>
+  <data name="CustomerServiceSchedule_Provide_Name" xml:space="preserve">
+    <value>Zadejte název pro plán služeb.</value>
+    <comment>This is the text that appears to prompt the user when an error is encountered during the creation of calendar</comment>
+  </data>
+  <data name="HolidaySchedule_Provide_Name" xml:space="preserve">
+    <value>Zadejte název pro kalendář svátků.</value>
+    <comment>This is the text that appears to prompt the user when an error is encountered during the creation of calendar</comment>
+  </data>
+  <data name="ServiceProcessingMessage" xml:space="preserve">
+    <value>Probíhá zpracování.</value>
+  </data>
+  <data name="Dialog_CalendarRule_State_Existing" xml:space="preserve">
+    <value>Existující</value>
+  </data>
+  <data name="Dialog_CalendarRule_State_New" xml:space="preserve">
+    <value>Nový (nepřidružený týdenní plán)</value>
+  </data>
+  <data name="Dialog_CalendarRule_DoNotObserveHolidaySchedule" xml:space="preserve">
+    <value>Nedodržovat</value>
+  </data>
+  <data name="Dialog_CalendarRule_ObserveHolidaySchedule" xml:space="preserve">
+    <value>Dodržovat</value>
+  </data>
+  <data name="Dialog_CustomerServiceSchedule_SelectSchedule" xml:space="preserve">
+    <value>Vyberte kalendář svátků.</value>
+  </data>
+  <data name="Dialog_CustomerServiceSchedule_SelectTimeZone" xml:space="preserve">
+    <value>Vyberte časové pásmo.</value>
+  </data>
+  <data name="Dialog_CalenderRule_GenericErrorOccurred" xml:space="preserve">
+    <value>Neočekávaná chyba. Zkuste to prosím znovu. Pokud se tento problém bude opakovat, vyhledejte v komunitě Microsoft Dynamics 365 řešení nebo se obraťte na správce vaší organizace. Pokud potřebujete další pomoc, obraťte se na podporu Microsoftu a sdělte technické podrobnosti chyby.</value>
+  </data>
+  <data name="Shortcut_To_Clipboard_Error" xml:space="preserve">
+    <value>Odkaz nelze zkopírovat do schránky.</value>
+    <comment>Error message when clipboard operation failed [Category="Ribbon - M3 - Finalizing"]</comment>
+  </data>
+  <data name="Error_Max_Shortcut_Record_Reached" xml:space="preserve">
+    <value>Maximální počet záznamů, které lze vybrat pro tuto akci, je 10.</value>
+    <comment>The maximum number of records that can be supported for copy/send shortcut action.</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Před provedením této akce je nutné vybrat jeden nebo více záznamů.</value>
+  </data>
+  <data name="Shortcut_To_Clipboard_Unsupported" xml:space="preserve">
+    <value>Tato akce není ve vámi používané verzi prohlížeče podporována.</value>
+    <comment>Text shown to the user when user clicks an action which is not supported on the user's browser[Category="Cross Browser"]</comment>
+  </data>
+  <data name="UnexpectedErrorMessage" xml:space="preserve">
+    <value>Došlo k chybě. Vybraná akce nebyla dokončena.</value>
+  </data>
+  <data name="AppCommonClientCommon_GenericErrorOccurred" xml:space="preserve">
+    <value>Neočekávaná chyba. Zkuste to prosím znovu. Pokud se tento problém bude opakovat, vyhledejte v komunitě Microsoft Dynamics 365 řešení nebo se obraťte na správce vaší organizace. Pokud potřebujete další pomoc, obraťte se na podporu Microsoftu a sdělte technické podrobnosti chyby.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_RRI" xml:space="preserve">
+    <value>Toto pravidlo je neaktivní. Pro aktivity přidané do určené fronty se nebudou vytvářet záznamy.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_ALL" xml:space="preserve">
+    <value>Toto pravidlo je aktivní. Pro aktivity přidané do určené fronty se na základě nastavení tohoto pravidla budou vytvářet záznamy.</value>
+  </data>
+  <data name="Dialog_CalendarRule_Warning" xml:space="preserve">
+    <value>Tento týdenní plán se aktuálně používá. Jeho změnou dojde ke změně platné pracovní doby {0}–{1}.</value>
+    <comment>This Label contains the string that needs to be displayed as warning message in CSS MDD</comment>
+  </data>
+  <data name="Dialog_CalendarUpdate_Warning" xml:space="preserve">
+    <value>Změna v kalendáři zákaznických služeb se nemusí projevit v záznamech ukazatelů KPI smluv SLA, které už probíhají.</value>
+    <comment>This Label contains the string that needs to be displayed as warning message.</comment>
+  </data>
+  <data name="Dialog_HolidayUpdate_Warning" xml:space="preserve">
+    <value>Změna v kalendáři svátků zákazníků se nemusí projevit v záznamech ukazatelů KPI smluv SLA, které už probíhají.</value>
+    <comment>This Label contains the string that needs to be displayed as warning message.</comment>
+  </data>
+  <data name="Dialog_CalendarRule_Privilege_Error" xml:space="preserve">
+    <value>Nemáte oprávnění pro přístup k tomuto záznamu. Obraťte se na správce Microsoft Dynamics 365.</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="WorkHour_UnsavedChanges_Message" xml:space="preserve">
+    <value>Provedené změny nebyly uloženy. Pokud chcete zůstat na této stránce, abyste mohli změny uložit, klikněte na Zrušit.</value>
+  </data>
+  <data name="WorkHour_UnsavedChanges_Title" xml:space="preserve">
+    <value>Neuložené změny</value>
+  </data>
+  <data name="Holiday_ConfirmDeleteButton" xml:space="preserve">
+    <value>Odstranit</value>
+    <comment>Button lable for deleting holiday</comment>
+  </data>
+  <data name="Holiday_ConfirmDeleteText" xml:space="preserve">
+    <value>Chcete z kalendáře svátků odstranit tento svátek? Tuto akci nelze vrátit zpět.</value>
+    <comment>Text for Delete Holiday Dialog</comment>
+  </data>
+  <data name="Holiday_ConfirmDeleteTitle" xml:space="preserve">
+    <value>Potvrdit</value>
+    <comment>Confirmation for Delete</comment>
+  </data>
+  <data name="Holiday_ConfirmMultiDeleteText" xml:space="preserve">
+    <value>Chcete z kalendáře svátků odstranit vybraný počet svátků: {0}? Tuto akci nelze vrátit zpět.</value>
+    <comment>Text for Delete Multiple Holiday Dialog</comment>
+  </data>
+  <data name="EndTime_StartTime_Min_Diff" xml:space="preserve">
+    <value>Koncový čas nesmí předcházet počátečnímu času a musí následovat nejméně 5 minut po počátečním čase.</value>
+  </data>
+  <data name="WorkHour_RefreshChanges_Message" xml:space="preserve">
+    <value>Při aktualizaci budou provedené úpravy ztraceny.</value>
+  </data>
+  <data name="WorkHour_RefreshChanges_Title" xml:space="preserve">
+    <value>Aktualizovat</value>
+  </data>
+  <data name="GlobalNotification_CSS_Created" xml:space="preserve">
+    <value>Plán služeb zákazníkům byl vytvořen.</value>
+  </data>
+  <data name="GlobalNotification_CSS_Edit" xml:space="preserve">
+    <value>Plán služeb zákazníkům byl uložen.</value>
+  </data>
+  <data name="Global_Notification_After_SetWorkHours" xml:space="preserve">
+    <value>Týdenní plán byl aktualizován o novou pracovní dobu.</value>
+  </data>
+  <data name="GlobalNotification_HS_Created" xml:space="preserve">
+    <value>Kalendář svátků byl vytvořen.</value>
+  </data>
+  <data name="CalendarFormTitle_HolidaySchedule" xml:space="preserve">
+    <value>Kalendář svátků</value>
+    <comment>Title to be displayed on calendar form.</comment>
+  </data>
+  <data name="Dialog_Title_RemoveUsers" xml:space="preserve">
+    <value>Odebrat členy</value>
+  </data>
+  <data name="Dialog_Description_RemoveUsers" xml:space="preserve">
+    <value>Chcete odebrat tento počet vybraných prodejců: {0}? Tato akce odebere všechny členy aktuálně vybrané oblasti. Tuto akci nelze vrátit zpět. Prodejce ale můžete do této oblasti přidat později.</value>
+  </data>
+  <data name="Dialog_RemoveButton_Label_RemoveUsers" xml:space="preserve">
+    <value>Odebrat</value>
+  </data>
+  <data name="AlertDialog_Text_RemoveUsers_Failure" xml:space="preserve">
+    <value>Uživatele se nepodařilo odebrat. Sdělte prosím správci tyto informace: stav: {0}, text stavu: {1}, text odpovědi: {2}</value>
+  </data>
+  <data name="Dialog_HolidayItem_Header_New" xml:space="preserve">
+    <value>Přidat svátek</value>
+  </data>
+  <data name="Dialog_HolidayItem_Header_Edit" xml:space="preserve">
+    <value>Upravit svátek</value>
+  </data>
+  <data name="Error_End_Must_Be_After_Start" xml:space="preserve">
+    <value>Čas ukončení musí následovat po čase zahájení.</value>
+  </data>
+  <data name="Dialog_HolidayItem_Name_Short" xml:space="preserve">
+    <value>Název svátku nesmí být prázdný.</value>
+  </data>
+  <data name="Dialog_HolidayItem_Name_Long" xml:space="preserve">
+    <value>Název svátku je příliš dlouhý.</value>
+  </data>
+  <data name="Dialog_HolidayItem_Privilege_Error" xml:space="preserve">
+    <value>Nemáte oprávnění pro přístup k tomuto záznamu. Obraťte se na správce Microsoft Dynamics 365.</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="GlobalNotification_HolidayItem_AddEdit" xml:space="preserve">
+    <value>Svátek byl uložen.</value>
+  </data>
+  <data name="GlobalNotification_HolidayItem_Add" xml:space="preserve">
+    <value>Svátek byl vytvořen.</value>
+  </data>
+  <data name="QueueItem_Private_Queue_LookUp" xml:space="preserve">
+    <value>Zobrazení vyhledávání uživatelů soukromých front</value>
+  </data>
+  <data name="RECORD_ADDED_TO_NO_QUEUE">
+    <value>Tento záznam není přidán do žádné fronty.</value>
+  </data>
+  <data name="RECORD_ADDED_TO_MULTIPLE_QUEUES">
+    <value>Tento záznam se nachází ve více frontách. Chcete-li zobrazit podrobnosti, přejděte do konkrétní fronty.</value>
+  </data>
+  <data name="TeamManagement_Users_Label" xml:space="preserve">
+    <value>Uživatelé</value>
+    <comment>Label to use as a prefix for aria label in users look up control.</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromCSV">
+    <value>Importovat ze souboru CSV</value>
+    <comment>Import from CSV file</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromXML">
+    <value>Importovat ze souboru XML</value>
+    <comment>Import from XML file</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromExcel">
+    <value>Importovat z Excelu</value>
+    <comment>Import from Excel file.</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInBytes">
+    <value>bajtů</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInKB">
+    <value>kB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInMB">
+    <value>MB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInGB">
+    <value>GB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInTB">
+    <value>TB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileFormat">
+    <value>Vybraný soubor je odlišného typu, než který jste vybrali pro import.</value>
+    <comment>Invalid file format than selected filetype</comment>
+  </data>
+  <data name="ImportExport_Label_NoFileSelected">
+    <value>Není vybraný žádný soubor. Pokračujte výběrem souboru, který chcete importovat.</value>
+    <comment>No File Selected</comment>
+  </data>
+  <data name="ImportExport_Label_NoActivityTypeSelected">
+    <value>Není vybrán žádný typ aktivity. Před pokračováním vyberte typ aktivity.</value>
+    <comment>No Activity Type Selected</comment>
+  </data>
+  <data name="ImportExport_Label_NoDataInFile">
+    <value>Vybraný soubor neobsahuje žádná data.</value>
+    <comment>no data in file</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileSubmitted">
+    <value>Vybraný soubor není platný pro import {0}.</value>
+    <comment>File submitted is not valid for import</comment>
+  </data>
+  <data name="ImportExport_Label_UnmappedFieldConfimationDialogTitle">
+    <value>Odeslat data</value>
+    <comment>Unmapped Field Confimation Dialog title</comment>
+  </data>
+  <data name="ImportExport_Label_OptionalUnmappedFieldConfimationDialog">
+    <value>Průvodce zjistil některá nenamapovaná pole. Chcete tato nenamapovaná pole ignorovat a pokračovat?</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_MandatoryAndOptionalUnmappedFieldConfimationDialog">
+    <value>Průvodce zjistil některá nenamapovaná pole. Nenamapovaná povinná pole mohou způsobit chyby při importu. Chcete tato nenamapovaná pole ignorovat a pokračovat?</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_MandatoryUnmappedFieldConfimationDialog">
+    <value>Některá pole nejsou namapována. Některé záznamy proto pravděpodobně nebudou naimportovány.</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromExchangeFailed">
+    <value>Import kontaktů z Exchange se nezdařil {0}.</value>
+    <comment>mport of Contacts from Exchange has Failed</comment>
+  </data>
+  <data name="ImportExport_Label_UnmappedMandatoryField">
+    <value>Průvodce zjistil některá nenamapovaná povinná pole.</value>
+    <comment>Unmapped Manadatory Field</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileSize">
+    <value>Vybraný soubor překračuje povolený limit velikosti.</value>
+    <comment>File size is more than expected</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsWithHistory">
+    <value>Chcete odstranit všechny záznamy vytvořené z vybraného souboru, jeho protokol importu a všechny související záznamy? Tuto akci nelze vrátit zpět.</value>
+    <comment>Delete Imported Logs with History</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsData">
+    <value>Chcete odstranit importované záznamy pro vybraný zdrojový soubor importu? Tuto akci nelze vrátit zpět.</value>
+    <comment>Delete Imported Logs Data</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsDialogTitle">
+    <value>Potvrdit odstranění</value>
+    <comment>Delete Imported Logs Data Dialog Title</comment>
+  </data>
+  <data name="ImportExport_Label_NoRecordSelected">
+    <value>Není vybraný žádný záznam k odstranění.</value>
+    <comment>No Record Selected</comment>
+  </data>
+  <data name="ImportExport_Label_BulkDeletion">
+    <value>Hromadné odstranění</value>
+    <comment>Bulk Deletion</comment>
+  </data>
+  <data name="ImportExport_Label_Confirm">
+    <value>Potvrdit</value>
+    <comment>Confirm</comment>
+  </data>
+  <data name="ImportExport_Label_Cancel">
+    <value>Zrušit</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="ImportExport_Label_MultipleDeleteFailures">
+    <value>Při odstraňování některých záznamů došlo k chybě.</value>
+    <comment>Delete</comment>
+  </data>
+  <data name="ImportExport_Label_UnknownFailures">
+    <value>Neočekávaná chyba. Zkuste to znovu. Pokud se tento problém bude opakovat, vyhledejte v komunitě Microsoft Dynamics 365 řešení, nebo se obraťte na svého správce. Pokud potřebujete další pomoc, obraťte se na podporu Microsoftu a sdělte technické podrobnosti chyby.</value>
+    <comment>Unknown Failures</comment>
+  </data>
+  <data name="ImportExport_Label_PreviligeError">
+    <value>Nemáte oprávnění {0} pro přístup k záznamům typu {1}. Požádejte o pomoc správce Microsoft Dynamics 365.</value>
+    <comment>
+          Displayed when user tries to access something that they do not have the permissions to access [Category="Application Infrastructure"]
+          {NumberedPlaceholder="{0}"} Placeholder 0 is the name of the Privilege Type which is missing.
+          {NumberedPlaceholder="{1}"} Placeholder 1 is the name of the Entity on which the privilege is missing.
+      </comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeMaxLimitExceeded">
+    <value>Vybraný soubor překračuje povolený limit velikosti.</value>
+    <comment>File size max limit exceeded</comment>
+  </data>
+  <data name="ImportExport_Label_NoErrorRowsFoundInThisImport">
+    <value>No error rows found in this import.</value>
+    <comment>No error rows found in this import</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsWithHistoryMultipleFiles">
+    <value>Chcete odstranit všechny záznamy vytvořené z vybraných souborů, jejich protokol importu a všechny související záznamy? Tuto akci nelze vrátit zpět.</value>
+    <comment>Delete Imported Logs with History - Multiple Files</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsDataMultipleFiles">
+    <value>Chcete odstranit importované záznamy pro vybrané zdrojové soubory importu? Tuto akci nelze vrátit zpět.</value>
+    <comment>Delete Imported Logs Data - Multiple Files</comment>
+  </data>
+  <data name="ImportExport_ActivityEntitiesRetrieveError">
+    <value>Nelze získat seznam entit ukazatelů na aktivitu.</value>
+    <comment>Retrieve Activity Entities</comment>
+  </data>
+  <data name="ImportExport_Label_NoErrorRowsFoundInThisImport">
+    <value>V tomto importu nebyly nalezeny žádné řádky s chybou.</value>
+    <comment>No error rows found in this import</comment>
+  </data>
+  <data name="ImportExport_Label_TargetAttributeInvalidForMap">
+    <value>Toto pole není platné pro mapování: {0}, {1}. Opravte tuto nekonzistenci a pak importujte toto mapování dat znovu.</value>
+    <comment>Attribute is not valid for mapping. {NumberedPlaceholder="{0}"} Placeholder 0 is the localized display name of the entity. {NumberedPlaceholder="{1}"} Placeholder 1 is the localized display name of the attribute.</comment>
+  </data>
+  <data name="AppCommon.PDF" xml:space="preserve">
+    <value>Exportovat do PDF</value>
+    <comment>Label  for Export to PDF button.</comment>
+  </data>
+  <data name="AppCommon.PDFToolTip" xml:space="preserve">
+    <value>Spustí dialog Exportovat do PDF.</value>
+    <comment>Tooltip description for Export to PDF button.</comment>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Name_Short" xml:space="preserve">
+    <value>Název zavíracího dne nesmí být prázdný.</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Name_Long" xml:space="preserve">
+    <value>Název zavíracího dne je příliš dlouhý.</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Privilege_Error" xml:space="preserve">
+    <value>Nemáte oprávnění pro přístup k tomuto záznamu. Obraťte se na správce Microsoft Dynamics 365.</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="GlobalNotification_BusinessClosureItem_AddEdit" xml:space="preserve">
+    <value>Zavírací den byl uložen.</value>
+  </data>
+  <data name="GlobalNotification_BusinessClosureItem_Add" xml:space="preserve">
+    <value>Zavírací den byl vytvořen.</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_MDD_Subheader02" xml:space="preserve">
+    <value>Během tohoto zavíracího dne nelze plánovat zdroje. Zdroje, u kterých je pro zavírací dny vybrána možnost Nedodržovat, však mohou být naplánovány.</value>
+  </data>
+  <data name="BusinessClosure_StartTimeInvalid" xml:space="preserve">
+    <value>Zadejte počáteční čas zavíracího dne mezi lety 1753 a 9999.</value>
+    <comment>Error message occurring when the user enters an invalid start time when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_EndTimeOrDurationNotSpecified" xml:space="preserve">
+    <value>Zadejte koncový čas nebo dobu trvání zavíracího dne.</value>
+    <comment>Error message occurring when the user fails to enter an end time or duration value when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_EndTimeInvalid" xml:space="preserve">
+    <value>Zadejte koncový čas zavíracího dne mezi lety 1753 a 9999.</value>
+    <comment>Error message occurring when the user enters an invalid end time when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_InvalidStartTimeEndTime" xml:space="preserve">
+    <value>Počáteční čas musí předcházet koncovému času.</value>
+    <comment>Error message occurring when a business closure's end time occurs before start time.</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteText" xml:space="preserve">
+    <value>Chcete odstranit tento zavírací den? Tuto akci nelze vrátit zpět.</value>
+    <comment>Text for Delete Business Closure Dialog</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmMultiDeleteText" xml:space="preserve">
+    <value>Chcete odstranit tento počet vybraných zavíracích dnů: {0}? Tuto akci nelze vrátit zpět.</value>
+    <comment>Text for Delete Multiple Business Closure Dialog.{NumberedPlaceholder="{0}"}. Placeholder 0 is the number of selected records.</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteTitle" xml:space="preserve">
+    <value>Potvrdit</value>
+    <comment>Confirmation for Delete</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteButton" xml:space="preserve">
+    <value>Odstranit</value>
+    <comment>Button label for deleting business closure</comment>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_DateAndTime_Message" xml:space="preserve">
+    <value>Vyberte datum a čas.</value>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_InProgress_Message" xml:space="preserve">
+    <value>Plánují se hromadné e-maily...</value>
+  </data>
+  <data name="ContextualBulkEmail_Send_InProgress_Message" xml:space="preserve">
+    <value>Odesílají se hromadné e-maily...</value>
+  </data>
+  <data name="ContextualBulkEmail_Form_Notification_Message" xml:space="preserve">
+    <value>Formulář hromadného e-mailu by se neměl používat přímo. Tento formulář by se měl používat jen v režimu hromadného e-mailu Akcelerátoru prodeje.</value>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_Failed_Message" xml:space="preserve">
+    <value>E-maily nelze naplánovat. Zkuste to znovu. Pokud se tento problém opakuje, obraťte se na správce.</value>
+  </data>
+  <data name="ContextualBulkEmail_Send_Failed_Message" xml:space="preserve">
+    <value>E-maily nelze odeslat. Zkuste to znovu. Pokud se tento problém opakuje, obraťte se na správce.</value>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>S účinností od 1. dubna 2023 byla ukončena podpora starších smluv o rozsahu služeb (SLA) u webového klienta, které byly už dříve označeny jako zastaralé. Aby nedošlo ke ztrátě funkčnosti, je velmi důležité okamžitě migrovat vaše starší smlouvy SLA, které byly vytvořeny ve webovém klientovi, do prostředí Sjednoceného rozhraní. Další informace o migraci těchto položek najdete zde: {0}</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>Beru na vědomí</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="LearnMore_Label_Text" xml:space="preserve">
+    <value>Další informace</value>
+  </data>
+  <data name="Dialog_QueueItemPick_MutliPick_Error" xml:space="preserve">
+    <value>Při provádění požadované akce s jedním nebo více záznamy došlo k problému. Zkuste to znovu s jednotlivými záznamy.</value>
+  </data>
+</root>

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Уређај се региструје у позадини. Можете да наставите да користите Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Подаци о уређајима се повлаче у позадини. Можете наставити да користите Microsoft Dynamics 365.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>Дошло је грешке при обављању радње. Покушајте поново касније.</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Изаберите бар један запис.</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Региструјте уређај пре него што покушате да повучете податке о уређајима.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Подаци о уређајима се повлаче у позадини. Можете наставити да користите Microsoft Dynamics 365. Неколико ових уређаја није било регистровано, тако да подаци не могу бити враћени.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>Изабрани уређаји се региструју у позадини. Можете да наставите да користите Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Подаци о уређајима се повлаче у позадини. Можете наставити да користите Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Подаци о уређајима се повлаче у позадини. Можете наставити да користите Microsoft Dynamics 365.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Сви нови уређаји се увозе у позадини. Идите до странице уређаја да бисте видели нове уређаје IoT добављача.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Сви нови уређаји се увозе у позадини. Освежите листу да бисте видели нове уређаје.</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Изаберите један запис.</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Потврда идентитета није успела. Морате да се пријавите на Power BI налог да бисте могли да прегледате или уређујете плочице Power BI.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Пријави се</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Регистровани уређај није пронађен.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>Нису пронађени регистровани повезани уређаји.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>ID уређаја није пронађен. Додајте ID уређаја за приказ плочице Power BI.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Плочица Power BI</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Power BI контролна табла</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Плочица</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Није могуће преузети конфигурациону датотеку за сачувани PowerBI embedded</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>Дошло је до грешке и нисмо успели да сачувамо ваше прилагођавање. Детаљи грешке: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>Тренутни ентитет није конфигурисан тако да подржава примену филтера ID-а уређаја на плочицу Power BI.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Одаберите плочицу Power BI коју желите да додате у образац.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Плочица Power BI</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Сачувај</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Додајте плочицу Power BI за повезани уређај.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Објављивање прилагођавања</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>Плочица Power BI ће бити филтрирана тако да приказује податке за тренутни уређај.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>Ако сачувате ову команду, она ће бити послата и на уређај(е). Желите ли да наставите?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Ознака</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Својство</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Сазнајте више о интеграцији са услугом Azure IoT Central, комплетним глобалним IoT SaaS решењем.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Интегришите са постојећим IoT чвориштем или примените ново и управљајте раније конфигурисаним IoT PaaS решењем из сопствене Azure претплате.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>Није могуће послати команду. IoT обавештење мора да буде повезано са овим записом да би слање команде било могуће.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Уређај се региструје у позадини. Освежите да бисте видели ажурирани статус регистрације.</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>Овај уређај се региструје. Желите ли поново да га региструјете?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Не</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>Овај уређај је већ регистрован. Желите ли поново да га региструјете?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Регистровање уређаја</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>Изабрани уређаји се региструју. Освежите да бисте видели ажурирани статус регистрације.</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Пошаљи команду за {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Пошаљи команду</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0} је послата {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Команда је послата {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>Команде за {0}</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Повезани уређаји</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>Команда је послата.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Прикажи статус команде</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>Није могуће послати команду.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Морате навести команду или поруку.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Повезивање са уређајем није могуће.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Уређаји</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Повежите уређај са {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Путања уређаја</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Кључна путања</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Ниједна унапред дефинисана команда није повезана са овим уређајем. Конфигуришите категорију уређаја да бисте видели унапред дефинисане команде.</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>Омогућена је функција IoT предлога и дозволите 24 сата да промене у конфигурацији буду примењене за обуку модела. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Потврдите да бисте онемогућили функцију IoT предлога.</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>Потврда онемогућавања IoT предлога</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>Омогућавањем ове функције, пристајете да је ова функција у верзији за преглед и слажете се са {0}.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Услови коришћења верзије за преглед</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>Сазнајте више</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Прилагођени приказ уређаја</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Унесите важећи IoT уређај да бисте наставили.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>Бројање је једина доступна агрегатна опција за догађаје уређаја.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>За тренутни уређај није могуће креирати више од 6 плочица.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Уверите се да је изабрано мерење извештавана мера за тренутни уређај.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Читања повезаног уређаја</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Power BI дугме за конфигурацију</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Команда је успешно послата серверу. Синхронизујте уређај како бисте видели статус команде.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Команда није послата серверу због проблема са повезивањем, команда ће бити послата следећи пут када се уређај синхронизује.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>За прикупљање података морате бити на мрежи.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>За обављање ове радње вам је потребна интернет веза.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>За обављање ове радње морате да синхронизујете овај запис.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Регистрација уређаја је успешно послата. Статус регистрације можете видети следећи пут када синхронизујете или пређете у режим рада на мрежи.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Регистрација уређаја није послата серверу због проблема са повезивањем, Регистрација ће бити послата следећи пут када се уређај синхронизује.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Захтев за повлачење података о уређају је успешно послат. Резултат можете видети на картици историје уређаја следећи пут када се уређај синхронизује.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>Да бисте могли да шаљете команде, потребно је да имате интернет везу.</value>
+  </data>
+</root>

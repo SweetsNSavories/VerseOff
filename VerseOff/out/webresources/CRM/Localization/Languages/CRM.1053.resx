@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DynamicProperty_OverrideDialog_SubTitle" xml:space="preserve">
+    <value>Vill du åsidosätta den här egenskapen?</value>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Text" xml:space="preserve">
+    <value>Detta gör att du kan utföra ändringar i den ärvda versionen av den här egenskapen. Den ursprungliga ärvda versionen av egenskapen kommer också att bevaras.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to override the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Title" xml:space="preserve">
+    <value>Bekräfta åsidosättande</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_SubTitle" xml:space="preserve">
+    <value>Vill du skriva över den här egenskapen?</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Text" xml:space="preserve">
+    <value>Detta gör att du kan utföra ytterligare ändringar i den föregående publicerade versionen av den här egenskapen. Den föregående versionen av egenskapen kommer också att bevaras.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to overwrite the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Title" xml:space="preserve">
+    <value>Bekräfta överskrivning</value>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_39" xml:space="preserve">
+    <value>Ange ett värde från {0} till {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_9" xml:space="preserve">
+    <value>Du måste ange ett heltal mellan {0} och {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvaluestring.warning" xml:space="preserve">
+    <value>Längden på standardvärdessträngen måste vara mindre än eller lika med den maximala tillåtna längden.</value>
+    <comment>Warning message for Default Value string lenght of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.defaultvalue.warning" xml:space="preserve">
+    <value>Standardvärdet måste vara större än eller lika med minimivärdet och mindre än eller lika med det maximala värdet</value>
+    <comment>Warning message for Default value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.minvalue.warning" xml:space="preserve">
+    <value>Minimivärdet kan inte vara större än maxvärdet.</value>
+    <comment>Warning message for Minimum value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.optionset.warning" xml:space="preserve">
+    <value>Du kan inte ange en alternativuppsättning som Obligatorisk och Skrivskyddad förrän du lagt till alternativuppsättningsobjekten och angett ett standardvärde.</value>
+    <comment>Warning message for Dynamic Property of type Option Set.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.readonlyrequired.warning" xml:space="preserve">
+    <value>Du måste ange ett standardvärde eftersom den här egenskapen är Obligatorisk och Skrivskyddad.</value>
+    <comment>Warning message for Default Value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.products.ValidToEarlierThanValidFromDate" xml:space="preserve">
+    <value>Datumet Giltig till får inte vara tidigare än datumet Giltig från.</value>
+    <comment>Error message to display if the valid to date supplied  is earlier than the valid from date.</comment>
+  </data>
+  <data name="Kit_Products_Section_Name" xml:space="preserve">
+    <value>PAKETPRODUKTER</value>
+    <comment>Kit Products section name in product kit form.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Product_Family_Hierarchy_Label_Value" xml:space="preserve">
+    <value>Familjehierarki</value>
+    <comment>Label text for Product Family Hierarchy Control.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Product_Bundle_Form_Title" xml:space="preserve">
+    <value>Nytt paket</value>
+    <comment>Title text for Product Bundle Form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="ProductFamilyQuickCreate.DisplayName" xml:space="preserve">
+    <value>Ny produktfamilj</value>
+    <comment></comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Kit" xml:space="preserve">
+    <value>Produktpaket</value>
+    <comment>Singular Name of Product Kit.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Bundle" xml:space="preserve">
+    <value>Paket</value>
+    <comment>Singular Name of Product Bundle.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Product_Family" xml:space="preserve">
+    <value>Produktfamilj</value>
+    <comment>Singular Name of Product Family.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Product" xml:space="preserve">
+    <value>Produkt</value>
+    <comment>Singular Name of Product.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_90" xml:space="preserve">
+    <value>Varning:</value>
+    <comment>Label that is prefixed to a warning message.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_91" xml:space="preserve">
+    <value>Ingen standardprislista har angetts.</value>
+    <comment>Error message that is displayed to the user in the product form when the default price list for the product is not specified.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_12" xml:space="preserve">
+    <value>Du måste markera en produkt först.</value>
+    <comment>Error message displayed in the price list form if the user tries to choose the unit without choosing the product.</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_153" xml:space="preserve">
+    <value>Procentandelen för prismodellen Procent av listpris måste vara mellan {0} och {1} procent. Ange ett nytt värde.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent of List". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_157" xml:space="preserve">
+    <value>Procentandelen för prismodellen Pålägg i procent måste vara mellan {0} och {1} procent. Ange ett nytt värde.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Markup". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_161" xml:space="preserve">
+    <value>Procentandelen för prismodellen Marginal i procent måste vara mellan {0} och {1} procent. Ange ett nytt värde.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Margin". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_113" xml:space="preserve">
+    <value>Avrundningsbeloppet för avrundningsalternativet Slutar på måste vara mellan {0} och {1}. Ange ett nytt avrundningsbelopp.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Ends in". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_106" xml:space="preserve">
+    <value>Avrundningsbeloppet för avrundningsalternativet Multipel av måste vara mellan {0} och {1}. Ange ett nytt avrundningsbelopp.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Multiple of". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifying minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Kit_Products_Form_Title" xml:space="preserve">
+    <value>Paketprodukt</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Bundle_Product_Form_Value" xml:space="preserve">
+    <value>Paketprodukt</value>
+    <comment>Bundle Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Kit_Product_Label_Value" xml:space="preserve">
+    <value>Produktpaket</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>Ett fel har inträffat. Gå tillbaka till startsidan och försök igen.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Du måste markera någon av posterna innan du kan utföra den här åtgärden.</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Ett fel har inträffat. Den valda åtgärden slutfördes inte för en eller flera poster.</value>
+    <comment></comment>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleArticle_DialogText" xml:space="preserve">
+    <value>Du måste välja en artikel.</value>
+    <comment>select an article to associate.[Category="KnowledgeArticle"]</comment>
+    <ObjectReferences>
+      <ObjectType>9953</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleProduct_DialogText" xml:space="preserve">
+    <value>Du måste välja en produkt.</value>
+    <comment>select a product to associate.[Category="KnowledgeArticle"]</comment>
+    <ObjectReferences>
+      <ObjectType>9953</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>Det går inte att bearbeta den här begäran eftersom klienten är offline.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Web.products.pricelevel.EndDateEarlierThanStartDate" xml:space="preserve">
+    <value>Slutdatum kan inte infalla före startdatum.</value>
+    <comment>Error message to display if the end date supplied in the price list form is earlier than the start date.</comment>
+  </data>
+  <data name="Web.Products.UoM.edit.aspx_71" xml:space="preserve">
+    <value>Det här är den primära enheten.</value>
+    <comment>Informational message displayed to the user in the primary unit form.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>Ärenderubrik</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>Kund</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>Prioritet</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>Skapades den</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>Bearbetar...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="Error_Title_0x80042f0a">
+    <value>Teamrollfel</value>
+    <comment>TeamNotAssignedRoles.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Error_Message_0x80042f0a">
+    <value>Det markerade teamet har inte rätt privilegier för den här åtgärden. Tilldela en säkerhetsroll med rätt privilegier för teamet och försök igen.</value>
+    <comment>TeamNotAssignedRoles.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Error_Message_0x8003f452">
+    <value>Det går inte att lösa det överordnade ärendet eftersom det har aktiva underordnade ärenden.</value>
+    <comment>Error message that will be shown to user when  cases with active childs cannot be closed.</comment>
+    <ObjectReferences>
+      <ObjectType Singular="case" Plural="cases">112</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Title_0x8003f452">
+    <value>Stäng det aktiva underordnade ärendet innan du stänger det överordnade ärendet.</value>
+    <comment>Cases with active childs cannot be closed[Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="case" Plural="cases">112</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Brand_CRM" xml:space="preserve">
+		<value>Microsoft Dynamics 365</value>
+		<comment>Branding for CRM.</comment>
+	</data>
+  <data name="Error_Title_0x80048306">
+    <value>Åtkomst nekad</value>
+    <comment>IDS_ACCESSDENIED</comment>
+  </data>
+  <data name="Error_Message_0x80048306">
+    <value>Du har inte tillräckliga privilegier för att komma åt {0}-objektet eller för att utföra den begärda åtgärden. Kontakta {0}-administratören om du vill ha mer information.</value>
+    <comment>Message displayed to a user when they have insufficient privileges to perform an action.</comment>
+  </data>
+  <data name="Web.cs.socialprofile.saveNotSupported">
+    <value>Det går inte att skapa eller ändra en social profil via användargränssnittet</value>
+    <comment>Error message for saving changes in Social Profile through UI. [Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="SocialProfile" Plural="SocialProfiles">99</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.cs.createNotSupported" xml:space="preserve">
+      <value>Det går inte att skapa eller ändra en {0} via användargränssnittet</value>
+      <comment>Error message for saving changes through UI for unsupported entities. {0} is the name of the entity. [Category="Servicing"]</comment>
+    </data>
+  <data name="SocialActivity_EntityName" xml:space="preserve">
+      <value>Social aktivitet</value>
+      <comment>Localized display name for Social Activity Entity</comment>
+    </data>
+  <data name="SocialProfile_EntityName" xml:space="preserve">
+      <value>Social Profil</value>
+      <comment>Localized display name for Social Profile Entity</comment>
+    </data>
+  <data name="Error_Message_Generic_Error_Occured" xml:space="preserve">
+		<value>Ett fel har uppstått. Prova åtgärden igen. Om problemet fortsätter kontaktar du organisationens administratör.</value>
+		<comment>Generic error message for bad response</comment>
+	</data>
+  <data name="Error_Title_0x80040265">
+    <value>Affärsprocessfel</value>
+    <comment>IsvAborted[Category="Plug-in/Workflow Assembly Registration Tool"]</comment>
+  </data>
+  <data name="Error_Message_0x80040265">
+    <value>Åtgärden avbröts på grund av ISV-kod.</value>
+    <comment>IsvAborted[Category="Plug-in/Workflow Assembly Registration Tool"].</comment>
+  </data>
+  <data name="OCV.Feedback.DisclamerText" xml:space="preserve">
+		<value>Ta inte med någon personlig eller känslig information. Om du anger din e-postadress kanske Microsoft kontaktar dig angående din feedback.</value>
+		<comment>Disclaimer text for OCV</comment>
+	</data>
+  <data name="IFRAME.OCV.Widget.Title" xml:space="preserve">
+		<value>Feedbackinnehåll</value>
+		<comment>Title text for OCV iframe</comment>
+	</data>
+  <data name="Merge_success_message" xml:space="preserve">
+        <value>De valda posterna slås samman och den underordnade posten inaktiveras.</value>
+        <comment>When merge operation is successful this message is displayed.</comment>
+	</data>
+  <data name="UpdateRecod_success_message" xml:space="preserve">
+        <value>Den valda posten har uppdaterats.</value>
+        <comment>When update record operation is successful this message is displayed.</comment>
+    </data>
+  <data name="merge_loading_message" xml:space="preserve">
+    <value>Slår samman poster</value>
+    <comment>Label to show progress indicator</comment>
+   </data>
+  <data name="back_button_label" xml:space="preserve">
+    <value>Bakåt</value>
+    <comment>Label to back button in merge dialog</comment>
+   </data>
+  <data name="share_chart_title" xml:space="preserve">
+    <value>Dela användardiagram</value>
+   </data>
+  <data name="share_dashboard_title" xml:space="preserve">
+    <value>Dela användarinstrumentpanelen</value>
+   </data>
+  <data name="import_chart_header" xml:space="preserve">
+    <value>Importera diagram</value>
+   </data>
+  <data name="import_chart_labelVal" xml:space="preserve">
+    <value>Markera en diagramdefinitionsfil (.xml) för att kunna importera den.</value>
+   </data>
+  <data name="import_error_invalid" xml:space="preserve">
+    <value>XML-filen överensstämmer inte med diagramschemat</value>
+   </data>
+  <data name="import_error_typeHeader" xml:space="preserve">
+    <value>Ogiltig fil</value>
+   </data>
+  <data name="import_error_filetype" xml:space="preserve">
+    <value>Ingen giltig filtyp</value>
+   </data>
+  <data name="import_error_parameters" xml:space="preserve">
+    <value>Ogiltiga parametrar</value>
+   </data>
+  <data name="import_error_nodesHeader" xml:space="preserve">
+    <value>Obligatoriska noder saknas</value>
+   </data>
+  <data name="import_error_nodes" xml:space="preserve">
+    <value>Det gick inte att hämta obligatoriska noder</value>
+   </data>
+  <data name="import_duplicate_suffix" xml:space="preserve">
+    <value> – Kopiera</value>
+   </data>
+  <data name="import_duplicate_found" xml:space="preserve">
+    <value> från </value>
+   </data>
+  <data name="import_missing_child" xml:space="preserve">
+    <value>Underordnade noder saknas</value>
+   </data>
+  <data name="import_missing_parent" xml:space="preserve">
+    <value>Överordnade noder saknas</value>
+   </data>
+  <data name="accountsLabel" xml:space="preserve">
+    <value>Slå samman konton</value>
+    <comment>Label merge dialog header for account entity</comment>
+   </data>
+  <data name="contactsLabel" xml:space="preserve">
+    <value>Slå samman kontakter</value>
+    <comment>Label merge dialog header for contacts entity</comment>
+   </data>
+  <data name="leadsLabel" xml:space="preserve">
+    <value>Slå samman leads</value>
+    <comment>Label merge dialog header for lead entity</comment>
+   </data>
+  <data name="merge_records_dialog_title" xml:space="preserve">
+    <value>Sammanslå {0}</value>
+    <comment>Label for merge dialog. {0} contains the entity display name (for example, Merge Accounts, Merge Contacts, etc.)</comment>
+   </data>
+  <data name="async_merge_success_message" xml:space="preserve">
+    <value>De markerade posterna sammanfogas i bakgrunden medan du arbetar.</value>
+    <comment>Success message when async request is completed</comment>
+   </data>
+  <data name="SurveyTitle" xml:space="preserve">
+        <value>Skicka feedback till Microsoft</value>
+    </data>
+  <data name="SurveyRatingTitle" xml:space="preserve">
+        <value>Hur nöjd är du med funktionen?</value>
+    </data>
+  <data name="SurveyCommentTitle" xml:space="preserve">
+        <value>Vilken ytterligare feedback vill du dela med oss?</value>
+    </data>
+  <data name="SurveyCommentsPlaceholder" xml:space="preserve">
+        <value>Ange information utan att uppge personlig information</value>
+    </data>
+  <data name="SubmittingSurvey" xml:space="preserve">
+        <value>Skicka feedback</value>
+    </data>
+  <data name="VerySatisfied" xml:space="preserve">
+        <value>Mycket nöjd</value>
+    </data>
+  <data name="Satisfied" xml:space="preserve">
+        <value>Ganska nöjd</value>
+    </data>
+  <data name="Dissatisfied" xml:space="preserve">
+        <value>Ganska missnöjd</value>
+    </data>
+  <data name="VeryDissatisfied" xml:space="preserve">
+        <value>Mycket missnöjd</value>
+    </data>
+  <data name="Submit" xml:space="preserve">
+        <value>Skicka</value>
+    </data>
+  <data name="Cancel" xml:space="preserve">
+        <value>Annullera</value>
+    </data>
+  <data name="PrivacyStatement" xml:space="preserve">
+        <value>Din feedback används för att förbättra Microsofts produkter och tjänster. IT-administratörer för din organisation kan visa och hantera dina feedbackdata.</value>
+    </data>
+  <data name="PrivacyStatementLink" xml:space="preserve">
+        <value>Sekretesspolicy.</value>
+    </data>
+  <data name="SurveySuccessMessage" xml:space="preserve">
+        <value>Tack för din feedback.</value>
+    </data>
+  <data name="SurveyFailureMessage" xml:space="preserve">
+        <value>Ett fel uppstod med din feedback. Försök igen.</value>
+    </data>
+</root>

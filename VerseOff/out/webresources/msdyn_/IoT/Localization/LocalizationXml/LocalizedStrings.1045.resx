@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Urządzenie jest rejestrowane w tle. Możesz nadal używać usługi Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Ściąganie danych urządzenia w tle. Możesz nadal używać usługi Microsoft Dynamics 365.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>Wystąpił błąd podczas wykonywania akcji. Spróbuj ponownie później.</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Wybierz co najmniej jeden rekord.</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Zarejestruj urządzenie przed podjęciem próby ściągnięcia danych urządzenia.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Ściąganie danych urządzenia w tle. Możesz nadal używać usługi Microsoft Dynamics 365. Niektóre z tych urządzeń nie zostały zarejestrowane, więc nie można pobrać danych.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>Wybrane urządzenia są rejestrowane w tle. Możesz nadal używać usługi Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Ściąganie danych urządzenia w tle. Możesz nadal używać usługi Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Ściąganie danych urządzenia w tle. Możesz nadal używać usługi Microsoft Dynamics 365.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Importowanie wszystkich nowych urządzeń w tle. Przejdź na stronę urządzeń, aby zobaczyć nowe urządzenia od dostawcy IoT.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Importowanie wszystkich nowych urządzeń w tle. Odśwież listę, aby zobaczyć nowe urządzenia.</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Wybierz jeden rekord.</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Uwierzytelnianie nie powiodło się. Musisz zalogować się do swojego konta usługi Power BI, aby wyświetlić lub edytować kafelki usługi Power BI.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Zaloguj</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Nie znaleziono zarejestrowanego urządzenia.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>Nie znaleziono zarejestrowanych podłączonych urządzeń.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>Nie znaleziono identyfikatora urządzenia. Dodaj identyfikator urządzenia, aby wyświetlić kafelek usługi Power BI.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Kafelek usługi Power BI</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Pulpit nawigacyjny usługi Power BI</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Kafelek</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Nie można pobrać pliku konfiguracji dla zapisanej usługi PowerBI Embedded</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>Wystąpił błąd i nie mogliśmy zapisać Twojego dostosowania. Szczegóły błędu: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>Bieżąca encja nie została skonfigurowana do obsługi stosowania filtru identyfikatorów urządzeń do kafelka usługi Power BI.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Wybierz kafelek usługi Power BI, który chcesz dodać do formularza.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Kafelek usługi Power BI</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Dodaj kafelek usługi Power BI dla podłączonego urządzenia.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Publikowanie dostosowania</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>Kafelek usługi Power BI będzie filtrowany w celu pokazania danych bieżącego urządzenia.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>Zapisanie tego polecenia spowoduje także wysłanie go do urządzeń. Czy chcesz kontynuować?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Właściwość</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Dowiedz się więcej o integracji z rozwiązaniem Azure IoT Central, czyli w pełni zarządzanym globalnym rozwiązaniem IoT typu SaaS.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Wykonaj integrację z istniejącym centrum IoT Hub albo wdróż nowe i zarządzaj wstępnie skonfigurowanym rozwiązaniem IoT typu PaaS z poziomu własnej subskrypcji platformy Azure.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>Nie można wysłać polecenia. Alert IoT musi być skojarzony z tym rekordem, aby można było wysłać polecenie.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Urządzenie jest rejestrowane w tle. Odśwież, aby zobaczyć zaktualizowany stan rejestracji.</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>To urządzenie jest rejestrowane. Czy chcesz ponownie zarejestrować to urządzenie?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Tak</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Nie</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>To urządzenie jest już zarejestrowane. Czy chcesz ponownie zarejestrować to urządzenie?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Zarejestruj urządzenie</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>Wybrane urządzenia są rejestrowane. Odśwież, aby zobaczyć zaktualizowany stan rejestracji.</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Wyślij polecenie do: {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Wyślij polecenie</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>Polecenie {0} zostało wysłane do {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Polecenie zostało wysłane do {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>Polecenia dla: {0}</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Podłączone urządzenia</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>Polecenie zostało wysłane.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Wyświetl stan polecenia</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>Nie można wysłać polecenia.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Musi być określone polecenie lub komunikat.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Nie można połączyć urządzenia.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Urządzenia</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Połącz urządzenie z: {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Ścieżka urządzenia</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Ścieżka klucza</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Z tym urządzeniem nie są skojarzone żadne wstępnie zdefiniowane polecenia. Skonfiguruj kategorię urządzenia, aby zobaczyć wstępnie zdefiniowane polecenia.</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>Funkcja Sugestie IoT jest włączona. Zaczekaj 24 godziny na zastosowanie zmian w konfiguracji przed rozpoczęciem szkolenia modelu. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Potwierdź, aby wyłączyć funkcję Sugestie IoT.</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>Potwierdź wyłączenie funkcji Sugestie IoT</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>Włączając tę funkcję, potwierdzasz, że jest to funkcja w wersji zapoznawczej i że zgadzasz się na {0}.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Postanowienia dotyczące korzystania z wersji zapoznawczej</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>Dowiedz się więcej</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Niestandardowy widok urządzeń</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Wprowadź prawidłowe urządzenie IoT, aby kontynuować.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>Liczba jest jedyną dostępną opcją agregacji dla zdarzeń urządzenia.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>Dla bieżącego urządzenia można utworzyć nie więcej niż 6 kafelków.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Upewnij się, że wybrana miara jest raportowaną miarą dla bieżącego urządzenia.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Odczyty z podłączonego urządzenia</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Przycisk konfiguracji usługi Power BI</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Polecenie zostało pomyślnie wysłane do serwera. Zsynchronizuj urządzenie, aby wyświetlić stan polecenia.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Polecenie nie zostało wysłane do serwera z powodu problemów z łącznością. Polecenie zostanie wysłane podczas następnej synchronizacji urządzenia.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>Musisz być w trybie online, aby ściągać dane.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>Do wykonania tej akcji jest wymagane połączenie internetowe.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>Musisz zsynchronizować ten rekord, aby móc wykonać tę akcję.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Rejestracja urządzenia została wysłana pomyślnie. Stan rejestracji możesz wyświetlić przy następnej synchronizacji lub po przejściu do trybu online.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Rejestracja urządzenia nie została wysłana do serwera z powodu problemów z łącznością. Rejestracja zostanie wysłana podczas następnej synchronizacji urządzenia.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Żądanie ściągnięcia danych urządzenia zostało wysłane pomyślnie. Po następnej synchronizacji urządzenia wynik będzie widoczny na karcie Historia urządzenia.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>Aby móc wysyłać polecenia, musisz mieć połączenie z Internetem.</value>
+  </data>
+</root>

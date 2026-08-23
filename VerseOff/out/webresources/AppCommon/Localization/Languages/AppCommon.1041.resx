@@ -1,0 +1,1493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddToQueueDialog_NoQueueSelected" xml:space="preserve">
+    <value>レコードを追加するキューを選択していません。キューを選択して、やり直してください。</value>
+    <comment>The above error message is displayed when the user has selected no queue to add the current item to [Category="Servicing"].</comment>
+  </data>
+  <data name="AssignToQueue_noSelectedUser" xml:space="preserve">
+    <value>現在、このユーザーのレコードを再割り当てするユーザーは選択されていません。割り当て先ユーザーを選択して、やり直してください。</value>
+  </data>
+  <data name="Dialog_AssignQueue_Description_Plural" xml:space="preserve">
+    <value>{0} 個のアイテムを選択しました。だれに割り当てますか?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_AssignQueue_Description_Single" xml:space="preserve">
+    <value>{0} 個のアイテムを選択しました。だれに割り当てますか?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is "1".</comment>
+  </data>
+  <data name="Dialog_QueueItemRoute_Description_Plural" xml:space="preserve">
+    <value>{0} 個のアイテムを選択しました。どのようにルーティングしますか?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_QueueItemRoute_Description_Single" xml:space="preserve">
+    <value>1 個のアイテムを選択しました。どのようにルーティングしますか?</value>
+  </data>
+  <data name="Dialog_RejectEmail_Title" xml:space="preserve">
+    <value>既定電子メールの拒否</value>
+  </data>
+  <data name="Dialog_RejectEmail_Description_Plural" xml:space="preserve">
+    <value>{0} 個のキューの既定電子メールのアドレスを拒否しますか?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_RejectEmail_Description_Single" xml:space="preserve">
+    <value>{0} 個のキューの既定電子メールのアドレスを拒否しますか?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_RejectEmail_Text" xml:space="preserve">
+    <value>この操作を実行すると、選択されているキューの既定電子メールのアドレスが拒否されます。</value>
+  </data>
+  <data name="Dialog_ApproveEmail_Title" xml:space="preserve">
+    <value>既定電子メールの承認</value>
+  </data>
+  <data name="Dialog_ApproveEmail_Description_Plural" xml:space="preserve">
+    <value>{0} 個のキューの既定電子メール アドレスを承認しますか?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_ApproveEmail_Description_Single" xml:space="preserve">
+    <value>{0} 個のキューの既定電子メール アドレスを承認しますか?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_ApproveEmail_Text" xml:space="preserve">
+    <value>この操作により、Microsoft Exchange または構成されたその他のメール システムのデータを Microsoft Dynamics 365 で共有することに同意したと見なされます。Microsoft Dynamics 365 は、以下の [プライバシーに関する同意] ボタンをクリックして確認できる、別個のプライバシーに関する同意の対象になります</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>エラーが発生しました。選択した操作が完了していないレコードがあります。</value>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage" xml:space="preserve">
+    <value>Exchange サブスクリプションをお持ちで Office 365 をご利用のお客様には、Dynamics 365 と Exchange の統合を構成し、Dynamics 365 App for Outlook を有効にします。</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 1.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage1" xml:space="preserve">
+    <value>セットアップを開始するには、以下の内容を読み、同意してください。</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 2.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage2" xml:space="preserve">
+    <value>自動構成を有効にすると、外部システムとのデータの共有に同意したことになります。外部システムから Microsoft Dynamics 365 にインポートしたデータは、プライバシーに関する声明の適用対象になります</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 3.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage3" xml:space="preserve">
+    <value>(こちらからアクセス)。</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 4.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage4" xml:space="preserve">
+    <value>詳細については、</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 5.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage5" xml:space="preserve">
+    <value>ドキュメントを参照してください。</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 6.</comment>
+  </data>
+  <data name="SMBAdvSettings_ProgressIndicatorMessage" xml:space="preserve">
+    <value>処理しています</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ErrorStrings" xml:space="preserve">
+    <value>ユーザーまたはチームを選択してください</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ReassigningRecords" xml:space="preserve">
+    <value>レコードを再割り当てしています</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeactivationOfDefaultView" xml:space="preserve">
+    <value>既定のビューは非アクティブ化できません。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeleteConfirmation" xml:space="preserve">
+    <value>このビューを削除しますか? この操作は元に戻すことができません。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeletionOfDefaultView" xml:space="preserve">
+    <value>現在の既定のビューを削除するには、既定のビューとして別のビューを指定してください。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeletionOfSystemDefinedView" xml:space="preserve">
+    <value>システム定義ビューは削除できません。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_SetAsDefaultForDeactivatedView" xml:space="preserve">
+    <value>既定のビューとして設定できるのは、アクティブなビューのみです。</value>
+  </data>
+  <data name="SMBAdvSettings_UnknownErrorMessage" xml:space="preserve">
+    <value>エラーが発生しました。選択した操作が完了していないレコードがあります。</value>
+  </data>
+  <data name="UserErrorExecutingAssociations" xml:space="preserve">
+    <value>ロールへのユーザーの関連付けを更新する要求の実行中にエラーが発生しました。</value>
+  </data>
+  <data name="TeamErrorExecutingAssociations" xml:space="preserve">
+    <value>ロールへのチームの関連付けを更新する要求の実行中にエラーが発生しました。</value>
+  </data>
+  <data name="Dialog_QueueItemPick_Description_Plural" xml:space="preserve">
+    <value>{0} 個のアイテムを選択しました</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_QueueItemPick_Description_Single" xml:space="preserve">
+    <value>1 個のアイテムを選択しました</value>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Button_Label_Release" xml:space="preserve">
+    <value>解除</value>
+    <comment>Label for the Release button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Button_Label_Remove" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Dialog_QueueItemRelease_Label_Single" xml:space="preserve">
+    <value>アイテムは、他のメンバーがピックアップできるように、再度キューの所有者に割り当てられます</value>
+  </data>
+  <data name="Dialog_QueueItemRelease_Title" xml:space="preserve">
+    <value>キュー アイテムの解放</value>
+  </data>
+  <data name="Dialog_QueueItemRemoveNew_Description_Plural" xml:space="preserve">
+    <value>選択した {0} 個のアイテムをキューから削除しますか?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemRemoveNew_Description_Single" xml:space="preserve">
+    <value>選択したアイテムをキューから削除しますか?</value>
+    <comment>instruction text.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemRemove_Title" xml:space="preserve">
+    <value>キュー アイテムの削除</value>
+    <comment>Dialog title for the Queue Item Remove dialog. [Category="Servicing"]</comment>
+  </data>
+  <data name="SMBAdvSettings_ActionOnMultipleRecordsFailed" xml:space="preserve">
+    <value>エラーが発生しました。選択した操作が完了していないレコードがあります。</value>
+  </data>
+  <data name="SMBAdvSettings_ActivatedBPFDeletionError" xml:space="preserve">
+    <value>アクティブ化された業務プロセス フローは削除できません</value>
+    <comment>Message that needs to be displayed when user tries to delete the activated BPF</comment>
+  </data>
+  <data name="SMBAdvSettings_GenericErrorOccurred" xml:space="preserve">
+    <value>予期しないエラーが発生しました。もう一度やり直してください。問題が解決しない場合は、Microsoft Dynamics 365 コミュニティでソリューションを確認するか、組織の管理者に問い合わせてください。さらにサポートが必要な場合は、Microsoft サポートに連絡して、エラーの技術的な詳細を伝えてください。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_NoRecordSelected" xml:space="preserve">
+    <value>レコードが選択されていません</value>
+    <comment>Message when no user is selected from grid and Enabling or Disabling of User is attempted.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ChangeManager_HeaderDescription" xml:space="preserve">
+    <value>{0} 人のユーザーを選択しました。選択した {0} 人のユーザーに割り当てる上司を指定してください。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_ChangeManager_HeaderDescription" xml:space="preserve">
+    <value>{0} 人のユーザーを選択しました。選択した {0} 人のユーザーに割り当てる上司を指定してください。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_JoinTeam_HeaderDescription" xml:space="preserve">
+    <value>選択した {0} 人のユーザーにどのチームを適用しますか?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_JoinTeam_HeaderDescription" xml:space="preserve">
+    <value>選択した {0} 人のユーザーにどのチームを適用しますか?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>選択した {0} 人のユーザーにどのロールを適用しますか?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>選択した {0} 人のユーザーにどのロールを適用しますか?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>選択した {0} 個のチームにどのロールを適用しますか?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Teams_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>選択した {0} 個のチームにどのロールを適用しますか?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="EditTeam_UpdateSuccessful_Notification" xml:space="preserve">
+    <value>チームが正しく更新されました。</value>
+  </data>
+  <data name="ExcelWordTemplate_FileUploadErrorLabel" xml:space="preserve">
+    <value>サーバーへのファイルのアップロード中にエラーが発生しました</value>
+  </data>
+  <data name="ExcelWordTemplate_FileErrorLabel" xml:space="preserve">
+    <value>無効なファイルの種類です。拡張子が xlsx、docx のファイルを選択してください</value>
+  </data>
+  <data name="ExcelWordTemplate_OkButtonLabel" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ExcelWordTemplate_UploadLabel" xml:space="preserve">
+    <value>アップロード</value>
+  </data>
+  <data name="ExcelWordTemplate_NextLabel" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="ExcelWordtemplate_DoneLabel" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="ExcelWordTemplate_SelectEntityLabel" xml:space="preserve">
+    <value>エンティティを選択してください</value>
+  </data>
+  <data name="ExcelWordTemplate_SelectTemplateLabel" xml:space="preserve">
+    <value>テンプレートを 1 つ選択してください</value>
+  </data>
+  <data name="ExcelWordTemplate_TabErrorLabel" xml:space="preserve">
+    <value>予期しないタブ名:</value>
+  </data>
+  <data name="SubjectTreeTemplate_OkButtonLabel" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="SubjectTreeTemplate_SubjectEmptyTitleError" xml:space="preserve">
+    <value>情報カテゴリのタイトルを入力してください</value>
+  </data>
+  <data name="SWITCHSCENARIO_NOTE" xml:space="preserve">
+    <value>警告: シナリオを切り替える場合は、以前のシナリオに含まれていたデータが失われる可能性があります。また、新しいシナリオを使用するサンプル データは異なる場合があります。</value>
+  </data>
+  <data name="SWITCHSCENARIO_ALL_SCENARIOS" xml:space="preserve">
+    <value>すべてのシナリオ</value>
+  </data>
+  <data name="SWITCHSCENARIO_FIELD_SERVICE" xml:space="preserve">
+    <value>Field Service</value>
+  </data>
+  <data name="SWITCHSCENARIO_MARKETING" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+  <data name="SWITCHSCENARIO_PROJECT_SERVICE" xml:space="preserve">
+    <value>Project Service Automation</value>
+  </data>
+  <data name="SWITCHSCENARIO_SUCCESS_NOTIFICATION" xml:space="preserve">
+    <value>アクションが完了しました。</value>
+  </data>
+  <data name="SWITCHSCENARIO_SALES" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="SWITCHSCENARIO_SERVICE" xml:space="preserve">
+    <value>Customer Service</value>
+  </data>
+  <data name="SMBAdvSettings_EmailSetup_TestAndEnableAsyncJobSubmitted" xml:space="preserve">
+    <value>テストと有効化が、選択したレコードについてバックグラウンドで実行しています。</value>
+  </data>
+  <data name="SMBAdvSettings_NewDialog_EmptyBPFName" xml:space="preserve">
+    <value>名前を入力してください。</value>
+  </data>
+  <data name="SMBAdvSettings_NewDialog_EmptyEntityName" xml:space="preserve">
+    <value>エンティティを選択してください。</value>
+  </data>
+  <data name="SMBAdvSettings_Team_AddMembers_HeaderDescription" xml:space="preserve">
+    <value>{0} 個のチームに対してメンバーを追加するように選択しました。[ユーザー] ボックスの右にある [検索] ボタンをクリックして、追加するメンバーを選択します。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Teams_AddMembers_HeaderDescription" xml:space="preserve">
+    <value>{0} 個のチームに対してメンバーを追加するように選択しました。[ユーザー] ボックスの右にある [検索] ボタンをクリックして、追加するメンバーを選択します。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMembers_HeaderDescription" xml:space="preserve">
+    <value>{0} 個のチームからメンバーを削除するように選択しました。[ユーザー] ボックスの右にある [検索] ボタンをクリックして、削除するメンバーを選択します。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMultipleMembers_HeaderDescription" xml:space="preserve">
+    <value>{0} 個のチームからメンバーを削除するように選択しました。[ユーザー] ボックスの右にある [検索] ボタンをクリックして、削除するメンバーを選択します。</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ChangeManager_SuccessNotification" xml:space="preserve">
+    <value>アクションが完了しました。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_JoinTeams_SuccessNotification" xml:space="preserve">
+    <value>アクションが完了しました。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ManageRoles_SuccessNotification" xml:space="preserve">
+    <value>アクションが完了しました。</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ReassignRecords_SuccessNotification" xml:space="preserve">
+    <value>アクションが完了しました。</value>
+  </data>
+  <data name="SMBAdvSettings_Team_AddMembers_SuccessNotification" xml:space="preserve">
+    <value>アクションが完了しました。</value>
+  </data>
+  <data name="SMBAdvSettings_Team_ManageRoles_SuccessNotification" xml:space="preserve">
+    <value>アクションが完了しました。</value>
+  </data>
+  <data name="SMBAdvSettings_Team_ReassignRecords_SuccessNotification" xml:space="preserve">
+    <value>アクションが完了しました。</value>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMembers_SuccessNotification" xml:space="preserve">
+    <value>アクションが完了しました。</value>
+  </data>
+  <data name="SMBAdvSettings_FormFactorOrDeviceNotSupportedMessage" xml:space="preserve">
+    <value>このフォーム ファクターまたはデバイスで詳細設定を構成することはサポートされていません。</value>
+  </data>
+  <data name="SMBAdvSettings_ManageRoles_TableHeader" xml:space="preserve">
+    <value>ロール名</value>
+  </data>
+  <data name="Dialog_QueueItemReleaseNew_Description_Plural" xml:space="preserve">
+    <value>選択した {0} 個のアイテムを解除しますか?</value>
+    <comment>&gt;{NumberedPlaceholder="{0}"}. Placeholder 0 is number.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemReleaseNew_Description_Single" xml:space="preserve">
+    <value>選択した項目を解除しますか?</value>
+    <comment>instruction text.[Category="Servicing"]</comment>
+  </data>
+  <data name="AlertDialog_Text_Territory_Warning" xml:space="preserve">
+    <value>ユーザーの担当地域を変更しようとしています。ユーザーはこれまで割り当てられている担当地域から削除されます。続行しますか?</value>
+  </data>
+  <data name="Goal_Recalculate_Notification" xml:space="preserve">
+    <value>データのロールアップには少々時間がかかります。続行するには［OK］をクリックしてください。</value>
+    <comment>Notification to be shown after click of Goal Recalculate</comment>
+  </data>
+  <data name="Goal_Recalculate_DialogTitle" xml:space="preserve">
+    <value>再計算を確認します</value>
+    <comment>Confirm recalculation</comment>
+  </data>
+  <data name="GoalDateValidationErrorMessage" xml:space="preserve">
+    <value>この目標に対して指定された期間が正しくありません。開始日は終了日以前である必要があります。</value>
+    <comment>Preview Records button text on the advanced find page used in the Goal Rollup Query form. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Text_GoalFormNotification">
+    <value>次のエラーが発生しました:</value>
+    <comment>Error message shown on goal form Notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="GoalFormNotification_HyperLinkText">
+    <value>目標を開く</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_ActiveChildGoal_Deactivate_Warning">
+    <value>現在の目標には 1 つ以上のアクティブな下位目標があります。アクティブな下位目標がある場合は、目標をクローズしないことをお勧めします。それでもこの目標をクローズしますか?</value>
+    <comment>Warning message shown to the user when he tries to deactivate a goal which has active child goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_Date_Change_Warning">
+    <value>この目標の期間を変更すると、その下位目標も変更されます。続行するには、[OK] をクリックしてください。</value>
+    <comment>Warning message shown to the user when he tries to change the start date/end date of a goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044814">
+    <value>The fiscal settings of your organization have changed since the time this goal was changed. You might want to realign the dates to the new fiscal settings.</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="DocTemplate_Label_For_Dynamic_Excel" xml:space="preserve">
+    <value>動的な Excel の列を選択</value>
+    <comment>Select Columns for Dynamic Excel Label</comment>
+  </data>
+  <data name="DocTemplate_Label_For_Pivot" xml:space="preserve">
+    <value>ピボット Excel の列を選択</value>
+    <comment>Select Columns for Pivot Label</comment>
+  </data>
+  <data name="ExportToExcelOnline_CancelLabel" xml:space="preserve">
+    <value>キャンセル</value>
+    <comment>Return to Excel Online</comment>
+  </data>
+  <data name="ExportToExcelOnline_ConfirmLabel" xml:space="preserve">
+    <value>OK</value>
+    <comment>Return to Dynamics 365</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Info" xml:space="preserve">
+    <value>インポートの状態を確認するには、[設定] &gt; [データ管理] &gt; [インポート] に移動します</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Text" xml:space="preserve">
+    <value>データがインポート用に送信されました。</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Title" xml:space="preserve">
+    <value>インポート用にデータが送信されました</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Warning" xml:space="preserve">
+    <value>インポート処理が完了するまでは、このデータを編集しないでください。</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_ReturnToCrm_Text" xml:space="preserve">
+    <value>Excel で行った変更は、Dynamics 365 に送信しない限り、失われます。</value>
+    <comment>Text</comment>
+   </data>
+  <data name="ExportToExcelOnline_DataSubmitted_StatusText" xml:space="preserve">
+    <value>インポートの状態を確認するには、[進行状況の追跡] ボタンをクリックします。</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_ReturnToCrm_Title" xml:space="preserve">
+    <value>Excel での変更はすべて失われます</value>
+    <comment>Text</comment>
+   </data>
+  <data name="ExportToExcelOnline_Alert_Goto_ImportsPage" xml:space="preserve">
+    <value>進行状況の追跡</value>
+    <comment>Text</comment>
+   </data>
+  <data name="Error_Message_0x8004480c">
+    <value>上位目標と指標/期間情報を同時に更新することはできません。</value>
+    <comment>Error message shown when user tries to update parentgoalid and metric/period at same time.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044900">
+    <value>下位目標の指標は更新できません。</value>
+    <comment>Error message shown when user tries to update goal metric on a child goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044901">
+    <value>下位目標の目標期間に関連する属性は更新できません。</value>
+    <comment>Error message shown when user tries to update goal period settings on a child goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044902">
+    <value>下位目標が関連付けられている目標の指標は更新できません。</value>
+    <comment>Error message shown when user tries to update goal metric on a root goal with associated child goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044903">
+    <value>会計期間型の目標の場合、会計期間属性を設定する必要があります。</value>
+    <comment>Error message shown when user does not provide fiscal year and fiscal period info for period type goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044905">
+    <value>現在の目標の指標または期間がその上位目標と一致しません。値を変更して、やり直してください。</value>
+    <comment>Error message shown when metric of goal and parent goal does not match.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044906">
+    <value>現在の目標の指標または期間がその上位目標と一致しません。値を変更して、やり直してください。</value>
+    <comment>Error message shown when time period of goal and parent goal does not match.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044907">
+    <value>カスタム期間型の目標の場合、目標の開始日と目標の終了日を表す属性にデータを設定する必要があります。</value>
+    <comment>Error message shown when user does not provide fiscal year and fiscal period info for period type goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044910">
+    <value>クローズした下位目標が 1 つ以上あるため、この目標の期間は変更できません。</value>
+    <comment>Error message shown when user changes the period info of goal which has one or more closed subordinate goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f683">
+    <value>メトリックで指定されていないフィールドに関するロールアップ クエリを定義しました。フォームを更新して、やり直してください。</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9602</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f685">
+    <value>選択したロールアップ クエリは非アクティブです。アクティブなクエリを選択して、やり直してください。</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9602</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f686">
+    <value>選択した目標メトリックは非アクティブです。アクティブな目標メトリックを選択して、やり直してください。</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+      <ObjectType>9603</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalRollupCriteriaNotSpecifiedErrorMessage">
+    <value>ロールアップ基準を指定する必要があります。</value>
+    <comment>Error message shown on goal form if consider only goal owner records is false and no query is specified.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="GoalManagement_OverriddenGoal_Notification">
+    <value>この目標に関するロールアップ データが手動で更新されました。{#Brand_CRM} はこの目標の自動ロールアップを行いません。</value>
+    <comment>Notification message shown on a goal form which has overridden the rolled up values.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_OnDemandRollup_Warning">
+    <value>データのロールアップには少々時間がかかります。続行するには［OK］をクリックしてください。</value>
+    <comment>Warning message shown when user clicks the Recalculate button for a goal.[Category="Sales goal mgmt: Rollup"]</comment>
+  </data>
+  <data name="GoalManagement_RollupError_ErrorRecordLink">
+    <value>目標 {0} のロールアップ エラーが発生しました。</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the name of the goal with an error[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x80041136">
+    <value>この目標ツリーのロールアップ中にエラーが発生しました。目標 {0} のロールアップ値が最大値の制限を超えています。</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the name of the goal with an error[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F681">
+    <value>この目標のロールアップ データを更新できません。この目標に関連付けられている目標指標では、ロールアップ属性が定義されていません。</value>
+    <comment>Rollup error message.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+      <ObjectType Singular="Goal Metric" Plural="Goal Metrics">9603</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F682">
+    <value>計算された値は許容範囲内にないため、達成率値は 0 に設定されました。</value>
+    <comment>Error shown if the percentage value computed is not a valid value.[Category="Sales goal mgmt: Rollup"]</comment>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F687">
+    <value>目標指標で参照されているレコードの種類またはフィールドが無効です。</value>
+    <comment>Rollup error message.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal Metric" Plural="Goal Metrics">9603</ObjectType>
+    </ObjectReferences>
+    <DoesNotReference>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </DoesNotReference>
+  </data>
+  <data name="Dialog_Close_Goal_Title">
+    <value>クローズする目標の確認</value>
+    <comment>Dialog page title for close goal confirmation dialog page.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Dialog_Delete_DeleteGoal">
+    <value>選択した目標に、下位の目標が関連付けられている可能性があります。目標を削除する前に、下位の目標を他の上位の目標に割り当てることをお勧めします。選択した目標を削除するには［OK］をクリックしてください。</value>
+    <comment>Message displayed in the delete goal dialog page. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="AF_RollupQuery_Btn_Preview">
+    <value>レコードの表示(&amp;V)</value>
+    <comment>Preview Records button text on the advanced find page used in the Goal Rollup Query form. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="AF_RollupQuery_Btn_Back">
+    <value>クエリに戻る(&amp;Q)</value>
+    <comment>Clicking on this button will take the user back to the advanced find screen. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Group_Salesperformance">
+    <value>営業実績</value>
+    <comment>Sitemap title for sales performance group.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Group_Sales">
+    <value>営業</value>
+    <comment>Sitemap title for sales group.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="NamePlural_Metric">
+    <value>目標指標</value>
+    <comment>Title shown on Settings-Business Management Page for Metric.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+    </ObjectReferences>
+    <DoesNotReference>
+      <ObjectType>9600</ObjectType>
+    </DoesNotReference>
+  </data>
+  <data name="Web.Settings.BusinessManagement.Metric">
+    <value>組織で追跡する目標の種類を定義および管理します。</value>
+    <comment>Description shown on Settings-Business Management Page for Metric.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_10">
+    <value>会計年度の設定</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_37">
+    <value>すべての設定を選択してください。</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_45">
+    <value>会計カレンダーの開始日をうるう年の 2 月 29 日にすることはできません。</value>
+    <comment>Error message text when the user tries to set the start date of the fiscal calendar to February 29th of a leap year.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_48">
+    <value>2100 年より後から始まる会計カレンダーはサポートされていません。</value>
+    <comment>Error message text when the user tries to set the start date of the fiscal calendar to 2101 or greater.[Category="Sales goal mgmt: Quota/UI work/Charts/Reports"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_235">
+    <value>会計期間を設定します。</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_104">
+    <value>開始日</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_109">
+    <value>会計期間テンプレート</value>
+    <comment>Label for type of fiscal period[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_115">
+    <value>基準日</value>
+    <comment>Label to indicate whether the name of the fiscal year is based on the start date or end date.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_128">
+    <value>表示方法を選択してください。</value>
+    <comment>Label for display settings section on fiscal period dialog[Category="Sales goal mgmt: Quota/UI work/Charts/Reports"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_270">
+    <value>会計年度</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_146">
+    <value>会計期間を表示する方法を選択してください。</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_149">
+    <value>会計期間</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_166">
+    <value>会計年度および会計期間を接続する方法を選択してください。</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_169">
+    <value>表示名</value>
+    <comment>Label to indicate how the fiscal year string should be displayed.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_170">
+    <value>月名を使用した月単位の期間の名前</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.Title">
+    <value>ロールアップの有効期限と頻度を設定します。</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupExpiryTime">
+    <value>目標の終了日から目標のロールアップが停止するまでの日数</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupExpiryTimeUnit">
+    <value>日</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupFrequency">
+    <value>定期的なロールアップの頻度</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupFrequencyUnit">
+    <value>時間</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.ManageAttribute.Goal.DisplayNameUpdate.Info">
+    <value>このフィールドは {0} フィールドに関連しています。関連フィールドの表示名も変更することをお勧めします。</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the attribute display name. Informational message show to the user when he updates the display names of any of the rollup related attributes in goal entity.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="ManageRoles.Goal.UpdateRoles.Warning">
+    <value>目標レコードに対する上位の権限を付与することにより、このセキュリティ ロールを持つユーザーは、アクセスできないレコードの集計データを表示できるようになります。続行するには、［OK］をクリックしてください。</value>
+    <comment>Informational message show to the user when he increases the access settings of privileges in goal entity.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+      <ObjectType>8</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="SystemCustomization.SettingsPage.FiscalYearSettings.Help">
+    <value>営業目標の追跡に使用する、会計年度および会計期間の開始日、テンプレート、および表示オプションを設定します。</value>
+    <comment>Help text for fiscal settings link in the UI.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.Recalculate">
+    <value>目標ツリー全体の実績データを再計算します。</value>
+    <comment>Super tooltip for a ribbon control. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.ToolTipTitle">
+    <value>目標のクローズ</value>
+    <comment>Tool tip title for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.ToolTipDescription">
+    <value>これらの目標をクローズします。&lt;br&gt;&lt;br&gt;これらの目標は、クローズした目標のビューから再アクティブ化できます。</value>
+    <comment>Super tool tip text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.Alt">
+    <value>目標のクローズ</value>
+    <comment>Alt text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.LabelText">
+    <value>目標のクローズ</value>
+    <comment>Label text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.Recalculate">
+    <value>再計算</value>
+    <comment>Label text for recalculate button on ribbon. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Ribbon.Goal.Alt.Recalculate">
+    <value>再計算</value>
+    <comment>Alt text for recalculate button on ribbon. [Category="Application Infrastructure"].</comment>
+  </data>
+  <data name="Ribbon.Goal.ToolTipTitle.ChangeGoalOwner">
+    <value>目標のマネージャーの変更</value>
+    <comment>Tooltip title on the goal ribbon for Change Goal Owner button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.ChangeGoalOwner">
+    <value>別のユーザーをこの目標のマネージャーにします。</value>
+    <comment>Super tooltip on the goal ribbon for Change Goal Owner button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>8</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.ChangeGoalOwner">
+    <value>目標のマネージャーの変更</value>
+    <comment>Label text for ChangeGoalOwner button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.Alt.ChangeGoalOwner">
+    <value>目標のマネージャーの変更</value>
+    <comment>Alt text for ChangeGoalOwner button on ribbon.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"].</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipTitle.Realign">
+    <value>会計期間に基づく変更</value>
+    <comment>Tooltip title on the ribbon form for align button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.Realign">
+    <value>新しい会計期間の設定に基づいて、目標の開始日と終了日を変更します。</value>
+    <comment>Super tooltip on the ribbon form for align button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.Realign">
+    <value>会計期間に基づく変更</value>
+    <comment>Label text for align button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Ribbon.Goal.Alt.Realign">
+    <value>会計期間に基づく変更</value>
+    <comment>Alt text for align button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Dialog_Title_Realign">
+    <value>開始日と終了日の変更</value>
+    <comment>Title for realign dialog. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Dialog_Desc_Realign">
+    <value>この操作を実行すると、新しい会計年度の設定に合わせて、この目標の開始日と終了日が変更されます。操作を続行するには、［OK］をクリックしてください。</value>
+    <comment>Text for realign dialog. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044800">
+    <value>この目標指標は 1 つ以上の目標で使用されており、削除できません。</value>
+    <comment>Message shown when user tries to delete a metric associated with goal[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044801">
+    <value>関連する目標指標がクローズした 1 つ以上の目標で使用されているため、ロールアップ フィールド定義への変更を保存できません。</value>
+    <comment>Message shown when user tries to update Rollup Attribute which has associated closed goals[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044802">
+    <value>同じ名前の目標指標が既に存在します。別の名前を指定して、やり直してください。</value>
+    <comment>Message shown when user tries to create a metric with an already existing name[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044809">
+    <value>このロールアップ フィールドを使用する目標指標には、1 つ以上の目標が関連付けられています。関連付けを削除して、やり直してください。</value>
+    <comment>Message shown when user tries to delete Rollup Attribute which has associated goals[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalForm.RollupAttributes.NavigationBarHeader.Title">
+    <value>参加レコード</value>
+    <comment>Title of the Navigation Bar For Rollup attributes on Goal form.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="RollUpAttribute.Form.Alert">
+    <value>すべての必須フィールドの値を指定する必要があります。</value>
+    <comment>Alert shown when some fields are empty on Roll Up Attribute form.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Goal.UnSupported.Forms">
+    <value>このエンティティは現在、統一インターフェイス フレームワークで開発されたアプリではサポートされていません。このエンティティのレコードを作成または編集するには、Dynamics 365 - カスタム アプリを使用してください。</value>
+    <comment>Message for unsupported forms in UCI.</comment>
+  </data>
+  <data name="Error_Message_0x80044814">
+    <value>この目標が変更された時点以降に組織の会計年度の設定が変更されています。新しい会計年度の設定に合わせた日付の再設定が必要になる可能性があります。</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="DocTemplate_DialogUpload_exceltitle" xml:space="preserve">
+    <value>テンプレートとしてアップロードするファイルを選択します</value>
+    <comment>Upload Title</comment>
+  </data>
+  <data name="DocTemplate_DialogUpload_wordtitle" xml:space="preserve">
+    <value>テンプレートとしてアップロードするファイルを選択します</value>
+    <comment>Upload Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_exceltitle" xml:space="preserve">
+    <value>テンプレートを作成するためのファイルをダウンロードします</value>
+    <comment>Download Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_wordtitle" xml:space="preserve">
+    <value>テンプレートを作成するためのファイルをダウンロードします</value>
+    <comment>Download Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_exceldescription" xml:space="preserve">
+    <value>サポートされるファイルの種類: .xlsx</value>
+    <comment>Excel supported file type message</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_worddescription" xml:space="preserve">
+    <value>サポートされるファイルの種類: .docx</value>
+    <comment>Word supported file type message</comment>
+  </data>
+  <data name="DocTemplate_Label_For_View_My_Templates" xml:space="preserve">
+    <value>自分のテンプレートを表示</value>
+    <comment>View My Templates Label</comment>
+  </data>
+  <data name="DocTemplate_Not_Valid_File_Type" xml:space="preserve">
+    <value>サポートされている有効なファイルの種類ではありません</value>
+    <comment>Not a Valid File Type Supported Error</comment>
+  </data>
+  <data name="DocTemplate_Empty_File_Uploaded" xml:space="preserve">
+    <value>ファイルが選択されていないため、このアップロードは失敗しました。ファイルを選択した後、もう一度やり直してください。</value>
+    <comment>Empty file uploaded Error</comment>
+  </data>
+  <data name="DocTemplate_Invalid_File_Type_Uploaded" xml:space="preserve">
+    <value>無効なファイルの種類がアップロードされました</value>
+    <comment>Invalid File Type Uploaded Error</comment>
+  </data>
+  <data name="DocTemplate_Successfully_Uploaded" xml:space="preserve">
+    <value>個人用テンプレートが作成されました。</value>
+    <comment>Successfully Uploaded Message</comment>
+  </data>
+  <data name="DocTemplate_Successfully_Downloaded" xml:space="preserve">
+    <value>ファイルが正常にダウンロードされました。更新し、アップロードしてテンプレートを作成してください。​</value>
+    <comment>Successfully Downloaded Message</comment>
+  </data>
+  <data name="DocTemplate_Word_Successfully_Downloaded" xml:space="preserve">
+    <value>正常にダウンロードされました。</value>
+    <comment>Successfully Downloaded Message</comment>
+  </data>
+  <data name="DocTemplate_Error_Displaying_Notification" xml:space="preserve">
+    <value>表示エラー通知</value>
+    <comment>Error displaying notification</comment>
+  </data>
+  <data name="DocTemplate_Activate_Title" xml:space="preserve">
+    <value>アクティブ化の確認</value>
+    <comment>Title name</comment>
+  </data>
+  <data name="DocTemplate_Dectivate_Title" xml:space="preserve">
+    <value>非アクティブ化の確認</value>
+    <comment>Title name</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Activate_text" xml:space="preserve">
+    <value>選択した {0} ドキュメント テンプレートをアクティブにしますか?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Dectivate_text" xml:space="preserve">
+    <value>選択した {0} ドキュメント テンプレートを非アクティブにしますか? 必要に応じて、後で再度アクティブにすることができます。</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Activate_btn" xml:space="preserve">
+    <value>アクティブ化</value>
+    <comment>Activate button</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Deactivate_btn" xml:space="preserve">
+    <value>非アクティブ化</value>
+    <comment>Deactivate button</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Cancel_btn" xml:space="preserve">
+    <value>キャンセル</value>
+    <comment>Cancel button</comment>
+  </data>
+  <data name="DocTemplate_FormDialog_Activate_text" xml:space="preserve">
+    <value>選択したドキュメント テンプレートをアクティブ化しますか?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_FormDialog_Deactivate_text" xml:space="preserve">
+    <value>選択したドキュメント テンプレートを非アクティブ化しますか?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Error_Downloading_Message" xml:space="preserve">
+    <value>テンプレートのダウンロード中にエラーが発生しました</value>
+    <comment>Downloading error message</comment>
+  </data>
+  <data name="DocTemplate_Confirm_Button" xml:space="preserve">
+    <value>OK</value>
+    <comment>Confirm Button</comment>
+  </data>
+  <data name="Dialog_Calendar_Duplicate_Name" xml:space="preserve">
+    <value>この名前のスケジュールが既に存在します。別の名前を指定してください</value>
+    <comment>This is the text that appears to prompt the user to select a different calndar name</comment>
+  </data>
+  <data name="CustomerServiceSchedule_Header_Label" xml:space="preserve">
+    <value>顧客サービス スケジュールの作成</value>
+    <comment>This is the text that appears on Customer Service Schedule MDD</comment>
+  </data>
+  <data name="HolidaySchedule_Header_Label" xml:space="preserve">
+    <value>祝日スケジュールの作成</value>
+    <comment>This is the text that appears on Holiday Schedule MDD</comment>
+  </data>
+  <data name="CustomerServiceSchedule_Provide_Name" xml:space="preserve">
+    <value>サービス スケジュールの名前を入力してください</value>
+    <comment>This is the text that appears to prompt the user when an error is encountered during the creation of calendar</comment>
+  </data>
+  <data name="HolidaySchedule_Provide_Name" xml:space="preserve">
+    <value>祝日スケジュールの名前を入力してください</value>
+    <comment>This is the text that appears to prompt the user when an error is encountered during the creation of calendar</comment>
+  </data>
+  <data name="ServiceProcessingMessage" xml:space="preserve">
+    <value>処理しています</value>
+  </data>
+  <data name="Dialog_CalendarRule_State_Existing" xml:space="preserve">
+    <value>既存</value>
+  </data>
+  <data name="Dialog_CalendarRule_State_New" xml:space="preserve">
+    <value>新規 (週単位のスケジュールが関連付けられていない)</value>
+  </data>
+  <data name="Dialog_CalendarRule_DoNotObserveHolidaySchedule" xml:space="preserve">
+    <value>従わない</value>
+  </data>
+  <data name="Dialog_CalendarRule_ObserveHolidaySchedule" xml:space="preserve">
+    <value>従う</value>
+  </data>
+  <data name="Dialog_CustomerServiceSchedule_SelectSchedule" xml:space="preserve">
+    <value>祝日スケジュールを選択します。</value>
+  </data>
+  <data name="Dialog_CustomerServiceSchedule_SelectTimeZone" xml:space="preserve">
+    <value>タイム ゾーンを選択してください。</value>
+  </data>
+  <data name="Dialog_CalenderRule_GenericErrorOccurred" xml:space="preserve">
+    <value>予期しないエラーが発生しました。もう一度やり直してください。問題が解決しない場合は、Microsoft Dynamics 365 コミュニティでソリューションを確認するか、組織の管理者に問い合わせてください。さらにサポートが必要な場合は、Microsoft サポートに連絡して、エラーの技術的な詳細を伝えてください。</value>
+  </data>
+  <data name="Shortcut_To_Clipboard_Error" xml:space="preserve">
+    <value>リンクをクリップボードにコピーできませんでした。</value>
+    <comment>Error message when clipboard operation failed [Category="Ribbon - M3 - Finalizing"]</comment>
+  </data>
+  <data name="Error_Max_Shortcut_Record_Reached" xml:space="preserve">
+    <value>この操作のために選択できるレコードの最大数は、10 です。</value>
+    <comment>The maximum number of records that can be supported for copy/send shortcut action.</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>この操作を実行する前に、1 つまたは複数のレコードを選択してください。</value>
+  </data>
+  <data name="Shortcut_To_Clipboard_Unsupported" xml:space="preserve">
+    <value>この操作は、ご使用のブラウザーでサポートされていません。</value>
+    <comment>Text shown to the user when user clicks an action which is not supported on the user's browser[Category="Cross Browser"]</comment>
+  </data>
+  <data name="UnexpectedErrorMessage" xml:space="preserve">
+    <value>エラーが発生しました。選択した操作は完了していません。</value>
+  </data>
+  <data name="AppCommonClientCommon_GenericErrorOccurred" xml:space="preserve">
+    <value>予期しないエラーが発生しました。もう一度やり直してください。問題が解決しない場合は、Microsoft Dynamics 365 コミュニティでソリューションを確認するか、組織の管理者に問い合わせてください。さらにサポートが必要な場合は、Microsoft サポートに連絡して、エラーの技術的な詳細を伝えてください。</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_RRI" xml:space="preserve">
+    <value>このルールは非アクティブです。指定したキューに追加した活動に対してレコードは作成されません。</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_ALL" xml:space="preserve">
+    <value>このルールはアクティブです。レコードは、ルールの設定に基づいて指定されたキューに追加された活動に対して作成されます。</value>
+  </data>
+  <data name="Dialog_CalendarRule_Warning" xml:space="preserve">
+    <value>この週単位のスケジュールは現在使用中です。変更すると、{0} から {1} まで有効な作業時間が変更されます。</value>
+    <comment>This Label contains the string that needs to be displayed as warning message in CSS MDD</comment>
+  </data>
+  <data name="Dialog_CalendarUpdate_Warning" xml:space="preserve">
+    <value>顧客サービス カレンダーの変更は、既に進行中の SLA KPI レコードに反映されない可能性があります。</value>
+    <comment>This Label contains the string that needs to be displayed as warning message.</comment>
+  </data>
+  <data name="Dialog_HolidayUpdate_Warning" xml:space="preserve">
+    <value>顧客祝日スケジュールの変更は、既に進行中の SLA KPI レコードに反映されない可能性があります。</value>
+    <comment>This Label contains the string that needs to be displayed as warning message.</comment>
+  </data>
+  <data name="Dialog_CalendarRule_Privilege_Error" xml:space="preserve">
+    <value>このレコードに対するアクセス許可がありません。Microsoft Dynamics 365 管理者に問い合わせてください。</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="WorkHour_UnsavedChanges_Message" xml:space="preserve">
+    <value>変更は保存されていません。変更を保存するためにこのページに留まるには、[キャンセル] をクリックします。</value>
+  </data>
+  <data name="WorkHour_UnsavedChanges_Title" xml:space="preserve">
+    <value>保存されていない変更</value>
+  </data>
+  <data name="Holiday_ConfirmDeleteButton" xml:space="preserve">
+    <value>削除</value>
+    <comment>Button lable for deleting holiday</comment>
+  </data>
+  <data name="Holiday_ConfirmDeleteText" xml:space="preserve">
+    <value>祝日スケジュールからこの祝日を削除しますか? この操作は元に戻すことができません。</value>
+    <comment>Text for Delete Holiday Dialog</comment>
+  </data>
+  <data name="Holiday_ConfirmDeleteTitle" xml:space="preserve">
+    <value>確認</value>
+    <comment>Confirmation for Delete</comment>
+  </data>
+  <data name="Holiday_ConfirmMultiDeleteText" xml:space="preserve">
+    <value>選択した {0} 個の祝日を祝日スケジュールから削除しますか? この操作は元に戻すことができません。</value>
+    <comment>Text for Delete Multiple Holiday Dialog</comment>
+  </data>
+  <data name="EndTime_StartTime_Min_Diff" xml:space="preserve">
+    <value>終了時間は開始時間より 5 分以上後に設定してください。</value>
+  </data>
+  <data name="WorkHour_RefreshChanges_Message" xml:space="preserve">
+    <value>最新の情報に更新すると、編集した内容が失われます</value>
+  </data>
+  <data name="WorkHour_RefreshChanges_Title" xml:space="preserve">
+    <value>最新の情報に更新</value>
+  </data>
+  <data name="GlobalNotification_CSS_Created" xml:space="preserve">
+    <value>顧客サービス スケジュールが作成されました</value>
+  </data>
+  <data name="GlobalNotification_CSS_Edit" xml:space="preserve">
+    <value>顧客サービス スケジュールが保存されました</value>
+  </data>
+  <data name="Global_Notification_After_SetWorkHours" xml:space="preserve">
+    <value>週単位のスケジュールが、新しい作業時間を反映して更新されました</value>
+  </data>
+  <data name="GlobalNotification_HS_Created" xml:space="preserve">
+    <value>祝日スケジュールが作成されました</value>
+  </data>
+  <data name="CalendarFormTitle_HolidaySchedule" xml:space="preserve">
+    <value>祝日スケジュール</value>
+    <comment>Title to be displayed on calendar form.</comment>
+  </data>
+  <data name="Dialog_Title_RemoveUsers" xml:space="preserve">
+    <value>メンバーの削除</value>
+  </data>
+  <data name="Dialog_Description_RemoveUsers" xml:space="preserve">
+    <value>選択した {0} 人の営業担当者を削除しますか? この操作を実行すると、現在選択されている担当地域のすべてのメンバーが削除されます。この操作を元に戻すことはできません。ただし、担当地域に営業担当者を後で追加できます。</value>
+  </data>
+  <data name="Dialog_RemoveButton_Label_RemoveUsers" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="AlertDialog_Text_RemoveUsers_Failure" xml:space="preserve">
+    <value>ユーザーの削除に失敗しました。この情報を使用して管理者に問い合わせてください - 状態:{0}、statusText: {1}、responseText: {2}</value>
+  </data>
+  <data name="Dialog_HolidayItem_Header_New" xml:space="preserve">
+    <value>祝日の追加</value>
+  </data>
+  <data name="Dialog_HolidayItem_Header_Edit" xml:space="preserve">
+    <value>祝日の編集</value>
+  </data>
+  <data name="Error_End_Must_Be_After_Start" xml:space="preserve">
+    <value>終了時間は開始時間よりも後になるように指定してください。</value>
+  </data>
+  <data name="Dialog_HolidayItem_Name_Short" xml:space="preserve">
+    <value>祝日名を空にすることはできません。</value>
+  </data>
+  <data name="Dialog_HolidayItem_Name_Long" xml:space="preserve">
+    <value>祝日名が長すぎます。</value>
+  </data>
+  <data name="Dialog_HolidayItem_Privilege_Error" xml:space="preserve">
+    <value>このレコードに対するアクセス許可がありません。Microsoft Dynamics 365 管理者に問い合わせてください。</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="GlobalNotification_HolidayItem_AddEdit" xml:space="preserve">
+    <value>祝日が保存されました</value>
+  </data>
+  <data name="GlobalNotification_HolidayItem_Add" xml:space="preserve">
+    <value>祝日が作成されました</value>
+  </data>
+  <data name="QueueItem_Private_Queue_LookUp" xml:space="preserve">
+    <value>プライベート キュー ユーザー検索ダイアログ ビュー</value>
+  </data>
+  <data name="RECORD_ADDED_TO_NO_QUEUE">
+    <value>このレコードはどのキューにも追加されていません。</value>
+  </data>
+  <data name="RECORD_ADDED_TO_MULTIPLE_QUEUES">
+    <value>このレコードは複数のキュー内にあります。特定のキューに移動すると詳細が表示されます。</value>
+  </data>
+  <data name="TeamManagement_Users_Label" xml:space="preserve">
+    <value>ユーザー</value>
+    <comment>Label to use as a prefix for aria label in users look up control.</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromCSV">
+    <value>CSV からのインポート</value>
+    <comment>Import from CSV file</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromXML">
+    <value>XML からのインポート</value>
+    <comment>Import from XML file</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromExcel">
+    <value>Excel からのインポート</value>
+    <comment>Import from Excel file.</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInBytes">
+    <value>バイト</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInKB">
+    <value>KB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInMB">
+    <value>MB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInGB">
+    <value>GB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInTB">
+    <value>TB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileFormat">
+    <value>選択したファイルは、インポート用に選択したファイルの種類と異なります</value>
+    <comment>Invalid file format than selected filetype</comment>
+  </data>
+  <data name="ImportExport_Label_NoFileSelected">
+    <value>ファイルが選択されていません。続行するには、インポートするファイルを選択してください。</value>
+    <comment>No File Selected</comment>
+  </data>
+  <data name="ImportExport_Label_NoActivityTypeSelected">
+    <value>活動の種類が選択されていません。続行するには、活動の種類を選択してください。</value>
+    <comment>No Activity Type Selected</comment>
+  </data>
+  <data name="ImportExport_Label_NoDataInFile">
+    <value>選択したファイルにデータが含まれていません。</value>
+    <comment>no data in file</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileSubmitted">
+    <value>選択したファイルは "{0}" のインポート用として無効です。</value>
+    <comment>File submitted is not valid for import</comment>
+  </data>
+  <data name="ImportExport_Label_UnmappedFieldConfimationDialogTitle">
+    <value>データを送信</value>
+    <comment>Unmapped Field Confimation Dialog title</comment>
+  </data>
+  <data name="ImportExport_Label_OptionalUnmappedFieldConfimationDialog">
+    <value>1 つ以上のマップされていないフィールドがウィザードで検出されました。マップされていないフィールドを無視して続行しますか?</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_MandatoryAndOptionalUnmappedFieldConfimationDialog">
+    <value>1 つ以上のマップされていないフィールドがウィザードで検出されました。マップされていない必須フィールドは、インポート エラーを起こす可能性があります。マップされていないフィールドを無視して続行しますか?</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_MandatoryUnmappedFieldConfimationDialog">
+    <value>一部の必須フィールドは、マップされていないため、インポートされない可能性があります。</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromExchangeFailed">
+    <value>Exchange からの取引先担当者のインポートが失敗しました {0}</value>
+    <comment>mport of Contacts from Exchange has Failed</comment>
+  </data>
+  <data name="ImportExport_Label_UnmappedMandatoryField">
+    <value>1 つ以上のマップされていない必須フィールドがウィザードで検出されました</value>
+    <comment>Unmapped Manadatory Field</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileSize">
+    <value>選択したファイルは、許可されたサイズ制限を超えています。</value>
+    <comment>File size is more than expected</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsWithHistory">
+    <value>選択したファイルから作成されたすべてのレコード、インポートされたログ、関連レコードを削除しますか? この操作は元に戻せません</value>
+    <comment>Delete Imported Logs with History</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsData">
+    <value>選択したインポート ソース ファイルのインポート済みレコードを削除しますか? この操作は元に戻せません</value>
+    <comment>Delete Imported Logs Data</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsDialogTitle">
+    <value>削除の確認</value>
+    <comment>Delete Imported Logs Data Dialog Title</comment>
+  </data>
+  <data name="ImportExport_Label_NoRecordSelected">
+    <value>削除するレコードが選択されていません</value>
+    <comment>No Record Selected</comment>
+  </data>
+  <data name="ImportExport_Label_BulkDeletion">
+    <value>一括削除</value>
+    <comment>Bulk Deletion</comment>
+  </data>
+  <data name="ImportExport_Label_Confirm">
+    <value>確認</value>
+    <comment>Confirm</comment>
+  </data>
+  <data name="ImportExport_Label_Cancel">
+    <value>キャンセル</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="ImportExport_Label_MultipleDeleteFailures">
+    <value>1 つまたは複数のレコードの削除でエラーが発生しました</value>
+    <comment>Delete</comment>
+  </data>
+  <data name="ImportExport_Label_UnknownFailures">
+    <value>予期しないエラーが発生しました。もう一度やり直してください。問題が解決しない場合は、Microsoft Dynamics 365 コミュニティでソリューションを確認するか、管理者に問い合わせてください。さらにサポートが必要な場合は、Microsoft サポートに連絡して、エラーの技術的な詳細を伝えてください。</value>
+    <comment>Unknown Failures</comment>
+  </data>
+  <data name="ImportExport_Label_PreviligeError">
+    <value>{1} レコードにアクセスするための {0} アクセス許可がありません。Microsoft Dynamics 365 管理者にサポートを依頼してください。</value>
+    <comment>
+          Displayed when user tries to access something that they do not have the permissions to access [Category="Application Infrastructure"]
+          {NumberedPlaceholder="{0}"} Placeholder 0 is the name of the Privilege Type which is missing.
+          {NumberedPlaceholder="{1}"} Placeholder 1 is the name of the Entity on which the privilege is missing.
+      </comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeMaxLimitExceeded">
+    <value>選択したファイルは、許可されたサイズ制限を超えています。</value>
+    <comment>File size max limit exceeded</comment>
+  </data>
+  <data name="ImportExport_Label_NoErrorRowsFoundInThisImport">
+    <value>No error rows found in this import.</value>
+    <comment>No error rows found in this import</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsWithHistoryMultipleFiles">
+    <value>選択したファイルから作成されたすべてのレコード、インポートされたログ、関連レコードを削除しますか? この操作は元に戻せません。</value>
+    <comment>Delete Imported Logs with History - Multiple Files</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsDataMultipleFiles">
+    <value>選択したインポート ソース ファイルのインポート済みレコードを削除しますか? この操作は元に戻せません。</value>
+    <comment>Delete Imported Logs Data - Multiple Files</comment>
+  </data>
+  <data name="ImportExport_ActivityEntitiesRetrieveError">
+    <value>活動ポインター エンティティの一覧を取得できません</value>
+    <comment>Retrieve Activity Entities</comment>
+  </data>
+  <data name="ImportExport_Label_NoErrorRowsFoundInThisImport">
+    <value>このインポートにエラー行は見つかりませんでした。</value>
+    <comment>No error rows found in this import</comment>
+  </data>
+  <data name="ImportExport_Label_TargetAttributeInvalidForMap">
+    <value>このフィールドはマッピング: {0}、{1} には無効です。この不整合を修正してから、もう一度このデータマップをインポートしてください。</value>
+    <comment>Attribute is not valid for mapping. {NumberedPlaceholder="{0}"} Placeholder 0 is the localized display name of the entity. {NumberedPlaceholder="{1}"} Placeholder 1 is the localized display name of the attribute.</comment>
+  </data>
+  <data name="AppCommon.PDF" xml:space="preserve">
+    <value>PDF にエクスポート</value>
+    <comment>Label  for Export to PDF button.</comment>
+  </data>
+  <data name="AppCommon.PDFToolTip" xml:space="preserve">
+    <value>PDF へのエクスポート ダイアログを起動します</value>
+    <comment>Tooltip description for Export to PDF button.</comment>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Name_Short" xml:space="preserve">
+    <value>休業日の名前は空にしないでください。</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Name_Long" xml:space="preserve">
+    <value>休業日の名前が長すぎます。</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Privilege_Error" xml:space="preserve">
+    <value>このレコードに対するアクセス許可がありません。Microsoft Dynamics 365 管理者に問い合わせてください。</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="GlobalNotification_BusinessClosureItem_AddEdit" xml:space="preserve">
+    <value>休業日が保存されました</value>
+  </data>
+  <data name="GlobalNotification_BusinessClosureItem_Add" xml:space="preserve">
+    <value>休業日が作成されました</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_MDD_Subheader02" xml:space="preserve">
+    <value>この休業日にはリソースをスケジュールできません。ただし、[休業日] に対して [従わない] オプションが選択されているリソースは、スケジュールできます。</value>
+  </data>
+  <data name="BusinessClosure_StartTimeInvalid" xml:space="preserve">
+    <value>1753 年から 9999 年までの間で休業日の開始時間を指定してください。</value>
+    <comment>Error message occurring when the user enters an invalid start time when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_EndTimeOrDurationNotSpecified" xml:space="preserve">
+    <value>休業日の終了時間または期間を指定してください。</value>
+    <comment>Error message occurring when the user fails to enter an end time or duration value when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_EndTimeInvalid" xml:space="preserve">
+    <value>1753 年から 9999 年までの間で休業日の終了時間を指定してください。</value>
+    <comment>Error message occurring when the user enters an invalid end time when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_InvalidStartTimeEndTime" xml:space="preserve">
+    <value>開始時間は終了時間より前に設定してください。</value>
+    <comment>Error message occurring when a business closure's end time occurs before start time.</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteText" xml:space="preserve">
+    <value>この休業日を削除しますか? この操作は元に戻すことができません。</value>
+    <comment>Text for Delete Business Closure Dialog</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmMultiDeleteText" xml:space="preserve">
+    <value>選択した {0} 件の 休業日を削除しますか? この操作は元に戻すことができません。</value>
+    <comment>Text for Delete Multiple Business Closure Dialog.{NumberedPlaceholder="{0}"}. Placeholder 0 is the number of selected records.</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteTitle" xml:space="preserve">
+    <value>確認</value>
+    <comment>Confirmation for Delete</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteButton" xml:space="preserve">
+    <value>削除</value>
+    <comment>Button label for deleting business closure</comment>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_DateAndTime_Message" xml:space="preserve">
+    <value>日時を選択してください</value>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_InProgress_Message" xml:space="preserve">
+    <value>電子メール広告をスケジュール設定しています...</value>
+  </data>
+  <data name="ContextualBulkEmail_Send_InProgress_Message" xml:space="preserve">
+    <value>電子メール広告を送信しています...</value>
+  </data>
+  <data name="ContextualBulkEmail_Form_Notification_Message" xml:space="preserve">
+    <value>電子メール広告フォームは直接使用できません。このフォームは、営業アクセラレータの電子メール広告モードでのみ使用できます。</value>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_Failed_Message" xml:space="preserve">
+    <value>電子メールをスケジュールできません。もう一度やり直してください。この問題が引き続き発生する場合は、管理者にお問い合わせください。</value>
+  </data>
+  <data name="ContextualBulkEmail_Send_Failed_Message" xml:space="preserve">
+    <value>電子メールを送信できません。もう一度やり直してください。この問題が引き続き発生する場合は、管理者にお問い合わせください。</value>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>2023 年 4 月 1 日をもって、以前に非推奨になった Web クライアントのレガシ サービス レベル アグリーメント (SLA) が、サポート終了 (EoS) を向かえます。機能の損失を避けるために、Web クライアントで作成したレガシ SLA を、今すぐ必ず統一インターフェイス エクスペリエンスに移行してください。項目の移行方法の詳細については {0} を参照してください</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>同意する</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="LearnMore_Label_Text" xml:space="preserve">
+    <value>詳細情報</value>
+  </data>
+  <data name="Dialog_QueueItemPick_MutliPick_Error" xml:space="preserve">
+    <value>1 つ以上のレコードに対して要求された操作の実行中に問題が発生しました。レコードごとに操作をやり直してください。</value>
+  </data>
+</root>

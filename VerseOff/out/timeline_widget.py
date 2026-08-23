@@ -589,7 +589,7 @@ class TimelineWidget(QWidget):
         ) == parent_id
 
     def _load_activity_records(self):
-        if "activitypointer" not in ENTITY_NAMES:
+        if not self.record_id or "activitypointer" not in ENTITY_NAMES:
             return []
         allowed = set(self.definition.get("activities", []))
         records = []
@@ -634,7 +634,7 @@ class TimelineWidget(QWidget):
         return records
 
     def _load_note_records(self):
-        if "annotation" not in ENTITY_NAMES:
+        if not self.record_id or "annotation" not in ENTITY_NAMES:
             return []
         records = []
         for record in self.database.list_records("annotation"):
@@ -651,7 +651,7 @@ class TimelineWidget(QWidget):
         return records
 
     def _load_post_records(self):
-        if "post" not in ENTITY_NAMES:
+        if not self.record_id or "post" not in ENTITY_NAMES:
             return []
         related_post_ids = set()
         if "postregarding" in ENTITY_NAMES:
@@ -789,6 +789,13 @@ class TimelineWidget(QWidget):
 
     def refresh(self):
         self.page = max(1, self.page)
+        if not self.record_id:
+            self.pins = set()
+            self.records = []
+            self.filtered_records = []
+            self._render_cards()
+            self.refreshed.emit()
+            return
         self.pins = self.database.get_timeline_pins(self.timeline_id)
         records = []
         modules = set(self.definition.get("modules", []))
@@ -808,6 +815,7 @@ class TimelineWidget(QWidget):
             item = self.cards_layout.takeAt(0)
             widget = item.widget()
             if widget:
+                widget.setParent(None)
                 widget.deleteLater()
 
     def _render_cards(self):

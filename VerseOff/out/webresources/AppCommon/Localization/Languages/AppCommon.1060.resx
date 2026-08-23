@@ -1,0 +1,1493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddToQueueDialog_NoQueueSelected" xml:space="preserve">
+    <value>Niste izbrali čakalne vrste, kamor želite dodati te zapise. Izberite čakalno vrsto in poskusite znova.</value>
+    <comment>The above error message is displayed when the user has selected no queue to add the current item to [Category="Servicing"].</comment>
+  </data>
+  <data name="AssignToQueue_noSelectedUser" xml:space="preserve">
+    <value>Trenutno ni izbranega nikogar, komur bi lahko dodelili zapise tega uporabnika. Izberite nekoga za to nalogo in poskusite znova.</value>
+  </data>
+  <data name="Dialog_AssignQueue_Description_Plural" xml:space="preserve">
+    <value>Izbrali ste toliko elementov: {0}. Komu jih želite dodeliti?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_AssignQueue_Description_Single" xml:space="preserve">
+    <value>Izbrali ste {0} element. Komu ga želite dodeliti?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is "1".</comment>
+  </data>
+  <data name="Dialog_QueueItemRoute_Description_Plural" xml:space="preserve">
+    <value>Izbrali ste toliko elementov: {0}. Kako jih želite preusmeriti?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_QueueItemRoute_Description_Single" xml:space="preserve">
+    <value>Izbrali ste 1 element. Kako ga želite preusmeriti?</value>
+  </data>
+  <data name="Dialog_RejectEmail_Title" xml:space="preserve">
+    <value>Zavrnitev primarnega e-poštnega naslova</value>
+  </data>
+  <data name="Dialog_RejectEmail_Description_Plural" xml:space="preserve">
+    <value>Ali želite zavrniti primarni e-poštni naslov za toliko čakalnih vrst: {0}?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_RejectEmail_Description_Single" xml:space="preserve">
+    <value>Ali želite zavrniti primarni e-poštni naslov za {0} čakalno vrsto?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_RejectEmail_Text" xml:space="preserve">
+    <value>S tem postopkom boste zavrnili primarni e-poštni naslov izbranih čakalnih vrst.</value>
+  </data>
+  <data name="Dialog_ApproveEmail_Title" xml:space="preserve">
+    <value>Odobritev primarnega e-poštnega naslova</value>
+  </data>
+  <data name="Dialog_ApproveEmail_Description_Plural" xml:space="preserve">
+    <value>Ali želite odobriti primarni e-poštni naslov za toliko čakalnih vrst: {0}?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_ApproveEmail_Description_Single" xml:space="preserve">
+    <value>Ali želite odobriti primarni e-poštni naslov za {0} čakalno vrsto?</value>
+	<comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_ApproveEmail_Text" xml:space="preserve">
+    <value>S tem se strinjate s posredovanjem podatkov iz strežnika Microsoft Exchange ali katerega koli konfiguriranega e-poštnega sistema s storitvijo Microsoft Dynamics 365. Za Microsoft Dynamics 365 velja posebna izjava o zasebnosti, ki je na voljo prek spodnjega gumba »Izjava o zasebnosti«.</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Prišlo je do napake. Izbrano dejanje ni bilo dokončano za nekaj zapisov.</value>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage" xml:space="preserve">
+    <value>Če uporabljate storitev Office 365 z naročnino na Exchange, bomo konfigurirali integracijo storitve Dynamics 365 s strežnikom Exchange in omogočili aplikacijo Dynamics 365 App for Outlook.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 1.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage1" xml:space="preserve">
+    <value>Za začetek nastavitve preberite in sprejmite naslednje:</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 2.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage2" xml:space="preserve">
+    <value>Če omogočite samodejno konfiguracijo, se strinjate, da boste svoje podatke posredovali zunanjemu sistemu. Za podatke, uvožene iz zunanjih sistemov v Microsoft Dynamics 365, velja izjava o zasebnosti, ki je na voljo</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 3.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage3" xml:space="preserve">
+    <value>tukaj.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 4.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage4" xml:space="preserve">
+    <value>Za več informacij glejte</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 5.</comment>
+  </data>
+  <data name="LOC_EmailSettingsConsentMessage5" xml:space="preserve">
+    <value>dokumentacijo.</value>
+    <comment>Message that needs to be displayed on Exchange Setup consent form Part 6.</comment>
+  </data>
+  <data name="SMBAdvSettings_ProgressIndicatorMessage" xml:space="preserve">
+    <value>V obdelavi</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ErrorStrings" xml:space="preserve">
+    <value>Izberite uporabnika ali ekipo.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ReassigningRecords" xml:space="preserve">
+    <value>Vnovična dodelitev zapisov</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeactivationOfDefaultView" xml:space="preserve">
+    <value>Privzetega pogleda ni mogoče deaktivirati.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeleteConfirmation" xml:space="preserve">
+    <value>Ali želite izbrisati ta pogled? Tega dejanja ni mogoče razveljaviti.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeletionOfDefaultView" xml:space="preserve">
+    <value>Privzetega pogleda ne morete izbrisati, dokler za privzeti pogled ne nastavite drugega pogleda.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_DeletionOfSystemDefinedView" xml:space="preserve">
+    <value>Sistemsko določenih pogledov ni mogoče izbrisati.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemView_SetAsDefaultForDeactivatedView" xml:space="preserve">
+    <value>Samo aktivne poglede je mogoče nastaviti kot privzeti pogled.</value>
+  </data>
+  <data name="SMBAdvSettings_UnknownErrorMessage" xml:space="preserve">
+    <value>Prišlo je do napake. Izbrano dejanje ni bilo dokončano za enega ali več zapisov.</value>
+  </data>
+  <data name="UserErrorExecutingAssociations" xml:space="preserve">
+    <value>Pri obravnavi zahtev za posodobitev povezav uporabnikov z vlogami je prišlo do napake.</value>
+  </data>
+  <data name="TeamErrorExecutingAssociations" xml:space="preserve">
+    <value>Pri obravnavi zahtev za posodobitev povezav ekip z vlogami je prišlo do napake.</value>
+  </data>
+  <data name="Dialog_QueueItemPick_Description_Plural" xml:space="preserve">
+    <value>Izbrali ste toliko elementov: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="Dialog_QueueItemPick_Description_Single" xml:space="preserve">
+    <value>Izbrali ste 1 element</value>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>Preklic</value>
+  </data>
+  <data name="Button_Label_Release" xml:space="preserve">
+    <value>Izdaja</value>
+    <comment>Label for the Release button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Button_Label_Remove" xml:space="preserve">
+    <value>Odstrani</value>
+  </data>
+  <data name="Dialog_QueueItemRelease_Label_Single" xml:space="preserve">
+    <value>Elementi bodo znova dodeljeni lastniku čakalne vrste, da jih bodo lahko prevzeli drugi člani</value>
+  </data>
+  <data name="Dialog_QueueItemRelease_Title" xml:space="preserve">
+    <value>Sprosti element v čakalni vrsti</value>
+  </data>
+  <data name="Dialog_QueueItemRemoveNew_Description_Plural" xml:space="preserve">
+    <value>Ali želite odstraniti izbrane elemente ({0}) iz čakalne vrste?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemRemoveNew_Description_Single" xml:space="preserve">
+    <value>Ali želite odstraniti izbrani element iz čakalne vrste?</value>
+    <comment>instruction text.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemRemove_Title" xml:space="preserve">
+    <value>Odstrani element v čakalni vrsti</value>
+    <comment>Dialog title for the Queue Item Remove dialog. [Category="Servicing"]</comment>
+  </data>
+  <data name="SMBAdvSettings_ActionOnMultipleRecordsFailed" xml:space="preserve">
+    <value>Prišlo je do napake. Izbrano dejanje ni bilo dokončano za nekaj zapisov.</value>
+  </data>
+  <data name="SMBAdvSettings_ActivatedBPFDeletionError" xml:space="preserve">
+    <value>Aktiviranega poteka BPF ni mogoče izbrisati.</value>
+    <comment>Message that needs to be displayed when user tries to delete the activated BPF</comment>
+  </data>
+  <data name="SMBAdvSettings_GenericErrorOccurred" xml:space="preserve">
+    <value>Nepričakovana napaka. Poskusite znova. Če težave ne morete odpraviti, poiščite rešitve v skupnosti Microsoft Dynamics 365 ali pa se obrnite na skrbnika v organizaciji. Za dodatno pomoč se obrnite na Microsoftovo podporo in ji posredujte tehnične podrobnosti o napaki.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_NoRecordSelected" xml:space="preserve">
+    <value>Izbran ni noben zapis.</value>
+    <comment>Message when no user is selected from grid and Enabling or Disabling of User is attempted.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ChangeManager_HeaderDescription" xml:space="preserve">
+    <value>Izbrali ste toliko uporabnikov: {0}. Navedite vodjo, ki ga želite dodeliti izbranim uporabnikom ({0}).</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_ChangeManager_HeaderDescription" xml:space="preserve">
+    <value>Izbrali ste toliko uporabnikov: {0}. Navedite vodjo, ki ga želite dodeliti izbranim uporabnikom ({0}).</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_JoinTeam_HeaderDescription" xml:space="preserve">
+    <value>Katere ekipe želite uporabiti za izbrane uporabnike ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_JoinTeam_HeaderDescription" xml:space="preserve">
+    <value>Katere ekipe želite uporabiti za izbrane uporabnike ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>Katere vloge želite uporabiti za izbrane uporabnike ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUsers_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>Katere vloge želite uporabiti za izbrane uporabnike ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>Katere vloge želite uporabiti za izbrano ekipo ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Teams_ManageRoles_HeaderDescription" xml:space="preserve">
+    <value>Katere vloge želite uporabiti za izbrane ekipe ({0})?</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="EditTeam_UpdateSuccessful_Notification" xml:space="preserve">
+    <value>Ekipa je bila uspešno posodobljena.</value>
+  </data>
+  <data name="ExcelWordTemplate_FileUploadErrorLabel" xml:space="preserve">
+    <value>Pri nalaganju datoteke v strežnik je prišlo do napake</value>
+  </data>
+  <data name="ExcelWordTemplate_FileErrorLabel" xml:space="preserve">
+    <value>Neveljavna vrsta datoteke. Izberite datoteko s pripono xlsx, docx</value>
+  </data>
+  <data name="ExcelWordTemplate_OkButtonLabel" xml:space="preserve">
+    <value>V redu</value>
+  </data>
+  <data name="ExcelWordTemplate_UploadLabel" xml:space="preserve">
+    <value>Nalaganje</value>
+  </data>
+  <data name="ExcelWordTemplate_NextLabel" xml:space="preserve">
+    <value>Naprej</value>
+  </data>
+  <data name="ExcelWordtemplate_DoneLabel" xml:space="preserve">
+    <value>Končano</value>
+  </data>
+  <data name="ExcelWordTemplate_SelectEntityLabel" xml:space="preserve">
+    <value>Izberite entiteto.</value>
+  </data>
+  <data name="ExcelWordTemplate_SelectTemplateLabel" xml:space="preserve">
+    <value>Izberite predlogo</value>
+  </data>
+  <data name="ExcelWordTemplate_TabErrorLabel" xml:space="preserve">
+    <value>Nepričakovano ime zavihka:</value>
+  </data>
+  <data name="SubjectTreeTemplate_OkButtonLabel" xml:space="preserve">
+    <value>V redu</value>
+  </data>
+  <data name="SubjectTreeTemplate_SubjectEmptyTitleError" xml:space="preserve">
+    <value>Vnesite naslov zadeve.</value>
+  </data>
+  <data name="SWITCHSCENARIO_NOTE" xml:space="preserve">
+    <value>Opozorilo: Če preklopite na drug scenarij, boste morda izgubili podatke iz prejšnjega scenarija. Poleg tega se vzorčni podatki v novem scenariju lahko razlikujejo.</value>
+  </data>
+  <data name="SWITCHSCENARIO_ALL_SCENARIOS" xml:space="preserve">
+    <value>Vsi scenariji</value>
+  </data>
+  <data name="SWITCHSCENARIO_FIELD_SERVICE" xml:space="preserve">
+    <value>Field Service</value>
+  </data>
+  <data name="SWITCHSCENARIO_MARKETING" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+  <data name="SWITCHSCENARIO_PROJECT_SERVICE" xml:space="preserve">
+    <value>Project Service Automation</value>
+  </data>
+  <data name="SWITCHSCENARIO_SUCCESS_NOTIFICATION" xml:space="preserve">
+    <value>Dejanje je dokončano.</value>
+  </data>
+  <data name="SWITCHSCENARIO_SALES" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="SWITCHSCENARIO_SERVICE" xml:space="preserve">
+    <value>Customer Service</value>
+  </data>
+  <data name="SMBAdvSettings_EmailSetup_TestAndEnableAsyncJobSubmitted" xml:space="preserve">
+    <value>Postopek preizkušanja in omogočanja se v ozadju izvaja za izbrane zapise.</value>
+  </data>
+  <data name="SMBAdvSettings_NewDialog_EmptyBPFName" xml:space="preserve">
+    <value>Vnesite ime.</value>
+  </data>
+  <data name="SMBAdvSettings_NewDialog_EmptyEntityName" xml:space="preserve">
+    <value>Izberite entiteto.</value>
+  </data>
+  <data name="SMBAdvSettings_Team_AddMembers_HeaderDescription" xml:space="preserve">
+    <value>Izbrali ste, da želite dodati člane v ekipo ({0}). Kliknite »Iskanje« ob polju »Uporabniki«, da izberete člane, ki jih želite dodati.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Teams_AddMembers_HeaderDescription" xml:space="preserve">
+    <value>Izbrali ste, da želite dodati člane v ekipe ({0}). Kliknite »Iskanje« ob polju »Uporabniki«, da izberete člane, ki jih želite dodati.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMembers_HeaderDescription" xml:space="preserve">
+    <value>Izbrali ste, da želite odstraniti člane iz ekipe ({0}). Kliknite »Iskanje« ob polju »Uporabniki«, da izberete člane, ki jih želite dodati.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMultipleMembers_HeaderDescription" xml:space="preserve">
+    <value>Izbrali ste, da želite odstraniti člane iz ekip ({0}). Kliknite »Iskanje« ob polju »Uporabniki«, da izberete člane, ki jih želite dodati.</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is number.</comment>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ChangeManager_SuccessNotification" xml:space="preserve">
+    <value>Dejanje je dokončano.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_JoinTeams_SuccessNotification" xml:space="preserve">
+    <value>Dejanje je dokončano.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ManageRoles_SuccessNotification" xml:space="preserve">
+    <value>Dejanje je dokončano.</value>
+  </data>
+  <data name="SMBAdvSettings_SystemUser_ReassignRecords_SuccessNotification" xml:space="preserve">
+    <value>Dejanje je dokončano.</value>
+  </data>
+  <data name="SMBAdvSettings_Team_AddMembers_SuccessNotification" xml:space="preserve">
+    <value>Dejanje je dokončano.</value>
+  </data>
+  <data name="SMBAdvSettings_Team_ManageRoles_SuccessNotification" xml:space="preserve">
+    <value>Dejanje je dokončano.</value>
+  </data>
+  <data name="SMBAdvSettings_Team_ReassignRecords_SuccessNotification" xml:space="preserve">
+    <value>Dejanje je dokončano.</value>
+  </data>
+  <data name="SMBAdvSettings_Team_RemoveMembers_SuccessNotification" xml:space="preserve">
+    <value>Dejanje je dokončano.</value>
+  </data>
+  <data name="SMBAdvSettings_FormFactorOrDeviceNotSupportedMessage" xml:space="preserve">
+    <value>Konfiguriranje naprednih nastavitev za to dimenzijo ali napravo ni podprto.</value>
+  </data>
+  <data name="SMBAdvSettings_ManageRoles_TableHeader" xml:space="preserve">
+    <value>Ime vloge</value>
+  </data>
+  <data name="Dialog_QueueItemReleaseNew_Description_Plural" xml:space="preserve">
+    <value>Ali želite sprostiti izbrane elemente ({0})?</value>
+    <comment>&gt;{NumberedPlaceholder="{0}"}. Placeholder 0 is number.[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_QueueItemReleaseNew_Description_Single" xml:space="preserve">
+    <value>Ali želite sprostiti izbrani element?</value>
+    <comment>instruction text.[Category="Servicing"]</comment>
+  </data>
+  <data name="AlertDialog_Text_Territory_Warning" xml:space="preserve">
+    <value>Spremenili boste področje prodaje za uporabnika. S tem boste uporabnika odstranili iz dodeljenega področja prodaje. Ali želite nadaljevati?</value>
+  </data>
+  <data name="Goal_Recalculate_Notification" xml:space="preserve">
+    <value>Zbiranje podatkov lahko traja nekaj časa. Kliknite »V redu«, če želite nadaljevati.</value>
+    <comment>Notification to be shown after click of Goal Recalculate</comment>
+  </data>
+  <data name="Goal_Recalculate_DialogTitle" xml:space="preserve">
+    <value>Potrditev vnovičnega izračuna</value>
+    <comment>Confirm recalculation</comment>
+  </data>
+  <data name="GoalDateValidationErrorMessage" xml:space="preserve">
+    <value>Navedeno časovno obdobje za ta cilj ni pravilno. Datum v polju »Od« mora biti pred datumom v polju »Do« ali enak temu datumu.</value>
+    <comment>Preview Records button text on the advanced find page used in the Goal Rollup Query form. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Text_GoalFormNotification">
+    <value>Prišlo je do te napake:</value>
+    <comment>Error message shown on goal form Notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="GoalFormNotification_HyperLinkText">
+    <value>Odpri cilj</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_ActiveChildGoal_Deactivate_Warning">
+    <value>Trenutni cilj ima enega ali več podrejenih ciljev. Če obstajajo aktivni podrejeni cilji, priporočamo, da cilja ne zaključite. Ali želite kljub temu zaključiti ta cilj?</value>
+    <comment>Warning message shown to the user when he tries to deactivate a goal which has active child goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_Date_Change_Warning">
+    <value>Če spremenite časovno obdobje tega cilja, boste spremenili tudi njegove podrejene cilje. Kliknite »V redu«, če želite nadaljevati.</value>
+    <comment>Warning message shown to the user when he tries to change the start date/end date of a goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044814">
+    <value>The fiscal settings of your organization have changed since the time this goal was changed. You might want to realign the dates to the new fiscal settings.</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="DocTemplate_Label_For_Dynamic_Excel" xml:space="preserve">
+    <value>Izberite stolpce za dinamični Excelov delovni list</value>
+    <comment>Select Columns for Dynamic Excel Label</comment>
+  </data>
+  <data name="DocTemplate_Label_For_Pivot" xml:space="preserve">
+    <value>Izberite stolpce za Excelovo vrtilno tabelo</value>
+    <comment>Select Columns for Pivot Label</comment>
+  </data>
+  <data name="ExportToExcelOnline_CancelLabel" xml:space="preserve">
+    <value>Prekliči</value>
+    <comment>Return to Excel Online</comment>
+  </data>
+  <data name="ExportToExcelOnline_ConfirmLabel" xml:space="preserve">
+    <value>V redu</value>
+    <comment>Return to Dynamics 365</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Info" xml:space="preserve">
+    <value>Če želite preveriti stanje uvoza, pojdite v Nastavitve &gt; Upravljanje podatkov &gt; Uvozi</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Text" xml:space="preserve">
+    <value>Vaši podatki so bili poslani za uvoz.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Title" xml:space="preserve">
+    <value>Podatki so bili poslani za uvoz</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_DataSubmitted_Warning" xml:space="preserve">
+    <value>Ne spreminjajte teh podatkov, dokler se postopek uvažanja ne dokonča.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_ReturnToCrm_Text" xml:space="preserve">
+    <value>Spremembe, ki jih opravite v Excelu, bodo izgubljene, razen če jih shranite v Dynamics 365.</value>
+    <comment>Text</comment>
+   </data>
+  <data name="ExportToExcelOnline_DataSubmitted_StatusText" xml:space="preserve">
+    <value>Če želite preveriti stanje uvoza, kliknite »Sledenje napredku«.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="ExportToExcelOnline_ReturnToCrm_Title" xml:space="preserve">
+    <value>Vse spremembe v Excelovi datoteki bodo izgubljene</value>
+    <comment>Text</comment>
+   </data>
+  <data name="ExportToExcelOnline_Alert_Goto_ImportsPage" xml:space="preserve">
+    <value>Sledenje napredku</value>
+    <comment>Text</comment>
+   </data>
+  <data name="Error_Message_0x8004480c">
+    <value>Ni mogoče posodobiti nadrejenega cilja in informacij o metriki/obdobju hkrati.</value>
+    <comment>Error message shown when user tries to update parentgoalid and metric/period at same time.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044900">
+    <value>Ni mogoče posodobiti metrike za podrejeni cilj.</value>
+    <comment>Error message shown when user tries to update goal metric on a child goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044901">
+    <value>Ni mogoče posodobiti atributov, ki se nanašajo na obdobje cilja, v podrejenem cilju.</value>
+    <comment>Error message shown when user tries to update goal period settings on a child goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044902">
+    <value>Ni mogoče posodobiti metrike v cilju, ki ima povezane podrejene cilje.</value>
+    <comment>Error message shown when user tries to update goal metric on a root goal with associated child goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044903">
+    <value>Za cilj vrste »proračunsko obdobje« morate nastaviti atribut »proračunsko obdobje«.</value>
+    <comment>Error message shown when user does not provide fiscal year and fiscal period info for period type goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044905">
+    <value>Vrednosti metrike ali časovnega obdobja trenutnega cilja se ne ujemajo z vrednostmi njegovega nadrejenega cilja. Spremenite vrednosti in poskusite znova.</value>
+    <comment>Error message shown when metric of goal and parent goal does not match.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044906">
+    <value>Vrednosti metrike ali časovnega obdobja trenutnega cilja se ne ujemajo z vrednostmi njegovega nadrejenega cilja. Spremenite vrednosti in poskusite znova.</value>
+    <comment>Error message shown when time period of goal and parent goal does not match.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044907">
+    <value>Za cilj vrste »obdobje po meri« morajo biti na voljo podatki za atributa začetnega datuma cilja in končnega datuma cilja.</value>
+    <comment>Error message shown when user does not provide fiscal year and fiscal period info for period type goal.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044910">
+    <value>Ni mogoče spremeniti časovnega obdobja tega cilja, ker obstaja eden ali več zaprtih podrejenih ciljev.</value>
+    <comment>Error message shown when user changes the period info of goal which has one or more closed subordinate goals.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f683">
+    <value>Za polje, ki ni navedeno v tej metriki, ste opredelili poizvedbo za zbiranje. Osvežite obrazec in poskusite znova.</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9602</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f685">
+    <value>Izbrana poizvedba za zbiranje ni aktivna. Izberite aktivno poizvedbo in poskusite znova.</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9602</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x8004f686">
+    <value>Izbrana metrika cilja ni aktivna. Izberite aktivno metriko cilja in poskusite znova.</value>
+    <comment>Error message shown when user tries to add an query lookup for an invalid rollup attribute.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+      <ObjectType>9603</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalRollupCriteriaNotSpecifiedErrorMessage">
+    <value>Določite pogoje za paket posodobitev.</value>
+    <comment>Error message shown on goal form if consider only goal owner records is false and no query is specified.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="GoalManagement_OverriddenGoal_Notification">
+    <value>Zbrani podatki za ta cilj so bili ročno posodobljeni. {#Brand_CRM} ne bo samodejno zbral podatkov za ta cilj.</value>
+    <comment>Notification message shown on a goal form which has overridden the rolled up values.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_OnDemandRollup_Warning">
+    <value>Zbiranje podatkov lahko traja nekaj časa. Kliknite »V redu«, če želite nadaljevati.</value>
+    <comment>Warning message shown when user clicks the Recalculate button for a goal.[Category="Sales goal mgmt: Rollup"]</comment>
+  </data>
+  <data name="GoalManagement_RollupError_ErrorRecordLink">
+    <value>V cilju {0} je prišlo do napake pri zbiranju.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the name of the goal with an error[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x80041136">
+    <value>Pri zbiranju drevesa ciljev je prišlo do napake. Zbrana vrednost za cilj {0} je presegla največjo dovoljeno vrednost.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the name of the goal with an error[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F681">
+    <value>Ni mogoče posodobiti zbirnih podatkov za ta cilj. Metrika cilja, ki je priložena temu cilju, nima določenih atributov zbiranja.</value>
+    <comment>Rollup error message.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+      <ObjectType Singular="Goal Metric" Plural="Goal Metrics">9603</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F682">
+    <value>Vrednost, dosežena v odstotkih, je nastavljena na 0, ker izračunana vrednost ni v dovoljenem obsegu.</value>
+    <comment>Error shown if the percentage value computed is not a valid value.[Category="Sales goal mgmt: Rollup"]</comment>
+  </data>
+  <data name="GoalManagement_RollupError_0x8004F687">
+    <value>Vrsta zapisa ali polje, na katerega se sklicujete v metriki cilja, ni veljavno.</value>
+    <comment>Rollup error message.[Category="Sales goal mgmt: Rollup"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal Metric" Plural="Goal Metrics">9603</ObjectType>
+    </ObjectReferences>
+    <DoesNotReference>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </DoesNotReference>
+  </data>
+  <data name="Dialog_Close_Goal_Title">
+    <value>Potrditev zaključka cilja</value>
+    <comment>Dialog page title for close goal confirmation dialog page.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Dialog_Delete_DeleteGoal">
+    <value>Eden ali več izbranih ciljev imajo morda povezane podrejene cilje. Priporočamo, da pred brisanjem ciljev podrejene cilje dodelite drugim nadrejenim ciljem. Kliknite »V redu«, če želite izbrisati izbrane cilje.</value>
+    <comment>Message displayed in the delete goal dialog page. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="AF_RollupQuery_Btn_Preview">
+    <value>&amp;Prikaz zapisov</value>
+    <comment>Preview Records button text on the advanced find page used in the Goal Rollup Query form. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="AF_RollupQuery_Btn_Back">
+    <value>&amp;Nazaj na poizvedbo</value>
+    <comment>Clicking on this button will take the user back to the advanced find screen. &amp; appears just before the HotKey for this button.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Group_Salesperformance">
+    <value>Učinkovitost prodaje</value>
+    <comment>Sitemap title for sales performance group.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Group_Sales">
+    <value>Prodaja</value>
+    <comment>Sitemap title for sales group.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="NamePlural_Metric">
+    <value>Metrike cilja</value>
+    <comment>Title shown on Settings-Business Management Page for Metric.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+    </ObjectReferences>
+    <DoesNotReference>
+      <ObjectType>9600</ObjectType>
+    </DoesNotReference>
+  </data>
+  <data name="Web.Settings.BusinessManagement.Metric">
+    <value>Določite in upravljajte vrste ciljev, katerim sledi organizacija.</value>
+    <comment>Description shown on Settings-Business Management Page for Metric.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_10">
+    <value>Nastavitve proračunskega leta</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_37">
+    <value>Izberite vrednosti za vse nastavitve.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_45">
+    <value>Program ne podpira možnosti nastavitve začetka proračunskega leta na 29. februar prestopnega leta.</value>
+    <comment>Error message text when the user tries to set the start date of the fiscal calendar to February 29th of a leap year.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_48">
+    <value>Proračunski koledar se ne sme začeti z letom, poznejšim kot 2100.</value>
+    <comment>Error message text when the user tries to set the start date of the fiscal calendar to 2101 or greater.[Category="Sales goal mgmt: Quota/UI work/Charts/Reports"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_235">
+    <value>Nastavite proračunsko obdobje.</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_104">
+    <value>Začetni datum</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_109">
+    <value>Predloga proračunskega obdobja</value>
+    <comment>Label for type of fiscal period[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_115">
+    <value>Imenovano po</value>
+    <comment>Label to indicate whether the name of the fiscal year is based on the start date or end date.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_128">
+    <value>Kakšen prikaz želite?</value>
+    <comment>Label for display settings section on fiscal period dialog[Category="Sales goal mgmt: Quota/UI work/Charts/Reports"]</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_270">
+    <value>Proračunsko leto</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_146">
+    <value>Kakšen prikaz proračunskega obdobja želite?</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_149">
+    <value>Proračunsko obdobje</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_166">
+    <value>Kako želite povezati proračunsko leto in proračunsko obdobje?</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_169">
+    <value>Prikaži kot</value>
+    <comment>Label to indicate how the fiscal year string should be displayed.</comment>
+  </data>
+  <data name="Web.Tools.FiscalSettings.Dialogs.fiscalsettings.aspx_170">
+    <value>Ime mesečnega obdobja, ki temelji na imenu meseca</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.Title">
+    <value>Nastavite čas poteka paketa posodobitev in njegovo pogostost.</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupExpiryTime">
+    <value>Število dni po končnem datumu cilja, ko se zbiranje konča</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupExpiryTimeUnit">
+    <value>d.</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupFrequency">
+    <value>Pogostost ponavljanja zbiranja</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.SystemSettingsDialog.GoalTab.Labels.RollupFrequencyUnit">
+    <value>h</value>
+    <comment>Title for goal tab.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="SystemCustomization.ManageAttribute.Goal.DisplayNameUpdate.Info">
+    <value>To polje je povezano s poljem {0}. Priporočamo, da spremenite tudi prikazno ime povezanega polja.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is the attribute display name. Informational message show to the user when he updates the display names of any of the rollup related attributes in goal entity.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="ManageRoles.Goal.UpdateRoles.Warning">
+    <value>Če uporabnikom s to varnostno vlogo podelite višjo raven pravic za zapis cilja, si bodo morda lahko ogledali zbrane podatke iz zapisov, do katerih nimajo dostopa. Kliknite »V redu«, če želite nadaljevati.</value>
+    <comment>Informational message show to the user when he increases the access settings of privileges in goal entity.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+      <ObjectType>8</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="SystemCustomization.SettingsPage.FiscalYearSettings.Help">
+    <value>Nastavite začetni datum, predlogo in možnosti prikaza za proračunsko leto ter proračunsko obdobje za sledenje prodajnim ciljem.</value>
+    <comment>Help text for fiscal settings link in the UI.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.Recalculate">
+    <value>Znova izračuna podatke o opravljenem delu za celotno drevo ciljev.</value>
+    <comment>Super tooltip for a ribbon control. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.ToolTipTitle">
+    <value>Zaključite cilj.</value>
+    <comment>Tool tip title for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.ToolTipDescription">
+    <value>Zaključite te cilje. &lt;br&gt;&lt;br&gt;Te cilje lahko znova aktivirate v pogledu »Zaključeni cilji«.</value>
+    <comment>Super tool tip text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.Alt">
+    <value>Zaključevanje cilja</value>
+    <comment>Alt text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.goal.Record.Status.Deactivate.LabelText">
+    <value>Zaključi cilj</value>
+    <comment>Label text for a close goal button on the ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.Recalculate">
+    <value>Preračunaj</value>
+    <comment>Label text for recalculate button on ribbon. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Ribbon.Goal.Alt.Recalculate">
+    <value>Preračunavanje</value>
+    <comment>Alt text for recalculate button on ribbon. [Category="Application Infrastructure"].</comment>
+  </data>
+  <data name="Ribbon.Goal.ToolTipTitle.ChangeGoalOwner">
+    <value>Spremeni upravitelja ciljev</value>
+    <comment>Tooltip title on the goal ribbon for Change Goal Owner button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.ChangeGoalOwner">
+    <value>Nastavite drugega uporabnika kot upravitelja tega cilja.</value>
+    <comment>Super tooltip on the goal ribbon for Change Goal Owner button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>8</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.ChangeGoalOwner">
+    <value>Spremeni upravitelja ciljev</value>
+    <comment>Label text for ChangeGoalOwner button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.Alt.ChangeGoalOwner">
+    <value>Spremeni upravitelja ciljev</value>
+    <comment>Alt text for ChangeGoalOwner button on ribbon.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"].</comment>
+    <ObjectReferences>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.ToolTipTitle.Realign">
+    <value>Uskladi s proračunskim obdobjem</value>
+    <comment>Tooltip title on the ribbon form for align button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Ribbon.Goal.ToolTipDescription.Realign">
+    <value>Uskladite začetni in končni datum cilja z nastavitvami novega proračunskega obdobja.</value>
+    <comment>Super tooltip on the ribbon form for align button. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Goal" Plural="Goals">9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Ribbon.Goal.LabelText.Realign">
+    <value>Uskladi s proračunskim obdobjem</value>
+    <comment>Label text for align button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Ribbon.Goal.Alt.Realign">
+    <value>Uskladi s proračunskim obdobjem</value>
+    <comment>Alt text for align button on ribbon. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Dialog_Title_Realign">
+    <value>Vnovična nastavitev začetnega in končnega datuma</value>
+    <comment>Title for realign dialog. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Dialog_Desc_Realign">
+    <value>S tem dejanjem boste spremenili začetni in končni datum tega cilja ter ga uskladili z nastavitvami novega proračunskega leta. Kliknite »V redu«, če želite nadaljevati.</value>
+    <comment>Text for realign dialog. [Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Error_Message_0x80044800">
+    <value>To metriko cilja uporablja en ali več ciljev in je ni mogoče izbrisati.</value>
+    <comment>Message shown when user tries to delete a metric associated with goal[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044801">
+    <value>Spremembe skupne definicije polja ni mogoče shraniti, ker sorodno metriko cilja uporablja eden ali več zaključenih ciljev.</value>
+    <comment>Message shown when user tries to update Rollup Attribute which has associated closed goals[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044802">
+    <value>Metrika cilja z istim imenom že obstaja. Navedite drugo ime in poskusite znova.</value>
+    <comment>Message shown when user tries to create a metric with an already existing name[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_0x80044809">
+    <value>Metrika cilja, ki je uporabljena v tem zbirnem polju, je povezana z enim ali več cilji. Odstranite povezavo in poskusite znova.</value>
+    <comment>Message shown when user tries to delete Rollup Attribute which has associated goals[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+    <ObjectReferences>
+      <ObjectType>9603</ObjectType>
+      <ObjectType>9600</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="GoalForm.RollupAttributes.NavigationBarHeader.Title">
+    <value>Sodelujoči zapisi</value>
+    <comment>Title of the Navigation Bar For Rollup attributes on Goal form.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="RollUpAttribute.Form.Alert">
+    <value>Določite vrednosti za vsa obvezna polja.</value>
+    <comment>Alert shown when some fields are empty on Roll Up Attribute form.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="Goal.UnSupported.Forms">
+    <value>Ta entiteta trenutno ni podprta v aplikacijah, zasnovanih na ogrodju poenotenega vmesnika. Če želite ustvariti ali urejati zapise za to entiteto, uporabite Dynamics 365 – aplikacijo po meri.</value>
+    <comment>Message for unsupported forms in UCI.</comment>
+  </data>
+  <data name="Error_Message_0x80044814">
+    <value>Nastavitve proračunskega obdobja v organizaciji so se spremenile od zadnje spremembe tega cilja. Priporočamo, da uskladite datume z novimi nastavitvami proračunskega obdobja.</value>
+    <comment>Hyperlink text shown on Goal form notification area.[Category="Sales goal mgmt: Base work (metric/goal/participating entity query)"]</comment>
+  </data>
+  <data name="DocTemplate_DialogUpload_exceltitle" xml:space="preserve">
+    <value>Izbira datoteke za nalaganje v obliki predloge</value>
+    <comment>Upload Title</comment>
+  </data>
+  <data name="DocTemplate_DialogUpload_wordtitle" xml:space="preserve">
+    <value>Izbira datoteke za nalaganje v obliki predloge</value>
+    <comment>Upload Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_exceltitle" xml:space="preserve">
+    <value>Prenos datoteke za ustvarjanje predloge</value>
+    <comment>Download Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_wordtitle" xml:space="preserve">
+    <value>Prenos datoteke za ustvarjanje predloge</value>
+    <comment>Download Title</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_exceldescription" xml:space="preserve">
+    <value>Podprta vrsta datoteke: .xlsx</value>
+    <comment>Excel supported file type message</comment>
+  </data>
+  <data name="DocTemplate_DialogDownload_worddescription" xml:space="preserve">
+    <value>Podprta vrsta datoteke: .docx</value>
+    <comment>Word supported file type message</comment>
+  </data>
+  <data name="DocTemplate_Label_For_View_My_Templates" xml:space="preserve">
+    <value>Prikaži moje predloge</value>
+    <comment>View My Templates Label</comment>
+  </data>
+  <data name="DocTemplate_Not_Valid_File_Type" xml:space="preserve">
+    <value>Ni veljavna vrsta podprte datoteke</value>
+    <comment>Not a Valid File Type Supported Error</comment>
+  </data>
+  <data name="DocTemplate_Empty_File_Uploaded" xml:space="preserve">
+    <value>Nalaganje ni uspelo, ker ni izbrana nobena datoteka. Izberite datoteko in poskusite znova.</value>
+    <comment>Empty file uploaded Error</comment>
+  </data>
+  <data name="DocTemplate_Invalid_File_Type_Uploaded" xml:space="preserve">
+    <value>Naložena je neveljavna vrsta datoteke.</value>
+    <comment>Invalid File Type Uploaded Error</comment>
+  </data>
+  <data name="DocTemplate_Successfully_Uploaded" xml:space="preserve">
+    <value>Osebna predloga je ustvarjena.</value>
+    <comment>Successfully Uploaded Message</comment>
+  </data>
+  <data name="DocTemplate_Successfully_Downloaded" xml:space="preserve">
+    <value>Datoteka je uspešno prenesena. Če želite ustvariti predlogo, jo spremenite in naložite.</value>
+    <comment>Successfully Downloaded Message</comment>
+  </data>
+  <data name="DocTemplate_Word_Successfully_Downloaded" xml:space="preserve">
+    <value>Prenos je uspel.</value>
+    <comment>Successfully Downloaded Message</comment>
+  </data>
+  <data name="DocTemplate_Error_Displaying_Notification" xml:space="preserve">
+    <value>Obvestilo s prikazom napake</value>
+    <comment>Error displaying notification</comment>
+  </data>
+  <data name="DocTemplate_Activate_Title" xml:space="preserve">
+    <value>Potrdi aktiviranje</value>
+    <comment>Title name</comment>
+  </data>
+  <data name="DocTemplate_Dectivate_Title" xml:space="preserve">
+    <value>Potrdi deaktiviranje</value>
+    <comment>Title name</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Activate_text" xml:space="preserve">
+    <value>Ali ste prepričani, da želite aktivirati izbrano predlogo dokumenta {0}?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Dectivate_text" xml:space="preserve">
+    <value>Ali želite deaktivirati izbrano predlogo dokumenta ({0})? Če želite, jo lahko pozneje ponovno aktivirate.</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Activate_btn" xml:space="preserve">
+    <value>Aktiviraj</value>
+    <comment>Activate button</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Deactivate_btn" xml:space="preserve">
+    <value>Deaktiviraj</value>
+    <comment>Deactivate button</comment>
+  </data>
+  <data name="DocTemplate_Dialog_Cancel_btn" xml:space="preserve">
+    <value>Prekliči</value>
+    <comment>Cancel button</comment>
+  </data>
+  <data name="DocTemplate_FormDialog_Activate_text" xml:space="preserve">
+    <value>Ali ste prepričani, da želite aktivirati izbrano predlogo dokumenta?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_FormDialog_Deactivate_text" xml:space="preserve">
+    <value>Ali ste prepričani, da želite deaktivirati izbrano predlogo dokumenta?</value>
+    <comment>Text</comment>
+  </data>
+  <data name="DocTemplate_Error_Downloading_Message" xml:space="preserve">
+    <value>Pri prenašanju predloge je prišlo do napake.</value>
+    <comment>Downloading error message</comment>
+  </data>
+  <data name="DocTemplate_Confirm_Button" xml:space="preserve">
+    <value>V redu</value>
+    <comment>Confirm Button</comment>
+  </data>
+  <data name="Dialog_Calendar_Duplicate_Name" xml:space="preserve">
+    <value>Razpored s tem imenom že obstaja. Navedite drugo ime.</value>
+    <comment>This is the text that appears to prompt the user to select a different calndar name</comment>
+  </data>
+  <data name="CustomerServiceSchedule_Header_Label" xml:space="preserve">
+    <value>Ustvarjanje razporeda storitev za stranke</value>
+    <comment>This is the text that appears on Customer Service Schedule MDD</comment>
+  </data>
+  <data name="HolidaySchedule_Header_Label" xml:space="preserve">
+    <value>Ustvarjanje prazničnega urnika</value>
+    <comment>This is the text that appears on Holiday Schedule MDD</comment>
+  </data>
+  <data name="CustomerServiceSchedule_Provide_Name" xml:space="preserve">
+    <value>Vnesite ime za razpored storitev.</value>
+    <comment>This is the text that appears to prompt the user when an error is encountered during the creation of calendar</comment>
+  </data>
+  <data name="HolidaySchedule_Provide_Name" xml:space="preserve">
+    <value>Vnesite ime za praznični urnik.</value>
+    <comment>This is the text that appears to prompt the user when an error is encountered during the creation of calendar</comment>
+  </data>
+  <data name="ServiceProcessingMessage" xml:space="preserve">
+    <value>V obdelavi</value>
+  </data>
+  <data name="Dialog_CalendarRule_State_Existing" xml:space="preserve">
+    <value>Obstoječe</value>
+  </data>
+  <data name="Dialog_CalendarRule_State_New" xml:space="preserve">
+    <value>Novo (tedenski razpored ni povezan)</value>
+  </data>
+  <data name="Dialog_CalendarRule_DoNotObserveHolidaySchedule" xml:space="preserve">
+    <value>Ne upoštevaj</value>
+  </data>
+  <data name="Dialog_CalendarRule_ObserveHolidaySchedule" xml:space="preserve">
+    <value>Upoštevaj</value>
+  </data>
+  <data name="Dialog_CustomerServiceSchedule_SelectSchedule" xml:space="preserve">
+    <value>Izberite praznični urnik.</value>
+  </data>
+  <data name="Dialog_CustomerServiceSchedule_SelectTimeZone" xml:space="preserve">
+    <value>Izberite časovni pas.</value>
+  </data>
+  <data name="Dialog_CalenderRule_GenericErrorOccurred" xml:space="preserve">
+    <value>Prišlo je do nepričakovane napake. Poskusite znova. Če težave ne morete odpraviti, poiščite rešitve v skupnosti Microsoft Dynamics 365 ali pa se obrnite na skrbnika organizacije. Za dodatno pomoč se obrnite na Microsoftovo podporo in ji posredujte tehnične podrobnosti o napaki.</value>
+  </data>
+  <data name="Shortcut_To_Clipboard_Error" xml:space="preserve">
+    <value>Povezave ni bilo mogoče kopirati v odložišče.</value>
+    <comment>Error message when clipboard operation failed [Category="Ribbon - M3 - Finalizing"]</comment>
+  </data>
+  <data name="Error_Max_Shortcut_Record_Reached" xml:space="preserve">
+    <value>Za to dejanje je mogoče izbrati največ 10 zapisov.</value>
+    <comment>The maximum number of records that can be supported for copy/send shortcut action.</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Pred izvedbo tega dejanja morate izbrati nekaj zapisov.</value>
+  </data>
+  <data name="Shortcut_To_Clipboard_Unsupported" xml:space="preserve">
+    <value>To dejanje ni podprto v brskalniku, ki ga uporabljate.</value>
+    <comment>Text shown to the user when user clicks an action which is not supported on the user's browser[Category="Cross Browser"]</comment>
+  </data>
+  <data name="UnexpectedErrorMessage" xml:space="preserve">
+    <value>Prišlo je do napake. Izbrano dejanje se ni izvedlo.</value>
+  </data>
+  <data name="AppCommonClientCommon_GenericErrorOccurred" xml:space="preserve">
+    <value>Prišlo je do nepričakovane napake. Poskusite znova. Če težave ne morete odpraviti, poiščite rešitve v skupnosti Microsoft Dynamics 365 ali pa se obrnite na skrbnika organizacije. Za dodatno pomoč se obrnite na Microsoftovo podporo in ji posredujte tehnične podrobnosti o napaki.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_RRI" xml:space="preserve">
+    <value>To pravilo ni dejavno. Za dejavnosti, dodane v navedeno čakalno vrsto, zapisi ne bodo ustvarjeni.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_ALL" xml:space="preserve">
+    <value>To pravilo je dejavno. Zapisi bodo za dejavnosti, dodane v navedeno čakalno vrsto, ustvarjeni na podlagi nastavitev pravila.</value>
+  </data>
+  <data name="Dialog_CalendarRule_Warning" xml:space="preserve">
+    <value>Ta tedenski razpored je trenutno v uporabi. Če ga boste spremenili, boste spremenili delovni čas z veljavnostjo {0}–{1}.</value>
+    <comment>This Label contains the string that needs to be displayed as warning message in CSS MDD</comment>
+  </data>
+  <data name="Dialog_CalendarUpdate_Warning" xml:space="preserve">
+    <value>Sprememba koledarja storitev za stranke se morda ne bo odražala v zapisih SLA KPI, ki že potekajo.</value>
+    <comment>This Label contains the string that needs to be displayed as warning message.</comment>
+  </data>
+  <data name="Dialog_HolidayUpdate_Warning" xml:space="preserve">
+    <value>Sprememba prazničnega urnika za stranke se morda ne bo odražala v zapisih SLA KPI, ki že potekajo.</value>
+    <comment>This Label contains the string that needs to be displayed as warning message.</comment>
+  </data>
+  <data name="Dialog_CalendarRule_Privilege_Error" xml:space="preserve">
+    <value>Za dostop do tega zapisa nimate dovoljenja. Obrnite se na skrbnika za Microsoft Dynamics 365.</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="WorkHour_UnsavedChanges_Message" xml:space="preserve">
+    <value>Vaše spremembe niso bile shranjene. Če želite ostati na strani in shraniti spremembe, kliknite »Prekliči«.</value>
+  </data>
+  <data name="WorkHour_UnsavedChanges_Title" xml:space="preserve">
+    <value>Neshranjene spremembe</value>
+  </data>
+  <data name="Holiday_ConfirmDeleteButton" xml:space="preserve">
+    <value>Izbriši</value>
+    <comment>Button lable for deleting holiday</comment>
+  </data>
+  <data name="Holiday_ConfirmDeleteText" xml:space="preserve">
+    <value>Ali želite izbrisati ta praznik s prazničnega urnika? Tega dejanja ni mogoče razveljaviti.</value>
+    <comment>Text for Delete Holiday Dialog</comment>
+  </data>
+  <data name="Holiday_ConfirmDeleteTitle" xml:space="preserve">
+    <value>Potrdi</value>
+    <comment>Confirmation for Delete</comment>
+  </data>
+  <data name="Holiday_ConfirmMultiDeleteText" xml:space="preserve">
+    <value>Ali želite izbrisati izbrane praznike ({0}) s prazničnega urnika? Tega dejanja ni mogoče razveljaviti.</value>
+    <comment>Text for Delete Multiple Holiday Dialog</comment>
+  </data>
+  <data name="EndTime_StartTime_Min_Diff" xml:space="preserve">
+    <value>Končni čas ne more biti pred začetnim časom, pri čemer mora biti vsaj 5 minut po začetnem času.</value>
+  </data>
+  <data name="WorkHour_RefreshChanges_Message" xml:space="preserve">
+    <value>Z osveževanjem bodo vse vaše spremembe izgubljene.</value>
+  </data>
+  <data name="WorkHour_RefreshChanges_Title" xml:space="preserve">
+    <value>Osveževanje</value>
+  </data>
+  <data name="GlobalNotification_CSS_Created" xml:space="preserve">
+    <value>Razpored storitev za stranke je ustvarjen.</value>
+  </data>
+  <data name="GlobalNotification_CSS_Edit" xml:space="preserve">
+    <value>Razpored storitev za stranke je shranjen.</value>
+  </data>
+  <data name="Global_Notification_After_SetWorkHours" xml:space="preserve">
+    <value>Tedenski razpored je posodobljen z novim delovnim časom.</value>
+  </data>
+  <data name="GlobalNotification_HS_Created" xml:space="preserve">
+    <value>Praznični urnik je ustvarjen.</value>
+  </data>
+  <data name="CalendarFormTitle_HolidaySchedule" xml:space="preserve">
+    <value>Praznični urnik</value>
+    <comment>Title to be displayed on calendar form.</comment>
+  </data>
+  <data name="Dialog_Title_RemoveUsers" xml:space="preserve">
+    <value>Odstranitev članov</value>
+  </data>
+  <data name="Dialog_Description_RemoveUsers" xml:space="preserve">
+    <value>Ali želite odstraniti izbrane prodajalce ({0})? S tem dejanjem se odstranijo vsi člani trenutno izbranega področja. Tega dejanja ni mogoče razveljaviti, vendar lahko pozneje prodajalca znova dodate v področje.</value>
+  </data>
+  <data name="Dialog_RemoveButton_Label_RemoveUsers" xml:space="preserve">
+    <value>Odstrani</value>
+  </data>
+  <data name="AlertDialog_Text_RemoveUsers_Failure" xml:space="preserve">
+    <value>Odstranjevanje uporabnikov ni uspelo. Obrnite se na skrbnika in mu posredujte te informacije: stanje: {0}, statusText: {1} ter responseText: {2}</value>
+  </data>
+  <data name="Dialog_HolidayItem_Header_New" xml:space="preserve">
+    <value>Dodajanje praznika</value>
+  </data>
+  <data name="Dialog_HolidayItem_Header_Edit" xml:space="preserve">
+    <value>Urejanje praznika</value>
+  </data>
+  <data name="Error_End_Must_Be_After_Start" xml:space="preserve">
+    <value>Določite končni čas, ki je po začetnem času.</value>
+  </data>
+  <data name="Dialog_HolidayItem_Name_Short" xml:space="preserve">
+    <value>Ime praznika ne sme biti prazno.</value>
+  </data>
+  <data name="Dialog_HolidayItem_Name_Long" xml:space="preserve">
+    <value>Ime praznika je predolgo.</value>
+  </data>
+  <data name="Dialog_HolidayItem_Privilege_Error" xml:space="preserve">
+    <value>Za dostop do tega zapisa nimate dovoljenja. Obrnite se na skrbnika za Microsoft Dynamics 365.</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="GlobalNotification_HolidayItem_AddEdit" xml:space="preserve">
+    <value>Praznik je shranjen.</value>
+  </data>
+  <data name="GlobalNotification_HolidayItem_Add" xml:space="preserve">
+    <value>Praznik je ustvarjen.</value>
+  </data>
+  <data name="QueueItem_Private_Queue_LookUp" xml:space="preserve">
+    <value>Pogled za iskanje uporabnika zasebne čakalne vrste</value>
+  </data>
+  <data name="RECORD_ADDED_TO_NO_QUEUE">
+    <value>Ta zapis ni bil dodan v nobeno čakalno vrsto.</value>
+  </data>
+  <data name="RECORD_ADDED_TO_MULTIPLE_QUEUES">
+    <value>Ta zapis je v več čakalnih vrstah. Če si želite ogledati podrobnosti, odprite določeno čakalno vrsto.</value>
+  </data>
+  <data name="TeamManagement_Users_Label" xml:space="preserve">
+    <value>Uporabniki</value>
+    <comment>Label to use as a prefix for aria label in users look up control.</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromCSV">
+    <value>Uvozi iz CSV</value>
+    <comment>Import from CSV file</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromXML">
+    <value>Uvozi iz XML</value>
+    <comment>Import from XML file</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromExcel">
+    <value>Uvoz iz Excela</value>
+    <comment>Import from Excel file.</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInBytes">
+    <value>B</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInKB">
+    <value>kB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInMB">
+    <value>MB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInGB">
+    <value>GB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeInTB">
+    <value>TB</value>
+    <comment>File Size</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileFormat">
+    <value>Vrsta izbrane datoteke ni enaka vrsti, ki ste jo izbrali za uvoz.</value>
+    <comment>Invalid file format than selected filetype</comment>
+  </data>
+  <data name="ImportExport_Label_NoFileSelected">
+    <value>Izbrana ni nobena datoteka. Za nadaljevanje izberite datoteko za uvoz.</value>
+    <comment>No File Selected</comment>
+  </data>
+  <data name="ImportExport_Label_NoActivityTypeSelected">
+    <value>Izbrana ni nobena vrsta dejavnosti. Če želite nadaljevati, izberite vrsto dejavnosti.</value>
+    <comment>No Activity Type Selected</comment>
+  </data>
+  <data name="ImportExport_Label_NoDataInFile">
+    <value>Izbrana datoteka ne vsebuje podatkov.</value>
+    <comment>no data in file</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileSubmitted">
+    <value>Izbrana datoteka ni veljavna za uvoz »{0}«.</value>
+    <comment>File submitted is not valid for import</comment>
+  </data>
+  <data name="ImportExport_Label_UnmappedFieldConfimationDialogTitle">
+    <value>Pošiljanje podatkov</value>
+    <comment>Unmapped Field Confimation Dialog title</comment>
+  </data>
+  <data name="ImportExport_Label_OptionalUnmappedFieldConfimationDialog">
+    <value>Čarovnik je zaznal eno ali več nepreslikanih polj. Ali želite prezreti nepreslikana polja in nadaljevati?</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_MandatoryAndOptionalUnmappedFieldConfimationDialog">
+    <value>Čarovnik je zaznal eno ali več nepreslikanih polj. Zaradi nepreslikanih obveznih polj lahko pride do napak pri uvozu. Ali želite prezreti nepreslikana polja in nadaljevati?</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_MandatoryUnmappedFieldConfimationDialog">
+    <value>Nekatera obvezna polja niso preslikana, zato nekateri zapisi morda ne bodo uvoženi.</value>
+    <comment>Unmapped Field Confimation Dialog</comment>
+  </data>
+  <data name="ImportExport_Label_ImportFromExchangeFailed">
+    <value>Uvoz stikov iz sistema Exchange ni uspel {0}</value>
+    <comment>mport of Contacts from Exchange has Failed</comment>
+  </data>
+  <data name="ImportExport_Label_UnmappedMandatoryField">
+    <value>Čarovnik je zaznal eno ali več nepreslikanih obveznih polj.</value>
+    <comment>Unmapped Manadatory Field</comment>
+  </data>
+  <data name="ImportExport_Label_InvalidFileSize">
+    <value>Izbrana datoteka presega največjo dovoljeno velikost.</value>
+    <comment>File size is more than expected</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsWithHistory">
+    <value>Ali želite izbrisati vse zapise, ustvarjene iz izbrane datoteke, uvoženi dnevnik in povezane zapise? Tega dejanja ni mogoče razveljaviti.</value>
+    <comment>Delete Imported Logs with History</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsData">
+    <value>Ali želite izbrisati uvožene zapise za izbrano izvorno datoteko za uvoz? Tega dejanja ni mogoče razveljaviti.</value>
+    <comment>Delete Imported Logs Data</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsDialogTitle">
+    <value>Potrdi brisanje</value>
+    <comment>Delete Imported Logs Data Dialog Title</comment>
+  </data>
+  <data name="ImportExport_Label_NoRecordSelected">
+    <value>Ni izbrane datoteke za brisanje.</value>
+    <comment>No Record Selected</comment>
+  </data>
+  <data name="ImportExport_Label_BulkDeletion">
+    <value>Množično brisanje</value>
+    <comment>Bulk Deletion</comment>
+  </data>
+  <data name="ImportExport_Label_Confirm">
+    <value>Potrdite</value>
+    <comment>Confirm</comment>
+  </data>
+  <data name="ImportExport_Label_Cancel">
+    <value>Prekliči</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="ImportExport_Label_MultipleDeleteFailures">
+    <value>Pri brisanju enega ali več zapisov je prišlo do napake.</value>
+    <comment>Delete</comment>
+  </data>
+  <data name="ImportExport_Label_UnknownFailures">
+    <value>Nepričakovana napaka. Poskusite znova. Če težave ne morete odpraviti, poiščite rešitve v skupnosti Microsoft Dynamics 365 ali pa se obrnite na skrbnika. Za dodatno pomoč se obrnite na Microsoftovo podporo in ji posredujte tehnične podrobnosti o napaki.</value>
+    <comment>Unknown Failures</comment>
+  </data>
+  <data name="ImportExport_Label_PreviligeError">
+    <value>Nimate dovoljenja {0} za dostop do zapisov entitete {1}. Za pomoč se obrnite na skrbnika za Microsoft Dynamics 365.</value>
+    <comment>
+          Displayed when user tries to access something that they do not have the permissions to access [Category="Application Infrastructure"]
+          {NumberedPlaceholder="{0}"} Placeholder 0 is the name of the Privilege Type which is missing.
+          {NumberedPlaceholder="{1}"} Placeholder 1 is the name of the Entity on which the privilege is missing.
+      </comment>
+  </data>
+  <data name="ImportExport_Label_FileSizeMaxLimitExceeded">
+    <value>Izbrana datoteka presega največjo dovoljeno velikost.</value>
+    <comment>File size max limit exceeded</comment>
+  </data>
+  <data name="ImportExport_Label_NoErrorRowsFoundInThisImport">
+    <value>No error rows found in this import.</value>
+    <comment>No error rows found in this import</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsWithHistoryMultipleFiles">
+    <value>Ali želite izbrisati vse zapise, ustvarjene iz izbranih datotek, ustrezni uvoženi dnevnik in povezane zapise? Tega dejanja ni mogoče razveljaviti.</value>
+    <comment>Delete Imported Logs with History - Multiple Files</comment>
+  </data>
+  <data name="ImportExport_Label_DeleteImportLogsDataMultipleFiles">
+    <value>Ali želite izbrisati uvožene zapise za izbrane izvorne datoteke za uvoz? Tega dejanja ni mogoče razveljaviti.</value>
+    <comment>Delete Imported Logs Data - Multiple Files</comment>
+  </data>
+  <data name="ImportExport_ActivityEntitiesRetrieveError">
+    <value>Seznama entitet kazalca dejavnosti ni mogoče dobiti</value>
+    <comment>Retrieve Activity Entities</comment>
+  </data>
+  <data name="ImportExport_Label_NoErrorRowsFoundInThisImport">
+    <value>V tem uvozu ni nobene vrstice z napakami.</value>
+    <comment>No error rows found in this import</comment>
+  </data>
+  <data name="ImportExport_Label_TargetAttributeInvalidForMap">
+    <value>To polje ni veljavno za preslikavo: {0}, {1}. Odpravite to nedoslednost in nato znova uvozite to podatkovno preslikavo.</value>
+    <comment>Attribute is not valid for mapping. {NumberedPlaceholder="{0}"} Placeholder 0 is the localized display name of the entity. {NumberedPlaceholder="{1}"} Placeholder 1 is the localized display name of the attribute.</comment>
+  </data>
+  <data name="AppCommon.PDF" xml:space="preserve">
+    <value>Izvoz v PDF</value>
+    <comment>Label  for Export to PDF button.</comment>
+  </data>
+  <data name="AppCommon.PDFToolTip" xml:space="preserve">
+    <value>Zagon pogovornega okna za izvoz v PDF</value>
+    <comment>Tooltip description for Export to PDF button.</comment>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Name_Short" xml:space="preserve">
+    <value>Ime zaprtja podjetja ne sme biti prazno.</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Name_Long" xml:space="preserve">
+    <value>Ime za zaprtje podjetja je predolgo.</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_Privilege_Error" xml:space="preserve">
+    <value>Za dostop do tega zapisa nimate dovoljenja. Obrnite se na skrbnika za Microsoft Dynamics 365.</value>
+    <comment>Error displayed when user tries to access CSS record without read access</comment>
+  </data>
+  <data name="GlobalNotification_BusinessClosureItem_AddEdit" xml:space="preserve">
+    <value>Zaprtje podjetja je shranjeno</value>
+  </data>
+  <data name="GlobalNotification_BusinessClosureItem_Add" xml:space="preserve">
+    <value>Zaprtje podjetja je ustvarjeno</value>
+  </data>
+  <data name="Dialog_BusinessClosureItem_MDD_Subheader02" xml:space="preserve">
+    <value>Med tem zaprtjem ni mogoče razporejati virov. Kljub temu pa lahko razporejate vire, za katere je pri možnosti »Zaprtje podjetja« izbrano »Ne upoštevaj«.</value>
+  </data>
+  <data name="BusinessClosure_StartTimeInvalid" xml:space="preserve">
+    <value>Določite začetni čas za zaprtje podjetja med leti 1753 in 9999.</value>
+    <comment>Error message occurring when the user enters an invalid start time when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_EndTimeOrDurationNotSpecified" xml:space="preserve">
+    <value>Določite končni čas ali trajanje za zaprtje podjetja.</value>
+    <comment>Error message occurring when the user fails to enter an end time or duration value when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_EndTimeInvalid" xml:space="preserve">
+    <value>Določite končni čas za zaprtje podjetja med leti 1753 in 9999.</value>
+    <comment>Error message occurring when the user enters an invalid end time when editting or creating a business closure.</comment>
+  </data>
+  <data name="BusinessClosure_InvalidStartTimeEndTime" xml:space="preserve">
+    <value>Začetni čas mora biti pred končnim časom.</value>
+    <comment>Error message occurring when a business closure's end time occurs before start time.</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteText" xml:space="preserve">
+    <value>Ali želite izbrisati to zaprtje podjetja? Tega dejanja ni mogoče razveljaviti.</value>
+    <comment>Text for Delete Business Closure Dialog</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmMultiDeleteText" xml:space="preserve">
+    <value>Ali želite izbrisati izbrano zaprtje podjetja {0}? Tega dejanja ni mogoče razveljaviti.</value>
+    <comment>Text for Delete Multiple Business Closure Dialog.{NumberedPlaceholder="{0}"}. Placeholder 0 is the number of selected records.</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteTitle" xml:space="preserve">
+    <value>Potrditev</value>
+    <comment>Confirmation for Delete</comment>
+  </data>
+  <data name="BusinessClosure_ConfirmDeleteButton" xml:space="preserve">
+    <value>Izbriši</value>
+    <comment>Button label for deleting business closure</comment>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_DateAndTime_Message" xml:space="preserve">
+    <value>Izberite datum in uro</value>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_InProgress_Message" xml:space="preserve">
+    <value>Načrtovanje množične e-pošte ...</value>
+  </data>
+  <data name="ContextualBulkEmail_Send_InProgress_Message" xml:space="preserve">
+    <value>Pošiljanje množične e-pošte ...</value>
+  </data>
+  <data name="ContextualBulkEmail_Form_Notification_Message" xml:space="preserve">
+    <value>Obrazec za množično e-pošto ne uporabljajte neposredno. Ta obrazec je samo za uporabo v načinu množične e-pošte za pospeševalnik prodaje.</value>
+  </data>
+  <data name="ContextualBulkEmail_Schedule_Failed_Message" xml:space="preserve">
+    <value>E-poštnih sporočil ni mogoče načrtovati. Poskusite znova. Če se težava ponovi, se obrnite na skrbnika.</value>
+  </data>
+  <data name="ContextualBulkEmail_Send_Failed_Message" xml:space="preserve">
+    <value>E-poštnih sporočil ni mogoče poslati. Poskusite znova. Če se težava ponovi, se obrnite na skrbnika.</value>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>Od vključno 1. aprila 2023 so podedovane pogodbe o ravni storitve (SLA) v spletnem odjemalcu, ki so bile opuščene v preteklosti, presegle konec podpore (EoS). Podedovane pogodbe o ravni storitve, ki so bile ustvarjene v spletnem odjemalcu, morate nujno takoj preseliti v izkušnjo poenotenega vmesnika, da ne bi izgubili funkcionalnosti. Za več informacij o tem, kako preseliti elemente, glejte {0}</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>Potrjujem</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>Prekliči</value>
+  </data>
+  <data name="LearnMore_Label_Text" xml:space="preserve">
+    <value>Več informacij</value>
+  </data>
+  <data name="Dialog_QueueItemPick_MutliPick_Error" xml:space="preserve">
+    <value>Pri izvajanju zahtevanega dejanja za enega ali več zapisov je prišlo do težave. Poskusite znova s posameznimi zapisi.</value>
+  </data>
+</root>

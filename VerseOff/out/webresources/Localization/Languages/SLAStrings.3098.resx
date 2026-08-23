@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SLA_DefaultSLASelectionConfirmDialogText">
+    <value>Желите ли заиста да поставите овај запис уговора о нивоу услуга (SLA) као подразумевани за наведени ентитет?</value>
+  </data>
+  <data name="SLA_DefaultSLASelectionConfirmDialogTitle">
+    <value>Потврда подешавања као подразумеваног</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogText">
+    <value>Други запис уговора о нивоу услуга (SLA) је постављен као подразумевани за ентитет {0}. Желите ли да означите изабрани SLA као подразумевани уместо њега?</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogTitle">
+    <value>Промена подразумеваног SLA</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertText">
+    <value>Није могуће поставити неактивни SLA као подразумевани.</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertTitle">
+    <value>Није могуће подесити као подразумевано</value>
+  </data>
+  <data name="SLA_DefaultSLAWarning">
+    <value>Изабрани SLA је већ подразумевани</value>
+  </data>
+  <data name="SLA_DefaultSLASetttingInProgress">
+    <value>Подешавање подразумеваног SLA</value>
+  </data>
+  <data name="SLA_ErrorResettingDefaultSLA">
+    <value>Дошло је до грешке током ажурирања подразумеваног SLA</value>
+  </data>
+  <data name="SLA_ErrorSettingNewSLA">
+    <value>Дошло је до грешке током подешавања новог подразумеваног SLA</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsGeneralNotification">
+    <value>Кликните на „Конфигуриши радње“ да бисте подесили радње успеха, упозорење и отказивања.</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsSetupNotification">
+    <value>Радње успеха, упозорења и отказивање нису подешене. Кликните на „Конфигуриши радње“ да бисте их подесили.</value>
+  </data>
+  <data name="SLAItem_WarningTimeHigherThanFailureTimeAlert">
+    <value>Упозорење након трајања не треба да буде веће од отказивања након трајања</value>
+  </data>
+  <data name="SLAItem_SuccessConditionsEmptyAlert">
+    <value>Услови успеха не могу бити празни</value>
+  </data>
+  <data name="SLAItem_PauseConditionsEmptyAlert">
+    <value>Услов паузе не може бити празан када је укључена измена конфигурације паузе</value>
+  </data>
+  <data name="SLAItem_KPIEmptyAlert">
+    <value>KPI адреса не може да буде празна</value>
+  </data>
+  <data name="SLAItem_Notification_SLA_ActivatedState">
+    <value>Деактивирајте SLA да бисте изменили SLA ставку </value>
+  </data>
+  <data name="SLAKPI_Activate">
+    <value>Активирај</value>
+  </data>
+  <data name="SLAKPI_Deactivate">
+    <value>Деактивирај</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Message">
+    <value>Желите ли да деактивирате изабрани KPI ентитета {0}?</value>
+  </data>
+  <data name="SLAKPI_Activate_Message">
+    <value>Желите ли да активирате изабрани KPI ентитета {0}?</value>
+  </data>
+  <data name="Progress_Message">
+    <value>KPI се ажурира</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Title">
+    <value>Потврдите деактивирање</value>
+  </data>
+  <data name="SLAKPI_Activate_Title">
+    <value>Потврдите активирање</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_UC">
+    <value>Ово је застарео запис. Да бисте уредили овај запис, посетите застарели веб-клијент.</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_WC">
+    <value>Овај запис не можете уређивати овде. Отворите апликацију обједињеног интерфејса да бисте га уредили.</value>
+  </data>
+  <data name="SLA_UC_Preview_Text">
+    <value>Радње се користе за обављање скупа задатака, у зависности од тога да ли испуњавате критеријуме. Да бисте могли да дефинишете радње, морате да сачувате SLA ставку. Кликните на {0} да бисте сазнали више.</value>
+  </data>
+  <data name="SLA_AdvancedPauseConfig_Text">
+    <value>Конфигуришите услове паузе у овом одељку како бисте изменили конфигурацију паузе на нивоу ентитета дефинисану у конфигурацији услуге и конфигурацији паузе на нивоу KPI-а {0}.</value>
+  </data>
+  <data name="SLA_KPIAdvancedPauseConfig_Text">
+    <value>Конфигуришите услове паузе у овом одељку како бисте изменили конфигурацију паузе на нивоу ентитета дефинисану у конфигурацији услуге {0}.</value>
+  </data>
+  <data name="SLA_UC_Preview_FeatureDocumentation_Hyperlink_Label">
+    <value>документација функције</value>
+  </data>
+  <data name="SLA_AdavncedPauseConfig_Hyperlink_Label" xml:space="preserve">
+    <value>Сазнајте више</value>
+  </data>
+  <data name="SLAKPI_LearnMoreLink_Text">
+    <value>Потребно је омогућити ентитет за SLA. {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is the Learn More link.</comment>
+  </data>
+  <data name="SLAKPI_Hyperlink_Label" xml:space="preserve">
+    <value>Сазнајте више</value>
+  </data>
+  <data name="SLAItem_ConditionControl_Notification_Text">
+    <value>Препоручујемо вам да избегавате конфигурисање применљивих у исто време када и критеријума успеха за исти атрибут.</value>
+  </data>
+  <data name="SLAItem_ConditionOnSameAttributeAlert">
+    <value>Препоручујемо вам да избегавате конфигурисање применљивих у исто време када и критеријума успеха за исти атрибут. Желите ли да наставите?</value>
+  </data>
+  <data name="SLAKPI_BusinessProcessError_Title" xml:space="preserve">
+    <value>Грешка у пословном процесу</value>
+  </data>
+  <data name="SDKMessagingStepNotInActiveState" xml:space="preserve">
+    <value>Неки повезани корак SDK поруке {0} можда није у активном статусу. Активирајте корак SDK поруке да бисте могли да активирате SLA.</value>
+    <comment>Error message when dependent SDK Message Step is not enabled. step Id.</comment>
+  </data>
+  <data name="SLAIsDisabledInSetting" xml:space="preserve">
+    <value>Повезана поставка „Онемогући SLA-ове“ омогућена је у подешавањима конфигурације услуге. Деактивирајте подешавање да бисте активирали SLA.</value>
+    <comment>Error message when SLA is not enabled in Service Configuration Settings.</comment>
+  </data>
+  <data name="WorkflowNotInActiveState" xml:space="preserve">
+    <value>Неки повезани ток посла {0} можда није у активном статусу. Активирајте ток посла да бисте могли да активирате SLA.</value>
+    <comment>Error message when dependent Workflow/CustomAction is not enabled.</comment>
+  </data>
+  <data name="SLAItem_ApplicableAndSuccessSameAttribute" xml:space="preserve">
+    <value>Препоручујемо вам да избегавате конфигурисање применљивих у исто време када и критеријума успеха за исти атрибут</value>
+    <comment>Warning message when SLA Applicable and Success conditions are configured on the same attribute</comment>
+  </data>
+  <data name="WorkflowOwnerIsDisabled" xml:space="preserve">
+    <value>Власници у следећим SLA токовима посла: потребно је ажурирати {0} са активним корисницима.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is a workflow name which is owned by disabled user.</comment>
+  </data>
+  <data name="NoSLASetAsDefault" xml:space="preserve">
+    <value>Подразумевани SLA није задржан за ентитет {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is an SLA's primary entity name.</comment>
+  </data>
+  <data name="OpenLearnMoreForSetAsDefaultSLA" xml:space="preserve">
+    <value>Сазнајте више</value>
+  </data>
+  <data name="SLAKPI_Recommendation_Entityname" xml:space="preserve">
+    <value>Потребно је омогућити ентитет за SLA.</value>
+    <comment>Recommendation message for EntityName field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_KPIField" xml:space="preserve">
+    <value>KPI индикатори су засновани на изабраном ентитету.</value>
+    <comment>Recommendation message for KPI field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_PrimaryEntity" xml:space="preserve">
+    <value>Потребно је омогућити ентитет за SLA.</value>
+    <comment>Recommendation message for Primary Entity field.</comment>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>Почево д 01. априла 2023, крај подршке (EoS) је истекао за застареле уговоре о нивоу услуга (SLA-ови) на веб-клијенту који су били неодобрени раније. Од пресудне је важности да одмах мигрирате застареле SLA-ове који су били креирани на веб-клијенту у искуство обједињеног интерфејса како бисте избегли губитак функционалности. а више информација о начину мигрирања ставки, погледајте {0}</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>Потврђујем</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="SLAKPI_Activation_Error_Message" xml:space="preserve">
+    <value>Активирање KPI-ја за SLA није успело, активирајте га из одељка за управљање KPI-јевима за SLA.</value>
+    <comment>Error message when it fails to activate SLAKPI from quick create form.</comment>
+  </data>
+  <data name="SLAKPI_Performance_Indicator_Notification" xml:space="preserve">
+    <value>KPI-јеви за SLA су индикатори перформанси</value>
+    <comment>Header notification in SLA KPI form.</comment>
+  </data>
+  <data name="SLA_ChangedAttribiteNullNotification" xml:space="preserve">
+    <value>Потребно је да поново активирате SLA {0} да бисте решили препознате проблеме са условима у њему. Више информација потражите у чланку {1}</value>
+    <comment>Notification message when SLA item's 'ChangedAttributeList" field value is NULL and SLA is active. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_RelatedEntitiesNotification" xml:space="preserve">
+    <value>Повезани ентитети конфигурисани у условима за SLA ставку {{0}} нису у потпуности подржани. Погледајте – {1} за више информација</value>
+    <comment>Notification message when SLA item has related entities in the applicable when or success or pause conditions. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogDepreciationText" xml:space="preserve">
+    <value>Почев од 1. октобра 2020. године, SLA-ови су застарели у веб-клијенту. За више информација посетите – {0}</value>
+    <comment>Depreciation Message when user try to create new Legacy SLA and ask customer to move to UCI to create new SLAs.{Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogConfirmationText" xml:space="preserve">
+    <value>Изаберите „У реду“ да бисте наставили са креирањем новог SLA у обједињеном интерфејсу.</value>
+    <comment>Confirmation to direct user to UCI to create new SLAs.</comment>
+  </data>
+  <data name="SLAWorkingHoursEmptyNotification" xml:space="preserve">
+    <value>Пословни календар повезан са SLA {0} има празно радно време.</value>
+    <comment>Notification message when SLA item has business calendar with empty working hours. {Placeholder='{0}'} refers SLA items.</comment>
+  </data>
+</root>

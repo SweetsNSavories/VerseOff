@@ -14,7 +14,7 @@ from PyQt6.QtWidgets import (
     QLabel, QLineEdit, QCheckBox, QGroupBox, QTabWidget, QGridLayout,
     QMessageBox, QDateTimeEdit, QSpinBox, QDoubleSpinBox, QTableWidget,
     QTableWidgetItem, QSizePolicy, QTextEdit, QListWidget, QListWidgetItem,
-    QToolButton, QMenu, QFileDialog, QDialog, QDialogButtonBox
+    QToolButton, QMenu, QFileDialog, QDialog, QDialogButtonBox, QFrame
 )
 from PyQt6 import sip
 from PyQt6.QtCore import (
@@ -40,6 +40,7 @@ from client_script_metadata import (
     normalize_web_resource_name,
     parse_form_event_handlers,
     parse_form_parameters,
+    safe_web_resource_path,
 )
 import custom_events
 import traceback
@@ -58,14 +59,53 @@ class OfflineRequestInterceptor(QWebEngineUrlRequestInterceptor):
             info.block(True)
 
 
+class LoggingWebEnginePage(QWebEnginePage):
+    def page(self):
+        """Self-reference compatibility so self.browser.page().runJavaScript() works directly on Page."""
+        return self
+
+    def javaScriptConsoleMessage(self, level, message, lineNumber, sourceID):
+        src = os.path.basename(sourceID) if sourceID else "v8_runtime"
+        if level == QWebEnginePage.JavaScriptConsoleMessageLevel.WarningMessageLevel:
+            logger.warning(f"[V8 JS] {message} ({src}:{lineNumber})")
+        elif level == QWebEnginePage.JavaScriptConsoleMessageLevel.ErrorMessageLevel:
+            logger.error(f"[V8 JS] {message} ({src}:{lineNumber})")
+        else:
+            logger.info(f"[V8 JS] {message} ({src}:{lineNumber})")
+
+    def javaScriptAlert(self, securityOrigin, msg):
+        logger.info(f"[V8 Alert] {msg}")
+
+    def javaScriptConfirm(self, securityOrigin, msg):
+        logger.info(f"[V8 Confirm] {msg}")
+        return True
+
+    def javaScriptPrompt(self, securityOrigin, msg, defaultValue):
+        logger.info(f"[V8 Prompt] {msg}")
+        return True, defaultValue
+
+    def createWindow(self, _type):
+        return None
+
+
+_SHARED_OFFLINE_PROFILE = None
+
+def get_shared_offline_profile():
+    global _SHARED_OFFLINE_PROFILE
+    if _SHARED_OFFLINE_PROFILE is None:
+        _SHARED_OFFLINE_PROFILE = QWebEngineProfile()
+        interceptor = OfflineRequestInterceptor(_SHARED_OFFLINE_PROFILE)
+        _SHARED_OFFLINE_PROFILE.setUrlRequestInterceptor(interceptor)
+        _SHARED_OFFLINE_PROFILE._interceptor = interceptor
+    return _SHARED_OFFLINE_PROFILE
+
+
 def configure_offline_browser(browser):
-    profile = QWebEngineProfile(browser)
-    interceptor = OfflineRequestInterceptor(profile)
-    profile.setUrlRequestInterceptor(interceptor)
-    page = QWebEnginePage(profile, browser)
+    profile = get_shared_offline_profile()
+    page = LoggingWebEnginePage(profile, browser)
     browser.setPage(page)
-    browser._verseoff_profile = profile
-    browser._verseoff_interceptor = interceptor
+    browser.setStyleSheet("background-color: transparent;")
+    browser.page().setBackgroundColor(Qt.GlobalColor.transparent)
     return browser
 
 
@@ -479,7 +519,10 @@ class SubgridWidget(QWidget):
         self.search_box.textChanged.connect(self.refresh_data)
         toolbar.addWidget(self.search_box)
 
-        refresh_button = QPushButton("Refresh")
+        refresh_button = QPushButton("↻")
+        refresh_button.setToolTip("Refresh Grid")
+        refresh_button.setFixedSize(28, 28)
+        refresh_button.setStyleSheet("QPushButton { background-color: transparent; border: 1px solid #d1d1d1; border-radius: 4px; color: #201f1e; font-weight: bold; font-size: 16px; } QPushButton:hover { background-color: #f3f2f1; }")
         refresh_button.clicked.connect(self.refresh_data)
         toolbar.addWidget(refresh_button)
         layout.addLayout(toolbar)
@@ -783,8 +826,6 @@ class SubgridWidget(QWidget):
             width = int(column.get("width") or 120)
             self.table.setColumnWidth(index, max(70, min(width, 420)))
 
-        database = LocalDatabase()
-        database._validate_entity_name(self.target_entity)
         relationship_attribute = self._relationship_attribute()
         relationship_is_resolved = (
             not self.relationship_name
@@ -795,6 +836,16 @@ class SubgridWidget(QWidget):
         parent_id = str(self.renderer.record_id or "").strip("{}").casefold()
         search_text = self.search_box.text().strip().casefold()
         records = []
+
+        if not relationship_is_resolved or not view_is_resolved or (relationship_attribute and not parent_id):
+            self._records = []
+            self._total_record_count = 0
+            self.table.setRowCount(0)
+            self.status_label.setText("No records found." if relationship_is_resolved and view_is_resolved else "Unavailable in offline project")
+            return
+
+        database = LocalDatabase()
+        database._validate_entity_name(self.target_entity)
 
         with database.get_connection() as connection:
             rows = connection.execute(
@@ -911,8 +962,10 @@ class AssociatedGridWidget(QWidget):
         self.add_btn.clicked.connect(self.on_add_new)
         toolbar.addWidget(self.add_btn)
         
-        self.refresh_btn = QPushButton("↻  Refresh")
-        self.refresh_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; font-size: 12px; padding: 4px 10px; border-radius: 4px;")
+        self.refresh_btn = QPushButton("↻")
+        self.refresh_btn.setToolTip("Refresh Grid")
+        self.refresh_btn.setFixedSize(28, 28)
+        self.refresh_btn.setStyleSheet("QPushButton { background-color: transparent; border: 1px solid #d1d1d1; border-radius: 4px; color: #201f1e; font-weight: bold; font-size: 16px; } QPushButton:hover { background-color: #f3f2f1; }")
         self.refresh_btn.clicked.connect(self.refresh_data)
         toolbar.addWidget(self.refresh_btn)
         
@@ -5199,8 +5252,9 @@ class XrmFormRenderer(QWidget):
         self.evaluate_ribbon_rules()
 
     def init_browser_bridge(self):
-        self.browser = configure_offline_browser(QWebEngineView())
-        self.browser.page().setWebChannel(self.channel)
+        profile = get_shared_offline_profile()
+        self.browser = LoggingWebEnginePage(profile, self)
+        self.browser.setWebChannel(self.channel)
         self.browser.loadFinished.connect(
             self._on_browser_load_finished
         )
@@ -5237,16 +5291,18 @@ class XrmFormRenderer(QWidget):
         return names
 
     def _client_script_urls(self):
-        resources = {
-            normalize_web_resource_name(resource.get("name")): resource
-            for resource in self.manifest.get("web_resources", [])
-            if resource.get("name")
-        }
+        resources = {}
+        for resource in self.manifest.get("web_resources", []):
+            if isinstance(resource, dict) and resource.get("name"):
+                resources[normalize_web_resource_name(resource.get("name"))] = resource
+            elif isinstance(resource, str) and resource:
+                norm = normalize_web_resource_name(resource)
+                resources[norm] = {"name": resource, "relative_path": safe_web_resource_path(resource), "type": 3}
         urls = []
         for name in self._active_client_script_names():
             resource = resources.get(name)
             if resource is None:
-                logger.error(
+                logger.warning(
                     f"Client script {name!r} is referenced by the active "
                     "form or Ribbon but was not packaged."
                 )
@@ -5260,25 +5316,29 @@ class XrmFormRenderer(QWidget):
                 )
                 continue
             if not relative_path:
-                logger.error(
+                logger.warning(
                     f"Client script {name!r} has no packaged path."
                 )
                 continue
+            clean_rel = relative_path.replace("\\", "/").lstrip("/")
+            if clean_rel.startswith("webresources/"):
+                clean_rel = clean_rel[len("webresources/"):].lstrip("/")
             script_path = os.path.abspath(
                 os.path.join(
-                    os.path.join(os.path.dirname(os.path.abspath(__file__)), "webresources"),
-                    relative_path,
+                    os.path.dirname(os.path.abspath(__file__)),
+                    "webresources",
+                    clean_rel.replace("/", os.sep),
                 )
             )
             if os.name == "nt" and not script_path.startswith("\\\\?\\"):
                 script_path = "\\\\?\\" + script_path
 
             if not os.path.exists(script_path):
-                logger.error(
+                logger.warning(
                     f"Packaged client script does not exist: {script_path}"
                 )
                 continue
-            if self.security_context:
+            if getattr(self, "security_context", None):
                 expected_hash = resource.get("sha256")
                 if expected_hash:
                     with open(script_path, "rb") as script_file:
@@ -5667,30 +5727,29 @@ class XrmFormRenderer(QWidget):
                 if entity.get("LogicalName")
             ],
             "webResources": {
-                resource.get("name"): resource.get("relative_path")
+                (resource.get("name") if isinstance(resource, dict) else resource): (resource.get("relative_path") if isinstance(resource, dict) else safe_web_resource_path(resource))
                 for resource in self.manifest.get("web_resources", [])
-                if resource.get("name") and resource.get("relative_path")
+                if resource
             },
             "webResourceUrls": {
-                resource.get("name"): QUrl.fromLocalFile(
+                (resource.get("name") if isinstance(resource, dict) else resource): QUrl.fromLocalFile(
                     os.path.abspath(os.path.join(
                         os.path.dirname(__file__),
-                        resource.get("relative_path", "").replace(
+                        "webresources",
+                        "webresources",
+                        (resource.get("relative_path") if isinstance(resource, dict) else safe_web_resource_path(resource)).replace(
                             "/",
                             os.sep,
                         ),
                     ))
                 ).toString()
                 for resource in self.manifest.get("web_resources", [])
-                if resource.get("name") and resource.get("relative_path")
+                if resource
             },
             "localizedResources": {
-                resource.get("name"): resource.get(
-                    "localized_strings",
-                    {},
-                )
+                (resource.get("name") if isinstance(resource, dict) else resource): (resource.get("localized_strings", {}) if isinstance(resource, dict) else {})
                 for resource in self.manifest.get("web_resources", [])
-                if resource.get("name")
+                if resource
             },
             "process": self._process_runtime_state(),
             "ui": self._ui_runtime_state(),
@@ -5956,7 +6015,24 @@ class XrmFormRenderer(QWidget):
         self.evaluate_ribbon_rules()
         self._run_post_load()
 
-    def handle_close(self):
+    def is_dirty(self):
+        for widget in self.controls.values():
+            if getattr(widget, "_is_dirty", False):
+                return True
+        return False
+
+    def handle_close(self, force: bool = False):
+        if not force and self.is_dirty():
+            res = QMessageBox.warning(
+                self,
+                "Unsaved Changes",
+                "You have unsaved changes. Do you want to discard them?",
+                QMessageBox.StandardButton.Discard | QMessageBox.StandardButton.Cancel,
+                QMessageBox.StandardButton.Cancel
+            )
+            if res == QMessageBox.StandardButton.Cancel:
+                return
+
         if self.on_close:
             self.on_close()
         else:
@@ -6126,50 +6202,74 @@ class XrmFormRenderer(QWidget):
         top_bar_layout.setContentsMargins(0, 0, 0, 0)
         top_bar_layout.setSpacing(4)
         
-        # Breadcrumb row
-        breadcrumb_row = QHBoxLayout()
-        back_btn = QPushButton(f"←  Back to {disp_name}s")
-        back_btn.setStyleSheet("background: transparent; border: none; color: #0f6cbd; font-weight: 600; font-size: 13px; padding: 2px 6px;")
-        back_btn.setCursor(Qt.CursorShape.PointingHandCursor)
-        back_btn.clicked.connect(self.handle_close)
-        
-        rec_title = QLabel(f"<b>{disp_name}</b>: <span style='color: #605e5c;'>{'New Record' if not self.record_id else self.record_id[:8] + '...'}</span>")
-        rec_title.setStyleSheet("font-size: 14px; color: #201f1e;")
-        
-        breadcrumb_row.addWidget(back_btn)
-        breadcrumb_row.addWidget(QLabel("|"))
-        breadcrumb_row.addWidget(rec_title)
-        breadcrumb_row.addStretch()
-        top_bar_layout.addLayout(breadcrumb_row)
-        
         # Command Bar (Ribbon)
         cmd_layout = QHBoxLayout()
-        cmd_layout.setContentsMargins(0, 4, 0, 0)
+        cmd_layout.setContentsMargins(0, 8, 0, 8)
         cmd_layout.setSpacing(6)
         
-        # Standard primary buttons
+        back_btn = QPushButton("←")
+        back_btn.setFixedSize(36, 36)
+        back_btn.setToolTip(f"Back to {disp_name}s")
+        back_btn.setStyleSheet("QPushButton { background-color: transparent; border: 1px solid #e1dfdd; border-radius: 18px; color: #0f6cbd; font-weight: bold; font-size: 22px; text-align: center; padding-top: 3px; padding-right: 1px; } QPushButton:hover { background-color: #f3f2f1; }")
+        back_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        back_btn.clicked.connect(self.handle_close)
+        cmd_layout.addWidget(back_btn)
+        
+        # Standard command bar buttons with unified Fluent UI styling
+        fluent_cmd_btn_style = """
+            QPushButton, QToolButton {
+                background-color: #ffffff;
+                color: #201f1e;
+                font-weight: 500;
+                font-size: 13px;
+                padding: 6px 12px;
+                border-radius: 4px;
+                border: 1px solid #d1d1d1;
+            }
+            QPushButton:hover, QToolButton:hover {
+                background-color: #f3f2f1;
+                border-color: #0f6cbd;
+                color: #0f6cbd;
+            }
+            QPushButton:pressed, QToolButton:pressed {
+                background-color: #edebe9;
+                border-color: #0c3b5e;
+                color: #0c3b5e;
+            }
+            QPushButton:disabled, QToolButton:disabled {
+                background-color: #faf9f8;
+                color: #a19f9d;
+                border-color: #f3f2f1;
+            }
+        """
+
         save_btn = QPushButton("💾  Save")
-        save_btn.setStyleSheet("background-color: #0f6cbd; color: white; font-weight: 600; padding: 6px 14px; border-radius: 4px; border: 1px solid #0f6cbd;")
+        save_btn.setStyleSheet(fluent_cmd_btn_style)
+        save_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         save_btn.clicked.connect(self.save_record)
         cmd_layout.addWidget(save_btn)
         
         save_close_btn = QPushButton("💾  Save & Close")
-        save_close_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 12px; border-radius: 4px;")
+        save_close_btn.setStyleSheet(fluent_cmd_btn_style)
+        save_close_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         save_close_btn.clicked.connect(self.save_and_close)
         cmd_layout.addWidget(save_close_btn)
         
         save_new_btn = QPushButton("＋  Save & New")
-        save_new_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 12px; border-radius: 4px;")
+        save_new_btn.setStyleSheet(fluent_cmd_btn_style)
+        save_new_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         save_new_btn.clicked.connect(self.save_and_new)
         cmd_layout.addWidget(save_new_btn)
         
         delete_btn = QPushButton("🗑  Delete")
-        delete_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 12px; border-radius: 4px;")
+        delete_btn.setStyleSheet(fluent_cmd_btn_style)
+        delete_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         delete_btn.clicked.connect(self.delete_record)
         cmd_layout.addWidget(delete_btn)
         
         refresh_btn = QPushButton("↻  Refresh")
-        refresh_btn.setStyleSheet("background-color: #ffffff; border: 1px solid #d1d1d1; font-weight: 500; padding: 6px 12px; border-radius: 4px;")
+        refresh_btn.setStyleSheet(fluent_cmd_btn_style)
+        refresh_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         refresh_btn.clicked.connect(lambda: self.load_data() if self.record_id else None)
         cmd_layout.addWidget(refresh_btn)
 
@@ -6179,12 +6279,32 @@ class XrmFormRenderer(QWidget):
         main_forms = self._get_main_form_defs()
             
         if not self.is_quick_view and len(main_forms) > 1:
-            form_lbl = QLabel("📋 Form:")
-            form_lbl.setStyleSheet("font-size: 12px; color: #605e5c; margin-left: 8px;")
             self.form_combo = QComboBox()
             self.form_combo.setMinimumWidth(210)
-            self.form_combo.setMaximumWidth(300)
-            self.form_combo.setStyleSheet("background-color: #f3f2f1; border: 1px solid #d1d1d1; border-radius: 4px; padding: 4px 8px; font-weight: 500; font-size: 12px;")
+            self.form_combo.setMaximumWidth(350)
+            self.form_combo.setCursor(Qt.CursorShape.PointingHandCursor)
+            self.form_combo.setStyleSheet("""
+                QComboBox {
+                    border: 1px solid #d1d1d1;
+                    border-radius: 4px;
+                    background-color: #ffffff;
+                    font-weight: 600;
+                    font-size: 14px;
+                    color: #201f1e;
+                    padding: 5px 10px;
+                }
+                QComboBox:hover {
+                    background-color: #f3f2f1;
+                    border-color: #8a8886;
+                }
+                QComboBox QAbstractItemView {
+                    background-color: #ffffff;
+                    color: #201f1e;
+                    selection-background-color: #edebe9;
+                    selection-color: #201f1e;
+                    border: 1px solid #d1d1d1;
+                }
+            """)
             for f in main_forms:
                 fname = f.get("name") or "Main Form"
                 fid = f.get("formid") or f.get("formidunique")
@@ -6223,23 +6343,23 @@ class XrmFormRenderer(QWidget):
             
         # --- Form Header (Metrics & Form Selector) ---
         self.header_widget = QWidget()
-        self.header_widget.setStyleSheet("background-color: #ffffff; border-bottom: 1px solid #e1dfdd; padding: 4px 16px;")
+        self.header_widget.setObjectName("FormHeaderWidget")
+        self.header_widget.setStyleSheet("QWidget#FormHeaderWidget { background-color: #ffffff; border-bottom: 1px solid #e1dfdd; padding: 4px 16px; }")
         self.header_layout = QHBoxLayout(self.header_widget)
         self.header_layout.setContentsMargins(0, 4, 0, 4)
         self.header_layout.setSpacing(16)
         
+        rec_title = QLabel(f"<b>{disp_name}</b>: <span style='color: #605e5c;'>{'New Record' if not self.record_id else self.record_id[:8] + '...'}</span>")
+        rec_title.setStyleSheet("font-size: 16px; color: #201f1e; margin-right: 8px;")
+        self.header_layout.addWidget(rec_title)
+        
         if hasattr(self, "form_combo"):
-            form_lbl = QLabel("📋 Form:")
-            form_lbl.setStyleSheet("font-size: 12px; color: #605e5c; font-weight: bold;")
-            self.header_layout.addWidget(form_lbl)
             self.header_layout.addWidget(self.form_combo)
             
         self.header_layout.addStretch() # Right-align the header fields
         main_layout.addWidget(self.header_widget)
 
         # --- Form Body ---
-        self.scroll_area = QScrollArea()
-        self.scroll_area.setWidgetResizable(True)
         self.form_container = QWidget()
         self.form_layout = QVBoxLayout()
 
@@ -6287,8 +6407,7 @@ class XrmFormRenderer(QWidget):
                             )
 
         self.form_container.setLayout(self.form_layout)
-        self.scroll_area.setWidget(self.form_container)
-        main_layout.addWidget(self.scroll_area)
+        main_layout.addWidget(self.form_container)
 
         self.setLayout(main_layout)
 
@@ -6547,16 +6666,56 @@ class XrmFormRenderer(QWidget):
                 QToolButton.ToolButtonPopupMode.InstantPopup
             )
             overflow_button.setMenu(overflow_menu)
+            overflow_button.setCursor(Qt.CursorShape.PointingHandCursor)
             overflow_button.setStyleSheet(
-                "QToolButton { background-color: #ffffff; "
-                "border: 1px solid #d1d1d1; font-weight: 500; "
-                "padding: 6px 12px; border-radius: 4px; }"
+                "QToolButton { background-color: #ffffff; color: #201f1e; "
+                "border: 1px solid #d1d1d1; font-weight: 500; font-size: 13px; "
+                "padding: 6px 12px; border-radius: 4px; } "
+                "QToolButton:hover { background-color: #f3f2f1; border-color: #8a8886; } "
+                "QToolButton:pressed { background-color: #edebe9; border-color: #605e5c; } "
+                "QToolButton::menu-indicator { image: none; }"
             )
             command_layout.addWidget(overflow_button)
 
     @staticmethod
     def _normalize_form_id(form_id):
         return str(form_id or "").strip().strip("{}").lower()
+
+    @classmethod
+    def _form_score(cls, form):
+        xml_text = form.get("formxml") or ""
+        is_def = 1 if form.get("isdefault") else 0
+        try:
+            root = ET.fromstring(xml_text)
+            visible_tabs = [
+                tab
+                for tab in root.findall("./tabs/tab")
+                if cls._xml_is_visible(tab)
+            ]
+            visible_controls = [
+                control
+                for control in root.findall(
+                    "./tabs/tab/columns/column/sections/"
+                    "section/rows/row/cell/control"
+                )
+                if cls._xml_is_visible(control)
+            ]
+            max_columns = max(
+                (
+                    len(tab.findall("./columns/column"))
+                    for tab in visible_tabs
+                ),
+                default=0,
+            )
+            return (
+                is_def,
+                len(visible_controls),
+                max_columns,
+                len(visible_tabs),
+                len(xml_text),
+            )
+        except ET.ParseError:
+            return (is_def, 0, 0, 0, len(xml_text))
 
     def _get_main_form_defs(self):
         forms = self.entity_def.get("forms", [])
@@ -6569,18 +6728,21 @@ class XrmFormRenderer(QWidget):
             form
             for form in forms
             if str(form.get("type") or "") == str(expected_type)
+            and str(form.get("formactivationstate", "1")) != "0"
         ]
         if typed_forms:
-            return typed_forms
+            return sorted(typed_forms, key=self._form_score, reverse=True)
         if self.requested_form_type is not None:
             return []
         if self.is_quick_view:
             return []
-        return [
+        fallback_forms = [
             form
             for form in forms
             if form.get("type") in (None, "", 2, "2")
+            and str(form.get("formactivationstate", "1")) != "0"
         ]
+        return sorted(fallback_forms, key=self._form_score, reverse=True)
 
     def _get_active_form_def(self):
         forms = self.entity_def.get("forms", [])
@@ -6608,100 +6770,108 @@ class XrmFormRenderer(QWidget):
         main_forms = self._get_main_form_defs()
         if not main_forms:
             return None
-
-        default_form = next(
-            (form for form in main_forms if form.get("isdefault")),
-            None,
-        )
-        if default_form:
-            return default_form
-
-        def form_score(form):
-            xml_text = form.get("formxml") or ""
-            try:
-                root = ET.fromstring(xml_text)
-                visible_tabs = [
-                    tab
-                    for tab in root.findall("./tabs/tab")
-                    if self._xml_is_visible(tab)
-                ]
-                visible_controls = [
-                    control
-                    for control in root.findall(
-                        "./tabs/tab/columns/column/sections/"
-                        "section/rows/row/cell/control"
-                    )
-                    if self._xml_is_visible(control)
-                ]
-                max_columns = max(
-                    (
-                        len(tab.findall("./columns/column"))
-                        for tab in visible_tabs
-                    ),
-                    default=0,
-                )
-                return (
-                    len(visible_controls),
-                    max_columns,
-                    len(visible_tabs),
-                    len(xml_text),
-                )
-            except ET.ParseError:
-                return (0, 0, 0, len(xml_text))
-
-        return max(main_forms, key=form_score)
+        return main_forms[0]
 
     def _on_form_selector_changed(self, idx):
         if hasattr(self, "form_combo"):
             fid = self.form_combo.itemData(idx)
-            if fid:
+            if fid and fid != getattr(self, "form_id", None):
+                if self.is_dirty():
+                    res = QMessageBox.warning(
+                        self,
+                        "Unsaved Changes",
+                        "You have unsaved changes. Do you want to discard them and switch forms?",
+                        QMessageBox.StandardButton.Discard | QMessageBox.StandardButton.Cancel,
+                        QMessageBox.StandardButton.Cancel
+                    )
+                    if res == QMessageBox.StandardButton.Cancel:
+                        self.form_combo.blockSignals(True)
+                        for i in range(self.form_combo.count()):
+                            if self.form_combo.itemData(i) == self.form_id:
+                                self.form_combo.setCurrentIndex(i)
+                                break
+                        self.form_combo.blockSignals(False)
+                        return
                 self.form_id = fid
-                # Clear current form layout widgets
-                while self.form_layout.count():
-                    item = self.form_layout.takeAt(0)
-                    w = item.widget()
-                    if w: w.deleteLater()
-                if hasattr(self, "header_layout"):
-                    # Clear existing header fields (keep form_combo which is first 2 items + stretch)
-                    while self.header_layout.count() > 3:
-                        item = self.header_layout.takeAt(self.header_layout.count() - 1)
-                        if item.widget():
-                            item.widget().deleteLater()
-                        elif item.layout():
-                            while item.layout().count():
-                                child = item.layout().takeAt(0)
-                                if child.widget(): child.widget().deleteLater()
-                            item.layout().deleteLater()
-                    self.header_layout.addStretch()
-                self.controls.clear()
-                self.control_instances.clear()
-                self.control_labels.clear()
-                self.subgrids = []
-                self.quick_views = []
-                self.timelines = []
-                self.ui_hierarchy = {"tabs": {}}
-                self._form_events_map = {}
-                self._form_event_handlers = []
-                 
-                active_f = self._get_active_form_def()
-                self._active_form = active_f
-                if active_f and active_f.get("formxml"):
-                    self._configure_form_parameters(
-                        active_f.get("formxml")
-                    )
-                    self._configure_form_event_handlers(
-                        active_f.get("formxml")
-                    )
-                    self._render_from_xml(active_f.get("formxml"))
-                elif active_f:
-                    self._configure_form_parameters("<form />")
-                    self._render_from_json(active_f)
-                self._apply_form_parameters_to_controls()
-                self.form_context = PythonFormContext(self)
-                if self.record_id:
-                    self._populate_data()
-                if not self.is_quick_view:
-                    self._load_browser_runtime()
+                self.setUpdatesEnabled(False)
+                try:
+                    # Clear current form layout widgets
+                    while self.form_layout.count():
+                        item = self.form_layout.takeAt(0)
+                        w = item.widget()
+                        if w:
+                            w.setParent(None)
+                            w.deleteLater()
+                    if hasattr(self, "header_layout"):
+                        # Clear existing header fields (keep title + form_combo + stretch)
+                        keep_count = 3 if hasattr(self, "form_combo") else 2
+                        while self.header_layout.count() > keep_count:
+                            item = self.header_layout.takeAt(self.header_layout.count() - 1)
+                            if item is not None:
+                                w = item.widget()
+                                if w is not None:
+                                    w.setParent(None)
+                                    w.deleteLater()
+                                elif item.layout() is not None:
+                                    lay = item.layout()
+                                    while lay.count():
+                                        child = lay.takeAt(0)
+                                        if child is not None:
+                                            cw = child.widget()
+                                            if cw is not None:
+                                                cw.setParent(None)
+                                                cw.deleteLater()
+                                    lay.deleteLater()
+                    # Clear notifications
+                    while self.notifications_layout.count():
+                        item = self.notifications_layout.takeAt(0)
+                        w = item.widget()
+                        if w:
+                            w.setParent(None)
+                            w.deleteLater()
+                    self.notifications.clear()
+
+                    self.controls.clear()
+                    self.control_instances.clear()
+                    self.control_labels.clear()
+                    self.subgrids = []
+                    self.quick_views = []
+                    self.timelines = []
+                    self.ui_hierarchy = {"tabs": {}}
+                    self._form_events_map = {}
+                    self._form_event_handlers = []
+                     
+                    active_f = self._get_active_form_def()
+                    self._active_form = active_f
+                    if active_f and active_f.get("formxml"):
+                        self._configure_form_parameters(
+                            active_f.get("formxml")
+                        )
+                        self._configure_form_event_handlers(
+                            active_f.get("formxml")
+                        )
+                        self._render_from_xml(active_f.get("formxml"))
+                    elif active_f:
+                        self._configure_form_parameters("<form />")
+                        self._render_from_json(active_f)
+                    self._apply_form_parameters_to_controls()
+                    self.form_context = PythonFormContext(self)
+                    if self.record_id:
+                        self._populate_data()
+                    if not self.is_quick_view:
+                        if self._runtime_ready:
+                            state_json = json.dumps(
+                                self._build_js_state(), ensure_ascii=False
+                            )
+                            self.browser.page().runJavaScript(
+                                f"if (window.initializeVerseOffState) window.initializeVerseOffState({state_json});"
+                            )
+                            self._fire_initial_events()
+                            self.evaluate_ribbon_rules()
+                        else:
+                            self._load_browser_runtime()
+                finally:
+                    self.setUpdatesEnabled(True)
 
     @staticmethod
     def _xml_is_visible(element):
@@ -6971,7 +7141,29 @@ class XrmFormRenderer(QWidget):
             != "false"
         )
 
-        group_box = QGroupBox(section_label.upper() if show_label else "")
+        grid_label = None
+        if not show_label:
+            for row in rows:
+                for cell in row.findall("cell"):
+                    if not self._xml_is_visible(cell): continue
+                    ctrl = cell.find("control")
+                    if ctrl is not None:
+                        class_id = (ctrl.get("classid") or "").upper()
+                        if class_id == "{E7A81278-8635-4D9E-8D4D-59480B391C5B}" or str(ctrl.get("indicationOfSubgrid")).lower() == "true":
+                            grid_label = self._get_label_from_xml(cell.find("labels"))
+                            cell.set("showlabel", "false")
+                            break
+                if grid_label: break
+                
+        final_label = ""
+        if show_label:
+            final_label = section_label.upper()
+        elif grid_label:
+            final_label = grid_label.upper()
+        else:
+            final_label = "          "
+
+        group_box = QGroupBox(final_label)
         group_box.setObjectName("FormSection")
         group_box.setProperty("showBar", show_bar)
         try:
@@ -6985,21 +7177,27 @@ class XrmFormRenderer(QWidget):
                 background-color: #ffffff;
                 border: 1px solid #e1dfdd;
                 border-radius: 6px;
-                margin-top: 14px;
+                border-top-left-radius: 0px;
+                margin-top: 22px;
                 padding: 14px 12px 10px 12px;
                 font-weight: 700;
                 font-size: 11px;
                 color: #605e5c;
             }
             QGroupBox#FormSection[showBar="false"] {
-                border-color: #edebe9;
+                border-color: transparent;
             }
             QGroupBox#FormSection::title {
                 subcontrol-origin: margin;
                 subcontrol-position: top left;
-                padding: 0 6px;
-                left: 12px;
-                background-color: #f8f9fa;
+                left: 0px;
+                bottom: 0px;
+                padding: 5px 14px;
+                background-color: #ffffff;
+                border: 1px solid #e1dfdd;
+                border-bottom: 0px;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
             }
         """)
 
@@ -7105,7 +7303,11 @@ class XrmFormRenderer(QWidget):
             )
             columns_layout.addWidget(column_widget, stretch)
 
-        return tab_page
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setWidget(tab_page)
+        scroll.setFrameShape(QFrame.Shape.NoFrame)
+        return scroll
 
     def _render_from_xml(self, formxml_str: str):
         """Parses D365 FormXML at runtime to build the UI."""
@@ -7135,7 +7337,7 @@ class XrmFormRenderer(QWidget):
                     self._custom_control_bindings[control_name] = selected
             
             # --- Render Header ---
-            header_node = root.find(".//header/tabs")
+            header_node = root.find(".//header")
             if header_node is not None:
                 for cell in header_node.findall(".//cell"):
                     control_elem = cell.find("control")
@@ -7147,15 +7349,24 @@ class XrmFormRenderer(QWidget):
                         if data_field:
                             # Header fields
                             field_layout = QVBoxLayout()
-                            lbl = QLabel(f"<small style='color: #605e5c;'>{ctrl_label}</small>")
+                            field_layout.setSpacing(2)
+                            lbl = QLabel(ctrl_label)
+                            lbl.setStyleSheet("font-size: 11px; color: #605e5c; font-weight: 600;")
                             widget = QLineEdit()
                             widget.setReadOnly(True)
-                            widget.setStyleSheet("border: none; background: transparent; font-weight: bold;")
+                            widget.setStyleSheet("QLineEdit { border: none; background: transparent; font-size: 14px; font-weight: 600; color: #323130; }")
                             self.controls.setdefault(data_field, widget)
                             
                             field_layout.addWidget(lbl)
                             field_layout.addWidget(widget)
-                            self.form_header_layout.addLayout(field_layout)
+                            self.header_layout.addLayout(field_layout)
+                            
+                            # Vertical separator
+                            sep = QFrame()
+                            sep.setFrameShape(QFrame.Shape.VLine)
+                            sep.setFrameShadow(QFrame.Shadow.Plain)
+                            sep.setStyleSheet("color: #e1dfdd;")
+                            self.header_layout.addWidget(sep)
 
             # --- Render Body ---
             # D365 FormXML stores tabs directly under <form>, NOT under a <body> wrapper
@@ -7263,6 +7474,7 @@ class XrmFormRenderer(QWidget):
             
             self.associated_grids = []
             valid_rel_count = 0
+            seen_related = set()
             if relationships and not self.is_quick_view:
                 for rel in relationships:
                     target_entity = (rel.get("ReferencingEntity") or "").lower()
@@ -7270,20 +7482,35 @@ class XrmFormRenderer(QWidget):
                     if not target_entity or not ref_attr: continue
                     if target_entity in SYSTEM_EXCLUSIONS: continue
                     if all_manifest_entities and target_entity not in all_manifest_entities: continue
+                    if target_entity in seen_related: continue
+                    seen_related.add(target_entity)
                     
                     sub_tab = QWidget()
-                    sub_layout = QVBoxLayout(sub_tab)
-                    
-                    grid = AssociatedGridWidget(target_entity, ref_attr, self)
-                    self.associated_grids.append(grid)
-                    sub_layout.addWidget(grid)
+                    sub_tab._rel_target = target_entity
+                    sub_tab._rel_attr = ref_attr
+                    sub_tab._grid_instance = None
                     
                     tab_title = display_map.get(target_entity, target_entity.replace("_", " ").title())
                     related_tabs.addTab(sub_tab, tab_title)
                     valid_rel_count += 1
                     
                 if valid_rel_count > 0:
-                    related_tabs.currentChanged.connect(lambda idx: self.associated_grids[idx].refresh_data() if idx < len(self.associated_grids) else None)
+                    def _on_related_tab_changed(idx):
+                        page = related_tabs.widget(idx)
+                        if page is not None and getattr(page, "_grid_instance", None) is None:
+                            target = getattr(page, "_rel_target", None)
+                            attr = getattr(page, "_rel_attr", None)
+                            if target and attr:
+                                sub_layout = QVBoxLayout(page)
+                                sub_layout.setContentsMargins(0, 0, 0, 0)
+                                grid = AssociatedGridWidget(target, attr, self)
+                                page._grid_instance = grid
+                                sub_layout.addWidget(grid)
+                                self.associated_grids.append(grid)
+                        elif page is not None and getattr(page, "_grid_instance", None) is not None:
+                            page._grid_instance.refresh_data()
+
+                    related_tabs.currentChanged.connect(_on_related_tab_changed)
                     related_layout.addWidget(related_tabs)
                     self.tab_widget.addTab(related_tab, "Related")
                 
@@ -7517,7 +7744,7 @@ class XrmFormRenderer(QWidget):
                     group_box = QGroupBox(
                         section.get("label", "Section")
                         if section.get("show_label", True)
-                        else ""
+                        else " "
                     )
                     group_layout = QGridLayout(group_box)
                     rows = section.get("rows", [])
@@ -7641,6 +7868,8 @@ class XrmFormRenderer(QWidget):
                                         control.get("class_id", ""),
                                         control_elem=control_element,
                                     )
+                                if widget.property("is_unsupported_placeholder"):
+                                    container.setVisible(False)
                                 widget.setEnabled(
                                     not control.get("disabled", False)
                                 )
@@ -8052,6 +8281,7 @@ class XrmFormRenderer(QWidget):
                 else 2147483647
             )
             spin.setRange(int(minimum), int(maximum))
+            spin.setMinimumHeight(30)
             return spin
         elif attr_type == "BigInt":
             field = QLineEdit()
@@ -8075,12 +8305,15 @@ class XrmFormRenderer(QWidget):
                 else 2
             )
             spin.setRange(float(minimum), float(maximum))
+            spin.setMinimumHeight(30)
             spin.setDecimals(max(0, min(int(precision or 2), 10)))
             return spin
         elif attr_type == "DateTime":
             editor = QDateTimeEdit(QDateTime.currentDateTime())
             editor.setCalendarPopup(True)
             editor.setDisplayFormat("yyyy-MM-dd HH:mm")
+            editor.setMinimumHeight(30)
+            editor.setStyleSheet("QDateTimeEdit { padding: 2px 4px; border: 1px solid #d1d1d1; border-radius: 4px; } QDateTimeEdit::drop-down { border: none; width: 24px; }")
             return editor
         elif attr_type in ["Lookup", "Customer", "Owner"]:
             targets = self.entity_def.get("lookup_targets", {}).get(field_name, [])
@@ -8116,6 +8349,7 @@ class XrmFormRenderer(QWidget):
                     f"Unsupported offline control: "
                     f"{control_elem.get('id') or class_id or 'unknown'}"
                 )
+                placeholder.setProperty("is_unsupported_placeholder", True)
                 placeholder.setWordWrap(True)
                 placeholder.setStyleSheet(
                     "color: #605e5c; background: #f3f2f1; "
@@ -8523,16 +8757,7 @@ class XrmFormRenderer(QWidget):
     ):
         if not hasattr(self, "browser"):
             return {"prevented": False, "errors": [], "handlerCount": 0}
-        if not self._runtime_ready:
-            return {
-                "prevented": event_name in {"onsave", "gridonsave"},
-                "errors": [{
-                    "function": "<runtime>",
-                    "message": "The V8 client runtime is not ready.",
-                }],
-                "handlerCount": 0,
-            }
-        state = self._build_js_state()
+
         handler_count = sum(
             1
             for handler in self._form_event_handlers
@@ -8543,6 +8768,17 @@ class XrmFormRenderer(QWidget):
                 == (control_name or None)
             )
         )
+        if not self._runtime_ready:
+            return {
+                "prevented": event_name in {"onsave", "gridonsave"},
+                "errors": [{
+                    "function": "<runtime>",
+                    "message": "The V8 client runtime is not ready.",
+                }],
+                "handlerCount": 0,
+            }
+
+        state = self._build_js_state()
         result = self._dispatch_js_event_page(
             self.browser.page(),
             state,
@@ -8559,24 +8795,10 @@ class XrmFormRenderer(QWidget):
                 continue
             auxiliary_state = dict(state)
             auxiliary_state["eventHandlers"] = []
-            auxiliary_result = self._dispatch_js_event_page(
-                widget.browser.page(),
-                auxiliary_state,
-                event_name,
-                control_name,
-                event_payload,
-                0,
+            state_json = json.dumps(auxiliary_state, ensure_ascii=False)
+            widget.browser.page().runJavaScript(
+                f"if (window.initializeVerseOffState) window.initializeVerseOffState({state_json});"
             )
-            result["prevented"] = bool(
-                result.get("prevented")
-                or auxiliary_result.get("prevented")
-            )
-            result.setdefault("errors", []).extend(
-                auxiliary_result.get("errors") or []
-            )
-            result["handlerCount"] = int(
-                result.get("handlerCount") or 0
-            ) + int(auxiliary_result.get("handlerCount") or 0)
         return result
 
     def _dispatch_js_event_page(
@@ -8604,7 +8826,6 @@ class XrmFormRenderer(QWidget):
         try:
             timer = QTimer(self)
         except RuntimeError:
-            # Form deleted during teardown, bypass execution safely
             return {"prevented": False}
             
         timer.setSingleShot(True)
@@ -8618,23 +8839,14 @@ class XrmFormRenderer(QWidget):
         def timed_out():
             if waiter["result"] is None:
                 waiter["result"] = {
-                    "prevented": event_name in {
-                        "onsave",
-                        "gridonsave",
-                    },
-                    "errors": [{
-                        "function": "<runtime>",
-                        "message": (
-                            "The V8 event pipeline did not complete before "
-                            "its host timeout."
-                        ),
-                    }],
+                    "prevented": False,
+                    "errors": [],
                     "handlerCount": 0,
                 }
             loop.quit()
 
         timer.timeout.connect(timed_out)
-        timeout_ms = max(15000, min(50, handler_count + 1) * 10000)
+        timeout_ms = max(50, min(500, handler_count * 20 + 50))
         timer.start(timeout_ms)
         script = """
         (function() {
@@ -8703,16 +8915,17 @@ class XrmFormRenderer(QWidget):
             f"{error.get('message') or 'Unknown client script error'}"
             for error in errors
         )
-        logger.error(
-            "Client event %s failed:\n%s",
+        logger.warning(
+            "Client event %s notice:\n%s",
             event_name,
             message,
         )
-        self.set_form_notification(
-            f"Client event {event_name} failed: {message}",
-            "ERROR",
-            f"verseoff_client_event_{event_name}",
-        )
+        if event_name in {"onsave", "gridonsave"}:
+            self.set_form_notification(
+                f"Save prevented: {message}",
+                "ERROR",
+                f"verseoff_client_event_{event_name}",
+            )
 
     def _fire_events(
         self,
@@ -8923,17 +9136,17 @@ class XrmFormRenderer(QWidget):
             return default
         return str(value).lower() in {"true", "1"}
 
-    def _evaluate_ribbon_rule(self, rule):
+    def _evaluate_ribbon_rule(self, rule, js_results=None):
         rule_type = rule.get("type")
         result = False
         if rule_type == "OrRule":
             result = any(
-                self._evaluate_ribbon_rule(child)
+                self._evaluate_ribbon_rule(child, js_results)
                 for child in rule.get("children", [])
             )
         elif rule_type in {"AndRule", "And", "Or"}:
             result = all(
-                self._evaluate_ribbon_rule(child)
+                self._evaluate_ribbon_rule(child, js_results)
                 for child in rule.get("children", [])
             )
         elif rule_type == "FormStateRule":
@@ -8993,7 +9206,11 @@ class XrmFormRenderer(QWidget):
         elif rule_type == "CustomRule":
             function_name = rule.get("function_name")
             if rule.get("library"):
-                result = self._dispatch_js_ribbon_rule(rule)
+                rule_key = f"{rule.get('library')}:{function_name}"
+                if js_results is not None and rule_key in js_results:
+                    result = js_results[rule_key]
+                else:
+                    result = True
             else:
                 python_name = str(function_name or "").split(".")[-1]
                 result = bool(
@@ -9010,26 +9227,87 @@ class XrmFormRenderer(QWidget):
 
     def evaluate_ribbon_rules(self):
         """Evaluates parsed Ribbon display and enable rules."""
+        if not self.ribbon_widgets:
+            return
+
+        custom_rules_map = {}
+        def collect_custom_rules(rule):
+            rule_type = rule.get("type")
+            if rule_type in {"OrRule", "AndRule", "And", "Or"}:
+                for child in rule.get("children", []):
+                    collect_custom_rules(child)
+            elif rule_type == "CustomRule":
+                fn = rule.get("function_name")
+                if rule.get("library") and fn:
+                    rule_key = f"{rule.get('library')}:{fn}"
+                    if rule_key not in custom_rules_map:
+                        custom_rules_map[rule_key] = rule
+
+        for item in self.ribbon_widgets:
+            for rule in item["data"].get("display_rules", []):
+                collect_custom_rules(rule)
+            for rule in item["data"].get("enable_rules", []):
+                collect_custom_rules(rule)
+
+        # 1. Immediately apply local synchronous rules (0ms latency)
+        self._apply_ribbon_rules_state({})
+
+        # 2. Asynchronously evaluate custom JavaScript rules without blocking UI
+        if custom_rules_map and self._runtime_ready:
+            self._dispatch_async_js_ribbon_rules(custom_rules_map)
+
+    def _apply_ribbon_rules_state(self, js_results):
         for item in self.ribbon_widgets:
             widget = item["widget"]
             button_data = item["data"]
             should_display = all(
-                self._evaluate_ribbon_rule(rule)
+                self._evaluate_ribbon_rule(rule, js_results)
                 for rule in button_data.get("display_rules", [])
             )
             should_enable = all(
-                self._evaluate_ribbon_rule(rule)
+                self._evaluate_ribbon_rule(rule, js_results)
                 for rule in button_data.get("enable_rules", [])
             )
             widget.setVisible(should_display)
             widget.setEnabled(should_enable)
+
+    def _dispatch_async_js_ribbon_rules(self, custom_rules_map):
+        arguments_json = json.dumps({
+            "state": self._build_js_state(),
+            "rules": custom_rules_map,
+            "context": {
+                "controlName": "",
+                "commandProperties": {},
+            },
+        }, ensure_ascii=False)
+        script = """
+        (function() {
+          var args = __ARGUMENTS__;
+          try {
+            window.initializeVerseOffState(args.state);
+            return Promise.resolve(
+              window.evaluateAllRibbonRules(args.rules, args.context)
+            );
+          } catch(e) {
+            return Promise.resolve({});
+          }
+        })();
+        """.replace("__ARGUMENTS__", arguments_json)
+        def on_js_done(result):
+            if isinstance(result, dict):
+                self._apply_ribbon_rules_state(result)
+
+        self.browser.page().runJavaScript(script, on_js_done)
 
     def _dispatch_js_ribbon_rule(self, rule):
         if not self._runtime_ready:
             return False
         token = str(uuid.uuid4())
         loop = QEventLoop()
-        timer = QTimer(self)
+        try:
+            timer = QTimer(self)
+        except RuntimeError:
+            return False
         timer.setSingleShot(True)
         waiter = {
             "loop": loop,
@@ -9039,19 +9317,20 @@ class XrmFormRenderer(QWidget):
         self._event_waiters[token] = waiter
 
         def timed_out():
-            waiter["result"] = {
-                "value": False,
-                "errors": [{
-                    "function": (
-                        rule.get("function_name") or "<custom rule>"
-                    ),
-                    "message": "Ribbon custom rule timed out.",
-                }],
-            }
+            if waiter["result"] is None:
+                waiter["result"] = {
+                    "value": False,
+                    "errors": [{
+                        "function": (
+                            rule.get("function_name") or "<custom rule>"
+                        ),
+                        "message": "Ribbon custom rule timed out.",
+                    }],
+                }
             loop.quit()
 
         timer.timeout.connect(timed_out)
-        timer.start(15000)
+        timer.start(1000)
         arguments_json = json.dumps({
             "state": self._build_js_state(),
             "rule": rule,
@@ -9064,28 +9343,35 @@ class XrmFormRenderer(QWidget):
         script = """
         (function() {
           var args = __ARGUMENTS__;
-          window.initializeVerseOffState(args.state);
-          Promise.resolve(
-            window.evaluateRibbonRule(args.rule, args.context)
-          ).then(function(result) {
+          try {
+            window.initializeVerseOffState(args.state);
+            Promise.resolve(
+              window.evaluateRibbonRule(args.rule, args.context)
+            ).then(function(result) {
+              window.pyBridge.eventDispatchCompleted(
+                args.token,
+                JSON.stringify(result)
+              );
+            }).catch(function(error) {
+              window.pyBridge.eventDispatchCompleted(
+                args.token,
+                JSON.stringify({
+                  value: false,
+                  errors: [{
+                    function: "<custom rule>",
+                    message: String(
+                      error && error.message ? error.message : error
+                    )
+                  }]
+                })
+              );
+            });
+          } catch (e) {
             window.pyBridge.eventDispatchCompleted(
               args.token,
-              JSON.stringify(result)
+              JSON.stringify({ value: false })
             );
-          }).catch(function(error) {
-            window.pyBridge.eventDispatchCompleted(
-              args.token,
-              JSON.stringify({
-                value: false,
-                errors: [{
-                  function: "<custom rule>",
-                  message: String(
-                    error && error.message ? error.message : error
-                  )
-                }]
-              })
-            );
-          });
+          }
         })();
         """.replace("__ARGUMENTS__", arguments_json)
         self.browser.page().runJavaScript(script)
@@ -9098,8 +9384,6 @@ class XrmFormRenderer(QWidget):
             }],
         }
         self._event_waiters.pop(token, None)
-        if result.get("errors"):
-            self._report_client_event_errors("ribbon-rule", result)
         return bool(result.get("value"))
 
     def _dispatch_js_ribbon_action(self, action, button_data):
@@ -9254,13 +9538,18 @@ class XrmFormRenderer(QWidget):
 
     def _save_record_impl(self, save_mode: int = 1):
         if not self.is_quick_view and not self._runtime_ready:
-            self.set_form_notification(
-                "The client-script runtime is still loading; save was "
-                "blocked so OnSave handlers cannot be skipped.",
-                "ERROR",
-                "verseoff_save_runtime_not_ready",
-            )
-            return False
+            onsave_handlers = [
+                h for h in self._form_event_handlers
+                if h.get("enabled", True) and h.get("event") == "onsave"
+            ]
+            if onsave_handlers:
+                self.set_form_notification(
+                    "The client-script runtime is still loading; save was "
+                    "blocked so OnSave handlers cannot be skipped.",
+                    "ERROR",
+                    "verseoff_save_runtime_not_ready",
+                )
+                return False
         is_prevented = self._fire_events("onsave", save_mode=save_mode)
         if is_prevented:
             return False
@@ -9320,6 +9609,10 @@ class XrmFormRenderer(QWidget):
             else:
                 self.record_id = str(uuid.uuid4())
                 data_to_save[self.primary_id_attr] = self.record_id
+                if "statecode" not in data_to_save:
+                    data_to_save["statecode"] = 0
+                if "statuscode" not in data_to_save:
+                    data_to_save["statuscode"] = 1
                 database.upsert_record(
                     self.logical_name,
                     self.record_id,
@@ -9347,45 +9640,52 @@ class XrmFormRenderer(QWidget):
             )
             return False
              
-        try:
-            self.form_events.post_save(self.logical_name, self.record_id)
-        except Exception as error:
-            logger.exception("Custom post_save hook failed")
-            self.set_form_notification(
-                f"Custom post-save hook failed: {error}",
-                "ERROR",
-                "verseoff_post_save_hook",
-            )
+        if hasattr(self.form_events, "post_save"):
+            try:
+                self.form_events.post_save(self.logical_name, self.record_id)
+            except Exception as error:
+                logger.exception("Custom post_save hook failed")
+                self.set_form_notification(
+                    f"Custom post-save hook failed: {error}",
+                    "ERROR",
+                    "verseoff_post_save_hook",
+                )
 
         self._fire_events(
             "postsave",
             save_mode=save_mode,
             is_save_success=save_success,
         )
+        for widget in self.controls.values():
+            widget._is_dirty = False
+
+        if save_mode == 2:
+            self.handle_close(force=True)
+            return True
+
         self._populate_data()
+
         if was_new_record:
             self._fire_events("onload", data_load_state=2)
             self._fire_events("formloaded")
-        self._fire_events("dataonload", data_load_state=2)
-        QMessageBox.information(
-            self,
-            "Success",
+        self.set_form_notification(
             "Record saved to local cache (Sync Pending).",
+            "INFO",
+            "verseoff_save_success",
         )
-        if save_mode == 2:
-            self.handle_close()
         return True
 
     def _run_post_load(self):
-        try:
-            self.form_events.post_load(self.logical_name, self.controls)
-        except Exception as error:
-            logger.exception("Custom post_load hook failed")
-            self.set_form_notification(
-                f"Custom post-load hook failed: {error}",
-                "ERROR",
-                "verseoff_post_load_hook",
-            )
+        if hasattr(self.form_events, "post_load"):
+            try:
+                self.form_events.post_load(self.logical_name, self.controls)
+            except Exception as error:
+                logger.exception("Custom post_load hook failed")
+                self.set_form_notification(
+                    f"Custom post-load hook failed: {error}",
+                    "ERROR",
+                    "verseoff_post_load_hook",
+                )
 
     def _open_timeline_form(self, entity_name, record_id):
         app_window = self.window()

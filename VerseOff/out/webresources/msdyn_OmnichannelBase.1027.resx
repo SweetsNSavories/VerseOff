@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OC_LimitQuestions_AlertDialogConfirmButton" xml:space="preserve">
+    <value>D'acord</value>
+  </data>
+  <data name="OC_RecordPermissions_AlertDialogText" xml:space="preserve">
+    <value>No teniu permisos per executar aquesta acció.</value>
+  </data>
+  <data name="OC_LimitQuestions_AlertDialogText" xml:space="preserve">
+    <value>No podeu afegir més de cinc preguntes. Heu de suprimir algunes preguntes per afegir-ne més.</value>
+  </data>
+  <data name="OC_PickAuthFailed" xml:space="preserve">
+    <value>No s'ha pogut seleccionar a causa d'un error d'autenticació. Torneu-ho a provar més tard. Element de treball: {0}</value>
+  </data>
+  <data name="OC_PickedByAnotherAgent" xml:space="preserve">
+    <value>La selecció ha fallat. Un altre agent ha seleccionat l'element. Element de treball: {0}</value>
+  </data>
+  <data name="OC_PickInternalError" xml:space="preserve">
+    <value>No s'ha pogut seleccionar. Proveu de triar l'element una altra vegada. Element de treball: {0}</value>
+  </data>
+  <data name="OC_PickMaxCapacityReached" xml:space="preserve">
+    <value>La selecció ha fallat. Heu assolit la capacitat màxima. Element de treball: {0}</value>
+  </data>
+  <data name="OC_PickMaxConcurrencyReached" xml:space="preserve">
+    <value>La selecció ha fallat. Heu assolit la simultaneïtat màxima. Element de treball: {0}</value>
+  </data>
+  <data name="OC_PickNotAvailable" xml:space="preserve">
+    <value>La selecció ha fallat. L'element no està disponible. Element de treball: {0}</value>
+  </data>
+  <data name="OC_PickPresenceError" xml:space="preserve">
+    <value>La selecció ha fallat a causa del vostre estat de presència. Element de treball: {0}</value>
+  </data>
+  <data name="OC_PickSuccess" xml:space="preserve">
+    <value>L'element de treball s'ha seleccionat correctament. Element de treball: {0}</value>
+  </data>
+  <data name="OC_OpenFormFail" xml:space="preserve">
+    <value>El formulari no es pot obrir. Torneu a provar d'obrir-lo. Si el problema continua, poseu-vos en contacte amb l'administrador.</value>
+  </data>
+  <data name="OC_OpenSessionFail" xml:space="preserve">
+    <value>La sessió no es pot obrir. Torneu a provar d'obrir-la. Si el problema continua, poseu-vos en contacte amb l'administrador.</value>
+  </data>
+  <data name="OC_InputTimeFormat" xml:space="preserve">
+    <value>Introduïu una hora amb el format de 24 hores (HH:mm).</value>
+  </data>
+  <data name="OC_InputTimesDifferenceValidation" xml:space="preserve">
+    <value>L'hora de finalització no pot ser anterior ni tenir lloc a menys de {0} minuts de l'hora d'inici.</value>
+  </data>
+  <data name="OC_SendMessageToConversationSuccessMessage" xml:space="preserve">
+    <value>Fet! Aquest missatge s'ha enviat a la conversa.</value>
+  </data>
+  <data name="OC_SendMessageToConversationFailureMessage" xml:space="preserve">
+    <value>Alguna cosa no ha funcionat bé. Proveu de tornar a enviar un missatge a la conversa.</value>
+  </data>
+  <data name="OC_SupervisorOpenRecord" xml:space="preserve">
+    <value>Els registres de conversa només són de visualització i no es poden obrir.</value>
+  </data>
+  <data name="OC_LinkToConversationSuccessMessage" xml:space="preserve">
+    <value>Fet! Aquest/a {0} s'ha enllaçat a la conversa.</value>
+  </data>
+  <data name="OC_LinkToConversationFailureMessage" xml:space="preserve">
+    <value>Alguna cosa no ha funcionat bé. Proveu de tornar a enllaçar la conversa.</value>
+  </data>
+  <data name="OC_LinkToConversationUpdatedMessage" xml:space="preserve">
+    <value>Actualitzat! Aquest/a {0} ha substituït l'anterior {0} enllaçat/da a aquesta conversa.</value>
+  </data>
+  <data name="OC_Presence_Available" xml:space="preserve">
+    <value>Disponible</value>
+  </data>
+  <data name="OC_Presence_Busy" xml:space="preserve">
+    <value>Ocupat</value>
+  </data>
+  <data name="OC_Presence_DoNotDisturb" xml:space="preserve">
+    <value>No molesteu</value>
+  </data>
+  <data name="OC_Presence_Away" xml:space="preserve">
+    <value>No present</value>
+  </data>
+  <data name="OC_Presence_Offline" xml:space="preserve">
+    <value>Fora de línia</value>
+  </data>
+  <data name="MaskingRule.LimitReached" xml:space="preserve">
+    <value>No es permet crear més de {0} regles d'emmascarament, suprimiu les regles per limitar la quantitat total a {0}.</value>
+  </data>
+  <data name="MaskingRule.PluginError" xml:space="preserve">
+    <value>S'ha produït un error en el complement PreValidationMaskingRuleLimitPlugin.</value>
+  </data>
+  <data name="MaskingRule.RegexException.InvalidEscape" xml:space="preserve">
+    <value>SyntaxError: Expressió regular no vàlida: /{0}/: Escapada no vàlida</value>
+  </data>
+  <data name="MaskingRule.RegexException.EndOfPattern" xml:space="preserve">
+    <value>SyntaxError: Expressió regular no vàlida: /{0}/: \ al final del patró</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedCharacterClass" xml:space="preserve">
+    <value>SyntaxError: Expressió regular no vàlida: /{0}/: Classe de caràcter sense finalitzar</value>
+  </data>
+  <data name="MaskingRule.RegexException.IncompleteQuantifier" xml:space="preserve">
+    <value>SyntaxError: Expressió regular no vàlida: /{0}/: Quantificador incomplet</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedGroup" xml:space="preserve">
+    <value>SyntaxError: Expressió regular no vàlida: /{0}/: Grup sense finalitzar</value>
+  </data>
+  <data name="MaskingRule.RegexException.LoneQuantifierBrackets" xml:space="preserve">
+    <value>SyntaxError: Expressió regular no vàlida: /{0}/: Claudàtors Quantificador sols</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnmatchedParen" xml:space="preserve">
+    <value>SyntaxError: Expressió regular no vàlida: /{0}/: ')' desaparellat</value>
+  </data>
+  <data name="MaskingRule.RegexException.NothingToRepeat" xml:space="preserve">
+    <value>SyntaxError: Expressió regular no vàlida: /{0}/: No hi res per repetir</value>
+  </data>
+  <data name="MaskingRule.RegexException.Timeout" xml:space="preserve">
+    <value>TimeoutError: L'expressió regular ha trigat massa a avaluar-se: /{0}/: ha acabat després de {1} ms.</value>
+  </data>
+  <data name="MaskingRule.MaskingInProgress" xml:space="preserve">
+    <value>Emmascarant les dades de prova amb una expressió regular.</value>
+  </data>
+  <data name="SentimentAnalysis.WrongName" xml:space="preserve">
+    <value>El nom del registre ha de ser {0}.</value>
+  </data>
+  <data name="SentimentAnalysis.DeleteNotAllowed" xml:space="preserve">
+    <value>La supressió de registres no està permesa.</value>
+  </data>
+  <data name="Entity.OnlyOneAllowed" xml:space="preserve">
+    <value>Només es permet un registre d'aquest tipus.</value>
+  </data>
+  <data name="Entity.DeleteNotAllowed" xml:space="preserve">
+    <value>La supressió de registres no està permesa.</value>
+  </data>
+  <data name="DefaultQueue.DeleteNotAllowed" xml:space="preserve">
+    <value>No podeu suprimir DefaultQueue perquè la cua és només de lectura.</value>
+  </data>
+  <data name="DefaultQueue.UpdateNotAllowed" xml:space="preserve">
+    <value>No podeu editar DefaultQueue perquè la cua és només de lectura.</value>
+  </data>
+  <data name="Queue.IncorrectEntityError" xml:space="preserve">
+    <value>Error de registre del complement: el nom lògic de l'entitat no és Queue.</value>
+  </data>
+  <data name="Queue.QueueTypeUpdateError" xml:space="preserve">
+    <value>No podeu actualitzar el tipus de cua.</value>
+  </data>
+  <data name="Queue.NonEntityQueueSelected" xml:space="preserve">
+    <value>No es pot crear l'element de regla d'encaminament ja que la cua seleccionada no és del tipus d'entitat. Només podeu encaminar a la cua de tipus d'entitat.</value>
+  </data>
+  <data name="RoutingRuleItem.NonEntityQueueSelected" xml:space="preserve">
+    <value>No es pot afegir un registre a la cua seleccionada ja que la cua seleccionada no és del tipus d'entitat. Trieu una cua d'entitat i torneu-ho a provar.</value>
+  </data>
+  <data name="OC_Refresh_Grid" xml:space="preserve">
+    <value>No es pot moure el registre perquè la quadrícula està en mode d'ordenació. Actualitzeu la quadrícula i torneu-ho a provar</value>
+  </data>
+  <data name="GeoLocationProvider.IncorrectEntityError" xml:space="preserve">
+    <value>Error de registre del complement: el nom lògic de l'entitat no és GeoLocationProvider.</value>
+  </data>
+  <data name="GeoLocationProvider.PluginError" xml:space="preserve">
+    <value>S'ha produït un error al complement GeoLocationProviderPlugIn.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelsNotSupported" xml:space="preserve">
+    <value>En aquesta versió no s'admeten canals d'entitat. Vegeu el fitxer Llegiu-me per obtenir més informació.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelTypeNotSupported" xml:space="preserve">
+    <value>Aquesta versió no admet el canal d'entitat. Seleccioneu altres tipus de canals. Vegeu el fitxer Llegiu-me per obtenir més informació.</value>
+  </data>
+  <data name="EntityRouting.EntityWorkStreamsNotSupported" xml:space="preserve">
+    <value>En aquesta versió no s'admeten seqüències de treball d'entitat. Vegeu el fitxer Llegiu-me per obtenir més informació.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForDSF" xml:space="preserve">
+    <value>Els canvis de configuració d'Omnicanal triguen fins a 15 minuts en quedar reflectits.</value>
+  </data>
+  <data name="OC_CaseRoutingFormNotificationMessage" xml:space="preserve">
+    <value>En aquesta versió només s'admet l'encaminament de casos. En la propera versió s'admetran altres registres d'entitat.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForRoutingSolutionDep" xml:space="preserve">
+    <value>Heu d'instal·lar la solució Regles d'encaminament: versió preliminar per utilitzar l'encaminament d'entitats de casos. Per obtenir més informació, vegeu {0}</value>
+  </data>
+  <data name="OC_Preview_Message" xml:space="preserve">
+    <value>En habilitar aquesta funció, reconeixeu que és en versió preliminar i accepteu les {0}. {1}</value>
+    <comment>Template Preview Text for all features</comment>
+  </data>
+  <data name="OC_Preview_Link_Label" xml:space="preserve">
+    <value>Condicions de versió preliminar</value>
+    <comment>Preview Terms label to point to the relevant Preview Terms</comment>
+  </data>
+  <data name="OC_LearnMore_Link_Label" xml:space="preserve">
+    <value>Més informació</value>
+    <comment>Hyperlink label to point to the relevant feature documentation</comment>
+  </data>
+  <data name="AutomaticQueueName" xml:space="preserve">
+    <value>Cua de distribució automàtica</value>
+  </data>
+  <data name="AutomaticQueueSelectionRecommendation" xml:space="preserve">
+    <value>Seleccioneu una cua per distribuir i assignar automàticament elements de treball als agents.</value>
+  </data>
+  <data name="ConfigureRoutingRulesAtERCNotification" xml:space="preserve">
+    <value>Les regles d'encaminament per a les seqüències de treball dels registres d'entitat es configuren al nivell del canal. Aneu a Canals &gt; Registres d'entitat &gt; {0} &gt; Regles d'encaminament per configurar-les.</value>
+  </data>
+  <data name="isOmnichannelQueueGuidanceNotification" xml:space="preserve">
+    <value>Especifiqueu Sí per habilitar la cua per a la distribució automàtica de treballs de l'Omnicanal. Per obtenir més informació, vegeu {0}</value>
+  </data>
+  <data name="ManualQueueName" xml:space="preserve">
+    <value>Cua manual</value>
+  </data>
+  <data name="ManualQueueSelectionRecommendation" xml:space="preserve">
+    <value>Seleccioneu la Cua per a la distribució automàtica de treballs per assignar automàticament els registres d'entitat als agents.</value>
+  </data>
+  <data name="ERCDeletionWarningMessage" xml:space="preserve">
+    <value>Si suprimiu el registre {0} s'inhabilitarà l'encaminament de registres d'entitat per a l'entitat {1}. Segur que voleu suprimir-lo?</value>
+  </data>
+  <data name="InstallRoutingRuleForERCNotification" xml:space="preserve">
+    <value>Heu d'instal·lar la solució Regles d'encaminament per utilitzar l'encaminament de registres d'entitats. Per obtenir més informació, vegeu {0}.</value>
+  </data>
+  <data name="EntityRoutingPlugins.GenericError" xml:space="preserve">
+    <value>No es pot portar a terme l'operació a causa d'un error. Torneu-ho a provar més tard. Si el problema continua, poseu-vos en contacte amb el Suport tècnic de Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.CreateError" xml:space="preserve">
+    <value>No es pot crear {0}. Torneu-ho a provar més tard. Si el problema continua, poseu-vos en contacte amb el Suport tècnic de Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.SaveError" xml:space="preserve">
+    <value>No es pot desar {0}. Torneu-ho a provar més tard. Si el problema continua, poseu-vos en contacte amb el Suport tècnic de Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.DeleteError" xml:space="preserve">
+    <value>No es pot suprimir {0}. Torneu-ho a provar més tard. Si el problema continua, poseu-vos en contacte amb el Suport tècnic de Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityMissing" xml:space="preserve">
+    <value>El camp d'entitat està buit. Seleccioneu un valor per al camp d'entitat i torneu-ho a provar.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityNotRequired" xml:space="preserve">
+    <value>El camp d'entitat té un valor. Deixeu el camp d'entitat buit i torneu-ho a provar.</value>
+  </data>
+  <data name="EntityRoutingPlugins.BothEntityConfigurationsNotRequired" xml:space="preserve">
+    <value>Els dos camps de configuració d’entitat tenen valor. Deixeu buit qualsevol dels camps de configuració d’entitat i torneu-ho a provar.</value>
+    <comment>Liveworkstream has ercId and mercId fields, and only one can have value</comment>
+  </data>
+  <data name="EntityRoutingPlugins.DefaultWorkStreamName" xml:space="preserve">
+    <value>{0} seqüència de treball</value>
+  </data>
+  <data name="EntityRoutingPlugins.FlowConfigurationError" xml:space="preserve">
+    <value>L'operació ha fallat a causa d'una configuració incorrecta al flux de distribució de registres d'entitat. Assegureu-vos que {0} no s'hagi suprimit ni se n'hagi canviat el nom.</value>
+  </data>
+  <data name="EntityRoutingPlugins.TroubleshootingLearnMore" xml:space="preserve">
+    <value>Per obtenir més informació, vegeu el tema Resolució de problemes de l'Omnicanal - {0}</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>Confirma</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Suprimeix</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel·la</value>
+  </data>
+  <data name="OC_IncidentQueueItemWarningNessage" xml:space="preserve">
+    <value>Aquest registre s'ha transferit a la cua de l'Omnicanal i ja no és visible aquí. Per veure aquest registre, obriu-lo des de l'escriptori digital de l'Omnicanal.</value>
+  </data>
+  <data name="OC_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Declaració de privadesa de Microsoft</value>
+  </data>
+  <data name="OC_ChannelPreviewDisclaimer" xml:space="preserve">
+    <value>En utilitzar aquest canal, reconeixeu que és en versió preliminar i accepteu les condicions de versió preliminar.</value>
+  </data>
+  <data name="OC_SeePreviewTerms" xml:space="preserve">
+    <value>Visualitza les condicions de la versió preliminar</value>
+  </data>
+  <data name="OC_ThirdPartyChannelPrivacyDisclaimer" xml:space="preserve">
+    <value>Si activeu aquest canal, accepteu que les vostres dades es comparteixin amb sistemes de tercers i que surtin dels límits geogràfics i de compliment de la vostra organització (això inclou entorns del Government Cloud). Per a més informació, consulteu {0}.</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_FeatureDocumentation" xml:space="preserve">
+    <value>traducció en temps real</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Declaració de privadesa de Microsoft</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_Text" xml:space="preserve">
+    <value>En habilitar aquesta funció, reconeixeu que les vostres dades sortir fora dels límits geogràfics i de compliment normatiu. Això inclou els entorns del Government Cloud. Més informació sobre {0} i {1}.</value>
+    <comment>DO NOT CHANGE {0} and {1}, as they will be replaced with OC_LanguageTranslation_Disclaimer_FeatureDocumentation and OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement respectively.</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_DocumentFeature_Text" xml:space="preserve">
+    <value>Feu clic aquí per obtenir documentació sobre la funció</value>
+    <comment>Indicates this is the link for feature documentation</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Link" xml:space="preserve">
+    <value>configuració de recursos web</value>
+    <comment>  This is the link for real time translation webresource documentation </comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Text" xml:space="preserve">
+    <value>Configureu un recurs web per generar la vostra adreça URL. A continuació, copieu i enganxeu aquesta adreça URL a sota. Més informació sobre {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder "0" will be replaced by a OC_LanguageTranslation_Webresource_Disclaimer_Link. Link text is "here".</comment>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_Text" xml:space="preserve">
+    <value>En activar aquesta funció, reconeixeu que és en versió preliminar i accepteu les </value>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_LinkText" xml:space="preserve">
+    <value>Condicions de versió preliminar</value>
+  </data>
+  <data name="LanguageTranslation_Invalid_webresource_url" xml:space="preserve">
+    <value>L’adreça URL que heu introduït no coincideix amb el vostre recurs web. Proveu de copiar i enganxar l’adreça URL del recurs web un altre cop.</value>
+  </data>
+  <data name="DeprecationBanner" xml:space="preserve">
+    <value>A partir de juliol de 2022, aquesta aplicació deixarà d'estar disponible per a l'ús. Migreu les seqüències de treball al Centre d'administració de l'Omnicanal per continuar utilitzant la Plataforma omnicanal per al Customer Service.</value>
+  </data>
+  <data name="OC_Deprecation_Title_Text" xml:space="preserve">
+    <value>L'aplicació Administració de l'Omnicanal ja no està admesa</value>
+  </data>
+  <data name="OC_Deprecation_Description_Text" xml:space="preserve">
+    <value>El suport tècnic per a l'aplicació d'administració de l'Omnicanal va finalitzar el 30 d'abril de 2022. Per configurar el Customer Service, comenceu a utilitzar l'aplicació del Centre d'administració del Customer Service. Migreu totes les definicions de seqüències de treball de l'aplicació d'administració del l'Omnicanal a l'aplicació del Centre d'administració del Customer Service al client immediatament. {0}</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More" xml:space="preserve">
+    <value>Més informació</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More_Aria_Label" xml:space="preserve">
+    <value>Més informació sobre la retirada de l'aplicació d'administració de l'Omnicanal</value>
+  </data>
+  <data name="OC_Deprecation_Acknowledge_Checkbox_Label" xml:space="preserve">
+    <value>Entenc que sé que l'aplicació Administració de l'Omnicanal ja no està admesa.</value>
+  </data>
+  <data name="OC_Deprecation_Redirect_Button_Text" xml:space="preserve">
+    <value>Obre el centre d'administració del Customer Service</value>
+  </data>
+  <data name="OC_Deprecation_Dismiss_Button_Text" xml:space="preserve">
+    <value>Continua a l'administració de l'Omnicanal</value>
+  </data>
+  <data name="PostConversationSurveyMessage" xml:space="preserve">
+    <value>Com ha estat la vostra experiència? Compartiu els vostres comentaris en aquesta enquesta. </value>
+  </data>
+  <data name="OC_FormsProSurvey_Disclaimer" xml:space="preserve">
+    <value>Això serà operat pel Microsoft Dynamics 365 Customer Voice.</value>
+  </data>
+  <data name="Presence.InactivePresenceUpdateNotAllowed" xml:space="preserve">
+    <value>Les actualitzacions d'aquest camp per a aquest registre s'han inhabilitat.</value>
+  </data>
+  <data name="Presence.IncorrectEntityError" xml:space="preserve">
+    <value>Error de registre del complement: el nom lògic de l'entitat no és msdyn_presence.</value>
+  </data>
+  <data name="OperatingHours.Hours" xml:space="preserve">
+    <value> hora(es)</value>
+  </data>
+  <data name="OperatingHours.Minutes" xml:space="preserve">
+    <value> minut(s)</value>
+  </data>
+  <data name="OperatingHours.TotalOperatingHours" xml:space="preserve">
+    <value>Total d'hores de funcionament: </value>
+  </data>
+  <data name="Presence.DefaultDeletePlugin" xml:space="preserve">
+    <value>No es pot suprimir una presència per defecte</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>No s'han trobat problemes.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>S'ha produït un error a {0}.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Capacitat de l'agent no vàlida. El valor ha de ser superior a 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>S'ha trobat un agent incorrectament configurat. La capacitat de l'agent s'ha de definir en un valor superior a 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>S'han trobat {0} agents incorrectament configurats. La capacitat dels agents ha de ser superior a 0.</value>
+    <comment>The error message for OcAgentsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Capacitat del bot no vàlida. El valor ha de ser superior a 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>S'ha trobat un bot incorrectament configurat. La capacitat del bot s'ha de definir en un valor superior a 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Hi ha {0} bots configurats incorrectament. La capacitat dels bots ha de ser superior a 0.</value>
+    <comment>The error message for OcBotsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Hi ha 1 cua sense agents.</value>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Hi ha {0} cues sense agents.</value>
+    <comment>The error message for OcQueuesShouldHaveAgentsRule rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ErrorMessage" xml:space="preserve">
+    <value>L'Omnicanal no és completament funcional, alguns passos de processament de missatges estan inhabilitats.</value>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ResultEntityMessage" xml:space="preserve">
+    <value>El pas de processament de missatges ha d'estar habilitat per garantir que l'Omnicanal funcioni correctament.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointIsNotConfigured" xml:space="preserve">
+    <value>L'extrem de servei OC no està configurat.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointPathIsEmpty" xml:space="preserve">
+    <value>El camí de l'extrem de servei d'OC està buit.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.ResultEntityMessage" xml:space="preserve">
+    <value>Agents: {0} (identificador: {1})</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is agent name and {1} is agent Id</comment>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Hi ha 1 seqüència de treball amb una capacitat superior a la dels seus agents.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Hi ha {0} seqüències de treball amb una capacitat superior a la dels seus agents.</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.ResultEntityMessage" xml:space="preserve">
+    <value>La seqüència de treball no té definida cap plantilla de notificació.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Hi ha 1 seqüència de treball sense plantilla de notificació.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Hi ha {0} seqüències de treball sense plantilles de notificació.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoSessionTemplates" xml:space="preserve">
+    <value>La seqüència de treball {0} té escenaris sense plantilla de sessió.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoScenarios" xml:space="preserve">
+    <value>La seqüència de treball {0} no té escenaris.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Hi ha 1 seqüència de treball sense plantilla de sessió.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Hi ha {0} seqüències de treball sense plantilla de sessió.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.ResultEntityMessage" xml:space="preserve">
+    <value>La seqüència de treball té variables de context duplicades: {0}</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is duplicated context names</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Hi ha 1 seqüència de treball amb variables de context duplicades.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Hi ha {0} seqüències de treball amb variables de context duplicades.</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.ResultEntityMessage" xml:space="preserve">
+    <value>Regles d'encaminament sense condicions: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities list</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Hi ha {0} seqüències de treball amb regles d'encaminament buides per sobre de les regles amb condició.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Hi ha 1 seqüència de treball amb regles d'encaminament buides per sobre de les regles amb condició.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Hi ha 1 seqüència de treball amb el mode d'inserció que permet el mode fora de línia.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Hi ha {0} seqüències de treball amb el mode d'inserció que permet el mode fora de línia.</value>
+    <comment>The error message for WorkstreamWithPushModeShouldNotAllowOfflineMode rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>El bot té una capacitat potencialment baixa.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Hi ha 1 bot que té una capacitat potencialment baixa.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Hi ha {0} bots que tenen una capacitat potencialment baixa.</value>
+    <comment>The error message for OcBotsShouldNotHavePotentiallyLowCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.EntityMessage" xml:space="preserve">
+    <value>Configuració del proveïdor del canal duplicada.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultDuplicatedChannel" xml:space="preserve">
+    <value>S'han trobat configuracions del proveïdor del canal duplicades.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ProviderNotFound" xml:space="preserve">
+    <value>No s'ha trobat el proveïdor de canals de l'Omnicanal.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsEmpty" xml:space="preserve">
+    <value>El camp Adreça URL del canal està buit</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsInvalid" xml:space="preserve">
+    <value>El camp Adreça URL del canal no és vàlid</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.UnifiedInterfaceAppsFieldNoOCApp" xml:space="preserve">
+    <value>El camp Aplicacions de la Interfície unificada no conté l'aplicació Omnicanal</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AgentRoleNotAssigned" xml:space="preserve">
+    <value>La funció d'agent de l'Omnicanal no està assignada</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.SupervisorRoleNotAssigned" xml:space="preserve">
+    <value>La funció de supervisor de l'Omnicanal no està assignada</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AdministratorRoleNotAssigned" xml:space="preserve">
+    <value>La funció d'administrador de l'Omnicanal no està assignada.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultImproperlyConfigured" xml:space="preserve">
+    <value>El proveïdor de canals de l'Omnicanal no està configurat correctament.</value>
+  </data>
+  <data name="OC_OH_Preview_Message" xml:space="preserve">
+    <value>En utilitzar aquesta funció, reconeixeu que és en versió preliminar i accepteu les {0}. {1}</value>
+    <comment>Template Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_OH_Preview_Notification" xml:space="preserve">
+    <value>En utilitzar aquesta funció, reconeixeu que és en versió preliminar i accepteu les condicions de la versió preliminar.</value>
+    <comment>Notification Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_InstanceLevelBanner" xml:space="preserve">
+    <value>S’ha aplicat la configuració del missatge automatitzat per a {0}. Per crear un missatge automatitzat per a {1}, seleccioneu «nou».</value>
+  </data>
+  <data name="OC_CustomSystemMessage_ConfirmDelete" xml:space="preserve">
+    <value>Segur que voleu suprimir aquest missatge? Si hi feu, tornarem a la configuració del missatge automatitzat per a {0}.</value>
+  </data>
+  <data name="OC_Channel_Chat" xml:space="preserve">
+    <value>Xat</value>
+    <comment>Messaging channel chat</comment>
+  </data>
+  <data name="OC_Channel_Custom" xml:space="preserve">
+    <value>Personalitzada</value>
+    <comment>Messaging channel Custom</comment>
+  </data>
+  <data name="OC_Channel_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>Messaging channel Facebook</comment>
+  </data>
+  <data name="OC_Channel_LINE" xml:space="preserve">
+    <value>LINE</value>
+    <comment>Messaging channel LINE</comment>
+  </data>
+  <data name="OC_Channel_SMS" xml:space="preserve">
+    <value>SMS</value>
+    <comment>Messaging channel SMS</comment>
+  </data>
+  <data name="OC_Channel_Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+    <comment>Messaging channel Microsoft Teams</comment>
+  </data>
+  <data name="OC_Channel_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Messaging channel Twitter</comment>
+  </data>
+  <data name="OC_Channel_unknown" xml:space="preserve">
+    <value>Canal desconegut</value>
+    <comment>Messaging channel unknown channel</comment>
+  </data>
+  <data name="OC_Channel_WeChat" xml:space="preserve">
+    <value>WeChat</value>
+    <comment>Messaging channel WeChat</comment>
+  </data>
+  <data name="OC_Channel_WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+    <comment>Messaging channel WhatsApp</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_DuplicateNameMessage" xml:space="preserve">
+    <value>Ja s'ha creat un missatge automatitzat o una plantilla de missatge amb el mateix nom.</value>
+  </data>
+  <data name="OC_FeaturePreviewDisclaimer" xml:space="preserve">
+    <value>En utilitzar aquesta funció, reconeixeu que és en versió preliminar i accepteu les condicions de la versió preliminar.</value>
+  </data>
+  <data name="OC_ProgressIndicator_Loading" xml:space="preserve">
+    <value>Carregant...</value>
+    <comment>Progress indicator message</comment>
+  </data>
+  <data name="OC_TokenAcquireFailed_AlertText" xml:space="preserve">
+    <value>L'adquisició del testimoni ha fallat</value>
+    <comment>Alert message for token acquire failures</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationTitle" xml:space="preserve">
+    <value>Canvia a l'àrea de treball preconfigurada</value>
+    <comment>Analytics PaaS feature confirmation dialog body text</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationText" xml:space="preserve">
+    <value>El canvi a preconfigurat esborrarà la configuració de l'àrea de treball personalitzada. Podeu tornar a canviar a l'espai de treball personalitzat en qualsevol moment, però haureu de tornar a configurar la vostra àrea de treball.</value>
+    <comment>Analytics PaaS feature confirmation dialog title</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationButtonLabel" xml:space="preserve">
+    <value>Canvia a preconfigurat</value>
+    <comment>Analytics PaaS feature confirmation dialog confirm button label</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimer" xml:space="preserve">
+    <value>WhatsApp té un període de resposta oberta de 24 hores. Si passen 24 hores després del últim missatge d'un client, els agents només podran enviar plantilles de missatge aprovades per WhatsApp fins que el client respongui. Assegureu-vos que WhatsApp aprovi les plantilles de missatge abans d'afegir-les aquí. {0}</value>
+    <comment>{0} will be replaced by a link "learn more"</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimerLearnMore" xml:space="preserve">
+    <value>Més informació</value>
+    <comment>learn more link for OC_WhatsAppMessageTemplateDisclaimer</comment>
+  </data>
+  <data name="MessageTemplateFeatureName" xml:space="preserve">
+    <value>Plantilla de missatge</value>
+    <comment>This should be the same as what we show in the sitemap</comment>
+  </data>
+  <data name="AutomatedMessageRequiredFieldNotFilled" xml:space="preserve">
+    <value>Cal emplenar els camps obligatoris.</value>
+    <comment>Shown in banner when required fields are not populated</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitor" xml:space="preserve">
+    <value>Visitant</value>
+    <comment>Used when user name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleLiveWorkStream" xml:space="preserve">
+    <value>Seqüència de treball en directe</value>
+    <comment>Used when live work stream name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitorFormatter" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} and {1} should not be changed. They will be replaced by customer name and workstream name respectively. Example, James: WorkStream1</comment>
+  </data>
+  <data name="DefaultFieldsRquiredForMessageTemplate" xml:space="preserve">
+    <value>Es necessiten una llengua per defecte i un text de missatge per defecte per a una plantilla de missatge.</value>
+  </data>
+  <data name="DefaultLocalizationDataNotFoundForMessageTemplate" xml:space="preserve">
+    <value>Les dades de localització per defecte no s’han trobat per a aquesta plantilla de missatge.</value>
+  </data>
+  <data name="SavingPrivacyTerms" xml:space="preserve">
+    <value>S’està carregant...</value>
+    <comment>Shown after user agrees to privacy terms</comment>
+  </data>
+  <data name="ConversationFormReadonlyNotificationText" xml:space="preserve">
+    <value>Només de lectura. Raó per a l’estat d’aquest registre: {0}</value>
+    <comment>{0} will be replaced with statuscode text. Any changes to this will have an impact on msdyn_customersummaryscripts.ts</comment>
+  </data>
+  <data name="OC_IntradayInsights_ConfigTitle" xml:space="preserve">
+    <value>Configuració de coneixements intradia</value>
+    <comment>Title for Intraday insights configuration</comment>
+  </data>
+  <data name="OC_FormsPro_Button_Text" xml:space="preserve">
+    <value>Obre el Dynamics 365 Customer Voice</value>
+  </data>
+  <data name="FbAppNotFound" xml:space="preserve">
+    <value>No s'ha trobat l'identificador d'aplicació del Facebook. Proveu-ne un altre.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PrivacyNotFound" xml:space="preserve">
+    <value>No s'han acceptat les condicions de privadesa per al canal.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="CantProvisionFBPage" xml:space="preserve">
+    <value>No hem pogut proveir la vostra pàgina del Facebook. Comproveu tota la informació que heu proporcionat i torneu-ho a provar.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PreValidationFacebookApplicationCreatePluginFailure" xml:space="preserve">
+    <value>S'ha produït un error inesperat en crear aquesta aplicació del Facebook. Torneu-ho a provar més endavant.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageCreatePluginFailure" xml:space="preserve">
+    <value>S'ha produït un error inesperat en crear aquesta pàgina del Facebook. Torneu-ho a provar més endavant.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageUpdatePluginFailure" xml:space="preserve">
+    <value>S'ha produït un error inesperat en actualitzar aquesta pàgina del Facebook. Torneu-ho a provar més endavant.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ExistingFbPageFound" xml:space="preserve">
+    <value>Ja heu configurat aquesta pàgina del Facebook. Introduïu una pàgina diferent i torneu-ho a provar.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ErrorProcessingRequestParameter" xml:space="preserve">
+    <value>S'ha produït un error en processar els paràmetres de la sol·licitud. Error: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="InvalidContextVariable" xml:space="preserve">
+    <value>ContextVariables no és vàlid. Error: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="MissingRequestId" xml:space="preserve">
+    <value>Falta RequestId.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingVersion" xml:space="preserve">
+    <value>Version no és vàlid.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingChannelInstance" xml:space="preserve">
+    <value>Falta ChannelInstance.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingDirection" xml:space="preserve">
+    <value>Falta Direction.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidDirection" xml:space="preserve">
+    <value>Direction no és vàlid.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingContextVariables" xml:space="preserve">
+    <value>Falta ContextVariables.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingMessageText" xml:space="preserve">
+    <value>Falta MessageText.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingOffsetTime" xml:space="preserve">
+    <value>Falta OffsetTime.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidChannelInstance" xml:space="preserve">
+    <value>La càrrega útil de la instància del canal no és vàlida.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiParameterMissing" xml:space="preserve">
+    <value>{0} falta o no és vàlid.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays parameter value.</comment>
+  </data>
+  <data name="ChannelApiUnsupportedVersion" xml:space="preserve">
+    <value>L'ApiVersion {0} no està admesa.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays version number.</comment>
+  </data>
+  <data name="ChannelApiInternalError" xml:space="preserve">
+    <value>S'ha produït un error intern. {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the exception message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationSend" xml:space="preserve">
+    <value>La conversa no existeix o està tancada.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiMessageNullSend" xml:space="preserve">
+    <value>El text del missatge no pot ser nul ni estar buit.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationGet" xml:space="preserve">
+    <value>La conversa no existeix.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationEnd" xml:space="preserve">
+    <value>La conversa no existeix o està tancada.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Title" xml:space="preserve">
+    <value>Força el tancament de la conversa</value>
+    <comment>Title of the confirmation window displayed before force close is triggered</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Text" xml:space="preserve">
+    <value>Segur que voleu tancar l'element de treball?</value>
+    <comment>Confirmation text for force close</comment>
+  </data>
+  <data name="ForceClose_Confirmation_OKButtonLabel" xml:space="preserve">
+    <value>Continua</value>
+    <comment>Proceed</comment>
+  </data>
+  <data name="NewCase_Label">
+    <value>Cas nou</value>
+    <comment>Label for Create a Case button</comment>
+  </data>
+</root>

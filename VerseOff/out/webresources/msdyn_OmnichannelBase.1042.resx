@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OC_LimitQuestions_AlertDialogConfirmButton" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="OC_RecordPermissions_AlertDialogText" xml:space="preserve">
+    <value>이 작업을 실행할 수 있는 권한이 없습니다.</value>
+  </data>
+  <data name="OC_LimitQuestions_AlertDialogText" xml:space="preserve">
+    <value>질문은 5개 이상 추가할 수 없습니다. 더 추가하는 데 몇 가지 질문을 삭제하세요.</value>
+  </data>
+  <data name="OC_PickAuthFailed" xml:space="preserve">
+    <value>인증 실패로 인해 선택하지 못했습니다. 나중에 다시 시도하십시오. 작업 항목: {0}</value>
+  </data>
+  <data name="OC_PickedByAnotherAgent" xml:space="preserve">
+    <value>선택하지 못했습니다. 다른 에이전트에서 항목을 선택했습니다. 작업 항목: {0}</value>
+  </data>
+  <data name="OC_PickInternalError" xml:space="preserve">
+    <value>선택하지 못했습니다. 항목을 다시 선택하십시오. 작업 항목: {0}</value>
+  </data>
+  <data name="OC_PickMaxCapacityReached" xml:space="preserve">
+    <value>선택하지 못했습니다. 최대 생산 능력에 도달했습니다. 작업 항목: {0}</value>
+  </data>
+  <data name="OC_PickMaxConcurrencyReached" xml:space="preserve">
+    <value>선택하지 못했습니다. 최대 동시 실행에 도달했습니다. 작업 항목: {0}</value>
+  </data>
+  <data name="OC_PickNotAvailable" xml:space="preserve">
+    <value>선택하지 못했습니다. 항목을 사용할 수 없습니다. 작업 항목: {0}</value>
+  </data>
+  <data name="OC_PickPresenceError" xml:space="preserve">
+    <value>사용자의 현재 상태로 인해 선택하지 못했습니다. 작업 항목: {0}</value>
+  </data>
+  <data name="OC_PickSuccess" xml:space="preserve">
+    <value>작업 항목을 성공적으로 선택했습니다. 작업 항목: {0}</value>
+  </data>
+  <data name="OC_OpenFormFail" xml:space="preserve">
+    <value>양식을 열지 못했습니다. 양식을 다시 열어 보십시오. 문제가 지속되는 경우 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="OC_OpenSessionFail" xml:space="preserve">
+    <value>세션을 열지 못했습니다. 세션을 다시 열어 보십시오. 문제가 지속되는 경우 관리자에게 문의하십시오.</value>
+  </data>
+  <data name="OC_InputTimeFormat" xml:space="preserve">
+    <value>올바른 24시간 형식(HH:MM)으로 시간을 입력하십시오.</value>
+  </data>
+  <data name="OC_InputTimesDifferenceValidation" xml:space="preserve">
+    <value>종료 시간은 시작 시간 이전이거나 시작 시간과의 차이가 {0}분 미만일 수 없습니다.</value>
+  </data>
+  <data name="OC_SendMessageToConversationSuccessMessage" xml:space="preserve">
+    <value>완료! 이 메시지가 대화에 전송되었습니다.</value>
+  </data>
+  <data name="OC_SendMessageToConversationFailureMessage" xml:space="preserve">
+    <value>문제가 발생했습니다. 대화에 메시지를 다시 전송해 보세요.</value>
+  </data>
+  <data name="OC_SupervisorOpenRecord" xml:space="preserve">
+    <value>대화 레코드는 보기 전용이며 열 수 없습니다.</value>
+  </data>
+  <data name="OC_LinkToConversationSuccessMessage" xml:space="preserve">
+    <value>완료되었습니다! 이 {0}이(가) 대화에 연결되었습니다.</value>
+  </data>
+  <data name="OC_LinkToConversationFailureMessage" xml:space="preserve">
+    <value>문제가 발생했습니다. 대화에 다시 연결해보세요.</value>
+  </data>
+  <data name="OC_LinkToConversationUpdatedMessage" xml:space="preserve">
+    <value>업데이트되었습니다! 이 대화에 연결된 이전 {0}이(가) {0}(으)로 교체되었습니다.</value>
+  </data>
+  <data name="OC_Presence_Available" xml:space="preserve">
+    <value>사용 가능</value>
+  </data>
+  <data name="OC_Presence_Busy" xml:space="preserve">
+    <value>사용 중</value>
+  </data>
+  <data name="OC_Presence_DoNotDisturb" xml:space="preserve">
+    <value>방해 금지</value>
+  </data>
+  <data name="OC_Presence_Away" xml:space="preserve">
+    <value>멀리 나타남</value>
+  </data>
+  <data name="OC_Presence_Offline" xml:space="preserve">
+    <value>오프라인</value>
+  </data>
+  <data name="MaskingRule.LimitReached" xml:space="preserve">
+    <value>{0}개 이상 마스킹 규칙을 만들 수 없습니다. 총 금액을 {0}(으)로 제한하는 규칙을 삭제하십시오.</value>
+  </data>
+  <data name="MaskingRule.PluginError" xml:space="preserve">
+    <value>PreValidationMaskingRuleLimitPlugin 플러그 인에서 오류가 발생했습니다.</value>
+  </data>
+  <data name="MaskingRule.RegexException.InvalidEscape" xml:space="preserve">
+    <value>구문 오류: 잘못된 정규식: /{0}/: 잘못된 이스케이프</value>
+  </data>
+  <data name="MaskingRule.RegexException.EndOfPattern" xml:space="preserve">
+    <value>구문 오류: 잘못된 정규식: /{0}/: 패턴의 끝에 \가 있음</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedCharacterClass" xml:space="preserve">
+    <value>구문 오류: 잘못된 정규식: /{0}/: 종결되지 않은 문자 클래스</value>
+  </data>
+  <data name="MaskingRule.RegexException.IncompleteQuantifier" xml:space="preserve">
+    <value>구문 오류: 잘못된 정규식: /{0}/: 불완전한 수량자</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedGroup" xml:space="preserve">
+    <value>구문 오류: 잘못된 정규식: /{0}/: 종결되지 않은 그룹</value>
+  </data>
+  <data name="MaskingRule.RegexException.LoneQuantifierBrackets" xml:space="preserve">
+    <value>구문 오류: 잘못된 정규식: /{0}/: 단독 수량자 대괄호</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnmatchedParen" xml:space="preserve">
+    <value>구문 오류: 잘못된 정규식: /{0}/: 일치하지 않는 ')'</value>
+  </data>
+  <data name="MaskingRule.RegexException.NothingToRepeat" xml:space="preserve">
+    <value>구문 오류: 잘못된 정규식: /{0}/: 반복이 없음</value>
+  </data>
+  <data name="MaskingRule.RegexException.Timeout" xml:space="preserve">
+    <value>TimeoutError: 정규식을 평가하는 데 너무 오래 걸렸습니다. /{0}/: {1}ms 후 종료되었습니다.</value>
+  </data>
+  <data name="MaskingRule.MaskingInProgress" xml:space="preserve">
+    <value>정규식으로 테스트 데이터를 마스킹합니다.</value>
+  </data>
+  <data name="SentimentAnalysis.WrongName" xml:space="preserve">
+    <value>레코드 이름은 {0}이어야 합니다.</value>
+  </data>
+  <data name="SentimentAnalysis.DeleteNotAllowed" xml:space="preserve">
+    <value>레코드는 삭제할 수 없습니다.</value>
+  </data>
+  <data name="Entity.OnlyOneAllowed" xml:space="preserve">
+    <value>이 종류의 레코드는 하나만 허용됩니다.</value>
+  </data>
+  <data name="Entity.DeleteNotAllowed" xml:space="preserve">
+    <value>레코드는 삭제할 수 없습니다.</value>
+  </data>
+  <data name="DefaultQueue.DeleteNotAllowed" xml:space="preserve">
+    <value>DefaultQueue는 읽기 전용 큐이므로 삭제할 수 없습니다.</value>
+  </data>
+  <data name="DefaultQueue.UpdateNotAllowed" xml:space="preserve">
+    <value>DefaultQueue는 읽기 전용 큐이므로 편집할 수 없습니다.</value>
+  </data>
+  <data name="Queue.IncorrectEntityError" xml:space="preserve">
+    <value>플러그 인 등록 오류: 엔터티 논리 이름이 Queue가 아닙니다.</value>
+  </data>
+  <data name="Queue.QueueTypeUpdateError" xml:space="preserve">
+    <value>큐 유형을 업데이트할 수 없습니다.</value>
+  </data>
+  <data name="Queue.NonEntityQueueSelected" xml:space="preserve">
+    <value>선택한 큐가 엔터티 유형이 아니기 때문에 회람 규칙 항목을 만들 수 없습니다. 엔터티 유형 큐에만 회람할 수 있습니다.</value>
+  </data>
+  <data name="RoutingRuleItem.NonEntityQueueSelected" xml:space="preserve">
+    <value>선택한 큐가 엔터티 유형이 아니 때문에 선택한 큐에 레코드를 추가할 수 없습니다. 엔터티 큐를 선택하고 다시 시도하세요.</value>
+  </data>
+  <data name="OC_Refresh_Grid" xml:space="preserve">
+    <value>표가 정렬 모드이므로 레코드를 이동할 수 없습니다. 표를 새로 고치고 다시 시도하십시오.</value>
+  </data>
+  <data name="GeoLocationProvider.IncorrectEntityError" xml:space="preserve">
+    <value>플러그 인 등록 오류: 엔터티 논리 이름이 GeoLocationProvider가 아닙니다.</value>
+  </data>
+  <data name="GeoLocationProvider.PluginError" xml:space="preserve">
+    <value>GeoLocationProviderPlugIn 플러그 인에 오류가 발생했습니다.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelsNotSupported" xml:space="preserve">
+    <value>이 릴리스에서는 엔터티 채널이 지원되지 않습니다. 자세한 내용은 추가 정보를 참조하십시오.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelTypeNotSupported" xml:space="preserve">
+    <value>이 릴리스에서는 엔터티 채널이 지원되지 않습니다. 다른 채널 유형을 선택하십시오. 자세한 내용은 추가 정보를 참조하십시오.</value>
+  </data>
+  <data name="EntityRouting.EntityWorkStreamsNotSupported" xml:space="preserve">
+    <value>이 릴리스에서는 엔터티 작업 스트림이 지원되지 않습니다. 자세한 내용은 추가 정보를 참조하십시오.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForDSF" xml:space="preserve">
+    <value>옴니채널 구성 변경 내용은 적용하는 데 최대 15분이 소요됩니다.</value>
+  </data>
+  <data name="OC_CaseRoutingFormNotificationMessage" xml:space="preserve">
+    <value>이 릴리스에서는 서비스 케이스 회람만 지원됩니다. 다른 엔터티 레코드는 향후 릴리스에서 지원될 것입니다.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForRoutingSolutionDep" xml:space="preserve">
+    <value>서비스 케이스 엔터티 회람을 사용하려면 회람 규칙 - 프리뷰 솔루션을 설치해야 합니다. 자세한 내용은 {0}을(를) 참조하십시오.</value>
+  </data>
+  <data name="OC_Preview_Message" xml:space="preserve">
+    <value>이 기능을 사용하면 이 기능이 프리뷰에 있음을 인지하고 {0}에 동의하는 것입니다. {1}</value>
+    <comment>Template Preview Text for all features</comment>
+  </data>
+  <data name="OC_Preview_Link_Label" xml:space="preserve">
+    <value>프리뷰 사용 약관</value>
+    <comment>Preview Terms label to point to the relevant Preview Terms</comment>
+  </data>
+  <data name="OC_LearnMore_Link_Label" xml:space="preserve">
+    <value>자세히 알아보기</value>
+    <comment>Hyperlink label to point to the relevant feature documentation</comment>
+  </data>
+  <data name="AutomaticQueueName" xml:space="preserve">
+    <value>자동 배포 큐</value>
+  </data>
+  <data name="AutomaticQueueSelectionRecommendation" xml:space="preserve">
+    <value>작업 항목을 에이전트에 자동으로 배포하고 할당할 큐를 선택합니다.</value>
+  </data>
+  <data name="ConfigureRoutingRulesAtERCNotification" xml:space="preserve">
+    <value>엔터티 레코드 작업 스트림에 대한 회람 규칙은 채널 수준에서 구성됩니다. 구성할 채널 &gt; 엔터티 레코드 &gt; {0} &gt; 회람 규칙으로 이동합니다.</value>
+  </data>
+  <data name="isOmnichannelQueueGuidanceNotification" xml:space="preserve">
+    <value>옴니 채널 자동 작업 배포에 대해 큐를 사용하려면 '예'로 설정합니다. 자세한 내용은 {0}을(를) 참조하세요.</value>
+  </data>
+  <data name="ManualQueueName" xml:space="preserve">
+    <value>수동 큐</value>
+  </data>
+  <data name="ManualQueueSelectionRecommendation" xml:space="preserve">
+    <value>자동 작업 배포를 위한 큐를 선택하여 에이전트에 엔터티 레코드를 자동으로 할당합니다.</value>
+  </data>
+  <data name="ERCDeletionWarningMessage" xml:space="preserve">
+    <value>{0} 레코드를 삭제하면 {1} 엔터티에 대해 엔터티 레코드 라우팅을 사용할 수 없습니다. 삭제하시겠습니까?</value>
+  </data>
+  <data name="InstallRoutingRuleForERCNotification" xml:space="preserve">
+    <value>엔터티 레코드 회람을 사용하려면 회람 규칙 솔루션을 설치해야 합니다. 자세한 내용은 {0}을(를) 참조하세요.</value>
+  </data>
+  <data name="EntityRoutingPlugins.GenericError" xml:space="preserve">
+    <value>오류로 인해 작업을 완료할 수 없습니다. 나중에 다시 시도하세요. 문제가 지속되는 경우 Microsoft 지원에 문의하세요.</value>
+  </data>
+  <data name="EntityRoutingPlugins.CreateError" xml:space="preserve">
+    <value>{0}을(를) 생성할 수 없습니다. 나중에 다시 시도하세요. 문제가 지속되는 경우 Microsoft 지원에 문의하세요.</value>
+  </data>
+  <data name="EntityRoutingPlugins.SaveError" xml:space="preserve">
+    <value>{0}을(를) 저장할 수 없습니다. 나중에 다시 시도하세요. 문제가 지속되는 경우 Microsoft 지원에 문의하세요.</value>
+  </data>
+  <data name="EntityRoutingPlugins.DeleteError" xml:space="preserve">
+    <value>{0}을(를) 삭제할 수 없습니다. 나중에 다시 시도하세요. 문제가 지속되는 경우 Microsoft 지원에 문의하세요.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityMissing" xml:space="preserve">
+    <value>엔터티 필드가 비어 있습니다. 엔터티 필드의 값을 선택하고 다시 시도하십시오.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityNotRequired" xml:space="preserve">
+    <value>엔터티 필드에 값이 있습니다. 엔터티 필드를 비워 두고 다시 시도하십시오.</value>
+  </data>
+  <data name="EntityRoutingPlugins.BothEntityConfigurationsNotRequired" xml:space="preserve">
+    <value>두 엔터티 구성 필드에 모두 값이 있습니다. 하나의 엔터티 구성 필드를 비워두고 다시 시도하세요.</value>
+    <comment>Liveworkstream has ercId and mercId fields, and only one can have value</comment>
+  </data>
+  <data name="EntityRoutingPlugins.DefaultWorkStreamName" xml:space="preserve">
+    <value>{0} 작업 스트림</value>
+  </data>
+  <data name="EntityRoutingPlugins.FlowConfigurationError" xml:space="preserve">
+    <value>엔터티 레코드 배포 흐름의 구성이 잘못되어 작업이 실패했습니다. {0}이(가) 삭제되거나 이름이 변경되지 않았는지 확인하십시오.</value>
+  </data>
+  <data name="EntityRoutingPlugins.TroubleshootingLearnMore" xml:space="preserve">
+    <value>자세한 내용은 옴니 채널 문제 해결 주제 {0}을(를) 참조하십시오.</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="OC_IncidentQueueItemWarningNessage" xml:space="preserve">
+    <value>이 레코드는 옴니채널 큐로 전송되었으며 더 이상 여기에서 볼 수 없습니다. 이 레코드를 보려면 옴니채널 대시보드에서 여십시오.</value>
+  </data>
+  <data name="OC_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsoft 개인정보처리방침</value>
+  </data>
+  <data name="OC_ChannelPreviewDisclaimer" xml:space="preserve">
+    <value>이 채널을 사용하면 이 기능이 프리뷰에 있음을 인지하고 프리뷰 사용 약관에 동의하는 것입니다.</value>
+  </data>
+  <data name="OC_SeePreviewTerms" xml:space="preserve">
+    <value>프리뷰 사용 약관 보기</value>
+  </data>
+  <data name="OC_ThirdPartyChannelPrivacyDisclaimer" xml:space="preserve">
+    <value>이 채널을 사용하면 데이터를 타사 시스템에서 공유하고 데이터가 조직의 규정 준수 경계 외부로 이동하는 데 동의하는 것입니다. 이는 조직이 Government Cloud 환경일 때도 포함됩니다. 자세한 내용은 {0} 항목을 참조하세요.</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_FeatureDocumentation" xml:space="preserve">
+    <value>실시간 번역</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsoft 개인정보처리방침</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_Text" xml:space="preserve">
+    <value>이 기능을 사용하면 데이터가 조직의 규정 준수 및 지리적 경계 밖으로 유출될 수 있음을 인정합니다. 여기에는 Government Cloud 환경이 포함됩니다. {0} 및 {1}에 관해 자세히 알아보세요.</value>
+    <comment>DO NOT CHANGE {0} and {1}, as they will be replaced with OC_LanguageTranslation_Disclaimer_FeatureDocumentation and OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement respectively.</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_DocumentFeature_Text" xml:space="preserve">
+    <value>여기를 클릭하여 기능 설명서를 확인하세요.</value>
+    <comment>Indicates this is the link for feature documentation</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Link" xml:space="preserve">
+    <value>웹 리소스 구성</value>
+    <comment>  This is the link for real time translation webresource documentation </comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Text" xml:space="preserve">
+    <value>URL을 생성할 웹 리소스를 구성합니다. 그런 다음 아래에 URL을 복사하여 붙여넣습니다. {0}에 관해 자세히 알아보세요.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder "0" will be replaced by a OC_LanguageTranslation_Webresource_Disclaimer_Link. Link text is "here".</comment>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_Text" xml:space="preserve">
+    <value>이 기능을 켜면 이 기능이 프리뷰에 있음을 인지하고 다음에 동의하는 것입니다. </value>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_LinkText" xml:space="preserve">
+    <value>프리뷰 사용 약관</value>
+  </data>
+  <data name="LanguageTranslation_Invalid_webresource_url" xml:space="preserve">
+    <value>입력한 URL이 웹 리소스와 일치하지 않습니다. 웹 리소스 URL을 다시 복사하여 붙여넣어 보세요.</value>
+  </data>
+  <data name="DeprecationBanner" xml:space="preserve">
+    <value>2022년 7월부터는 이 앱을 사용할 수 없습니다. Customer Service용 옴니채널을 계속 사용하려면 작업 스트림을 옴니채널 관리 센터로 마이그레이션하세요.</value>
+  </data>
+  <data name="OC_Deprecation_Title_Text" xml:space="preserve">
+    <value>옴니채널 관리가 더 이상 지원되지 않음</value>
+  </data>
+  <data name="OC_Deprecation_Description_Text" xml:space="preserve">
+    <value>옴니채널 관리 앱에 대한 지원이 2022년 4월 30일에 종료되었습니다. Customer Service를 구성하려면 Customer Service 관리 센터 앱을 사용하세요. 옴니채널 관리 앱에서 Customer Service 관리 센터 앱으로 즉시 모든 작업 스트림 정의를 마이그레이션하세요. {0}</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More" xml:space="preserve">
+    <value>자세히 알아보기</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More_Aria_Label" xml:space="preserve">
+    <value>옴니채널 관리 사용 중지에 관해 자세히 알아보기</value>
+  </data>
+  <data name="OC_Deprecation_Acknowledge_Checkbox_Label" xml:space="preserve">
+    <value>옴니채널 관리 앱이 더 이상 지원되지 않음을 이해합니다.</value>
+  </data>
+  <data name="OC_Deprecation_Redirect_Button_Text" xml:space="preserve">
+    <value>Customer Service 관리 센터 열기</value>
+  </data>
+  <data name="OC_Deprecation_Dismiss_Button_Text" xml:space="preserve">
+    <value>옴니채널 관리에서 계속</value>
+  </data>
+  <data name="PostConversationSurveyMessage" xml:space="preserve">
+    <value>사용 경험은 어떠셨습니까? 이 설문 조사에서 피드백을 공유해 주세요. </value>
+  </data>
+  <data name="OC_FormsProSurvey_Disclaimer" xml:space="preserve">
+    <value>Microsoft Dynamics 365 Customer Voice에서 운영합니다.</value>
+  </data>
+  <data name="Presence.InactivePresenceUpdateNotAllowed" xml:space="preserve">
+    <value>이 레코드에 대한 이 필드의 업데이트가 비활성화되었습니다.</value>
+  </data>
+  <data name="Presence.IncorrectEntityError" xml:space="preserve">
+    <value>플러그인 등록 오류: 엔터티 논리 이름이 msdyn_presence가 아닙니다.</value>
+  </data>
+  <data name="OperatingHours.Hours" xml:space="preserve">
+    <value>시간</value>
+  </data>
+  <data name="OperatingHours.Minutes" xml:space="preserve">
+    <value>분</value>
+  </data>
+  <data name="OperatingHours.TotalOperatingHours" xml:space="preserve">
+    <value>총 작업 시간: </value>
+  </data>
+  <data name="Presence.DefaultDeletePlugin" xml:space="preserve">
+    <value>기본 상태는 삭제할 수 없음</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>문제가 없습니다.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>{0}에 오류가 발생했습니다.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>에이전트의 생산 능력이 잘못되었습니다. 값이 0보다 커야 합니다.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>잘못 구성된 에이전트가 있습니다. 에이전트의 생산 능력은 0보다 큰 값으로 설정해야 합니다.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>잘못 구성된 에이전트 {0}개가 있습니다. 에이전트의 생산 능력은 0보다 커야 합니다.</value>
+    <comment>The error message for OcAgentsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>봇의 생산 능력이 잘못되었습니다. 값이 0보다 커야 합니다.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>잘못 구성된 봇이 있습니다. 봇의 생산 능력은 0보다 큰 값으로 설정해야 합니다.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>잘못 구성된 봇 {0}개가 있습니다. 봇의 생산 능력은 0보다 커야 합니다.</value>
+    <comment>The error message for OcBotsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>에이전트가 없는 큐가 1개 있습니다.</value>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>에이전트가 없는 큐가 {0}개 있습니다.</value>
+    <comment>The error message for OcQueuesShouldHaveAgentsRule rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ErrorMessage" xml:space="preserve">
+    <value>옴니채널이 제대로 작동하지 않아 일부 메시지 처리 단계가 비활성화되었습니다.</value>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ResultEntityMessage" xml:space="preserve">
+    <value>옴니채널이 제대로 작동하게 하려면 메시지 처리 단계를 활성화해야 합니다.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointIsNotConfigured" xml:space="preserve">
+    <value>OC 서비스 엔드포인트가 구성되지 않았습니다.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointPathIsEmpty" xml:space="preserve">
+    <value>OC 서비스 엔드포인트 경로가 비어 있습니다.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.ResultEntityMessage" xml:space="preserve">
+    <value>에이전트: {0}(ID: {1})</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is agent name and {1} is agent Id</comment>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>에이전트보다 생산 능력이 큰 작업 스트림이 1개 있습니다.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>에이전트보다 생산 능력이 큰 작업 스트림이 {0}개 있습니다.</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.ResultEntityMessage" xml:space="preserve">
+    <value>작업 스트림에 일부 알림 템플릿이 설정되어 있지 않습니다.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>알림 템플릿이 없는 작업 스트림이 1개 있습니다.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>알림 템플릿이 없는 작업 스트림이 {0}개 있습니다.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoSessionTemplates" xml:space="preserve">
+    <value>작업 스트림 {0}에 세션 템플릿이 없는 시나리오가 있습니다.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoScenarios" xml:space="preserve">
+    <value>작업 스트림 {0}에 시나리오가 없습니다.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>세션 템플릿이 없는 작업 스트림이 1개 있습니다.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>세션 템플릿이 없는 작업 스트림이 {0}개 있습니다.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.ResultEntityMessage" xml:space="preserve">
+    <value>작업 스트림에 있는 중복 컨텍스트 변수: {0}</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is duplicated context names</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.InvalidEntityMessage" xml:space="preserve">
+    <value>컨텍스트 변수가 중복된 작업 스트림이 1개 있습니다.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>컨텍스트 변수가 중복된 작업 스트림이 {0}개 있습니다.</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.ResultEntityMessage" xml:space="preserve">
+    <value>조건이 없는 회람 규칙: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities list</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.InvalidEntityMessage" xml:space="preserve">
+    <value>조건이 있는 규칙상 회람 규칙이 빈 작업 스트림이 {0}개 있습니다.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>조건이 있는 규칙상 회람 규칙이 빈 작업 스트림이 1개 있습니다.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.InvalidEntityMessage" xml:space="preserve">
+    <value>오프라인 모드를 허용하는 밀어넣기 모드가 있는 작업 스트림이 1개 있습니다.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>오프라인 모드를 허용하는 밀어넣기 모드가 있는 작업 스트림이 {0}개 있습니다.</value>
+    <comment>The error message for WorkstreamWithPushModeShouldNotAllowOfflineMode rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>생산 능력이 낮을 수 있는 봇입니다.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>생산 능력이 낮을 수 있는 봇이 1개 있습니다.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>생산 능력이 낮을 수 있는 봇이 {0}개 있습니다.</value>
+    <comment>The error message for OcBotsShouldNotHavePotentiallyLowCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.EntityMessage" xml:space="preserve">
+    <value>채널 공급자 구성이 중복되었습니다.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultDuplicatedChannel" xml:space="preserve">
+    <value>중복된 채널 공급자 구성이 있습니다.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ProviderNotFound" xml:space="preserve">
+    <value>옴니채널 채널 공급자가 없습니다.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsEmpty" xml:space="preserve">
+    <value>채널 URL 필드가 비어 있습니다.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsInvalid" xml:space="preserve">
+    <value>채널 URL 필드가 유효하지 않습니다.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.UnifiedInterfaceAppsFieldNoOCApp" xml:space="preserve">
+    <value>통합 인터페이스 앱 필드에 옴니채널 애플리케이션이 포함되어 있지 않습니다.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AgentRoleNotAssigned" xml:space="preserve">
+    <value>옴니채널 에이전트 역할이 할당되어 있지 않습니다.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.SupervisorRoleNotAssigned" xml:space="preserve">
+    <value>옴니채널 감독자 역할이 할당되어 있지 않습니다.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AdministratorRoleNotAssigned" xml:space="preserve">
+    <value>옴니채널 관리자 역할이 할당되지 않았습니다.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultImproperlyConfigured" xml:space="preserve">
+    <value>옴니채널 채널 공급자가 잘못 구성되어 있습니다.</value>
+  </data>
+  <data name="OC_OH_Preview_Message" xml:space="preserve">
+    <value>이 기능을 사용하면 이 기능이 프리뷰에 있음을 인지하고 {0}에 동의하는 것입니다. {1}</value>
+    <comment>Template Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_OH_Preview_Notification" xml:space="preserve">
+    <value>이 기능을 사용하면 이 기능이 프리뷰에 있음을 인지하고 프리뷰 사용 약관에 동의하는 것입니다.</value>
+    <comment>Notification Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_InstanceLevelBanner" xml:space="preserve">
+    <value>{0}에 대한 자동 메시지 설정이 적용되었습니다. {1}에 대한 자동 메시지를 만들려면 "신규"를 선택하세요.</value>
+  </data>
+  <data name="OC_CustomSystemMessage_ConfirmDelete" xml:space="preserve">
+    <value>이 메시지를 삭제하시겠습니까? 삭제하면 {0}에 대한 자동 메시지 설정으로 되돌아갑니다.</value>
+  </data>
+  <data name="OC_Channel_Chat" xml:space="preserve">
+    <value>채팅</value>
+    <comment>Messaging channel chat</comment>
+  </data>
+  <data name="OC_Channel_Custom" xml:space="preserve">
+    <value>사용자 지정</value>
+    <comment>Messaging channel Custom</comment>
+  </data>
+  <data name="OC_Channel_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>Messaging channel Facebook</comment>
+  </data>
+  <data name="OC_Channel_LINE" xml:space="preserve">
+    <value>LINE</value>
+    <comment>Messaging channel LINE</comment>
+  </data>
+  <data name="OC_Channel_SMS" xml:space="preserve">
+    <value>SMS</value>
+    <comment>Messaging channel SMS</comment>
+  </data>
+  <data name="OC_Channel_Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+    <comment>Messaging channel Microsoft Teams</comment>
+  </data>
+  <data name="OC_Channel_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Messaging channel Twitter</comment>
+  </data>
+  <data name="OC_Channel_unknown" xml:space="preserve">
+    <value>알 수 없는 채널</value>
+    <comment>Messaging channel unknown channel</comment>
+  </data>
+  <data name="OC_Channel_WeChat" xml:space="preserve">
+    <value>WeChat</value>
+    <comment>Messaging channel WeChat</comment>
+  </data>
+  <data name="OC_Channel_WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+    <comment>Messaging channel WhatsApp</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_DuplicateNameMessage" xml:space="preserve">
+    <value>이름이 동일한 자동 메시지 또는 메시지 템플릿이 이미 만들어져 있습니다.</value>
+  </data>
+  <data name="OC_FeaturePreviewDisclaimer" xml:space="preserve">
+    <value>이 기능을 사용하면 이 기능이 프리뷰에 있음을 인지하고 프리뷰 사용 약관에 동의하는 것입니다.</value>
+  </data>
+  <data name="OC_ProgressIndicator_Loading" xml:space="preserve">
+    <value>로드하는 중...</value>
+    <comment>Progress indicator message</comment>
+  </data>
+  <data name="OC_TokenAcquireFailed_AlertText" xml:space="preserve">
+    <value>토큰 취득 실패</value>
+    <comment>Alert message for token acquire failures</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationTitle" xml:space="preserve">
+    <value>사전 구성 작업 영역으로 전환</value>
+    <comment>Analytics PaaS feature confirmation dialog body text</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationText" xml:space="preserve">
+    <value>사전 구성으로 전환하면 사용자 지정 작업 영역 설정이 지워집니다. 언제든지 사용자 지정 작업 영역으로 다시 전환할 수 있지만 작업 영역을 다시 구성해야 합니다.</value>
+    <comment>Analytics PaaS feature confirmation dialog title</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationButtonLabel" xml:space="preserve">
+    <value>사전 구성으로 전환</value>
+    <comment>Analytics PaaS feature confirmation dialog confirm button label</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimer" xml:space="preserve">
+    <value>WhatsApp에는 24시간 시작 응답 창이 있습니다. 고객의 마지막 메시지 이후 24시간이 지나면 에이전트는 고객이 응답할 때까지 WhatsApp에서 승인한 메시지 템플릿만 보낼 수 있습니다. 여기에 추가하려면 먼저 WhatsApp에서 메시지 템플릿을 승인해야 합니다. {0}</value>
+    <comment>{0} will be replaced by a link "learn more"</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimerLearnMore" xml:space="preserve">
+    <value>자세한 정보</value>
+    <comment>learn more link for OC_WhatsAppMessageTemplateDisclaimer</comment>
+  </data>
+  <data name="MessageTemplateFeatureName" xml:space="preserve">
+    <value>메시지 템플릿</value>
+    <comment>This should be the same as what we show in the sitemap</comment>
+  </data>
+  <data name="AutomatedMessageRequiredFieldNotFilled" xml:space="preserve">
+    <value>필수 필드를 입력해야 합니다.</value>
+    <comment>Shown in banner when required fields are not populated</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitor" xml:space="preserve">
+    <value>방문자</value>
+    <comment>Used when user name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleLiveWorkStream" xml:space="preserve">
+    <value>라이브 작업 스트림</value>
+    <comment>Used when live work stream name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitorFormatter" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} and {1} should not be changed. They will be replaced by customer name and workstream name respectively. Example, James: WorkStream1</comment>
+  </data>
+  <data name="DefaultFieldsRquiredForMessageTemplate" xml:space="preserve">
+    <value>메시지 템플릿에 기본 언어 및 기본 메시지 텍스트가 필요합니다.</value>
+  </data>
+  <data name="DefaultLocalizationDataNotFoundForMessageTemplate" xml:space="preserve">
+    <value>이 메시지 템플릿에 대한 기본 지역화 데이터를 찾을 수 없습니다.</value>
+  </data>
+  <data name="SavingPrivacyTerms" xml:space="preserve">
+    <value>로드 중...</value>
+    <comment>Shown after user agrees to privacy terms</comment>
+  </data>
+  <data name="ConversationFormReadonlyNotificationText" xml:space="preserve">
+    <value>읽기 전용. 이 레코드의 상태 설명: {0}</value>
+    <comment>{0} will be replaced with statuscode text. Any changes to this will have an impact on msdyn_customersummaryscripts.ts</comment>
+  </data>
+  <data name="OC_IntradayInsights_ConfigTitle" xml:space="preserve">
+    <value>일별 인사이트 구성</value>
+    <comment>Title for Intraday insights configuration</comment>
+  </data>
+  <data name="OC_FormsPro_Button_Text" xml:space="preserve">
+    <value>Dynamics 365 Customer Voice 열기</value>
+  </data>
+  <data name="FbAppNotFound" xml:space="preserve">
+    <value>Facebook 애플리케이션 ID가 없습니다. 다른 ID를 시도하세요.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PrivacyNotFound" xml:space="preserve">
+    <value>채널에 대해 개인정보취급방침을 수락하지 않았습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="CantProvisionFBPage" xml:space="preserve">
+    <value>Facebook 페이지를 프로비전할 수 없습니다. 제공한 모든 정보를 다시 확인한 후 다시 시도하세요.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PreValidationFacebookApplicationCreatePluginFailure" xml:space="preserve">
+    <value>Facebook 애플리케이션을 만드는 동안 예기치 않은 오류가 발생했습니다. 나중에 다시 시도하세요.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageCreatePluginFailure" xml:space="preserve">
+    <value>Facebook 페이지를 만드는 동안 예기치 않은 오류가 발생했습니다. 나중에 다시 시도하세요.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageUpdatePluginFailure" xml:space="preserve">
+    <value>Facebook 페이지를 업데이트하는 동안 예기치 않은 오류가 발생했습니다. 나중에 다시 시도하세요.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ExistingFbPageFound" xml:space="preserve">
+    <value>이 Facebook 페이지를 이미 설정했습니다. 다른 페이지를 입력하고 다시 시도하세요.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ErrorProcessingRequestParameter" xml:space="preserve">
+    <value>요청 매개 변수를 처리하는 중 오류가 발생했습니다. 오류: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="InvalidContextVariable" xml:space="preserve">
+    <value>ContextVariables가 잘못되었습니다. 오류: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="MissingRequestId" xml:space="preserve">
+    <value>RequestId가 없습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingVersion" xml:space="preserve">
+    <value>Version이 잘못되었습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingChannelInstance" xml:space="preserve">
+    <value>ChannelInstance가 없습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingDirection" xml:space="preserve">
+    <value>Direction이 없습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidDirection" xml:space="preserve">
+    <value>Direction이 잘못되었습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingContextVariables" xml:space="preserve">
+    <value>ContextVariables가 없습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingMessageText" xml:space="preserve">
+    <value>MessageText가 없습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingOffsetTime" xml:space="preserve">
+    <value>OffsetTime이 없습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidChannelInstance" xml:space="preserve">
+    <value>채널 인스턴스 페이로드가 잘못되었습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiParameterMissing" xml:space="preserve">
+    <value>{0} 값이 없거나 잘못되었습니다.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays parameter value.</comment>
+  </data>
+  <data name="ChannelApiUnsupportedVersion" xml:space="preserve">
+    <value>ApiVersion {0}이(가) 지원되지 않습니다.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays version number.</comment>
+  </data>
+  <data name="ChannelApiInternalError" xml:space="preserve">
+    <value>내부 오류가 발생했습니다. {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the exception message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationSend" xml:space="preserve">
+    <value>대화가 존재하지 않거나 대화가 종료됩니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiMessageNullSend" xml:space="preserve">
+    <value>메시지 텍스트는 Null이거나 비워 둘 수 없습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationGet" xml:space="preserve">
+    <value>대화가 없습니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationEnd" xml:space="preserve">
+    <value>대화가 존재하지 않거나 대화가 종료됩니다.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Title" xml:space="preserve">
+    <value>대화 강제 닫기</value>
+    <comment>Title of the confirmation window displayed before force close is triggered</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Text" xml:space="preserve">
+    <value>작업 항목을 닫으시겠습니까?</value>
+    <comment>Confirmation text for force close</comment>
+  </data>
+  <data name="ForceClose_Confirmation_OKButtonLabel" xml:space="preserve">
+    <value>계속</value>
+    <comment>Proceed</comment>
+  </data>
+  <data name="NewCase_Label">
+    <value>새 케이스</value>
+    <comment>Label for Create a Case button</comment>
+  </data>
+</root>

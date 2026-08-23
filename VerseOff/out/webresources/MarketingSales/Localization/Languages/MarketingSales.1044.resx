@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>Lukk e-postskjema</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>Endre statusen {0} til fullført og lukk skjemaet</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>Du må velge en kunde.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="Alert_Conv_Act_Currency_Must" xml:space="preserve">
+    <value>Det kreves en valuta. Velg en valuta og prøv på nytt.</value>
+    <comment>Error message displayed to the user on convert activity to opportunity dialog when the user does not supply a value for currency field.</comment>
+  </data>
+  <data name="Alert_Conv_Act_Campaign_Must" xml:space="preserve">
+    <value>Hvis du vil opprette et kampanjesvar, må du velge en kildekampanje.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>Du må lagre endringene før du kan konvertere denne aktiviteten.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Alert_Lead_Company_Must_Be_Supplied" xml:space="preserve">
+    <value>Før du kan konvertere kundeemnet til en forretningsforbindelse, må du legge til informasjon om firmaet i oppføringen for kundeemnet.</value>
+    <comment>Convert response dialog page's alter message if user is starting convert lead process to account without having Lead Company name.</comment>
+  </data>
+  <data name="Alert_Lead_Must_Be_Supplied" xml:space="preserve">
+    <value>Du må angi et kundeemne for dette alternativet.</value>
+    <comment>Convert response dialog page's alter message if user is starting convert lead process without supplying the Lead.</comment>
+  </data>
+  <data name="Alert_Customer_Must_Be_Supplied" xml:space="preserve">
+    <value>Du må velge en kunde. Kunden kan være en forretningsforbindelse eller en kontakt.</value>
+    <comment>Convert response dialog page's alter message if user is trying to create new quote/order or opportunity without supplying the Customer which could be only Account/Contact.</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>OK</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Lead_Disqualify_Lost_LabelText" xml:space="preserve">
+    <value>Tapt</value>
+    <comment>Disqualify a lead as lost label text</comment>
+  </data>
+  <data name="Lead_Disqualify_CannotContact_LabelText" xml:space="preserve">
+    <value>Kan ikke kontakte</value>
+    <comment>Disqualify a lead as cannot contact label text</comment>
+  </data>
+  <data name="Lead_Disqualify_NoLongerInterested_LabelText" xml:space="preserve">
+    <value>Ikke lenger interessert</value>
+    <comment>Disqualify a lead as no longer interested label text</comment>
+  </data>
+  <data name="Lead_Disqualify_Canceled_LabelText" xml:space="preserve">
+    <value>Annullert</value>
+    <comment>Disqualify a lead as canceled label text</comment>
+  </data>
+  <data name="Lead_Disqualify_Lost_ToolTipDescription" xml:space="preserve">
+    <value>Som tapt</value>
+    <comment>Disqualify a lead as lost tooltip</comment>
+  </data>
+  <data name="Lead_Disqualify_CannotContact_ToolTipDescription" xml:space="preserve">
+    <value>Som kan ikke kontakte</value>
+    <comment>Disqualify a lead as cannot contact tooltip</comment>
+  </data>
+  <data name="Lead_Disqualify_NoLongerInterested_ToolTipDescription" xml:space="preserve">
+    <value>Som ikke lenger interessert</value>
+    <comment>Disqualify a lead as no longer interested tooltip</comment>
+  </data>
+  <data name="Lead_Disqualify_Canceled_ToolTipDescription" xml:space="preserve">
+    <value>Som annullert</value>
+    <comment>Disqualify a lead as canceled tooltip</comment>
+  </data>
+  <data name="ErrorMessage_Lead_ReQualify_ProcessNoActiveStage" xml:space="preserve">
+    <value>Aktiv fase er ikke i enheten {0}</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the lead name. Error message when process active stage doesn't belong to entity.</comment>
+  </data>
+  <data name="ErrorMessage_Convert_Lead_lastName" xml:space="preserve">
+    <value>Du må angi etternavn</value>
+    <comment>Convert to lead Error message for last name</comment>
+  </data>
+  <data name="ErrorMessage_Convert_Lead_email" xml:space="preserve">
+    <value>Du må skrive en e-post</value>
+    <comment>Convert to lead Error message for email</comment>
+  </data>
+  <data name="ErrorMessage_No_Lead_Selecteed" xml:space="preserve">
+    <value>Ingen kundeemner er valgt</value>
+    <comment>Select Lead to continue</comment>
+  </data>
+  <data name="ConvertLeadGrid_Description" xml:space="preserve">
+    <value>Konverter valgte kundeemner som kvalifiserte, og opprett følgende oppføringer for hvert:</value>
+    <comment>Description for convert lead options dialog on grid</comment>
+  </data>
+  <data name="ConvertLeadGrid_Header" xml:space="preserve">
+    <value>Kvalifiser kundeemner</value>
+    <comment>Header for convert lead options dialog on grid</comment>
+  </data>
+  <data name="ConvertLead_Description" xml:space="preserve">
+    <value>Konverter dette kundeemnet som kvalifisert, og opprett følgende oppføringer:</value>
+    <comment>Description for convert lead options dialog</comment>
+  </data>
+  <data name="ConvertLead_Header" xml:space="preserve">
+    <value>Kvalifiser kundeemne</value>
+    <comment>Header for convert lead options dialog</comment>
+  </data>
+  <data name="ToastMessage_Lead_Qualify" xml:space="preserve">
+    <value>{0} ble kvalifisert. </value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the lead name. Toast message when lead is qualified and navigated to opportunity.</comment>
+  </data>
+  <data name="ToastMessage_Navigate_Lead_LinkMessage" xml:space="preserve">
+    <value>Gå til {0}</value>
+    <comment>Hyperlink message for the qualified Lead.</comment>
+  </data>
+  <data name="ToastMessage_Lead_Disqualify" xml:space="preserve">
+    <value>{0} ble avskrevet</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the lead name. Toast message when lead is disqualified.</comment>
+  </data>
+  <data name="COPY_COMPETITORS" xml:space="preserve">
+    <value>Kopierer {competitor}-informasjon</value>
+    <comment>Copying Competitors Information step in StepError execution flow</comment>
+  </data>
+  <data name="COPY_LEAD_CONNECTIONS" xml:space="preserve">
+    <value>Kopierer {lead}-tilkoblinger</value>
+    <comment>Copying Lead Connections step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_ACCOUNT" xml:space="preserve">
+    <value>Oppretter {account}</value>
+    <comment>Creating Account step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_CONTACT" xml:space="preserve">
+    <value>Oppretter {contact}</value>
+    <comment>Creating Contact step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_OPPORTUNITY" xml:space="preserve">
+    <value>Oppretter {opportunity}</value>
+    <comment>Creating Opportunity step in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_ACCOUNT" xml:space="preserve">
+    <value>Oppdaterer {account}-informasjon</value>
+    <comment>Updating Account Information step in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_LEAD_STATUSCODE" xml:space="preserve">
+    <value>Oppdaterer {lead}-statuskode</value>
+    <comment>Updating Lead StatusCode step in StepError execution flow</comment>
+  </data>
+  <data name="VALIDATING_BPF" xml:space="preserve">
+    <value>Validerer forretningsprosessflyt</value>
+    <comment>Validating BPF step in StepError execution flow</comment>
+  </data>
+  <data name="VALIDATING_LEAD" xml:space="preserve">
+    <value>Henter {lead}-informasjon</value>
+    <comment>Retrieving Lead Information in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_PARENTACCOUNT" xml:space="preserve">
+    <value>Oppdaterer eksisterende informasjon om {account}</value>
+    <comment>Updating parent account Information step in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_PARENTCONTACT" xml:space="preserve">
+    <value>Oppdaterer eksisterende informasjon om {contact}</value>
+    <comment>Updating parent contact Information step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_OPPORTUNITIES" xml:space="preserve">
+    <value>Oppretter flere {opportunity}</value>
+    <comment>Creating multiple Opportunities step in StepError execution flow</comment>
+  </data>
+  <data name="RelatedEntities_Fetch_Fail_Message" xml:space="preserve">
+    <value> "Kan ikke initializeFrom for forretningsforbindelses og kontaktenheter."</value>
+    <comment>Failure alert for lead's realated entities account and contact 'initialiseFrom' Failed.</comment>
+  </data>
+  <data name="RequiredFieldsNotFilledError" xml:space="preserve">
+    <value>Sørg for at alle obligatoriske felter er fylt ut og har gyldig informasjon.</value>
+    <comment>Message shown when required fields are not filled or form data is invalid and not resolved</comment>
+  </data>
+  <data name="RecordsSelectedExceededLimitError" xml:space="preserve">
+    <value>Antall valgte oppføringer overskred grensen for samtidige forespørsler på 52. Velg færre enn 52 oppføringer, og prøv på nytt.</value>
+    <comment>Message shown when selected records exceeded concurrent requests limit of 52 during disqualify or qualify from lead homepage grid.</comment>
+  </data>
+  <data name="OpportunityDuplicateRecordCreationErrorEntityName" xml:space="preserve">
+    <value>Salgsmulighet</value>
+    <comment>Concatinates oppotunity name to Qualify lead duplicate error message.</comment>
+  </data>
+  <data name="LeadDuplicateRecordCreationErrorEntityName" xml:space="preserve">
+    <value>Potensiell kunde</value>
+    <comment>Concatinates Lead name to Qualify lead duplicate error message.</comment>
+  </data>
+  <data name="LeadDuplicateRecordCreationErrorOpportunityDescription" xml:space="preserve">
+    <value>Salgsmulighetsoppføringen ble ikke opprettet eller oppdatert fordi det allerede finnes en kopi av den nåværende oppføringen.</value>
+    <comment>Opportunity record was not Created or Updated because a duplicate of the current record already exists.</comment>
+  </data>
+  <data name="LeadDuplicateRecordCreationErrorOpportunityTitle" xml:space="preserve">
+    <value>En oppføring ble ikke opprettet eller oppdatert fordi det allerede finnes en kopi av den nåværende oppføringen.</value>
+    <comment>A record was not created or updated because a duplicate of the current record already exists.</comment>
+  </data>
+  <data name="QualifyLabel" xml:space="preserve">
+    <value>Kvalifiser</value>
+    <comment>Qualify button label.</comment>
+  </data>
+  <data name="FinishLabel" xml:space="preserve">
+    <value>Fullfør</value>
+    <comment>Finish button label.</comment>
+  </data>
+  <data name="QualifyConfirmationDialogTitle" xml:space="preserve">
+    <value>Vil du kvalifisere potensiell kunde?</value>
+    <comment>Qualify confirmation dialog's title.</comment>
+  </data>
+  <data name="QualifyConfirmationDialogContext" xml:space="preserve">
+    <value>Du kvalifiserer denne potensielle kunden uten å opprette en salgsmulighet for den.</value>
+    <comment>Qualify confirmation dialog's content.</comment>
+  </data>
+  <data name="CancelLabel" xml:space="preserve">
+    <value>Avbryt</value>
+    <comment>Cancel button label.</comment>
+  </data>
+  <data name="InvalidaOpportunityForm_error_message" xml:space="preserve">
+    <value>Noe gikk galt. Prøv på nytt, eller kontakt administratoren hvis det vedvarer.</value>
+    <comment>Toast message when new lead qualification's add/edit opportunity form is invalid</comment>
+  </data>
+</root>

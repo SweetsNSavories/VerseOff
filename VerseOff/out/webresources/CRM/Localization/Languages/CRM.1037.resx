@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DynamicProperty_OverrideDialog_SubTitle" xml:space="preserve">
+    <value>האם ברצונך לעקוף מאפיין זה?</value>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Text" xml:space="preserve">
+    <value>דבר זה יאפשר לך לבצע שינויים בגירסה של מאפיין זה שעברה בירושה. הגירסה המקורית של מאפיין זה שעברה בירושה תישמר גם היא.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to override the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Title" xml:space="preserve">
+    <value>אישור עקיפה</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_SubTitle" xml:space="preserve">
+    <value>האם ברצונך להחליף מאפיין זה?</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Text" xml:space="preserve">
+    <value>דבר זה יאפשר לך לבצע שינויים נוספים בגירסה של מאפיין זה שפורסמה קודם לכן. הגירסה הקודמת של מאפיין זה תישמר גם היא.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to overwrite the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Title" xml:space="preserve">
+    <value>אישור החלפה</value>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_39" xml:space="preserve">
+    <value>‏‏הזן ערך מ- {0} עד {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_9" xml:space="preserve">
+    <value>‏‏עליך להזין מספר שלם בין {0} לבין {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvaluestring.warning" xml:space="preserve">
+    <value>‏‏אורך המחרוזת של ערך ברירת המחדל חייב להיות קטן מהאורך המרבי המותר או שווה לו.</value>
+    <comment>Warning message for Default Value string lenght of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.defaultvalue.warning" xml:space="preserve">
+    <value>‏‏ערך ברירת המחדל חייב להיות גדול מערך המינימום או שווה לו, וקטן מערך המקסימום או שווה לו.</value>
+    <comment>Warning message for Default value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.minvalue.warning" xml:space="preserve">
+    <value>‏‏ערך המינימום לא יכול להיות גדול מערך המקסימום.</value>
+    <comment>Warning message for Minimum value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.optionset.warning" xml:space="preserve">
+    <value>‏‏אין לך אפשרות להגדיר מאפיין של קבוצת אפשרויות למצב נדרש ולקריאה בלבד עד להוספת הפריטים של קבוצת האפשרויות ולציון ערך ברירת מחדל.</value>
+    <comment>Warning message for Dynamic Property of type Option Set.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.readonlyrequired.warning" xml:space="preserve">
+    <value>‏‏עליך לציין ערך ברירת מחדל משום שמאפיין זה נדרש ומוגדר לקריאה בלבד.</value>
+    <comment>Warning message for Default Value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.products.ValidToEarlierThanValidFromDate" xml:space="preserve">
+    <value>‏‏התאריך 'בתוקף עד' אינו יכול לחול לפני התאריך 'בתוקף מ-'.</value>
+    <comment>Error message to display if the valid to date supplied  is earlier than the valid from date.</comment>
+  </data>
+  <data name="Kit_Products_Section_Name" xml:space="preserve">
+    <value>מוצרי ערכות</value>
+    <comment>Kit Products section name in product kit form.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Product_Family_Hierarchy_Label_Value" xml:space="preserve">
+    <value>הירארכיית משפחה</value>
+    <comment>Label text for Product Family Hierarchy Control.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Product_Bundle_Form_Title" xml:space="preserve">
+    <value>חבילה חדשה</value>
+    <comment>Title text for Product Bundle Form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="ProductFamilyQuickCreate.DisplayName" xml:space="preserve">
+    <value>משפחת מוצרים חדשה</value>
+    <comment></comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Kit" xml:space="preserve">
+    <value>ערכה</value>
+    <comment>Singular Name of Product Kit.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Bundle" xml:space="preserve">
+    <value>חבילה</value>
+    <comment>Singular Name of Product Bundle.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Product_Family" xml:space="preserve">
+    <value>משפחת מוצרים</value>
+    <comment>Singular Name of Product Family.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Product" xml:space="preserve">
+    <value>מוצר</value>
+    <comment>Singular Name of Product.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_90" xml:space="preserve">
+    <value>אזהרה:</value>
+    <comment>Label that is prefixed to a warning message.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_91" xml:space="preserve">
+    <value>‏‏לא הוגדר מחירון ברירת מחדל.</value>
+    <comment>Error message that is displayed to the user in the product form when the default price list for the product is not specified.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_12" xml:space="preserve">
+    <value>‏‏תחילה עליך לבחור מוצר.</value>
+    <comment>Error message displayed in the price list form if the user tries to choose the unit without choosing the product.</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_153" xml:space="preserve">
+    <value>‏‏מספר האחוזים עבור שיטת התמחור של אחוז ממחיר מחירון חייב להיות בין {0} לבין {1} אחוז. ציין מספר אחוזים חדש.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent of List". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_157" xml:space="preserve">
+    <value>‏‏מספר ‏‏האחוזים עבור שיטת התמחור של תוספת באחוזים חייב להיות בין {0} לבין {1} אחוז. ציין מספר אחוזים חדש.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Markup". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_161" xml:space="preserve">
+    <value>‏‏מספר האחוזים עבור שיטת התמחור של שולי רווח באחוזים חייב להיות בין {0} לבין {1} אחוזים. ציין מספר אחוזים חדש.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Margin". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_113" xml:space="preserve">
+    <value>‏‏סכום עיגול המחירים עבור הפריטים הסופיים באפשרות עיגול מחירים חייב להיות בין {0} ל- {1}. ציין סכום עיגול מחירים חדש.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Ends in". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_106" xml:space="preserve">
+    <value>‏‏סכום עיגול המחירים עבור הכפולה של אפשרות עיגול המחירים חייב להיות בין {0} לבין {1}. ציין סכום עיגול מחירים חדש.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Multiple of". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifying minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Kit_Products_Form_Title" xml:space="preserve">
+    <value>מוצר ערכה</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Bundle_Product_Form_Value" xml:space="preserve">
+    <value>מוצר חבילה</value>
+    <comment>Bundle Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Kit_Product_Label_Value" xml:space="preserve">
+    <value>ערכה</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>‏‏אירעה שגיאה. חזור לדף הבית ונסה שוב.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>‏‏עליך לבחור רשומה אחת או יותר לפני שתוכל לבצע פעולה זו.‬</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>‏‏אירעה שגיאה. הפעולה הנבחרת לא הושלמה עבור רשומה אחת או יותר.</value>
+    <comment></comment>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleArticle_DialogText" xml:space="preserve">
+    <value>‏‏עליך לבחור מאמר.</value>
+    <comment>select an article to associate.[Category="KnowledgeArticle"]</comment>
+    <ObjectReferences>
+      <ObjectType>9953</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleProduct_DialogText" xml:space="preserve">
+    <value>עליך לבחור מוצר.</value>
+    <comment>select a product to associate.[Category="KnowledgeArticle"]</comment>
+    <ObjectReferences>
+      <ObjectType>9953</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>אין אפשרות לעבד בקשה זו מאחר שלקוח זה אינו מקוון.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Web.products.pricelevel.EndDateEarlierThanStartDate" xml:space="preserve">
+    <value>‏‏תאריך הסיום אינו יכול לחול לפני תאריך ההתחלה.</value>
+    <comment>Error message to display if the end date supplied in the price list form is earlier than the start date.</comment>
+  </data>
+  <data name="Web.Products.UoM.edit.aspx_71" xml:space="preserve">
+    <value>זוהי היחידה הראשית.</value>
+    <comment>Informational message displayed to the user in the primary unit form.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>כותרת אירוע</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>לקוח</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>עדיפות</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>נוצר ב:</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>מעבד...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="Error_Title_0x80042f0a">
+    <value>‏‏שגיאת תפקידי צוות</value>
+    <comment>TeamNotAssignedRoles.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Error_Message_0x80042f0a">
+    <value>‏‏לצוות שנבחר אין הרשאות מספיקות לפעולה זו. הקצה לצוות זה תפקיד אבטחה עם ההרשאות הדרושות ולאחר מכן נסה שוב.</value>
+    <comment>TeamNotAssignedRoles.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Error_Message_0x8003f452">
+    <value>‏‏אין באפשרותך לפתור את אירוע האב מאחר שהוא כולל אירועי צאצא פעילים.‬</value>
+    <comment>Error message that will be shown to user when  cases with active childs cannot be closed.</comment>
+    <ObjectReferences>
+      <ObjectType Singular="case" Plural="cases">112</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Title_0x8003f452">
+    <value>‏‏סגור אירוע צאצא פעיל לפני סגירת אירוע אב.</value>
+    <comment>Cases with active childs cannot be closed[Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="case" Plural="cases">112</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Brand_CRM" xml:space="preserve">
+		<value>Microsoft Dynamics 365</value>
+		<comment>Branding for CRM.</comment>
+	</data>
+  <data name="Error_Title_0x80048306">
+    <value>‏‏הגישה נדחתה</value>
+    <comment>IDS_ACCESSDENIED</comment>
+  </data>
+  <data name="Error_Message_0x80048306">
+    <value>‏‏אין לך די הרשאות לגישה אל אובייקט {0} או לביצוע הפעולה המבוקשת. לקבלת מידע נוסף, פנה למנהל המערכת של {0}.</value>
+    <comment>Message displayed to a user when they have insufficient privileges to perform an action.</comment>
+  </data>
+  <data name="Web.cs.socialprofile.saveNotSupported">
+    <value>יצירה או שינוי של פרופיל חברתי דרך ממשק משתמש אינם מותרים</value>
+    <comment>Error message for saving changes in Social Profile through UI. [Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="SocialProfile" Plural="SocialProfiles">99</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.cs.createNotSupported" xml:space="preserve">
+      <value>יצירה או שינוי של {0} דרך ממשק המשתמש אינם מותרים</value>
+      <comment>Error message for saving changes through UI for unsupported entities. {0} is the name of the entity. [Category="Servicing"]</comment>
+    </data>
+  <data name="SocialActivity_EntityName" xml:space="preserve">
+      <value>פעילות חברתית</value>
+      <comment>Localized display name for Social Activity Entity</comment>
+    </data>
+  <data name="SocialProfile_EntityName" xml:space="preserve">
+      <value>פרופיל חברתי</value>
+      <comment>Localized display name for Social Profile Entity</comment>
+    </data>
+  <data name="Error_Message_Generic_Error_Occured" xml:space="preserve">
+		<value>‏‏אירעה שגיאה. נסה שוב לבצע את הפעולה. אם הבעיה נמשכת, פנה למנהל המערכת של הארגון.</value>
+		<comment>Generic error message for bad response</comment>
+	</data>
+  <data name="Error_Title_0x80040265">
+    <value>‏‏שגיאת תהליך עסקי</value>
+    <comment>IsvAborted[Category="Plug-in/Workflow Assembly Registration Tool"]</comment>
+  </data>
+  <data name="Error_Message_0x80040265">
+    <value>הפעולה בוטלה בשל קוד ISV.</value>
+    <comment>IsvAborted[Category="Plug-in/Workflow Assembly Registration Tool"].</comment>
+  </data>
+  <data name="OCV.Feedback.DisclamerText" xml:space="preserve">
+		<value>אל תכלול מידע אישי או רגיש. אם תספק את כתובת הדואר האלקטרוני שלך, Microsoft עשויה ליצור איתך קשר בנוגע למשוב שלך.</value>
+		<comment>Disclaimer text for OCV</comment>
+	</data>
+  <data name="IFRAME.OCV.Widget.Title" xml:space="preserve">
+		<value>תוכן משוב</value>
+		<comment>Title text for OCV iframe</comment>
+	</data>
+  <data name="Merge_success_message" xml:space="preserve">
+        <value>‏‏הרשומות שנבחרו ממוזגות והפעלת הרשומה הכפופה בוטלה.</value>
+        <comment>When merge operation is successful this message is displayed.</comment>
+	</data>
+  <data name="UpdateRecod_success_message" xml:space="preserve">
+        <value>הרשומה שנבחרה עודכנה בהצלחה.</value>
+        <comment>When update record operation is successful this message is displayed.</comment>
+    </data>
+  <data name="merge_loading_message" xml:space="preserve">
+    <value>ממזג רשומות</value>
+    <comment>Label to show progress indicator</comment>
+   </data>
+  <data name="back_button_label" xml:space="preserve">
+    <value>הקודם‬</value>
+    <comment>Label to back button in merge dialog</comment>
+   </data>
+  <data name="share_chart_title" xml:space="preserve">
+    <value>שיתוף תרשים משתמש</value>
+   </data>
+  <data name="share_dashboard_title" xml:space="preserve">
+    <value>שיתוף לוח מחוונים של משתמש</value>
+   </data>
+  <data name="import_chart_header" xml:space="preserve">
+    <value>ייבוא תרשים</value>
+   </data>
+  <data name="import_chart_labelVal" xml:space="preserve">
+    <value>בחירת קובץ הגדרת דוח (‎.xml) כדי לייבא אותו.</value>
+   </data>
+  <data name="import_error_invalid" xml:space="preserve">
+    <value>קובץ ה-XML אינו תואם את סכימת התרשים</value>
+   </data>
+  <data name="import_error_typeHeader" xml:space="preserve">
+    <value>קובץ לא תקין</value>
+   </data>
+  <data name="import_error_filetype" xml:space="preserve">
+    <value>אינו סוג קובץ חוקי</value>
+   </data>
+  <data name="import_error_parameters" xml:space="preserve">
+    <value>‏‏פרמטרים לא חוקיים‬</value>
+   </data>
+  <data name="import_error_nodesHeader" xml:space="preserve">
+    <value>הצמתים הנדרשים חסרים</value>
+   </data>
+  <data name="import_error_nodes" xml:space="preserve">
+    <value>לא ניתן להביא את הצמתים הנדרשים</value>
+   </data>
+  <data name="import_duplicate_suffix" xml:space="preserve">
+    <value> - עותק</value>
+   </data>
+  <data name="import_duplicate_found" xml:space="preserve">
+    <value> מתוך </value>
+   </data>
+  <data name="import_missing_child" xml:space="preserve">
+    <value>חסרים צמתי צאצא</value>
+   </data>
+  <data name="import_missing_parent" xml:space="preserve">
+    <value>חסרים צמתי אב</value>
+   </data>
+  <data name="accountsLabel" xml:space="preserve">
+    <value>מיזוג חשבונות</value>
+    <comment>Label merge dialog header for account entity</comment>
+   </data>
+  <data name="contactsLabel" xml:space="preserve">
+    <value>מיזוג אנשי קשר</value>
+    <comment>Label merge dialog header for contacts entity</comment>
+   </data>
+  <data name="leadsLabel" xml:space="preserve">
+    <value>מיזוג הפניות</value>
+    <comment>Label merge dialog header for lead entity</comment>
+   </data>
+  <data name="merge_records_dialog_title" xml:space="preserve">
+    <value>מיזוג {0}</value>
+    <comment>Label for merge dialog. {0} contains the entity display name (for example, Merge Accounts, Merge Contacts, etc.)</comment>
+   </data>
+  <data name="async_merge_success_message" xml:space="preserve">
+    <value>הרשומות שנבחרו יתמזגו ברקע במהלך עבודתך.</value>
+    <comment>Success message when async request is completed</comment>
+   </data>
+  <data name="SurveyTitle" xml:space="preserve">
+        <value>שלח משוב אל Microsoft</value>
+    </data>
+  <data name="SurveyRatingTitle" xml:space="preserve">
+        <value>עד כמה אתה מרוצה מתכונה זו?</value>
+    </data>
+  <data name="SurveyCommentTitle" xml:space="preserve">
+        <value>איזה משוב נוסף ברצונך לשתף איתנו?</value>
+    </data>
+  <data name="SurveyCommentsPlaceholder" xml:space="preserve">
+        <value>יש לספק פרטים מבלי לכלול מידע אישי כלשהו</value>
+    </data>
+  <data name="SubmittingSurvey" xml:space="preserve">
+        <value>שולח משוב</value>
+    </data>
+  <data name="VerySatisfied" xml:space="preserve">
+        <value>מרוצה מאוד</value>
+    </data>
+  <data name="Satisfied" xml:space="preserve">
+        <value>מרוצה במידה מסוימת</value>
+    </data>
+  <data name="Dissatisfied" xml:space="preserve">
+        <value>לא מרוצה במידה מסוימת</value>
+    </data>
+  <data name="VeryDissatisfied" xml:space="preserve">
+        <value>מאוד לא מרוצה</value>
+    </data>
+  <data name="Submit" xml:space="preserve">
+        <value>שליחה</value>
+    </data>
+  <data name="Cancel" xml:space="preserve">
+        <value>ביטול</value>
+    </data>
+  <data name="PrivacyStatement" xml:space="preserve">
+        <value>המשוב שלך משמש כדי לשפר את המוצרים והשירותים של Microsoft. מנהלי ה-IT בארגון יוכלו להציג את נתוני המשוב ולנהל אותם.</value>
+    </data>
+  <data name="PrivacyStatementLink" xml:space="preserve">
+        <value>הצהרת הפרטיות.</value>
+    </data>
+  <data name="SurveySuccessMessage" xml:space="preserve">
+        <value>אנו מודים לך על המשוב.</value>
+    </data>
+  <data name="SurveyFailureMessage" xml:space="preserve">
+        <value>משהו השתבש במשוב. נסה שוב.</value>
+    </data>
+</root>

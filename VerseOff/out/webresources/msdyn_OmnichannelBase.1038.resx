@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OC_LimitQuestions_AlertDialogConfirmButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OC_RecordPermissions_AlertDialogText" xml:space="preserve">
+    <value>Nincs engedélye a művelet végrehajtására.</value>
+  </data>
+  <data name="OC_LimitQuestions_AlertDialogText" xml:space="preserve">
+    <value>Nem vehet fel ötnél több kérdést. Töröljön néhány kérdést, ha továbbiakat szeretne felvenni.</value>
+  </data>
+  <data name="OC_PickAuthFailed" xml:space="preserve">
+    <value>Hitelesítési hiba miatt nem sikerült a kiválasztás. Próbáld újra később. Munkaelem: {0}</value>
+  </data>
+  <data name="OC_PickedByAnotherAgent" xml:space="preserve">
+    <value>A kiválasztás nem sikerült. Egy másik ügynök választotta ki az elemet. Munkaelem: {0}</value>
+  </data>
+  <data name="OC_PickInternalError" xml:space="preserve">
+    <value>A kiválasztás nem sikerült. Próbálja újra kiválasztani az elemet. Munkaelem: {0}</value>
+  </data>
+  <data name="OC_PickMaxCapacityReached" xml:space="preserve">
+    <value>A kiválasztás nem sikerült. Elérte a maximális kapacitást. Munkaelem: {0}</value>
+  </data>
+  <data name="OC_PickMaxConcurrencyReached" xml:space="preserve">
+    <value>A kiválasztás nem sikerült. Elérte a maximális párhuzamosságot. Munkaelem: {0}</value>
+  </data>
+  <data name="OC_PickNotAvailable" xml:space="preserve">
+    <value>A kiválasztás nem sikerült. Az elem nem érhető el. Munkaelem: {0}</value>
+  </data>
+  <data name="OC_PickPresenceError" xml:space="preserve">
+    <value>A kiválasztás nem sikerült az Ön jelenléti állapota miatt. Munkaelem: {0}</value>
+  </data>
+  <data name="OC_PickSuccess" xml:space="preserve">
+    <value>Megtörtént a munkaelem kiválasztása. Munkaelem: {0}</value>
+  </data>
+  <data name="OC_OpenFormFail" xml:space="preserve">
+    <value>Nem sikerült megnyitni az űrlapot. Próbálja újra megnyitni az űrlapot. Ha a probléma továbbra is fennáll, forduljon a rendszergazdához.</value>
+  </data>
+  <data name="OC_OpenSessionFail" xml:space="preserve">
+    <value>Nem sikerült megnyitni a munkamenetet. Próbálja újra megnyitni a munkamenetet. Ha a probléma továbbra is fennáll, forduljon a rendszergazdához.</value>
+  </data>
+  <data name="OC_InputTimeFormat" xml:space="preserve">
+    <value>Adja meg az időpontot a megfelelő, 24 órás formátumban (ÓÓ:pp).</value>
+  </data>
+  <data name="OC_InputTimesDifferenceValidation" xml:space="preserve">
+    <value>A befejezési idő nem állítható a kezdési idő előtti időpontra, és nem lehet közelebb ahhoz {0} percnél.</value>
+  </data>
+  <data name="OC_SendMessageToConversationSuccessMessage" xml:space="preserve">
+    <value>Kész! Ez az üzenet el lett küldve a beszélgetésbe.</value>
+  </data>
+  <data name="OC_SendMessageToConversationFailureMessage" xml:space="preserve">
+    <value>Hiba történt. Próbáljon meg újra üzenetet küldeni a beszélgetésbe.</value>
+  </data>
+  <data name="OC_SupervisorOpenRecord" xml:space="preserve">
+    <value>A beszélgetési rekordok csak megtekinthetők, és nem nyithatók meg.</value>
+  </data>
+  <data name="OC_LinkToConversationSuccessMessage" xml:space="preserve">
+    <value>Kész. A(z) {0} hozzá lett kapcsolva a beszélgetéshez.</value>
+  </data>
+  <data name="OC_LinkToConversationFailureMessage" xml:space="preserve">
+    <value>Hiba történt. Próbálja újra hozzákapcsolni a beszélgetéshez.</value>
+  </data>
+  <data name="OC_LinkToConversationUpdatedMessage" xml:space="preserve">
+    <value>Frissítve. Ez a(z) {0} van hozzákapcsolva a beszélgetéshez a korábbi {0} helyett.</value>
+  </data>
+  <data name="OC_Presence_Available" xml:space="preserve">
+    <value>Elérhető</value>
+  </data>
+  <data name="OC_Presence_Busy" xml:space="preserve">
+    <value>Elfoglalt</value>
+  </data>
+  <data name="OC_Presence_DoNotDisturb" xml:space="preserve">
+    <value>Ne zavarjanak</value>
+  </data>
+  <data name="OC_Presence_Away" xml:space="preserve">
+    <value>Távollevőnek tűnik</value>
+  </data>
+  <data name="OC_Presence_Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="MaskingRule.LimitReached" xml:space="preserve">
+    <value>Legfeljebb {0} maszkolási szabály hozható létre. Töröljön néhány szabályt, hogy összesen {0} legyen.</value>
+  </data>
+  <data name="MaskingRule.PluginError" xml:space="preserve">
+    <value>Hiba történt a PreValidationMaskingRuleLimitPlugin beépülő modulban.</value>
+  </data>
+  <data name="MaskingRule.RegexException.InvalidEscape" xml:space="preserve">
+    <value>Szintaktikai hiba: Érvénytelen reguláris kifejezés: /{0}/: Érvénytelen feloldókarakter</value>
+  </data>
+  <data name="MaskingRule.RegexException.EndOfPattern" xml:space="preserve">
+    <value>Szintaktikai hiba: Érvénytelen reguláris kifejezés: /{0}/: \ a minta végén</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedCharacterClass" xml:space="preserve">
+    <value>Szintaktikai hiba: Érvénytelen reguláris kifejezés: /{0}/: Lezáratlan karakterosztály</value>
+  </data>
+  <data name="MaskingRule.RegexException.IncompleteQuantifier" xml:space="preserve">
+    <value>Szintaktikai hiba: Érvénytelen reguláris kifejezés: /{0}/: Hiányos mennyiségjelző</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedGroup" xml:space="preserve">
+    <value>Szintaktikai hiba: Érvénytelen reguláris kifejezés: /{0}/: Lezáratlan csoport</value>
+  </data>
+  <data name="MaskingRule.RegexException.LoneQuantifierBrackets" xml:space="preserve">
+    <value>Szintaktikai hiba: Érvénytelen reguláris kifejezés: /{0}/: Magányos mennyiségjelző-zárójel</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnmatchedParen" xml:space="preserve">
+    <value>Szintaktikai hiba: Érvénytelen reguláris kifejezés: /{0}/: Pár nélküli „)”</value>
+  </data>
+  <data name="MaskingRule.RegexException.NothingToRepeat" xml:space="preserve">
+    <value>Szintaktikai hiba: Érvénytelen reguláris kifejezés: /{0}/: Nincs, ami ismétlődjön</value>
+  </data>
+  <data name="MaskingRule.RegexException.Timeout" xml:space="preserve">
+    <value>TimeoutError: a reguláris kifejezés ellenőrzése túl sokáig tartott: /{0}/: {1} ms után megszakadt.</value>
+  </data>
+  <data name="MaskingRule.MaskingInProgress" xml:space="preserve">
+    <value>Tesztelési adatok maszkolása reguláris kifejezéssel.</value>
+  </data>
+  <data name="SentimentAnalysis.WrongName" xml:space="preserve">
+    <value>A rekordnévnek a következőnek kell lennie: {0}.</value>
+  </data>
+  <data name="SentimentAnalysis.DeleteNotAllowed" xml:space="preserve">
+    <value>A rekord törlése nem engedélyezett.</value>
+  </data>
+  <data name="Entity.OnlyOneAllowed" xml:space="preserve">
+    <value>Csak egy ilyen típusú rekord engedélyezett.</value>
+  </data>
+  <data name="Entity.DeleteNotAllowed" xml:space="preserve">
+    <value>A rekord törlése nem engedélyezett.</value>
+  </data>
+  <data name="DefaultQueue.DeleteNotAllowed" xml:space="preserve">
+    <value>A DefaultQueue nem törölhető, mert a feldolgozási sor írásvédett.</value>
+  </data>
+  <data name="DefaultQueue.UpdateNotAllowed" xml:space="preserve">
+    <value>A DefaultQueue nem szerkeszthető, mert a feldolgozási sor írásvédett.</value>
+  </data>
+  <data name="Queue.IncorrectEntityError" xml:space="preserve">
+    <value>Beépülő modul regisztrációs hibája: Az entitás logikai neve nem Queue.</value>
+  </data>
+  <data name="Queue.QueueTypeUpdateError" xml:space="preserve">
+    <value>A feldolgozási sor típusa nem frissíthető.</value>
+  </data>
+  <data name="Queue.NonEntityQueueSelected" xml:space="preserve">
+    <value>Nem hozható létre az átirányítási szabályelem, mert a kijelölt feldolgozási sor nem entitás típusú. Az átirányításhoz entitás típusú feldolgozási sor szükséges.</value>
+  </data>
+  <data name="RoutingRuleItem.NonEntityQueueSelected" xml:space="preserve">
+    <value>Nem lehet felvenni a rekordot a kijelölt feldolgozási sorba, mert a feldolgozási sor nem entitás típusú. Válasszon egy entitás típusú feldolgozási sort, és próbálja meg újra.</value>
+  </data>
+  <data name="OC_Refresh_Grid" xml:space="preserve">
+    <value>A rekord nem helyezhető át, mert rács rendezési módban van. Frissítse a rácsot, és próbálkozzon újra!</value>
+  </data>
+  <data name="GeoLocationProvider.IncorrectEntityError" xml:space="preserve">
+    <value>Beépülő modul regisztrációs hibája: Az entitás logikai neve nem GeoLocationProvider.</value>
+  </data>
+  <data name="GeoLocationProvider.PluginError" xml:space="preserve">
+    <value>Hiba történt a GeoLocationProviderPlugIn beépülő modulban.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelsNotSupported" xml:space="preserve">
+    <value>Az entitáscsatornák nem támogatottak ebben a kiadásban. További információkért tekintse meg az információs fájlt.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelTypeNotSupported" xml:space="preserve">
+    <value>Az entitáscsatorna nem támogatott ebben a kiadásban. Válasszon más csatornatípusokat. További információkért tekintse meg az információs fájlt.</value>
+  </data>
+  <data name="EntityRouting.EntityWorkStreamsNotSupported" xml:space="preserve">
+    <value>Az entitás-munkafolyamok nem támogatottak ebben a kiadásban. További információkért tekintse meg az információs fájlt.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForDSF" xml:space="preserve">
+    <value>Az Omnicsatorna-konfiguráció módosításai legfeljebb 15 perc múlva életbe lépnek.</value>
+  </data>
+  <data name="OC_CaseRoutingFormNotificationMessage" xml:space="preserve">
+    <value>Ebben a kiadásban csak az esetek átirányítása támogatott. A jövőbeli kiadás más entitásrekordokat is támogatni fog.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForRoutingSolutionDep" xml:space="preserve">
+    <value>Telepítenie kell az Útválasztási szabályok – Előzetes verzió megoldást az Esetentitás útválasztásának használatához. További információ: {0}</value>
+  </data>
+  <data name="OC_Preview_Message" xml:space="preserve">
+    <value>A szolgáltatás engedélyezésével elfogadja, hogy ez a szolgáltatás előzetes verzióként érhető el, és elfogadja a következőt: {0}. {1}</value>
+    <comment>Template Preview Text for all features</comment>
+  </data>
+  <data name="OC_Preview_Link_Label" xml:space="preserve">
+    <value>Előzetes verzió feltételei</value>
+    <comment>Preview Terms label to point to the relevant Preview Terms</comment>
+  </data>
+  <data name="OC_LearnMore_Link_Label" xml:space="preserve">
+    <value>További információk</value>
+    <comment>Hyperlink label to point to the relevant feature documentation</comment>
+  </data>
+  <data name="AutomaticQueueName" xml:space="preserve">
+    <value>Automatikus elosztási sor</value>
+  </data>
+  <data name="AutomaticQueueSelectionRecommendation" xml:space="preserve">
+    <value>Válassza ki, melyik feldolgozási sort használja a rendszer a munkaelemek automatikus elosztásához és ügynökökhöz való hozzárendeléséhez.</value>
+  </data>
+  <data name="ConfigureRoutingRulesAtERCNotification" xml:space="preserve">
+    <value>Az Entitásrekordok munkafolyamok átirányítási szabályai csatorna szinten vannak konfigurálva. A konfiguráláshoz nyissa meg a Csatornák &gt; Entitásrekordok &gt; {0} &gt; Átirányítási szabályok oldalt.</value>
+  </data>
+  <data name="isOmnichannelQueueGuidanceNotification" xml:space="preserve">
+    <value>Az Igen érték beállításával engedélyezheti a feldolgozási sor használatát az Omnicsatorna automatikus munkaelosztásához. További információ: {0}</value>
+  </data>
+  <data name="ManualQueueName" xml:space="preserve">
+    <value>Manuális feldolgozási sor</value>
+  </data>
+  <data name="ManualQueueSelectionRecommendation" xml:space="preserve">
+    <value>Válassza ki az automatikus munkaelosztáshoz használandó feldolgozási sort, melynek segítségével a rendszer automatikusan hozzárendeli az entitásrekordokat az ügynökökhöz.</value>
+  </data>
+  <data name="ERCDeletionWarningMessage" xml:space="preserve">
+    <value>A(z) {0} rekord törlésével letiltja az entitásrekordok átirányítását a(z) {1} entitásra vonatkozóan. Biztosan törölni szeretné?</value>
+  </data>
+  <data name="InstallRoutingRuleForERCNotification" xml:space="preserve">
+    <value>Az entitásrekordok átirányításának használatához telepítenie kell az Átirányítási szabályok megoldást. További információ: {0}</value>
+  </data>
+  <data name="EntityRoutingPlugins.GenericError" xml:space="preserve">
+    <value>Nem sikerült elvégezni a műveletet egy hiba miatt. Később próbálja meg újra. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási csoportjához.</value>
+  </data>
+  <data name="EntityRoutingPlugins.CreateError" xml:space="preserve">
+    <value>Nem sikerült létrehozni a következőt: {0}. Később próbálja meg újra. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási csoportjához.</value>
+  </data>
+  <data name="EntityRoutingPlugins.SaveError" xml:space="preserve">
+    <value>Nem sikerült menteni a következőt: {0}. Később próbálja meg újra. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási csoportjához.</value>
+  </data>
+  <data name="EntityRoutingPlugins.DeleteError" xml:space="preserve">
+    <value>Nem sikerült törölni a következőt: {0}. Később próbálja meg újra. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási csoportjához.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityMissing" xml:space="preserve">
+    <value>Az entitásmező üres. Válassza ki az entitásmező értékét, és próbálja meg újra.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityNotRequired" xml:space="preserve">
+    <value>Az entitásmezőnek van értéke. Hagyja üresen az entitásmezőt, és próbálja meg újra.</value>
+  </data>
+  <data name="EntityRoutingPlugins.BothEntityConfigurationsNotRequired" xml:space="preserve">
+    <value>Mindkét entitáskonfigurációs mezőnek van értéke. Hagyja üresen az egyik entitáskonfigurációs mezőt, és próbálkozzon újra.</value>
+    <comment>Liveworkstream has ercId and mercId fields, and only one can have value</comment>
+  </data>
+  <data name="EntityRoutingPlugins.DefaultWorkStreamName" xml:space="preserve">
+    <value>{0} munkafolyam</value>
+  </data>
+  <data name="EntityRoutingPlugins.FlowConfigurationError" xml:space="preserve">
+    <value>A művelet nem sikerült, mert helytelen konfiguráció van az Entitásrekordok elosztási folyamatában. Ellenőrizze, hogy a(z) {0} nem lett-e törölve vagy átnevezve.</value>
+  </data>
+  <data name="EntityRoutingPlugins.TroubleshootingLearnMore" xml:space="preserve">
+    <value>További információkért tekintse meg az Omnicsatorna hibaelhárítása témakört – {0}</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>Megerősítés</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="OC_IncidentQueueItemWarningNessage" xml:space="preserve">
+    <value>Ez a rekord átkerült az Omnicsatorna feldolgozási sorba, és itt már nem lehet megnézni. Ha meg szeretné tekinteni, nyissa meg a rekordot az Omnicsatorna irányítópultjáról.</value>
+  </data>
+  <data name="OC_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsoft adatvédelmi nyilatkozata</value>
+  </data>
+  <data name="OC_ChannelPreviewDisclaimer" xml:space="preserve">
+    <value>A csatorna használatával elfogadja, hogy ez a szolgáltatás előzetes verzióként érhető el, és elfogadja az Előzetes verzió feltételeit.</value>
+  </data>
+  <data name="OC_SeePreviewTerms" xml:space="preserve">
+    <value>Lásd az Előzetes verzió feltételeit</value>
+  </data>
+  <data name="OC_ThirdPartyChannelPrivacyDisclaimer" xml:space="preserve">
+    <value>A csatorna engedélyezésével beleegyezik abba, hogy az adatait külső felek rendszereivel megosszuk, és hogy az adatai az Ön szervezete megfelelőségi és földrajzi határain túlra is eljussanak (ez a Government Cloud-környezetekre is érvényes). További információ: {0}.</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_FeatureDocumentation" xml:space="preserve">
+    <value>valós idejű fordítás</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>A Microsoft adatvédelmi nyilatkozata</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_Text" xml:space="preserve">
+    <value>A funkció engedélyezésével elfogadja, hogy az adatai az Ön szervezete megfelelőségi és földrajzi határain kívülre kerülhetnek. Ez a Government Cloud-környezetekre is érvényes. További információk: {0} és {1}.</value>
+    <comment>DO NOT CHANGE {0} and {1}, as they will be replaced with OC_LanguageTranslation_Disclaimer_FeatureDocumentation and OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement respectively.</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_DocumentFeature_Text" xml:space="preserve">
+    <value>Kattintson ide a szolgáltatás dokumentációjáért</value>
+    <comment>Indicates this is the link for feature documentation</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Link" xml:space="preserve">
+    <value>webes erőforrás konfigurálása</value>
+    <comment>  This is the link for real time translation webresource documentation </comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Text" xml:space="preserve">
+    <value>Az URL előállításához konfiguráljon egy webes erőforrást. Azután másolja és illessze be az alábbi mezőbe a kapott URL-címet. További információk: {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder "0" will be replaced by a OC_LanguageTranslation_Webresource_Disclaimer_Link. Link text is "here".</comment>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_Text" xml:space="preserve">
+    <value>A szolgáltatás engedélyezésével elfogadja, hogy ez a szolgáltatás előzetes verzióként érhető el, és elfogadja a következőt: </value>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_LinkText" xml:space="preserve">
+    <value>Előzetes verzió feltételei</value>
+  </data>
+  <data name="LanguageTranslation_Invalid_webresource_url" xml:space="preserve">
+    <value>A megadott URL-cím nem egyezik meg a webes erőforrás címével. Másolja be újra a webes erőforrás URL-címét.</value>
+  </data>
+  <data name="DeprecationBanner" xml:space="preserve">
+    <value>2022 júliusától ez az alkalmazás már nem lesz használható. A használat folytatásához telepítse át munkafolyamatait az Omnicsatorna felügyeleti központba a Customer Service Omnicsatorna segítségével.</value>
+  </data>
+  <data name="OC_Deprecation_Title_Text" xml:space="preserve">
+    <value>Az Omnicsatorna-felügyelet már nem támogatott</value>
+  </data>
+  <data name="OC_Deprecation_Description_Text" xml:space="preserve">
+    <value>Az Omnicsatorna-felügyelet alkalmazás támogatása 2022. április 30-án megszűnt. A Customer Service konfigurálásához használja a Customer Service felügyeleti központ alkalmazást. Kérjük, haladéktalanul telepítse át az összes munkafolyam meghatározását az Omnicsatorna-felügyelet alkalmazásból a Customer Service felügyeleti központ alkalmazásba. {0}</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More" xml:space="preserve">
+    <value>További információ</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More_Aria_Label" xml:space="preserve">
+    <value>További információ az Omnicsatorna-felügyelet elavulásáról</value>
+  </data>
+  <data name="OC_Deprecation_Acknowledge_Checkbox_Label" xml:space="preserve">
+    <value>Tudomásul veszem, hogy az Omnicsatorna-felügyelet alkalmazás már nem támogatott.</value>
+  </data>
+  <data name="OC_Deprecation_Redirect_Button_Text" xml:space="preserve">
+    <value>Customer Service felügyeleti központ megnyitása</value>
+  </data>
+  <data name="OC_Deprecation_Dismiss_Button_Text" xml:space="preserve">
+    <value>Folytatás az Omnicsatorna-felügyeletben</value>
+  </data>
+  <data name="PostConversationSurveyMessage" xml:space="preserve">
+    <value>Milyenek voltak a tapasztalatai? Ossza meg a véleményét ebben a felmérésben! </value>
+  </data>
+  <data name="OC_FormsProSurvey_Disclaimer" xml:space="preserve">
+    <value>Üzemeltető: Microsoft Dynamics 365 Customer Voice.</value>
+  </data>
+  <data name="Presence.InactivePresenceUpdateNotAllowed" xml:space="preserve">
+    <value>Ennél a rekordnál le van tiltva ennek a mezőnek a frissítése.</value>
+  </data>
+  <data name="Presence.IncorrectEntityError" xml:space="preserve">
+    <value>Beépülő modul regisztrációs hibája: Az entitás logikai neve nem msdyn_presence.</value>
+  </data>
+  <data name="OperatingHours.Hours" xml:space="preserve">
+    <value> óra</value>
+  </data>
+  <data name="OperatingHours.Minutes" xml:space="preserve">
+    <value> perc</value>
+  </data>
+  <data name="OperatingHours.TotalOperatingHours" xml:space="preserve">
+    <value>Összes üzemóra: </value>
+  </data>
+  <data name="Presence.DefaultDeletePlugin" xml:space="preserve">
+    <value>Az alapértelmezett jelenlét nem törölhető</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Nem találhatók hibák.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>Hiba történt a következőben: {0}.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Érvénytelen az ügynök kapacitása. Az értéknek 0-nál nagyobbnak kell lennie.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Az egyik ügynök konfigurációja helytelen. Az ügynök kapacitását nullánál nagyobb értékre kell állítani.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} ügynök konfigurációja helytelen. Az ügynökök kapacitásának nullánál nagyobbnak kell lennie.</value>
+    <comment>The error message for OcAgentsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Érvénytelen a robot kapacitása. Az értéknek 0-nál nagyobbnak kell lennie.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Az egyik robot konfigurációja helytelen. A robot kapacitását nullánál nagyobb értékre kell állítani.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} robot konfigurációja helytelen. A robotok kapacitásának 0-nál nagyobbnak kell lennie.</value>
+    <comment>The error message for OcBotsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>1 ügynökök nélküli feldolgozási sor van.</value>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} ügynökök nélküli feldolgozási sor van.</value>
+    <comment>The error message for OcQueuesShouldHaveAgentsRule rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ErrorMessage" xml:space="preserve">
+    <value>Az Omnicsatorna nem teljesen működőképes, néhány üzenetfeldolgozási lépés le van tiltva.</value>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ResultEntityMessage" xml:space="preserve">
+    <value>Az Omnicsatorna megfelelő működésének biztosításához engedélyezni kell az üzenetfeldolgozási lépést.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointIsNotConfigured" xml:space="preserve">
+    <value>Az OC szolgáltatásvégpont nincs konfigurálva.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointPathIsEmpty" xml:space="preserve">
+    <value>Az OC szolgáltatásvégpont elérési útvonala üres.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.ResultEntityMessage" xml:space="preserve">
+    <value>Ügynökök: {0} (azonosító: {1})</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is agent name and {1} is agent Id</comment>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>1 olyan munkafolyam van, amelynek a kapacitása nagyobb, mint a hozzá tartozó ügynököké.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} olyan munkafolyam van, amelynek a kapacitása nagyobb, mint a hozzá tartozó ügynököké.</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.ResultEntityMessage" xml:space="preserve">
+    <value>Nincs beállítva néhány értesítési sablon a munkafolyam esetében.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>1 olyan munkafolyam van, amihez nem tartozik értesítéssablon.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} olyan munkafolyam van, amihez nem tartozik értesítéssablon.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoSessionTemplates" xml:space="preserve">
+    <value>A(z) {0} munkafolyam forgatókönyveihez nem tartozik munkamenetsablon.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoScenarios" xml:space="preserve">
+    <value>A(z) {0} munkafolyam nem rendelkezik forgatókönyvvel.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>1 munkamenetsablon nélküli munkafolyam van.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} munkamenetsablon nélküli munkafolyam van.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.ResultEntityMessage" xml:space="preserve">
+    <value>A munkafolyam duplikált környezeti változókkal rendelkezik: {0}</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is duplicated context names</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.InvalidEntityMessage" xml:space="preserve">
+    <value>1 munkafolyam duplikált környezeti változókkal rendelkezik.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} munkafolyam duplikált környezeti változókkal rendelkezik.</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.ResultEntityMessage" xml:space="preserve">
+    <value>Feltételek nélküli átirányítási szabályok: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities list</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.InvalidEntityMessage" xml:space="preserve">
+    <value>{0} olyan munkafolyam van, amely üres átirányítási szabályokkal rendelkezik a feltételeket tartalmazó szabályokon felül.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>1 olyan munkafolyam van, amely üres átirányítási szabályokkal rendelkezik a feltételeket tartalmazó szabályokon felül.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.InvalidEntityMessage" xml:space="preserve">
+    <value>1 olyan, leküldés üzemmódban levő munkafolyam van, amely engedélyezi a kapcsolat nélküli üzemmódot.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} olyan, leküldés üzemmódban levő munkafolyam van, amely engedélyezi a kapcsolat nélküli üzemmódot.</value>
+    <comment>The error message for WorkstreamWithPushModeShouldNotAllowOfflineMode rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>A robot kapacitása potenciálisan alacsony.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>1 olyan robot van, amelynek potenciálisan alacsony a kapacitása.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} olyan robot van, amelynek potenciálisan alacsony a kapacitása.</value>
+    <comment>The error message for OcBotsShouldNotHavePotentiallyLowCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.EntityMessage" xml:space="preserve">
+    <value>Duplikálva van a csatornaszolgáltató konfigurációja.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultDuplicatedChannel" xml:space="preserve">
+    <value>A rendszer duplikált csatornaszolgáltató-konfigurációkat talált.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ProviderNotFound" xml:space="preserve">
+    <value>Nem található az Omnicsatorna-szolgáltató</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsEmpty" xml:space="preserve">
+    <value>A Csatorna URL-címe mező üres</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsInvalid" xml:space="preserve">
+    <value>A Csatorna URL-címe mező érvénytelen</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.UnifiedInterfaceAppsFieldNoOCApp" xml:space="preserve">
+    <value>Az Egyesített felületet használó alkalmazások mező nem tartalmaz Omnicsatorna-alkalmazást</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AgentRoleNotAssigned" xml:space="preserve">
+    <value>Az Omnicsatorna-ügynök szerepkör nincs hozzárendelve</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.SupervisorRoleNotAssigned" xml:space="preserve">
+    <value>Az Omnicsatorna-felügyelő szerepkör nincs hozzárendelve</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AdministratorRoleNotAssigned" xml:space="preserve">
+    <value>Az Omnicsatorna-rendszergazda szerepkör nincs hozzárendelve.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultImproperlyConfigured" xml:space="preserve">
+    <value>Az Omnicsatorna-szolgáltató helytelenül van konfigurálva.</value>
+  </data>
+  <data name="OC_OH_Preview_Message" xml:space="preserve">
+    <value>A szolgáltatás használatával elfogadja, hogy ez a szolgáltatás előzetes verzióként érhető el, és elfogadja a következőt: {0}. {1}</value>
+    <comment>Template Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_OH_Preview_Notification" xml:space="preserve">
+    <value>A szolgáltatás használatával elfogadja, hogy ez a szolgáltatás előzetes verzióként érhető el, és elfogadja az Előzetes verzió feltételeit.</value>
+    <comment>Notification Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_InstanceLevelBanner" xml:space="preserve">
+    <value>Az automatikus üzenet beállításai alkalmazásra kerültek a(z) {0} esetében. A(z) {1} elemhez tartozó automatikus üzenet létrehozásához válassza az Új lehetőséget.</value>
+  </data>
+  <data name="OC_CustomSystemMessage_ConfirmDelete" xml:space="preserve">
+    <value>Biztosan törölni szeretné az üzenetet? Ha törli ezt az üzenetet, visszaállítjuk az automatikus üzenetbeállításokat erre: {0}.</value>
+  </data>
+  <data name="OC_Channel_Chat" xml:space="preserve">
+    <value>Csevegés</value>
+    <comment>Messaging channel chat</comment>
+  </data>
+  <data name="OC_Channel_Custom" xml:space="preserve">
+    <value>Egyéni</value>
+    <comment>Messaging channel Custom</comment>
+  </data>
+  <data name="OC_Channel_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>Messaging channel Facebook</comment>
+  </data>
+  <data name="OC_Channel_LINE" xml:space="preserve">
+    <value>LINE</value>
+    <comment>Messaging channel LINE</comment>
+  </data>
+  <data name="OC_Channel_SMS" xml:space="preserve">
+    <value>SMS</value>
+    <comment>Messaging channel SMS</comment>
+  </data>
+  <data name="OC_Channel_Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+    <comment>Messaging channel Microsoft Teams</comment>
+  </data>
+  <data name="OC_Channel_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Messaging channel Twitter</comment>
+  </data>
+  <data name="OC_Channel_unknown" xml:space="preserve">
+    <value>Ismeretlen csatorna</value>
+    <comment>Messaging channel unknown channel</comment>
+  </data>
+  <data name="OC_Channel_WeChat" xml:space="preserve">
+    <value>WeChat</value>
+    <comment>Messaging channel WeChat</comment>
+  </data>
+  <data name="OC_Channel_WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+    <comment>Messaging channel WhatsApp</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_DuplicateNameMessage" xml:space="preserve">
+    <value>Már van ilyen nevű automatikus üzenet vagy üzenetsablon.</value>
+  </data>
+  <data name="OC_FeaturePreviewDisclaimer" xml:space="preserve">
+    <value>A szolgáltatás használatával elfogadja, hogy ez a szolgáltatás előzetes verzióként érhető el, és elfogadja az Előzetes verzió feltételeit.</value>
+  </data>
+  <data name="OC_ProgressIndicator_Loading" xml:space="preserve">
+    <value>Betöltés...</value>
+    <comment>Progress indicator message</comment>
+  </data>
+  <data name="OC_TokenAcquireFailed_AlertText" xml:space="preserve">
+    <value>Nem sikerült lekérni a lexikális elemet</value>
+    <comment>Alert message for token acquire failures</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationTitle" xml:space="preserve">
+    <value>Váltás előkonfigurált munkaterületre</value>
+    <comment>Analytics PaaS feature confirmation dialog body text</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationText" xml:space="preserve">
+    <value>Ha előkonfiguráltra vált, azzal törli az egyéni munkaterület beállításait. Bármikor visszaválthat egyéni munkaterületre, de újra kell konfigurálnia a munkaterületet.</value>
+    <comment>Analytics PaaS feature confirmation dialog title</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationButtonLabel" xml:space="preserve">
+    <value>Váltás előkonfiguráltra</value>
+    <comment>Analytics PaaS feature confirmation dialog confirm button label</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimer" xml:space="preserve">
+    <value>A WhatsAppnak 24 órás válaszadási ideje van. Ha eltelik 24 óra az ügyfél utolsó üzenete óta, az ügynökök csak a WhatsApp által jóváhagyott üzenetsablonokat tudják elküldeni, amíg az ügyfél nem válaszol. Győződjön meg róla, hogy a WhatsApp jóváhagyja az üzenetsablonjait, mielőtt itt hozzáadja őket. {0}</value>
+    <comment>{0} will be replaced by a link "learn more"</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimerLearnMore" xml:space="preserve">
+    <value>További információ</value>
+    <comment>learn more link for OC_WhatsAppMessageTemplateDisclaimer</comment>
+  </data>
+  <data name="MessageTemplateFeatureName" xml:space="preserve">
+    <value>Üzenetsablon</value>
+    <comment>This should be the same as what we show in the sitemap</comment>
+  </data>
+  <data name="AutomatedMessageRequiredFieldNotFilled" xml:space="preserve">
+    <value>A kötelező mezőket ki kell tölteni.</value>
+    <comment>Shown in banner when required fields are not populated</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitor" xml:space="preserve">
+    <value>Látogató</value>
+    <comment>Used when user name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleLiveWorkStream" xml:space="preserve">
+    <value>Élő munkafolyam</value>
+    <comment>Used when live work stream name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitorFormatter" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} and {1} should not be changed. They will be replaced by customer name and workstream name respectively. Example, James: WorkStream1</comment>
+  </data>
+  <data name="DefaultFieldsRquiredForMessageTemplate" xml:space="preserve">
+    <value>Kötelező megadni az alapértelmezett nyelvet és az üzenet alapértelmezett szövegét az üzenetsablonhoz.</value>
+  </data>
+  <data name="DefaultLocalizationDataNotFoundForMessageTemplate" xml:space="preserve">
+    <value>Nem találhatók az alapértelmezett honosítási adatok az adott üzenetsablon esetében.</value>
+  </data>
+  <data name="SavingPrivacyTerms" xml:space="preserve">
+    <value>Betöltés...</value>
+    <comment>Shown after user agrees to privacy terms</comment>
+  </data>
+  <data name="ConversationFormReadonlyNotificationText" xml:space="preserve">
+    <value>Írásvédett. A rekord állapotának oka: {0}</value>
+    <comment>{0} will be replaced with statuscode text. Any changes to this will have an impact on msdyn_customersummaryscripts.ts</comment>
+  </data>
+  <data name="OC_IntradayInsights_ConfigTitle" xml:space="preserve">
+    <value>Napi információk konfigurálása</value>
+    <comment>Title for Intraday insights configuration</comment>
+  </data>
+  <data name="OC_FormsPro_Button_Text" xml:space="preserve">
+    <value>A Dynamics 365 Customer Voice megnyitása</value>
+  </data>
+  <data name="FbAppNotFound" xml:space="preserve">
+    <value>Nem található a Facebook-alkalmazás azonosítója. Próbálkozzon egy másikkal.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PrivacyNotFound" xml:space="preserve">
+    <value>Nem fogadta el az Adatvédelmi feltételeket a csatornára vonatkozóan.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="CantProvisionFBPage" xml:space="preserve">
+    <value>Nem sikerült kiépíteni a Facebook-oldalt. Ellenőrizze a megadott információkat, majd próbálja meg újra.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PreValidationFacebookApplicationCreatePluginFailure" xml:space="preserve">
+    <value>Váratlan hiba történt a Facebook-alkalmazás létrehozása közben. Később próbálja meg újra.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageCreatePluginFailure" xml:space="preserve">
+    <value>Váratlan hiba történt a Facebook-oldal létrehozása közben. Később próbálja meg újra.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageUpdatePluginFailure" xml:space="preserve">
+    <value>Váratlan hiba történt a Facebook-oldal frissítése közben. Később próbálja meg újra.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ExistingFbPageFound" xml:space="preserve">
+    <value>Már beállította ezt a Facebook-oldalt. Adjon meg egy másik oldalt, és próbálja meg újra.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ErrorProcessingRequestParameter" xml:space="preserve">
+    <value>Hiba történt a kérés paramétereinek feldolgozása során. Hiba: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="InvalidContextVariable" xml:space="preserve">
+    <value>A ContextVariables érvénytelen. Hiba: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="MissingRequestId" xml:space="preserve">
+    <value>A RequestId hiányzik.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingVersion" xml:space="preserve">
+    <value>A Version érvénytelen.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingChannelInstance" xml:space="preserve">
+    <value>A ChannelInstance hiányzik.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingDirection" xml:space="preserve">
+    <value>A Direction hiányzik.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidDirection" xml:space="preserve">
+    <value>A Direction érvénytelen.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingContextVariables" xml:space="preserve">
+    <value>A ContextVariables hiányzik.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingMessageText" xml:space="preserve">
+    <value>A MessageText hiányzik.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingOffsetTime" xml:space="preserve">
+    <value>Az OffsetTime hiányzik.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidChannelInstance" xml:space="preserve">
+    <value>A csatornapéldány adattartalma érvénytelen.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiParameterMissing" xml:space="preserve">
+    <value>A(z) {0} hiányzik vagy érvénytelen.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays parameter value.</comment>
+  </data>
+  <data name="ChannelApiUnsupportedVersion" xml:space="preserve">
+    <value>Az ApiVersion értéke nem lehet {0} (nem támogatott).</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays version number.</comment>
+  </data>
+  <data name="ChannelApiInternalError" xml:space="preserve">
+    <value>Belső hiba történt. {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the exception message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationSend" xml:space="preserve">
+    <value>A beszélgetés nem létezik vagy le van zárva.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiMessageNullSend" xml:space="preserve">
+    <value>Az üzenet szövege nem lehet null értékű vagy üres.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationGet" xml:space="preserve">
+    <value>A beszélgetés nem létezik.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationEnd" xml:space="preserve">
+    <value>A beszélgetés nem létezik vagy le van zárva.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Title" xml:space="preserve">
+    <value>Beszélgetés kényszerített lezárása</value>
+    <comment>Title of the confirmation window displayed before force close is triggered</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Text" xml:space="preserve">
+    <value>Biztosan bezárja a munkaelemet?</value>
+    <comment>Confirmation text for force close</comment>
+  </data>
+  <data name="ForceClose_Confirmation_OKButtonLabel" xml:space="preserve">
+    <value>Folytatás</value>
+    <comment>Proceed</comment>
+  </data>
+  <data name="NewCase_Label">
+    <value>Új eset</value>
+    <comment>Label for Create a Case button</comment>
+  </data>
+</root>

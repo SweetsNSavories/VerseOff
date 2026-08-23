@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Sie müssen eine Endzeit angeben, die chronologisch nach der Startzeit liegt.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Sie müssen eine Startzeit angeben, die chronologisch vor der Endzeit liegt.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Das Startdatum darf nicht leer sein.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Das Enddatum darf nicht leer sein.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0} muss angegeben werden.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Thema ist erforderlich.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Der Betreff muss angegeben werden.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Vorlage ist erforderlich.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Die Startzeit muss angegeben werden.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Die Endzeit muss angegeben werden.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Neu: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Kampagne (Vorlage)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Sie müssen die Änderungen zunächst speichern, bevor Sie diese Aktivität verteilen können.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Die Kampagnenaktivität kann nur einmal verteilt werden.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Wählen Sie einen Kanaltyp aus, speichern Sie das Formular, und wiederholen Sie dann den Vorgang.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Diese Option ist nur bei ausgewählter Kontaktmethode verfügbar. Eine Kontaktmethode ist in diesem Formular nicht verfügbar. Die Aktivität kann nicht verteilt werden. Wenden Sie sich an den {#Brand_CRM}-Administrator.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>Direktmailing über Seriendruck ist deaktiviert. Die Aktivität kann nicht verteilt werden. Wenden Sie sich an den {#Brand_CRM}-Administrator.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Die Verteilungsfunktion ist für den ausgewählten Kanal nicht verfügbar.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>Seriendruck ist im {#Brand_CRM}-Webclient nicht verfügbar. Verwenden Sie {#Brand_CRM_Outlook_Short} zum Ausführen des Seriendrucks.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Diese Kampagnenaktivität kann nicht verteilt werden, da sie keine zugeordneten Marketinglisten besitzt. Ordnen Sie dieser Kampagnenaktivität Marketinglisten zu, und wiederholen Sie den Vorgang.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Beheben Sie alle Warnungen und Fehler im Formular.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Diese Kampagnenaktivität kann nicht verteilt werden. Wenden Sie sich an Ihren {#Brand_CRM}-Administrator.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Entfernen von {0}</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Möchten Sie die ausgewählten {0} {1} aus der Kampagne entfernen?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Die Schnellkampagne kann nicht erstellt werden, da keine Datensätze auf der aktuellen Seite gefunden wurden.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Sie können Schnellkampagnen nicht für mehrere Marketinglisten gleichzeitig erstellen. Wählen Sie daher nur eine Marketingliste aus.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Diese Option ist für die aktuelle Ansicht nicht verfügbar. Nicht alle Ansichten sind für die Option {0} geeignet. Wählen Sie eine andere Ansicht oder eine andere Option für Schnellkampagnen aus, und wiederholen Sie den Vorgang.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Schnellkampagnen können nicht mit einer inaktiven Marketingliste ausgeführt werden. Aktivieren Sie die Marketingliste, oder wählen Sie eine andere Marketingliste aus, und wiederholen Sie den Vorgang.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Diese Option ist für die aktuelle Ansicht nicht verfügbar. Wählen Sie eine andere Option für Schnellkampagnen aus, und wiederholen Sie den Vorgang.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Besitzer ist erforderlich.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Warteschlange ist erforderlich.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Für ausgewählte Datensätze</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Für alle Datensätze auf der aktuellen Seite</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Für alle Datensätze auf allen Seiten</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Diese Menübandaktion wird nicht unterstützt.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Sie müssen mindestens einen Datensatz auswählen, bevor Sie diese Aktion durchführen können.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Bei diesem Vorgang sind höchstens 50 Datensätze zulässig.</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Sie können diese Aktion nur für Datensätze desselben Typs ausführen.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Daten werden verarbeitet. Bitte warten...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Es ist ein Fehler aufgetreten. Die ausgewählte Aktion wurde für mindestens einen Datensatz nicht abgeschlossen.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Entfernen von {0}</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Suchen Sie anhand von Suchkriterien nach Mitgliedern zum Entfernen.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Suchen Sie anhand von Suchkriterien nach Mitgliedern zum Hinzufügen.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Bewerten Sie anhand von Suchkriterien, welche Mitglieder in der Marketingliste verbleiben sollen. Aktualisieren Sie die Marketingliste.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Sie müssen Datensätze auswählen, bevor Sie den Vorgang fortsetzen.</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Firma</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Lead</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Bewerten</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Möchten Sie die ausgewählten {0} {1} aus Liste entfernen?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Bestätigung zum Kopieren einer Marketingliste in eine andere Marketingliste</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Sie haben Marketinglisten zum Kopieren in eine andere Marketingliste ausgewählt.</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Dieser Vorgang fügt alle Mitglieder der ausgewählten Marketingliste zur Zielmarketingliste hinzu.</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Die Änderungen werden nicht gespeichert. Speichern Sie die Änderungen, und versuchen Sie es dann erneut.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>OK</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>Wird verarbeitet...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Bitte warten Sie, während Ihre Anfrage bearbeitet wird.</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Schnellkampagne kann nicht erstellt werden</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Name: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Aktivität: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Umfang: Für ausgewählte Datensätze ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Umfang: Für alle Datensätze auf aktueller Seite ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Umfang: Für alle Datensätze auf allen Seiten</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Besitzer: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Schnellkampagnenname ist erforderlich.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Aktivitätstyp ist erforderlich.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Die Besitzer der Datensätze, die in der Schnellkampagne enthalten sind.</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Mich</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Diese Kampagne kann nicht deaktiviert werden, da dieser noch offene Kampagnenaktivitäten zugewiesen sind. Schließen Sie die Kampagnenaktivitäten, und wiederholen Sie den Vorgang.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>{0} kann für die ausgewählten Kampagnen nicht deaktiviert werden, da diesen noch mindestens eine offene Kampagnenaktivität zugewiesen ist. Schließen Sie die offenen Kampagnenaktivitäten, und wiederholen Sie den Vorgang.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>Der E-Mail-Inhalt ist zu groß für diesen Assistenten. Erstellen Sie sie als E-Mail-Vorlage, und wählen Sie diese Vorlage hier aus.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Schnellkampagnen unterstützen keine Massenbearbeitung.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Liste ist gesperrt</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>Listen {0} sind gesperrt</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Die Aktivität kann nicht für die dynamische Liste ausgeführt werden.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Ein inaktives Element kann nicht einer Kampagne zugeordnet werden.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Ein inaktives Element kann nicht einer Kampagne zugeordnet werden.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Der Verweis auf die Anlage wurde nicht gefunden.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>Der E-Mail-Empfänger ist entweder nicht vorhanden, oder die E-Mail-Adresse für den E-Mail-Empfänger ist ungültig.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Die Anlage ist entweder kein gültiger Typ oder zu groß. Sie kann nicht hoch- oder heruntergeladen werden.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Der Empfänger ist als „Kein Fax senden“ gekennzeichnet.</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Ungültiger E-Mail-Empfänger.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Fehler in Aktion „E-Mail-Vorlage“.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Fehler in Aktion „E-Mail senden“.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Fehler in Aktion „Notizanhang“.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Fehler in Aktion „Notiz erstellen“.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Fehler in Aktion „Handhabung der Aktivität aufheben“.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Fehler in Aktion „Aktivität handhaben“.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Fehler in Aktion „Aktivitätsanhang“.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Fehler in Aktion „Aktivität erstellen“.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Dieses Mitglied der Marketingliste wurde nicht kontaktiert, da das Mitglied bereits zuvor diese Informationen erhalten hatte.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Der Absender hat keine E-Mail-Adresse im Parteidatensatz.</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>Es wurde keine E-Mail-Adresse angegeben, und der aufrufende Benutzer hat keinen E-Mail-Adresssatz.</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>Die E-Mail wurde aufgrund der Kommunikationseinstellungen des Empfängers oder eines Problems mit der E-Mail-Adresse nicht gesendet.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Ungültiger Kundenadresstyp.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Beim Seriendruck ist ein unerwarteter Fehler aufgetreten.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Der Seriendruckvorgang wurde vom Benutzer abgebrochen.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Dieser Kunde wird aufgrund fehlender E-Mail-Adresse gefiltert.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Der Empfänger wurde ausgeschlossen, da er inaktiv ist.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Massenvorgang bezüglich Workflowregeln fehlt.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>Der Empfänger wurde aufgrund der Einstellungen zum Schutz vor unerwünschten Werbe-E-Mails oder der Kommunikationseinstellungen des Empfängers ausgeschlossen.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Teilnehmer für die Terminverteilung kann nicht angegeben werden.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Absender für Terminverteilung kann nicht angegeben werden</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Organisator für die Terminverteilung kann nicht angegeben werden</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Nicht unterstützter Listenmitgliedstyp.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Es wurde versucht, einen ungültigen Vorgang auszuführen.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>Der Benutzer verfügt nicht über die erforderlichen Rechte.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Der Benutzer ist nicht berechtigt, diese Aktion auszuführen.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Ungültige E-Mail-Adresse. Wenden Sie sich an den Systemadministrator, um weitere Informationen zu erhalten.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Im Formular fehlen die folgenden Elemente: {0}. Die Funktionen sind dadurch beeinträchtigt.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Sie können keine Verkaufschancen für eine Marketingliste erstellen, die auf diesen Entitätstyp abzielt.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Es ist bereits eine vorhandene Anforderung in Bearbeitung. Versuchen Sie es später noch einmal.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Anforderung übermittelt. Warten Sie, bis die Seite Sie an die kopierte Liste weiterleitet.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>Neuer {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Füllen Sie dieses Formular aus, um {0} für die in der Marketingliste ausgewählten Mitglieder zu erstellen. Mit „Verteilen“ können Sie {0} im Datensatz der einzelnen Mitglieder als neuen {0} ergänzen.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Erfolgreich gespeichert</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="regardingObjectIdNotFound" xml:space="preserve">
+    <value>Concernant l’ID d’objet introuvable</value>
+    <comment>Regarding object Id not found</comment>
+  </data>
+  <data name="openEvaluationTitleError" xml:space="preserve">
+    <value>Erreur</value>
+    <comment>Error</comment>
+  </data>
+  <data name="unexpectedError" xml:space="preserve">
+    <value>Erreur</value>
+    <comment>Error</comment>
+  </data>
+  <data name="createEvaluationForCasesSuccess" xml:space="preserve">
+    <value>Cas attribués pour évaluation</value>
+    <comment>Case(s) assigned for evaluation</comment>
+  </data>
+  <data name="createEvaluationForConversationSuccess" xml:space="preserve">
+    <value>Conversation(s) affectée(s) pour l’évaluation</value>
+    <comment>Conversation(s) assigned for evaluation</comment>
+  </data>
+  <data name="createEvaluationForCustomEntitySuccess" xml:space="preserve">
+    <value>Enregistrement(s) attribué(s) pour l’évaluation</value>
+    <comment>Record(s) assigned for evaluation</comment>
+  </data>
+  <data name="createEvaluationSuccess" xml:space="preserve">
+    <value>Évaluation(s) attribuée(s)</value>
+    <comment>Evaluation(s) assigned successfully</comment>
+  </data>
+  <data name="createEvaluationError" xml:space="preserve">
+    <value>Erreur inattendue lors de la demande d’évaluation.</value>
+    <comment>Unexpected error requesting evaluation(s).</comment>
+  </data>
+  <data name="requestedByStr" xml:space="preserve">
+    <value>Demandé par</value>
+    <comment>Requested by</comment>
+  </data>
+  <data name="invalidDueDateError" xml:space="preserve">
+    <value>La date sélectionnée ne doit pas être passée.</value>
+    <comment>Selected date must not be in the past.</comment>
+  </data>
+  <data name="invalidEvaluationOwnerOrRequestorError" xml:space="preserve">
+    <value>Un ou plusieurs des enregistrements sélectionnés présentent un conflit. Le propriétaire de l’enregistrement ne peut ni demander ni se voir attribuer l’évaluation.</value>
+    <comment>One or more of the selected records have a conflict. The record owner cannot request or be assigned the evaluation.</comment>
+  </data>
+  <data name="bulkEvaluationMaxLimitError" xml:space="preserve">
+    <value>Vous pouvez uniquement sélectionner jusqu’à {0} enregistrements pour évaluation.</value>
+    <comment>You can only select up to {0} records for evaluation.</comment>
+  </data>
+  <data name="aiagentmethodnotsupported" xml:space="preserve">
+    <value>La méthode de l’assistant IA n’est pas prise en charge pour les critères d’évaluation sélectionnés, car elle contient des questions qui sont désactivées pour l’évaluation de l’IA</value>
+    <comment>AI Agent method is not supported for the selected evaluation criteria as it contains question(s) that are disabled for AI evaluation</comment>
+  </data>
+  <data name="retrieveEvaluationCriteriaError" xml:space="preserve">
+    <value>Erreur lors de la récupération des critères d’évaluation. Veuillez réessayer.</value>
+    <comment>Error retrieving evaluation criteria. Please try again.</comment>
+  </data>
+  <data name="reassignEvaluationError" xml:space="preserve">
+    <value>Erreur inattendue lors de la réaffectation des évaluations.</value>
+    <comment>Unexpected error reassigning evaluation(s).</comment>
+  </data>
+  <data name="billingSetupPendingError" xml:space="preserve">
+    <value>Pour utiliser cette fonctionnalité, effectuez la configuration du paiement à l’utilisation pour cet environnement.</value>
+    <comment>To use this feature, complete the pay-as-you-go setup for this environment.</comment>
+  </data>
+  <data name="dataMovementSetupPendingError" xml:space="preserve">
+    <value>Les fonctionnalités Copilot ne fonctionnent pas, car le déplacement des données entre les régions a été désactivé.</value>
+    <comment>Copilot features aren't working because data movement across regions has been disabled.</comment>
+  </data>
+  <data name="aiAgentsDisabledError" xml:space="preserve">
+    <value>Les assistants IA ne sont pas activés pour cette organisation.</value>
+    <comment>AI agents are not enabled for this org.</comment>
+  </data>
+  <data name="requestEvaluationButton" xml:space="preserve">
+    <value>Requête</value>
+    <comment>Request</comment>
+  </data>
+  <data name="requestingEvaluationButton" xml:space="preserve">
+    <value>Demande en cours...</value>
+    <comment>Requesting...</comment>
+  </data>
+  <data name="extendCriteriaOutOfBoxError" xml:space="preserve">
+    <value>Vous pouvez étendre les critères définis au sein de votre organisation.</value>
+    <comment>You may extend criteria defined at your organization.</comment>
+  </data>
+  <data name="extendCriteriaOutOfBoxErrorTitle" xml:space="preserve">
+    <value>Les critères prêts à l’emploi ne peuvent pas être étendus</value>
+    <comment>Out-of-box criteria can’t be extended</comment>
+  </data>
+  <data name="extendCriteriaAlreadyExtendedError" xml:space="preserve">
+    <value>Impossible d’étendre les critères qui ont déjà été étendus à partir d’un autre critère.</value>
+    <comment>Cannot extend criteria that has already been extended from another criteria.</comment>
+  </data>
+  <data name="extendCriteriaAlreadyExtendedErrorTitle" xml:space="preserve">
+    <value>Critères déjà étendus</value>
+    <comment>Criteria already extended</comment>
+  </data>
+  <data name="extendCriteriaGenericError" xml:space="preserve">
+    <value>Une erreur s’est produite lors de la tentative d’extension des critères d’évaluation.</value>
+    <comment>An error occurred while trying to extend the evaluation criteria.</comment>
+  </data>
+  <data name="extendCriteriaGenericErrorTitle" xml:space="preserve">
+    <value>Erreur</value>
+    <comment>Error</comment>
+  </data>
+  <data name="activateEvaluationPlanSuccess" xml:space="preserve">
+    <value>Plan d’évaluation activé</value>
+    <comment>Evaluation plan activated</comment>
+  </data>
+  <data name="activateEvaluationPlanFailure" xml:space="preserve">
+    <value>Erreur inattendue lors de l’activation du plan d’évaluation. Veuillez réessayer.</value>
+    <comment>Unexpected error activating evaluation plan. Please try again.</comment>
+  </data>
+  <data name="pauseEvaluationPlanSuccess" xml:space="preserve">
+    <value>Plan d’évaluation suspendu</value>
+    <comment>Evaluation plan paused</comment>
+  </data>
+  <data name="pauseEvaluationPlanFailure" xml:space="preserve">
+    <value>Erreur inattendue lors de la suspension du plan d’évaluation. Veuillez réessayer.</value>
+    <comment>Unexpected error pausing evaluation plan. Please try again.</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogTitle" xml:space="preserve">
+    <value>Activer le programme ?</value>
+    <comment>Activate plan?</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogText" xml:space="preserve">
+    <value>Les évaluations effectuées à l’aide de ce plan se trouvent dans la page Évaluations.</value>
+    <comment>Evaluations done using this plan can be found under the evaluations page.</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogConfirmButton" xml:space="preserve">
+    <value>Activer</value>
+    <comment>Activate</comment>
+  </data>
+  <data name="activateEvaluationPlanDialogCancelButton" xml:space="preserve">
+    <value>Ne pas activer</value>
+    <comment>Don't activate</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogTitle" xml:space="preserve">
+    <value>Suspendre le plan ?</value>
+    <comment>Pause plan?</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogText" xml:space="preserve">
+    <value>Toute évaluation active à l’aide de ce plan se terminera, mais aucune autre évaluation avec ce plan ne sera effectuée.</value>
+    <comment>Any active evaluation using this plan will complete, but no further evaluation with this plan will be done.</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogConfirmButton" xml:space="preserve">
+    <value>Pause</value>
+    <comment>Pause</comment>
+  </data>
+  <data name="pauseEvaluationPlanDialogCancelButton" xml:space="preserve">
+    <value>Ne pas suspendre</value>
+    <comment>Don't pause</comment>
+  </data>
+  <data name="evaluationPlanDialogCancel" xml:space="preserve">
+    <value>Annuler</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="activateEvaluationPlanSaveRecordError" xml:space="preserve">
+    <value>Veuillez enregistrer l’enregistrement avant de l’activer.</value>
+    <comment>Please save the record before activating it.</comment>
+  </data>
+  <data name="pauseEvaluationPlanSaveRecordError" xml:space="preserve">
+    <value>Veuillez enregistrer l’enregistrement avant de le mettre en pause.</value>
+    <comment>Please save the record before pausing it.</comment>
+  </data>
+  <data name="noChannelEnabledNotificationText" xml:space="preserve">
+    <value>L’agent QEA n’est actuellement pas activé pour les entités. Veuillez l’activer via le Centre d’administration pour continuer.</value>
+    <comment>QEA Agent is currently not enabled for any entities. Please enable it via the Admin Center to proceed.</comment>
+  </data>
+  <data name="saveEvaluationPlanInDraft" xml:space="preserve">
+    <value>Le plan d’évaluation est enregistré en tant que brouillon</value>
+    <comment>Evaluation plan is saved as draft</comment>
+  </data>
+  <data name="evaluationPlanInActiveStateNotificationText" xml:space="preserve">
+    <value>Ce plan a été activé et est désormais en affichage seul</value>
+    <comment>This plan has been activated and is now view-only</comment>
+  </data>
+  <data name="evaluationPlanInPauseStateNotificationText" xml:space="preserve">
+    <value>Ce plan est suspendu et n’est pas actif pour le moment</value>
+    <comment>This plan is paused and not active at the moment</comment>
+  </data>
+  <data name="conversationChannelNotEnabledNotificationText" xml:space="preserve">
+    <value>Les plans d’évaluation prennent actuellement en charge uniquement l’entité/le canal conversationnel. Veuillez mettre à jour votre sélection dans le Centre d’administration pour continuer.</value>
+    <comment>Evaluation Plans currently support the Conversation entity/channel only. Please update your selection in the Admin Center to continue.</comment>
+  </data>
+  <data name="bulkEvaluationNotSetupNotificationText" xml:space="preserve">
+    <value>Configuration en attente d’évaluation en bloc. Veuillez contacter l’administrateur client pour l’activer</value>
+    <comment>Setup pending for bulk evaluation. Please contact your tenant admin to get this enabled</comment>
+  </data>
+  <data name="maxActivePlansLimitReachedNotificationText" xml:space="preserve">
+    <value>Le nombre maximal de plans d’évaluation actifs a été atteint.</value>
+    <comment>Maximum number of active evaluation plans has been reached.</comment>
+  </data>
+  <data name="aiAgentsDisabledErrorEvaluationPlan" xml:space="preserve">
+    <value>Assistants IA désactivés|Les assistants IA ne sont pas activés pour cette organisation. Veuillez contacter l’administrateur de votre locataire pour l’activer.</value>
+    <comment>AI agents disabled|AI agents are not enabled for this org. Please contact your tenant admin to get this activated.</comment>
+  </data>
+  <data name="billingSetupPendingErrorEvaluationPlan" xml:space="preserve">
+    <value>Configuration de la facturation en attente|Si vous souhaitez utiliser cette fonctionnalité, configurez les crédits Microsoft Copilot pour cet environnement.</value>
+    <comment>Billing setup pending|To use this feature, setup Microsoft Copilot credits for this environment.</comment>
+  </data>
+  <data name="dataMovementSetupPendingErrorEvaluationPlan" xml:space="preserve">
+    <value>Configuration du déplacement des données en attente|Les fonctionnalités Copilot ne fonctionnent pas, car le déplacement des données entre les régions a été désactivé. Pour activer le déplacement des données, contactez votre administrateur client.</value>
+    <comment>Data movement setup pending|Copilot features aren't working because data movement across regions has been disabled. To enable data movement, contact your tenant admin.</comment>
+  </data>
+  <data name="evaluationCriteriaIncompatibleNotificationText" xml:space="preserve">
+    <value>Critères d’évaluation incompatibles|Ce critère d’évaluation n’inclut pas les questions requises avec l’IA activée pour la méthode d’évaluation sélectionnée. Choisissez un autre critère d’évaluation ou basculez vers une autre méthode.</value>
+    <comment>Incompatible evaluation criteria|This evaluation criteria doesn't include the required AI-enabled questions for the selected evaluation method. Choose a different evaluation criteria or switch to a different method.</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogTitle" xml:space="preserve">
+    <value>Restaurer/publier</value>
+    <comment>Restore / Publish</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogText" xml:space="preserve">
+    <value>La restauration/publication d’une ancienne version remplacera la version publiée actuelle. Toutes les versions préliminaires existantes seront ignorées.</value>
+    <comment>Restoring / publishing an old version will replace the current published version. Any existing draft versions will be discarded.</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogConfirmButton" xml:space="preserve">
+    <value>Restaurer/publier</value>
+    <comment>Restore / Publish</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaDialogCancelButton" xml:space="preserve">
+    <value>Annuler</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaSuccessText" xml:space="preserve">
+    <value>Les critères d’évaluation ont été restaurés et publiés.</value>
+    <comment>Evaluation criteria restored and published successfully.</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaSuccessTitle" xml:space="preserve">
+    <value>Réussite</value>
+    <comment>Success</comment>
+  </data>
+  <data name="restorePublishEvaluationCriteriaProgressIndicator" xml:space="preserve">
+    <value>Restauration et publication...</value>
+    <comment>Progress indicator message when restoring and publishing evaluation criteria</comment>
+  </data>
+  <data name="versionNoCriteriaError" xml:space="preserve">
+    <value>La version sélectionnée n’a pas de critère d’évaluation associé.</value>
+    <comment>Error message when the selected version has no associated evaluation criteria</comment>
+  </data>
+  <data name="fetchVersionNumberError" xml:space="preserve">
+    <value>Impossible de récupérer le numéro de version.</value>
+    <comment>Error message when version number cannot be fetched from the selected version</comment>
+  </data>
+  <data name="fetchParentCriteriaError" xml:space="preserve">
+    <value>Impossible de récupérer la version des critères parents.</value>
+    <comment>Error message when parent criteria version cannot be fetched</comment>
+  </data>
+  <data name="fetchActiveVersionError" xml:space="preserve">
+    <value>Impossible d’extraire la version active pour les critères d’évaluation.</value>
+    <comment>Error message when active version for criteria cannot be fetched</comment>
+  </data>
+  <data name="loadSimulationFormError" xml:space="preserve">
+    <value>Impossible de charger le formulaire de simulation. Veuillez réessayer.</value>
+    <comment>Error message when simulation form fails to load</comment>
+  </data>
+  <data name="saveSimulationRunError" xml:space="preserve">
+    <value>Impossible d’enregistrer l’exécution de la simulation. Veuillez réessayer.</value>
+    <comment>Error message when saving simulation run fails</comment>
+  </data>
+  <data name="runSimulationError" xml:space="preserve">
+    <value>Impossible d’exécuter la simulation. Veuillez réessayer.</value>
+    <comment>Error message when simulation execution fails</comment>
+  </data>
+  <data name="noSimulationRunError" xml:space="preserve">
+    <value>Aucune exécution de simulation n’est associée à cet enregistrement. Veuillez d’abord enregistrer le formulaire.</value>
+    <comment>Error message when simulation run lookup is empty</comment>
+  </data>
+  <data name="noRowSelectedError" xml:space="preserve">
+    <value>Veuillez sélectionner une exécution de simulation à relancer.</value>
+    <comment>Error message when no row is selected in the subgrid</comment>
+  </data>
+  <data name="multipleRowsSelectedError" xml:space="preserve">
+    <value>Veuillez sélectionner une seule exécution de simulation à relancer.</value>
+    <comment>Error message when multiple rows are selected in the subgrid</comment>
+  </data>
+  <data name="noSimulationDataFoundError" xml:space="preserve">
+    <value>Impossible de récupérer les données de simulation. Veuillez réessayer.</value>
+    <comment>Error message when simulation data cannot be found</comment>
+  </data>
+  <data name="QMSFeatureDisabled" xml:space="preserve">
+    <value>Indicateur de fonctionnalité QEA désactivé</value>
+    <comment>Error when feature flag for QEA is not enabled</comment>
+  </data>
+  <data name="CannotChangeStatusBackToDraft" xml:space="preserve">
+    <value>Impossible de modifier le statut en Brouillon à partir de l’état de non brouillon de l’attribut.</value>
+    <comment>Error message when the status is changed to draft from non draft state</comment>
+  </data>
+  <data name="CannotDeleteActiveEvaluationPlan" xml:space="preserve">
+    <value>Impossible de supprimer les plans d’évaluation actifs. Suspendez le plan pour le supprimer.</value>
+    <comment>Error message when an active evaluation plan is deleted</comment>
+  </data>
+  <data name="EndDateInPast" xml:space="preserve">
+    <value>Les dates de début et de fin ne peuvent pas être définies dans le passé. Veuillez choisir une date valide.</value>
+    <comment>Error message when end date is set in the past</comment>
+  </data>
+  <data name="StartDateAfterEndDate" xml:space="preserve">
+    <value>La date de début ne peut pas être ultérieure à la date de fin. Veuillez modifier les dates pour continuer.</value>
+    <comment>Error when start date is set after the end date</comment>
+  </data>
+  <data name="DueDateInPast" xml:space="preserve">
+    <value>La date d’échéance ne peut pas être définie dans le passé. Choisissez une date valide.</value>
+    <comment>Error message when due date is set in the past.</comment>
+  </data>
+  <data name="EvaluationExpirationValueOutOfRange" xml:space="preserve">
+    <value>La valeur d’expiration de l’évaluation doit être comprise entre 1 et 365.</value>
+    <comment>Error message when evaluation expiration value is out of the allowed range.</comment>
+  </data>
+  <data name="EvaluationExpirationUnitRequired" xml:space="preserve">
+    <value>L’unité d’expiration d’évaluation est obligatoire et ne peut pas être effacée.</value>
+    <comment>Error message when evaluation expiration unit is explicitly set to null on update.</comment>
+  </data>
+  <data name="RecordTypeNotEnabledForOrg" xml:space="preserve">
+    <value>Le type d’enregistrement n’est pas activé pour cette organisation.</value>
+    <comment>Error when the selected record type is not enabled for the organization</comment>
+  </data>
+  <data name="AssignedUserPrivilegesNotFound" xml:space="preserve">
+    <value>L’utilisateur affecté ne dispose pas des autorisations requises</value>
+    <comment>Error message when the assigned user doesn't have the required permissions</comment>
+  </data>
+  <data name="AssignedTeamPrivilegesNotFound" xml:space="preserve">
+    <value>L’équipe affectée ne dispose pas des autorisations requises</value>
+    <comment>Error message when the assigned team doesn't have the required permissions</comment>
+  </data>
+  <data name="SamplingFeatureDisabled" xml:space="preserve">
+    <value>Les champs d’échantillonnage ne peuvent pas être définis lorsque la fonctionnalité d’échantillonnage est désactivée.</value>
+    <comment>Error message when sampling fields are set but the sampling feature is disabled via FCS</comment>
+  </data>
+  <data name="SamplingOnlyForRecurring" xml:space="preserve">
+    <value>La configuration de l’échantillonnage est uniquement autorisée pour les plans d’évaluation périodiques.</value>
+    <comment>Error message when sampling fields are set on non-recurring evaluation plans</comment>
+  </data>
+  <data name="SamplingModeRequired" xml:space="preserve">
+    <value>Le mode d’échantillonnage doit être spécifié lorsque d’autres champs d’échantillonnage sont configurés.</value>
+    <comment>Error message when sampling fields are set without specifying the sampling mode</comment>
+  </data>
+  <data name="samplingValuePercentageRangeError" xml:space="preserve">
+    <value>La valeur d’échantillonnage doit être comprise entre 1 et 100 lorsque le mode d’échantillonnage est en pourcentage.</value>
+    <comment>Validation error when sampling value is out of range for Percentage mode</comment>
+  </data>
+  <data name="samplingValueAbsoluteNumberMinError" xml:space="preserve">
+    <value>La valeur d’échantillonnage doit être au moins égale à 1 lorsque le mode Nombre absolu est sélectionné.</value>
+    <comment>Validation error when sampling value is less than 1 for Absolute Number mode</comment>
+  </data>
+  <data name="AllSamplingFieldsRequired" xml:space="preserve">
+    <value>Tous les champs d’échantillonnage (mode d’échantillonnage, valeur d’échantillonnage, stratégie de sélection, classement des enregistrements par) doivent être renseignés pour les plans d’évaluation périodiques avec l’échantillonnage activé.</value>
+    <comment>Error message when not all required sampling fields are populated for a recurring plan</comment>
+  </data>
+  <data name="criteriaContentSizeLimitExceeded" xml:space="preserve">
+    <value>Le contenu des critères est trop volumineux pour être enregistré. Veuillez réduire le nombre de questions, d’options ou d’instructions pour continuer.</value>
+    <comment>Error dialog shown when the criteria content exceeds the maximum storage limit</comment>
+  </data>
+</root>

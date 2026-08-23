@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<link href="/uclient/resources/styles/Styles.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript">
+			function getWebresourceParameter()
+			{
+				var userParameters = [], passedParameters = [];
+				if (location.search != "")
+				{
+					var vals = location.search.substr(1).split("&");
+					for (var i = 0; i < vals.length; i++)
+					{
+						vals[i] = vals[i].split("=");
+						if (vals[i][0].toLowerCase() == "data" && vals[i][1] != "")
+						{
+							var userVals = decodeURIComponent(vals[i][1]).split(",");
+							for (var j = 0; j < userVals.length; j++)
+							{
+								passedParameters[userVals[j].split("=")[0].trim()] = userVals[j].split("=")[1].trim();
+							}
+						}
+						else
+						{
+							passedParameters[vals[i][0]] = vals[i][1];
+						}
+					}
+				}
+				return passedParameters;
+			}
+			function setLocalizedStrings()
+			{
+				var OrgLcidHexa = window.top.Xrm.Page.context.getOrgLcid().toString(16);
+				document.getElementById("help-label").innerHTML = parent.Xrm.Utility.getResourceString("msdyn_OmnichannelSBR", "OC_SkillAttach_NeedHelp_Label");
+				document.getElementById("help-string").innerHTML = parent.Xrm.Utility.getResourceString("msdyn_OmnichannelSBR", getWebresourceParameter().TextKey);
+
+				var customParameters = getWebresourceParameter();
+				if(customParameters.LearnMoreURL) {
+					document.getElementById("learn-more-hyperlink-label").innerHTML = parent.Xrm.Utility.getResourceString("msdyn_OmnichannelBase", "OC_LearnMore_Link_Label");
+					document.getElementById("learn-more-hyperlink-label").href = customParameters.LearnMoreURL + (customParameters.LearnMoreURL.includes("?") ? "&" : "?") + "clcid=0x" + OrgLcidHexa;
+				}
+				else
+					document.getElementById('learn-more-label').style.display = "none";
+			}
+		</script>
+		<style>
+			.help-text-body
+			{
+				background-color:#EFEFEF !important;
+				font-family: "Segoe UI", sans-serif;
+				font-size: 14px;
+			}
+
+			.help
+			{
+				padding: 0.4em;
+				display : table;
+				color: #333333;
+			}
+
+			#msdyn_helpimage
+			{
+				top: 0.175em;
+				position:relative;
+				display: table-cell;
+				padding : 0.2em;
+				font-size:inherit;
+				color: #3B79B7;
+			}
+
+			#disclamer-string-wrap
+			{
+				display: table-cell;
+			}
+
+		</style>
+	</head>
+	<body onload="setLocalizedStrings();" class="help-text-body" style="overflow-wrap: break-word;">
+		<div class="help" >
+			<span id="msdyn_helpimage" class="symbolFont InformationIcon-symbol"></span>
+			<span id="help-label-disclamer-string-wrap">
+				<span id="help-label"></span>
+			</span>
+		</div>
+		<div class="line" style="border-bottom: 1px solid #D8D8D8;"></div>
+		<div class="help">
+			<span id="help-string-disclamer-string-wrap">
+				<span id="help-string"></span>
+			</span>
+			<a id="learn-more-hyperlink-label" target="_blank"></a>
+		</div>
+	</body>
+</html>

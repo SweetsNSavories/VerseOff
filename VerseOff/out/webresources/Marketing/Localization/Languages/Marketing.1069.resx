@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Amaiera-orduak hasiera-orduaren ondoren izan behar du.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Hasiera-datak amaiera-dataren aurrekoa izan behar du.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Hasiera-datak ezin du hutsik egon.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Amaiera-datak ezin du hutsik egon.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0} beharrezkoa da.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Gaia beharrezkoa da.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Gaia behar da.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Txantiloia beharrezkoa da.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Hasiera-ordua behar da.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Amaiera-ordua behar da.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Sortu {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Kanpaina (txantiloia)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Aldaketak gorde behar dituzu jarduera banatu aurretik.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Kanpainaren jarduera behin soilik bana daiteke.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Hautatu kanal mota, gorde inprimakia eta saiatu berriro.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Aukera hau harremanetan jartzeko metodoa hautatzen denean soilik dago erabilgarri. Inprimakiak harremanetarako metodorik ez duenez, ezin da banatu jarduera. Jarri harremanetan {#Brand_CRM}en administratzailearekin.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>Posta-konbinazio bidezko mezu elektroniko zuzenak bidaltzeko aukera desaktibatuta dago. Jarri harremanetan {#Brand_CRM}en administratzailearekin.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Banatzeko ahalmena ez dago erabilgarri hautatutako kanalean.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>Posta-konbinazioa ez dago erabilgarri {#Brand_CRM} web-bezeroan. Posta-konbinazioa erabili ahal izateko, {#Brand_CRM_Outlook_Short} erabili behar duzu.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Ezin da kanpainaren jarduera banatu ez dagoelako erlazionatutako marketin-zerrendarik. Erlazionatu kanpainaren jarduerak marketin-zerrenda bati eta saiatu berriro.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Konpondu inprimakiko abisu eta errore guztiak.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Ezin da banatu kanpainaren jarduera. Jarri harremanetan {#Brand_CRM}-ren administratzailearekin.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Kendu {0}</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Hautatutako {0} {1} ezabatu nahi duzu kanpainatik?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Ezin da kanpaina bizkorra sortu uneko orrian erregistrorik aurkitu ez delako.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Ezin duzu kanpaina bizkorra sortu marketin-zerrenda bat baino gehiagorako. Hautatu marketin-zerrenda bakarra.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Aukera hau ez dago erabilgarri uneko ikuspegian. Zenbait ikuspegik ez dute funtzionatuko {0} aukera hautatuta badago. Hautatu beste ikuspegi edo kanpaina bizkorren aukera bat eta saiatu berriro.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Kanpaina bizkorrak ezin dira marketin-zerrenda inaktiboetan exekutatu. Aktibatu marketin-zerrenda edo hautatu beste marketin-zerrenda bat eta saiatu berriro.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Aukera hau ez dago erabilgarri uneko ikuspegian. Hautatu kanpaina bizkorren beste aukeraren bat eta saiatu berriro.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Jabea beharrezkoa da.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Ilara beharrezkoa da.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Hautatutako erregistroetan</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Uneko orriko erregistro guztietan</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Orri guztietako erregistro guztietan</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Ez da onartzen ekintza-zinta hau.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Ekintza hau egin ahal izateko, erregistro bat edo gehiago hautatu behar dituzu gutxienez.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>50 erregistro baino gehiago ez dira onartzen eragiketa honetarako</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Ekintza hau mota bereko erregistroekin soilik osa daiteke.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Prozesatzen. Itxaron, mesedez...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Errore bat gertatu da. Hautatutako ekintza ez da osatu gutxienez erregistro batean.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Kendu {0}</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Bilatu kenduko dituzun kideak bilaketa-irizpideen arabera.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Bilatu gehituko dituzun kideak bilaketa-irizpideen arabera.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Ebaluatu zer kide mantenduko duzun marketin-zerrendan bilaketa-irizpideen arabera. Eguneratu marketin-zerrenda.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Jarraitu aurretik, erregistroak hautatu behar dituzu</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Kendu</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Gehitu</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Kontua</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Kontaktua</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Bezerogaia</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Ebaluatu</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Hautatutako {0} {1} ezabatu nahi duzu zerrendatik?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Marketin-zerrenda beste Marketin-zerrenda baten berrespenean kopiatzen</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Marketin-zerrenda hautatu duzu beste marketin-zerrenda batean kopiatzeko.</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Eragiketak hautatutako marketin-zerrenden entitateko kide guztiak helburuko marketin-zerrendan gehituko ditu.</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Ez dira aldaketak gorde. Gorde aldaketak eta saiatu berriro.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Ados</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>Prozesatzen...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Itxaron zure eskaera prozesatzen den bitartean...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Ezin da sortu kanpaina bizkorra</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Izena: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Jarduera: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Esparrua: hautatutako erregistroak ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Esparrua: uneko orriko erregistro guztiak ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Esparrua: orri guztietako erregistro guztiak</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Jabea: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Kanpaina bizkorraren izena behar da.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Jarduera mota behar da.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Kanpaina bizkorrean dauden erregistroen jabeak</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Ni</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Ezin da kanpaina hau desaktibatu horrekin erlazionatutako kanpaina-jarduerak daudelako. Itxi kanpaina-jarduerak eta saiatu berriro.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>Ezin dugu desaktibatu hautatutako kanpainen {0}, haiekin erlazionatutako irekitako kanpaina-jarduera bat edo gehiago daudelako. Itxi irekitako kanpaina-jarduerak eta saiatu berriro.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>Zure posta-edukia handiegia da morroirako. Sortu mezu elektronikoaren txantiloi gisa eta hautatu txantiloia hemen.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Kanpaina bizkorrak ez dute onartzen edizio masiboa.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Zerrenda blokeatuta dago</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>{0} zerrendak blokeatuta daude</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Ekintza ezin da egin zerrenda dinamikoan.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Ezin da erlazionatu elementu inaktibo bat kanpaina batekin.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Ezin da erlazionatu elementu inaktibo bat kanpaina batekin.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Ezin izan da aurkitu eranskinaren erreferentzia.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>Mezu elektronikoaren hartzailea ez dago edo mezu elektronikoaren hartzailearen helbide elektronikoak ez du balio.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Eranskin motak ez du balio edo eranskina handiegia da. Ezin da kargatu edo deskargatu.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Hartzailea faxik ez jasotzeko ezarrita dago.</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Mezu elektronikoaren hartzaileak ez du balio.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Errore bat gertatu da mezu elektronikoaren txantiloian.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Errore bat gertatu da mezu elektronikoa bidaltzean.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Errore bat gertatu da oharra eranstean.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Errore bat gertatu da oharra sortzean.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Errore bat gertatu da jarduera ez kontrolatzean.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Errore bat gertatu da jarduera kontrolatzean.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Errore bat gertatu da jarduera eranstean.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Errore bat gertatu da jarduera sortzean.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Ez da harremanetan jarri marketin-zerrendako kide horrekin, kideak dagoeneko jaso duelako komunikazio hau.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Bidaltzaileak ez du helbide elektronikorik taldearen erregistroan</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>Ez da zehaztu helbide elektronikorik, eta deitzen duen erabiltzaileak ez du helbide elektronikoen multzorik</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>Ez da bidali mezu elektronikoa hartzailearen komunikazio-hobespenengatik edo arazo bat dagoelako haren helbide elektronikoarekin.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Bezeroaren helbide motak ez du balio.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Ustekabeko errore bat gertatu da posta-konbinazioan.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Erabiltzaileak bertan behera utzi du posta-konbinazioaren eragiketa.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Helbide elektronikorik ez duelako iragazi da bezeroa.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Hartzailea kanpoan utzi da inaktibo dagoelako.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Eragiketa masiboari lotutako lan-fluxuaren arauak ez daude.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>Hartzailea kanpoan utzi da spamaren aurkako ezarpenengatik edo hartzailearen komunikazio-hobespenengatik.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Ezin da zehaztu hitzordu-banaketaren parte-hartzailea.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Ezin da zehaztu hitzordu-banaketaren bidaltzailea</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Ezin da zehaztu hitzordu-banaketaren antolatzailea</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Ez da onartzen zerrendako kide mota.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Baimenik gabeko eragiketa bat egiten saiatu da.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>Erabiltzaileak ez ditu beharrezko pribilegioak.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Erabiltzaileak ez du ekintza hori egiteko pribilegiorik.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Helbide elektronikoak ez du balio. Informazio gehiago lortzeko, jarri harremanetan sistemaren administratzailearekin.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Inprimakiari elementu hauek falta zaizkio: {0}. Funtzioei eragingo die horrek.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Ezin duzu sortu abagunerik entitate mota horren jarraipena egiten duen marketin-zerrenda baterako.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Badago eskaera bat abian. Saiatu berriro geroago.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Bidali da eskaera. Itxaron orria kopiatutako zerrendara birbideratu arte.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>{0} berria</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Bete inprimaki hau marketin-zerrendan hautatu dituzun kideentzako {0} sortzeko. Sakatu Banatu, kide bakoitzaren erregistroan {0} hau {0} berri gisa gehitzeko.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Gorde da</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

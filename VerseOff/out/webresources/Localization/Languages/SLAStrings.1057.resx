@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SLA_DefaultSLASelectionConfirmDialogText">
+    <value>Anda yakin ingin menetapkan rekaman perjanjian tingkat layanan (SLA) ini sebagai default untuk entitas yang ditentukan?</value>
+  </data>
+  <data name="SLA_DefaultSLASelectionConfirmDialogTitle">
+    <value>Konfirmasikan Tetapkan sebagai Default</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogText">
+    <value>Anda memiliki catatan perjanjian tingkat layanan (SLA) lain yang ditetapkan sebagai default untuk entitas {0}. Anda ingin menandai SLA yang dipilih sebagai default?</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogTitle">
+    <value>Ubah SLA default</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertText">
+    <value>Anda tidak dapat mengatur SLA yang tidak aktif sebagai default.</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertTitle">
+    <value>Tidak dapat ditetapkan sebagai default</value>
+  </data>
+  <data name="SLA_DefaultSLAWarning">
+    <value>SLA yang dipilih sudah sebagai default</value>
+  </data>
+  <data name="SLA_DefaultSLASetttingInProgress">
+    <value>Mengatur SLA default</value>
+  </data>
+  <data name="SLA_ErrorResettingDefaultSLA">
+    <value>Terjadi kesalahan saat pembaruan SLA default</value>
+  </data>
+  <data name="SLA_ErrorSettingNewSLA">
+    <value>Terjadi kesalahan saat mengatur SLA Default baru</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsGeneralNotification">
+    <value>Klik Konfigurasikan Tindakan untuk mengkonfigurasi tindakan berhasil, peringatan, dan kegagalan.</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsSetupNotification">
+    <value>Tindakan berhasil, peringatan, dan kegagalan tidak diatur. Klik Konfigurasikan Tindakan untuk mengkonfigurasi.</value>
+  </data>
+  <data name="SLAItem_WarningTimeHigherThanFailureTimeAlert">
+    <value>Peringatan setelah durasi tidak boleh lebih besar dari kegagalan setelah durasi</value>
+  </data>
+  <data name="SLAItem_SuccessConditionsEmptyAlert">
+    <value>Kondisi keberhasilan tidak boleh kosong</value>
+  </data>
+  <data name="SLAItem_PauseConditionsEmptyAlert">
+    <value>Kondisi jeda tidak boleh kosong jika tombol alih timpa konfigurasi jeda aktif</value>
+  </data>
+  <data name="SLAItem_KPIEmptyAlert">
+    <value>KPI tidak boleh kosong</value>
+  </data>
+  <data name="SLAItem_Notification_SLA_ActivatedState">
+    <value>Nonaktifkan SLA untuk mengedit item SLA </value>
+  </data>
+  <data name="SLAKPI_Activate">
+    <value>Aktifkan</value>
+  </data>
+  <data name="SLAKPI_Deactivate">
+    <value>Nonaktifkan</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Message">
+    <value>Anda ingin menonaktifkan KPI entitas {0} yang dipilih?</value>
+  </data>
+  <data name="SLAKPI_Activate_Message">
+    <value>Anda ingin mengaktifkan KPI entitas {0} yang dipilih?</value>
+  </data>
+  <data name="Progress_Message">
+    <value>Memperbarui KPI</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Title">
+    <value>Konfirmasikan Penonaktifan</value>
+  </data>
+  <data name="SLAKPI_Activate_Title">
+    <value>Konfirmasikan Pengaktifan</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_UC">
+    <value>Ini adalah rekaman lama. Untuk mengedit rekaman ini, buka klien web lama.</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_WC">
+    <value>Catatan ini tidak dapat diedit di sini. Buka aplikasi antarmuka terpadu untuk mengedit yang sama.</value>
+  </data>
+  <data name="SLA_UC_Preview_Text">
+    <value>Tindakan yang digunakan untuk melakukan serangkaian tugas, bergantung pada pemenuhan kriteria. Sebelum tindakan dapat tentukan, item SLA harus disimpan. Klik {0} untuk informasi selengkapnya.</value>
+  </data>
+  <data name="SLA_AdvancedPauseConfig_Text">
+    <value>Konfigurasikan kondisi jeda di bagian ini untuk menimpa konfigurasi jeda tingkat entitas yang ditetapkan dalam Konfigurasi Layanan dan konfigurasi jeda tingkat KPI. {0}.</value>
+  </data>
+  <data name="SLA_KPIAdvancedPauseConfig_Text">
+    <value>Konfigurasikan kondisi jeda di bagian ini untuk menimpa konfigurasi jeda tingkat entitas yang ditetapkan dalam Konfigurasi Layanan. {0}.</value>
+  </data>
+  <data name="SLA_UC_Preview_FeatureDocumentation_Hyperlink_Label">
+    <value>dokumentasi fitur</value>
+  </data>
+  <data name="SLA_AdavncedPauseConfig_Hyperlink_Label" xml:space="preserve">
+    <value>Pelajari selengkapnya</value>
+  </data>
+  <data name="SLAKPI_LearnMoreLink_Text">
+    <value>Entitas harus diaktifkan untuk SLA. {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is the Learn More link.</comment>
+  </data>
+  <data name="SLAKPI_Hyperlink_Label" xml:space="preserve">
+    <value>Selengkapnya</value>
+  </data>
+  <data name="SLAItem_ConditionControl_Notification_Text">
+    <value>Sebaiknya jangan mengonfigurasi kriteria berlaku ketika dan berhasil pada atribut yang sama.</value>
+  </data>
+  <data name="SLAItem_ConditionOnSameAttributeAlert">
+    <value>Sebaiknya jangan mengonfigurasi kriteria berlaku ketika dan berhasil pada atribut yang sama. Anda ingin melanjutkan?</value>
+  </data>
+  <data name="SLAKPI_BusinessProcessError_Title" xml:space="preserve">
+    <value>Kesalahan Proses Bisnis</value>
+  </data>
+  <data name="SDKMessagingStepNotInActiveState" xml:space="preserve">
+    <value>Beberapa langkah pesan SDK {0} terkait mungkin tidak dalam status aktif. Aktifkan Langkah pesan SDK sebelum mengaktifkan SLA.</value>
+    <comment>Error message when dependent SDK Message Step is not enabled. step Id.</comment>
+  </data>
+  <data name="SLAIsDisabledInSetting" xml:space="preserve">
+    <value>Pengaturan terkait 'Nonaktifkan SLA' diaktifkan dalam pengaturan konfigurasi layanan. Nonaktifkan pengaturan sebelum mengaktifkan SLA.</value>
+    <comment>Error message when SLA is not enabled in Service Configuration Settings.</comment>
+  </data>
+  <data name="WorkflowNotInActiveState" xml:space="preserve">
+    <value>Beberapa alur kerja {0} terkait mungkin tidak dalam status aktif. Aktifkan alur kerja sebelum mengaktifkan SLA.</value>
+    <comment>Error message when dependent Workflow/CustomAction is not enabled.</comment>
+  </data>
+  <data name="SLAItem_ApplicableAndSuccessSameAttribute" xml:space="preserve">
+    <value>Sebaiknya jangan mengonfigurasi kriteria berlaku ketika dan berhasil pada atribut yang sama</value>
+    <comment>Warning message when SLA Applicable and Success conditions are configured on the same attribute</comment>
+  </data>
+  <data name="WorkflowOwnerIsDisabled" xml:space="preserve">
+    <value>Pemilik dalam Alur Kerja SLA berikut: {0} harus diperbarui dengan pengguna aktif.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is a workflow name which is owned by disabled user.</comment>
+  </data>
+  <data name="NoSLASetAsDefault" xml:space="preserve">
+    <value>SLA default tidak dipertahankan untuk entitas {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is an SLA's primary entity name.</comment>
+  </data>
+  <data name="OpenLearnMoreForSetAsDefaultSLA" xml:space="preserve">
+    <value>Pelajari selengkapnya</value>
+  </data>
+  <data name="SLAKPI_Recommendation_Entityname" xml:space="preserve">
+    <value>Entitas harus diaktifkan untuk SLA.</value>
+    <comment>Recommendation message for EntityName field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_KPIField" xml:space="preserve">
+    <value>KPI didasarkan pada Entitas yang dipilih.</value>
+    <comment>Recommendation message for KPI field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_PrimaryEntity" xml:space="preserve">
+    <value>Entitas harus diaktifkan untuk SLA.</value>
+    <comment>Recommendation message for Primary Entity field.</comment>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>Mulai 01 April 2023, SLA (Perjanjian Tingkat Layanan) lama di klien web yang sudah tidak digunakan sebelumnya, telah melewati Akhir Dukungan (EoS). MemigrasiKAN SLA lama yang dibuat di klien web ke pengalaman Antarmuka Terpadu sangat penting agar tetap dapat berfungsi. Untuk informasi selengkapnya tentang cara memigrasi item, lihat {0}</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>Saya mengakui</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>Batal</value>
+  </data>
+  <data name="SLAKPI_Activation_Error_Message" xml:space="preserve">
+    <value>Gagal mengaktifkan SLAKPI, aktifkan dari kelola SLAKPI.</value>
+    <comment>Error message when it fails to activate SLAKPI from quick create form.</comment>
+  </data>
+  <data name="SLAKPI_Performance_Indicator_Notification" xml:space="preserve">
+    <value>KPI SLA adalah indikator performa</value>
+    <comment>Header notification in SLA KPI form.</comment>
+  </data>
+  <data name="SLA_ChangedAttribiteNullNotification" xml:space="preserve">
+    <value>Anda perlu mengaktifkan kembali SLA {0} untuk memperbaiki masalah yang teridentifikasi dengan kondisi di dalamnya. Untuk informasi lebih lanjut, lihat {1}</value>
+    <comment>Notification message when SLA item's 'ChangedAttributeList" field value is NULL and SLA is active. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_RelatedEntitiesNotification" xml:space="preserve">
+    <value>Entitas terkait yang dikonfigurasi dalam kondisi untuk Item SLA {{0}} tidak sepenuhnya didukung. Untuk informasi lebih lanjut, lihat – {1}</value>
+    <comment>Notification message when SLA item has related entities in the applicable when or success or pause conditions. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogDepreciationText" xml:space="preserve">
+    <value>Mulai 1 April 2020, SLA tidak digunakan lagi di klien web. Untuk informasi lebih lanjut, buka - {0}</value>
+    <comment>Depreciation Message when user try to create new Legacy SLA and ask customer to move to UCI to create new SLAs.{Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogConfirmationText" xml:space="preserve">
+    <value>Pilih 'OK' untuk melanjutkan pembuatan SLA baru di Antarmuka Terpadu.</value>
+    <comment>Confirmation to direct user to UCI to create new SLAs.</comment>
+  </data>
+  <data name="SLAWorkingHoursEmptyNotification" xml:space="preserve">
+    <value>Kalender Bisnis yang terkait dengan SLA {0} memiliki jam kerja yang masih kosong.</value>
+    <comment>Notification message when SLA item has business calendar with empty working hours. {Placeholder='{0}'} refers SLA items.</comment>
+  </data>
+</root>

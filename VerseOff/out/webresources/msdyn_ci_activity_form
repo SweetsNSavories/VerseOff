@@ -1,0 +1,47 @@
+function onActivityFormLoad(context){
+    try {
+        var formContext = context.getFormContext();
+
+        if (!formContext.data.entity._entityId) { // multiple forms are opened (bulk mode)
+          return;
+        }
+
+        var id = formContext.data.entity._entityId.guid;
+        // tab_ci_call_summary and tab_ci_notes both render CallSummaryControlTwin,
+        // Using 2 different tabs is for localization only
+        var callSummaryTab = formContext.ui.tabs.get('tab_ci_call_summary');
+        var notesTab = formContext.ui.tabs.get('tab_ci_notes');
+        Promise.allSettled([Xrm.WebApi.retrieveMultipleRecords('msdyn_recording','?$filter=_msdyn_appointment_activity_value eq ' + id + ' or _msdyn_phone_call_activity_value eq ' + id + '&$top=1&$select=msdyn_ci_url'),
+            Xrm.WebApi.retrieveMultipleRecords('msdyn_sciconversation','?$filter=_msdyn_relatedactivity_value eq ' + id + '&$top=1&$select=msdyn_sciconversationid'),
+            Xrm.WebApi.retrieveMultipleRecords('annotation', '?$select=annotationid&$filter=_objectid_value eq ' + id),
+            Xrm.WebApi.retrieveMultipleRecords('msdyn_teamsdialeradminsettings', '?$select=msdyn_teamsdialeradminsettingsid&$filter=statuscode eq 2')
+        ]).then(function(values) {
+            try {
+                var recordings = values[0].value;
+                var sciConversation = values[1].value;
+                var annotation = values[2].value;
+                var teamsSettingsRecords = values[3].value;
+
+                var isExistingRecording = recordings && recordings.entities && recordings.entities[0] && recordings.entities[0].msdyn_ci_url;
+                var isExistingSciConversation = sciConversation && sciConversation.entities && sciConversation.entities[0] && sciConversation.entities[0].msdyn_sciconversationid;
+                var isExistingTeamsSettingsRecords = teamsSettingsRecords && teamsSettingsRecords.entities && teamsSettingsRecords.entities.length > 0;
+                var isExistingAnnotation = annotation && annotation.entities && annotation.entities[0] && annotation.entities[0].annotationid;
+                var isExistingNotes = isExistingTeamsSettingsRecords && isExistingAnnotation;
+                window.top.isMsdynRecordingExist = isExistingRecording || isExistingSciConversation;
+                if (isExistingRecording || isExistingSciConversation) {
+                    callSummaryTab.setVisible(true);
+                    formContext.onCallSummaryTabVisible && formContext.onCallSummaryTabVisible();
+                } else if (isExistingNotes) {
+				    notesTab.setVisible(true);
+				} else {
+                   callSummaryTab.setVisible(false);
+                   notesTab.setVisible(false);
+                }
+            } catch(e) {
+                console.error(e);
+            }
+        });
+    } catch(e) {
+        console.error(e);
+    }
+}

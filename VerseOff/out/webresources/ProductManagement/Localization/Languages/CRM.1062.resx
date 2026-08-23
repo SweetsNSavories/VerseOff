@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DynamicProperty_OverrideDialog_SubTitle" xml:space="preserve">
+    <value>Vai vēlaties pārlabot šo rekvizītu?</value>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Text" xml:space="preserve">
+    <value>Šī opcija jums ļauj veikt izmaiņas rekvizīta pārmantotajā versijā. Tiek paturēta arī rekvizīta sākotnējā pārmantotā versija.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to override the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Title" xml:space="preserve">
+    <value>Apstiprināt pārlabošanu</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_SubTitle" xml:space="preserve">
+    <value>Vai vēlaties pārrakstīt šo rekvizītu?</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Text" xml:space="preserve">
+    <value>Šī opcija jums ļauj veikt papildu izmaiņas rekvizīta iepriekš publicētajā versijā. Tiek paturēta arī rekvizīta iepriekšējā versija.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to overwrite the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Title" xml:space="preserve">
+    <value>Apstiprināt pārrakstīšanu</value>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_39" xml:space="preserve">
+    <value>Ievadiet vērtību no {0} līdz {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_9" xml:space="preserve">
+    <value>Jāievada vesels skaitlis no {0} līdz {1}.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvaluestring.warning" xml:space="preserve">
+    <value>Noklusējuma vērtības virknes garumam ir jābūt mazākam par vai vienādam ar virknes maksimālo atļauto garumu.</value>
+    <comment>Warning message for Default Value string lenght of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvalue.warning" xml:space="preserve">
+    <value>Noklusējuma vērtībai ir jābūt lielākai par vai vienādai ar minimālo vērtību, un tai ir jābūt mazākai par vai vienādai ar maksimālo vērtību.</value>
+    <comment>Warning message for Default value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.minvalue.warning" xml:space="preserve">
+    <value>Minimālā vērtība nevar būt lielāka par maksimālo vērtību.</value>
+    <comment>Warning message for Minimum value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.optionset.warning" xml:space="preserve">
+    <value>Opciju kopas rekvizītu uz Obligāts un Tikai lasāms var iestatīt tikai pēc tam, kad ir pievienoti opciju kopas elementi un ir norādīta noklusējuma vērtība.</value>
+    <comment>Warning message for Dynamic Property of type Option Set.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="query.dynamicproperty.readonlyrequired.warning" xml:space="preserve">
+    <value>Noklusējuma vērtība ir jānorāda, jo šis rekvizīts ir obligāts un tikai lasāms.</value>
+    <comment>Warning message for Default Value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Web.products.ValidToEarlierThanValidFromDate" xml:space="preserve">
+    <value>Datums Derīgs līdz nevar būt pirms datuma Derīgs no.</value>
+    <comment>Error message to display if the valid to date supplied  is earlier than the valid from date.</comment>
+  </data>
+  <data name="Kit_Products_Section_Name" xml:space="preserve">
+    <value>KOMPLEKTU PRODUKTI</value>
+    <comment>Kit Products section name in product kit form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Product_Family_Hierarchy_Label_Value" xml:space="preserve">
+    <value>Saimes hierarhija</value>
+    <comment>Label text for Product Family Hierarchy Control.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Product_Bundle_Form_Title" xml:space="preserve">
+    <value>Jauns saišķis</value>
+    <comment>Title text for Product Bundle Form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="ProductFamilyQuickCreate.DisplayName" xml:space="preserve">
+    <value>Jauna produktu saime</value>
+  </data>
+  <data name="Object_Singular_Kit" xml:space="preserve">
+    <value>Komplekts</value>
+    <comment>Singular Name of Product Kit.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Object_Singular_Bundle" xml:space="preserve">
+    <value>Saišķis</value>
+    <comment>Singular Name of Product Bundle.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Object_Singular_Product_Family" xml:space="preserve">
+    <value>Produktu saime</value>
+    <comment>Singular Name of Product Family.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Object_Singular_Product" xml:space="preserve">
+    <value>Produkts</value>
+    <comment>Singular Name of Product.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_90" xml:space="preserve">
+    <value>Brīdinājums:</value>
+    <comment>Label that is prefixed to a warning message.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_91" xml:space="preserve">
+    <value>Nav iestatīts noklusējuma cenrādis.</value>
+    <comment>Error message that is displayed to the user in the product form when the default price list for the product is not specified.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_92" xml:space="preserve">
+    <value>Automātiskā publicēšana ir iespējota.</value>
+    <comment>Alert message that is displayed to the user in the product form when System Settings Sales enabled with Create products in active state. </comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_93" xml:space="preserve">
+    <value>Produkts ir izveidots un publicēts.</value>
+    <comment>Alert message that is displayed to the user in the product form when System Settings Sales enabled with Create products in active state and product is creating.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_12" xml:space="preserve">
+    <value>Vispirms ir jāatlasa produkts.</value>
+    <comment>Error message displayed in the price list form if the user tries to choose the unit without choosing the product.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_153" xml:space="preserve">
+    <value>procentu no cenrāža cenas cenu noteikšanas metodes procentu likmei ir jābūt starp {0} un {1} procentiem. Norādiet jaunu procentu likmi.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent of List". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_157" xml:space="preserve">
+    <value>Uzcenojuma procentu cenu noteikšanas metodes procentu likmei ir jābūt starp {0} un {1} procentiem. Norādiet jaunu procentu likmi.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Markup". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_161" xml:space="preserve">
+    <value>Starpības procentu cenu noteikšanas metodes procentu likmei ir jābūt starp {0} un {1} procentiem. Norādiet jaunu procentu likmi.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Margin". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_113" xml:space="preserve">
+    <value>Noapaļošanas summai noapaļošanas opcijas galiem ir jābūt starp {0} un {1}. Norādiet jaunu noapaļošanas summu.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Ends in". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_106" xml:space="preserve">
+    <value>Noapaļošanas summai daudzkārtējas noapaļošanas opcijai ir jābūt starp {0} un {1}. Norādiet jaunu noapaļošanas summu.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Multiple of". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifying minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Kit_Products_Form_Title" xml:space="preserve">
+    <value>Komplekta produkts</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Bundle_Product_Form_Value" xml:space="preserve">
+    <value>Saišķa produkts</value>
+    <comment>Bundle Product Form Title Value.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Kit_Product_Label_Value" xml:space="preserve">
+    <value>Komplekts</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>Radās kļūda. Lūdzu, atgriezieties sākumlapā un mēģiniet vēlreiz.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Jāatlasa viens vai vairāki ieraksti, pirms varēsit izpildīt šo darbību.</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Radās kļūda. Atlasītā darbība vienam vai vairākiem ierakstiem netika pabeigta.</value>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleArticle_DialogText" xml:space="preserve">
+    <value>Jums ir jāatlasa kāds raksts</value>
+    <comment>select an article to associate.[Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleProduct_DialogText" xml:space="preserve">
+    <value>Jums ir jāatlasa kāds produkts.</value>
+    <comment>select a product to associate.[Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>Nevar apstrādāt šo pieprasījumu, jo šis klients ir bezsaistē.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>Notiek apstrāde...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="Web.products.pricelevel.EndDateEarlierThanStartDate" xml:space="preserve">
+    <value>Beigu datums nevar būt pirms sākuma datuma.</value>
+    <comment>Error message to display if the end date supplied in the price list form is earlier than the start date.</comment>
+  </data>
+  <data name="Web.Products.UoM.edit.aspx_71" xml:space="preserve">
+    <value>Šī ir pamatvienība.</value>
+    <comment>Informational message displayed to the user in the primary unit form.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>Pieteikuma nosaukums</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>Klients</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>Prioritāte</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>Izveidošanas laiks</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="ConfirmRevise" xml:space="preserve">
+    <value>Apstiprināt pārskatīšanu</value>
+  </data>
+  <data name="ConfirmPublish" xml:space="preserve">
+    <value>Apstiprināt publicēšanu</value>
+  </data>
+  <data name="ConfirmHierarchyPublish" xml:space="preserve">
+    <value>Apstiprināt hierarhijas publicēšanu</value>
+  </data>
+  <data name="ConfirmRevert" xml:space="preserve">
+    <value>Apstiprināt iepriekšējās versijas atjaunošanu</value>
+  </data>
+  <data name="ConfirmRetire" xml:space="preserve">
+    <value>Apstiprināt slēgšanu</value>
+  </data>
+  <data name="CloneProduct" xml:space="preserve">
+    <value>Produkta klonēšana</value>
+  </data>
+  <data name="ConfirmReviseMessage" xml:space="preserve">
+    <value>Vai vēlaties pārskatīt atlasīto ierakstu? Veicot šo darbību, varēsit mainīt šī ieraksta rekvizītus.</value>
+  </data>
+  <data name="ConfirmRetireMessage" xml:space="preserve">
+    <value>Vai vēlaties slēgt atlasīto ierakstu? Ar šo operāciju atlasītajam ierakstam tiks iestatīts slēgts statuss.</value>
+  </data>
+  <data name="ConfirmPublishMessage" xml:space="preserve">
+    <value>Vai vēlaties publicēt atlasīto ierakstu? Ar šo operāciju atlasītajam ierakstam tiks iestatīts aktīvs statuss.</value>
+  </data>
+  <data name="ConfirmCloneMessage" xml:space="preserve">
+    <value>Izveidot jaunu produktu no šī produkta.</value>
+  </data>
+  <data name="ConfirmRevertMessage" xml:space="preserve">
+    <value>Vai vēlaties atjaunot atlasītā ieraksta iepriekšējo versiju? Šī darbība atmetīs visas izmaiņas, ko veicāt šī ieraksta rekvizītiem.</value>
+  </data>
+  <data name="ConfirmHierarchyPublishMessage" xml:space="preserve">
+    <value>Vai vēlaties publicēt produktu saimes hierarhiju? Ar šo operāciju visiem atlasītās produktu saimes atvasinātajiem ierakstiem tiek iestatīts aktīvs statuss. </value>
+  </data>
+  <data name="Revert_after_reparent_error_message" xml:space="preserve">
+    <value>Produkta rekvizītu izmaiņas atjaunot nevar, jo produkta vecākelements tika mainīts.</value>
+    <comment>You can’t revert the changes to the product properties because the parent of the product was changed.</comment>
+  </data>
+  <data name="Viewpublished_after_reparent_error_message" xml:space="preserve">
+    <value>Publicēto produktu skatīt nevar, jo tā vecākelements ir mainīts.</value>
+    <comment>You can’t view the published product because the parent of the product has been changed.</comment>
+  </data>
+  <data name="Save_Before_Publishing_Product_message" xml:space="preserve">
+    <value>Pirms publicēšanas saglabājiet produkta primārās izmaiņas.</value>
+    <comment>Please save product parent changes before publishing.</comment>
+  </data>
+  <data name="MissingCostOnProductError" xml:space="preserve">
+    <value>Lai izmantotu ar {0} saistīto cenu noteikšanas metodi, laukam {1} ir jābūt pieejamam un aizpildītam produkta veidlapā.</value>
+    <comment>Selected Pricing method's field should be available and filled on product form. Placeholder {0} represents pricing method and {1} represents atrribute name related to selected pricing method.</comment>
+  </data>
+  <data name="Entity_set_to_readonly" xml:space="preserve">
+    <value>UCI ir iespējots mobilais iestatījums Tikai lasāms, un jūs redzēsit, ka dažu pogu trūkst un veidlapa ir tikai lasāma. Jūsu administrators var mainīt šo iestatījumu. Lasīt vairāk</value>
+    <comment>As entity is set to readonly some functionalities will be unavailable.</comment>
+  </data>
+  <data name="Read_More" xml:space="preserve">
+    <value>Lasīt vairāk</value>
+    <comment>Label for Read More button in notification.</comment>
+  </data>
+  <data name="CannotSetPrecisionValue" xml:space="preserve">
+    <value>Nevar iestatīt vienuma {0} precizitāti kā vērtību, kas ir lielāka par tā sistēmas noklusējuma precizitātes vērtību, kura ir {1}. Palieliniet noklusējuma vērtību vai samaziniet precizitātes vērtību.</value>
+    <comment>Error message when an attribute's precision is being set to a value greater than its system default precision. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 represents the attribute name and Placeholder 1 represents its default precision value.</comment>
+  </data>
+  <data name="Reparenting_Attribute_Missing" xml:space="preserve">
+    <value>Lauks {0} ir paslēpts, jo veidlapā trūkst saistīto lauku. Lai parādītu lauku {1}, pievienojiet veidlapai visus saistītos laukus.</value>
+    <comment>Parent field is hidden because related fields are missing in the form. To show the Parent field, add all related fields to the form.</comment>
+  </data>
+  <data name="Product_has_been_cloned_Successfully" xml:space="preserve">
+    <value>Produkts ir sekmīgi klonēts.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is cloned</comment>
+  </data>
+  <data name="Product_has_been_retired_Successfully" xml:space="preserve">
+    <value>Produkts ir sekmīgi norakstīts.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is retired</comment>
+  </data>
+  <data name="Product_has_been_published_Successfully" xml:space="preserve">
+    <value>Produkts ir sekmīgi publicēts.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is published</comment>
+  </data>
+  <data name="Product_has_been_revised_Successfully" xml:space="preserve">
+    <value>Produkts ir sekmīgi pārskatīts.</value>
+    <comment>Alert message that is displayed to the user in the product form when a product is revised</comment>
+  </data>
+</root>

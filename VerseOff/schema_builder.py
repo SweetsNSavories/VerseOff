@@ -267,9 +267,54 @@ def persist_entity_metadata(entity_def: dict, db_path: str = None):
                         json.dumps(rel, default=str, sort_keys=True),
                     ),
                 )
+                # If Many-to-Many, create the intersect table directly
+                if rel_type in ("many_to_many", "ManyToManyRelationships"):
+                    create_intersect_entity_table(rel, db_path=path)
         conn.commit()
     finally:
         conn.close()
+
+
+def create_intersect_entity_table(intersect_rel: dict, db_path: str = None):
+    """
+    Creates a SQLite table for a Many-to-Many (N:N) intersect relationship with composite primary key.
+    """
+    path = db_path or DB_PATH
+    intersect_table = intersect_rel.get("IntersectEntityName") or intersect_rel.get("intersect_entity_name")
+    entity1_attr = intersect_rel.get("Entity1IntersectAttribute") or intersect_rel.get("entity1_intersect_attribute")
+    entity2_attr = intersect_rel.get("Entity2IntersectAttribute") or intersect_rel.get("entity2_intersect_attribute")
+
+    if not intersect_table or not entity1_attr or not entity2_attr:
+        return
+
+    table_name = _sanitize_table_name(intersect_table)
+    col1 = _sanitize_column_name(entity1_attr)
+    col2 = _sanitize_column_name(entity2_attr)
+
+    sql = f"""
+    CREATE TABLE IF NOT EXISTS {table_name} (
+        {col1} TEXT NOT NULL,
+        {col2} TEXT NOT NULL,
+        versionnumber INTEGER,
+        sync_status TEXT DEFAULT 'SYNCED',
+        last_modified DATETIME DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY ({col1}, {col2})
+    );
+    """
+    idx1 = f"CREATE INDEX IF NOT EXISTS idx_{table_name}_{col1} ON {table_name} ({col1});"
+    idx2 = f"CREATE INDEX IF NOT EXISTS idx_{table_name}_{col2} ON {table_name} ({col2});"
+
+    try:
+        conn = sqlite3.connect(path)
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        cursor.execute(idx1)
+        cursor.execute(idx2)
+        conn.commit()
+        conn.close()
+        logger.info(f"Created/verified N:N intersect table '{table_name}' ({col1} <-> {col2})")
+    except Exception as e:
+        logger.error(f"Failed to create intersect table '{table_name}': {e}")
 
 
 def create_all_entity_tables(db_path: str = None):

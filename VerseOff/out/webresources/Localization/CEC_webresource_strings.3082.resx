@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACCEPT_BUTTON_TEXT" xml:space="preserve">
+    <value>Aceptar</value>
+    <comment>Text for notification button.</comment>
+  </data>
+  <data name="ACCEPT_BUTTON_TEXT_WHEN_AUTOACCEPT_IS_ENABLED" xml:space="preserve">
+    <value>Abrir</value>
+    <comment>Text for accept notification button when auto accept is enabled in admin setting.</comment>
+  </data>
+  <data name="REJECT_BUTTON_DEFAULT_TEXT" xml:space="preserve">
+    <value>Rechazar</value>
+    <comment>Reject</comment>
+  </data>
+  <data name="msdyn_applicationextension" xml:space="preserve">
+    <value>Esta es una extensión de la aplicación del sistema y no se puede editar.</value>
+    <comment>This is a system application extension and can't be edited.</comment>
+  </data>
+  <data name="msdyn_sessiontemplate" xml:space="preserve">
+    <value>Esta es una plantilla de sesión del sistema y no se puede editar.</value>
+    <comment>This is a system session template and can't be edited.</comment>
+  </data>
+  <data name="msdyn_appconfiguration" xml:space="preserve">
+    <value>Esta es una configuración de la aplicación del sistema y no se puede editar.</value>
+    <comment>This is a system app configuration and can't be edited.</comment>
+  </data>
+  <data name="msdyn_applicationtabtemplate" xml:space="preserve">
+    <value>Esta es una plantilla de pestaña de aplicación del sistema y no se puede editar.</value>
+    <comment>This is a system application tab template and can't be edited.</comment>
+  </data>
+  <data name="msdyn_templateparameter" xml:space="preserve">
+    <value>Este es un parámetro de plantilla del sistema y no se puede editar.</value>
+    <comment>This is a system template parameter and can't be edited.</comment>
+  </data>
+  <data name="msdyn_notificationtemplate" xml:space="preserve">
+    <value>Esta es una plantilla de notificación del sistema y no se puede editar.</value>
+    <comment>This is a system notification template and can't be edited.</comment>
+  </data>
+  <data name="msdyn_notificationfield" xml:space="preserve">
+    <value>Este es un campo de notificación del sistema y no se puede editar.</value>
+    <comment>This is a system notification field and can't be edited.</comment>
+  </data>
+  <data name="UNIQUE_NAME_RECOMMENDATION" xml:space="preserve">
+    <value>El nombre único debe incluir un prefijo y un nombre con este formato: prefix_name. El prefijo solo debe incluir caracteres alfanuméricos y contener de 3 a 8 caracteres. La parte del nombre solo debe incluir caracteres alfanuméricos y puede tener cualquier longitud, pero no puede incluir espacios en blanco.</value>
+    <comment>Unique name recommendation.</comment>
+  </data>
+  <data name="WARNING_MESSAGE_FOR_ALWAYSRENDER" xml:space="preserve">
+    <value>Si se habilita Representar siempre, podría aumentar el uso de memoria.</value>
+    <comment>Warning message when switching on always render property for third party web pages.</comment>
+  </data>
+  <data name="KPI_BREACH_TEXT" xml:space="preserve">
+    <value>Se debe prestar atención urgente a la conversación.</value>
+    <comment>KPI breach text</comment>
+  </data>
+  <data name="ACTIVITY_INDICATOR_TEXT" xml:space="preserve">
+    <value>nuevas actualizaciones en su conversación.</value>
+    <comment>Activity Indicator Text</comment>
+  </data>
+  <data name="AlertPopupTitle" xml:space="preserve">
+    <value>No se puede cambiar el tipo de esta plantilla de sesión</value>
+    <comment>Title for alert popup when we try to change session type of session template when record is being updated</comment>
+  </data>
+  <data name="AlertPopupMessage" xml:space="preserve">
+    <value>Una vez que se guarda una plantilla de sesión, no se puede cambiar el tipo. Lo revertiremos al tipo original.</value>
+    <comment>Message for alert popup when we try to change session type of session template when record is being updated</comment>
+  </data>
+  <data name="AlertPopupButton" xml:space="preserve">
+    <value>Aceptar</value>
+    <comment>Button for alert popup when we try to change session type of session template when record is being updated</comment>
+  </data>
+  <data name="SessionTypeNotificationMessage" xml:space="preserve">
+    <value>Asegúrese de elegir el tipo de plantilla de sesión correcto: una vez que guarde, no se puede cambiar el tipo. Si la plantilla se va a utilizar para la secuencia de trabajo de registro, el modo del panel de comunicación debe establecerse en "Oculto" para la plantilla de sesión genérica</value>
+    <comment>Info for session template form</comment>
+  </data>
+  <data name="NOTIFICATION_DETAIL_WAIT_TIME_TEXT" xml:space="preserve">
+    <value>Tiempo de espera</value>
+    <comment>Text for notification waittime detail</comment>
+  </data>
+  <data name="NOTIFICATION_DETAIL_COUNTDOWN_TEXT" xml:space="preserve">
+    <value>Cuenta atrás</value>
+    <comment>Text for notification countdown detail</comment>
+  </data>
+  <data name="NOTIFICATION_MESSAGE_ENABLE_AUTOPOPUP" xml:space="preserve">
+    <value>Tenga en cuenta que esta función habilitará las aceptaciones automáticas para todos los agentes asociados a secuencias de trabajo que utilicen la plantilla actual. Antes de habilitar esta función, le sugerimos que ofrezca formación a todos los agentes sobre el hecho de que las conversaciones se aceptarán automáticamente de ahora en adelante.</value>
+    <comment>Notification Message for enabling auto-accept for notifcaiton template</comment>
+  </data>
+  <data name="NOTIFICATION_TIMEOUT_TOO_SHORT" xml:space="preserve">
+    <value>Para disfrutar de una mejor experiencia de agente, se recomienda utilizar un valor superior a 10 segundos.</value>
+    <comment>Notification Message for timeout less than 10 with auto-accept enabled</comment>
+  </data>
+  <data name="SESSION_RESTORE_CONFIRMATION_TEXT" xml:space="preserve">
+    <value>¿Desea restaurar sesiones anteriores?</value>
+    <comment>Description for session restore confirmation dialog text</comment>
+  </data>
+  <data name="SESSION_RESTORE_CONFIRMATION_TITLE" xml:space="preserve">
+    <value>Cuadro de diálogo de confirmación</value>
+    <comment>Description for session restore confirmation dialog title</comment>
+  </data>
+  <data name="SESSION_RESTORE_CONFIRMATION_YES" xml:space="preserve">
+    <value>Sí</value>
+    <comment>Option for agents to allow session restore</comment>
+  </data>
+  <data name="SESSION_RESTORE_CONFIRMATION_NO" xml:space="preserve">
+    <value>No</value>
+    <comment>Option for agents not to allow session restore</comment>
+  </data>
+  <data name="DTR_UserNotAssignedIssue" xml:space="preserve">
+    <value>Actualmente, el usuario no está asignado a ningún perfil de aplicación.</value>
+    <comment>Description for diagnostics informing user they are not assigned to a profile</comment>
+  </data>
+  <data name="DTR_UserNotAssignedSolution" xml:space="preserve">
+    <value>Actualice y vuelva a intentarlo o póngase en contacto con el administrador. Se ha producido un error al recuperar el perfil de aplicación para este usuario.</value>
+    <comment>Description for diagnostics informing user to retry or contact admin for a app profile retrieval failure</comment>
+  </data>
+  <data name="DTR_AppProfileArea" xml:space="preserve">
+    <value>Perfiles de experiencia de agente</value>
+    <comment>Area of app for diagnostics</comment>
+  </data>
+  <data name="DTR_UserAssignedDefaultProfileIssue" xml:space="preserve">
+    <value>Usuario asignado a un perfil de reserva predeterminado.</value>
+    <comment>Description for diagnostics informing user they be assigned to a fallback profile.</comment>
+  </data>
+  <data name="DTR_UserAssignedDefaultProfileSolution" xml:space="preserve">
+    <value>El usuario está asignado actualmente a un perfil de aplicación de reserva predeterminado. Si no es lo que quiere, póngase en contacto con el administrador para asignar al usuario a otro perfil.</value>
+    <comment>Solution for diagnostics for a user with no profile assigned</comment>
+  </data>
+  <data name="DTR_AppConfiguration" xml:space="preserve">
+    <value>Configuración del perfil de aplicación</value>
+    <comment>App profile configuration</comment>
+  </data>
+  <data name="DTR_InSuffientPermissionsIssue" xml:space="preserve">
+    <value>Permisos insuficientes.</value>
+    <comment>Description for diagnostics informing the user they have insuffient permissions.</comment>
+  </data>
+  <data name="DTR_InSuffientPermissionsSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para agregar permisos para el usuario.</value>
+    <comment>Description for diagnostics informing the user to contact admin to add permissions.</comment>
+  </data>
+  <data name="DTR_InSuffientPermissionsArea" xml:space="preserve">
+    <value>Permisos</value>
+    <comment>Permissions</comment>
+  </data>
+  <data name="DTR_OmnichannelRoleIssue" xml:space="preserve">
+    <value>El rol de persona Omnicanal no está asignado.</value>
+    <comment>Description for diagnostics informing the user Omnichannel role is not assigned.</comment>
+  </data>
+  <data name="DTR_OmnichannelRoleSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para asignar al menos un rol de persona Omnicanal al usuario.</value>
+    <comment>Description for diagnostics informing the user to contact admin to assign Omnichannel role.</comment>
+  </data>
+  <data name="DTR_OmnichannelRoleArea" xml:space="preserve">
+    <value>Asignación de roles de persona Omnicanal</value>
+    <comment>Omnichannel role area in admin settings</comment>
+  </data>
+  <data name="DTR_RecommendedRoles" xml:space="preserve">
+    <value>Roles que se recomienda agregar</value>
+    <comment>Description for diagnostics informing the user of which roles to add.</comment>
+  </data>
+  <data name="DTR_PersonaRecommendedRoles" xml:space="preserve">
+    <value>Agregue al menos uno de los siguientes roles de persona Omnicanal</value>
+    <comment>Description for diagnostics informing the user of which persona roles to add.</comment>
+  </data>
+  <data name="DTR_Error" xml:space="preserve">
+    <value>Error</value>
+    <comment>Error</comment>
+  </data>
+  <data name="DTR_InboxNotEnabledIssue" xml:space="preserve">
+    <value>La bandeja de entrada no está habilitada</value>
+    <comment>Description for diagnostics informing the user inbox is not enabled.</comment>
+  </data>
+  <data name="DTR_InboxNotEnabledSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para habilitar la bandeja de entrada para el perfil actual.</value>
+    <comment>Description for diagnostics informing the user to enable inbox in the app profile.</comment>
+  </data>
+  <data name="DTR_PaneNotConfiguredIssue" xml:space="preserve">
+    <value>El panel de productividad no está configurado.</value>
+    <comment>Description for diagnostics informing the user productivity pane is not configured.</comment>
+  </data>
+  <data name="DTR_PaneNotConfiguredSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para configurar el panel de productividad para el perfil actual.</value>
+    <comment>Description for diagnostics informing the user to contact admin to configure productivity pane in the app profile.</comment>
+  </data>
+  <data name="DTR_PaneNotEnabledIssue" xml:space="preserve">
+    <value>El panel de productividad no está habilitado.</value>
+    <comment>Description for diagnostics informing the user productivity pane is not enabled.</comment>
+  </data>
+  <data name="DTR_PaneNotEnabledSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para habilitar el panel de productividad para el perfil actual.</value>
+    <comment>Description for diagnostics informing the user contact admin to enable productivity pane in the app profile.</comment>
+  </data>
+  <data name="DTR_ToolsNotEnabledIssue" xml:space="preserve">
+    <value>No hay ninguna herramienta de productividad habilitada.</value>
+    <comment>Description for diagnostics informing the user that no tools are enabled.</comment>
+  </data>
+  <data name="DTR_ToolsNotEnabledSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para habilitar al menos una herramienta para el perfil de aplicación actual.</value>
+    <comment>Description for diagnostics informing the user contact admin to enable at least one tool in the app profile.</comment>
+  </data>
+  <data name="DTR_OmnichannelNotFoundIssue" xml:space="preserve">
+    <value>No se encontró el proveedor de Omnicanal.</value>
+    <comment>Description for diagnostics informing the user Omnichannel was not found.</comment>
+  </data>
+  <data name="DTR_OmnichannelNotFoundSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para activar o agregar Omnicanal como configuración del proveedor de canal.</value>
+    <comment>Description for diagnostics informing the user to contact admin to activate or add Omnichannel.</comment>
+  </data>
+  <data name="DTR_IncorrectProviderURLIssue" xml:space="preserve">
+    <value>Dirección URL del proveedor de Omnicanal incorrecta.</value>
+    <comment>Description for diagnostics informing the user that the Omnichannel provider URL is incorrect.</comment>
+  </data>
+  <data name="DTR_IncorrectProviderURLSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para corregir la dirección URL del proveedor de Omnicanal.</value>
+    <comment>Description for diagnostics informing the user to contact admin to correct the Omnichannel provider URL.</comment>
+  </data>
+  <data name="DTR_OmnichannelArea" xml:space="preserve">
+    <value>Omnicanal</value>
+    <comment>Omnichannel (name in Microsoft Dynamics)</comment>
+  </data>
+  <data name="DTR_ChannelProviderArea" xml:space="preserve">
+    <value>Configuración del proveedor de canal</value>
+    <comment>Channel provider configuration area in admin settings</comment>
+  </data>
+  <data name="DTR_CurrentURL" xml:space="preserve">
+    <value>Dirección URL actual</value>
+    <comment>Text for current URL (web url)</comment>
+  </data>
+  <data name="DTR_ExpectedURL" xml:space="preserve">
+    <value>Dirección URL esperada</value>
+    <comment>Text for expected URL (web url)</comment>
+  </data>
+  <data name="DTR_ChannelsNotEnabledIssue" xml:space="preserve">
+    <value>Los canales activos no están habilitados.</value>
+    <comment>Description for diagnostics informing the user active channels are not enabled.</comment>
+  </data>
+  <data name="DTR_ChannelsNotEnabledSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para habilitar todos los canales activos en el perfil de aplicación.</value>
+    <comment>Description for diagnostics informing the user to contact admin to active channels in the app profile.</comment>
+  </data>
+  <data name="DTR_BrowserSettingsArea" xml:space="preserve">
+    <value>Configuración del explorador</value>
+    <comment>Area for diagnostic for browser settings.</comment>
+  </data>
+  <data name="DTR_MissingStorageKeysIssue" xml:space="preserve">
+    <value>Faltaban claves de almacenamiento web de la experiencia de agente.</value>
+    <comment>Missing web storage keys issue description.</comment>
+  </data>
+  <data name="DTR_MissingStorageKeysSolution" xml:space="preserve">
+    <value>Actualice el explorador e inténtelo de nuevo. Si el problema persiste, intente desactivar las extensiones del navegador en conflicto. Póngase en contacto con su administrador si el problema no se ha resuelto.</value>
+    <comment>Missing web storage keys solution description.</comment>
+  </data>
+  <data name="DTR_MissingStorageKeys" xml:space="preserve">
+    <value>Faltan claves de almacenamiento web</value>
+    <comment>Missing web storage keys description.</comment>
+  </data>
+  <data name="DTR_ConversationControlNotFoundIssue" xml:space="preserve">
+    <value>El widget de omnicanal no se ha cargado correctamente.</value>
+    <comment>Conversation Control not loaded correctly description.</comment>
+  </data>
+  <data name="DTR_RefreshAndRetrySolution" xml:space="preserve">
+    <value>Actualice el explorador y vuelva a intentarlo. Si el problema continúa, póngase en contacto con su administrador.</value>
+    <comment>Refresh browser and retry solution description.</comment>
+  </data>
+  <data name="DTR_OmnichannelNotProvisionedIssue" xml:space="preserve">
+    <value>No se ha aprovisionado Omnicanal.</value>
+    <comment>Description for diagnostics informing the user that omnichannel was not provisioned on the org.</comment>
+  </data>
+  <data name="DTR_OmnichannelNotProvisionedSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para el aprovisionamiento de omnicanal en la organización.</value>
+    <comment>Description for diagnostics informing the user to contact admin to provision Omnichannel.</comment>
+  </data>
+  <data name="DTR_CCaaSConnectivityIssue" xml:space="preserve">
+    <value>No se puede acceder a la API de CCaaS.</value>
+    <comment>Description for diagnostics informing the user that the CCaaS backend API could not be reached.</comment>
+  </data>
+  <data name="DTR_CCaaSConnectivitySolution" xml:space="preserve">
+    <value>No se pudo acceder al servicio back-end de CCaaS. Compruebe que el aprovisionamiento de Omnicanal se ha completado y que el DNS del punto de conexión de servicio de CCaaS se puede resolver. Si el problema persiste, póngase en contacto con el soporte técnico de Microsoft.</value>
+    <comment>Description for diagnostics informing the user how to resolve CCaaS connectivity issues.</comment>
+  </data>
+  <data name="DTR_CCaaSConnectivityArea" xml:space="preserve">
+    <value>Conectividad de API de CCaaS</value>
+    <comment>Area label for CCaaS API connectivity diagnostic check.</comment>
+  </data>
+  <data name="DTR_CCaaSErrorDetails" xml:space="preserve">
+    <value>Detalles del error</value>
+    <comment>Label for CCaaS API error details shown in diagnostic additional information.</comment>
+  </data>
+  <data name="Voice_Timeout_Recommendation_Title" xml:space="preserve">
+    <value>Cuenta atrás (segundos)</value>
+    <comment>Voice timeout recommendation title.</comment>
+  </data>
+  <data name="Voice_Timeout_Recommendation_Desc" xml:space="preserve">
+    <value>En el caso de las notificaciones de voz, establezca un valor de cuenta atrás inferior a {0} segundos para evitar que se agoten los tiempos de espera de aceptación de llamadas.</value>
+    <comment>Voice timeout recommendation description.</comment>
+  </data>
+  <data name="DTR_InvalidEventName" xml:space="preserve">
+    <value>El nombre del evento no es válido.</value>
+    <comment>Event is not valid</comment>
+  </data>
+  <data name="Failed_to_load_app_configuration" xml:space="preserve">
+    <value>No se puede recuperar el perfil de experiencia de agente asignado.</value>
+    <comment>alert message for routing to diagnostic tool when user is unable to retrieve assigned Agent experience profile</comment>
+  </data>
+  <data name="HighNetworkLatency_NotificationMessage" xml:space="preserve">
+    <value>Se ha detectado una latencia de red alta; puede que observe lentitud.</value>
+    <comment>Notification message when network Latency is more than the set Threshold</comment>
+  </data>
+  <data name="LearnMoreLabel" xml:space="preserve">
+    <value>Más información</value>
+    <comment>Label for the Learn More link</comment>
+  </data>
+  <data name="OCHDeprecation_NotificationMessage" xml:space="preserve">
+    <value>Esta aplicación ha quedado en desuso y pronto dejará de estar en servicio; migre a Customer Service workspace.</value>
+    <comment>OCH App deprecation notification message.</comment>
+  </data>
+  <data name="InboxWidgetSidePanelTitle" xml:space="preserve">
+    <value>Bandeja de entrada</value>
+    <comment>Inbox</comment>
+  </data>
+  <data name="ReOpenConversationFromDashboardTitle" xml:space="preserve">
+    <value>No se pudo cargar el registro de conversación en la pestaña de sesión</value>
+    <comment>Failed to load conversation in session tab title</comment>
+  </data>
+  <data name="ReOpenConversationFromDashboardMessage" xml:space="preserve">
+    <value>vuelva a abrir la conversación desde el panel.</value>
+    <comment>Failed to load conversation in session tab message</comment>
+  </data>
+  <data name="DTR_ShowCountdownNotEnabledIssue" xml:space="preserve">
+    <value>La cuenta atrás no está activada</value>
+    <comment>Issue message when show countdown is not enabled.</comment>
+  </data>
+  <data name="DTR_ShowCountdownNotEnabledSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para activar la visualización de la cuenta atrás en la plantilla de notificación actual.</value>
+    <comment>Solution message for enabling show countdown.</comment>
+  </data>
+  <data name="DTR_CountdownNotGreaterIssue" xml:space="preserve">
+    <value>El valor de cuenta atrás debe ser mayor que 5 segundos.</value>
+    <comment>Issue message when countdown value is not greater than 5 seconds.</comment>
+  </data>
+  <data name="DTR_CountdownNotGreaterSolution" xml:space="preserve">
+    <value>Póngase en contacto con el administrador para establecer un valor de cuenta atrás superior a 5 segundos en la plantilla de notificación actual.</value>
+    <comment>Solution message for setting countdown value greater than 5 seconds.</comment>
+  </data>
+  <data name="DTR_NextBestActionsConfigurationIssue" xml:space="preserve">
+    <value>AI suggestion configuration is incomplete.</value>
+    <comment>Issue message when NBA or IBS configuration is incomplete.</comment>
+  </data>
+  <data name="DTR_NextBestActionsConfigurationSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Productivity &gt; Intent-based suggestions, and enable the target surface for the current experience profile.</value>
+    <comment>Solution message for completing NBA or IBS configuration.</comment>
+  </data>
+  <data name="DTR_EnableIntentProvisioningSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Productivity &gt; Intent-based suggestions, and save the page with the target suggestion type enabled. If intent provisioning still does not complete, go to Customer Intent Agent and enable intent provisioning.</value>
+    <comment>Solution message for enabling intent provisioning for NBA or IBS.</comment>
+  </data>
+  <data name="DTR_VerifyCopilotSettingsSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Productivity &gt; Copilot settings, verify the Copilot settings record exists, and enable the required Copilot settings.</value>
+    <comment>Solution message for missing Copilot settings.</comment>
+  </data>
+  <data name="DTR_EnableCopilotSidePaneSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Productivity &gt; Copilot settings, and turn on the Copilot side pane.</value>
+    <comment>Solution message for enabling the Copilot side pane.</comment>
+  </data>
+  <data name="DTR_EnableKnowledgeSourceSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Productivity &gt; Copilot settings, and turn on Dynamics 365 knowledge as a Copilot source.</value>
+    <comment>Solution message for enabling Dynamics 365 knowledge as a Copilot source.</comment>
+  </data>
+  <data name="DTR_EnableSuggestedContentSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Productivity &gt; Intent-based suggestions, and turn on Suggested content.</value>
+    <comment>Solution message for enabling the suggested content target surface.</comment>
+  </data>
+  <data name="DTR_EnableActionsSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Productivity &gt; Intent-based suggestions, and turn on Actions.</value>
+    <comment>Solution message for enabling the actions target surface.</comment>
+  </data>
+  <data name="DTR_EnableCurrentExperienceProfileSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Productivity &gt; Intent-based suggestions, select the current experience profile, and save.</value>
+    <comment>Solution message for enabling NBA or IBS for the current experience profile.</comment>
+  </data>
+  <data name="DTR_VerifyExperienceProfileAssignmentSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Workspaces &gt; Agent experience profiles, and verify the current user is assigned to a valid experience profile.</value>
+    <comment>Solution message for verifying experience profile assignment.</comment>
+  </data>
+  <data name="DTR_ConfigureProductivityPaneSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Workspaces &gt; Agent experience profiles, open the current profile, and configure the productivity pane.</value>
+    <comment>Solution message for configuring the productivity pane.</comment>
+  </data>
+  <data name="DTR_VerifyProductivityPaneSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Workspaces &gt; Agent experience profiles, open the current profile, and verify the productivity pane configuration.</value>
+    <comment>Solution message for verifying productivity pane configuration.</comment>
+  </data>
+  <data name="DTR_EnableProductivityPaneSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Workspaces &gt; Agent experience profiles, open the current profile, and enable the productivity pane.</value>
+    <comment>Solution message for enabling the productivity pane.</comment>
+  </data>
+  <data name="DTR_EnableCopilotToolTabSolution" xml:space="preserve">
+    <value>Open Customer Service admin center, go to Workspaces &gt; Agent experience profiles, open the current profile, and enable the Copilot tool tab in the productivity pane.</value>
+    <comment>Solution message for enabling the Copilot tool tab.</comment>
+  </data>
+  <data name="DTR_NextBestActionsArea" xml:space="preserve">
+    <value>Intent-based suggestions</value>
+    <comment>Area label for NBA and IBS diagnostic checks.</comment>
+  </data>
+</root>

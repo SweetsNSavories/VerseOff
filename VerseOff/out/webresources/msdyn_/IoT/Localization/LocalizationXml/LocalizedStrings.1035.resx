@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Laitetta rekisteröidään taustalla. Voit jatkaa Microsoft Dynamics 365:n käyttämistä.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Laitteen tietoja noudetaan taustalla. Voit jatkaa Microsoft Dynamics 365:n käyttämistä.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>Virhe toimintoa suoritettaessa. Yritä myöhemmin uudelleen.</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Valitse ainakin yksi tietue.</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Rekisteröi laite, ennen kuin yrität noutaa laitteen tietoja.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Laitteen tietoja noudetaan taustalla. Voit jatkaa Microsoft Dynamics 365:n käyttämistä. Joitakin laitteita ei ole rekisteröity, joten tietojen nouto ei onnistu.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>Valittuja laitteita rekisteröidään taustalla. Voit jatkaa Microsoft Dynamics 365:n käyttämistä.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Laitteen tietoja noudetaan taustalla. Voit jatkaa Microsoft Dynamics 365:n käyttämistä.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Laitteen tietoja noudetaan taustalla. Voit jatkaa Microsoft Dynamics 365:n käyttämistä.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Tuodaan kaikki uudet laitteet taustalla. Näet IoT-palveluntarjoajan uudet laitteet siirtymällä Laitteet-sivulle.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Tuodaan kaikki uudet laitteet taustalla. Näet uudet laitteet päivittämällä luettelon.</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Valitse yksi tietue.</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Todennus epäonnistui. Kirjaudu sisään Power BI -tilillesi, jotta voit tarkastella tai muokata Power BI -ruutuja.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Kirjautuminen</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Rekisteröityä laitetta ei löytynyt.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>Yhdistettyjä rekisteröityjä laitteita ei löydy.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>Laitteen tunnusta ei löydy. Saat Power BI -ruudun näkyviin lisäämällä laitteen tunnuksen.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Power BI -ruutu</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Power BI -koontinäyttö</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Ruutu</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Tallennetun PowerBI embedded -ruudun määritystiedoston noutaminen ei onnistu.</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>Tapahtui virhe. Mukautusta ei voi tallentaa. Virheen tiedot: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>Nykyistä entiteettiä ei ole määritetty tukemaan laitetunnuksen suodattimen käyttöä Power BI -ruudussa.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Valitse Power BI -ruutu, jonka haluat lisätä lomakkeeseen.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Power BI -ruutu</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Tallenna</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Peruuta</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Lisää Power BI -ruutu yhdistetylle laitteelle.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Julkaistaan mukautusta</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>Power BI -ruutuun suodatetaan näkyviin nykyisen laitteen tiedot.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>Tämän komennon tallentaminen lähettää komennon myös laitteeseen/laitteisiin. Haluatko jatkaa?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Tunniste</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Ominaisuus</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Lisätietoja Azure IoT Centralin integroinnista, täysin hallinnoidusta maailmanlaajuisesta IoT SaaS -ratkaisusta.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Integroi olemassa olevaan IoT-keskukseen tai asenna uusi ja hallitse valmiiksi konfiguroitua IoT PaaS -ratkaisua omasta Azure-tilauksestasi.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>Komentoa ei voi lähettää. IoT-hälytys pitää liittää tähän tietueeseen, jotta komento voidaan lähettää.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Laitetta rekisteröidään taustalla. Näet päivitetyn rekisteröintitilan päivittämällä sivun.</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>Tätä laitetta rekisteröidään. Haluatko rekisteröidä tämän laitteen uudelleen?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Kyllä</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Ei</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>Tämä laite on jo rekisteröity. Haluatko rekisteröidä tämän laitteen uudelleen?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Rekisteröi laite</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>Valittuja laitteita rekisteröidään taustalla. Näet päivitetyn rekisteröintitilan päivittämällä sivun.</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Lähetä komento kohteeseen {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Lähetä komento</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0} on lähetetty kohteeseen {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Komento on lähetetty kohteeseen {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>Kohteen {0} komennot</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Yhdistetyt laitteet</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>Komento on lähetetty.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Näytä komennon tila</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>Komennon lähettäminen ei onnistunut.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Joko Komento- tai Viesti-kohta on määritettävä.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Laitteen yhdistäminen ei onnistu.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Laitteet</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Yhdistä laite kohteeseen {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Laitepolku</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Avaimen polku</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Tähän laitteeseen ei ole liitetty esimääritettyjä komentoja. Näet esimääritetyt komennot määrittämällä laiteluokan.</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>IoT-ehdotusten ominaisuus on käytössä. Odota 24 tuntia, jotta määritysten muutokset voidaan ottaa käyttöön mallin koulutuksessa. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Vahvista IoT-ehdotusten ominaisuuden poistaminen käytöstä.</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>Vahvista IoT-ehdotusten poistaminen käytöstä</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>Ottamalla tämän ominaisuuden käyttöön hyväksyt, että tämä ominaisuus on esiversio ja hyväksyt {0}.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Esiversioehdot</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>Lisätietoja</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Mukautettu laitenäkymä</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Jatka antamalla sallittu IoT-laite.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>Määrä on ainoa käytettävissä oleva koostevaihtoehto laitetapahtumille.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>Nykyiselle laitteelle voi luoda enintään kuusi ruutua.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Varmista, että valittu mittaus on nykyisen laitteen ilmoitettu mittayksikkö.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Yhdistetyn laitteen lukemat</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Power BI -määrityspainike</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Komennon lähettäminen palvelimeen onnistui. Saat komennon tilan näkyviin synkronoimalla laitteen.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Komentoa ei lähetty palvelimeen liitettävyysongelmien vuoksi; komento lähetetään, kun laite synkronoituu seuraavan kerran.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>Sinun on oltava online-tilassa, jotta voit noutaa tietoja.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>Tämän toiminnon suorittamiseen tarvitaan internetyhteys.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>Tämän toiminnon suorittaminen edellyttää tämän tietueen synkronointia.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Laitteen rekisteröinnin lähetys onnistui. Näet rekisteröinnin tilan seuraavan synkronoinnin yhteydessä tai kun siirryt online-tilaan.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Laitteen rekisteröintiä ei lähetty palvelimeen liitettävyysongelmien vuoksi; rekisteröinti lähetetään, kun laite synkronoituu seuraavan kerran.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Laitteen tietojen noutopyynnön lähettäminen onnistui. Näet tulokset laitehistorian välilehdessä, kun laite synkronoituu seuraavan kerran.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>Komentojen lähettäminen edellyttää Internet-yhteyttä.</value>
+  </data>
+</root>

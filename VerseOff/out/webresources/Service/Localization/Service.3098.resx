@@ -1,0 +1,1346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>Морате да изаберете клијента.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="Banner_Notification_Heading" xml:space="preserve">
+    <value>Предмет је ажуриран из е-порука (верзија за преглед)</value>
+    <comment>Banner heading for notification message</comment>
+  </data>
+  <data name="Banner_Notification_Message" xml:space="preserve">
+    <value>Прегледајте све информације у предмету јер су неке од њих довршене помоћу AI. Садржај који генерише вештачка интелигенција је можда нетачан.</value>
+    <comment>Banner text for notification message</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="Button_Label_Confirm" xml:space="preserve">
+    <value>Потврди</value>
+    <comment>Button text for the Confirm button</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>Обриши</value>
+    <comment>Delete button label</comment>
+  </data>
+  <data name="Associate_Child_Title" xml:space="preserve">
+    <value>Постављање релације надређени/подређени</value>
+    <comment>Title of the page will be that will be shown when cases selected for parent-child association.[Category="Servicing"]</comment>
+  </data>
+  <data name="Button_Label_OK" xml:space="preserve">
+    <value>У реду</value>
+  </data>
+  <data name="Button_Label_Reactivate" xml:space="preserve">
+    <value>Поново активирај</value>
+  </data>
+  <data name="Button_Label_Route" xml:space="preserve">
+    <value>Усмери</value>
+    <comment>Label for the Route button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="CancelCaseAction_Title" xml:space="preserve">
+    <value>Откажи предмет</value>
+  </data>
+  <data name="CancelCaseConfirm" xml:space="preserve">
+    <value>Постоје отворене активности које су повезане са овим предметом. Отворене активности ће бити отказане ако откажете овај предмет. Желите ли да откажете предмет?</value>
+    <comment>This is the text that will appear on the ConfirmCancel Dialog Screen</comment>
+  </data>
+  <data name="Cancel_Case" xml:space="preserve">
+    <value>Откажи предмет</value>
+  </data>
+  <data name="Case_Reactivate_Dlg_Title" xml:space="preserve">
+    <value>Поновно активирање {0}</value>
+    <comment>Title for Reactivate Case Dialog.</comment>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_Allotments" xml:space="preserve">
+    <value>Нема довољно наменских јединица ставке уговора да би се решио овај предмет. Желите ли још увек да решите предмет?</value>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_ContractDetailState" xml:space="preserve">
+    <value>Надређени предмет уговора за овај предмет је отказан или је истекао. Желите ли још увек да решите предмет?</value>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_Parent" xml:space="preserve">
+    <value>Надређени уговор за овај предмет није активан. Желите ли још увек да решите предмет?</value>
+  </data>
+  <data name="ConvCaseSaveWarning" xml:space="preserve">
+    <value>Морате сачувати промене да бисте могли да конвертујете овај предмет.</value>
+    <comment>on convert case to knowledge article</comment>
+  </data>
+  <data name="Dialog_Cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="Dialog_Confirm" xml:space="preserve">
+    <value>Потврди</value>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>Желите ли да избришете овај {0}? Ову радњу не можете опозвати.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Placeholder {0} is the display name of incident entity.</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirmForMultipleCase_Body" xml:space="preserve">
+    <value>Да ли желите да усмерите изабраних {0} предмета на основу активног скупа правила за руковање? Предмети који испуњавају услове у правилу биће усмерени на одговарајући начин.</value>
+    <comment>Confirmation Message for Routing Mulitiple case. Placeholder {0} is the number of selected records.</comment>
+  </data>
+  <data name="Dlg_UR_RouteCase_AddRequiredConfirmForMultipleCase_Body" xml:space="preserve">
+    <value>Да ли желите да усмерите изабране предмете (њих {0})? Предмети који испуњавају услове у правилу биће усмерени на одговарајући начин.</value>
+    <comment>Confirmation Message for Routing Mulitiple case when unified routing is enabled. Placeholder {0} is the number of selected records.</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirmForSingleCase_Body" xml:space="preserve">
+    <value>Желите ли да усмерите овај предмет на основу активног скупа правила за руковање?</value>
+    <comment>Confirmation Message for Routing Single case. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_UR_RouteCase_AddRequiredConfirmForSingleCase_Body" xml:space="preserve">
+    <value>Желите ли да усмерите овај предмет?</value>
+    <comment>Confirmation Message for Routing Single case when unified routing is enabled. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirm_Title" xml:space="preserve">
+    <value>Усмери предмет</value>
+    <comment>Apply Route to Case Confirmation Dialog Title. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_ActiveRouteRuleReqdMsg" xml:space="preserve">
+    <value>Не постоји активно правило за руковање овим предметом.</value>
+    <comment>There is no associated active routing rule set.</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_RecordRoutingHeaderMessage" xml:space="preserve">
+    <value>Није могуће довршити усмеравање</value>
+    <comment>Header message if there is no associated record routing.</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_RecordRoutingBodyMessage" xml:space="preserve">
+    <value>Усмеравање записа није подешено за инцидент.</value>
+    <comment>Body message if there is no associated record routing for incident.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_RecordAssociated_CaseTerms_DecrementedAlready_DialogMessage" xml:space="preserve">
+    <value>Услови су већ смањени за повезано право. Ово ће додати услов повезаном праву и каналу права. Желите ли да наставите?</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is already associated to the case and terms already decremented dialog message.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_RecordAssociated_CaseTerms_DecrementedAlready_DialogTitle" xml:space="preserve">
+    <value>Потврда враћања услова за стицање права</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is already associated to the case and terms already decremented dialog title.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_Record_NotYet_Associated_CaseTerms_NotDecremented_Yet_DialogMessage" xml:space="preserve">
+    <value>Када се запис права повеже са овим записом предмета, то ће онемогућити смањивање одредби за повезано право и канал права. Желите ли да наставите?</value>
+    <comment>ecrementEntitlementTerms is set to yes and entitlement record is not yet associated to the case dialog message.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_Record_Not_Yet_Associated_CaseTerms_NotDecremented_Yet_DialogTitle" xml:space="preserve">
+    <value>Потврда спречавања смањивања услова за стицање права</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is not yet associated to the case dialog title.</comment>
+  </data>
+  <data name="DontDecrementTerms_Not_Set_DialogMessage" xml:space="preserve">
+    <value>Смањивање услова за стицање права већ је заустављено за овај запис предмета. Услови за стицање права неће бити смањени.</value>
+    <comment>Decrement EntitlementTerms is set to no dialog message.</comment>
+  </data>
+  <data name="DontDecrementTerms_Not_Set_DialogTitle" xml:space="preserve">
+    <value>Смањивање услова за стицање права је заустављено</value>
+    <comment>Decrement EntitlementTerms is set to No dialog title.</comment>
+  </data>
+  <data name="Error_Message_0x80044411" xml:space="preserve">
+    <value>Овај предмет је затворен. Затворен предмет није могуће решити нити отказати.</value>
+    <comment>ror message shown when trying to cancel or resolve a Case which has already been closed. </comment>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Дошло је до грешке. Изабрана радња није довршена за један или више записа.</value>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Морате да изаберете један или више записа пре него што можете да извршите ову радњу.</value>
+  </data>
+  <data name="Error_Message_DifferentPartitions" xml:space="preserve">
+    <value>Ова радња није подржана за записе који припадају различитим партицијама.</value>
+    <comment>This error message is shown when a user attempts an operation (such as merge or associate child cases) on records that are not in the same partition.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>Наслов предмета</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>Време креирања</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>Клијент</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>Приоритет</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="LOCID_ASSCO_LESS_RECORDS" xml:space="preserve">
+    <value>Изаберите најмање два записа за повезивање подређено-надређене релације.</value>
+    <comment>This is the message shown when trying to associate less records than allowed.</comment>
+  </data>
+  <data name="LOCID_ASSCO_TOOMANY_RECORDS" xml:space="preserve">
+    <value>Надређени предмет не може да има више од {0} подређених предмета. Обратите се администратору за више детаља.</value>
+    <comment>This is the message shown when trying to associate less records than required.</comment>
+  </data>
+  <data name="LOCID_CONTRACT_ED_DT_LT_ST_DT" xml:space="preserve">
+    <value>Датум завршетка уговора не може да буде пре датума почетка.</value>
+  </data>
+  <data name="LOCID_ENDDATE_LT_STARTDATE" xml:space="preserve">
+    <value>Датум завршетка не може да буде пре датума почетка.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_CONTRACT" xml:space="preserve">
+    <value>Прво морате да изаберете уговор.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_CUSTOMER" xml:space="preserve">
+    <value>Прво морате да изаберете клијента.</value>
+  </data>
+  <data name="LOCID_MERGE_CASE_TOOMANY_RECORDS" xml:space="preserve">
+    <value>Можете да обједините само {0} предмета одједном.</value>
+    <comment>This is the message shown when trying to merge more records than allowed. </comment>
+  </data>
+  <data name="LOCID_MERGE_LESS_RECORDS" xml:space="preserve">
+    <value>Изаберите бар два записа за обједињавање.</value>
+    <comment>This is the message shown when trying to merge less records than required. </comment>
+  </data>
+  <data name="LOCID_CONV_ACT_SAVE_WARNING" xml:space="preserve">
+    <value>Морате сачувати промене пре него што можете да конвертујете ову активност.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Entitlement_Default_Confirmation_DialogTitle" xml:space="preserve">
+    <value>Потврда подешавања као подразумеваног</value>
+    <comment>Default Entitlement confirmation dailog title.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="Entitlement_Default_Change_Confirmation_Message" xml:space="preserve">
+    <value>Друго право је већ постављено као подразумевано за овог клијента. Желите ли заиста да уместо њега поставите ово право као подразумевано?</value>
+    <comment>Default Entitlement confirmation dailog message.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="Entitlement_Default_Confirmation_Message" xml:space="preserve">
+    <value>Желите ли заиста да поставите ово право као подразумевано за изабраног клијента?</value>
+    <comment>Default Entitlement confirmation dailog message.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_INACTIVE_MSG" xml:space="preserve">
+    <value>Само активни записи права могу се поставити као подразумевани.</value>
+    <comment>Default Entitlement confirmation dialog message.[Category="Servicing"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_DIALOG_WIDTH" xml:space="preserve">
+    <value>1000</value>
+    <comment>Default Entitlement confirmation dialog width.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_DIALOG_HEIGHT" xml:space="preserve">
+    <value>200</value>
+    <comment>Default Entitlement confirmation dialog height.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ACTION_NOITEMSELECTED" xml:space="preserve">
+    <value>Морате да изаберете један или више записа пре него што можете да извршите ову радњу.</value>
+    <comment>Default Entitlement confirmation dialog height.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENTITLEMENT_CANCEL_TH_LT" xml:space="preserve">
+    <value>50</value>
+    <comment>Entitlement cancellation record Threshhold limit.</comment>
+  </data>
+  <data name="LOCID_ENTITLEMENT_CANCEL_TH_MSG" xml:space="preserve">
+    <value>Премашено је ограничење максималног броја записа за ову операцију. Смањите број записа на {0}</value>
+    <comment>Dialog alert description for cancellation record limit. {NumberedPlaceholder="{0}"}. Placeholder 0 is a number representing the number of records selected Eg: Entitlement[Category="Servicing"]</comment>
+  </data>
+  <data name="LOCID_FORMS_SAVE_CONFIRM_TITLE" xml:space="preserve">
+    <value>Промене нису сачуване. Да бисте остали на страници како бисте могли да сачувате промене, кликните на дугме „Откажи“.</value>
+    <comment>Error message to show when no records selected</comment>
+  </data>
+  <data name="Multiple_Merge_Title" xml:space="preserve">
+    <value>Обједини предмете</value>
+    <comment>Title of the page will be that will be shown when cases selected to merge.[Category="Servicing"]</comment>
+  </data>
+  <data name="NoValidStatusReasonTransition02" xml:space="preserve">
+    <value>Предмет не можете отказати у тренутном статусу због правила о прелазу статуса. Промените статус предмета, а затим покушајте да га откажете или се обратите администратору система.</value>
+    <comment>Because of the status transition rules, you cannot cancel the case in the current status. Change the case status, and then try canceling it, or contact your system administrator.</comment>
+  </data>
+  <data name="ResolveCaseAction_Title" xml:space="preserve">
+    <value>Решавање предмета</value>
+  </data>
+  <data name="Web.CS.cases.dlg_closecase.aspx_27" xml:space="preserve">
+    <value>Време које треба наплатити је неважећа вредност. Проверите вредност и покушајте поново.</value>
+  </data>
+  <data name="Web.CS.cases.dlg_closecase.aspx_50" xml:space="preserve">
+    <value>У пољу разрешења морате да наведете информације пре него што можете да разрешите овај предмет.</value>
+  </data>
+  <data name="Web.CS.cases.dlg_reactivate.aspx_50" xml:space="preserve">
+    <value>Ова радња поново активира разрешени или отказани предмет. Желите ли да наставите?</value>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition01" xml:space="preserve">
+    <value>Предмет не можете решити у тренутном статусу због правила о прелазу статуса. Промените статус предмета, а затим покушајте да га решите или се обратите администратору система.</value>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition02" xml:space="preserve">
+    <value>Предмет не можете отказати у тренутном статусу због правила о прелазу статуса. Промените статус предмета, а затим покушајте да га откажете или се обратите администратору система.</value>
+    <comment>Because of the status transition rules, you cannot cancel the case in the current status. Change the case status, and then try canceling it, or contact your system administrator.</comment>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition03" xml:space="preserve">
+    <value>Није могуће активирати овај предмет из тренутног статуса због правила за промену статуса. Обратите се администратору система.</value>
+    <comment>Because of the status transition rules, you can't activate the case from the current status. Contact your system administrator.</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmCancel.aspx_2" xml:space="preserve">
+    <value>Откажи предмет</value>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_1" xml:space="preserve">
+    <value>Решавање предмета</value>
+    <comment>This is the title that will appear on the ConfirmResolve Dialog Screen</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_3" xml:space="preserve">
+    <value>Постоје отворене активности које су повезане са овим предметом. Отворене активности ће бити отказане ако решите овај предмет. Желите ли да решите предмет?</value>
+    <comment>This is the text that will appear on the ConfirmResolve Dialog Screen</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_4" xml:space="preserve">
+    <value>Постоје отворене активности које су повезане са овим предметом. Отворене активности ће бити отказане ако откажете овај предмет. Желите ли да откажете предмет?</value>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>Потврда брисања</value>
+  </data>
+  <data name="ParentChild_Cases_Associate_Success" xml:space="preserve">
+    <value>Успостављена је надређено-подређена релација између {0} изабраних предмета.</value>
+    <comment>Message that will be shown to the user when parent-child association created between multiple cases.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases for which parent-child realtionship established.Ex:2,3 etc.[Category="Servicing"]</comment>
+  </data>
+  <data name="ParentChild_Cases_NoSuccess_Fail" xml:space="preserve">
+    <value>Нисмо могли да повежемо {0} предмета.</value>
+    <comment>Error message that will be shown to the user when parent-child association failed to create between multiple cases.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases that were failed.Ex:2,3 etc.[Category="Parent-Child Asscociation  of Cases"]</comment>
+  </data>
+  <data name="MergeRecords_Cases_Merged_Fail" xml:space="preserve">
+    <value>Нисмо могли да објединимо {0} предмета.</value>
+    <comment>Error message that will be shown to the user has no sufficient privileges to merge more than one case{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases that couldn't be merged.Ex:2,3 etc.[Category="Servicing"]</comment>
+  </data>
+  <data name="MergeRecords_Cases_Merged_Success" xml:space="preserve">
+    <value>{0} предмета је успешно обједињено у {1}.</value>
+    <comment>Message that will be shown to the user when more than one case merged successfully.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases merged successfully.Ex:2,3 etc.{NumberedPlaceholder="{1}"} Placeholder 1 is the title of the case into which the selected cases were merged.[Category="Servicing"]</comment>
+  </data>
+  <data name="MergeRecords_Case_Merged_Success" xml:space="preserve">
+  <value>1 предмет је успешно обједињен у {0}.</value>
+  <comment>Message that will be shown to the user when exactly one case is merged successfully. Placeholder {0} is the title of the case into which the selected case was merged. [Category="Servicing"]</comment>
+</data>
+  <data name="Web.cs.contracts.end_date_earlier_than_start_date" xml:space="preserve">
+    <value>Датум завршетка уговора не може да буде пре датума почетка.</value>
+    <comment>Error message to show when the end date of the contract is before the start date.</comment>
+  </data>
+  <data name="Dialog_Activate_Title" xml:space="preserve">
+    <value>Потврда активације за {0}</value>
+    <comment>Dialog page title for the activate/deactivate dialog page. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name.</comment>
+  </data>
+  <data name="Dialog_Activate_Description_Activate" xml:space="preserve">
+    <value>Желите ли заиста да активирате изабрани {0} {1}?</value>
+    <comment>Dialog page description for the activate record dialog page. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 is a number representing number of records selected, Placeholder 1 is a text representing a singular or plural entity name depending upon whether one or more records are selected. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_activate.aspx_55" xml:space="preserve">
+    <value>Ово ће поставити {0} на статус {1}.</value>
+    <comment>
+		{NumberedPlaceholder="{0}", "{1}"} Placeholder 0 will be replaced with a proper noun indicating which entity is being activated.
+		Placeholder 1 will be replaced with 'active' or 'inactive'.  Example : This operation will set the selected Account as active.
+	</comment>
+  </data>
+  <data name="Dialog_Label_Active" xml:space="preserve">
+    <value>Активно</value>
+    <comment>This is used as a parameter in other resource strings.  Such as "This operation will set the selected Account as Active".</comment>
+  </data>
+  <data name="Button_Label_Activate" xml:space="preserve">
+    <value>Активирај</value>
+    <comment>Label for the Activate button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web.cs.contracts.edit.aspx_74" xml:space="preserve">
+    <value>Прво морате да изаберете клијента.</value>
+    <comment>Error message to show when customer is not selected</comment>
+  </data>
+  <data name="Web.cs.contracts.edit.aspx_75" xml:space="preserve">
+    <value>Прво морате да изаберете клијента за фактурисање.</value>
+    <comment>Error message to show when bill to customer is not selected</comment>
+  </data>
+  <data name="FB5A9CDE-C002-418F-BD0C-2CB25431E5CD" xml:space="preserve">
+    <value>Није могуће опозвати ову радњу. Да бисте наставили, кликните на дугме „У реду”.</value>
+    <comment>AlertMessage.Cannot undo confirmation </comment>
+  </data>
+  <data name="Dialog_Single_Cancel_Description_Entitlement" xml:space="preserve">
+    <value>Желите ли заиста да откажете ово право?</value>
+    <comment>Dialog page description for canceling single entitlement.Contracts[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_Cancel_Description_Entitlement" xml:space="preserve">
+    <value>Желите ли заиста да откажете {0} изабраних права. Ово ће поставити права на статус „Отказано“</value>
+    <comment>Dialog page description for cancel confirmation dialog page. Eg: Cancelling a contract. {NumberedPlaceholder="{0}"}. Placeholder 0 is a number representing the number of records selected Eg: Contracts[Category="Servicing"]</comment>
+  </data>
+  <data name="Web.CS.cases.dlg_cancel.aspx_20" xml:space="preserve">
+    <value>Потврда отказивања</value>
+    <comment>Cancellation dialog title</comment>
+  </data>
+  <data name="Web.CS.contractdetails.edit.aspx_dis" xml:space="preserve">
+    <value>Попуст не може да буде већи од укупне цене. Проверите вредност и покушајте поново.</value>
+    <comment>
+		This is a validation for the contract lines that the discount cannot be greater than the
+		Total price, this is related to bug#1752.
+	</comment>
+  </data>
+  <data name="Dialog_RenewEntitlement_Title" xml:space="preserve">
+    <value>Потврда обнове</value>
+    <comment>Renewal dialog title</comment>
+  </data>
+  <data name="Dialog_RenewEntitlement_Description" xml:space="preserve">
+    <value>Желите ли заиста да обновите ово право?</value>
+    <comment>Renewal dialog text</comment>
+  </data>
+  <data name="Button_Label_Renew" xml:space="preserve">
+    <value>Обнови</value>
+    <comment>Button text for the Renew button [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Error_Message_0x80060607" xml:space="preserve">
+    <value>Не можете да откажете право које има статус „Радна верзија“ или „Отказано“.</value>
+    <comment>IDS_ENTITLEMENT_INVALIDENTITLEMENTCANCEL[Category="Servicing"]</comment>
+  </data>
+  <data name="Error_Message_0x80044208" xml:space="preserve">
+    <value>Не можете да откажете право када оно има статус „Отказано“.</value>
+    <comment>IDS_ENTITLEMENT_ENTITLEMENTALREADYINDRAFTSTATE[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_Deactivate_Title" xml:space="preserve">
+    <value>Потврда деактивирања за {0}</value>
+    <comment>Dialog page title for deactivate confirmation dialog page. Eg: Confirm Product Deactivation. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product</comment>
+  </data>
+  <data name="Dialog_Deactivate_Description" xml:space="preserve">
+    <value>Желите ли да деактивирате следећи број изабраних записа: {0} {1}? Касније их можете поново активирати ако желите.</value>
+    <comment>Dialog page description for deactivate dialog page. Eg: You have selected 5 products to deactivate. {NumberedPlaceholder="{0}","{1}"}. Placeholder 0 is a number representing the number of records selected and Placeholder 1 is a text representing a singular or plural entity name depending upon whether one or more records are selected Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_deactivate.aspx_55" xml:space="preserve">
+    <value>Ова радња ће променити статус изабраног ентитета {0} у „Неактивно“.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun, singular or plural, indicating an entity name.  Example : This action will change the status of the selected Contact to Inactive.  To continue, click OK.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Button_Label_Deactivate" xml:space="preserve">
+    <value>Деактивирај</value>
+    <comment>Deactivate button label</comment>
+  </data>
+  <data name="Alert_Conv_Case_Owner_Must" xml:space="preserve">
+    <value>Изаберите власника.</value>
+    <comment>on convert case to knowledge article dialog</comment>
+  </data>
+  <data name="Alert_Conv_Case_Title_Must" xml:space="preserve">
+    <value>Унесите наслов.</value>
+    <comment>on convert case to knowledge article dialog</comment>
+  </data>
+  <data name="Error_Message_Fail" xml:space="preserve">
+    <value>{0} предмета није успело:</value>
+    <comment>
+		Error message that will be shown to user when cases did not get merged.
+		{NumberedPlaceholder="{0}"} Placeholder 0 is for the total number of cases failed to merged.[Category="Servicing"]
+	</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMembers_Title" xml:space="preserve">
+    <value>Уклањање ресурса са локације</value>
+    <comment>"Remove Resources From Site" dialog title</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMember_Description" xml:space="preserve">
+    <value>Изабрали сте 1 ресурс за уклањање.</value>
+    <comment>singular version of Dialog_RemoveSiteMembers_Description</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMember_Confirmation" xml:space="preserve">
+    <value>Радња ће уклонити изабране ресурсе са локације. Ову радњу није могуће опозвати; међутим, можете касније да вратите ресурсе назад на локацију ако је потребно. Да бисте наставили, кликните на дугме „У реду“.</value>
+    <comment>Message that will be shown to the user when removing resources from Site.</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMembers_Description" xml:space="preserve">
+    <value>Изабрали сте {0} ресурса за уклањање.</value>
+    <comment>{NumberedPlaceholder="{0}"} parameter 0 is a number of members to be removed from the site.</comment>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>Дошло је до грешке. Вратите се на матичну страницу и покушајте поново.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>Није могуће обрадити овај захтев зато што клијент није на мрежи.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>Обрада је у току...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="OperationFailed_SelectOnlyOneCase" xml:space="preserve">
+    <value>Операција није успела. Можете изабрати само 1 предмет.</value>
+    <comment>If more than one record is selected, displays this alert message to inform user to only select one</comment>
+  </data>
+  <data name="Alert_TopicModel_Test_ConfigurationUsed_Required" xml:space="preserve">
+    <value>Конфигурација је обавезна.</value>
+    <comment>Error message to show when configuration is empty</comment>
+  </data>
+  <data name="Alert_TopicModel_Test_MaxTopics_Required" xml:space="preserve">
+    <value>Унесите максималан број тема</value>
+    <comment>Error message to show when maximum number of topics is empty</comment>
+  </data>
+  <data name="Dialog_ConvertToCase_ChangeTaskStatus" xml:space="preserve">
+    <value>Промените статус {0} у завршено и затворите образац</value>
+    <comment>Label to show on ConvertToCase dialog for general activities</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_casehierarchy.aspx_6" xml:space="preserve">
+    <value>Изабери сва обавезна поља за наслеђивање тако да се подређени предмети исправно креирају</value>
+    <comment>Label for Case Settings Dialog</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Header" xml:space="preserve">
+    <value>Управљајте чланцима базе знања у апликацији Чвориште за корисничку службу</value>
+    <comment>Header for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Para1" xml:space="preserve">
+    <value>Чланци базе знања су за вас отворени на новој картици у апликацији Чвориште за корисничку службу. Погледајте нову картицу у прегледачу за приступ и управљање чланцима базе знања са побољшаним могућностима, као и за њихово креирање.</value>
+    <comment>Second Paragraph for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Para2" xml:space="preserve">
+    <value>Ако се нова картица не отвори аутоматски, проверите подешавања прегледача како бисте омогућили искачуће прозоре. Такође, проверите привилегију безбедносне улоге за приступ апликацији Чвориште за корисничку службу. У случају да проблем и даље буде присутан, обратите се Dynamics 365 администратору или Microsoft подршци.</value>
+    <comment>Third Paragraph for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.MoreHelp" xml:space="preserve">
+    <value>Сазнајте више:</value>
+    <comment>More Help Text for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.LinkText" xml:space="preserve">
+    <value>Смањите време утрошено на позиве помоћу чланака у бази знања у чворишту за корисничку службу</value>
+    <comment>Text for KM Redirection Notice Help Link</comment>
+  </data>
+  <data name="Error_Message_Deactivate_Service" xml:space="preserve">
+    <value>Не можете деактивирати услугу док год постоје заказане активности услуге повезане са овим услугама. Затворите или откажите активности услуге да бисте је деактивирали.</value>
+    <comment>Error message shown when trying to deactivate the service with associated scheduled service activities.</comment>
+  </data>
+  <data name="MultilevelParentChildRelationshipNotAllowed" xml:space="preserve">
+    <value>Није могуће креирати подређене предмете за подређене предмете</value>
+    <comment>Error message when child incident is created for child inicident</comment>
+  </data>
+  <data name="Info_Message_Legacy_Service_scheduling_Deprecated" xml:space="preserve">
+    <value>Застарело искуство планирања се замењује новом функционалношћу која је уграђена у услугу Universal Resource Scheduling. За детаље о миграцији погледајте http://aka.ms/ServiceScheduling.</value>
+    <comment>Legacy service scheduling is deprecated in legacy web client.</comment>
+  </data>
+  <data name="Case_Resolve_Dlg_Incident_Not_Active" xml:space="preserve">
+    <value>Предмет је већ решен.</value>
+    <comment>Alert message to show when an attempt is made to resolve a case when it has already been resolved.</comment>
+  </data>
+  <data name="No_Incident_Id" xml:space="preserve">
+    <value>Није могуће пронаћи повезани предмет.</value>
+    <comment>Error message to show when an incident id cannot be found.</comment>
+  </data>
+  <data name="SCH_Year_Single" xml:space="preserve">
+    <value>година</value>
+  </data>
+  <data name="SCH_Year_Plural" xml:space="preserve">
+    <value>године</value>
+  </data>
+  <data name="SCH_Year_Abbrev" xml:space="preserve">
+    <value>год</value>
+  </data>
+  <data name="SCH_Quarter_Single" xml:space="preserve">
+    <value>квартал</value>
+  </data>
+  <data name="SCH_Quarter_Plural" xml:space="preserve">
+    <value>квартали</value>
+  </data>
+  <data name="SCH_Quarter_Abbrev" xml:space="preserve">
+    <value>кв</value>
+  </data>
+  <data name="SCH_Month_Single" xml:space="preserve">
+    <value>месец</value>
+  </data>
+  <data name="SCH_Month_Plural" xml:space="preserve">
+    <value>месеци</value>
+  </data>
+  <data name="SCH_Month_Abbrev" xml:space="preserve">
+    <value>мес</value>
+  </data>
+  <data name="SCH_Week_Single" xml:space="preserve">
+    <value>седмица</value>
+  </data>
+  <data name="SCH_Week_Plural" xml:space="preserve">
+    <value>седмице</value>
+  </data>
+  <data name="SCH_Week_Abbrev" xml:space="preserve">
+    <value>сед</value>
+  </data>
+  <data name="SCH_Day_Single" xml:space="preserve">
+    <value>дан</value>
+  </data>
+  <data name="SCH_Day_Plural" xml:space="preserve">
+    <value>дана</value>
+  </data>
+  <data name="SCH_Day_Abbrev" xml:space="preserve">
+    <value>д</value>
+  </data>
+  <data name="SCH_Hour_Single" xml:space="preserve">
+    <value>час</value>
+  </data>
+  <data name="SCH_Hour_Plural" xml:space="preserve">
+    <value>часова</value>
+  </data>
+  <data name="SCH_Hour_Abbrev" xml:space="preserve">
+    <value>ч</value>
+  </data>
+  <data name="SCH_Minute_Single" xml:space="preserve">
+    <value>минут</value>
+  </data>
+  <data name="SCH_Minute_Plural" xml:space="preserve">
+    <value>минута</value>
+  </data>
+  <data name="SCH_Minute_Abbrev" xml:space="preserve">
+    <value>мин</value>
+  </data>
+  <data name="SCH_Minutes_Abbrev" xml:space="preserve">
+    <value>мин.</value>
+  </data>
+  <data name="SCH_Minute_Abbrev_Short" xml:space="preserve">
+    <value>мин</value>
+  </data>
+  <data name="SCH_Second_Single" xml:space="preserve">
+    <value>секунда</value>
+  </data>
+  <data name="SCH_Sec_Single" xml:space="preserve">
+    <value>сек.</value>
+  </data>
+  <data name="SCH_Second_Plural" xml:space="preserve">
+    <value>секунди</value>
+  </data>
+  <data name="SCH_Second_Abbrev" xml:space="preserve">
+    <value>с</value>
+  </data>
+  <data name="SCH_MilliSecond" xml:space="preserve">
+    <value>мс</value>
+  </data>
+  <data name="Duration_FormatHour" xml:space="preserve">
+    <value>{0} ч</value>
+    <comment>Single hour duration formatting on booking bars. Placeholder {0} is the number of hours booked</comment>
+  </data>
+  <data name="Duration_FormatHours" xml:space="preserve">
+    <value>{0} часова</value>
+    <comment>Multiple hour duration formatting on booking bars. Placeholder {0} is the number of hours booked</comment>
+  </data>
+  <data name="Duration_FormatHour_Minutes" xml:space="preserve">
+    <value>{0} ч {1} мин</value>
+    <comment>Single hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_FormatHours_Minutes" xml:space="preserve">
+    <value>{0} часова {1} мин</value>
+    <comment>Multiple hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_Format_Minutes" xml:space="preserve">
+    <value>{0} мин.</value>
+    <comment>Zero hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_FormatHours_Minutes_Short" xml:space="preserve">
+    <value>{0}:{1}м</value>
+    <comment>Multiple hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_HrsSuffix" xml:space="preserve">
+    <value>ч</value>
+    <comment>Abbreviation for the word "hours", e.g. "100 hrs"</comment>
+  </data>
+  <data name="Duration_HrSuffix" xml:space="preserve">
+    <value>ч</value>
+    <comment>Abbreviation for the word "hour", e.g. "1 hr"</comment>
+  </data>
+  <data name="Duration_Format_Minutes_Short" xml:space="preserve">
+    <value>{0}м</value>
+    <comment>Placeholder {0} is the number of minutes booked.</comment>
+  </data>
+  <data name="Duration_FormatHours_Short" xml:space="preserve">
+    <value>{0}ч</value>
+    <comment>Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatHours_Long" xml:space="preserve">
+    <value>{0} часова</value>
+    <comment>Multiple hour long formatting. Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatOneHour_Long" xml:space="preserve">
+    <value>1 час</value>
+    <comment>Single hour formatting.</comment>
+  </data>
+  <data name="Duration_FormatMinutes_Long" xml:space="preserve">
+    <value>{0} минута</value>
+    <comment>Multiple hour long formatting. Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatOneMinute_Long" xml:space="preserve">
+    <value>1 минут</value>
+    <comment>Single minute formatting.</comment>
+  </data>
+  <data name="EndTimeLaterThanStartTime" xml:space="preserve">
+    <value>Морате да наведете време завршетка које је касније од времена почетка.</value>
+  </data>
+  <data name="DateFieldCannotBeNull" xml:space="preserve">
+    <value>Поље датума не може бити без вредности</value>
+  </data>
+  <data name="SC_Pagging_Label" xml:space="preserve">
+    <value>{0} – {1} од {2}</value>
+  </data>
+  <data name="SC_Header_HourlyView" xml:space="preserve">
+    <value>Часовни приказ</value>
+  </data>
+  <data name="SC_ViewMode_Tooltip" xml:space="preserve">
+    <value>Режим приказа</value>
+  </data>
+  <data name="SC_Legend" xml:space="preserve">
+    <value>Легенда</value>
+  </data>
+  <data name="SC_HideLegend" xml:space="preserve">
+    <value>Сакриј легенду</value>
+  </data>
+  <data name="SC_PreviousButton_ActionBarCalendar_AriaLabel" xml:space="preserve">
+    <value>Претходни опсег датума, од {0} до {1}</value>
+    <comment>Aria-label for the action bar calendar previous button</comment>
+  </data>
+  <data name="SC_NextButton_ActionBarCalendar_AriaLabel" xml:space="preserve">
+    <value>Следећи опсег датума, од {0} до {1}</value>
+    <comment>Aria-label for the action bar calendar next button</comment>
+  </data>
+  <data name="SC_CalendarPreviousButton_Tooltip" xml:space="preserve">
+    <value>Претходни опсег</value>
+  </data>
+  <data name="SC_CalendarNextButton_Tooltip" xml:space="preserve">
+    <value>Следећи опсег</value>
+  </data>
+  <data name="SC_CalendarIcon_Tooltip" xml:space="preserve">
+    <value>Изаберите датум</value>
+  </data>
+  <data name="SC_Refresh_Tooltip" xml:space="preserve">
+    <value>Освежи</value>
+  </data>
+  <data name="SC_SortForm_Apply" xml:space="preserve">
+    <value>Примени</value>
+  </data>
+  <data name="SC_SortForm_Apply_Tooltip" xml:space="preserve">
+    <value>Примени измене</value>
+  </data>
+  <data name="SC_SortForm_Clear" xml:space="preserve">
+    <value>Обриши</value>
+  </data>
+  <data name="SC_SortForm_Clear_Tooltip" xml:space="preserve">
+    <value>Обришите промене</value>
+  </data>
+  <data name="SC_SomethingWentWrong" xml:space="preserve">
+    <value>Дошло је до грешке</value>
+  </data>
+  <data name="SC_ReloadToFix" xml:space="preserve">
+    <value>Покушајте поново учитати страницу. Ако и даље видите ову поруку, обратите се администратору да бисте поднели захтев за подршку.</value>
+  </data>
+  <data name="SC_PreviousButton_AriaLabel" xml:space="preserve">
+    <value>Дугме „Претходна страница“. Тренутно се приказују записи од {0} до {1} за {2}</value>
+    <comment>Aria-label for a paging previous button</comment>
+  </data>
+  <data name="SC_NextButton_AriaLabel" xml:space="preserve">
+    <value>Дугме „Следећа страница“. Тренутно се приказују записи од {0} до {1} за {2}</value>
+    <comment>Aria-label for a paging next button</comment>
+  </data>
+  <data name="SC_PreviousButton_Tooltip" xml:space="preserve">
+    <value>Претходна страница</value>
+  </data>
+  <data name="SC_NextButton_Tooltip" xml:space="preserve">
+    <value>Следећа страница</value>
+  </data>
+  <data name="SC_CalendarIcon_AriaLabel" xml:space="preserve">
+    <value>Изаберите датум. Тренутно одабрани опсег датума је од {0} до {1}</value>
+    <comment>Aria-label for the action bar calendar button</comment>
+  </data>
+  <data name="SC_Refresh_Announcement" xml:space="preserve">
+    <value>Освежавање је покренуто</value>
+  </data>
+  <data name="SC_SortForm_Ascending" xml:space="preserve">
+    <value>Растући редослед</value>
+  </data>
+  <data name="SC_SortForm_Descending" xml:space="preserve">
+    <value>Опадајући редослед</value>
+  </data>
+  <data name="SC_Appointment" xml:space="preserve">
+    <value>Заказана обавеза</value>
+  </data>
+  <data name="SC_ServiceActivity" xml:space="preserve">
+    <value>Активност услуге</value>
+  </data>
+  <data name="SC_SortForm_Selection_Placeholder" xml:space="preserve">
+    <value>Изаберите опцију</value>
+  </data>
+  <data name="SC_SortForm_Name" xml:space="preserve">
+    <value>Назив</value>
+  </data>
+  <data name="SC_Zoom_Slider" xml:space="preserve">
+    <value>Клизач за зумирање</value>
+    <comment>Name of the zoom slider on service calendar. Used in the aria-label and tooltip.</comment>
+  </data>
+  <data name="SC_SortForm_FormLabel" xml:space="preserve">
+    <value>Сортирање</value>
+  </data>
+  <data name="SC_Search" xml:space="preserve">
+    <value>Претражите према називу</value>
+    <comment>Placeholder text on Service Calendar Search Box.</comment>
+  </data>
+  <data name="SC_Filters" xml:space="preserve">
+    <value>Филтери</value>
+  </data>
+  <data name="SC_Filters_Close_Tooltip" xml:space="preserve">
+    <value>Затвори</value>
+    <comment>When the button is pressed, closes the filter panel.</comment>
+  </data>
+  <data name="SC_FilterPanel_Apply" xml:space="preserve">
+    <value>Примени</value>
+    <comment>When the button is pressed, applies the currently selected filters.</comment>
+  </data>
+  <data name="SC_FilterPanel_Clear" xml:space="preserve">
+    <value>Обриши</value>
+    <comment>When the button is pressed, clears the currently selected filters.</comment>
+  </data>
+  <data name="SC_Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="SC_View" xml:space="preserve">
+    <value>Приказ</value>
+  </data>
+  <data name="SC_Today" xml:space="preserve">
+    <value>Данас</value>
+  </data>
+  <data name="SC_NoResources" xml:space="preserve">
+    <value>Нема ресурса за приказивање у овом приказу. Да бисте започели, креирајте један ресурс или више њих.</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize" xml:space="preserve">
+    <value>Промените величину табле.</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize_Horizontal" xml:space="preserve">
+    <value>Хоризонтални разделник: промените величину табле.</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize_Vertical" xml:space="preserve">
+    <value>Вертикални разделник: промените величину табле.</value>
+  </data>
+  <data name="Splitter_AriaLabel_ExpandCollapse" xml:space="preserve">
+    <value>Развијте/скупите таблу.</value>
+  </data>
+  <data name="Alert_ServiceActivity_Check_StartOrEnd" xml:space="preserve">
+    <value>Датум почетка или завршетка мора бити проверен.</value>
+    <comment>Error message to make sure start or end date is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Include_Future_Dates" xml:space="preserve">
+    <value>Опсег датума мора да укључи датуме у будућности.</value>
+    <comment>Error message to make sure future date range is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_Date_Range" xml:space="preserve">
+    <value>Неважећи опсег датума</value>
+    <comment>Error message to make sure correct date range is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_End_Time" xml:space="preserve">
+    <value>Неважеће време завршетка.</value>
+    <comment>Error message to make sure end time is in the correct format</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_Start_Time" xml:space="preserve">
+    <value>Неважеће време почетка.</value>
+    <comment>Error message to make sure start time is in the correct format</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Select_Days" xml:space="preserve">
+    <value>Изаберите дан у седмици.</value>
+    <comment>Error message to make sure atleast one day is selected</comment>
+  </data>
+  <data name="Alert_ServiceActivity_StartTime_Before_EndTime" xml:space="preserve">
+    <value>Време почетка мора да буде пре времена завршетка.</value>
+    <comment>Error message to make sure start time is lesser than end time</comment>
+  </data>
+  <data name="Confirm_Remove_Resource_From_ResourceGroup" xml:space="preserve">
+    <value>Ова радња ће уклонити изабране ресурсе из групе. Ову радњу није могуће опозвати; међутим, можете касније да вратите ресурсе назад у групу ако је потребно. Да бисте наставили, кликните на дугме „У реду“.</value>
+    <comment>Confirm dialog for removal of resource from resource group</comment>
+  </data>
+  <data name="Dialog_Cycle_Bottom_Plural" xml:space="preserve">
+    <value>није могуће додати зато што већ постоје у тренутној групи ресурса или у једном од његових надређених.</value>
+    <comment>Resource group cyclic dependency error dialog bottom message for multiple RG</comment>
+  </data>
+  <data name="Dialog_Cycle_Bottom_Singular" xml:space="preserve">
+    <value>није могуће додати зато што већ постоји у тренутној групи ресурса или у једном од његових надређених.</value>
+    <comment>Resource group cyclic dependency error dialog bottom message for single RG</comment>
+  </data>
+  <data name="Dialog_Cycle_Top_Plural" xml:space="preserve">
+    <value>Следеће групе ресурса:</value>
+    <comment>Resource group cyclic dependency error dialog top message for multiple RGs</comment>
+  </data>
+  <data name="Dialog_Cycle_Top_Singular" xml:space="preserve">
+    <value>Следећа група ресурса:</value>
+    <comment>Resource group cyclic dependency error dialog top message for single RG</comment>
+  </data>
+  <data name="ErrorCode.ResourceConstraints" xml:space="preserve">
+    <value>{0} није доступан због ограничења ресурса.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceBusy" xml:space="preserve">
+    <value>{0} тренутно није доступан.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceOverCapacity" xml:space="preserve">
+    <value>{0} нема захтевани капацитет.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceNonBusinessHours" xml:space="preserve">
+    <value>{0} је планиран изван њихових радних часова.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.SearchInvalid" xml:space="preserve">
+    <value>Захтевано време није важеће.</value>
+  </data>
+  <data name="ErrorCode.DifferentEffort" xml:space="preserve">
+    <value>Захтевани капацитет ове услуге не подудара се са капацитетом ресурса {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.NotSameSitePartyMembers" xml:space="preserve">
+    <value>Сви ресурси би требало да буду са исте локације.</value>
+  </data>
+  <data name="ErrorCode.EmptyAppointment" xml:space="preserve">
+    <value>Нема изабраних ресурса за ову активност.</value>
+  </data>
+  <data name="ErrorCode.RequiredResourceMisMatch" xml:space="preserve">
+    <value>не може да одреди тачно правило избора за један или више изабраних ресурса. Поново изаберите ресурс из координатне мреже доступних термина након клика на дугме „Распоред“.</value>
+  </data>
+  <data name="ErrorCode.MissingMandatory" xml:space="preserve">
+    <value>Правила избора услуге за захтевани ресурс {0} није могуће испунити. Да бисте погледали правила избора, отворите запис за ову услугу.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSave_Button" xml:space="preserve">
+    <value>Занемари и сачувај</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSave Button</comment>
+  </data>
+  <data name="ErrorCode.InvalidAppointmentDuration" xml:space="preserve">
+    <value>Трајање заказане обавезе је неважеће.</value>
+    <comment>appointment duration more than MaxAppointmentDurationDays in user settings</comment>
+  </data>
+  <data name="ErrorCode.NotEnoughResources" xml:space="preserve">
+    <value>Доступни ресурси за изабране датуме или време не испуњавају минималне захтеве ресурса за ову услугу.</value>
+  </data>
+  <data name="ErrorCode.MandatoryResourceOverSpecification" xml:space="preserve">
+    <value>Наведено је више ресурса него што то захтева услуга.</value>
+  </data>
+  <data name="Root_Resource_Spec_Name_Format" xml:space="preserve">
+    <value>Изабери {0} од {1}</value>
+    <comment>Root selection rule label</comment>
+  </data>
+  <data name="Resource_Spec_Name_Format" xml:space="preserve">
+    <value>Изабери {0} од</value>
+    <comment>Selection rule label</comment>
+  </data>
+  <data name="Resource_Selection_Resouce_Group_Label" xml:space="preserve">
+    <value>Чланови {0}</value>
+    <comment>Resouce groups label</comment>
+  </data>
+  <data name="Button_Label_Add_Selection_Rule" xml:space="preserve">
+    <value>Додај правило избора</value>
+    <comment>Add selection rule</comment>
+  </data>
+  <data name="Button_Label_Add_Resources" xml:space="preserve">
+    <value>Додај ресурсе</value>
+    <comment>Add resources</comment>
+  </data>
+  <data name="Button_Label_Edit" xml:space="preserve">
+    <value>Уреди</value>
+    <comment>Edit button label</comment>
+  </data>
+  <data name="Dialog_Title_Add_Selection_Rule" xml:space="preserve">
+    <value>Додај правило избора</value>
+    <comment>Add selection rule dialog label</comment>
+  </data>
+  <data name="Dialog_Title_Edit_Selection_Rule" xml:space="preserve">
+    <value>Уређивање правила избора</value>
+    <comment>Edit selection rule dialog label</comment>
+  </data>
+  <data name="Service_Form_Save_Progress" xml:space="preserve">
+    <value>Чување је у току</value>
+    <comment>Save in progress</comment>
+  </data>
+  <data name="Service_Resource_Tree_Load_Message" xml:space="preserve">
+    <value>Учитавање конфигурисаних ресурса</value>
+    <comment>Loading configured resources</comment>
+  </data>
+  <data name="Resource_Selection_Notification" xml:space="preserve">
+    <value>Захтевани ресурси нису изабрани за нека од правила избора. Да бисте довршили правила, изаберите ставку „Захтевани ресурси“.</value>
+    <comment>Empty selection rule notification</comment>
+  </data>
+  <data name="Delete_Dialog_Title" xml:space="preserve">
+    <value>Потврди брисање</value>
+    <comment>Delete dialog title</comment>
+  </data>
+  <data name="Resource_Rule_Delete_Confirmation" xml:space="preserve">
+    <value>Желите ли заиста да уклоните овај чвор и све његове подчворове?</value>
+    <comment>Resource rule delete confirmation message</comment>
+  </data>
+  <data name="Resource_Delete_Confirmation" xml:space="preserve">
+    <value>Желите ли заиста да уклоните овај чвор?</value>
+    <comment>Resource delete confirmation message</comment>
+  </data>
+  <data name="Resouce_Selection_Error" xml:space="preserve">
+    <value>Исти ресурс не може бити изабран два пута у истом правилу за избор {0}</value>
+    <comment>Error message when adding same resource twice in same selection rule</comment>
+  </data>
+  <data name="Resource_Delete_Confirmation_Note" xml:space="preserve">
+    <value>Белешка: Уклањање ресурса и група ресурса из стабла их неће избрисати из Microsoft Dynamics 365.</value>
+    <comment>Note: Removing resources and resource groups from the tree will not delete them from Microsoft Dynamics 365.</comment>
+  </data>
+  <data name="Info_Message_Deprecated_Legacy_Contract_Entity_migrating_to_Entitlement" xml:space="preserve">
+    <value>Овај ентитет уговора је застарео и замењује га ентитет права. Ентитет уговора неће бити доступан у обједињеном интерфејсу. Пребаците своје податке у ентитет права пре 1. децембра 2020. Сазнајте више https://go.microsoft.com/fwlink/p/?linkid=2135246</value>
+    <comment>Contract entity had been deprecated and won’t be accessible in Unified Interface. </comment>
+  </data>
+  <data name="Info_Message_Deprecated_Legacy_ContractTemplate_Entity_migrating_to_Entitlement" xml:space="preserve">
+    <value>Овај ентитет предлошка уговора је застарео и замењује га ентитет права. Ентитет предлошка уговора неће бити доступан у обједињеном интерфејсу. Пребаците своје податке у ентитет права пре 1. децембра 2020. Сазнајте више https://go.microsoft.com/fwlink/p/?linkid=2135246</value>
+    <comment>Contract template entity had been deprecated and won’t be accessible in Unified Interface. </comment>
+  </data>
+  <data name="UCI.Form.Saving" xml:space="preserve">
+    <value>Чување...</value>
+    <comment>Message which is displayed while UCI main form is getting saved.</comment>
+  </data>
+  <data name="Days_Of_Week_Friday" xml:space="preserve">
+    <value>петак</value>
+  </data>
+  <data name="Days_Of_Week_Monday" xml:space="preserve">
+    <value>понедељак</value>
+  </data>
+  <data name="Days_Of_Week_Saturday" xml:space="preserve">
+    <value>субота</value>
+  </data>
+  <data name="Days_Of_Week_Sunday" xml:space="preserve">
+    <value>недеља</value>
+  </data>
+  <data name="Days_Of_Week_Thursday" xml:space="preserve">
+    <value>четвртак</value>
+  </data>
+  <data name="Days_Of_Week_Tuesday" xml:space="preserve">
+    <value>уторак</value>
+  </data>
+  <data name="Days_Of_Week_Wednesday" xml:space="preserve">
+    <value>среда</value>
+  </data>
+  <data name="SC_SortForm_AriaButton" xml:space="preserve">
+    <value>Сортирај</value>
+  </data>
+  <data name="SC_FilterPanel_Applied_Announce" xml:space="preserve">
+    <value>Филтер је примењен</value>
+  </data>
+  <data name="SC_FilterPanel_Cleared_Announce" xml:space="preserve">
+    <value>Филтер је обрисан</value>
+  </data>
+  <data name="SC_SearchBox_A11y" xml:space="preserve">
+    <value>Претражи ресурс</value>
+  </data>
+  <data name="SC_ListView_ViewType_ListView" xml:space="preserve">
+    <value>Приказ листе</value>
+  </data>
+  <data name="SC_ListView_Column_Availability" xml:space="preserve">
+    <value>Доступност</value>
+  </data>
+  <data name="SC_ListView_Column_Start_Time" xml:space="preserve">
+    <value>Време почетка</value>
+  </data>
+  <data name="SC_ListView_Column_End_Time" xml:space="preserve">
+    <value>Време завршетка</value>
+  </data>
+  <data name="SC_ListView_Column_Duration" xml:space="preserve">
+    <value>Трајање</value>
+  </data>
+  <data name="SC_ListView_Column_Activity" xml:space="preserve">
+    <value>Активност</value>
+  </data>
+  <data name="SC_ListView_Column_Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_Available" xml:space="preserve">
+    <value>Доступно</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_Scheduled" xml:space="preserve">
+    <value>Планирано</value>
+  </data>
+  <data name="SC_ListView_ViewType_GridView" xml:space="preserve">
+    <value>Приказ координатне мреже</value>
+  </data>
+  <data name="Alert_Failed_Updating_ServiceActivity_Status" xml:space="preserve">
+    <value>Ажурирање статуса активности услуге није успело јер је StateAttributeMetadata без вредности.</value>
+    <comment>Failure when setting default status for given service activity state due to empty StateAttributeMetadata.</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Failed" xml:space="preserve">
+    <value>Није успело обезбеђивање обједињеног усмеравања. Покушајте поново или се обратите Microsoft подршци. https://go.microsoft.com/fwlink/?linkid=2155040</value>
+    <comment>Label for failed provisioning</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Started" xml:space="preserve">
+    <value>У току је обезбеђивање обједињеног усмеравања. Сачекајте неколико сати да се овај процес заврши.</value>
+    <comment>Label for in progress provisioning</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Completed" xml:space="preserve">
+    <value>Обједињено усмеравање је успешно обезбеђено.</value>
+    <comment>Label for successful provisioning</comment>
+  </data>
+  <data name="SC_ListView_Availability_Option_PartiallyAvailable" xml:space="preserve">
+    <value>Делимично доступно</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_OutsideWorkingHours" xml:space="preserve">
+    <value>Недоступно</value>
+  </data>
+  <data name="SC_SearchBox_MoreRecords_Announce" xml:space="preserve">
+    <value>Пронађених записа: {0}</value>
+  </data>
+  <data name="SC_SearchBox_OneRecord_Announce" xml:space="preserve">
+    <value>{0} запис је пронађен</value>
+  </data>
+  <data name="SC_SortForm_Cleared_Announce" xml:space="preserve">
+    <value>Изабрана опција сортирања је обрисана</value>
+  </data>
+  <data name="SC_SortForm_Apply_Ascending" xml:space="preserve">
+    <value>Ресурси су сортирани по називу у растућем редоследу</value>
+  </data>
+  <data name="SC_SortForm_Apply_Descending" xml:space="preserve">
+    <value>Ресурси су сортирани по називу у опадајућем редоследу</value>
+  </data>
+  <data name="SC_Notifications_of" xml:space="preserve">
+    <value>{0} од {1}</value>
+    <comment>{Placeholder='{0}','{1}'} Placeholder 0 is the number of current notifications and Placeholder 1 is the total number of notifications</comment>
+  </data>
+  <data name="SC_AlertWindow_DismissButton" xml:space="preserve">
+    <value>Одбаци</value>
+    <comment>Label for the dismiss button on the notification item</comment>
+  </data>
+  <data name="SC_ChangeStatus_Text" xml:space="preserve">
+    <value>Промените статус</value>
+  </data>
+  <data name="SC_ListView_More_Options" xml:space="preserve">
+    <value>Више опција</value>
+    <comment>Label for more option button for list view</comment>
+  </data>
+  <data name="SLA_Recalculation_Text" xml:space="preserve">
+    <value>SLA ће се поново израчунати када достигне статус терминала. {0}.</value>
+  </data>
+  <data name="SLA_Recalculation_HyperLinkText" xml:space="preserve">
+    <value>Сазнајте више</value>
+  </data>
+  <data name="CalendarImportExportHyperLinkText" xml:space="preserve">
+    <value>Сазнајте више</value>
+  </data>
+  <data name="SlaCalendarExportImportHelpText" xml:space="preserve">
+    <value>Укључите распоред празника и распоред корисничке службе повезане са извезеним или увезеним SLA као део решења. {0}</value>
+  </data>
+  <data name="Hard_Refresh_Save_Notification_Msg" xml:space="preserve">
+    <value>Обавите потпуно освежавање да бисте видели исправке</value>
+    <comment>for showing the user message to hard refresh the page when the insert dialog setting is changed</comment>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>Почево д 01. априла 2023, крај подршке (EoS) је истекао за застареле уговоре о нивоу услуга (SLA-ови) на веб-клијенту који су били неодобрени раније. Од пресудне је важности да одмах мигрирате застареле SLA-ове који су били креирани на веб-клијенту у искуство обједињеног интерфејса како бисте избегли губитак функционалности. а више информација о начину мигрирања ставки, погледајте {0}</value>
+    <comment>Notification message about SLA and ARC web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="Entitlement_AllocationTypeNotification" xml:space="preserve">
+    <value>Није пронађен ниједан запис за мапирање типа доделе ентитета права. Додајте мапирања типа доделе ентитета права. Више информација потражите у чланку {0}</value>
+    <comment>Notification message about entitlement's entity allocation type mapping. {Placeholder='{0}'} Placeholder '0' is a documentation link for more information.</comment>
+  </data>
+  <data name="CancelCaseWithActivityNumber" xml:space="preserve">
+    <value>Имате &lt;p&gt;отворене активности ({0})&lt;p&gt;. Потврдом ћете отказати све отворене активности.</value>
+    <comment>Notification message about cancelling open activities if case is resolved. {Placeholder='{0}'}, {Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities.</comment>
+  </data>
+  <data name="CaseCancellationToastNotification" xml:space="preserve">
+    <value>Предмет је отказан.</value>
+    <comment>Toast notification message when case has been cancelled.</comment>
+  </data>
+  <data name="CaseResolutionToastNotification" xml:space="preserve">
+    <value>Предмет је решен.</value>
+    <comment>Toast notification message when case has been resolved.</comment>
+  </data>
+  <data name="ResolveCaseWithActivityNumber" xml:space="preserve">
+    <value>Имате &lt;p&gt;отворене активности ({0})&lt;p&gt;. Потврдом ћете отказати све отворене активности.</value>
+    <comment>Notification message about cancelling open activities if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivity" xml:space="preserve">
+    <value>Имате &lt;p&gt;{0} отворену активност&lt;p&gt;. Потврдом ћете отказати отворену активност.</value>
+    <comment>Notification message about cancelling open activity if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities. It will be 1 in this case</comment>
+  </data>
+  <data name="NewCase" xml:space="preserve">
+    <value>Нови предмет</value>
+    <comment>Title of Panel to create a case record.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleOpenSwarms" xml:space="preserve">
+    <value>Имате отворене ројеве &lt;p&gt;(њих {0})&lt;p&gt;. Ако потврдите, решићете све отворене ројеве.</value>
+    <comment>Notification message about resolving open swarms if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneOpenSwarm" xml:space="preserve">
+    <value>Имате &lt;p&gt;{0} отворени рој&lt;p&gt;. Ако потврдите, решићете отворени рој.</value>
+    <comment>Notification message about resolving open swarms if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleOpenSwarms" xml:space="preserve">
+    <value>Имате отворене ројеве &lt;p&gt;(њих {0})&lt;p&gt;. Ако потврдите, отказаћете све отворене ројеве.</value>
+    <comment>Notification message about cancelling open swarms if case is cancelled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneOpenSwarm" xml:space="preserve">
+    <value>Имате &lt;p&gt;{0} отворени рој&lt;p&gt;. Ако потврдите, отказаћете отворени рој.</value>
+    <comment>Notification message about cancelling open swarms if case is cancelled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivityAndOneSwarm" xml:space="preserve">
+    <value>Имате &lt;p&gt;{0} отворену активност&lt;p&gt; и &lt;p&gt;{1} отворени рој&lt;p&gt;. Решавањем предмета отказаћете активност и решити рој.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleActivitiesAndOneSwarm" xml:space="preserve">
+    <value>Имате отворене активности &lt;p&gt;(њих {0})&lt;p&gt; и &lt;p&gt;{1} отворени рој&lt;p&gt;. Решавањем предмета отказаћете активности и рој.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivityAndMultipleSwarms" xml:space="preserve">
+    <value>Имате &lt;p&gt;{0} отворену активност&lt;p&gt; и отворене ројеве &lt;p&gt;(њих {1})&lt;p&gt;. Решавањем предмета отказаћете активност и решити ројеве.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleActivitiesAndMultipleSwarms" xml:space="preserve">
+    <value>Имате отворене активности &lt;p&gt;(њих {0})&lt;p&gt; и отворене ројеве &lt;p&gt;(њих {1})&lt;p&gt;. Отказивањем предмета отказаћете активности и решити ројеве.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneActivityAndOneSwarm" xml:space="preserve">
+    <value>Имате &lt;p&gt;{0} отворену активност&lt;p&gt; и &lt;p&gt;{1} отворени рој&lt;p&gt;. Отказивањем предмета отказаћете активност и рој.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleActivitiesAndOneSwarm" xml:space="preserve">
+    <value>Имате отворене активности &lt;p&gt;(њих {0})&lt;p&gt; и &lt;p&gt;{1} отворени рој&lt;p&gt;. Отказивањем предмета отказаћете активности и рој.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneActivityAndMultipleSwarms" xml:space="preserve">
+    <value>Имате &lt;p&gt;{0} отворену активност&lt;p&gt; и отворене ројеве &lt;p&gt;(њих {1})&lt;p&gt;. Отказивањем предмета отказаћете активност и ројеве.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleActivitiesAndMultipleSwarms" xml:space="preserve">
+    <value>Имате отворене активности &lt;p&gt;(њих {0})&lt;p&gt; и отворене ројеве &lt;p&gt;(њих {1})&lt;p&gt;. Отказивањем предмета отказаћете активности и ројеве.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOpenSwarmWhenFCSOff" xml:space="preserve">
+    <value>Постоје отворени ројеви који су повезани са овим предметом. Отказивањем предмета отказаћете ројеве. Желите ли да откажете предмет?</value>
+    <comment>Notification message about cancelling open swarm if case is cancelled.</comment>
+  </data>
+  <data name="ResolveCaseWithOpenSwarmWhenFCSOff" xml:space="preserve">
+    <value>Постоје отворени ројеви који су повезани са овим предметом. Решавањем предмета решићете ројеве. Желите ли да решите предмет?</value>
+    <comment>Notification message about resolving open swarm if case is resolved.</comment>
+  </data>
+  <data name="CancelCaseWithOpenSwarmAndActivityWhenFCSOff" xml:space="preserve">
+    <value>Постоје отворене активности које су повезане са овим предметом. Отказивањем предмета отказаћете активности и ројеве. Желите ли да откажете предмет?</value>
+    <comment>Notification message about cancelling open swarm and activities if case is cancelled.</comment>
+  </data>
+  <data name="ResolveCaseWithOpenSwarmAndActivityWhenFCSOff" xml:space="preserve">
+    <value>Постоје отворене активности које су повезане са овим предметом. Решавањем предмета отказаћете активности и решити ројеве. Желите ли да решите предмет?</value>
+    <comment>Notification message about cancelling open swarm and activities if case is resolved.</comment>
+  </data>
+  <data name="EntitlementWorkflowNotInActiveState" xml:space="preserve">
+    <value>Повезани ток посла {0} није у активном статусу. Активирајте ток посла да бисте могли да активирате право.</value>
+    <comment>Error message when dependent Workflow/CustomAction is not enabled. {Placeholder='{0}'} Placeholder '0' is the entitlement's workflow name</comment>
+  </data>
+  <data name="SeeTermsText" xml:space="preserve">
+    <value>Погледајте услове коришћења верзије за преглед</value>
+    <comment>Link to preview terms</comment>
+  </data>
+  <data name="LOBHasNotChanged" xml:space="preserve">
+    <value>Ако је нова намера предмета позната, изаберите је у падајућем менију испод. У супротном, кликните на дугме „Сачувај и усмери“ и намера ће се поново утврдити.</value>
+    <comment>Label in Save And ReRoute Dialog when LOB Has not changed</comment>
+  </data>
+  <data name="LOBHasChanged" xml:space="preserve">
+    <value>Ако је нова намера предмета позната, изаберите је у падајућем менију испод. У супротном, кликните на дугме „Сачувај и усмери“ и намера ће се поново утврдити.</value>
+    <comment>Label in Save And ReRoute Dialog when LOB has changed</comment>
+  </data>
+  <data name="CaseResolutionFormFillSourceTitle" xml:space="preserve">
+    <value>Предмет</value>
+    <comment>Label to be shown in source pill of AI toolbar when manual form fill of case resolution</comment>
+  </data>
+  <data name="EmailToCaseFormFillSourceTitle" xml:space="preserve">
+    <value>Е-порука</value>
+    <comment>Label to be shown in source pill of AI toolbar when manual form fill of case</comment>
+  </data>
+  <data name="AIToolBarPillChat" xml:space="preserve">
+    <value>Предмет садржи сачуване AI измене на основу разговора</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on conversation.</comment>
+  </data>
+  <data name="AIToolBarPillEmail" xml:space="preserve">
+    <value>Предмет садржи сачуване промене вештачке интелигенције на основу е-порука</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on Email.</comment>
+  </data>
+  <data name="AIToolBarPillChatAndEmail" xml:space="preserve">
+    <value>Предмет садржи сачуване AI измене на основу разговора и е-порука</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on conversation and emails.</comment>
+  </data>
+  <data name="viewInAuditHistoryLink" xml:space="preserve">
+    <value>Прикажи у историји надгледања</value>
+    <comment>View in audit history.</comment>
+  </data>
+</root>

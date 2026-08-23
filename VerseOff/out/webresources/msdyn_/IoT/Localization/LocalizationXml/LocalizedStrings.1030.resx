@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Enheden registreres i baggrunden. Du kan fortsætte med at bruge Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Der hentes enhedsdata i baggrunden. Du kan fortsætte med at bruge Microsoft Dynamics 365.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>Der opstod en fejl under udførelsen af handlingen. Prøv igen senere.</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Vælg mindst én post.</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Registrer enheden, før du forsøger at hente enhedsdata.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Der hentes enhedsdata i baggrunden. Du kan fortsætte med at bruge Microsoft Dynamics 365. Nogle af disse enheder er ikke registreret, og derfor kan deres data ikke hentes.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>De valgte enheder registreres i baggrunden. Du kan fortsætte med at bruge Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Der hentes enhedsdata i baggrunden. Du kan fortsætte med at bruge Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Der hentes enhedsdata i baggrunden. Du kan fortsætte med at bruge Microsoft Dynamics 365.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Importerer alle nye enheder i baggrunden. Gå til siden Enheder for at se de nye enheder fra IoT-udbyderen.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Importerer alle nye enheder i baggrunden. Opdater listen for at se de nye enheder.</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Vælg én post.</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Godkendelsen lykkedes ikke. Du skal logge på din Power BI-konto for at få vist eller redigere Power BI-felter.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Log på</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Der blev ikke fundet en registreret enhed.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>De registrerede tilsluttede enheder blev ikke fundet.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>Der blev ikke fundet noget enheds-id. Tilføj et enheds-id for at få vist Power BI-feltet.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Power BI-felt</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Power BI-dashboard</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Felt</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Konfigurationsfilen for den gemte PowerBI Embedded kan ikke hentes</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>Der opstod en fejl, og vi kan ikke gemme din tilpasning. Fejloplysninger: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>Det aktuelle objekt er ikke konfigureret til at understøtte anvendelse af et enheds-id-filter til et Power BI-felt.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Vælg det Power BI-felt, du vil føje til formularen.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Power BI-felt</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Gem</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Annuller</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Føj et Power BI-felt til den tilsluttede enhed.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Publicerer tilpasning</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>Power BI-feltet filtreres, så det viser de aktuelle enhedsdata.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>Når du gemmer denne kommando, sendes den også til enhederne. Vil du fortsætte?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Mærke</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Egenskab</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Få mere at vide om integration med Azure IoT Central, som er en fuldt administreret global IoT SaaS-løsning.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Integrer med din eksisterende IoT-hub eller installer en ny, og administrer forudkonfigureret IoT PaaS-løsning fra dit eget Azure-abonnement.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>En kommando kunne ikke sendes. Der skal knyttes en vigtig IoT-besked til denne post for at sende en kommando.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Enheden registreres i baggrunden. Opdater for at se den opdaterede registreringsstatus.</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>Enheden registreres. Vil du registrere denne enhed igen?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>Enheden er allerede registreret. Vil du registrere denne enhed igen?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Registrer enhed</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>De valgte enheder registreres. Opdater for at se den opdaterede registreringsstatus.</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Send kommando til {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Send kommando</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0} sendt til {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Kommando sendt til {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>Kommandoer til {0}</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Forbundne enheder</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>Kommando sendt.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Vis kommandostatus</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>Det er ikke muligt at sende kommando.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Enten kommando eller meddelelse skal angives.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Det var ikke muligt at oprette forbindelse til enhed.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Enheder</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Opret forbindelse fra enhed til {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Enhedssti</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Sti til nøgle</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Der er ikke knyttet nogen foruddefinerede kommandoer til denne enhed. Konfigurer enhedskategorien for at se foruddefinerede kommandoer.</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>Funktionen IoT-forslag er aktiveret, det kan tage 24 timer for konfigurationsændringer at blive anvendt til træning af modellen. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Bekræft, at funktionen IoT-forslag skal deaktiveres.</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>Bekræft deaktivering af IoT-forslag</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>Når du aktiverer denne funktion, bekræfter du, at denne funktion er i forhåndsversion, og du accepterer {0}.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Vilkår for forhåndsversion</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>Få mere at vide</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Visning af brugerdefineret enhed</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Angiv en gyldig IoT-enhed for at fortsætte.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>Antal er den eneste tilgængelige samleindstilling for enhedshændelser.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>Der kan ikke oprettes mere end 6 felter til den aktuelle enhed.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Sørg for, at den valgte måling er et rapporteret målpunkt for den aktuelle enhed.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Læsninger fra tilsluttet enhed</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Power BI-konfigurationsknap</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Kommandoen blev sendt til serveren. Synkroniser enheden for at se status for kommandoen.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Kommandoen blev ikke sendt til serveren pga. forbindelsesproblemer, kommandoen sendes, næste gang enheden synkroniseres.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>Du skal være online for at kunne trække data.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>Der kræves en internetforbindelse, for at denne handling kan udføres.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>Du skal synkronisere denne post, før du kan udføre denne handling.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Enhedsregistreringen blev sendt. Du kan se status for registreringen, næste gang du synkroniserer eller går i onlinetilstand.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Enhedsregistrering blev ikke sendt til serveren pga. forbindelsesproblemer. Registreringen sendes, næste gang enheden synkroniseres.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Anmodningen om at hente enhedsdata er blevet sendt. Du kan se resultatet under fanen Oversigt over enheder, næste gang enheden synkroniseres.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>Du skal have en internetforbindelse for at kunne sende kommandoer.</value>
+  </data>
+</root>

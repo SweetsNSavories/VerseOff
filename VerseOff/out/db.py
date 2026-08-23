@@ -5,32 +5,84 @@ import sqlite3
 import sys
 from pathlib import Path
 
+try:
+    from crypto_manager import CryptoManager
+except ImportError:
+    try:
+        from VerseOff.crypto_manager import CryptoManager
+    except ImportError:
+        CryptoManager = None
+
 
 ENTITY_NAMES = {
-    "msdyn_unifiedroutingrun",
     "account",
+    "activitymimeattachment",
+    "activitymonitor",
     "activitypointer",
     "appointment",
-    "activitymimeattachment",
-    "incident",
+    "category",
+    "constraintbasedgroup",
     "contact",
+    "convertrule",
+    "convertruleitem",
     "email",
+    "emailsignature",
     "entitlement",
+    "equipment",
     "expiredprocess",
+    "feedback",
+    "incident",
+    "incidentresolution",
     "knowledgearticle",
+    "knowledgearticleincident",
     "knowledgebaserecord",
+    "msdyn_applicationtabtemplate",
+    "msdyn_customerasset",
+    "msdyn_dataanalyticsreport_csrmanager",
+    "msdyn_dataanalyticsreport_email",
+    "msdyn_dataanalyticsreport_forecast",
+    "msdyn_datainsightsandanalyticsfeature",
+    "msdyn_iotalert",
+    "msdyn_iotdevice",
+    "msdyn_iotdevicecategory",
+    "msdyn_iotdevicecommand",
+    "msdyn_iotdevicecommanddefinition",
+    "msdyn_iotdevicedatahistory",
+    "msdyn_iotdeviceproperty",
+    "msdyn_iotdeviceregistrationhistory",
+    "msdyn_iotpropertydefinition",
+    "msdyn_iotsettings",
+    "msdyn_iottocaseprocess",
+    "msdyn_liveworkstream",
+    "msdyn_masterentityroutingconfiguration",
+    "msdyn_notificationtemplate",
+    "msdyn_productivityagentscript",
+    "msdyn_productivityagentscriptstep",
+    "msdyn_sessiontemplate",
+    "msdyn_slakpi",
+    "msdyn_swarm",
+    "msdyn_unifiedroutingdiagnostic",
+    "msdyn_unifiedroutingrun",
     "newprocess",
     "phonecall",
     "phonetocaseprocess",
+    "queue",
     "queueitem",
+    "routingrule",
+    "service",
+    "serviceappointment",
+    "site",
+    "sla",
     "socialactivity",
     "socialprofile",
+    "systemuser",
     "task",
+    "team",
+    "template",
     "translationprocess",
-    "category",
-    "feedback",
-    "knowledgearticleincident",
+    "workflow",
 }
+DYNAMIC_TABLES_CREATED = set()
 APP_STORAGE_KEY = "generated-app"
 TIMELINE_TEXT_FIELDS = (
     "subject",
@@ -82,6 +134,8 @@ def _timeline_parent_id(data):
 
 
 class LocalDatabase:
+    _INITIALIZED_PATHS = set()
+
     def __init__(self, db_path=None):
         if db_path is None:
             data_dir = _default_data_dir()
@@ -89,12 +143,60 @@ class LocalDatabase:
             self.db_path = str(data_dir / "verseoff_local.db")
         else:
             self.db_path = str(db_path)
-        self._init_db()
 
-    @staticmethod
-    def _validate_entity_name(entity_name):
-        if entity_name not in ENTITY_NAMES:
-            raise ValueError(f"Unknown generated entity: {entity_name}")
+        if CryptoManager:
+            self.crypto = CryptoManager.get_instance()
+        else:
+            self.crypto = None
+
+        if self.db_path not in LocalDatabase._INITIALIZED_PATHS:
+            self._init_db()
+            LocalDatabase._INITIALIZED_PATHS.add(self.db_path)
+
+    def _serialize_data(self, data: dict) -> str:
+        if self.crypto:
+            return self.crypto.encrypt_dict(data)
+        return json.dumps(data, ensure_ascii=False)
+
+    def _deserialize_data(self, payload_str: str) -> dict:
+        if not payload_str:
+            return {}
+        if self.crypto:
+            return self.crypto.decrypt_dict(payload_str)
+        try:
+            return json.loads(payload_str)
+        except Exception:
+            return {}
+
+    def secure_wipe(self):
+        """Zeroizes encryption keys and securely wipes database contents."""
+        if self.crypto:
+            self.crypto.secure_wipe()
+        with self.get_connection() as conn:
+            for entity in ENTITY_NAMES:
+                try:
+                    conn.execute(f"DELETE FROM {entity}")
+                except Exception:
+                    pass
+            conn.execute("VACUUM")
+
+    def _validate_entity_name(self, entity_name):
+        if not re.match(r"^[a-zA-Z0-9_]+$", entity_name):
+            raise ValueError(f"Invalid entity name: {entity_name}")
+
+    def _ensure_table(self, conn, entity_name):
+        if entity_name in ENTITY_NAMES or entity_name in DYNAMIC_TABLES_CREATED:
+            return
+        conn.execute(f"""
+            CREATE TABLE IF NOT EXISTS {entity_name} (
+                id TEXT PRIMARY KEY,
+                data_json TEXT NOT NULL,
+                sync_status TEXT NOT NULL DEFAULT 'synced',
+                sync_error TEXT,
+                last_modified TEXT
+            )
+        """)
+        DYNAMIC_TABLES_CREATED.add(entity_name)
 
     def get_connection(self):
         connection = sqlite3.connect(self.db_path, timeout=30)
@@ -106,7 +208,7 @@ class LocalDatabase:
             cursor = conn.cursor()
 
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS msdyn_unifiedroutingrun (
+                CREATE TABLE IF NOT EXISTS account (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -115,7 +217,16 @@ class LocalDatabase:
                 )
             """)
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS account (
+                CREATE TABLE IF NOT EXISTS activitymimeattachment (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS activitymonitor (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -142,7 +253,7 @@ class LocalDatabase:
                 )
             """)
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS activitymimeattachment (
+                CREATE TABLE IF NOT EXISTS category (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -151,7 +262,7 @@ class LocalDatabase:
                 )
             """)
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS incident (
+                CREATE TABLE IF NOT EXISTS constraintbasedgroup (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -169,7 +280,34 @@ class LocalDatabase:
                 )
             """)
             cursor.execute("""
+                CREATE TABLE IF NOT EXISTS convertrule (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS convertruleitem (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS email (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS emailsignature (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -187,7 +325,43 @@ class LocalDatabase:
                 )
             """)
             cursor.execute("""
+                CREATE TABLE IF NOT EXISTS equipment (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS expiredprocess (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS feedback (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS incident (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS incidentresolution (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -205,7 +379,259 @@ class LocalDatabase:
                 )
             """)
             cursor.execute("""
+                CREATE TABLE IF NOT EXISTS knowledgearticleincident (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS knowledgebaserecord (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_applicationtabtemplate (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_customerasset (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_csrmanager (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_email (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_dataanalyticsreport_forecast (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_datainsightsandanalyticsfeature (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iotalert (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iotdevice (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iotdevicecategory (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iotdevicecommand (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iotdevicecommanddefinition (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iotdevicedatahistory (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iotdeviceproperty (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iotdeviceregistrationhistory (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iotpropertydefinition (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iotsettings (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_iottocaseprocess (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_liveworkstream (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_masterentityroutingconfiguration (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_notificationtemplate (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_productivityagentscript (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_productivityagentscriptstep (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_sessiontemplate (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_slakpi (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_swarm (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_unifiedroutingdiagnostic (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS msdyn_unifiedroutingrun (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -241,7 +667,61 @@ class LocalDatabase:
                 )
             """)
             cursor.execute("""
+                CREATE TABLE IF NOT EXISTS queue (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS queueitem (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS routingrule (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS service (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS serviceappointment (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS site (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS sla (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -268,7 +748,34 @@ class LocalDatabase:
                 )
             """)
             cursor.execute("""
+                CREATE TABLE IF NOT EXISTS systemuser (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
                 CREATE TABLE IF NOT EXISTS task (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS team (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS template (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -286,25 +793,7 @@ class LocalDatabase:
                 )
             """)
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS category (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT NOT NULL,
-                    sync_status TEXT NOT NULL DEFAULT 'synced',
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS feedback (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT NOT NULL,
-                    sync_status TEXT NOT NULL DEFAULT 'synced',
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS knowledgearticleincident (
+                CREATE TABLE IF NOT EXISTS workflow (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -493,8 +982,12 @@ class LocalDatabase:
             ).fetchall()
             for row in rows:
                 try:
-                    data = json.loads(row["data_json"])
-                except (TypeError, ValueError):
+                    payload = row["data_json"]
+                    if CryptoManager:
+                        data = CryptoManager.get_instance().decrypt_dict(payload)
+                    else:
+                        data = json.loads(payload)
+                except Exception:
                     continue
                 cls._index_timeline_record(
                     cursor.connection,
@@ -506,6 +999,7 @@ class LocalDatabase:
     def get_record(self, entity_name, record_id):
         self._validate_entity_name(entity_name)
         with self.get_connection() as conn:
+            self._ensure_table(conn, entity_name)
             row = conn.execute(
                 f"""
                 SELECT data_json, sync_status, sync_error
@@ -516,7 +1010,7 @@ class LocalDatabase:
             ).fetchone()
         if not row:
             return None
-        data = json.loads(row["data_json"])
+        data = self._deserialize_data(row["data_json"])
         data["_sync_status"] = row["sync_status"]
         data["_sync_error"] = row["sync_error"]
         return data
@@ -530,7 +1024,7 @@ class LocalDatabase:
         sync_error=None,
     ):
         self._validate_entity_name(entity_name)
-        data_json = json.dumps(data, ensure_ascii=False)
+        data_json = self._serialize_data(data)
         last_modified = data.get("modifiedon")
         with self.get_connection() as conn:
             conn.execute(
@@ -564,6 +1058,7 @@ class LocalDatabase:
     def upsert_remote_record(self, entity_name, record_id, data):
         self._validate_entity_name(entity_name)
         with self.get_connection() as conn:
+            self._ensure_table(conn, entity_name)
             current = conn.execute(
                 f"SELECT sync_status FROM {entity_name} WHERE id = ?",
                 (record_id,),
@@ -588,7 +1083,7 @@ class LocalDatabase:
                 """,
                 (
                     record_id,
-                    json.dumps(data, ensure_ascii=False),
+                    self._serialize_data(data),
                     data.get("modifiedon"),
                 ),
             )
@@ -604,6 +1099,7 @@ class LocalDatabase:
     def delete_remote_record(self, entity_name, record_id):
         self._validate_entity_name(entity_name)
         with self.get_connection() as conn:
+            self._ensure_table(conn, entity_name)
             current = conn.execute(
                 f"SELECT sync_status FROM {entity_name} WHERE id = ?",
                 (record_id,),
@@ -629,6 +1125,7 @@ class LocalDatabase:
     def get_pending_records(self, entity_name):
         self._validate_entity_name(entity_name)
         with self.get_connection() as conn:
+            self._ensure_table(conn, entity_name)
             rows = conn.execute(
                 f"""
                 SELECT id, data_json, sync_status
@@ -643,7 +1140,7 @@ class LocalDatabase:
         return [
             {
                 "id": row["id"],
-                "data": json.loads(row["data_json"]),
+                "data": self._deserialize_data(row["data_json"]),
                 "status": row["sync_status"],
             }
             for row in rows
@@ -652,6 +1149,7 @@ class LocalDatabase:
     def queue_delete(self, entity_name, record_id):
         self._validate_entity_name(entity_name)
         with self.get_connection() as conn:
+            self._ensure_table(conn, entity_name)
             current = conn.execute(
                 f"SELECT sync_status FROM {entity_name} WHERE id = ?",
                 (record_id,),
@@ -763,8 +1261,8 @@ class LocalDatabase:
         records = []
         for row in rows:
             try:
-                data = json.loads(row["data_json"])
-            except (TypeError, ValueError):
+                data = self._deserialize_data(row["data_json"])
+            except Exception:
                 continue
             data.setdefault("id", row["id"])
             data["_sync_status"] = row["sync_status"]
@@ -808,8 +1306,8 @@ class LocalDatabase:
         if not row:
             return {}
         try:
-            return json.loads(row["settings_json"])
-        except (TypeError, ValueError):
+            return self._deserialize_data(row["settings_json"])
+        except Exception:
             return {}
 
     def set_timeline_preferences(
@@ -832,7 +1330,7 @@ class LocalDatabase:
                 (
                     timeline_id,
                     parent_entity,
-                    json.dumps(settings, ensure_ascii=False),
+                    self._serialize_data(settings),
                 ),
             )
             conn.commit()
@@ -933,7 +1431,7 @@ class LocalDatabase:
                     entity_name,
                     record_id,
                     action_name,
-                    json.dumps(payload or {}, ensure_ascii=False),
+                    self._serialize_data(payload or {}),
                 ),
             )
             conn.commit()
@@ -950,7 +1448,13 @@ class LocalDatabase:
                 """,
                 (status,),
             ).fetchall()
-        return [dict(row) for row in rows]
+        actions = []
+        for row in rows:
+            item = dict(row)
+            if "payload_json" in item:
+                item["payload"] = self._deserialize_data(item["payload_json"])
+            actions.append(item)
+        return actions
 
     def set_timeline_action_status(
         self,

@@ -1,0 +1,1346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>Слід вибрати клієнта.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="Banner_Notification_Heading" xml:space="preserve">
+    <value>Інцидент оновлено з електронних листів (підготовча версія)</value>
+    <comment>Banner heading for notification message</comment>
+  </data>
+  <data name="Banner_Notification_Message" xml:space="preserve">
+    <value>Перегляньте всі відомості в інциденті, оскільки деякі з них було заповнено за допомогою ШІ. Створений ШІ вміст може бути неправильним.</value>
+    <comment>Banner text for notification message</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="Button_Label_Confirm" xml:space="preserve">
+    <value>Підтвердити</value>
+    <comment>Button text for the Confirm button</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>Видалити</value>
+    <comment>Delete button label</comment>
+  </data>
+  <data name="Associate_Child_Title" xml:space="preserve">
+    <value>Установити зв’язок "батьківський-дочірній"</value>
+    <comment>Title of the page will be that will be shown when cases selected for parent-child association.[Category="Servicing"]</comment>
+  </data>
+  <data name="Button_Label_OK" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="Button_Label_Reactivate" xml:space="preserve">
+    <value>Активувати повторно</value>
+  </data>
+  <data name="Button_Label_Route" xml:space="preserve">
+    <value>Переспрямувати</value>
+    <comment>Label for the Route button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="CancelCaseAction_Title" xml:space="preserve">
+    <value>Скасувати інцидент</value>
+  </data>
+  <data name="CancelCaseConfirm" xml:space="preserve">
+    <value>З цим інцидентом не пов’язано жодну відкриту справу. Відкриті справи буде скасовано, якщо буде скасовано цей інцидент. Скасувати інцидент?</value>
+    <comment>This is the text that will appear on the ConfirmCancel Dialog Screen</comment>
+  </data>
+  <data name="Cancel_Case" xml:space="preserve">
+    <value>Скасувати інцидент</value>
+  </data>
+  <data name="Case_Reactivate_Dlg_Title" xml:space="preserve">
+    <value>Повторно активувати {0}</value>
+    <comment>Title for Reactivate Case Dialog.</comment>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_Allotments" xml:space="preserve">
+    <value>Для закриття інциденту бракує квот для товарів за сервісним договором. Дійсно закрити інцидент?</value>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_ContractDetailState" xml:space="preserve">
+    <value>Сервісну роботу за батьківським договором для цього інциденту скасовано або її термін дії минув. Дійсно закрити інцидент?</value>
+  </data>
+  <data name="Case_Resolve_Dlg_Confirm_Parent" xml:space="preserve">
+    <value>Батьківський сервісний договір для цього інциденту не активний. Дійсно закрити інцидент?</value>
+  </data>
+  <data name="ConvCaseSaveWarning" xml:space="preserve">
+    <value>Для перетворення цього інциденту слід зберегти зміни.</value>
+    <comment>on convert case to knowledge article</comment>
+  </data>
+  <data name="Dialog_Cancel" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="Dialog_Confirm" xml:space="preserve">
+    <value>Підтвердити</value>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>Видалити {0}? Цю дію скасувати неможливо.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Placeholder {0} is the display name of incident entity.</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirmForMultipleCase_Body" xml:space="preserve">
+    <value>Переспрямувати вибрані інциденти {0} відповідно до активного набору правил маршрутизації? Інциденти, які відповідають умовам правила, будуть відповідним чином переспрямовані.</value>
+    <comment>Confirmation Message for Routing Mulitiple case. Placeholder {0} is the number of selected records.</comment>
+  </data>
+  <data name="Dlg_UR_RouteCase_AddRequiredConfirmForMultipleCase_Body" xml:space="preserve">
+    <value>Переспрямувати вибрані інциденти ({0})? Інциденти, які відповідають умовам правила, переспрямовуватимуться відповідним чином.</value>
+    <comment>Confirmation Message for Routing Mulitiple case when unified routing is enabled. Placeholder {0} is the number of selected records.</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirmForSingleCase_Body" xml:space="preserve">
+    <value>Справді переспрямувати цей інцидент відповідно до активного набору правил маршрутизації?</value>
+    <comment>Confirmation Message for Routing Single case. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_UR_RouteCase_AddRequiredConfirmForSingleCase_Body" xml:space="preserve">
+    <value>Переспрямувати цей інцидент?</value>
+    <comment>Confirmation Message for Routing Single case when unified routing is enabled. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_RouteCase_AddRequiredConfirm_Title" xml:space="preserve">
+    <value>Переспрямувати інцидент</value>
+    <comment>Apply Route to Case Confirmation Dialog Title. [Category="Servicing"]</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_ActiveRouteRuleReqdMsg" xml:space="preserve">
+    <value>Немає активного правила для маршрутизації цього інциденту.</value>
+    <comment>There is no associated active routing rule set.</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_RecordRoutingHeaderMessage" xml:space="preserve">
+    <value>Не вдалося завершити маршрутизацію</value>
+    <comment>Header message if there is no associated record routing.</comment>
+  </data>
+  <data name="Dlg_RouteCase_Validation_RecordRoutingBodyMessage" xml:space="preserve">
+    <value>Маршрутизацію записів не налаштовано для інциденту.</value>
+    <comment>Body message if there is no associated record routing for incident.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_RecordAssociated_CaseTerms_DecrementedAlready_DialogMessage" xml:space="preserve">
+    <value>Положення для зв’язаних умов обслуговування вже видалені. У результаті положення буде додано до зв’язаних умов обслуговування та каналу умов обслуговування. Продовжити?</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is already associated to the case and terms already decremented dialog message.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_RecordAssociated_CaseTerms_DecrementedAlready_DialogTitle" xml:space="preserve">
+    <value>Підтвердити відновлення положень умов обслуговування</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is already associated to the case and terms already decremented dialog title.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_Record_NotYet_Associated_CaseTerms_NotDecremented_Yet_DialogMessage" xml:space="preserve">
+    <value>Зв’язування запису умов обслуговування із цим записом інциденту гарантує, що положення для зв’язаних умов обслуговування та каналу умов обслуговування не будуть видалені. Продовжити?</value>
+    <comment>ecrementEntitlementTerms is set to yes and entitlement record is not yet associated to the case dialog message.</comment>
+  </data>
+  <data name="DontDecrementTermsSet_Record_Not_Yet_Associated_CaseTerms_NotDecremented_Yet_DialogTitle" xml:space="preserve">
+    <value>Підтвердити запобігання видаленню положень умов обслуговування</value>
+    <comment>DecrementEntitlementTerms is set to yes and entitlement record is not yet associated to the case dialog title.</comment>
+  </data>
+  <data name="DontDecrementTerms_Not_Set_DialogMessage" xml:space="preserve">
+    <value>Для цього запису інциденту вже зупинено процес видалення положень умов обслуговування. Положення умов обслуговування видалено не буде.</value>
+    <comment>Decrement EntitlementTerms is set to no dialog message.</comment>
+  </data>
+  <data name="DontDecrementTerms_Not_Set_DialogTitle" xml:space="preserve">
+    <value>Процес видалення положень умов обслуговування зупинено</value>
+    <comment>Decrement EntitlementTerms is set to No dialog title.</comment>
+  </data>
+  <data name="Error_Message_0x80044411" xml:space="preserve">
+    <value>Цей інцидент закрито. Закритий інцидент не можна усунути або скасувати.</value>
+    <comment>ror message shown when trying to cancel or resolve a Case which has already been closed. </comment>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Сталася помилка. Виконання вибраної дії не завершено для одного або кількох записів.</value>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Щоб виконати цю дію, виберіть один або кілька записів.</value>
+  </data>
+  <data name="Error_Message_DifferentPartitions" xml:space="preserve">
+    <value>Дія не підтримується для записів, які належать до різних розділів.</value>
+    <comment>This error message is shown when a user attempts an operation (such as merge or associate child cases) on records that are not in the same partition.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>Заголовок інциденту</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>Створено</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>Клієнт</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>Пріоритет</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="LOCID_ASSCO_LESS_RECORDS" xml:space="preserve">
+    <value>Щоб створити зв’язок "батьківський-дочірній", виберіть принаймні два записи.</value>
+    <comment>This is the message shown when trying to associate less records than allowed.</comment>
+  </data>
+  <data name="LOCID_ASSCO_TOOMANY_RECORDS" xml:space="preserve">
+    <value>Максимальна кількість дочірніх інцидентів у батьківському: {0}. Щоб отримати додаткові відомості, зверніться до системного адміністратора.</value>
+    <comment>This is the message shown when trying to associate less records than required.</comment>
+  </data>
+  <data name="LOCID_CONTRACT_ED_DT_LT_ST_DT" xml:space="preserve">
+    <value>Дата завершення сервісного договору не може передувати даті початку.</value>
+  </data>
+  <data name="LOCID_ENDDATE_LT_STARTDATE" xml:space="preserve">
+    <value>Дата завершення не може передувати даті початку.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_CONTRACT" xml:space="preserve">
+    <value>Спочатку потрібно вибрати сервісний договір.</value>
+  </data>
+  <data name="LOCID_ERROR_MISSING_CUSTOMER" xml:space="preserve">
+    <value>Спочатку слід вибрати клієнта.</value>
+  </data>
+  <data name="LOCID_MERGE_CASE_TOOMANY_RECORDS" xml:space="preserve">
+    <value>За раз можна об’єднати лише стільки інцидентів: {0}.</value>
+    <comment>This is the message shown when trying to merge more records than allowed. </comment>
+  </data>
+  <data name="LOCID_MERGE_LESS_RECORDS" xml:space="preserve">
+    <value>Виберіть принаймні два записи для об’єднання.</value>
+    <comment>This is the message shown when trying to merge less records than required. </comment>
+  </data>
+  <data name="LOCID_CONV_ACT_SAVE_WARNING" xml:space="preserve">
+    <value>Щоб перетворити цю справу, збережіть зміни.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Entitlement_Default_Confirmation_DialogTitle" xml:space="preserve">
+    <value>Підтвердити призначення стандартними</value>
+    <comment>Default Entitlement confirmation dailog title.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="Entitlement_Default_Change_Confirmation_Message" xml:space="preserve">
+    <value>Для цього клієнта вже задано умови обслуговування за замовчуванням. Застосовувати натомість за замовчуванням умови обслуговування з цього запису?</value>
+    <comment>Default Entitlement confirmation dailog message.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="Entitlement_Default_Confirmation_Message" xml:space="preserve">
+    <value>Справді призначити стандартними умови обслуговування з цього запису для вказаного клієнта?</value>
+    <comment>Default Entitlement confirmation dailog message.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_INACTIVE_MSG" xml:space="preserve">
+    <value>Тільки активні записи умов обслуговування можна визначити як стандартні.</value>
+    <comment>Default Entitlement confirmation dialog message.[Category="Servicing"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_DIALOG_WIDTH" xml:space="preserve">
+    <value>1000</value>
+    <comment>Default Entitlement confirmation dialog width.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENT_DEFAULT_DIALOG_HEIGHT" xml:space="preserve">
+    <value>200</value>
+    <comment>Default Entitlement confirmation dialog height.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ACTION_NOITEMSELECTED" xml:space="preserve">
+    <value>Щоб виконати цю дію, виберіть один або кілька записів.</value>
+    <comment>Default Entitlement confirmation dialog height.[Category="Entitlement Enhancement"]</comment>
+  </data>
+  <data name="LOCID_ENTITLEMENT_CANCEL_TH_LT" xml:space="preserve">
+    <value>50</value>
+    <comment>Entitlement cancellation record Threshhold limit.</comment>
+  </data>
+  <data name="LOCID_ENTITLEMENT_CANCEL_TH_MSG" xml:space="preserve">
+    <value>Перевищено максимальну кількість записів для цієї операції. Зменште кількість записів до {0}.</value>
+    <comment>Dialog alert description for cancellation record limit. {NumberedPlaceholder="{0}"}. Placeholder 0 is a number representing the number of records selected Eg: Entitlement[Category="Servicing"]</comment>
+  </data>
+  <data name="LOCID_FORMS_SAVE_CONFIRM_TITLE" xml:space="preserve">
+    <value>Внесені зміни не збережено. Щоб залишитися на цій сторінці та зберегти зміни, натисніть кнопку "Скасувати".</value>
+    <comment>Error message to show when no records selected</comment>
+  </data>
+  <data name="Multiple_Merge_Title" xml:space="preserve">
+    <value>Інциденти для злиття</value>
+    <comment>Title of the page will be that will be shown when cases selected to merge.[Category="Servicing"]</comment>
+  </data>
+  <data name="NoValidStatusReasonTransition02" xml:space="preserve">
+    <value>Не вдалося скасувати інцидент у поточному стані через правила переходу стану. Змініть стан інциденту, а потім спробуйте скасувати його, або зверніться до системного адміністратора.</value>
+    <comment>Because of the status transition rules, you cannot cancel the case in the current status. Change the case status, and then try canceling it, or contact your system administrator.</comment>
+  </data>
+  <data name="ResolveCaseAction_Title" xml:space="preserve">
+    <value>Закрити інцидент</value>
+  </data>
+  <data name="Web.CS.cases.dlg_closecase.aspx_27" xml:space="preserve">
+    <value>У полі Оплачуваний час вказано неприпустиме значення. Перевірте значення і спробуйте ще раз.</value>
+  </data>
+  <data name="Web.CS.cases.dlg_closecase.aspx_50" xml:space="preserve">
+    <value>Для закриття цього інциденту потрібно спочатку ввести потрібні відомості в поле "Вирішення".</value>
+  </data>
+  <data name="Web.CS.cases.dlg_reactivate.aspx_50" xml:space="preserve">
+    <value>Ця дія повторно активує закритий або скасований інцидент. Продовжити?</value>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition01" xml:space="preserve">
+    <value>Не вдалося закрити інцидент у поточному стані через правила переходу стану. Змініть стан інциденту, а потім спробуйте закрити його або зверніться до системного адміністратора.</value>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition02" xml:space="preserve">
+    <value>Не вдалося скасувати інцидент у поточному стані через правила переходу стану. Змініть стан інциденту, а потім спробуйте скасувати його, або зверніться до системного адміністратора.</value>
+    <comment>Because of the status transition rules, you cannot cancel the case in the current status. Change the case status, and then try canceling it, or contact your system administrator.</comment>
+  </data>
+  <data name="Web.Record.NoValidStatusReasonTransition03" xml:space="preserve">
+    <value>Не вдалося активувати інцидент у поточному стані через правила переходу стану. Зверніться до системного адміністратора.</value>
+    <comment>Because of the status transition rules, you can't activate the case from the current status. Contact your system administrator.</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmCancel.aspx_2" xml:space="preserve">
+    <value>Скасувати інцидент</value>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_1" xml:space="preserve">
+    <value>Закрити інцидент</value>
+    <comment>This is the title that will appear on the ConfirmResolve Dialog Screen</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_3" xml:space="preserve">
+    <value>З цим інцидентом не пов’язано жодну відкриту справу. Відкриті справи буде скасовано, якщо цей інцидент буде закрито. Закрити інцидент?</value>
+    <comment>This is the text that will appear on the ConfirmResolve Dialog Screen</comment>
+  </data>
+  <data name="Web._cs.Cases.dlg_ConfirmResolve.aspx_4" xml:space="preserve">
+    <value>З цим інцидентом не пов’язано жодну відкриту справу. Відкриті справи буде скасовано, якщо буде скасовано цей інцидент. Скасувати інцидент?</value>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>Підтвердження видалення</value>
+  </data>
+  <data name="ParentChild_Cases_Associate_Success" xml:space="preserve">
+    <value>Між {0} вибраними інцидентами встановлено зв’язок "батьківський-дочірній".</value>
+    <comment>Message that will be shown to the user when parent-child association created between multiple cases.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases for which parent-child realtionship established.Ex:2,3 etc.[Category="Servicing"]</comment>
+  </data>
+  <data name="ParentChild_Cases_NoSuccess_Fail" xml:space="preserve">
+    <value>Не вдалося зв’язати інциденти ({0}).</value>
+    <comment>Error message that will be shown to the user when parent-child association failed to create between multiple cases.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases that were failed.Ex:2,3 etc.[Category="Parent-Child Asscociation  of Cases"]</comment>
+  </data>
+  <data name="MergeRecords_Cases_Merged_Fail" xml:space="preserve">
+    <value>Не вдалося злити інциденти ({0}).</value>
+    <comment>Error message that will be shown to the user has no sufficient privileges to merge more than one case{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases that couldn't be merged.Ex:2,3 etc.[Category="Servicing"]</comment>
+  </data>
+  <data name="MergeRecords_Cases_Merged_Success" xml:space="preserve">
+    <value>Кілька інцидентів ({0}) успішно об’єднано в {1}.</value>
+    <comment>Message that will be shown to the user when more than one case merged successfully.{NumberedPlaceholder="{0}"} Placeholder 0 is the no. of cases merged successfully.Ex:2,3 etc.{NumberedPlaceholder="{1}"} Placeholder 1 is the title of the case into which the selected cases were merged.[Category="Servicing"]</comment>
+  </data>
+  <data name="MergeRecords_Case_Merged_Success" xml:space="preserve">
+  <value>1 інцидент успішно об’єднано в {0}.</value>
+  <comment>Message that will be shown to the user when exactly one case is merged successfully. Placeholder {0} is the title of the case into which the selected case was merged. [Category="Servicing"]</comment>
+</data>
+  <data name="Web.cs.contracts.end_date_earlier_than_start_date" xml:space="preserve">
+    <value>Дата завершення сервісного договору не може передувати даті початку.</value>
+    <comment>Error message to show when the end date of the contract is before the start date.</comment>
+  </data>
+  <data name="Dialog_Activate_Title" xml:space="preserve">
+    <value>Підтвердження активації {0}</value>
+    <comment>Dialog page title for the activate/deactivate dialog page. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name.</comment>
+  </data>
+  <data name="Dialog_Activate_Description_Activate" xml:space="preserve">
+    <value>Справді активувати вибране ({0} {1})?</value>
+    <comment>Dialog page description for the activate record dialog page. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 is a number representing number of records selected, Placeholder 1 is a text representing a singular or plural entity name depending upon whether one or more records are selected. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_activate.aspx_55" xml:space="preserve">
+    <value>У результаті для сутності "{0}" буде встановлено стан {1}.</value>
+    <comment>
+		{NumberedPlaceholder="{0}", "{1}"} Placeholder 0 will be replaced with a proper noun indicating which entity is being activated.
+		Placeholder 1 will be replaced with 'active' or 'inactive'.  Example : This operation will set the selected Account as active.
+	</comment>
+  </data>
+  <data name="Dialog_Label_Active" xml:space="preserve">
+    <value>Активні</value>
+    <comment>This is used as a parameter in other resource strings.  Such as "This operation will set the selected Account as Active".</comment>
+  </data>
+  <data name="Button_Label_Activate" xml:space="preserve">
+    <value>Активувати</value>
+    <comment>Label for the Activate button[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web.cs.contracts.edit.aspx_74" xml:space="preserve">
+    <value>Спочатку слід вибрати клієнта.</value>
+    <comment>Error message to show when customer is not selected</comment>
+  </data>
+  <data name="Web.cs.contracts.edit.aspx_75" xml:space="preserve">
+    <value>Спочатку слід вибрати рахунок для виставлення клієнту.</value>
+    <comment>Error message to show when bill to customer is not selected</comment>
+  </data>
+  <data name="FB5A9CDE-C002-418F-BD0C-2CB25431E5CD" xml:space="preserve">
+    <value>Цю дію не можна скасувати. Для продовження натисніть кнопку "ОК".</value>
+    <comment>AlertMessage.Cannot undo confirmation </comment>
+  </data>
+  <data name="Dialog_Single_Cancel_Description_Entitlement" xml:space="preserve">
+    <value>Справді скасувати ці умови обслуговування?</value>
+    <comment>Dialog page description for canceling single entitlement.Contracts[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_Cancel_Description_Entitlement" xml:space="preserve">
+    <value>Справді скасувати вибрані умови обслуговування ({0}). Після цього для умов обслуговування буде встановлено стан "Скасовано"</value>
+    <comment>Dialog page description for cancel confirmation dialog page. Eg: Cancelling a contract. {NumberedPlaceholder="{0}"}. Placeholder 0 is a number representing the number of records selected Eg: Contracts[Category="Servicing"]</comment>
+  </data>
+  <data name="Web.CS.cases.dlg_cancel.aspx_20" xml:space="preserve">
+    <value>Підтвердити скасування</value>
+    <comment>Cancellation dialog title</comment>
+  </data>
+  <data name="Web.CS.contractdetails.edit.aspx_dis" xml:space="preserve">
+    <value>Знижка не може перевищувати загальну ціну. Перевірте значення та спробуйте знову.</value>
+    <comment>
+		This is a validation for the contract lines that the discount cannot be greater than the
+		Total price, this is related to bug#1752.
+	</comment>
+  </data>
+  <data name="Dialog_RenewEntitlement_Title" xml:space="preserve">
+    <value>Підтвердити поновлення</value>
+    <comment>Renewal dialog title</comment>
+  </data>
+  <data name="Dialog_RenewEntitlement_Description" xml:space="preserve">
+    <value>Справді поновити ці умови обслуговування?</value>
+    <comment>Renewal dialog text</comment>
+  </data>
+  <data name="Button_Label_Renew" xml:space="preserve">
+    <value>Поновити</value>
+    <comment>Button text for the Renew button [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Error_Message_0x80060607" xml:space="preserve">
+    <value>Якщо термін дії умови обслуговування минув, або вона перебуває в стані чернетки, скасувати її не можна.</value>
+    <comment>IDS_ENTITLEMENT_INVALIDENTITLEMENTCANCEL[Category="Servicing"]</comment>
+  </data>
+  <data name="Error_Message_0x80044208" xml:space="preserve">
+    <value>Не можна скасувати умови обслуговування, що перебувають у скасованому стані.</value>
+    <comment>IDS_ENTITLEMENT_ENTITLEMENTALREADYINDRAFTSTATE[Category="Servicing"]</comment>
+  </data>
+  <data name="Dialog_Deactivate_Title" xml:space="preserve">
+    <value>Підтвердження деактивації сутності "{0}"</value>
+    <comment>Dialog page title for deactivate confirmation dialog page. Eg: Confirm Product Deactivation. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product</comment>
+  </data>
+  <data name="Dialog_Deactivate_Description" xml:space="preserve">
+    <value>Вимкнути вибрані сутності ({0} {1})? За потреби їх можна буде активувати повторно пізніше.</value>
+    <comment>Dialog page description for deactivate dialog page. Eg: You have selected 5 products to deactivate. {NumberedPlaceholder="{0}","{1}"}. Placeholder 0 is a number representing the number of records selected and Placeholder 1 is a text representing a singular or plural entity name depending upon whether one or more records are selected Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_deactivate.aspx_55" xml:space="preserve">
+    <value>Унаслідок цієї дії вибрані сутності "{0}" стануть неактивними.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun, singular or plural, indicating an entity name.  Example : This action will change the status of the selected Contact to Inactive.  To continue, click OK.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Button_Label_Deactivate" xml:space="preserve">
+    <value>Деактивувати</value>
+    <comment>Deactivate button label</comment>
+  </data>
+  <data name="Alert_Conv_Case_Owner_Must" xml:space="preserve">
+    <value>Виберіть відповідального.</value>
+    <comment>on convert case to knowledge article dialog</comment>
+  </data>
+  <data name="Alert_Conv_Case_Title_Must" xml:space="preserve">
+    <value>Введіть заголовок.</value>
+    <comment>on convert case to knowledge article dialog</comment>
+  </data>
+  <data name="Error_Message_Fail" xml:space="preserve">
+    <value>Кілька інцидентів не вдалося об’єднати ({0}):</value>
+    <comment>
+		Error message that will be shown to user when cases did not get merged.
+		{NumberedPlaceholder="{0}"} Placeholder 0 is for the total number of cases failed to merged.[Category="Servicing"]
+	</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMembers_Title" xml:space="preserve">
+    <value>Видалення ресурсів із місця</value>
+    <comment>"Remove Resources From Site" dialog title</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMember_Description" xml:space="preserve">
+    <value>Вибрано 1 ресурс для видалення.</value>
+    <comment>singular version of Dialog_RemoveSiteMembers_Description</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMember_Confirmation" xml:space="preserve">
+    <value>Ця дія призведе до видалення вибраних ресурсів із місця. Дію не можна скасувати, проте в разі потреби можна додати ресурси до місця пізніше. Для продовження натисніть кнопку "ОК".</value>
+    <comment>Message that will be shown to the user when removing resources from Site.</comment>
+  </data>
+  <data name="Dialog_RemoveSiteMembers_Description" xml:space="preserve">
+    <value>Для видалення вибрано ресурсів: {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} parameter 0 is a number of members to be removed from the site.</comment>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>Сталася помилка. Поверніться на домашню сторінку та повторіть спробу.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>Не вдається обробити цей запит, оскільки клієнт перебуває в автономному режимі.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>Обробка...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="OperationFailed_SelectOnlyOneCase" xml:space="preserve">
+    <value>Операцію не виконано. Ви вибрали лише один інцидент.</value>
+    <comment>If more than one record is selected, displays this alert message to inform user to only select one</comment>
+  </data>
+  <data name="Alert_TopicModel_Test_ConfigurationUsed_Required" xml:space="preserve">
+    <value>Необхідна конфігурація.</value>
+    <comment>Error message to show when configuration is empty</comment>
+  </data>
+  <data name="Alert_TopicModel_Test_MaxTopics_Required" xml:space="preserve">
+    <value>Введіть максимальну кількість розділів</value>
+    <comment>Error message to show when maximum number of topics is empty</comment>
+  </data>
+  <data name="Dialog_ConvertToCase_ChangeTaskStatus" xml:space="preserve">
+    <value>Змінити стан {0} на "Виконано" та закрити форму</value>
+    <comment>Label to show on ConvertToCase dialog for general activities</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_casehierarchy.aspx_6" xml:space="preserve">
+    <value>Виберіть усі обов’язкові поля для успадкування, що дасть змогу правильно створювати дочірні інциденти</value>
+    <comment>Label for Case Settings Dialog</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Header" xml:space="preserve">
+    <value>Керування статтями бази знань в програмі Центру підтримки клієнтів.</value>
+    <comment>Header for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Para1" xml:space="preserve">
+    <value>Статті бази знань відкрито на новій вкладці в програмі Центру підтримки клієнтів. Перейдіть на нову вкладку в браузері, щоб отримати більше можливостей створення статей бази знань, керування ними та доступу до них.</value>
+    <comment>Second Paragraph for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.Para2" xml:space="preserve">
+    <value>Якщо нова вкладка не відкрилась автоматично, перевірте, чи дозволено в браузері відкривати спливаючі вікна. Крім того, перевірте права своєї ролі безпеки: чи надано вам доступ до програми Центру підтримки клієнтів. Якщо проблема не зникне, зверніться до свого адміністратора Dynamics 365 або до служби підтримки Microsoft.</value>
+    <comment>Third Paragraph for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.MoreHelp" xml:space="preserve">
+    <value>Докладніше:</value>
+    <comment>More Help Text for KM Redirection Notice</comment>
+  </data>
+  <data name="KMRouting.RedirectNotice.LinkText" xml:space="preserve">
+    <value>Зменшення часу обробки викликів за допомогою статей бази знань у Центрі підтримки клієнтів</value>
+    <comment>Text for KM Redirection Notice Help Link</comment>
+  </data>
+  <data name="Error_Message_Deactivate_Service" xml:space="preserve">
+    <value>Деактивувати не можна, оскільки є заплановані обслуговування, пов’язані з цими службами. Закрийте або скасуйте обслуговування, щоб деактивувати.</value>
+    <comment>Error message shown when trying to deactivate the service with associated scheduled service activities.</comment>
+  </data>
+  <data name="MultilevelParentChildRelationshipNotAllowed" xml:space="preserve">
+    <value>Для дочірніх інцидентів не можна створювати дочірні інциденти.</value>
+    <comment>Error message when child incident is created for child inicident</comment>
+  </data>
+  <data name="Info_Message_Legacy_Service_scheduling_Deprecated" xml:space="preserve">
+    <value>На зміну застарілому плануванню послуг приходять нові функції на базі Universal Resource Scheduling. Указівки з переходу див. на сторінці http://aka.ms/ServiceScheduling.</value>
+    <comment>Legacy service scheduling is deprecated in legacy web client.</comment>
+  </data>
+  <data name="Case_Resolve_Dlg_Incident_Not_Active" xml:space="preserve">
+    <value>Інцидент вирішено.</value>
+    <comment>Alert message to show when an attempt is made to resolve a case when it has already been resolved.</comment>
+  </data>
+  <data name="No_Incident_Id" xml:space="preserve">
+    <value>Не вдалося знайти пов’язаний інцидент.</value>
+    <comment>Error message to show when an incident id cannot be found.</comment>
+  </data>
+  <data name="SCH_Year_Single" xml:space="preserve">
+    <value>рік</value>
+  </data>
+  <data name="SCH_Year_Plural" xml:space="preserve">
+    <value>рр.</value>
+  </data>
+  <data name="SCH_Year_Abbrev" xml:space="preserve">
+    <value>р.</value>
+  </data>
+  <data name="SCH_Quarter_Single" xml:space="preserve">
+    <value>квартал</value>
+  </data>
+  <data name="SCH_Quarter_Plural" xml:space="preserve">
+    <value>квартали</value>
+  </data>
+  <data name="SCH_Quarter_Abbrev" xml:space="preserve">
+    <value>кварт.</value>
+  </data>
+  <data name="SCH_Month_Single" xml:space="preserve">
+    <value>місяць</value>
+  </data>
+  <data name="SCH_Month_Plural" xml:space="preserve">
+    <value>міс.</value>
+  </data>
+  <data name="SCH_Month_Abbrev" xml:space="preserve">
+    <value>міс.</value>
+  </data>
+  <data name="SCH_Week_Single" xml:space="preserve">
+    <value>тиждень</value>
+  </data>
+  <data name="SCH_Week_Plural" xml:space="preserve">
+    <value>тиж.</value>
+  </data>
+  <data name="SCH_Week_Abbrev" xml:space="preserve">
+    <value>тиж.</value>
+  </data>
+  <data name="SCH_Day_Single" xml:space="preserve">
+    <value>день</value>
+  </data>
+  <data name="SCH_Day_Plural" xml:space="preserve">
+    <value>дн.</value>
+  </data>
+  <data name="SCH_Day_Abbrev" xml:space="preserve">
+    <value>дн.</value>
+  </data>
+  <data name="SCH_Hour_Single" xml:space="preserve">
+    <value>година</value>
+  </data>
+  <data name="SCH_Hour_Plural" xml:space="preserve">
+    <value>год.</value>
+  </data>
+  <data name="SCH_Hour_Abbrev" xml:space="preserve">
+    <value>год.</value>
+  </data>
+  <data name="SCH_Minute_Single" xml:space="preserve">
+    <value>хвилина</value>
+  </data>
+  <data name="SCH_Minute_Plural" xml:space="preserve">
+    <value>хв.</value>
+  </data>
+  <data name="SCH_Minute_Abbrev" xml:space="preserve">
+    <value>хв.</value>
+  </data>
+  <data name="SCH_Minutes_Abbrev" xml:space="preserve">
+    <value>хв.</value>
+  </data>
+  <data name="SCH_Minute_Abbrev_Short" xml:space="preserve">
+    <value>хв.</value>
+  </data>
+  <data name="SCH_Second_Single" xml:space="preserve">
+    <value>секунда</value>
+  </data>
+  <data name="SCH_Sec_Single" xml:space="preserve">
+    <value>с</value>
+  </data>
+  <data name="SCH_Second_Plural" xml:space="preserve">
+    <value>с</value>
+  </data>
+  <data name="SCH_Second_Abbrev" xml:space="preserve">
+    <value>с</value>
+  </data>
+  <data name="SCH_MilliSecond" xml:space="preserve">
+    <value>мс</value>
+  </data>
+  <data name="Duration_FormatHour" xml:space="preserve">
+    <value>{0} год.</value>
+    <comment>Single hour duration formatting on booking bars. Placeholder {0} is the number of hours booked</comment>
+  </data>
+  <data name="Duration_FormatHours" xml:space="preserve">
+    <value>{0} год.</value>
+    <comment>Multiple hour duration formatting on booking bars. Placeholder {0} is the number of hours booked</comment>
+  </data>
+  <data name="Duration_FormatHour_Minutes" xml:space="preserve">
+    <value>{0} год. {1} хв.</value>
+    <comment>Single hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_FormatHours_Minutes" xml:space="preserve">
+    <value>{0} год. {1} хв.</value>
+    <comment>Multiple hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_Format_Minutes" xml:space="preserve">
+    <value>{0} хв.</value>
+    <comment>Zero hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_FormatHours_Minutes_Short" xml:space="preserve">
+    <value>{0}:{1} хв.</value>
+    <comment>Multiple hour, multiple minute duration formatting on booking bars. Placeholder {0} is the number of hours booked. Placeholder {1} is the number of minutes booked</comment>
+  </data>
+  <data name="Duration_HrsSuffix" xml:space="preserve">
+    <value>год.</value>
+    <comment>Abbreviation for the word "hours", e.g. "100 hrs"</comment>
+  </data>
+  <data name="Duration_HrSuffix" xml:space="preserve">
+    <value>год.</value>
+    <comment>Abbreviation for the word "hour", e.g. "1 hr"</comment>
+  </data>
+  <data name="Duration_Format_Minutes_Short" xml:space="preserve">
+    <value>{0} хв.</value>
+    <comment>Placeholder {0} is the number of minutes booked.</comment>
+  </data>
+  <data name="Duration_FormatHours_Short" xml:space="preserve">
+    <value>{0}год.</value>
+    <comment>Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatHours_Long" xml:space="preserve">
+    <value>{0} год.</value>
+    <comment>Multiple hour long formatting. Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatOneHour_Long" xml:space="preserve">
+    <value>1 год.</value>
+    <comment>Single hour formatting.</comment>
+  </data>
+  <data name="Duration_FormatMinutes_Long" xml:space="preserve">
+    <value>{0} хв.</value>
+    <comment>Multiple hour long formatting. Placeholder {0} is the number of hours booked.</comment>
+  </data>
+  <data name="Duration_FormatOneMinute_Long" xml:space="preserve">
+    <value>1 хв.</value>
+    <comment>Single minute formatting.</comment>
+  </data>
+  <data name="EndTimeLaterThanStartTime" xml:space="preserve">
+    <value>Слід зазначити час завершення, який настає після часу початку.</value>
+  </data>
+  <data name="DateFieldCannotBeNull" xml:space="preserve">
+    <value>Поле "Дата" не може мати Null-значення</value>
+  </data>
+  <data name="SC_Pagging_Label" xml:space="preserve">
+    <value>{0} – {1} з {2}</value>
+  </data>
+  <data name="SC_Header_HourlyView" xml:space="preserve">
+    <value>Щогодинне подання</value>
+  </data>
+  <data name="SC_ViewMode_Tooltip" xml:space="preserve">
+    <value>Режим перегляду</value>
+  </data>
+  <data name="SC_Legend" xml:space="preserve">
+    <value>Умовні позначки</value>
+  </data>
+  <data name="SC_HideLegend" xml:space="preserve">
+    <value>Приховати умовні позначки</value>
+  </data>
+  <data name="SC_PreviousButton_ActionBarCalendar_AriaLabel" xml:space="preserve">
+    <value>Попередній діапазон дат, від {0} до {1}</value>
+    <comment>Aria-label for the action bar calendar previous button</comment>
+  </data>
+  <data name="SC_NextButton_ActionBarCalendar_AriaLabel" xml:space="preserve">
+    <value>Наступний діапазон дат, від {0} до {1}</value>
+    <comment>Aria-label for the action bar calendar next button</comment>
+  </data>
+  <data name="SC_CalendarPreviousButton_Tooltip" xml:space="preserve">
+    <value>Попередній діапазон</value>
+  </data>
+  <data name="SC_CalendarNextButton_Tooltip" xml:space="preserve">
+    <value>Наступний діапазон</value>
+  </data>
+  <data name="SC_CalendarIcon_Tooltip" xml:space="preserve">
+    <value>Вибір дати</value>
+  </data>
+  <data name="SC_Refresh_Tooltip" xml:space="preserve">
+    <value>Оновити</value>
+  </data>
+  <data name="SC_SortForm_Apply" xml:space="preserve">
+    <value>Застосування</value>
+  </data>
+  <data name="SC_SortForm_Apply_Tooltip" xml:space="preserve">
+    <value>Застосувати зміни</value>
+  </data>
+  <data name="SC_SortForm_Clear" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="SC_SortForm_Clear_Tooltip" xml:space="preserve">
+    <value>Скасувати зміни</value>
+  </data>
+  <data name="SC_SomethingWentWrong" xml:space="preserve">
+    <value>Сталася помилка</value>
+  </data>
+  <data name="SC_ReloadToFix" xml:space="preserve">
+    <value>Спробуйте перезавантажити сторінку. Якщо це повідомлення не зникне, попросіть адміністратора подати запит на підтримку.</value>
+  </data>
+  <data name="SC_PreviousButton_AriaLabel" xml:space="preserve">
+    <value>Кнопка "Попередня сторінка". Наразі відображаються записи з {0} по {1} із {2}.</value>
+    <comment>Aria-label for a paging previous button</comment>
+  </data>
+  <data name="SC_NextButton_AriaLabel" xml:space="preserve">
+    <value>Кнопка "Наступна сторінка". Наразі відображаються записи з {0} по {1} із {2}.</value>
+    <comment>Aria-label for a paging next button</comment>
+  </data>
+  <data name="SC_PreviousButton_Tooltip" xml:space="preserve">
+    <value>Попередня сторінка</value>
+  </data>
+  <data name="SC_NextButton_Tooltip" xml:space="preserve">
+    <value>Наступна сторінка</value>
+  </data>
+  <data name="SC_CalendarIcon_AriaLabel" xml:space="preserve">
+    <value>Виберіть дату. Вибраний діапазон дат: від {0} до {1}</value>
+    <comment>Aria-label for the action bar calendar button</comment>
+  </data>
+  <data name="SC_Refresh_Announcement" xml:space="preserve">
+    <value>Оновлення ініційовано.</value>
+  </data>
+  <data name="SC_SortForm_Ascending" xml:space="preserve">
+    <value>За зростанням</value>
+  </data>
+  <data name="SC_SortForm_Descending" xml:space="preserve">
+    <value>За спаданням</value>
+  </data>
+  <data name="SC_Appointment" xml:space="preserve">
+    <value>Зустріч</value>
+  </data>
+  <data name="SC_ServiceActivity" xml:space="preserve">
+    <value>Послуга</value>
+  </data>
+  <data name="SC_SortForm_Selection_Placeholder" xml:space="preserve">
+    <value>Виберіть параметр</value>
+  </data>
+  <data name="SC_SortForm_Name" xml:space="preserve">
+    <value>Ім’я</value>
+  </data>
+  <data name="SC_Zoom_Slider" xml:space="preserve">
+    <value>Повзунок масштабування</value>
+    <comment>Name of the zoom slider on service calendar. Used in the aria-label and tooltip.</comment>
+  </data>
+  <data name="SC_SortForm_FormLabel" xml:space="preserve">
+    <value>Сортування</value>
+  </data>
+  <data name="SC_Search" xml:space="preserve">
+    <value>Пошук за іменем</value>
+    <comment>Placeholder text on Service Calendar Search Box.</comment>
+  </data>
+  <data name="SC_Filters" xml:space="preserve">
+    <value>Фільтри</value>
+  </data>
+  <data name="SC_Filters_Close_Tooltip" xml:space="preserve">
+    <value>Закрити</value>
+    <comment>When the button is pressed, closes the filter panel.</comment>
+  </data>
+  <data name="SC_FilterPanel_Apply" xml:space="preserve">
+    <value>Застосування</value>
+    <comment>When the button is pressed, applies the currently selected filters.</comment>
+  </data>
+  <data name="SC_FilterPanel_Clear" xml:space="preserve">
+    <value>Скасувати</value>
+    <comment>When the button is pressed, clears the currently selected filters.</comment>
+  </data>
+  <data name="SC_Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="SC_View" xml:space="preserve">
+    <value>Переглянути</value>
+  </data>
+  <data name="SC_Today" xml:space="preserve">
+    <value>Сьогодні</value>
+  </data>
+  <data name="SC_NoResources" xml:space="preserve">
+    <value>У цьому поданні відсутні ресурси. Створіть один або кілька ресурсів, щоб розпочати роботу.</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize" xml:space="preserve">
+    <value>Змінити розмір панелі.</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize_Horizontal" xml:space="preserve">
+    <value>Горизонтальний роздільник: змінити розмір панелі.</value>
+  </data>
+  <data name="Splitter_AriaLabel_Resize_Vertical" xml:space="preserve">
+    <value>Вертикальний роздільник: змінити розмір панелі.</value>
+  </data>
+  <data name="Splitter_AriaLabel_ExpandCollapse" xml:space="preserve">
+    <value>Розгорнути/згорнути панель.</value>
+  </data>
+  <data name="Alert_ServiceActivity_Check_StartOrEnd" xml:space="preserve">
+    <value>Слід перевірити дату початку та завершення.</value>
+    <comment>Error message to make sure start or end date is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Include_Future_Dates" xml:space="preserve">
+    <value>Діапазон дат має містити дати в майбутньому.</value>
+    <comment>Error message to make sure future date range is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_Date_Range" xml:space="preserve">
+    <value>Неприпустимий діапазон дат</value>
+    <comment>Error message to make sure correct date range is chosen</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_End_Time" xml:space="preserve">
+    <value>Неприпустимий час завершення.</value>
+    <comment>Error message to make sure end time is in the correct format</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Invalid_Start_Time" xml:space="preserve">
+    <value>Неприпустимий час початку.</value>
+    <comment>Error message to make sure start time is in the correct format</comment>
+  </data>
+  <data name="Alert_ServiceActivity_Select_Days" xml:space="preserve">
+    <value>Виберіть день тижня.</value>
+    <comment>Error message to make sure atleast one day is selected</comment>
+  </data>
+  <data name="Alert_ServiceActivity_StartTime_Before_EndTime" xml:space="preserve">
+    <value>Час початку має передувати часу завершення.</value>
+    <comment>Error message to make sure start time is lesser than end time</comment>
+  </data>
+  <data name="Confirm_Remove_Resource_From_ResourceGroup" xml:space="preserve">
+    <value>Ця дія призведе до видалення вибраних ресурсів із групи. Її не можна скасувати, проте за потреби можна додати ресурси до групи пізніше. Щоб продовжити, натисніть кнопку "OK".</value>
+    <comment>Confirm dialog for removal of resource from resource group</comment>
+  </data>
+  <data name="Dialog_Cycle_Bottom_Plural" xml:space="preserve">
+    <value>додати не вдалося, оскільки такі об’єкти вже існують у поточній групі ресурсів або одному з їхніх батьківських об’єктів.</value>
+    <comment>Resource group cyclic dependency error dialog bottom message for multiple RG</comment>
+  </data>
+  <data name="Dialog_Cycle_Bottom_Singular" xml:space="preserve">
+    <value>додати не вдалося, оскільки такий об’єкт уже існує в поточній групі ресурсів або одному з їхніх батьківських об’єктів.</value>
+    <comment>Resource group cyclic dependency error dialog bottom message for single RG</comment>
+  </data>
+  <data name="Dialog_Cycle_Top_Plural" xml:space="preserve">
+    <value>Ці групи ресурсів:</value>
+    <comment>Resource group cyclic dependency error dialog top message for multiple RGs</comment>
+  </data>
+  <data name="Dialog_Cycle_Top_Singular" xml:space="preserve">
+    <value>Цю групу ресурсів:</value>
+    <comment>Resource group cyclic dependency error dialog top message for single RG</comment>
+  </data>
+  <data name="ErrorCode.ResourceConstraints" xml:space="preserve">
+    <value>Ресурс {0} недоступний через обмеження ресурсів.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceBusy" xml:space="preserve">
+    <value>Ресурс {0} наразі недоступний.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceOverCapacity" xml:space="preserve">
+    <value>Виробнича спроможність ресурсу {0} недостатня.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceNonBusinessHours" xml:space="preserve">
+    <value>Ресурс {0} заплановано на неробочий час.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.SearchInvalid" xml:space="preserve">
+    <value>Запитуваний час неприпустимий.</value>
+  </data>
+  <data name="ErrorCode.DifferentEffort" xml:space="preserve">
+    <value>Виробнича спроможність для цієї послуги не відповідає виробничій спроможності ресурсу {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.NotSameSitePartyMembers" xml:space="preserve">
+    <value>Усі ресурси мають належати до одного й того ж місця.</value>
+  </data>
+  <data name="ErrorCode.EmptyAppointment" xml:space="preserve">
+    <value>Для цієї справи не вибрано ресурси.</value>
+  </data>
+  <data name="ErrorCode.RequiredResourceMisMatch" xml:space="preserve">
+    <value>не вдалося визначити правильне правило вибору для одного або кількох вибраних ресурсів. Натисніть кнопку планування та виберіть ресурс повторно в сітці доступних вікон.</value>
+  </data>
+  <data name="ErrorCode.MissingMandatory" xml:space="preserve">
+    <value>Не вдалося виконати правила вибору послуг для необхідного ресурсу {0}. Щоб переглянути правила вибору, відкрийте запис цієї послуги.</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSave_Button" xml:space="preserve">
+    <value>Пропустити та зберегти</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSave Button</comment>
+  </data>
+  <data name="ErrorCode.InvalidAppointmentDuration" xml:space="preserve">
+    <value>Тривалість зустрічі неприпустима.</value>
+    <comment>appointment duration more than MaxAppointmentDurationDays in user settings</comment>
+  </data>
+  <data name="ErrorCode.NotEnoughResources" xml:space="preserve">
+    <value>Ресурси, доступні для вибраних дати та часу, не задовольняють мінімальним вимогам до ресурсів для цієї послуги.</value>
+  </data>
+  <data name="ErrorCode.MandatoryResourceOverSpecification" xml:space="preserve">
+    <value>Кількість указаних ресурсів перевищує кількість, необхідну для послуги.</value>
+  </data>
+  <data name="Root_Resource_Spec_Name_Format" xml:space="preserve">
+    <value>Виберіть {0} з {1}</value>
+    <comment>Root selection rule label</comment>
+  </data>
+  <data name="Resource_Spec_Name_Format" xml:space="preserve">
+    <value>Виберіть {0} з</value>
+    <comment>Selection rule label</comment>
+  </data>
+  <data name="Resource_Selection_Resouce_Group_Label" xml:space="preserve">
+    <value>Учасники {0}</value>
+    <comment>Resouce groups label</comment>
+  </data>
+  <data name="Button_Label_Add_Selection_Rule" xml:space="preserve">
+    <value>Додати правило вибору</value>
+    <comment>Add selection rule</comment>
+  </data>
+  <data name="Button_Label_Add_Resources" xml:space="preserve">
+    <value>Додати ресурси</value>
+    <comment>Add resources</comment>
+  </data>
+  <data name="Button_Label_Edit" xml:space="preserve">
+    <value>Змінити</value>
+    <comment>Edit button label</comment>
+  </data>
+  <data name="Dialog_Title_Add_Selection_Rule" xml:space="preserve">
+    <value>Додати правило вибору</value>
+    <comment>Add selection rule dialog label</comment>
+  </data>
+  <data name="Dialog_Title_Edit_Selection_Rule" xml:space="preserve">
+    <value>Відредагуйте вибране правило</value>
+    <comment>Edit selection rule dialog label</comment>
+  </data>
+  <data name="Service_Form_Save_Progress" xml:space="preserve">
+    <value>Триває збереження</value>
+    <comment>Save in progress</comment>
+  </data>
+  <data name="Service_Resource_Tree_Load_Message" xml:space="preserve">
+    <value>Завантаження налаштованих ресурсів</value>
+    <comment>Loading configured resources</comment>
+  </data>
+  <data name="Resource_Selection_Notification" xml:space="preserve">
+    <value>Не вибрано потрібні ресурси для одного чи кількох правил вибору. Для створення правил клацніть вкладку Потрібні ресурси.</value>
+    <comment>Empty selection rule notification</comment>
+  </data>
+  <data name="Delete_Dialog_Title" xml:space="preserve">
+    <value>Підтвердження видалення</value>
+    <comment>Delete dialog title</comment>
+  </data>
+  <data name="Resource_Rule_Delete_Confirmation" xml:space="preserve">
+    <value>Справді видалити цей вузол з усіма підлеглими вузлами?</value>
+    <comment>Resource rule delete confirmation message</comment>
+  </data>
+  <data name="Resource_Delete_Confirmation" xml:space="preserve">
+    <value>Справді видалити цей вузол?</value>
+    <comment>Resource delete confirmation message</comment>
+  </data>
+  <data name="Resouce_Selection_Error" xml:space="preserve">
+    <value>Один і той самий ресурс не можна вибрати двічі в одному правилі вибору {0}</value>
+    <comment>Error message when adding same resource twice in same selection rule</comment>
+  </data>
+  <data name="Resource_Delete_Confirmation_Note" xml:space="preserve">
+    <value>Примітка. Якщо вилучити ресурси та групи ресурсів із дерева, їх не буде видалено з програми Microsoft Dynamics 365.</value>
+    <comment>Note: Removing resources and resource groups from the tree will not delete them from Microsoft Dynamics 365.</comment>
+  </data>
+  <data name="Info_Message_Deprecated_Legacy_Contract_Entity_migrating_to_Entitlement" xml:space="preserve">
+    <value>Цю сутність сервісного договору вилучено та замінено на сутність умов обслуговування. Сутність сервісного договору не буде доступною в єдиному інтерфейсі. Перенесіть дані до сутності умов обслуговування до 1 грудня 2020 року. Дізнайтеся більше на сторінці https://go.microsoft.com/fwlink/p/?linkid=2135246</value>
+    <comment>Contract entity had been deprecated and won’t be accessible in Unified Interface. </comment>
+  </data>
+  <data name="Info_Message_Deprecated_Legacy_ContractTemplate_Entity_migrating_to_Entitlement" xml:space="preserve">
+    <value>Цю сутність шаблону угоди вилучено та замінено на сутність умов обслуговування. Сутність шаблону угоди не буде доступною в єдиному інтерфейсі. Перенесіть дані до сутності умов обслуговування до 1 грудня 2020 року. Докладніше: https://go.microsoft.com/fwlink/p/?linkid=2135246</value>
+    <comment>Contract template entity had been deprecated and won’t be accessible in Unified Interface. </comment>
+  </data>
+  <data name="UCI.Form.Saving" xml:space="preserve">
+    <value>Збереження...</value>
+    <comment>Message which is displayed while UCI main form is getting saved.</comment>
+  </data>
+  <data name="Days_Of_Week_Friday" xml:space="preserve">
+    <value>П’ятниця</value>
+  </data>
+  <data name="Days_Of_Week_Monday" xml:space="preserve">
+    <value>Понеділок</value>
+  </data>
+  <data name="Days_Of_Week_Saturday" xml:space="preserve">
+    <value>Субота</value>
+  </data>
+  <data name="Days_Of_Week_Sunday" xml:space="preserve">
+    <value>Неділя</value>
+  </data>
+  <data name="Days_Of_Week_Thursday" xml:space="preserve">
+    <value>Четвер</value>
+  </data>
+  <data name="Days_Of_Week_Tuesday" xml:space="preserve">
+    <value>Вівторок</value>
+  </data>
+  <data name="Days_Of_Week_Wednesday" xml:space="preserve">
+    <value>Середа</value>
+  </data>
+  <data name="SC_SortForm_AriaButton" xml:space="preserve">
+    <value>Сортувати</value>
+  </data>
+  <data name="SC_FilterPanel_Applied_Announce" xml:space="preserve">
+    <value>Фільтр застосовано</value>
+  </data>
+  <data name="SC_FilterPanel_Cleared_Announce" xml:space="preserve">
+    <value>Фільтр скинуто</value>
+  </data>
+  <data name="SC_SearchBox_A11y" xml:space="preserve">
+    <value>Пошук ресурсу</value>
+  </data>
+  <data name="SC_ListView_ViewType_ListView" xml:space="preserve">
+    <value>Подання списку</value>
+  </data>
+  <data name="SC_ListView_Column_Availability" xml:space="preserve">
+    <value>Доступність</value>
+  </data>
+  <data name="SC_ListView_Column_Start_Time" xml:space="preserve">
+    <value>Час початку</value>
+  </data>
+  <data name="SC_ListView_Column_End_Time" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="SC_ListView_Column_Duration" xml:space="preserve">
+    <value>Тривалість</value>
+  </data>
+  <data name="SC_ListView_Column_Activity" xml:space="preserve">
+    <value>Справа</value>
+  </data>
+  <data name="SC_ListView_Column_Status" xml:space="preserve">
+    <value>Стан</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_Available" xml:space="preserve">
+    <value>Доступний</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_Scheduled" xml:space="preserve">
+    <value>За графіком</value>
+  </data>
+  <data name="SC_ListView_ViewType_GridView" xml:space="preserve">
+    <value>Подання "Сітка"</value>
+  </data>
+  <data name="Alert_Failed_Updating_ServiceActivity_Status" xml:space="preserve">
+    <value>Не вдалося оновити стан обслуговування, оскільки StateAttributeMetadata має значення null.</value>
+    <comment>Failure when setting default status for given service activity state due to empty StateAttributeMetadata.</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Failed" xml:space="preserve">
+    <value>Не вдалося підготувати єдину маршрутизацію. Повторіть спробу або зверніться до служби підтримки Microsoft. https://go.microsoft.com/fwlink/?linkid=2155040</value>
+    <comment>Label for failed provisioning</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Started" xml:space="preserve">
+    <value>Виконується підготовка єдиної маршрутизації. Це може тривати кілька годин.</value>
+    <comment>Label for in progress provisioning</comment>
+  </data>
+  <data name="Unified_Routing_Provisioning_Completed" xml:space="preserve">
+    <value>Єдину маршрутизацію успішно підготовлено.</value>
+    <comment>Label for successful provisioning</comment>
+  </data>
+  <data name="SC_ListView_Availability_Option_PartiallyAvailable" xml:space="preserve">
+    <value>Частково доступне</value>
+  </data>
+  <data name="SC_ListView_Availability_Option_OutsideWorkingHours" xml:space="preserve">
+    <value>Недоступне</value>
+  </data>
+  <data name="SC_SearchBox_MoreRecords_Announce" xml:space="preserve">
+    <value>Записів знайдено: {0}</value>
+  </data>
+  <data name="SC_SearchBox_OneRecord_Announce" xml:space="preserve">
+    <value>Знайдено {0} запис</value>
+  </data>
+  <data name="SC_SortForm_Cleared_Announce" xml:space="preserve">
+    <value>Обрані параметри сортування очищено</value>
+  </data>
+  <data name="SC_SortForm_Apply_Ascending" xml:space="preserve">
+    <value>Ресурси відсортовано за іменем за зростанням</value>
+  </data>
+  <data name="SC_SortForm_Apply_Descending" xml:space="preserve">
+    <value>Ресурси відсортовано за іменем за спаданням</value>
+  </data>
+  <data name="SC_Notifications_of" xml:space="preserve">
+    <value>{0} з {1}</value>
+    <comment>{Placeholder='{0}','{1}'} Placeholder 0 is the number of current notifications and Placeholder 1 is the total number of notifications</comment>
+  </data>
+  <data name="SC_AlertWindow_DismissButton" xml:space="preserve">
+    <value>Скасувати</value>
+    <comment>Label for the dismiss button on the notification item</comment>
+  </data>
+  <data name="SC_ChangeStatus_Text" xml:space="preserve">
+    <value>Змінити стан</value>
+  </data>
+  <data name="SC_ListView_More_Options" xml:space="preserve">
+    <value>Додаткові параметри</value>
+    <comment>Label for more option button for list view</comment>
+  </data>
+  <data name="SLA_Recalculation_Text" xml:space="preserve">
+    <value>Угоду SLA буде переобчислено, коли вона досягне кінцевого стану. {0}.</value>
+  </data>
+  <data name="SLA_Recalculation_HyperLinkText" xml:space="preserve">
+    <value>Докладно</value>
+  </data>
+  <data name="CalendarImportExportHyperLinkText" xml:space="preserve">
+    <value>Докладніше</value>
+  </data>
+  <data name="SlaCalendarExportImportHelpText" xml:space="preserve">
+    <value>Пов’язувати вихідні та час обслуговування клієнтів з експортованою або імпортованою угодою SLA в межах рішення. {0}</value>
+  </data>
+  <data name="Hard_Refresh_Save_Notification_Msg" xml:space="preserve">
+    <value>Жорстке оновлення для відображення оновлень</value>
+    <comment>for showing the user message to hard refresh the page when the insert dialog setting is changed</comment>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>1 квітня 2023 року у веб-клієнті завершується підтримка застарілих угод про рівень обслуговування (SLA), які було вилучено раніше. Щоб не втратити доступ до функцій, перенесіть до єдиного інтерфейсу застарілі угоди SLA, створені у веб-клієнті. Додаткові відомості про перенесення елементів див. {0}</value>
+    <comment>Notification message about SLA and ARC web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="Entitlement_AllocationTypeNotification" xml:space="preserve">
+    <value>Для зіставлення типів обслуговування сутностей умов обслуговування не знайдено жодного запису. Додайте зіставлення типів обслуговування сутностей умов обслуговування. Додаткові відомості див. на сторінці {0}</value>
+    <comment>Notification message about entitlement's entity allocation type mapping. {Placeholder='{0}'} Placeholder '0' is a documentation link for more information.</comment>
+  </data>
+  <data name="CancelCaseWithActivityNumber" xml:space="preserve">
+    <value>У вас є &lt;p&gt;відкриті справи ({0})&lt;p&gt;. Якщо підтвердити, буде скасовано всі відкриті справи.</value>
+    <comment>Notification message about cancelling open activities if case is resolved. {Placeholder='{0}'}, {Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities.</comment>
+  </data>
+  <data name="CaseCancellationToastNotification" xml:space="preserve">
+    <value>Інцидент скасовано.</value>
+    <comment>Toast notification message when case has been cancelled.</comment>
+  </data>
+  <data name="CaseResolutionToastNotification" xml:space="preserve">
+    <value>Інцидент вирішено.</value>
+    <comment>Toast notification message when case has been resolved.</comment>
+  </data>
+  <data name="ResolveCaseWithActivityNumber" xml:space="preserve">
+    <value>У вас є &lt;p&gt;відкриті справи ({0})&lt;p&gt;. Якщо підтвердити, буде скасовано всі відкриті справи.</value>
+    <comment>Notification message about cancelling open activities if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivity" xml:space="preserve">
+    <value>У вас є &lt;p&gt;{0} відкрита справа&lt;p&gt;. Якщо підтвердити, її буде скасовано.</value>
+    <comment>Notification message about cancelling open activity if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activities. It will be 1 in this case</comment>
+  </data>
+  <data name="NewCase" xml:space="preserve">
+    <value>Новий інцидент</value>
+    <comment>Title of Panel to create a case record.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleOpenSwarms" xml:space="preserve">
+    <value>У вас є &lt;p&gt;відкриті рої ({0})&lt;p&gt;. Якщо підтвердити, усі відкриті рої буде закрито.</value>
+    <comment>Notification message about resolving open swarms if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneOpenSwarm" xml:space="preserve">
+    <value>У вас є &lt;p&gt;{0} відкритий рій&lt;p&gt;. Якщо підтвердити, відкритий рій буде закрито.</value>
+    <comment>Notification message about resolving open swarms if case is resolved. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleOpenSwarms" xml:space="preserve">
+    <value>У вас є &lt;p&gt;відкриті рої ({0})&lt;p&gt;. Якщо підтвердити, усі відкриті рої буде скасовано.</value>
+    <comment>Notification message about cancelling open swarms if case is cancelled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneOpenSwarm" xml:space="preserve">
+    <value>У вас є &lt;p&gt;{0} відкритий рій&lt;p&gt;. Якщо підтвердити, відкритий рій буде скасовано.</value>
+    <comment>Notification message about cancelling open swarms if case is cancelled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivityAndOneSwarm" xml:space="preserve">
+    <value>У вас є &lt;p&gt;{0} відкрита справа&lt;p&gt; та &lt;p&gt;{1} відкритий рій&lt;p&gt;. Якщо закрити інцидент, справу буде скасовано, а рій – закрито.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleActivitiesAndOneSwarm" xml:space="preserve">
+    <value>У вас є &lt;p&gt;відкриті справи ({0})&lt;p&gt; та &lt;p&gt;{1} відкритий рій&lt;p&gt;. Якщо закрити інцидент, справи буде скасовано, а рій – закрито.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithOneActivityAndMultipleSwarms" xml:space="preserve">
+    <value>У вас є &lt;p&gt;{0} відкрита справа &lt;p&gt; та &lt;p&gt;відкриті рої ({1})&lt;p&gt;. Якщо закрити інцидент, справу буде скасовано, а рої – закрито.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="ResolveCaseWithMultipleActivitiesAndMultipleSwarms" xml:space="preserve">
+    <value>У вас є відкриті &lt;p&gt;справи ({0})&lt;p&gt; та &lt;p&gt;рої ({1})&lt;p&gt;. Якщо закрити інцидент, справи буде скасовано, а рої – закрито.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneActivityAndOneSwarm" xml:space="preserve">
+    <value>У вас є &lt;p&gt;{0} відкрита справа &lt;p&gt; та &lt;p&gt;{1} відкритий рій&lt;p&gt;. Якщо скасувати інцидент, справу та рій буде скасовано.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleActivitiesAndOneSwarm" xml:space="preserve">
+    <value>У вас є &lt;p&gt;відкриті справи ({0})&lt;p&gt; та &lt;p&gt;{1} відкритий рій&lt;p&gt;. Якщо скасувати інцидент, справи та рій буде скасовано.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOneActivityAndMultipleSwarms" xml:space="preserve">
+    <value>У вас є &lt;p&gt;{0} відкрита справа &lt;p&gt; та &lt;p&gt;відкриті рої ({1})&lt;p&gt;. Якщо скасувати інцидент, справу та рої буде скасовано.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithMultipleActivitiesAndMultipleSwarms" xml:space="preserve">
+    <value>У вас є відкриті &lt;p&gt;справи ({0})&lt;p&gt; та &lt;p&gt;рої ({1})&lt;p&gt;. Якщо скасувати інцидент, справи та рої буде скасовано.</value>
+    <comment>Notification message about closing open activity and cancelling open swarms if case is canceled. {Placeholder='{0}'},{Locked="&lt;p&gt;"} Placeholder '0' is a number describing the number of open activites and {Placeholder='{1}'},{Locked="&lt;p&gt;"} Placeholder '1' is a number describing the number of open swarms.</comment>
+  </data>
+  <data name="CancelCaseWithOpenSwarmWhenFCSOff" xml:space="preserve">
+    <value>З цим інцидентом пов’язано відкриті рої. Якщо скасувати інцидент, рої буде скасовано. Скасувати інцидент?</value>
+    <comment>Notification message about cancelling open swarm if case is cancelled.</comment>
+  </data>
+  <data name="ResolveCaseWithOpenSwarmWhenFCSOff" xml:space="preserve">
+    <value>З цим інцидентом пов’язано відкриті рої. Якщо закрити інцидент, рої буде закрито. Закрити інцидент?</value>
+    <comment>Notification message about resolving open swarm if case is resolved.</comment>
+  </data>
+  <data name="CancelCaseWithOpenSwarmAndActivityWhenFCSOff" xml:space="preserve">
+    <value>З цим інцидентом пов’язано відкриті справи та рої. Якщо скасувати інцидент, справи та рої буде скасовано. Скасувати інцидент?</value>
+    <comment>Notification message about cancelling open swarm and activities if case is cancelled.</comment>
+  </data>
+  <data name="ResolveCaseWithOpenSwarmAndActivityWhenFCSOff" xml:space="preserve">
+    <value>З цим інцидентом пов’язано відкриті справи та рої. Якщо закрити інцидент, справи буде скасовано, а рої – закрито. Закрити інцидент?</value>
+    <comment>Notification message about cancelling open swarm and activities if case is resolved.</comment>
+  </data>
+  <data name="EntitlementWorkflowNotInActiveState" xml:space="preserve">
+    <value>Пов’язаний робочий цикл "{0}" може бути неактивним. Активуйте відповідний робочий цикл, перш ніж активувати умови обслуговування.</value>
+    <comment>Error message when dependent Workflow/CustomAction is not enabled. {Placeholder='{0}'} Placeholder '0' is the entitlement's workflow name</comment>
+  </data>
+  <data name="SeeTermsText" xml:space="preserve">
+    <value>Читати умови використання підготовчої версії</value>
+    <comment>Link to preview terms</comment>
+  </data>
+  <data name="LOBHasNotChanged" xml:space="preserve">
+    <value>Якщо новий намір інциденту відомий, виберіть його з розкривного списку нижче. Інакше натисніть "Зберегти та спрямувати", і намір буде визначено знову.</value>
+    <comment>Label in Save And ReRoute Dialog when LOB Has not changed</comment>
+  </data>
+  <data name="LOBHasChanged" xml:space="preserve">
+    <value>Якщо новий намір інциденту відомий, виберіть його з розкривного списку нижче. Інакше натисніть "Зберегти та спрямувати", і намір буде визначено знову.</value>
+    <comment>Label in Save And ReRoute Dialog when LOB has changed</comment>
+  </data>
+  <data name="CaseResolutionFormFillSourceTitle" xml:space="preserve">
+    <value>Інцидент</value>
+    <comment>Label to be shown in source pill of AI toolbar when manual form fill of case resolution</comment>
+  </data>
+  <data name="EmailToCaseFormFillSourceTitle" xml:space="preserve">
+    <value>Адреса електронної пошти</value>
+    <comment>Label to be shown in source pill of AI toolbar when manual form fill of case</comment>
+  </data>
+  <data name="AIToolBarPillChat" xml:space="preserve">
+    <value>Інцидент містить збережені зміни, які ШІ вніс на основі розмови</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on conversation.</comment>
+  </data>
+  <data name="AIToolBarPillEmail" xml:space="preserve">
+    <value>Інцидент містить збережені зміни, які ШІ вніс на основі електронних листів</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on Email.</comment>
+  </data>
+  <data name="AIToolBarPillChatAndEmail" xml:space="preserve">
+    <value>Інцидент містить збережені зміни, які ШІ вніс на основі розмови й електронних листів</value>
+    <comment>Message on AI tool bar to inform AI agent had made changes on case based on conversation and emails.</comment>
+  </data>
+  <data name="viewInAuditHistoryLink" xml:space="preserve">
+    <value>Переглянути в журналі відстеження</value>
+    <comment>View in audit history.</comment>
+  </data>
+</root>

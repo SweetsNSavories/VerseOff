@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DynamicProperty_OverrideDialog_SubTitle" xml:space="preserve">
+    <value>क्या आप यह इस गुण को ओवरराइड करना चाहते हैं?</value>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Text" xml:space="preserve">
+    <value>इससे आप इस गुण के इनहेरिट किए गए संस्करण में परिवर्तन कर पाएँगे. इस गुण के मूल इनहेरिट किए गए संस्करण को भी संरक्षित रखा जाएगा.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to override the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverrideDialog_Title" xml:space="preserve">
+    <value>ओवरराइड करने की पुष्टि करें</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_SubTitle" xml:space="preserve">
+    <value>क्या आप यह इस गुण को अधिलेखित करना चाहते हैं?</value>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Text" xml:space="preserve">
+    <value>इससे आप इस गुण के पूर्व में प्रकाशित संस्करण में अतिरिक्त परिवर्तन कर पाएँगे. इस गुण के पिछले संस्करण को भी संरक्षित रखा जाएगा.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with a proper noun indicating an entity name.
+Example : This operation will attempt to overwrite the dynamic property you have selected. [Category="Dynamic Properties"]</comment>
+  </data>
+  <data name="DynamicProperty_OverwriteDialog_Title" xml:space="preserve">
+    <value>अधिलेखित करने की पुष्टि करें</value>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_39" xml:space="preserve">
+    <value>{0} से लेकर {1} तक का कोई मान दर्ज करें.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="C:.crm.src.Application.Web._controls.number.number.js_9" xml:space="preserve">
+    <value>आपको {0} और {1} के बीच का एक पूर्णांक दर्ज करना होगा.</value>
+    <comment>{NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 and Placeholder 1 represent possible numbers</comment>
+  </data>
+  <data name="query.dynamicproperty.defaultvaluestring.warning" xml:space="preserve">
+    <value>डिफ़ॉल्ट मान स्ट्रिंग की लंबाई, अधिकतम अनुमत लंबाई से कम या उसके बराबर होनी चाहिए.</value>
+    <comment>Warning message for Default Value string lenght of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.defaultvalue.warning" xml:space="preserve">
+    <value>डिफ़ॉल्ट मान न्यूनतम मान से अधिक या उसके बराबर और अधिकतम मान से कम या उसके बराबर होना चाहिए.</value>
+    <comment>Warning message for Default value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.minvalue.warning" xml:space="preserve">
+    <value>न्यूनतम मान अधिकतम मान से अधिक नहीं हो सकता.</value>
+    <comment>Warning message for Minimum value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.optionset.warning" xml:space="preserve">
+    <value>आप तब तक किसी विकल्प सेट गुण को आवश्यक और केवल पढ़ने योग्य पर सेट नहीं कर सकते, जब तक कि आपने विकल्प सेट आइटम को न जोड़ा हो और एक डिफ़ॉल्ट मान न निर्दिष्ट किया हो.</value>
+    <comment>Warning message for Dynamic Property of type Option Set.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="query.dynamicproperty.readonlyrequired.warning" xml:space="preserve">
+    <value>आपको एक डिफ़ॉल्ट मान इसलिए निर्दिष्ट करना होगा, क्योंकि यह गुण आवश्यक है और केवल पढ़ने के लिए है.</value>
+    <comment>Warning message for Default Value of Dynamic Property.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="DynamicProperty" Plural="DynamicProperties">1048</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.products.ValidToEarlierThanValidFromDate" xml:space="preserve">
+    <value>मान्य अंत दिनांक मान्य प्रारंभ दिनांक से पहले नहीं हो सकता.</value>
+    <comment>Error message to display if the valid to date supplied  is earlier than the valid from date.</comment>
+  </data>
+  <data name="Kit_Products_Section_Name" xml:space="preserve">
+    <value>किट उत्पाद</value>
+    <comment>Kit Products section name in product kit form.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Product_Family_Hierarchy_Label_Value" xml:space="preserve">
+    <value>समूह पदानुक्रम</value>
+    <comment>Label text for Product Family Hierarchy Control.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Product_Bundle_Form_Title" xml:space="preserve">
+    <value>नया बंडल</value>
+    <comment>Title text for Product Bundle Form.[Category="Product Taxonomy"]</comment>
+  </data>
+  <data name="ProductFamilyQuickCreate.DisplayName" xml:space="preserve">
+    <value>नया उत्पाद समूह</value>
+    <comment></comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Kit" xml:space="preserve">
+    <value>किट</value>
+    <comment>Singular Name of Product Kit.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Bundle" xml:space="preserve">
+    <value>बंडल</value>
+    <comment>Singular Name of Product Bundle.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Product_Family" xml:space="preserve">
+    <value>उत्पाद समूह</value>
+    <comment>Singular Name of Product Family.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Object_Singular_Product" xml:space="preserve">
+    <value>उत्पाद</value>
+    <comment>Singular Name of Product.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_90" xml:space="preserve">
+    <value>चेतावनी:</value>
+    <comment>Label that is prefixed to a warning message.</comment>
+  </data>
+  <data name="Web.SFA.product.edit.aspx_91" xml:space="preserve">
+    <value>एक डिफ़ॉल्ट मूल्य सूची सेट नहीं की गई है.</value>
+    <comment>Error message that is displayed to the user in the product form when the default price list for the product is not specified.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_12" xml:space="preserve">
+    <value>आपको पहले किसी उत्पाद का चयन करना होगा.</value>
+    <comment>Error message displayed in the price list form if the user tries to choose the unit without choosing the product.</comment>
+    <ObjectReferences>
+      <ObjectType>1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_153" xml:space="preserve">
+    <value>सूची मूल्य निर्धारण पद्धति के प्रतिशत की प्रतिशतता {0} और {1} प्रतिशत के बीच होनी आवश्यक है. नया प्रतिशत निर्दिष्ट करें.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent of List". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_157" xml:space="preserve">
+    <value>प्रतिशत मार्कअप मूल्य निर्धारण पद्धति के लिए प्रतिशतता {0} और {1} प्रतिशत के बीच होनी आवश्यक है. नया प्रतिशत निर्दिष्ट करें.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Markup". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_161" xml:space="preserve">
+    <value>प्रतिशत मार्जिन मूल्य निर्धारण पद्धति के लिए प्रतिशतता {0} और {1} प्रतिशत के बीच होनी आवश्यक है. नया प्रतिशत निर्दिष्ट करें.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the percentage field. The permissible values for the percentage field is influenced by the value selected in the pricing method select box. The pricing method in this case is "Percent Margin". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible percentage and Placeholder 1 is a number specifing maximum permissible percentage.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_113" xml:space="preserve">
+    <value>सीमाओं के लिए पूर्णांकीकरण विकल्प में पूर्णांकीकरण राशि {0} और {1} के बीच अवश्य होनी चाहिए. कोई नई पूर्णांकीकरण राशि निर्दिष्ट करें.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Ends in". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Web.products.productpricelevel.edit.aspx_106" xml:space="preserve">
+    <value>पूर्णांकीकरण विकल्प के लिए निर्दिष्ट गुणा के फलस्वरूप प्राप्त होने वाली राशि {0} और {1} के बीच होनी चाहिए. कोई नई पूर्णांकीकरण राशि निर्दिष्ट करें.</value>
+    <comment>Error message displayed in the price list form when the user enters invalid value in the rounding amount field. The permissible values for the rounding amount field is influenced by the value selected in the rounding option select box. The rounding option in this case is "Multiple of". {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifying minimum permissible rounding amount and Placeholder 1 is a number specifing maximum permissible rounding amount.</comment>
+  </data>
+  <data name="Kit_Products_Form_Title" xml:space="preserve">
+    <value>किट उत्पाद</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Bundle_Product_Form_Value" xml:space="preserve">
+    <value>बंडल उत्पाद</value>
+    <comment>Bundle Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Kit_Product_Label_Value" xml:space="preserve">
+    <value>किट</value>
+    <comment>Kit Product Form Title Value.[Category="Product Taxonomy"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="Product" Plural="Products">1024</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.ipad.error.parentWindowClosed" xml:space="preserve">
+    <value>कोई त्रुटि आई. कृपया मुख पृष्ठ पर वापस जाएँ और पुनः प्रयास करें.</value>
+    <comment>Text indicating the error that occurs when a user closes the parent page while the child dialog's action is incompleted [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>आपको यह क्रिया करने से पहले एक या एक से अधिक रिकॉर्ड का चयन करना होगा.</value>
+  </data>
+  <data name="Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>कोई त्रुटि हुई. एक या अधिक रिकॉर्ड के लिए चयनित क्रिया पूरी नहीं की गई.</value>
+    <comment></comment>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleArticle_DialogText" xml:space="preserve">
+    <value>आपको एक आलेख चुनना होगा.</value>
+    <comment>select an article to associate.[Category="KnowledgeArticle"]</comment>
+    <ObjectReferences>
+      <ObjectType>9953</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="KnowledgeArticle_AssociateArticleProduct_DialogText" xml:space="preserve">
+    <value>आपको किसी उत्पाद का चयन करना होगा.</value>
+    <comment>select a product to associate.[Category="KnowledgeArticle"]</comment>
+    <ObjectReferences>
+      <ObjectType>9953</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Message_Generic_Mobile_Client_Offline" xml:space="preserve">
+    <value>इस अनुरोध को संसाधित नहीं किया जा सकता क्योंकि यह क्लायंट ऑफ़लाइन है.</value>
+    <comment>Error message if mobile client is offline. [Category="Metadata Driven Dialog"]</comment>
+  </data>
+  <data name="Web.products.pricelevel.EndDateEarlierThanStartDate" xml:space="preserve">
+    <value>अंतिम दिनांक प्रारंभ दिनांक से पहले नहीं हो सकती.</value>
+    <comment>Error message to display if the end date supplied in the price list form is earlier than the start date.</comment>
+  </data>
+  <data name="Web.Products.UoM.edit.aspx_71" xml:space="preserve">
+    <value>यह प्राथमिक इकाई है.</value>
+    <comment>Informational message displayed to the user in the primary unit form.</comment>
+  </data>
+  <data name="InteractionCentric_Case_CaseTitle" xml:space="preserve">
+    <value>मामला शीर्षक</value>
+    <comment>Header for column containing Case Titles in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Customer" xml:space="preserve">
+    <value>ग्राहक</value>
+    <comment>Header for column containing Customer Names in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_Priority" xml:space="preserve">
+    <value>प्राथमिकता</value>
+    <comment>Header for column containing Priority of Case in grid. </comment>
+  </data>
+  <data name="InteractionCentric_Case_CreatedOn" xml:space="preserve">
+    <value>बनाने का दिनांक</value>
+    <comment>Header for column containing Created On values in grid. </comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog" xml:space="preserve">
+    <value>संसाधित हो रहा है...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="Error_Title_0x80042f0a">
+    <value>टीम भूमिकाएँ त्रुटि</value>
+    <comment>TeamNotAssignedRoles.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Error_Message_0x80042f0a">
+    <value>चयनित टीम के पास इस क्रिया के लिए पर्याप्त विशेषाधिकार नहीं हैं. इस टीम को आवश्यक विशेषाधिकारों के साथ एक सुरक्षा भूमिका असाइन करें और फिर पुनः प्रयास करें.</value>
+    <comment>TeamNotAssignedRoles.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Error_Message_0x8003f452">
+    <value>आप पैरेंट मामले को हल नहीं कर सकते क्योंकि उसमें सक्रिय चाइल्ड मामले हैं.</value>
+    <comment>Error message that will be shown to user when  cases with active childs cannot be closed.</comment>
+    <ObjectReferences>
+      <ObjectType Singular="case" Plural="cases">112</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Error_Title_0x8003f452">
+    <value>पैरेंट मामला बंद करने से पहले सक्रिय चाइल्ड मामला बंद करें.</value>
+    <comment>Cases with active childs cannot be closed[Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="case" Plural="cases">112</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Brand_CRM" xml:space="preserve">
+		<value>Microsoft Dynamics 365</value>
+		<comment>Branding for CRM.</comment>
+	</data>
+  <data name="Error_Title_0x80048306">
+    <value>पहुँच निषिद्ध है</value>
+    <comment>IDS_ACCESSDENIED</comment>
+  </data>
+  <data name="Error_Message_0x80048306">
+    <value>आपके पास {0} ऑब्जेक्ट पर पहुँच बनाने या अनुरोधित कार्रवाई करने के पर्याप्त विशेषाधिकार नहीं हैं. अधिक जानकारी के लिए, अपने {0} व्यवस्थापक से संपर्क करें.</value>
+    <comment>Message displayed to a user when they have insufficient privileges to perform an action.</comment>
+  </data>
+  <data name="Web.cs.socialprofile.saveNotSupported">
+    <value>UI के माध्यम से सामाजिक प्रोफ़ाइल बनाने या बदलने की अनुमति नहीं है</value>
+    <comment>Error message for saving changes in Social Profile through UI. [Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType Singular="SocialProfile" Plural="SocialProfiles">99</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="Web.cs.createNotSupported" xml:space="preserve">
+      <value>UI के माध्यम से {0} बनाने या बदलने की अनुमति नहीं है</value>
+      <comment>Error message for saving changes through UI for unsupported entities. {0} is the name of the entity. [Category="Servicing"]</comment>
+    </data>
+  <data name="SocialActivity_EntityName" xml:space="preserve">
+      <value>सामाजिक गतिविधि</value>
+      <comment>Localized display name for Social Activity Entity</comment>
+    </data>
+  <data name="SocialProfile_EntityName" xml:space="preserve">
+      <value>सामाजिक प्रोफ़ाइल</value>
+      <comment>Localized display name for Social Profile Entity</comment>
+    </data>
+  <data name="Error_Message_Generic_Error_Occured" xml:space="preserve">
+		<value>कोई त्रुटि हुई. इस क्रिया का पुनः प्रयास करें. अगर समस्या बनी रहती है, तो अपने संगठन के व्यवस्थापक से संपर्क करें.</value>
+		<comment>Generic error message for bad response</comment>
+	</data>
+  <data name="Error_Title_0x80040265">
+    <value>व्यवसाय प्रोसेस त्रुटि</value>
+    <comment>IsvAborted[Category="Plug-in/Workflow Assembly Registration Tool"]</comment>
+  </data>
+  <data name="Error_Message_0x80040265">
+    <value>ISV कोड के कारण कार्रवाई निरस्त की गई थी.</value>
+    <comment>IsvAborted[Category="Plug-in/Workflow Assembly Registration Tool"].</comment>
+  </data>
+  <data name="OCV.Feedback.DisclamerText" xml:space="preserve">
+		<value>कृपया किसी भी व्यक्तिगत या संवेदनशील जानकारी को शामिल न करें. यदि आप अपना ईमेल पता देते हैं, तो Microsoft आपकी प्रतिक्रिया जानने के लिए आपसे संपर्क कर सकता है.</value>
+		<comment>Disclaimer text for OCV</comment>
+	</data>
+  <data name="IFRAME.OCV.Widget.Title" xml:space="preserve">
+		<value>प्रतिक्रिया सामग्री</value>
+		<comment>Title text for OCV iframe</comment>
+	</data>
+  <data name="Merge_success_message" xml:space="preserve">
+        <value>चयनित रिकॉर्ड मर्ज कर दिए जाते हैं और सबऑर्डिनेट रेकॉर्ड निष्क्रिय कर दिया जाता है.</value>
+        <comment>When merge operation is successful this message is displayed.</comment>
+	</data>
+  <data name="UpdateRecod_success_message" xml:space="preserve">
+        <value>चयनित रिकॉर्ड सफलतापूर्वक अपडेट हो गया है.</value>
+        <comment>When update record operation is successful this message is displayed.</comment>
+    </data>
+  <data name="merge_loading_message" xml:space="preserve">
+    <value>रिकॉर्ड मर्ज किए जा रहे हैं</value>
+    <comment>Label to show progress indicator</comment>
+   </data>
+  <data name="back_button_label" xml:space="preserve">
+    <value>वापस जाएँ</value>
+    <comment>Label to back button in merge dialog</comment>
+   </data>
+  <data name="share_chart_title" xml:space="preserve">
+    <value>उपयोगकर्ता चार्ट साझा करें</value>
+   </data>
+  <data name="share_dashboard_title" xml:space="preserve">
+    <value>उपयोगकर्ता डैशबोर्ड साझा करें</value>
+   </data>
+  <data name="import_chart_header" xml:space="preserve">
+    <value>चार्ट आयात करें</value>
+   </data>
+  <data name="import_chart_labelVal" xml:space="preserve">
+    <value>चार्ट परिभाषा फ़ाइल (.xml) को आयात करने के लिए उसे चुनें.</value>
+   </data>
+  <data name="import_error_invalid" xml:space="preserve">
+    <value>XML फ़ाइल चार्ट स्कीमा के अनुरूप नहीं है</value>
+   </data>
+  <data name="import_error_typeHeader" xml:space="preserve">
+    <value>अमान्य फ़ाइल</value>
+   </data>
+  <data name="import_error_filetype" xml:space="preserve">
+    <value>मान्य फ़ाइल प्रकार नहीं है</value>
+   </data>
+  <data name="import_error_parameters" xml:space="preserve">
+    <value>अमान्य पैरामीटर्स</value>
+   </data>
+  <data name="import_error_nodesHeader" xml:space="preserve">
+    <value>आवश्यक नोड्स अनुपलब्ध हैं</value>
+   </data>
+  <data name="import_error_nodes" xml:space="preserve">
+    <value>आवश्यक नोड्स फ़ेच करने में असमर्थ</value>
+   </data>
+  <data name="import_duplicate_suffix" xml:space="preserve">
+    <value> - प्रतिलिपि बनाएँ</value>
+   </data>
+  <data name="import_duplicate_found" xml:space="preserve">
+    <value> से </value>
+   </data>
+  <data name="import_missing_child" xml:space="preserve">
+    <value>चाइल्ड नोड्स अनुपलब्ध हैं</value>
+   </data>
+  <data name="import_missing_parent" xml:space="preserve">
+    <value>पैरेंट नोड्स अनुपलब्ध हैं</value>
+   </data>
+  <data name="accountsLabel" xml:space="preserve">
+    <value>खाते मर्ज करें</value>
+    <comment>Label merge dialog header for account entity</comment>
+   </data>
+  <data name="contactsLabel" xml:space="preserve">
+    <value>संपर्क मर्ज करें</value>
+    <comment>Label merge dialog header for contacts entity</comment>
+   </data>
+  <data name="leadsLabel" xml:space="preserve">
+    <value>लीड मर्ज करें</value>
+    <comment>Label merge dialog header for lead entity</comment>
+   </data>
+  <data name="merge_records_dialog_title" xml:space="preserve">
+    <value>{0} को मर्ज करें</value>
+    <comment>Label for merge dialog. {0} contains the entity display name (for example, Merge Accounts, Merge Contacts, etc.)</comment>
+   </data>
+  <data name="async_merge_success_message" xml:space="preserve">
+    <value>आपके काम करते समय चयनित रिकॉर्ड को पृष्ठभूमि में मर्ज कर दिया जाएगा.</value>
+    <comment>Success message when async request is completed</comment>
+   </data>
+  <data name="SurveyTitle" xml:space="preserve">
+        <value>Microsoft को प्रतिक्रिया सबमिट करें</value>
+    </data>
+  <data name="SurveyRatingTitle" xml:space="preserve">
+        <value>आप इस सुविधा से कितना संतुष्ट हैं?</value>
+    </data>
+  <data name="SurveyCommentTitle" xml:space="preserve">
+        <value>आप हमारे साथ क्या अतिरिक्त प्रतिक्रिया साझा करना चाहेंगे?</value>
+    </data>
+  <data name="SurveyCommentsPlaceholder" xml:space="preserve">
+        <value>व्यक्तिगत जानकारी शामिल किए बिना विवरण प्रदान करें</value>
+    </data>
+  <data name="SubmittingSurvey" xml:space="preserve">
+        <value>प्रतिक्रिया सबमिट करना</value>
+    </data>
+  <data name="VerySatisfied" xml:space="preserve">
+        <value>अति संतुष्ट</value>
+    </data>
+  <data name="Satisfied" xml:space="preserve">
+        <value>कुछ हद तक संतुष्ट</value>
+    </data>
+  <data name="Dissatisfied" xml:space="preserve">
+        <value>कुछ हद तक असंतुष्ट</value>
+    </data>
+  <data name="VeryDissatisfied" xml:space="preserve">
+        <value>अति असंतुष्ट</value>
+    </data>
+  <data name="Submit" xml:space="preserve">
+        <value>सबमिट करें</value>
+    </data>
+  <data name="Cancel" xml:space="preserve">
+        <value>रद्द करें</value>
+    </data>
+  <data name="PrivacyStatement" xml:space="preserve">
+        <value>आपकी प्रतिक्रिया का उपयोग Microsoft उत्पादों और सेवाओं को बेहतर बनाने के लिए किया जाएगा. आपके संगठन के IT व्यवस्थापक आपके प्रतिक्रिया डेटा को देख और प्रबंधित कर सकेंगे.</value>
+    </data>
+  <data name="PrivacyStatementLink" xml:space="preserve">
+        <value>गोपनीयता कथन.</value>
+    </data>
+  <data name="SurveySuccessMessage" xml:space="preserve">
+        <value>आपकी प्रतिक्रिया के लिए धन्यवाद.</value>
+    </data>
+  <data name="SurveyFailureMessage" xml:space="preserve">
+        <value>प्रतिक्रिया में कुछ गड़बड़ी हुई. कृपया पुनः प्रयास करें.</value>
+    </data>
+</root>

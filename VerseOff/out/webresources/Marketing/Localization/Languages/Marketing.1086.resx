@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Anda perlu menyatakan masa tamat yang lebih lewat daripada masa mula.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Anda harus menentukan waktu mula yang terjadi sebelum waktu berakhir.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Tarikh Mula tidak boleh kosong.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Tarikh Tamat tidak boleh kosong.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0} diperlukan.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Topik diperlukan.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Subjek diperlukan.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Templat diperlukan.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Masa mula diperlukan.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Masa akhir diperlukan.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>{0} Baharu</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Kempen (Templat)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Anda harus menyimpan perubahan agar dapat mengedarkan aktiviti ini.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Aktiviti Kempen hanya dapat diedarkan sekali.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Pilih jenis saluran, simpan borang dan cuba lagi.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Pilihan ini hanya tersedia apabila kaedah kenalan dipilih. Kaedah kenalan tidak tersedia pada borang ini. Aktiviti tidak dapat diedarkan. Hubungi pentadbir {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>E-mel langsung melalui Cantum Mel tidak aktif. Aktiviti tidak dapat diedarkan. Hubungi pentadbir {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Kemampuan distribusi tidak tersedia untuk saluran yang dipilih</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>Cantum Mel tidak tersedia di klien Web {#Brand_CRM}. Untuk menjalankan cantum mel, anda harus menggunakan {#Brand_CRM_Outlook_Short}.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Tidak dapat mengedarkan Aktiviti Kempen ini kerana tidak mempunyai Senarai Pemasaran berkaitan. Kaitkan memaparkan Senarai Pemasaran dengan Aktiviti Kempen ini dan cuba lagi.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Tolong, betulkan semua amaran dan ralat dalam borang.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Tidak boleh mengedarkan Aktiviti Kempen ini. Sila hubungi pentadbir {#Brand_CRM} anda.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Keluarkan {0}</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Adakah anda ingin mengeluarkan {0} {1} yang dipilih daripada Kempen?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Kempen Cepat tidak dapat dicipta kerana tidak ada rekod yang ditemui pada halaman semasa.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Anda tidak dapat mencipta Kempen Cepat untuk beberapa senarai pemasaran secara bersamaan.  Pilih hanya satu senarai pemasaran.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Pilihan ini tidak tersedia untuk pandangan semasa. Tidak semua pandangan akan berfungsi dengan pilihan {0}. Tentukan pilihan pandangan atau Kempen Cepat lain dan cuba lagi.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Kempen cepat tidak dapat dijalankan pada Senarai Pemasaran yang tidak aktif. Aktifkan Senarai Pemasaran atau pilih Senarai Pemasaran lain dan cuba lagi.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Pilihan ini tidak tersedia untuk pandangan semasa. Tentukan pilihan Kempen Cepat lain dan cuba lagi.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Pemilik diperlukan.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Baris diperlukan.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Untuk Rekod yang Dipilih</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Untuk Semua Rekod pada Halaman Semasa</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Untuk Semua Rekod pada Semua Halaman</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Tindakan reben ini tidak disokong.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Anda mesti memilih satu atau beberapa rekod sebelum anda boleh melakukan tindakan ini.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Rekod melebihi 50 adalah tidak dibenarkan untuk operasi ini</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Anda hanya boleh melakukan tindakan ini bagi rekod sama jenis.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Memproses, sila tunggu ...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Ralat telah berlaku. Tindakan yang dipilih tidak dilengkapkan bagi satu atau beberapa rekod.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Keluarkan {0}</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Cari ahli untuk dialih keluar berdasarkan kriteria carian.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Cari ahli untuk ditambahkan berdasarkan kriteria carian.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Nilai ahli yang perlu dikekalkan dalam senarai pemasaran berdasarkan kriteria carian. Kemas kini senarai pemasaran.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Anda mesti memilih rekod sebelum meneruskan</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Alih Keluar</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Tambah</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Akaun</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Kenalan</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Bakal Pelanggan</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Nilai</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Adakah anda ingin mengeluarkan {0} {1} yang dipilih daripada Senarai?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Pengesahan menyalin Senarai Pemasaran pada Senarai Pemasaran yang lain</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Anda telah memilih Senarai Pemasaran untuk disalin pada Senarai Pemasaran yang lain</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Operasi ini akan menambahkan semua ahli Senarai Pemasaran yang dipilih pada senarai pemasaran yang disasarkan</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Perubahan anda tidak disimpan. Simpan perubahan, dan cuba lagi.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Ok</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>Memproses...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Sila tunggu sementara permintaan anda diproses...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Tidak dapat mencipta Kempen Cepat</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Nama: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Aktiviti: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Skop: Untuk Rekod Terpilih ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Skop: Untuk Semua Rekod pada Halaman Semasa ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Skop: Untuk Semua Rekod pada Semua Halaman</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Pemilik: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Nama kempen cepat diperlukan.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Jenis aktiviti diperlukan.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Pemilik rekod yang dimasukkan dalam kempen cepat</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Saya</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Kempen ini tidak dapat dinyahaktifkan kerana terdapat aktiviti kempen terbuka yang dikaitkan kepadanya. Tutup aktiviti kempen dan cuba lagi.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>Kami tidak dapat menyahaktifkan {0} daripada kempen yang dipilih kerana terdapat satu atau beberapa aktiviti kempen terbuka yang dikaitkan kepada kempen ini. Sila tutup aktiviti kempen terbuka dan cuba lagi.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>Kandungan e-mel anda terlalu besar untuk bestari ini. Sila cipta kandungan ini sebagai templat e-mel, kemudian pilih templat itu di sini.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Kempen Cepat tidak menyokong edit pukal.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Senarai telah dikunci</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>Penyenaraian {0} telah dikunci</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Tindakan tidak dapat dilakukan pada senarai dinamik.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Tidak dapat mengaitkan item tidak aktif ke Kempen.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Tidak dapat mengaitkan item tidak aktif ke Kempen.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Rujukan pada lampiran tidak ditemui.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>Penerima e-mel tidak wujud atau alamat e-mel untuk penerima e-mel tidak sah.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Lampiran sama ada bukan jenis yang sah atau terlalu besar. Lampiran ini tidak dapat dimuat naik atau dimuat turun.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Penerima ditandai sebagai "Jangan Faks".</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Penerima e-mel tidak sah.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Ralat dalam tindakan templat e-mel.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Ralat dalam tindakan hantar e-mel.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Ralat dalam tindakan lampiran nota.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Ralat dalam tindakan cipta nota.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Ralat dalam tindakan tidak kendali aktiviti.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Ralat dalam tindakan kendali aktiviti.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Ralat dalam tindakan lampiran aktiviti.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Ralat dalam tindakan cipta aktiviti.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Ahli senarai pemasaran ini tidak dihubungi kerana ahli tersebut telah menerima komunikasi ini sebelumnya.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Penghantar tidak mempunyai alamat e-mel ditetapkan pada rekod pihak</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>Tiada alamat e-mel ditetapkan dan pengguna yang memanggil tidak mempunyai alamat e-mel ditetapkan</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>E-mel tidak dihantar disebabkan pilihan komunikasi penerima atau masalah dengan alamat e-mel mereka.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Jenis alamat pelanggan tidak sah.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Ralat tidak dijangka telah berlaku semasa pencantuman mel.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Operasi cantum mel telah dibatalkan oleh pengguna.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Pelanggan ini ditapis disebabkan alamat e-mel tidak ditemui.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Penerima dikecualikan kerana tidak aktif.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Peraturan aliran kerja berkaitan dengan Operasi Pukal tidak ditemui.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>Penerima dikecualikan disebabkan tetapan anti spam atau pilihan komunikasi penerima.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Tidak dapat menetapkan pegawai untuk pengagihan janji temu.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Tidak dapat menetapkan penghantar untuk pengagihan janji temu</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Tidak dapat menetapkan penyelenggara untuk pengagihan janji temu</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Jenis ahli senarai tidak disokong.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Cuba melakukan operasi yang tidak sah.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>Pengguna tidak mempunyai kelayakan yang diperlukan.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Pengguna tidak mempunyai kelayakan untuk melakukan tindakan ini.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Alamat e-mel tidak sah. Untuk mendapatkan maklumat lanjut, hubungi pentadbir sistem anda.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Borang tidak mempunyai elemen berikut: {0}. Fungsi akan terjejas.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Anda tidak boleh mencipta peluang untuk Senarai Pemasaran yang menyasarkan jenis entiti ini.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Permintaan yang sedia ada sedang berjalan, sila cuba semula selepas beberapa ketika.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Permintaan telah diserahkan. Sila tunggu sehingga halaman mengubah hala ke senarai yang disalin.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>{0} Baharu</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Isi borang ini untuk mencipta {0} bagi ahli yang anda pilih dalam senarai pemasaran. Untuk menambah {0} ini sebagai {0} baharu dalam setiap rekod ahli, klik Agihkan.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Berjaya Disimpan</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

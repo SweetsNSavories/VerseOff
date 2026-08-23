@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" language="javascript">
+		var cdnUrlUppercase = window.top.CDNURL.toUpperCase();
+		var head = document.getElementsByTagName("head")[0];
+		var microsoftAjaxJSPath = document.createTextNode('<script src="/_static/_common/scripts/MicrosoftAjax.js?ver=' + window.top.VERSION_STAMP
+							+ '" id="/_STATIC/_COMMON/SCRIPTS/MICROSOFTAJAX.JS?VER=' + window.top.VERSION_STAMP + '"></' + 'script>');
+		head.appendChild(microsoftAjaxJSPath);
+
+		var encodeDecodeJSPath = document.createTextNode('<script src="/_static/_common/scripts/EncodeDecode.js?ver=' + window.top.VERSION_STAMP
+							+ '" id="/_STATIC/_COMMON/SCRIPTS/ENCODEDECODE.JS?VER=' + window.top.VERSION_STAMP + '"></' + 'script>');
+		head.appendChild(encodeDecodeJSPath);
+
+		var crmClientCoreJSPath = document.createTextNode('<script src="/_static/_common/scripts/Microsoft.Crm.Client.Core.js?ver=' + window.top.VERSION_STAMP
+							+ '" id="/_STATIC/_COMMON/SCRIPTS/MICROSOFT.CRM.CLIENT.CORE.JS?VER=' + window.top.VERSION_STAMP + '"></' + 'script>');
+		head.appendChild(crmClientCoreJSPath);
+
+		var crmServiceProxyJSPath = document.createTextNode('<script src="/_static/_common/scripts/CrmServiceProxy.js?ver=' + window.top.VERSION_STAMP
+							+ '" id="/_STATIC/_COMMON/SCRIPTS/CRMSERVICEPROXY.JS?VER=' + window.top.VERSION_STAMP + '"></' + 'script>');
+		head.appendChild(crmServiceProxyJSPath);
+	</script>
+	<!--Batch 1: InstalledLocales.js-->
+	<script type="text/javascript" language="javascript" src="InstalledLocales.js?ver=892507189"></script>
+	<!--Batch 2: ClientGlobalContext.js.aspx-->
+	<script type="text/javascript" language="javascript" src="../ClientGlobalContext.js.aspx"></script>
+	<script type="text/javascript" language="javascript">
+		// This script is used in PersonalWall.htm, RecordWall.htm, and FollowDialog.1033.htm
+		// Any changes made to this script should be copied to all three files
+		var cdnUrlUppercase = window.top.CDNURL.toUpperCase();
+		var head = document.getElementsByTagName("head")[0];
+		var scriptsLoader = new Object();
+		var installedLocalesLoaded = false;
+		var globalAshxLoaded = false;
+
+        function AppendScriptTag(url,id, callbackFunc) {
+	        if (scriptsLoader[url] == null) {
+	            scriptsLoader[url] = false;
+	            var scriptTag = document.createElement('script');
+	            scriptTag.id=id; 
+	            scriptTag.type = "text/javascript";
+	            scriptTag.language="javascript";
+	            scriptTag.src = url;
+	            scriptTag.async = true;
+	            if (callbackFunc) {
+	                scriptTag.onreadystatechange = scriptTag.onload = function () {
+	                    if (!scriptsLoader[url] && (!scriptTag.readyState || scriptTag.readyState === "loaded" || scriptTag.readyState === "complete")) {
+	                        scriptsLoader[url] = true;
+	                        scriptTag.onreadystatechange = scriptTag.onload = null;
+	                        callbackFunc();
+	                    }
+	                };
+	            }
+
+	            head.appendChild(scriptTag);
+	        }
+	    }
+
+        var installedLocalesPath = "InstalledLocales.js?ver=" + window.top.VERSION_STAMP;
+        AppendScriptTag(installedLocalesPath, "installedLocalesScript", callbackInstalledLocalesLoaded);
+
+        // Batch 3: ClientGlobalContext has been loaded, load Global.ashx
+        var globalAshxWithVersion = "../../../_common/global.ashx?ver=" + window.top.VERSION_STAMP;
+        var globalAjaxCall = new XMLHttpRequest();
+        globalAjaxCall.onreadystatechange = function () {
+            if (globalAjaxCall.readyState === 4) {
+                AppendScriptTag(globalAshxWithVersion, "globalScript", callbackGlobalAshxLoaded);
+                globalAjaxCall.onreadystatechange = null;
+            }
+        };
+        globalAjaxCall.open("GET", globalAshxWithVersion, false);
+        globalAjaxCall.send();
+
+        function callbackInstalledLocalesLoaded() {
+            installedLocalesLoaded = true;
+            RunHandlers();
+        }
+
+        function callbackGlobalAshxLoaded() {
+            globalAshxLoaded = true;
+            RunHandlers();
+        }
+
+        function RunHandlers() {
+            // Load all the other scripts once the installedlocale.js & global.ashx are loaded.
+            if (installedLocalesLoaded && globalAshxLoaded) {
+                //Below code indicates installedlocale.js & global.ashx are already loaded
+                //and we are making these as false that these scripts should not load again.
+                installedLocalesLoaded = false;
+                globalAshxLoaded = false;
+                // Batch 4: GlobalAshx has been loaded, Load Rest of the scripts
+                loadScripts();
+            }
+        }
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="styles/jQuery.UI.core.css" />
+	<link rel="stylesheet" type="text/css" href="styles/jQuery.UI.theme.css" />
+	<link rel="stylesheet" type="text/css" id="userProfileStyle" />
+	<link id="wallContentStyle" rel="stylesheet" type="text/css" />
+	<link id="recordWallStyle" rel="stylesheet" type="text/css" />
+	
+	<script id="resourcesScript" type="text/javascript" language="javascript"></script>
+	<script type="text/javascript" language="javascript">
+		function loadScripts() {
+			if (GetGlobalContext().client.getClientState() == Xrm.ClientState.online) {
+				// web resources do not have direct access to Xrm API
+				// we will use parent context
+				Xrm.Page.data = Xrm.Page.data || window.parent.Xrm.Page.data;
+
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + '/_static/_common/scripts/jquery1.7.2.min.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + '/_static/_common/scripts/jquery.tmpl.min.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + '/_static/_common/scripts/presence.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + '/_static/_common/scripts/SalesCommonImported.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + '/_static/_common/scripts/CrmInternalUtility.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + '/_static/_common/scripts/SalesCommonFramework.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + '/_static/_common/scripts/SalesCrmSoapProxyService.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + '/_static/_common/scripts/Wall.Interfaces.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + '/_static/_common/scripts/Wall.Control.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + '/_static/_common/scripts/jqueryplugins.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + 'CrmSoapServiceProxy.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + 'Wall.Service.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + 'ActivityFeeds.Mentions.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + 'ActivityFeeds.Services.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + 'ActivityFeeds.UI.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + 'Wall.FollowActions.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				Mscrm.CrmHeader.get_scriptLoader().addIncludeExternalSync(null, window.top.CDNURL + 'Wall.Extensions.js?ver=' + CrmEncodeDecode.CrmUrlEncode(window.top.VERSION_STAMP));
+				
+				loadLocalizedScript('ActivityFeeds.Resources.js', document.getElementById('resourcesScript'), GetGlobalContext(), false);
+				loadLocalizedStyle('Styles/WallContent.css', document.getElementById('wallContentStyle'), GetGlobalContext());
+				loadLocalizedStyle('Styles/RecordWall.css', document.getElementById('recordWallStyle'), GetGlobalContext());
+				loadLocalizedStyle('Styles/UserProfile.css', document.getElementById('userProfileStyle'), GetGlobalContext());
+				initializeRecordWall();
+			}
+		}
+
+	</script>
+
+    <script type="text/javascript">
+        var wallPage = null;
+        var wallCommandDispatcher = null;
+        var wallElement = null;
+        var retrycount = 0;
+        var _aWrpcTokens;
+        var _sWebServicesNamespace;
+        var ERRORCODE_ETM;
+        var LOCID_ERRMSG_ETM_RETRY;
+        var LOCID_REMOTECOMMAND_ERROR;
+        var IS_PATHBASEDURLS = window.top.IS_PATHBASEDURLS;
+        var wallIsLoaded = false;
+
+        function initializeRecordWall() {
+            var client = GetGlobalContext().client;
+            if (client.getClientState() == Xrm.ClientState.online) {
+                wallPage = null;
+                wallCommandDispatcher = null;
+                wallElement = null;
+                retrycount = 0;
+                _aWrpcTokens = null;
+                _sWebServicesNamespace = null;
+                ERRORCODE_ETM = null;
+                LOCID_ERRMSG_ETM_RETRY = null;
+                LOCID_REMOTECOMMAND_ERROR = null;
+                IS_PATHBASEDURLS = window.top.IS_PATHBASEDURLS;
+                wallIsLoaded = false;
+
+                window.LoadRecordWall = function LoadRecordWall() {
+                    if (wallIsLoaded) {
+                        return;
+                    }
+
+                    var loadWall = true;
+
+                    if (client.getClientState() == Xrm.ClientState.online) {
+                        //Hides wall for print preview and bulkedit
+                        //This is a hack, but this is the only way to hide wall because onload event doesn't fire for those forms
+                        // TODO: this list would grow overtime as crm adds special pages to print.aspx
+                        if (this.parent != null && this.parent.location != null && this.parent.location.pathname != null && this.parent.document != null) {
+                            iframes = this.parent.document.getElementsByTagName('iframe');
+                            for (i = 0; i < iframes.length; i++) {
+                                if (iframes[i].src != null && iframes[i].src.toLowerCase().indexOf('recordwall.htm') > 0) {
+                                    pathname = this.parent.location.pathname.toLowerCase();
+                                    if ((pathname.indexOf('custformprint.aspx') > 0) || (pathname.indexOf('goalprintpage.aspx') > 0)) {
+                                        $(iframes[i]).parents('div.ms-crm-Tab-Print').hide();
+                                        loadWall = false;
+                                    }
+
+                                    if (pathname.indexOf('dlg_bulkedit.aspx') > 0) {
+                                        $(iframes[i]).parents('div.ms-crm-InlineTab').hide();
+                                        loadWall = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        wallPageQueryString = new ActivityFeeds.UI.WallPageQueryString(window.location);
+                        loadWall = loadWall && !wallPageQueryString.get_isCreateForm();
+
+                        if (loadWall) {
+                            loadLocalizedContent('WallContent.htm', GetGlobalContext(), function (content) {
+                                wallIsLoaded = true;
+                                document.getElementById('wallElementContainer').innerHTML = content;
+                                document.onselectstart = null;
+                                wallPage = ActivityFeeds.UI.WallPage.createRecordWallPageInIFrame();
+                                wallCommandDispatcher = new ActivityFeeds.UI.WallCommandDispatcher(wallPage.get_wall(), wallPage.get_wallService());
+                                wallElement = $('#wallElementContainer').find('.recordWall')[0];
+                                $("#postTextBox").focus();
+                            });
+                            loadLocalizedContent('UserProfileContent.htm', GetGlobalContext(), function (content) {
+                                document.getElementById('profileContainer').innerHTML = content;
+                                $("#userProfile").hide();
+                            });
+                        }
+                    }
+                };
+
+                window.dispatchWallCommand = function dispatchWallCommand(wall, commandName, parameters) {
+                    wallCommandDispatcher.dispatchCommand(commandName, parameters);
+                };
+
+                $(document).ready(function () {
+                    applyDocumentStyles();
+                    LoadRecordWall();
+                });
+            }
+        }
+
+    </script>
+</head>
+<body tabindex='-1' class="activityFeedsjQueryUIStyle">
+	<div class='wallScrollContainer'>
+		<table id="recordWallTable" border="0" cellpadding="0" cellspacing="0" class="recordWallTable" summary="displays user messages">
+		<tr style="display:none;">
+		<th></th>
+		<th></th>
+		</tr>
+			<tr>
+				<td class="wallCell">
+					<div id="wallElementContainer" class="wallElementContainer">
+					</div>
+				</td>
+				<td id="profileContainer" class="profileCell">
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+</body>
+</html>

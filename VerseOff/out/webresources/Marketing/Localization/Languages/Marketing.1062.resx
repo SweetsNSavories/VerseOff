@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Jānorāda beigu laiks, kas ir vēlāks par sākuma laiku.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Jānorāda sākuma laiks, kas ir agrāks par beigu laiku.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Sākuma datums nevar būt tukšs.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Beigu datums nevar būt tukšs.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0} ir obligāts.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Norādiet tēmu.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Tēma ir obligāta.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Veidne ir obligāta.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Sākuma laiks ir obligāts.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Beigu laiks ir obligāts.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Jauns: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Kampaņa (veidne)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Pirms varēsit izplatīt šo darbību, jāsaglabā izmaiņas.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Kampaņas pasākumu var izplatīt tikai vienreiz.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Atlasiet kanāla tipu, saglabājiet formu un pēc tam mēģiniet vēlreiz.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Šī opcija ir pieejama, ja ir izvēlēta saziņas metode. Saziņas metode nav pieejama šajā veidlapā. Darbību nevar izplatīt. Lūdzu, sazinieties ar savu {#Brand_CRM} administratoru.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>Tiešais e-pasts, izmantojot pasta sapludināšanu, ir izslēgts. Darbību nevar izpildīt. Lūdzu, sazinieties ar savu {#Brand_CRM} administratoru.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Atlasītajiem kanāliem izplatīšanas iespēja nav pieejama</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>Pasta sapludināšana {#Brand_CRM} tīmekļa klientā nav pieejama. Lai izpildītu pasta sapludināšanu, jāizmanto {#Brand_CRM_Outlook_Short}.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Nevar izplatīt šo kampaņas pasākumu, jo tam nav piesaistīta mārketinga adresātu saraksta. Lūdzu, piesaistiet šim kampaņas pasākumam mārketinga adresātu sarakstu un mēģiniet vēlreiz.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Lūdzu, novērsiet visus brīdinājumus un kļūdas veidlapā.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Nevar izplatīt šo kampaņas pasākumu. Lūdzu, sazinieties ar savu {#Brand_CRM} administratoru.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>{0}: noņemšana</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Vai vēlaties noņemt atlasīto vienumu(s) {0} {1} no kampaņas?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Ātro kampaņu nevar izveidot, jo pašreizējā lappusē nav atrodami ieraksti.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Ātro kampaņu nevar izveidot vairāk kā vienam mārketinga adresātu sarakstam vienlaikus. Lūdzu, atlasiet tikai vienu mārketinga adresātu sarakstu.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Pašreizējā skatā šī opcija nav pieejama. Ne visi skati darbosies ar opciju {0}. Atlasiet citu skatu vai citu ātrās kampaņas opciju un mēģiniet vēlreiz.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Ātrās kampaņas nevar veikt neaktīvā mārketinga adresātu sarakstā. Aktivizējiet mārketinga adresātu sarakstu vai atlasiet citu mārketinga adresātu sarakstu un mēģiniet vēlreiz.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Pašreizējam skatam šī opcija nav pieejama. Atlasiet citu ātrās kampaņas opciju un mēģiniet vēlreiz.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Īpašnieks ir obligāts.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Rinda ir obligāta.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Atlasītajiem ierakstiem</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Visiem ierakstiem pašreizējā lapā</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Visiem ierakstiem visās lapās</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Šī lentes darbība netiek atbalstīta.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Jāatlasa viens vai vairāki ieraksti, pirms varēsit izpildīt šo darbību.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Šai darbībai nav atļauts izmantot vairāk par 50 ierakstiem</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Varat izpildīt šo darbību tikai vienāda tipa ierakstiem.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Notiek apstrāde; lūdzu, uzgaidiet...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Radās kļūda. Atlasītā darbība vienam vai vairākiem ierakstiem netika pabeigta.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>{0}: noņemšana</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Atrodiet noņemamos dalībniekus, pamatojoties uz meklēšanas nosacījumiem.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Atrodiet pievienojamos dalībniekus, izmantojot meklēšanas nosacījumus.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Pamatojoties uz meklēšanas nosacījumiem, novērtējiet, kurus dalībniekus paturēt mārketinga adresātu sarakstā. Atjauniniet mārketinga adresātu sarakstu.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Pirms turpināt, jāatlasa ieraksti.</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Noņemšana</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Pievienošana</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Uzņēmums</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Kontaktpersona</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Interesenti</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Novērtēšana</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Vai vēlaties noņemt atlasīto vienumu(s) {0} {1} no saraksta?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Apstiprinājums par viena mārketinga adresātu saraksta kopēšanu uz citu mārketinga adresātu sarakstu</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Kopēšanai uz citu mārketinga adresātu sarakstu atlasīti mārketinga adresātu saraksti</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Šī operācija pievienos visus atlasītā mārketinga adresāta saraksta dalībniekus adresētajam mārketinga adresātu sarakstam</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Jūsu veiktās izmaiņas nav saglabātas. Saglabājiet izmaiņas un mēģiniet vēlreiz.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Labi</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>Notiek apstrāde...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Lūdzu, uzgaidiet, kamēr tiek apstrādāts jūsu pieprasījums...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Nevar izveidot ātro kampaņu.</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Nosaukums: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Darbība: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Tvērums: atlasītajiem ierakstiem ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Tvērums: visiem ierakstiem pašreizējā lapā ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Tvērums: visiem ierakstiem visās lapās</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Īpašnieks: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Ātrās kampaņas nosaukums ir obligāts.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Darbības tips ir obligāts.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Ātrajā kampaņā iekļautie ierakstu īpašnieki</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Es</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Šo kampaņu nevar deaktivizēt, jo ar to ir saistīti atvērti kampaņas pasākumi. Slēdziet kampaņas pasākumus un mēģiniet vēlreiz.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>Mēs nevaram deaktivizēt atlasīto kampaņu {0}, jo ar tiem ir saistīts viens vai vairāki atvērti kampaņas pasākumi. Lūdzu, slēdziet atvērtos kampaņas pasākumus un mēģiniet vēlreiz.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>Jūsu e-pasta saturs ir pārāk liels šim vednim. Lūdzu, izveidojiet to kā e-pasta veidni un pēc tam atlasiet attiecīgo veidni šeit.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Ātrās kampaņas neatbalsta lielapjoma rediģēšanu.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Saraksts ir slēgts</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>Saraksti {0} ir bloķēti</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Darbību nevar veikt dinamiskajā sarakstā.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Kampaņu nevar saistīt ar neaktīvu elementu.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Kampaņu nevar saistīt ar neaktīvu elementu.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Neizdevās atrast atsauci uz pielikumu.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>E-pasta adresāts nepastāv vai arī nav derīga e-pasta adresāta adrese.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Pielikums nav derīgs tips vai ir pārāk liels. To nevar augšupielādēt vai lejupielādēt.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Adresātam ir atzīme "Nesūtīt faksu".</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Nederīgs e-pasta adresāts.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Kļūda darbības e-pasta veidnē.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Kļūda darbības e-pasta sūtīšanā.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Kļūda darbības piezīmes pielikumā.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Kļūda darbības izveides piezīmē.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Kļūda darbības neapstrādāšanas darbībā.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Kļūda darbības tura darbībā.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Kļūda darbības darbību pielikumā.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Kļūda darbības izveides darbībā.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Saziņa ar šo mārketinga adresātu saraksta dalībnieku nenotika, jo šis dalībnieks jau iepriekš saņēma šādu saziņu.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Sūtītājam nav e-pasta adreses puses ierakstā</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>Nav norādīta e-pasta adrese, un izsaucošajam lietotājam nav iestatīta e-pasta adrese</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>E-pasta ziņojums nav nosūtīts adresāta saziņas preferenču vai e-pasta adreses problēmas dēļ.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Nederīgs klienta adreses tips.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Pasta sapludināšanas laikā radās neparedzēta kļūda.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Lietotājs atcēla pasta sapludināšanas darbību.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Šis klients ir atfiltrēts trūkstošas e-pasta adreses dēļ.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Adresāts nav iekļauts, jo tas ir neaktīvs.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Trūkst ar lielapjoma darbību saistīto darbplūsmas kārtulu.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>Adresāts nav iekļauts pretsurogātpasta iestatījumu vai adresāta saziņas preferenču dēļ.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Tikšanās izplatīšanai nevar norādīt dalībnieku.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Tikšanās izplatīšanai nevar norādīt sūtītāju</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Tikšanās izplatīšanai nevar norādīt rīkotāju</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Neatbalstīts saraksta dalībnieka tips.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Mēģināja veikt neatļautu operāciju.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>Šim lietotājam nav nepieciešamo atļauju.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Lietotājam nav atļaujas veikt šo darbību.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Nederīga e-pasta adrese. Lai iegūtu papildinformāciju, sazinieties ar sistēmas administratoru.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Veidlapā trūkst šādu elementu: {0}. Funkcijas tiks ietekmētas.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Nevar izveidot iespējas mārketinga adresātu sarakstam, kas attiecas uz šo entītijas tipu.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Jau tiek apstrādāts esošs pieprasījums. Pēc kāda laika mēģiniet vēlreiz.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Pieprasījums iesniegts. Lūdzu, uzgaidiet, līdz lapa tiek novirzīta uz kopēto sarakstu.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>Jauns {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Aizpildiet šo veidlapu, lai mārketinga adresātu sarakstā atlasītajiem dalībniekiem izveidotu: {0}. Lai šo objektu {0} pievienotu kā jaunu objektu {0} katra dalībnieka ierakstā, noklikšķiniet uz Izplatīt.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Sekmīgi saglabāts</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

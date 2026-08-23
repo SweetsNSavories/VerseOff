@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../CSS/PowerBI.css">
+    <script type="text/javascript" src="../../../../ClientGlobalContext.js.aspx"></script>
+</head>
+<body>
+    <div id="ConfigSection" class="ms-crm-iot-configSection">
+        <div id="AddPBITileCaption" class="ms-crm-iot-caption"></div>
+        <input id="PowerBIConfigButton" type="image" src="/_imgs/dashboard/PowerBITile.png" class="ms-crm-iot-configbutton" />
+    </div>
+    <div id="PowerBIControl">
+        <div id="PowerBIToolbar" class="ms-crm-iot-toolbar ms-crm-iot-toolbar-selector">
+            <span>
+                <a id="RefreshTileButton" href="javascript:;">
+                    <img class="ms-crm-ImageStrip-refresh" src="/_imgs/refresh.png">
+                </a>
+            </span>
+            <span>
+                <a id="OpenConfigButton" href="javascript:;">
+                    <img class="ms-crm-ImageStrip-refresh ms-crm-iot-powerbi-settingsicon" src="/_imgs/refreshCommandBar/Settings_16.png">
+                </a>
+            </span>
+        </div>
+        <select id="DeviceIdFilter" class="ms-crm-iot-devicefilter"></select>
+        <iframe id="PowerBIFrame" class="ms-crm-iot-pbiframe"></iframe>
+    </div>
+    <script type="text/javascript" src="../Scripts/PowerBIManager.js"></script>
+    <script>
+        IoTConnector.PowerBI.PowerBIManager.init();
+    </script>
+</body>
+</html>

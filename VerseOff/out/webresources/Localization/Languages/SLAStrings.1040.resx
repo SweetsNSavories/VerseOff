@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SLA_DefaultSLASelectionConfirmDialogText">
+    <value>Impostare questo record di contratto di servizio come predefinito per l'entità specificata?</value>
+  </data>
+  <data name="SLA_DefaultSLASelectionConfirmDialogTitle">
+    <value>Conferma impostazione come predefinito</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogText">
+    <value>Un altro record del contratto di servizio è impostato come predefinito per l'entità {0}. Contrassegnare come predefinito il contratto di servizio selezionato?</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogTitle">
+    <value>Modifica contratto di servizio predefinito</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertText">
+    <value>Impossibile impostare come predefinito un contratto di servizio inattivo.</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertTitle">
+    <value>Impossibile impostare come predefinito</value>
+  </data>
+  <data name="SLA_DefaultSLAWarning">
+    <value>Il contratto di servizio selezionato è già quello predefinito</value>
+  </data>
+  <data name="SLA_DefaultSLASetttingInProgress">
+    <value>Impostazione del contratto di servizio predefinito in corso</value>
+  </data>
+  <data name="SLA_ErrorResettingDefaultSLA">
+    <value>Si è verificato un errore durante l'aggiornamento del contratto di servizio predefinito</value>
+  </data>
+  <data name="SLA_ErrorSettingNewSLA">
+    <value>Si è verificato un errore durante l'impostazione del nuovo contratto di servizio predefinito</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsGeneralNotification">
+    <value>Fai clic su Configura azione per configurare le azioni di completamento, avviso ed errore.</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsSetupNotification">
+    <value>Le azioni di completamento, avviso ed errore non sono configurate. Fai clic su Configura azione per configurarle.</value>
+  </data>
+  <data name="SLAItem_WarningTimeHigherThanFailureTimeAlert">
+    <value>Il periodo di avviso dopo la durata non deve superare il periodo di errore dopo la durata</value>
+  </data>
+  <data name="SLAItem_SuccessConditionsEmptyAlert">
+    <value>Le condizioni di completamento non possono essere vuote</value>
+  </data>
+  <data name="SLAItem_PauseConditionsEmptyAlert">
+    <value>La condizione di sospensione non può essere vuota quando è attivata la sostituzione della configurazione di sospensione</value>
+  </data>
+  <data name="SLAItem_KPIEmptyAlert">
+    <value>il KPI non può essere vuoto</value>
+  </data>
+  <data name="SLAItem_Notification_SLA_ActivatedState">
+    <value>Disattiva contratto di servizio per modificare l'elemento del contratto di servizio </value>
+  </data>
+  <data name="SLAKPI_Activate">
+    <value>Attiva</value>
+  </data>
+  <data name="SLAKPI_Deactivate">
+    <value>Disattiva</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Message">
+    <value>Disattivare il KPI dell'entità {0} selezionata?</value>
+  </data>
+  <data name="SLAKPI_Activate_Message">
+    <value>Attivare il KPI dell'entità {0} selezionata?</value>
+  </data>
+  <data name="Progress_Message">
+    <value>Aggiornamento KPI in corso</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Title">
+    <value>Conferma disattivazione</value>
+  </data>
+  <data name="SLAKPI_Activate_Title">
+    <value>Conferma attivazione</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_UC">
+    <value>Questo è un record legacy. Per modificare questo record, visita il client Web legacy.</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_WC">
+    <value>Impossibile modificare il record in questo punto. Vai all'app Unified Interface per modificarlo.</value>
+  </data>
+  <data name="SLA_UC_Preview_Text">
+    <value>Le azioni sono utilizzate per eseguire set di attività, in base alla soddisfazione o meno dei criteri. Per poter definire le azioni, è necessario salvare l'elemento Contratto di servizio. Fai clic sulla {0} per ulteriori informazioni.</value>
+  </data>
+  <data name="SLA_AdvancedPauseConfig_Text">
+    <value>Configura le condizioni di sospensione in questa sezione per sostituire la configurazione di sospensione a livello di entità definita nella configurazione del servizio e nella configurazione di sospensione a livello di KPI. {0}.</value>
+  </data>
+  <data name="SLA_KPIAdvancedPauseConfig_Text">
+    <value>Configura le condizioni di sospensione in questa sezione per sostituire la configurazione di sospensione a livello di entità definita nella configurazione del servizio. {0}.</value>
+  </data>
+  <data name="SLA_UC_Preview_FeatureDocumentation_Hyperlink_Label">
+    <value>documentazione sulla funzionalità</value>
+  </data>
+  <data name="SLA_AdavncedPauseConfig_Hyperlink_Label" xml:space="preserve">
+    <value>Ulteriori informazioni</value>
+  </data>
+  <data name="SLAKPI_LearnMoreLink_Text">
+    <value>L'entità deve essere abilitata per il contratto di servizio. {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is the Learn More link.</comment>
+  </data>
+  <data name="SLAKPI_Hyperlink_Label" xml:space="preserve">
+    <value>Altre informazioni</value>
+  </data>
+  <data name="SLAItem_ConditionControl_Notification_Text">
+    <value>È consigliabile evitare di configurare i criteri di applicabilità e di riuscita per lo stesso attributo.</value>
+  </data>
+  <data name="SLAItem_ConditionOnSameAttributeAlert">
+    <value>È consigliabile evitare di configurare i criteri di applicabilità e di riuscita per lo stesso attributo. Continuare?</value>
+  </data>
+  <data name="SLAKPI_BusinessProcessError_Title" xml:space="preserve">
+    <value>Errore processo aziendale</value>
+  </data>
+  <data name="SDKMessagingStepNotInActiveState" xml:space="preserve">
+    <value>Un passaggio del messaggio SDK associato {0} potrebbe non essere nello stato Attivo. Prima di attivare il contratto di servizio, attiva il passaggio del messaggio SDK.</value>
+    <comment>Error message when dependent SDK Message Step is not enabled. step Id.</comment>
+  </data>
+  <data name="SLAIsDisabledInSetting" xml:space="preserve">
+    <value>L'impostazione associata "Disabilita contratti di servizio" è abilitata nelle impostazioni di configurazione del servizio. Disattiva l'impostazione prima di attivare il contratto di servizio.</value>
+    <comment>Error message when SLA is not enabled in Service Configuration Settings.</comment>
+  </data>
+  <data name="WorkflowNotInActiveState" xml:space="preserve">
+    <value>Un flusso di lavoro associato {0} potrebbe non essere nello stato Attivo. Prima di attivare il contratto di servizio, attiva il flusso di lavoro.</value>
+    <comment>Error message when dependent Workflow/CustomAction is not enabled.</comment>
+  </data>
+  <data name="SLAItem_ApplicableAndSuccessSameAttribute" xml:space="preserve">
+    <value>È consigliabile evitare di configurare i criteri di applicabilità e di riuscita per lo stesso attributo</value>
+    <comment>Warning message when SLA Applicable and Success conditions are configured on the same attribute</comment>
+  </data>
+  <data name="WorkflowOwnerIsDisabled" xml:space="preserve">
+    <value>I proprietari nei flussi di lavoro del contratto di servizio seguenti: {0} devono essere aggiornati con gli utenti attivi.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is a workflow name which is owned by disabled user.</comment>
+  </data>
+  <data name="NoSLASetAsDefault" xml:space="preserve">
+    <value>Il contratto di servizio predefinito non viene mantenuto per l'entità {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is an SLA's primary entity name.</comment>
+  </data>
+  <data name="OpenLearnMoreForSetAsDefaultSLA" xml:space="preserve">
+    <value>Altre informazioni</value>
+  </data>
+  <data name="SLAKPI_Recommendation_Entityname" xml:space="preserve">
+    <value>L'entità deve essere abilitata per il contratto di servizio.</value>
+    <comment>Recommendation message for EntityName field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_KPIField" xml:space="preserve">
+    <value>I KPI si basano sull'entità selezionata.</value>
+    <comment>Recommendation message for KPI field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_PrimaryEntity" xml:space="preserve">
+    <value>L'entità deve essere abilitata per il contratto di servizio.</value>
+    <comment>Recommendation message for Primary Entity field.</comment>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>A partire dal 1° aprile 2023, i contratti di servizio legacy sul client Web deprecati in precedenza hanno superato la fine del supporto (EoS). È importante eseguire immediatamente la migrazione dei contratti di servizio legacy creati sul client Web all'esperienza Unified Interface per evitare la perdita di funzionalità. Per altre informazioni sulla migrazione degli elementi, vedi {0}</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>Accetto</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="SLAKPI_Activation_Error_Message" xml:space="preserve">
+    <value>Impossibile attivare SLAKPI. attivalo da Gestisci SLAKPI.</value>
+    <comment>Error message when it fails to activate SLAKPI from quick create form.</comment>
+  </data>
+  <data name="SLAKPI_Performance_Indicator_Notification" xml:space="preserve">
+    <value>I KPI del contratto di servizio sono indicatori di prestazioni</value>
+    <comment>Header notification in SLA KPI form.</comment>
+  </data>
+  <data name="SLA_ChangedAttribiteNullNotification" xml:space="preserve">
+    <value>È necessario riattivare il contratto di servizio {0} per risolvere i problemi identificati con le condizioni nello stesso. Per altre informazioni, vedi {1}</value>
+    <comment>Notification message when SLA item's 'ChangedAttributeList" field value is NULL and SLA is active. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_RelatedEntitiesNotification" xml:space="preserve">
+    <value>Le entità correlate configurate nelle condizioni per l'elemento del contratto di servizio {{0}} non sono completamente supportate. Per altre informazioni, vedi – {1}</value>
+    <comment>Notification message when SLA item has related entities in the applicable when or success or pause conditions. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogDepreciationText" xml:space="preserve">
+    <value>A partire dal 1 ottobre 2020, i contratti di servizio sono deprecati nel client Web. Per altre informazioni, vai a - {0}</value>
+    <comment>Depreciation Message when user try to create new Legacy SLA and ask customer to move to UCI to create new SLAs.{Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogConfirmationText" xml:space="preserve">
+    <value>Seleziona "OK" per continuare a creare il nuovo contratto di servizio in Unified Interface.</value>
+    <comment>Confirmation to direct user to UCI to create new SLAs.</comment>
+  </data>
+  <data name="SLAWorkingHoursEmptyNotification" xml:space="preserve">
+    <value>Le ore lavorative nel calendario aziendale associato agli elementi {0} del contratto di servizio sono vuote.</value>
+    <comment>Notification message when SLA item has business calendar with empty working hours. {Placeholder='{0}'} refers SLA items.</comment>
+  </data>
+</root>

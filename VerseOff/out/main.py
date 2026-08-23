@@ -8,9 +8,10 @@ from PyQt6.QtWidgets import (
     QSplitter, QTableWidget, QTableWidgetItem, QLineEdit,
     QTreeWidget, QTreeWidgetItem, QTreeWidgetItemIterator,
     QStackedWidget, QMessageBox,
-    QToolButton, QMenu
+    QToolButton, QMenu, QHeaderView
 )
-from PyQt6.QtCore import QTimer, QThread, pyqtSignal, Qt
+from PyQt6.QtCore import QTimer, QThread, pyqtSignal, Qt, QSize
+from PyQt6.QtGui import QPixmap
 from db import LocalDatabase
 from sync_engine import SyncEngine
 from ui_components import FluentComboBox as QComboBox
@@ -363,32 +364,82 @@ class OfflineApp(QMainWindow):
         header_layout = QHBoxLayout(header_widget)
         header_layout.setContentsMargins(16, 8, 16, 8)
         
-        # Hamburger button
-        self.hamburger_btn = QPushButton("≡")
-        self.hamburger_btn.setToolTip("Collapse Menu")
-        self.hamburger_btn.setCursor(Qt.CursorShape.PointingHandCursor)
-        self.hamburger_btn.setStyleSheet("""
-            QPushButton {
-                background: transparent;
-                border: none;
-                color: white;
-                font-size: 24px;
-                font-weight: bold;
-                padding-right: 16px;
+        self.logo_label = QLabel()
+        import os
+        logo_path = os.path.join(os.path.dirname(__file__), "logo.png")
+        if not os.path.exists(logo_path):
+            logo_path = os.path.join(os.path.dirname(__file__), "logo.jpg")
+        logo_pixmap = QPixmap(logo_path).scaled(32, 32, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+        if not logo_pixmap.isNull():
+            self.logo_label.setPixmap(logo_pixmap)
+            self.logo_label.setStyleSheet("background: transparent; border: none; margin-right: 6px;")
+            header_layout.addWidget(self.logo_label)
+        
+        brand_label = QLabel("<b>VerseOff</b>")
+        brand_label.setStyleSheet("font-size: 16px; font-weight: 700; color: #ffffff;")
+        header_layout.addWidget(brand_label)
+        
+        divider_label = QLabel("|")
+        divider_label.setStyleSheet("font-size: 15px; color: #8ab4f8; margin: 0 4px;")
+        header_layout.addWidget(divider_label)
+        
+        # App Selector Dropdown
+        self.app_selector = QComboBox()
+        self.app_selector.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.app_selector.setToolTip("Switch Model-Driven App")
+        self.app_selector.setStyleSheet("""
+            QComboBox {
+                background-color: rgba(255, 255, 255, 0.08);
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 600;
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                border-radius: 4px;
+                padding: 4px 12px;
+                min-width: 220px;
             }
-            QPushButton:hover { color: #cccccc; }
+            QComboBox:hover {
+                background-color: rgba(255, 255, 255, 0.16);
+                border-color: #388bfd;
+            }
+            QComboBox::drop-down {
+                subcontrol-origin: padding;
+                subcontrol-position: right center;
+                width: 20px;
+                border-left: none;
+            }
+            QComboBox QAbstractItemView {
+                background-color: #ffffff;
+                color: #201f1e;
+                selection-background-color: #edebe9;
+                selection-color: #0f6cbd;
+                border: 1px solid #d2d0ce;
+                padding: 4px;
+                outline: none;
+                font-size: 13px;
+            }
         """)
-        self.hamburger_btn.clicked.connect(self.toggle_sitemap)
-        header_layout.addWidget(self.hamburger_btn)
         
-        waffle_icon = QLabel("<b>:::</b>")
-        waffle_icon.setStyleSheet("font-size: 18px; color: #ffffff;")
-        
-        title_label = QLabel(f"<b>Dynamics 365</b> &nbsp;|&nbsp; <span style='color: #cce4f7;'>{self.config.get('app_name', 'VerseOff App')}</span>")
-        title_label.setStyleSheet("font-size: 14px;")
-        
-        header_layout.addWidget(waffle_icon)
-        header_layout.addWidget(title_label)
+        # Populate available apps
+        current_app_name = self.config.get("app_name", "Customer Service Hub")
+        available_apps = self.config.get("available_apps", [])
+        if not available_apps:
+            available_apps = [{"id": self.config.get("app_id"), "name": current_app_name}]
+            
+        for app_info in available_apps:
+            name = app_info.get("name") or app_info.get("uniquename")
+            app_id = app_info.get("id") or app_info.get("appmoduleid")
+            if name:
+                self.app_selector.addItem(f"  {name}", app_id)
+                
+        # Set active app
+        for i in range(self.app_selector.count()):
+            if current_app_name.lower() in self.app_selector.itemText(i).lower():
+                self.app_selector.setCurrentIndex(i)
+                break
+                
+        self.app_selector.currentIndexChanged.connect(self._on_app_selector_changed)
+        header_layout.addWidget(self.app_selector)
         header_layout.addStretch()
         
         # Global Quick Find Search in Top Header
@@ -411,18 +462,62 @@ class OfflineApp(QMainWindow):
         
         layout.addWidget(header_widget)
         
-        # 2. Main Content Splitter (Left SiteMap Rail + Right HomepageGrid)
-        splitter = QSplitter(Qt.Orientation.Horizontal)
+        # 2. Main Content Container (Left SiteMap Rail + Right Content)
+        main_content_container = QWidget()
+        main_content_layout = QHBoxLayout(main_content_container)
+        main_content_layout.setContentsMargins(0, 0, 0, 0)
+        main_content_layout.setSpacing(0)
         
-        # --- Left Navigation Rail Container (Tree + Bottom Area Switcher) ---
-        nav_container = QWidget()
-        nav_container.setObjectName("NavRail")
-        nav_layout = QVBoxLayout(nav_container)
+        # --- Left Navigation Rail Container (Header with vertical 3-bars toggle + Tree + Bottom Area Switcher) ---
+        self.nav_container = QWidget()
+        self.nav_container.setObjectName("NavRail")
+        nav_layout = QVBoxLayout(self.nav_container)
         nav_layout.setContentsMargins(0, 0, 0, 0)
         nav_layout.setSpacing(0)
         
+        # Sitemap Header with Active Area Name & 3 Vertical Lines Collapse Button
+        self.sitemap_header = QWidget()
+        self.sitemap_header.setFixedHeight(38)
+        self.sitemap_header.setStyleSheet(
+            "background-color: #f3f2f1; border-bottom: 1px solid #e1dfdd; padding: 0px 4px;"
+        )
+        self.sitemap_header_layout = QHBoxLayout(self.sitemap_header)
+        self.sitemap_header_layout.setContentsMargins(12, 0, 8, 0)
+        
+        self.sitemap_area_title = QLabel("MY WORK")
+        self.sitemap_area_title.setStyleSheet(
+            "font-size: 11px; font-weight: 700; color: #605e5c; text-transform: uppercase; letter-spacing: 0.5px;"
+        )
+        self.sitemap_header_layout.addWidget(self.sitemap_area_title)
+        self.sitemap_header_layout.addStretch()
+        
+        # 3 Vertical Lines (vertical hamburger / collapse icon)
+        self.hamburger_btn = QPushButton("❙❙❙")
+        self.hamburger_btn.setToolTip("Collapse SiteMap")
+        self.hamburger_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.hamburger_btn.setStyleSheet("""
+            QPushButton {
+                background: transparent;
+                border: none;
+                color: #605e5c;
+                font-size: 13px;
+                font-weight: 900;
+                letter-spacing: -1px;
+                padding: 4px 6px;
+                border-radius: 4px;
+            }
+            QPushButton:hover {
+                background-color: #edebe9;
+                color: #0f6cbd;
+            }
+        """)
+        self.hamburger_btn.clicked.connect(self.toggle_sitemap)
+        self.sitemap_header_layout.addWidget(self.hamburger_btn)
+        nav_layout.addWidget(self.sitemap_header)
+        
         self.nav_tree = QTreeWidget()
         self.nav_tree.setHeaderHidden(True)
+        self.nav_tree.header().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
         self.nav_tree.setMinimumWidth(260)
         self.nav_tree.setMaximumWidth(260)
         self.nav_tree.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
@@ -437,18 +532,16 @@ class OfflineApp(QMainWindow):
         area_switcher_layout = QVBoxLayout(self.area_switcher_box)
         area_switcher_layout.setContentsMargins(0, 0, 0, 0)
         
-        area_label = QLabel("<small style='color: #605e5c; font-weight: bold;'>CHANGE AREA</small>")
         self.area_combo = QComboBox()
         self.area_combo.setObjectName("AreaSwitcher")
         for area in self.sitemap_structure:
             self.area_combo.addItem(area.get("title"), area.get("id"))
             
         self.area_combo.currentIndexChanged.connect(self.on_area_switched)
-        area_switcher_layout.addWidget(area_label)
         area_switcher_layout.addWidget(self.area_combo)
         
         nav_layout.addWidget(self.area_switcher_box)
-        splitter.addWidget(nav_container)
+        main_content_layout.addWidget(self.nav_container)
         
         # --- Right Content Pane: Single Document Interface (SDI) with QStackedWidget ---
         self.main_stack = QStackedWidget()
@@ -459,6 +552,12 @@ class OfflineApp(QMainWindow):
         grid_layout.setContentsMargins(12, 10, 12, 12)
         grid_layout.setSpacing(8)
         
+        # HomepageGrid Ribbon Command Bar (dynamically populated)
+        self.grid_command_bar = QHBoxLayout()
+        self.grid_command_bar.setContentsMargins(0, 0, 0, 4)
+        self.grid_command_bar.setSpacing(6)
+        grid_layout.addLayout(self.grid_command_bar)
+
         # Top Entity Header & View Selector Bar
         top_view_bar = QHBoxLayout()
         top_view_bar.setContentsMargins(0, 0, 0, 4)
@@ -480,12 +579,6 @@ class OfflineApp(QMainWindow):
         top_view_bar.addStretch()
         top_view_bar.addWidget(self.search_bar)
         grid_layout.addLayout(top_view_bar)
-        
-        # HomepageGrid Ribbon Command Bar (dynamically populated)
-        self.grid_command_bar = QHBoxLayout()
-        self.grid_command_bar.setContentsMargins(0, 0, 0, 4)
-        self.grid_command_bar.setSpacing(6)
-        grid_layout.addLayout(self.grid_command_bar)
         
         # Homepage Data Grid
         self.data_grid = QTableWidget()
@@ -530,9 +623,8 @@ class OfflineApp(QMainWindow):
         route_layout.addStretch()
         self.main_stack.addWidget(self.route_page)
         
-        splitter.addWidget(self.main_stack)
-        splitter.setStretchFactor(1, 4)
-        layout.addWidget(splitter)
+        main_content_layout.addWidget(self.main_stack, 1)
+        layout.addWidget(main_content_container)
         
         self.setCentralWidget(central)
         
@@ -552,6 +644,9 @@ class OfflineApp(QMainWindow):
         area_def = next((a for a in self.sitemap_structure if a.get("id") == area_id), None)
         if not area_def:
             return
+            
+        if hasattr(self, "sitemap_area_title"):
+            self.sitemap_area_title.setText(str(area_def.get("title") or "MY WORK").upper())
             
         all_manifest_entities = {e.get("LogicalName"): e for e in self.config.get("entities", [])}
         
@@ -614,6 +709,14 @@ class OfflineApp(QMainWindow):
         # Select first valid subarea to trigger grid load
         self.select_default_nav_item()
 
+    def _on_app_selector_changed(self, index):
+        if index < 0 or not hasattr(self, "app_selector"):
+            return
+        selected_app_id = self.app_selector.itemData(index)
+        selected_app_name = self.app_selector.itemText(index).strip()
+        logger.info(f"App Selector changed to: {selected_app_name} (ID: {selected_app_id})")
+        self.setWindowTitle(f"VerseOff | {selected_app_name} - Offline Client")
+
     def toggle_sitemap(self):
         self.nav_expanded = getattr(self, "nav_expanded", True)
         self.nav_expanded = not self.nav_expanded
@@ -621,8 +724,20 @@ class OfflineApp(QMainWindow):
         target_width = 260 if self.nav_expanded else 48
         self.nav_tree.setMinimumWidth(target_width)
         self.nav_tree.setMaximumWidth(target_width)
+        if hasattr(self, "nav_container"):
+            self.nav_container.setMinimumWidth(target_width)
+            self.nav_container.setMaximumWidth(target_width)
+        if hasattr(self, "sitemap_area_title"):
+            self.sitemap_area_title.setVisible(self.nav_expanded)
+        if hasattr(self, "sitemap_header_layout"):
+            self.sitemap_header_layout.setContentsMargins(
+                12 if self.nav_expanded else 4,
+                0,
+                8 if self.nav_expanded else 4,
+                0,
+            )
         self.area_switcher_box.setVisible(self.nav_expanded)
-        self.hamburger_btn.setToolTip("Collapse Menu" if self.nav_expanded else "Expand Menu")
+        self.hamburger_btn.setToolTip("Collapse SiteMap" if self.nav_expanded else "Expand SiteMap")
 
     def select_default_nav_item(self):
         for i in range(self.nav_tree.topLevelItemCount()):
@@ -712,10 +827,36 @@ class OfflineApp(QMainWindow):
         disp_name = self.display_names.get(entity_name, entity_name)
         
         # 1. Primary + New Button
-        new_btn = QPushButton(f"＋  New {disp_name}")
-        new_btn.setObjectName("PrimaryCmdBtn")
-        new_btn.clicked.connect(lambda: self.open_form(entity_name, None))
-        self.grid_command_bar.addWidget(new_btn)
+        if entity_name in ("activitypointer", "activity"):
+            # For polymorphic activitypointer, show a split/popup toolbutton with all concrete activity types
+            new_btn = QToolButton()
+            new_btn.setText("＋  New Activity")
+            new_btn.setObjectName("PrimaryCmdBtn")
+            new_btn.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
+            new_menu = QMenu(self)
+            
+            activity_entities = [
+                ("task", "Task", "📝"),
+                ("email", "Email", "✉️"),
+                ("phonecall", "Phone Call", "📞"),
+                ("appointment", "Appointment", "📅"),
+                ("letter", "Letter", "✉️"),
+                ("fax", "Fax", "📠"),
+            ]
+            all_manifest_ents = {e.get("LogicalName"): e for e in self.config.get("entities", [])}
+            
+            for act_code, act_label, act_icon in activity_entities:
+                if act_code in all_manifest_ents or True:
+                    action = new_menu.addAction(f"{act_icon}  {act_label}")
+                    action.triggered.connect(lambda _, ent=act_code: self.open_form(ent, None))
+                    
+            new_btn.setMenu(new_menu)
+            self.grid_command_bar.addWidget(new_btn)
+        else:
+            new_btn = QPushButton(f"＋  New {disp_name}")
+            new_btn.setObjectName("PrimaryCmdBtn")
+            new_btn.clicked.connect(lambda: self.open_form(entity_name, None))
+            self.grid_command_bar.addWidget(new_btn)
         
         # 2. Delete Button
         delete_btn = QPushButton("🗑  Delete")
@@ -1048,9 +1189,10 @@ class OfflineApp(QMainWindow):
                 headers = []
                 for j, c in enumerate(columns):
                     lbl = c.get("label")
-                    if not lbl or lbl == c["name"]:
+                    if not lbl or lbl == c["name"] or "." in lbl:
                         a = attr_meta.get(c["name"])
                         part = c["name"].split(".")[-1]
+                        
                         if a and a.get("DisplayName"):
                             disp = a.get("DisplayName", {})
                             ul = disp.get("UserLocalizedLabel")
@@ -1061,7 +1203,12 @@ class OfflineApp(QMainWindow):
                             else:
                                 lbl = part.replace("_", " ").title()
                         else:
+                            # If we still have a dot in lbl, it's a raw alias string.
+                            if lbl and "." in lbl:
+                                part = lbl.split(".")[-1]
                             lbl = part.replace("_", " ").title()
+                            # Extra cleanup for common squished words like Emailaddress1 -> Email Address 1
+                            lbl = lbl.replace("address", " Address ").replace("1", " 1").strip()
                     headers.append(str(lbl))
                     
                     # Apply column width
@@ -1106,7 +1253,23 @@ class OfflineApp(QMainWindow):
         entity_name = selected_nav[0].data(0, Qt.ItemDataRole.UserRole)
         
         if record_id:
-            self.open_form(entity_name, record_id)
+            if entity_name in ("activitypointer", "activity"):
+                # Determine concrete activity type (task, email, phonecall, etc.)
+                concrete_type = first_cell.data(Qt.ItemDataRole.UserRole + 2)
+                if not concrete_type:
+                    try:
+                        with self.db.get_connection() as conn:
+                            cursor = conn.cursor()
+                            cursor.execute("SELECT data_json FROM activitypointer WHERE id = ?", (record_id,))
+                            rec = cursor.fetchone()
+                            if rec and rec[0]:
+                                d = json.loads(rec[0])
+                                concrete_type = d.get("activitytypecode")
+                    except Exception:
+                        pass
+                self.open_form(concrete_type or "task", record_id)
+            else:
+                self.open_form(entity_name, record_id)
 
     def open_form(self, entity_name, record_id):
         # Clear existing form from form_page_layout
@@ -1190,11 +1353,36 @@ class OfflineApp(QMainWindow):
             return
         super().closeEvent(event)
 
+def setup_logging():
+    log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "app.log")
+    formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(name)s - %(message)s")
+    
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging.INFO)
+    
+    for handler in list(root_logger.handlers):
+        root_logger.removeHandler(handler)
+        
+    file_handler = logging.FileHandler(log_file, mode="a", encoding="utf-8")
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(formatter)
+    root_logger.addHandler(file_handler)
+    
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(formatter)
+    root_logger.addHandler(console_handler)
+    
+    logging.info("=" * 60)
+    logging.info("VerseOff application started.")
+    logging.info(f"Logging initialized. Output written to: {log_file}")
+    logging.info("=" * 60)
+
 def global_exception_handler(exc_type, exc_value, exc_traceback):
     import traceback
     from PyQt6.QtWidgets import QMessageBox
     error_msg = "".join(traceback.format_exception(exc_type, exc_value, exc_traceback))
-    logging.error(f"CRASH: {error_msg}")
+    logging.critical(f"CRASH: {error_msg}")
     try:
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Icon.Critical)
@@ -1233,8 +1421,8 @@ def main():
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("verseoff.dynamics.offline.app")
     except Exception:
         pass
+    setup_logging()
     sys.excepthook = global_exception_handler
-    logging.basicConfig(level=logging.INFO)
     app = SafeApplication(sys.argv)
     window = OfflineApp()
     window.resize(1280, 800)

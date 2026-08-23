@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SLA_DefaultSLASelectionConfirmDialogText">
+    <value>هل تريد بالتأكيد تعيين سجل اتفاقية مستوى الخدمة (SLA) هذا كافتراضي للكيان المحدد؟</value>
+  </data>
+  <data name="SLA_DefaultSLASelectionConfirmDialogTitle">
+    <value>تأكيد التعيين كافتراضي</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogText">
+    <value>يتوفر لديك سجل آخر لاتفاقية مستوى الخدمة (SLA) تم تعيينه كإعداد افتراضي لكيان {0} هل تريد وضع علامة على SLA المحددة كإعداد افتراضي بدلاً من ذلك؟</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogTitle">
+    <value>تغيير اتفاقية مستوى الخدمة (SLA) الافتراضية</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertText">
+    <value>يتعذر عليك تعيين اتفاقية مستوى خدمة غير نشطة كإعداد افتراضي.</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertTitle">
+    <value>لا يمكن تعيينه كافتراضي</value>
+  </data>
+  <data name="SLA_DefaultSLAWarning">
+    <value>اتفاقية مستوى الخدمة المحددة هي الإعداد الافتراضي بالفعل</value>
+  </data>
+  <data name="SLA_DefaultSLASetttingInProgress">
+    <value>إعداد اتفاقية مستوى الخدمة الافتراضية</value>
+  </data>
+  <data name="SLA_ErrorResettingDefaultSLA">
+    <value>حدث خطأ ما أثناء تحديث اتفاقية مستوى الخدمة (SLA) الافتراضية</value>
+  </data>
+  <data name="SLA_ErrorSettingNewSLA">
+    <value>حدث خطأ ما في إعداد اتفاقية مستوى الخدمة الافتراضية الجديدة</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsGeneralNotification">
+    <value>انقر فوق "تكوين الإجراء" لإعداد إجراءات النجاح والتحذير والفشل.</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsSetupNotification">
+    <value>لم يتم اعداد إجراءات النجاح والتحذير والفشل. انقر فوق "تكوين الإجراء" لتنفيذ الإعداد.</value>
+  </data>
+  <data name="SLAItem_WarningTimeHigherThanFailureTimeAlert">
+    <value>‏‏يجب ألا تكون فترة "التحذير بعد" أكبر من فترة "الفشل بعد".‬</value>
+  </data>
+  <data name="SLAItem_SuccessConditionsEmptyAlert">
+    <value>لا يمكن ترك شروط النجاح فارغة</value>
+  </data>
+  <data name="SLAItem_PauseConditionsEmptyAlert">
+    <value>لا يجوز أن يكون شرط الإيقاف المؤقت فارغًا عندما يكون مفتاح تبديل تجاوز تكوين الإيقاف المؤقت قيد التشغيل</value>
+  </data>
+  <data name="SLAItem_KPIEmptyAlert">
+    <value>لا يمكن ترك مؤشر الأداء الأساسي فارغًا</value>
+  </data>
+  <data name="SLAItem_Notification_SLA_ActivatedState">
+    <value>إلغاء تنشيط اتفاقية مستوى الخدمة لتحرير بند SLA </value>
+  </data>
+  <data name="SLAKPI_Activate">
+    <value>تنشيط</value>
+  </data>
+  <data name="SLAKPI_Deactivate">
+    <value>إلغاء تنشيط</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Message">
+    <value>هل تريد إلغاء تنشيط مؤشر الأداء الأساسي لكيان {0} المحدد؟</value>
+  </data>
+  <data name="SLAKPI_Activate_Message">
+    <value>هل تريد تنشيط مؤشر الأداء الأساسي لكيان {0} المحدد؟</value>
+  </data>
+  <data name="Progress_Message">
+    <value>تحديث مؤشر الأداء الأساسي (KPI)</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Title">
+    <value>تأكيد إلغاء التنشيط</value>
+  </data>
+  <data name="SLAKPI_Activate_Title">
+    <value>تأكيد التنشيط</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_UC">
+    <value>هذا سجل قديم. لتحرير هذا السجل، الرجاء زيارة عميل الويب القديم.</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_WC">
+    <value>لا يمكن تحرير هذا السجل هنا. الرجاء الانتقال إلى تطبيق الواجهة الموحدة لتحريره.</value>
+  </data>
+  <data name="SLA_UC_Preview_Text">
+    <value>تُستخدم الإجراءات لتنفيذ مجموعة من المهام، وهذا يتوقف على تلبية المعايير. قبل تعريف الإجراءات، يجب حفظ عنصر اتفاقية مستوى الخدمة (SLA). انقر فوق {0} للحصول على مزيد من المعلومات.</value>
+  </data>
+  <data name="SLA_AdvancedPauseConfig_Text">
+    <value>تكوين شروط الإيقاف المؤقت في هذا القسم لتجاوز تكوين الإيقاف المؤقت على مستوى الكيان المحدد في تكوين الخدمة وتكوين الإيقاف المؤقت على مستوى مؤشر الأداء الأساسي (KPI). {0}.</value>
+  </data>
+  <data name="SLA_KPIAdvancedPauseConfig_Text">
+    <value>تكوين شروط الإيقاف المؤقت في هذا القسم لتجاوز تكوين الإيقاف المؤقت على مستوى الكيان المحدد في تكوين الخدمة. {0}.</value>
+  </data>
+  <data name="SLA_UC_Preview_FeatureDocumentation_Hyperlink_Label">
+    <value>وثائق الميزات</value>
+  </data>
+  <data name="SLA_AdavncedPauseConfig_Hyperlink_Label" xml:space="preserve">
+    <value>اعرف المزيد</value>
+  </data>
+  <data name="SLAKPI_LearnMoreLink_Text">
+    <value>يجب تمكين الكيان لاتفاقية مستوى الخدمة (SLA). {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is the Learn More link.</comment>
+  </data>
+  <data name="SLAKPI_Hyperlink_Label" xml:space="preserve">
+    <value>اعرف المزيد</value>
+  </data>
+  <data name="SLAItem_ConditionControl_Notification_Text">
+    <value>من المستحسن أن تتجنب تكوين معايير النجاح أو الوقت القابلة للتطبيق على السمة نفسها.</value>
+  </data>
+  <data name="SLAItem_ConditionOnSameAttributeAlert">
+    <value>من المستحسن أن تتجنب تكوين معايير النجاح أو الوقت القابلة للتطبيق على السمة نفسها. هل تريد المتابعة؟</value>
+  </data>
+  <data name="SLAKPI_BusinessProcessError_Title" xml:space="preserve">
+    <value>خطأ في عملية الأعمال</value>
+  </data>
+  <data name="SDKMessagingStepNotInActiveState" xml:space="preserve">
+    <value>قد لا تكون بعض خطوات رسالة SDK {0} في حالة نشطة. يُرجى تنشيط خطوة رسالة SDK قبل تنشيط SLA.</value>
+    <comment>Error message when dependent SDK Message Step is not enabled. step Id.</comment>
+  </data>
+  <data name="SLAIsDisabledInSetting" xml:space="preserve">
+    <value>تم تمكين الإعداد المقترن "تعطيل اتفاقيات SLA‬" في إعدادات تكوين الخدمة. يرجى إلغاء تنشيط الإعداد قبل تنشيط SLA.</value>
+    <comment>Error message when SLA is not enabled in Service Configuration Settings.</comment>
+  </data>
+  <data name="WorkflowNotInActiveState" xml:space="preserve">
+    <value>قد لا تكون بعض عمليات سير العمل المقترنة {0} في حالة نشطة. يرجى تنشيط سير العمل قبل تنشيط SLA.</value>
+    <comment>Error message when dependent Workflow/CustomAction is not enabled.</comment>
+  </data>
+  <data name="SLAItem_ApplicableAndSuccessSameAttribute" xml:space="preserve">
+    <value>من المستحسن أن تتجنب تكوين معايير النجاح أو الوقت القابلة للتطبيق على السمة نفسها</value>
+    <comment>Warning message when SLA Applicable and Success conditions are configured on the same attribute</comment>
+  </data>
+  <data name="WorkflowOwnerIsDisabled" xml:space="preserve">
+    <value>يجب تحديث المالكين في عمليات سير العمل التالية في SLA: {0} مع المستخدمين النشطاء.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is a workflow name which is owned by disabled user.</comment>
+  </data>
+  <data name="NoSLASetAsDefault" xml:space="preserve">
+    <value>لم تتم المحافظة على SLA الافتراضية للكيان {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is an SLA's primary entity name.</comment>
+  </data>
+  <data name="OpenLearnMoreForSetAsDefaultSLA" xml:space="preserve">
+    <value>اعرف المزيد</value>
+  </data>
+  <data name="SLAKPI_Recommendation_Entityname" xml:space="preserve">
+    <value>يجب تمكين الكيان لاتفاقية مستوى الخدمة (SLA).</value>
+    <comment>Recommendation message for EntityName field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_KPIField" xml:space="preserve">
+    <value>تستند مؤشرات الأداء الأساسية (KPI) إلى الكيان المحدد.</value>
+    <comment>Recommendation message for KPI field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_PrimaryEntity" xml:space="preserve">
+    <value>يجب تمكين الكيان لاتفاقية مستوى الخدمة (SLA).</value>
+    <comment>Recommendation message for Primary Entity field.</comment>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>اعتبارًا من 1 أبريل 2023، اجتازت اتفاقيات مستوى الخدمة القديمة (SLA) على عميل الويب التي تم إهمالها سابقًا انتهاء الدعم (EoS). من الضروري ترحيل اتفاقيات مستوى الخدمة القديمة التي تم إنشاؤها على عميل الويب إلى تجربة الواجهة الموحدة على الفور لتجنب فقدان الوظائف. لمزيد من المعلومات حول كيفية ترحيل العناصر، راجع {0}</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>أنا أقر</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>‏‏إلغاء‬</value>
+  </data>
+  <data name="SLAKPI_Activation_Error_Message" xml:space="preserve">
+    <value>فشل تنشيط SLAKPI، الرجاء تنشيطه من إدارة SLAKPIs.</value>
+    <comment>Error message when it fails to activate SLAKPI from quick create form.</comment>
+  </data>
+  <data name="SLAKPI_Performance_Indicator_Notification" xml:space="preserve">
+    <value>SLA KPIs هي مؤشرات الأداء</value>
+    <comment>Header notification in SLA KPI form.</comment>
+  </data>
+  <data name="SLA_ChangedAttribiteNullNotification" xml:space="preserve">
+    <value>تحتاج إلى إعادة تنشيط اتفاقية مستوى الخدمة (SLA) {0} لإصلاح المشاكل المحددة بواسطة الشروط فيها. لمزيد من المعلومات، راجع {1}</value>
+    <comment>Notification message when SLA item's 'ChangedAttributeList" field value is NULL and SLA is active. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_RelatedEntitiesNotification" xml:space="preserve">
+    <value>الكيانات ذات الصلة التي تم تكوينها في شروط بند اتفاقية مستوى الخدمة‬ (SLA) {{0}} غير مدعومة بشكل كامل. لمزيد من المعلومات، راجع – {1}</value>
+    <comment>Notification message when SLA item has related entities in the applicable when or success or pause conditions. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogDepreciationText" xml:space="preserve">
+    <value>اعتبارًا من 1 أكتوبر 2020، تم إهمال اتفاقيات مستوى الخدمة (SLA) في عميل الويب. لمزيد من المعلومات، انتقل إلى - {0}</value>
+    <comment>Depreciation Message when user try to create new Legacy SLA and ask customer to move to UCI to create new SLAs.{Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogConfirmationText" xml:space="preserve">
+    <value>حدد "موافق" لمتابعة إنشاء اتفاقية مستوى الخدمة (SLA) الجديدة في الواجهة الموحدة.</value>
+    <comment>Confirmation to direct user to UCI to create new SLAs.</comment>
+  </data>
+  <data name="SLAWorkingHoursEmptyNotification" xml:space="preserve">
+    <value>يتضمن تقويم العمل المقترنة بعناصر {0} في اتفاقية SLA ساعات عمل فارغة.</value>
+    <comment>Notification message when SLA item has business calendar with empty working hours. {Placeholder='{0}'} refers SLA items.</comment>
+  </data>
+</root>

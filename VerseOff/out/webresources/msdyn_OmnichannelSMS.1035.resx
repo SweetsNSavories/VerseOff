@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Close_Opp_Dlg_Desc" xml:space="preserve">
+    <value>Anna seuraavat tiedot siitä, miksi tämä mahdollisuus suljetaan.</value>
+  </data>
+  <data name="Error_Message_0x80040515" xml:space="preserve">
+    <value>Mahdollisuus on jo suljettu.</value>
+    <comment>IDS_OPPORTUNITY_IS_ALREADY_CLOSED</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_37" xml:space="preserve">
+    <value>Todellinen myyntituotto on asetettu väärin päämahdollisuudessa. Luvun on oltava {0} - {1}.</value>
+    <comment>Error message displayed to the user in the close opportunity dialog page when the actual revenue is set incorrectly on the opportunity. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 is a number specifing minimum permissible revenue amount and Placeholder 1 is a number specifing maximum permissible revenue amount.</comment>
+  </data>
+  <data name="Web.SFA.opps.dlg_closeopp.aspx_67" xml:space="preserve">
+    <value>Sulkemispäivä on määritettävä.</value>
+    <comment>Error message displayed when the user clicks on the ok button without entering a value in the close date field in close opportunity dialog box.</comment>
+  </data>
+  <data name="Suggestions_Dlg_Add_Selected_Text" xml:space="preserve">
+    <value>Lisää</value>
+    <comment>Label text for the "Add Selected" button in the product suggestions dialog.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Button_Label_Cancel" xml:space="preserve">
+    <value>Peruuta</value>
+  </data>
+  <data name="Suggestions_Dlg_Error_Moca_Offline" xml:space="preserve">
+    <value>Voit tarkastella ehdotuksia vain, kun sovellus on online-tilassa.</value>
+    <comment>Error text for when users attempts to view or add suggestions when Moca is offline.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Selection" xml:space="preserve">
+    <value>Valitse vähintään yksi lisättävä ehdotus.</value>
+    <comment>Error text for when users attempts to click add suggestions button without selecting any suggestion.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_Add_Suggestions" xml:space="preserve">
+    <value>Ehdotuksia ei voitu lisätä. Yritä uudelleen. {0}</value>
+    <comment>Error text for when adding suggestion fails.[Category="MoCA Client"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_No_Price_List" xml:space="preserve">
+    <value>Valitse hinnasto, jotta voit tarkastella ehdotuksia.</value>
+    <comment>Error text for when user opens Suggestions dialog without a price list selected.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Dlg_Error_NoParentRecordFound" xml:space="preserve">
+    <value>Päätietuetta ei löytynyt.</value>
+  </data>
+  <data name="Quote_Closed_Subject" xml:space="preserve">
+    <value>Tarjous suljettu ({0}) - {1}</value>
+    <comment>Subject for the quote close activity. Whenever a quote is closed a quote closed activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was closed. Eg: Lost, Canceled or Revised. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Quote_Won_Subject" xml:space="preserve">
+    <value>Tarjous voitettu ({0}) - {1}</value>
+    <comment>Subject for the quote won activity. Whenever a quote is won a quote won activity is created in the system. {NumberedPlaceholder="{0}","{1}"} Placeholder 0 is for the status of the quote when it was won. Placeholder 1 is for the quote number.</comment>
+  </data>
+  <data name="Close_Opportunity_Activity_Subject" xml:space="preserve">
+    <value>Suljettu mahdollisuus: {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is name of object.</comment>
+  </data>
+  <data name="Dialog_Delete_Description" xml:space="preserve">
+    <value>Haluatko poistaa tämän entiteetin {0}? Tätä toimintoa ei voi kumota.</value>
+    <comment>Dialog page description for delete confirmation dialog page. Eg: Deleting a product. {NumberedPlaceholder="{0}"}. Placeholder 0 is a text representing an entity name Eg: Product[Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Button_Label_Delete" xml:space="preserve">
+    <value>Poista</value>
+  </data>
+  <data name="ViewDuplicates_aspx_Button_Label_CancelUpdateRecord" xml:space="preserve">
+    <value>&amp;Peruuta</value>
+    <comment>The label of the Cancel Update button</comment>
+  </data>
+  <data name="Web._grid.cmds.dlg_delete.aspx_26" xml:space="preserve">
+    <value>Vahvista poistaminen</value>
+  </data>
+  <data name="Web.SFA.QOI.QuantityAndPriceNegativeAlert" xml:space="preserve">
+    <value>Sekä Määrä- että Yksikköhinta-ruutuun ei voi määrittää negatiivista arvoa. Muuta jompaakumpaa arvoa ja yritä uudelleen.</value>
+    <comment>Alert message that is displayed in QOI forms when the both Quantity and Price Per Unit fields are filled up with negative values. [Category="SFA: Negative prices"]</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Sinun on valittava vähintään yksi tietue, ennen kuin voit suorittaa tämän toiminnon.</value>
+  </data>
+  <data name="Web.SFA.quotes.EffectiveToEarlierThanEffectiveFrom" xml:space="preserve">
+    <value>Voimassaolo päättyy -päivämäärä ei voi olla ennen Voimassaolo alkaa -päivämäärää.</value>
+    <comment>Error message to display if effective to date supplied in the quote form is earlier than effective from date.</comment>
+  </data>
+  <data name="Web.SFA.QOI.CurrencyChangeAlert" xml:space="preserve">
+    <value>Tarkista kaikki lomakkeen rahasummakentät, ennen kuin jatkat.</value>
+    <comment>Alert message that is displayed in Quote and Opportunity forms when transaction currency is changed. [Category="Business Modules"]</comment>
+  </data>
+  <data name="QUOTE_EXPIRED" xml:space="preserve">
+    <value>Tämä voimassaolon päättymispäivä on mennyt. Jos haluat aktivoida tarjouksen uudelleen, määritä päivämääräksi tuleva päivämäärä.</value>
+    <comment>quote is expired.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Suggestions_Notification_Available_Message" xml:space="preserve">
+    <value>Saatavilla olevat tuote-ehdotukset ({0})</value>
+    <comment>Text for the notification that product suggestions are available.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Suggestions_Notification_See_Link_Text" xml:space="preserve">
+    <value>Näytä</value>
+    <comment>Text for clickable link in suggestion notification.[Category="Analytics Suggestions"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_340" xml:space="preserve">
+    <value>Tämän tarjouksen muuntaminen myyntitilaukseksi tapahtuu automaattisesti vain, kun palaat online-tilaan. Voit jatkaa valitsemalla OK.</value>
+    <comment>Confirmation message displayed when the user attempts to create an order from a quote in outlook client when the outlook client is in offline mode.</comment>
+  </data>
+  <data name="Web.SFA.QOI.QuantityChangedDueToChangeInAccuracy" xml:space="preserve">
+    <value>Määrä-ruudun arvo on muuttunut arvosta {0} arvoon {1} tuotteessa käytettävissä olevien desimaalien päivityksen vuoksi.
+  Voit tallentaa muutokset valitsemalla OK ja sitten Tallenna tai Tallenna ja sulje.</value>
+    <comment>Header of Message to prompt the user about change in qunatity due to change in decimal accuracy supported by the product. {NumberedPlaceholder="{0}", "{1}"} Placeholder 0 and Placeholder 1 are numbers.</comment>
+  </data>
+  <data name="Close_Quote_Dlg_Title" xml:space="preserve">
+    <value>Sulje tarjous</value>
+  </data>
+  <data name="Close_Quote_Dlg_Desc" xml:space="preserve">
+    <value>Olet sulkemassa tätä tarjousta.</value>
+    <comment>Close quote dialog description.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.quotes.dlg_close.aspx_155" xml:space="preserve">
+    <value>Sulkemispäivä</value>
+    <comment>Label for the close date field in the close quote dialog box. Represents the quote close date.</comment>
+  </data>
+  <data name="Dialog_PaidInvoice_Title" xml:space="preserve">
+    <value>Maksettu lasku</value>
+  </data>
+  <data name="Dialog_PaidInvoice_Description" xml:space="preserve">
+    <value>Valitse tämän laskun maksutiedot.</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Title" xml:space="preserve">
+    <value>Peruuta lasku</value>
+  </data>
+  <data name="Dialog_CancelInvoice_Description" xml:space="preserve">
+    <value>Valitse tämän laskun peruutustiedot.</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Title" xml:space="preserve">
+    <value>Peruuta tilaus</value>
+  </data>
+  <data name="Order_Cancel_Dlg_Desc" xml:space="preserve">
+    <value>Anna tämän tilauksen peruutustiedot.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_ConfirmButton.dlg_close" xml:space="preserve">
+    <value>Vahvista</value>
+    <comment>OK Button text when Order close dialog when the order is canceled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_50.dlg_close" xml:space="preserve">
+    <value>Peruutuspäivä</value>
+    <comment>Label for the sales order cancel date field in cancel order dialog page.</comment>
+  </data>
+  <data name="Order_Fulfill_Dlg_Title" xml:space="preserve">
+    <value>Toteuta tilaus</value>
+  </data>
+  <data name="Order_Fulfill_Dlg_Desc" xml:space="preserve">
+    <value>Anna tämän tilauksen toteutustiedot.</value>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_FulfillButton.dlg_close" xml:space="preserve">
+    <value>Toteuta</value>
+    <comment>OK Button text when Order close dialog when the order is fulfilled[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.SFA.salesorders.aspx_51.dlg_close" xml:space="preserve">
+    <value>Toteutuspäivä</value>
+    <comment>Label for the sales order fulfill date field in fulfill order dialog page.</comment>
+  </data>
+  <data name="Web.SFA.quotes.edit.aspx_155" xml:space="preserve">
+    <value>Hinnasto täytyy valita ennen tuotteen lisäämistä.</value>
+    <comment>Error message displayed in the opportunity form when the user attempts to add a product to the opportunity without choosing a price list for the opportunity.</comment>
+  </data>
+  <data name="notEligibleBulkEdit" xml:space="preserve">
+    <value>Ohjausobjekteja ei voi joukkomuokata.</value>
+  </data>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>Sulje sähköpostilomake</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>Muuta {0}-tila valmiiksi ja sulje lomake</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>Asiakas täytyy valita.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>Muutokset täytyy tallentaa, ennen kuin voit muuntaa tämän aktiviteetin.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="LOCID_PROVIDE_VALUE_ADDRESS" xml:space="preserve">
+    <value>Kohteen {0} arvo täytyy antaa, jotta osoitteen voi valita.</value>
+    <comment>{NumberedPlaceholder="{0}"}. AlertMessage.Message on omission of value for address lookup.</comment>
+  </data>
+  <data name="LOCID_SALESLIT_NO_DOCUMENTS" xml:space="preserve">
+    <value>{0} ei sisällä seuraavia: {1}.</value>
+    <comment>Text in alert when sales literature does not contain any documents. [Category="Business Modules"] {NumberedPlaceholder="{0}"} Placeholder 0 will be replaced with salesliterature entity display name. {NumberedPlaceholder="{1}"} Placeholder 1 will be replaced with salesliteratureitem entity display name</comment>
+  </data>
+  <data name="Web.SFA.invoice.edit.aspx_163" xml:space="preserve">
+    <value>Tapahtui virhe: {0}</value>
+    <comment>Message displayed with price error messages.</comment>
+  </data>
+  <data name="SalesAttachmentDisplayName" xml:space="preserve">
+    <value>Myynnin liite</value>
+    <comment>Sales Attachment display name.</comment>
+  </data>
+  <data name="LiveWorkStream.ProviderInvalid" xml:space="preserve">
+    <value>Tekstiviestipalvelun tarjoaja on virheellinen</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid provider</comment>
+  </data>
+  <data name="LiveWorkStream.APIKeyInvalid" xml:space="preserve">
+    <value>Valtuutusavain on virheellinen</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid authorization Key</comment>
+  </data>
+  <data name="LiveWorkStream.OCEndpointMissing" xml:space="preserve">
+    <value>Tekstiviestien saapuvaa URL-osoitetta ei voitu luoda, koska organisaation URL-osoitteen päätepiste puuttuu. Ota yhteyttä järjestelmänvalvojaan.</value>
+    <comment>Error message displayed when the sms inbound URL is not displayed as the OCEndPoint is not set correctly</comment>
+  </data>
+  <data name="LiveWorkStream.CustomerIdInvalid" xml:space="preserve">
+    <value>Valtuutustunnus on virheellinen</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with an invalid authorization Id</comment>
+  </data>
+  <data name="LiveWorkStream.DoesNotExist" xml:space="preserve">
+    <value>Määritettyä työnkulkua ei ole</value>
+    <comment>Error text for when users specify a non-existant Work Stream to validate its SMS connection</comment>
+  </data>
+  <data name="LiveWorkStream.InsufficientInputs" xml:space="preserve">
+    <value>Vaadittuja työnkulun ominaisuuksia ei voitu määrittää annetusta syötteestä</value>
+    <comment>Error message displayed when not enough inputs have been passed to the Work Stream SMS connection validation workflow to determine the necessary Work Stream SMS settings to validate the connection</comment>
+  </data>
+  <data name="LiveWorkStream.InvalidInputData" xml:space="preserve">
+    <value>Syöte oli tunnistamattomassa muodossa</value>
+    <comment>Error text for when there is an error deserializing the input to the Work Stream SMS connection validation workflow</comment>
+  </data>
+  <data name="LiveWorkStream.NoAssociatedSMSNumbers" xml:space="preserve">
+    <value>Työnkulku on liitettävä vähintään yhteen tekstiviestinumeroon</value>
+    <comment>Error text for when users try to validate a Work Stream not associated to any SMS Numbers</comment>
+  </data>
+  <data name="LiveWorkStream.SourceNotSMS" xml:space="preserve">
+    <value>Tämä toiminto on sallittu vain tekstiviestityönkuluissa</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for a Work Stream with a source other than SMS</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignError" xml:space="preserve">
+    <value>Vahvistussanoman lähettäminen epäonnistui</value>
+    <comment>Error message displayed for generic errors encountered calling provider when validating an SMS Work Steam connection</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignErrorWithArgument" xml:space="preserve">
+    <value>Vahvistussanoman lähettäminen epäonnistui: {0}</value>
+    <comment>Error message displayed for errors with additional content encountered calling provider when validating an SMS Work Steam connection</comment>
+  </data>
+  <data name="LiveWorkStream.TelesignTimeout" xml:space="preserve">
+    <value>Aikakatkaisu odotettaessa vahvistusviestin toimitusta</value>
+    <comment>Error message displayed when provider does not successfully or unsuccessfully deliver the verification message in a set amount of time</comment>
+  </data>
+  <data name="LiveWorkStream.Validating" xml:space="preserve">
+    <value>Vahvistetaan tekstiviestin REST API -tietoja</value>
+    <comment>Informational message shown to the user when they click on any of the buttons to validate an SMS Work Stream connection</comment>
+  </data>
+  <data name="LiveWorkStream.ValidationError" xml:space="preserve">
+    <value>Vahvistustyönkulun suorittaminen epäonnistui</value>
+    <comment>Error message displayed for generic errors executing the Work Stream SMS validation workflows</comment>
+  </data>
+  <data name="LiveWorkStream.ValidationSuccess" xml:space="preserve">
+    <value>Tekstiviestin ohjelmointirajapinnan tiedot vahvistettu onnistuneesti</value>
+    <comment>Message shown when the SMS connection is successfully validated</comment>
+  </data>
+  <data name="LiveWorkStream.VerificationSMSMessageText" xml:space="preserve">
+    <value>Vahvistusviesti. Älä reagoi tähän viestiin.</value>
+    <comment>The SMS Number verification message text sent when validating a given SMS Work Stream</comment>
+  </data>
+  <data name="LiveWorkStream.WrongEntity" xml:space="preserve">
+    <value>Työnkulkuna välitetty entiteetti on väärää entiteettityyppiä</value>
+    <comment>Error message displayed when the Work Stream passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="SMSNumber.DoesNotExist" xml:space="preserve">
+    <value>Määritettyä tekstiviestinumeroa ei ole</value>
+    <comment>Error text for when users specify a non-existant SMS Number for validating an SMS Work Stream SMS connection</comment>
+  </data>
+  <data name="SMSNumber.InsufficientInputs" xml:space="preserve">
+    <value>Vaadittuja tekstiviestinumeron ominaisuuksia ei voitu määrittää annetusta syötteestä</value>
+    <comment>Error message displayed when not enough inputs have been passed to the Work Stream SMS connection validation workflow to determine the necessary SMS Number settings to validate the connection</comment>
+  </data>
+  <data name="SMSNumber.InvalidOrMissingLiveWorkStream" xml:space="preserve">
+    <value>Tekstiviestinumero on liitettävä vähintään yhteen tekstiviestityönkulkuun</value>
+    <comment>Error message displayed when an SMS connection validation action is executed for an SMS Number not associated to a Work Stream or associated to a Work Stream with a Stream Source other than SMS</comment>
+  </data>
+  <data name="SMSNumber.NumberInvalid" xml:space="preserve">
+    <value>Tekstiviestinumero on virheellinen</value>
+    <comment>Error message displayed when an invalid validating SMS Rest API is due to the number being invalid</comment>
+  </data>
+  <data name="SMSNumber.ProviderInvalid" xml:space="preserve">
+    <value>Tekstiviestinumeron palveluntarjoaja on virheellinen</value>
+    <comment>Error message displayed when an invalid provider is selected for an SMS Number</comment>
+  </data>
+  <data name="SMSNumber.Telesign.LongCodeInvalid" xml:space="preserve">
+    <value>Pitkässä numerossa pitää olla 8–15 lukua</value>
+    <comment>Error message displayed when an invalid long code SMS Number has been entered</comment>
+  </data>
+  <data name="SMSNumber.Telesign.ShortCodeInvalid" xml:space="preserve">
+    <value>Lyhyen numeron täytyy koostua 3–8 kirjaimesta tai numerosta. Muita muotoilumerkkejä ei sallita.</value>
+    <comment>Error message displayed when an invalid short code SMS number has been entered</comment>
+  </data>
+  <data name="SMSNumber.Telesign.TollFreeInvalid" xml:space="preserve">
+    <value>Maksuttomien numeroiden (pituus 8–15 merkkiä) ensimmäisen luvun tulee olla 1.</value>
+    <comment>Error message displayed when an invalid toll free SMS Number has been entered</comment>
+  </data>
+  <data name="SMSNumber.TypeInvalid" xml:space="preserve">
+    <value>Tekstiviestinumeron tyyppi on virheellinen</value>
+    <comment>Error message displayed when an invalid number type is selected for an SMS Number</comment>
+  </data>
+  <data name="SMSNumber.WrongEntity" xml:space="preserve">
+    <value>Tekstiviestinumerona välitetty entiteetti on väärää entiteettityyppiä</value>
+    <comment>Error message displayed when the SMS Number passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="LiveWorkStream.ValidateFailed" xml:space="preserve">
+    <value>Epäonnistui</value>
+    <comment>Failure validation status of the last SMS provider validation.</comment>
+  </data>
+  <data name="LiveWorkStream.ValidateSuccess" xml:space="preserve">
+    <value>Onnistui</value>
+    <comment>Success validation status of the last SMS provider validation.</comment>
+  </data>
+  <data name="PhoneNumber.DoesNotExists" xml:space="preserve">
+    <value>Määritettyä puhelinnumeroa ei ole</value>
+    <comment>Error text when users specify a non-existent Phone Number.</comment>
+  </data>
+  <data name="PhoneNumber.WrongEntity" xml:space="preserve">
+    <value>Puhelinnumerona välitetty entiteetti on väärää entiteettityyppiä</value>
+    <comment>Error message displayed when the Phone Number passed to the Work Stream SMS connection validation workflow is of the wrong type</comment>
+  </data>
+  <data name="OC_FormNotificationMessageForSMSProvider" xml:space="preserve">
+    <value>Täytä kaikki SMS-asetukset, jotta voit viimeistellä tekstiviestikanavan määrittämisen.</value>
+    <comment>Warning notification message at the form level when the sms provider is not selected, api key, customer id are not filled.</comment>
+  </data>
+  <data name="OC_TeleSignAccountInformationSectionLabel" xml:space="preserve">
+    <value>TeleSign-tilin tiedot</value>
+    <comment>Account information label for TeleSign</comment>
+  </data>
+  <data name="OC_TeleSignApiKeyLabel" xml:space="preserve">
+    <value>Ohjelmointirajapinnan avain</value>
+    <comment>TeleSign label for key</comment>
+  </data>
+  <data name="OC_TeleSignCustomerIdLabel" xml:space="preserve">
+    <value>Asiakkaan tunnus</value>
+    <comment>TeleSign label for ID</comment>
+  </data>
+  <data name="OC_TwilioAccountInformationSectionLabel" xml:space="preserve">
+    <value>Twilio-tilin tiedot</value>
+    <comment>Account information label for Twilio</comment>
+  </data>
+  <data name="OC_TwilioAccountSIDLabel" xml:space="preserve">
+    <value>Tilin SID</value>
+    <comment>Twilio label for ID</comment>
+  </data>
+  <data name="OC_TwilioAuthTokenLabel" xml:space="preserve">
+    <value>Todennustunnus</value>
+    <comment>Twilio label for key</comment>
+  </data>
+  <data name="OC_TwilioLegalDisclaimerPreviewTerms" xml:space="preserve">
+    <value>Esiversioehdot</value>
+  </data>
+  <data name="OC_TwilioLegalDisclaimerText" xml:space="preserve">
+    <value>Antamalla Twilio-tilin tiedot tekstiviestien käyttöönottoon hyväksyt, että tämä ominaisuus on esiversio ja hyväksyt {0}.</value>
+    <comment>DO NOT CHANGE {0} as it will be replaced with OC_TwilioLegalDisclaimerPreviewTerms.</comment>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Ongelmia ei löytynyt.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>On tapahtunut virhe kohteessa {0}.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.ResultEntityMessage" xml:space="preserve">
+    <value>Tekstiviestikanavan määrityksellä ei ole aktiivista työnkulkua.</value>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Yksi tekstiviestikanavan määritys, jolla ei ole aktiivista työnkulkua.</value>
+  </data>
+  <data name="OCValidation.SmsChannelConfigurationShouldHaveWorkStreamRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} tekstiviestikanavan määritystä, joilla ei ole aktiivista työnkulkua.</value>
+    <comment>The error message for SmsChannelConfigurationShouldHaveWorkStream rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.ResultEntityMessage" xml:space="preserve">
+    <value>Tekstiviestikanavan palveluntarjoajan {0} määrityksessä on tyhjä {1}.</value>
+    <comment>The error message for SmsSettingsShouldHaveAllRequiredFields rule where placeholder {0} is SMS provider name, 
+    and {1} is an invalid field name or names</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Käytössä on yksi tekstiviestikanavan määritys, jolla on puutteelliset asetukset.</value>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Käytössä on {0} tekstiviestikanavan määritystä, joilla on puutteelliset asetukset.</value>
+    <comment>The error message for SmsSettingsShouldHaveAllRequiredFields rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.CustomerIdProperty" xml:space="preserve">
+    <value>Asiakkaan tunnus</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_customerid"] property for TeleSign</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.APIKeyProperty" xml:space="preserve">
+    <value>Ohjelmointirajapinnan avain</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_apikey"] property for TeleSign</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.AccountSIDProperty" xml:space="preserve">
+    <value>Tilin SID</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_customerid"] property for Twilio</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.AuthTokenProperty" xml:space="preserve">
+    <value>Todennustunnus</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_apikey"] property for Twilio</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.LastValidationStatus" xml:space="preserve">
+    <value>Viimeisen vahvistuksen tila</value>
+    <comment>Display name of the msdyn_liveworkstream["msdyn_lastvalidationstatus"] property</comment>
+  </data>
+  <data name="OCValidation.SmsSettingsShouldHaveAllRequiredFieldsRule.smsProviderMessage" xml:space="preserve">
+    <value>Tekstiviestien palveluntarjoajaa ei ole määritetty</value>
+    <comment>SMS provider is not set message</comment>
+  </data>
+</root>

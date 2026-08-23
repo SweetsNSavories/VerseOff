@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Määritä päättymisaika, joka on aloitusajan jälkeen.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Aloitusajan on oltava ennen päättymisaikaa.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Aloituspäivä ei voi olla tyhjä.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Päättymispäivä ei voi olla tyhjä.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0} on pakollinen.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Aihe on pakollinen.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Aihe on pakollinen.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Malli on pakollinen.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Alkamisaika on pakollinen.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Päättymisaika on pakollinen.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Uusi {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Kampanja (malli)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Muutokset täytyy tallentaa, ennen kuin tämän aktiviteetin voi asettaa jakeluun.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Kampanja-aktiviteetin voi jakaa vain kerran.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Valitse kanavan tyyppi, tallenna lomake ja yritä sitten uudelleen.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Tämä vaihtoehto on käytettävissä vain silloin, kun yhteydenottotapa on valittu. Yhteydenottotapa ei ole käytettävissä tässä lomakkeessa. Aktiviteettia ei voi jakaa. Ota yhteyttä {#Brand_CRM} -järjestelmänvalvojaan.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>Yhdistämistoimintoa käyttävä suorasähköposti ei ole käytössä. Aktiviteettia ei voi jakaa. Ota yhteyttä {#Brand_CRM}:n järjestelmänvalvojaan.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Jakamistoimintoa ei voi käyttää valitulle kanavalle</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>Yhdistäminen ei ole käytettävissä {#Brand_CRM}:n WWW-asiakasohjelmassa. Yhdistämiseen on käytettävä {#Brand_CRM_Outlook_Short} -ohjelmaa.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Tätä kampanja-aktiviteettia ei voi asettaa jakeluun, koska siihen ei liity yhtään markkinointiluetteloa. Liitä tähän kampanja-aktiviteettiin markkinointiluetteloita ja yritä sitten uudelleen.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Korjaa kaikki lomakkeen varoitukset ja virheet.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Tätä kampanja-aktiviteettia ei voi jakaa. Ota yhteyttä {#Brand_CRM} -järjestelmänvalvojaan.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Poista {0}</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Haluatko poistaa kampanjasta valitut kohteet {0} {1}?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Pikakampanjaa ei voi luoda, koska nykyiseltä sivulta ei löytynyt yhtään tietuetta.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Pikakampanjaa ei voi luoda useammalle kuin yhdelle markkinointiluettelolle kerralla. Valitse vain yksi markkinointiluettelo.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Tämä vaihtoehto ei ole käytettävissä nykyisessä näkymässä. Kaikissa näkymissä ei voi käyttää vaihtoehtoa {0}. Valitse toinen näkymä tai toinen pikakampanjavaihtoehto ja yritä uudelleen.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Pikakampanjoita ei voi suorittaa käyttämällä passiivista markkinointiluetteloa. Aktivoi markkinointiluettelo tai valitse toinen markkinointiluettelo ja yritä uudelleen.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Tämä vaihtoehto ei ole käytettävissä nykyisessä näkymässä. Valitse toinen pikakampanjavaihtoehto ja yritä uudelleen.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Omistaja on pakollinen.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Jono on pakollinen.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Valitut tietueet</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Nykyisen sivun kaikki tietueet</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Kaikkien sivujen kaikki tietueet</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Tätä valintanauhan toimintoa ei tueta.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Sinun on valittava vähintään yksi tietue, ennen kuin voit suorittaa tämän toiminnon.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Tälle toiminnolle ei sallita yli 50 tietuetta</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Voit tehdä tämän toiminnon vain samantyyppisille tietueille.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Käsitellään. Odota...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Virhe. Valittua toimintoa ei suoritettu vähintään yhdelle tietueelle.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Poista {0}</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Etsi poistettavat jäsenet hakuehtojen perusteella.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Etsi lisättävät jäsenet hakuehtojen perusteella.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Käytä hakuehtoja päättäessäsi, mitkä jäsenet säilytetään markkinointiluettelossa. Päivitä markkinointiluettelo.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Sinun täytyy valita tietueita ennen jatkamista</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Poistaminen</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Lisää</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Asiakas</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Yhteyshenkilö</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Liidi</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Arviointi</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Haluatko poistaa luettelosta valitut kohteet {0} {1}?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Kopioidaan markkinointilista toiseen markkinointiluettelon vahvistukseen</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Olet valinnut markkinointiluettelot kopioitavaksi toiseen markkinointiluetteloon.</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Tämä toiminto lisää kaikki valitun kohteen markkinointilistan jäsenet kohdemarkkinointiluetteloon</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Tekemiäsi muutoksia ei ole tallennettu. Tallenna muutokset ja yritä uudelleen.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>OK</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>Käsitellään...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Odota, kunnes pyyntösi on käsitelty...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Pikakampanjaa ei voi luoda</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Nimi: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Aktiviteetti: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Vaikutusalue: valitut tietueet ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Vaikutusalue: nykyisen sivun kaikki tietueet ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Vaikutusalue: kaikkien sivujen kaikki tietueet</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Omistaja: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Pikakampanjan nimi on pakollinen.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Aktiviteetin tyyppi on pakollinen.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Pikakampanjaan sisällytettyjen tietueiden omistajat</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Minä</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Tämän kampanjan aktivointia ei voi poistaa, koska siihen liittyviä kampanja-aktiviteetteja on avoinna. Sulje kampanja-aktiviteetit ja yritä uudelleen.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>Valituissa kampanjoissa on {0} kampanja(a), joiden aktivointia ei voi poistaa, koska niihin on liitetty vähintään yksi avoin kampanja-aktiviteetti. Sulje avoimet kampanja-aktiviteetit ja yritä uudelleen.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>Sähköpostiviestin sisältö on liian suuri tähän ohjattuun toimintoon. Luo siitä sähköpostimalli ja valitse sitten kyseinen malli tässä.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Pikakampanjat eivät tue joukkomuokkausta.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Luettelo on lukittu</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>Luettelot {0} on lukittu</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Toimintoa ei voi suorittaa dynaamiselle luettelolle.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Kampanjaan ei voi liittää ei-aktiivista nimikettä.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Kampanjaan ei voi liittää ei-aktiivista nimikettä.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Viittausta liitetiedostoon ei löytynyt.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>Sähköpostin vastaanottajaa ei ole, tai hänellä ei ole kelvollista sähköpostiosoitetta.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Liite ei ole hyväksyttyä tyyppiä tai se on liian suuri. Sitä ei voi ladata tietokoneelle tai palvelimeen.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Vastanottaja on varustettu faksien lähetyskieltomerkinnällä.</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Virheellinen sähköpostin vastaanottaja.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Virhe toiminnon sähköpostimallissa.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Virhe toiminnon sähköpostin lähettämisessä.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Virhe toiminnon ilmoituksen liittämisessä.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Virhe toiminnon luonti-ilmoituksessa.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Virhe toiminnon käsittelyn poiston aktiviteetissa.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Virhe toiminnon käsittelyaktiviteetissa.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Virhe toiminnon liittämisaktiviteetissa.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Virhe toiminnon luontiaktiviteetissa.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Tähän markkinointiluettelon jäseneen ei otettu yhteyttä, koska jäsen on saanut tämän viestin aiemmin.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Lähettäjällä ei ole sähköpostiosoitetta osapuolen tietueessa</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>Sähköpostiosoitetta ei määritetty eikä kutsuvalle käyttäjälle ole määritetty sähköpostiosoitetta</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>Sähköpostiviestiä ei lähetetty vastaanottajan viestintäasetusten tai sähköpostiosoitteeseen liittyvän ongelman takia.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Virheellinen asiakkaan osoitteen tyyppi.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Viestien yhdistämistoiminnossa tapahtui odottamaton virhe.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Käyttäjä peruutti viestien yhdistämistoiminnon.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Tämä asiakas suodatetaan puuttuvan sähköpostiosoitteen vuoksi.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Vastaanottaja poistettiin, koska se ei ole aktiivinen.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Joukkotoimintoon liittyvät työnkulun säännöt puuttuvat.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>Vastaanottaja on poistettu roskapostiestoasetusten tai vastaanottajan viestintäasetusten vuoksi.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Tapaamisen jakamiselle ei voi määrittää osallistujaa.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Tapaamisen jakamiselle ei voi määrittää lähettäjää</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Tapaamisen jakamiselle ei voi määrittää järjestäjää</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Tukematon luettelon jäsenen tyyppi.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Yritettiin suorittaa luvaton toiminto.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>Käyttäjällä ei ole vaadittuja oikeuksia.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Käyttäjällä ei ole oikeutta suorittaa tätä toimintoa.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Virheellinen sähköpostiosoite. Lisätietoja saat järjestelmänvalvojalta.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Lomakkeesta puuttuu seuraavat elementit: {0}. Tämä vaikuttaa lomakkeen toimintoihin.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Tähän entiteettityyppiin kohdistettuun markkinointiluetteloon ei voi luoda mahdollisuuksia.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Käsiteltävänä oleva pyyntö on jo olemassa, yritä uudelleen jonkin ajan kuluttua.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Pyyntö lähetetty. Odota, kunnes sivu uudelleenohjaa kopioituun luetteloon.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>Uusi {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Voit luoda {0} markkinointiluettelosta valitsemillesi jäsenille täyttämällä tämän lomakkeen. Voit lisätä tämän {0} uutena {0} kunkin jäsenen tietueeseen valitsemalla Jaa.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Tallennettu</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

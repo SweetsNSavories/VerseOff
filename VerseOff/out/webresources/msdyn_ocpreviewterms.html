@@ -1,0 +1,175 @@
+<!--Sample parameter inputs : "PreviewMessage=OC_Preview_Text,PreviewLinkLabel=OC_Preview_Text_Hyperlink_Label,PreviewLinkURL=https://aka.ms/sbrpreview/,LearnMoreLinkLabel=OC_Preview_LearnMore_Hyperlink_Label,LearnMoreLinkURL=https://aka.ms/sbrouting"-->
+<html>
+	<head>
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self';">
+		<link href="/uclient/resources/styles/Styles.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript">
+
+			function isValidProtocol(protocol) {
+				// Validate the protocol
+				return protocol === "https:";
+			}
+
+			function isValidHost(hostname) {
+				// Validate the hostname
+				return hostname === "aka.ms" || hostname === "go.microsoft.com";
+			}
+
+			function hasValidPathname(hostname, pathname) {
+				var pathRegex = /^\/[a-zA-Z]+\/?$/;
+				return (hostname === "aka.ms" && pathRegex.test(pathname)) || (hostname === "go.microsoft.com" && pathname === "/fwlink/p/");
+			}
+
+			function hasOnlyValidParams(hostname, searchParams) {
+				// if hostname is aka.ms then clcid and if hostname is go.microsoft.com then linkid or clcid
+				if (hostname === "aka.ms") {
+					// check only clcid should be present
+					return  searchParams.size === 0 || (searchParams.size === 1 && searchParams.has("clcid"));
+				} else {
+					// check only linkid or clcid should be present
+					return (searchParams.size === 1 && searchParams.has("linkid")) || 
+						(searchParams.size === 2 && searchParams.has("clcid") && searchParams.has("linkid"));
+				}
+			}
+
+			function hasValidParamValues(searchParams) {
+				var clcidRegex = /^0x[0-9A-Fa-f]+$/;
+				var linkidRegex = /^[0-9]+$/;
+
+				return (!searchParams.has("clcid") || clcidRegex.test(searchParams.get("clcid"))) &&
+					(!searchParams.has("linkid") || linkidRegex.test(searchParams.get("linkid")));
+			}
+
+			function isValidParameter(paramValue, paramName) {
+				// Combined validation for both URL and Label parameters
+				
+				// URL validation for PreviewLinkURL and LearnMoreLinkURL
+				if (paramName === "PreviewLinkURL" || paramName === "LearnMoreLinkURL") {
+					try {
+						var urlObj = new URL(paramValue);
+						var protocol = urlObj.protocol;
+						var hostname = urlObj.hostname;
+						var pathname = urlObj.pathname;
+						var searchParams = urlObj.searchParams;
+
+
+					return isValidProtocol(protocol) && 
+							isValidHost(hostname) && 
+							hasValidPathname(hostname, pathname) && 
+							hasOnlyValidParams(hostname, searchParams) && 
+							hasValidParamValues(searchParams);
+					} catch (e) {
+						// Invalid URL format
+						return false;
+					}
+				}
+				
+				// Label validation for PreviewLinkLabel and LearnMoreLinkLabel
+				if (paramName === "PreviewLinkLabel" || paramName === "LearnMoreLinkLabel" || paramName === "PreviewMessage") {
+					// validate with regex - should contain only alphabetic characters and underscores
+					var labelRegex = /^[a-zA-Z_]+$/;
+					return labelRegex.test(paramValue);
+				}
+
+				return false;
+			}
+			
+			function getWebresourceParameter()
+			{
+				var userParameters = [], passedParameters = [];
+				if (location.search != "")
+				{
+					var vals = location.search.substr(1).split("&");
+					for (var i = 0; i < vals.length; i++)
+					{
+						vals[i] = vals[i].split("=");
+						if (vals[i][0].toLowerCase() == "data" && vals[i][1] != "")
+						{
+							var userVals = decodeURIComponent(vals[i][1]).split(",");
+							for (var j = 0; j < userVals.length; j++)
+							{
+								var splitArray = userVals[j].split("=");
+								var valArray = [splitArray.shift(), splitArray.join('=')];
+								var paramName = valArray[0].trim();
+								var paramValue = valArray[1].trim();
+								
+								// Validate parameter based on parameter name
+								if (isValidParameter(paramValue, paramName)) {
+									passedParameters[paramName] = paramValue;
+								} else {
+									console.warn("Invalid parameter value detected, ignoring:", paramName);
+								}
+							}
+						}
+					}
+				}
+				return passedParameters;
+			}
+			
+			function setLocalizedStrings()
+			{
+				var customParameters = getWebresourceParameter();
+				
+				// If we need to, we can make this web resource take this in as a parameter, but we'll need to figure out how to dynamically load the appropriate resx file into the parent frame outside of the dependency list.
+				var webResource = "msdyn_ChannelExperienceApps";
+				var userLcidHexa = window.top.Xrm.Page.context.getUserLcid().toString(16);
+
+				function formatAnchor(anchorClass, anchorUrl, anchorLabelKey) {
+					// Make anchor links optional - return empty string if URL or label is not provided
+					if (!anchorUrl || !anchorLabelKey) {
+						return "";
+					}
+					
+					anchorUrl = anchorUrl + (anchorUrl.includes("?") ? "&" : "?") + "clcid=0x" + userLcidHexa;
+					var anchorLabel = parent.Xrm.Utility.getResourceString(webResource, anchorLabelKey);
+					anchorLabel = anchorLabel ? anchorLabel : anchorLabelKey;
+					return "<a class=\"{0}\" href=\"{1}\" target=\"_blank\">{2}</a>"
+						.replace("{0}", anchorClass)
+						.replace("{1}", anchorUrl)
+						.replace("{2}", anchorLabel);
+				}
+				
+				var termsAnchor = formatAnchor("preview-text-hyperlink-label", customParameters.PreviewLinkURL, customParameters.PreviewLinkLabel);
+				var learnMoreAnchor = formatAnchor("preview-learnmore-hyperlink-label", customParameters.LearnMoreLinkURL, customParameters.LearnMoreLinkLabel);
+				
+				var previewFormat = parent.Xrm.Utility.getResourceString(webResource, customParameters.PreviewMessage ? customParameters.PreviewMessage : "OC_Preview_Message");
+				var previewHtml = previewFormat.replace("{0}", termsAnchor).replace("{1}", learnMoreAnchor).trim();
+				document.getElementById("preview-text").innerHTML = previewHtml;
+			}
+		</script>
+		<style>
+			.preview-text-body
+			{
+				background-color:#EFEFEF !important;
+				font-family: "Segoe UI", sans-serif;
+			}
+			.preview
+			{
+				padding: 0.35em;
+				display : table;
+				color: #333333;
+			}
+			#msdyn-previewimage
+			{
+				top: 0.175em;
+				position:relative;
+				display: table-cell;
+				padding : 0.2em;
+				font-size:inherit;
+				color: #3B79B7;
+			}
+			#preview-string-wrap
+			{
+				display: table-cell;
+			}
+		</style>
+	</head>
+	<body onload="setLocalizedStrings();" class="preview-text-body" style="overflow-wrap: break-word;">
+		<div class="preview">
+			<span id="msdyn-previewimage" class="symbolFont InformationIcon-symbol"></span>
+			<span id="preview-string-wrap">
+				<span id="preview-text"></span>
+			</span>
+		</div>
+	</body>
+</html>

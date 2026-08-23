@@ -1,7 +1,9 @@
 import json
 import logging
 import os
+import xml.etree.ElementTree as ET
 from pathlib import Path
+from urllib.parse import urlencode
 
 import msal
 import requests
@@ -44,12 +46,33 @@ class SyncEngine:
         self.session = session or requests.Session()
         self.token_provider = token_provider
         self.request_timeout = int(self.config.get("request_timeout", 60))
-        self.entities = {
-            entity["LogicalName"]: entity
-            for entity in self.config.get("entities", [])
-            if entity.get("LogicalName")
-        }
+        raw_entities = self.config.get("entities", [])
+        if isinstance(raw_entities, list):
+            self.entities = {
+                e.get("LogicalName"): e
+                for e in raw_entities
+                if isinstance(e, dict) and e.get("LogicalName")
+            }
+        else:
+            self.entities = dict(raw_entities or {})
+        self.deep_sync_entities = {}
+        self._discover_subgrid_entities()
         self.cache_path = Path(_default_data_dir()) / "verseoff_token_cache.bin"
+
+    def _discover_subgrid_entities(self):
+        """Analyze form XML to find subgrid targets for automatic syncing."""
+        form_dir = Path(_resource_path("forms"))
+        if not form_dir.exists():
+            return
+        for form_file in form_dir.glob("*.xml"):
+            try:
+                tree = ET.parse(form_file)
+                for subgrid in tree.iter("subGrid"):
+                    target = subgrid.get("entityName")
+                    if target and target in self.entities:
+                        self.deep_sync_entities[target] = True
+            except ET.ParseError:
+                continue
 
     def _load_token_cache(self):
         cache = msal.SerializableTokenCache()
@@ -175,7 +198,7 @@ class SyncEngine:
         return payload
 
     @classmethod
-    def _normalize_remote_record(cls, entity, record):
+    def _normalize_remote_record(cls, entity, record, queue=None):
         normalized = dict(record)
         for attribute in entity.get("attributes", []):
             if not cls._is_lookup_attribute(attribute):
@@ -184,6 +207,13 @@ class SyncEngine:
             raw_lookup_key = f"_{logical_name}_value"
             if raw_lookup_key in normalized:
                 normalized[logical_name] = normalized[raw_lookup_key]
+                
+        if queue is not None:
+            for key, value in record.items():
+                if key.endswith(f"@{LOOKUP_LOGICAL_NAME_ANNOTATION}"):
+                    target_entity = value
+                    if target_entity:
+                        queue.add(target_entity)
         return normalized
 
     def _push_entity(self, logical_name, entity, token):
@@ -378,6 +408,13 @@ class SyncEngine:
                 )
                 self.db.set_delta_link(logical_name, None)
                 return self._pull_entity(logical_name, entity, token)
+            if not delta_link and "$select=" in url and response.status_code == 400:
+                logger.info(
+                    "Query with $select rejected for %s; retrying default entity set.",
+                    logical_name,
+                )
+                url = f"{self.api_url}/{entity.get('EntitySetName') or logical_name}"
+                continue
             response.raise_for_status()
             page = response.json()
 
@@ -407,6 +444,7 @@ class SyncEngine:
                 normalized_record = self._normalize_remote_record(
                     entity,
                     record,
+                    queue=getattr(self, "current_deep_sync_queue", None)
                 )
                 if self.db.upsert_remote_record(
                     logical_name,
@@ -423,6 +461,46 @@ class SyncEngine:
             self.db.set_delta_link(logical_name, next_delta_link)
         return {"pulled": pulled, "deleted": deleted}
 
+    def _discover_subgrid_entities(self):
+        self.discovered_targets = set(["annotation", "activitypointer"])
+        for entity in self.entities.values():
+            for form in entity.get("forms", []):
+                form_xml = form.get("formxml")
+                if not form_xml:
+                    continue
+                try:
+                    root = ET.fromstring(form_xml)
+                    for control in root.findall(".//control"):
+                        class_id = str(control.get("classid") or "").lower()
+                        if class_id == "{e7a81278-8635-4d9e-8d4d-59480b391c5b}" or str(control.get("indicationOfSubgrid", "")).lower() == "true":
+                            target = control.find(".//TargetEntityType")
+                            if target is not None and target.text:
+                                self.discovered_targets.add(target.text.lower())
+                except Exception as e:
+                    logger.warning("Failed to parse formxml for subgrids: %s", e)
+
+    def _ensure_metadata(self, logical_name, token):
+        if logical_name in self.entities:
+            return self.entities[logical_name]
+        if logical_name in self.deep_sync_entities:
+            return self.deep_sync_entities[logical_name]
+        
+        logger.info("Fetching metadata for deep sync entity: %s", logical_name)
+        url = f"{self.api_url}/EntityDefinitions(LogicalName='{logical_name}')?$select=EntitySetName,PrimaryIdAttribute,ChangeTrackingEnabled"
+        response = self.session.get(url, headers=self._headers(token), timeout=self.request_timeout)
+        if response.status_code == 200:
+            data = response.json()
+            entity_def = {
+                "LogicalName": logical_name,
+                "EntitySetName": data.get("EntitySetName"),
+                "PrimaryIdAttribute": data.get("PrimaryIdAttribute"),
+                "ChangeTrackingEnabled": data.get("ChangeTrackingEnabled", False),
+                "attributes": []
+            }
+            self.deep_sync_entities[logical_name] = entity_def
+            return entity_def
+        return None
+
     def sync_all(self):
         token = self.acquire_token()
         summary = {
@@ -432,12 +510,40 @@ class SyncEngine:
             "conflicts": 0,
             "failed": 0,
         }
+        self.current_deep_sync_queue = set(self.discovered_targets)
+        
         for logical_name, entity in self.entities.items():
-            push_result = self._push_entity(logical_name, entity, token)
-            pull_result = self._pull_entity(logical_name, entity, token)
-            for result in (push_result, pull_result):
-                for key, value in result.items():
-                    summary[key] += value
+            try:
+                push_result = self._push_entity(logical_name, entity, token)
+                pull_result = self._pull_entity(logical_name, entity, token)
+                for result in (push_result, pull_result):
+                    for key, value in result.items():
+                        summary[key] += value
+            except Exception as e:
+                logger.warning("Sync encountered an issue for %s: %s", logical_name, e)
+                summary["failed"] += 1
+
+        # Deep Sync Phase
+        processed = set(self.entities.keys())
+        while self.current_deep_sync_queue:
+            target = self.current_deep_sync_queue.pop()
+            if target in processed:
+                continue
+            processed.add(target)
+            try:
+                entity_def = self._ensure_metadata(target, token)
+                if entity_def and entity_def.get("EntitySetName"):
+                    logger.info("Deep syncing related entity: %s", target)
+                    push_result = self._push_entity(target, entity_def, token)
+                    pull_result = self._pull_entity(target, entity_def, token)
+                    for result in (push_result, pull_result):
+                        for key, value in result.items():
+                            summary[key] += value
+            except Exception as e:
+                logger.warning("Deep sync encountered an issue for %s: %s", target, e)
+                summary["failed"] += 1
+
+        self.current_deep_sync_queue = None
         self._reconcile_timeline_actions()
         logger.info("Dataverse sync complete: %s", summary)
         return summary

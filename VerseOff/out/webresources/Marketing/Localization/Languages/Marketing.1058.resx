@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Слід зазначити час завершення, який настає після часу початку.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Слід зазначити час початку, який передує часу завершення.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Дата початку не може бути пустою.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Дата завершення не може бути пустою.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>Поле "{0}" обов’язкове.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Необхідно вказати тему.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Потрібно вказати тему.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Потрібно вказати шаблон.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Потрібно вказати час початку.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Потрібно вказати час завершення.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Створити {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Кампанія (шаблон)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Для розподілення цієї справи слід зберегти зміни.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Справу кампанії можна розподілити лише один раз.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Виберіть тип каналу, збережіть форму та повторіть спробу.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Цей параметр доступний, лише якщо вибрано метод зв’язку. У цій формі метод зв’язку недоступний. Справу розподілити не можна. Зверніться до свого адміністратора {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>Безпосереднє надсилання електронної пошти шляхом злиття вимкнуто. Не вдалося розподілити справу. Зверніться до свого адміністратора {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Для вибраного каналу можливості розподілу недоступні</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>У веб-клієнті {#Brand_CRM} злиття недоступне. Для злиття пошти використовуйте {#Brand_CRM_Outlook_Short}.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Не вдалося розподілити справу цієї кампанії, оскільки з нею не пов’язані маркетингові списки. Зв’яжіть маркетингові списки з цією справою кампанії та повторіть спробу.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Виправте всі помилки та попередження у формі.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Не вдалося розподілити цю справу кампанії. Зверніться до адміністратора {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Видалення {0}</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Видалити вибрані сутності ({0} {1}) з кампанії?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Не вдалося створити експрес-кампанію, оскільки на поточній сторінці не знайдено жодного запису.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Експрес-кампанію не можна створити для кількох маркетингових списків одночасно. Виберіть лише один маркетинговий список.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Цей параметр недоступний для поточного подання. Не всі подання працюватимуть із параметром {0}. Виберіть інше подання або інший параметр експрес-кампанії та повторіть спробу.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Не вдалося запустити експрес-кампанію для неактивного маркетингового списку. Активуйте маркетинговий список або виберіть інший маркетинговий список і повторіть спробу.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Цей параметр для поточного подання недоступний. Виберіть інший параметр експрес-кампанії та повторіть спробу.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Потрібно вказати відповідального.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Потрібно вказати чергу.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Для вибраних записів</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Для всіх записів на поточній сторінці</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Для всіх записів на всіх сторінках</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Ця дія на стрічці не підтримується.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Щоб виконати цю дію, виберіть один або кілька записів.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Для цієї операції дозволено не більше 50 записів</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Цю дію можна виконати лише для записів однакового типу.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Триває обробка, зачекайте ...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Сталася помилка. Виконання вибраної дії не завершено для одного або кількох записів.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Видалення {0}</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Знайдіть учасників для видалення за умовами пошуку.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Пошук учасників для додавання на основі умов пошуку.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Визначте учасників, які залишаться в маркетинговому списку, на основі умов пошуку. Оновіть маркетинговий список.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Щоб продовжити, слід вибрати записи</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Додати</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Бізнес-партнер</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Контактна особа</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Потенційний клієнт</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Оцінити</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Видалити вибрані сутності ({0} {1}) зі списку?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Підтвердження копіювання маркетингового списку до іншого маркетингового списку</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Вибрано маркетингові списки для копіювання до іншого маркетингового списку</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Ця дія призведе до додавання всіх учасників вибраного маркетингового списку до кінцевого маркетингового списку.</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Зміни не збережено. Збережіть зміни та повторіть спробу.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>OK</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>Обробка...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Зачекайте. Ваш запит обробляється...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Не вдалося створити експрес-кампанію</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Назва: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Справа: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Область застосування: для вибраних записів ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Область застосування: для всіх записів на поточній сторінці ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Область застосування: для всіх записів на всіх сторінках</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Відповідальний: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Потрібно вказати назву експрес-кампанії.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Потрібно вказати тип дії.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Відповідальні за записи, додані до експрес-кампанії</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Я</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Не вдалося деактивувати цю кампанію, оскільки з нею пов’язані її відкриті справи. Закрийте справи кампанії та повторіть спробу.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>Не вдалося деактивувати {0} з вибраних кампаній, оскільки з ними пов’язані їхні відкриті справи. Закрийте справи в кампаніях і повторіть спробу.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>Вміст повідомлення електронної пошти завеликий для цього майстра. Створіть його як шаблон повідомлення електронної пошти, а потім виберіть цей шаблон тут.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Експрес-кампанії не підтримують групове редагування.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Список заблоковано</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>Списків заблоковано: {0}</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Не вдалося виконати дію з динамічним списком.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Не вдалося зв’язати неактивний елемент із кампанією.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Не вдалося зв’язати неактивний елемент із кампанією.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Не вдалося знайти посилання на вкладення.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>Одержувач повідомлення електронної пошти не існує або для нього вказано неправильну адресу.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Вкладення завелике або має неприпустимий тип. Його не можна передати або завантажити.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Одержувач має позначку "Не надсилати факс".</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Неприпустимий одержувач електронної пошти.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Помилка дії "Шаблон повідомлення електронної пошти".</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Помилка дії "Надіслати повідомлення електронної пошти".</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Помилка дії "Вкладення нотатки".</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Помилка дії "Створити нотатку".</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Помилка дії "Не обробляти справу".</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Помилка дії "Обробити справу".</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Помилка дії "Вкладення справи".</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Помилка дії "Створити справу".</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>До цього учасника з маркетингового списку не зверталися, оскільки він отримав це інформаційне повідомлення раніше.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Відправник не має адреси електронної пошти в записі учасника</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>Не вказано адресу електронної пошти, а в користувача, який здійснює виклик, також відсутня адреса електронної пошти</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>Повідомлення електронної пошти не надіслано через параметри зв’язку одержувача або проблему з його адресою електронної пошти.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Неприпустимий тип адреси клієнта.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Сталася неочікувана помилка під час об’єднання.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Операцію об’єднання скасовано користувачем.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Цього клієнта відфільтровано через відсутню адресу електронної пошти.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Одержувача виключено, оскільки він неактивний.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Відсутні правила робочих циклів, пов’язаних із груповими операціями.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>Одержувача виключено через параметри захисту від спаму або параметри зв’язку одержувача.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Не вдається вказати учасника, щоб призначити йому розподіл.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Не вдається вказати відправника, щоб призначити йому розподіл</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Не вдається вказати організатора для призначення йому розподілу</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Тип учасників списку не підтримується.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Спроба виконати неавторизовану операцію.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>У користувача немає необхідних прав.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Користувачу бракує прав на виконання цієї дії.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Неприпустима адреса електронної пошти. Щоб отримати додаткову інформацію, зверніться до системного адміністратора.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Бракує форми в наведених нижче елементах: {0}. Це вплине на функціональні можливості.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Не можна створювати потенційні угоди для маркетингового списку, орієнтованого на цей тип сутності.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Запит уже виконується. Повторіть спробу пізніше.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Запит надіслано. Зачекайте, доки вас не буде переспрямовано з цієї сторінки до скопійованого списку.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>Створити {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Заповніть цю форму, щоб створити {0} для учасників, вибраних у маркетинговому списку. Щоб додати {0} як новий об’єкт "{0}" до запису кожного учасника, натисніть кнопку "Розподілити".</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Успішно збережено</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

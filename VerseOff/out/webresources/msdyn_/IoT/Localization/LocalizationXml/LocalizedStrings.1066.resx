@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>Thiết bị đang được đăng ký dưới dạng chạy ẩn. Bạn có thể tiếp tục dùng Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>Lấy dữ liệu thiết bị dưới dạng chạy ẩn. Bạn có thể tiếp tục dùng Microsoft Dynamics 365.</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>Đã xảy ra lỗi khi thực hiện hành động. Vui lòng thử lại sau.</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>Vui lòng chọn ít nhất một bản ghi.</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>Vui lòng đăng ký thiết bị trước khi cố gắng lấy dữ liệu thiết bị.</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>Lấy dữ liệu thiết bị dưới dạng chạy ẩn. Bạn có thể tiếp tục dùng Microsoft Dynamics 365. Một vài thiết bị trong số này chưa được đăng ký, vì vậy, những dữ liệu này sẽ không truy xuất được.</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>Các thiết bị đã chọn đang được đăng ký dưới dạng chạy ẩn. Bạn có thể tiếp tục dùng Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>Lấy dữ liệu thiết bị dưới dạng chạy ẩn. Bạn có thể tiếp tục dùng Microsoft Dynamics 365.</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Lấy dữ liệu thiết bị dưới dạng chạy ẩn. Bạn có thể tiếp tục dùng Microsoft Dynamics 365.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>Nhập tất cả các thiết bị mới ở dạng chạy ẩn. Điều hướng đến trang thiết bị để xem các thiết bị mới từ nhà cung cấp IoT.</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>Nhập tất cả các thiết bị mới ở dạng chạy ẩn. Làm mới danh sách để xem các thiết bị mới.</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>Vui lòng chọn một bản ghi.</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>Xác thực không thành công. Bạn cần phải đăng nhập vào tài khoản Power BI để xem hoặc chỉnh sửa ngăn xếp Power BI.</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>Không tìm thấy thiết bị đã đăng ký.</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>Không tìm thấy các thiết bị kết nối đã đăng ký.</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>Không tìm thấy ID thiết bị. Vui lòng thêm một ID thiết bị để xem ngăn xếp Power BI.</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Ngăn xếp Power BI</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Bảng thông tin Power BI</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>Ngăn xếp</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>Không thể truy xuất tệp cấu hình cho PowerBI embedded đã lưu</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>Đã xảy ra lỗi và chúng tôi không thể lưu tùy chỉnh của bạn. Chi tiết lỗi: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>Thực thể hiện tại không được cấu hình để hỗ trợ áp dụng bộ lọc ID thiết bị vào một ngăn xếp Power BI.</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>Chọn ngăn xếp Power BI bạn muốn thêm vào biểu mẫu.</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Ngăn xếp Power BI</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>Thêm ngăn xếp Power BI cho thiết bị đã kết nối.</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>Đang phát hành tùy chỉnh</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>Ngăn xếp Power BI sẽ được lọc để hiển thị dữ liệu thiết bị hiện tại.</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>Việc lưu lệnh này cũng có thể dẫn đến gửi lệnh tới (các) thiết bị, bạn có muốn tiếp tục không?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>Thẻ</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>Thuộc tính</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>Tìm hiểu thêm về tích hợp với Azure IoT Central, một giải pháp IoT SaaS toàn cầu được quản lý toàn phần.</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>Tích hợp với Hub IoT hiện có hoặc triển khai một hub mới và quản lý giải pháp IoT PaaS đã đặt sẵn cấu hình từ đăng ký Azure của riêng bạn.</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>Không thể gửi lệnh. Để gửi lệnh, cảnh báo IoT phải được liên kết với bản ghi này.</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>Thiết bị đang được đăng ký dưới dạng chạy ẩn. Làm mới để xem trạng thái đăng ký được cập nhật.</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>Thiết bị này đang được đăng ký. Bạn có muốn đăng ký lại thiết bị này không?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>Thiết bị này đã được đăng ký. Bạn có muốn đăng ký lại thiết bị này không?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>Đăng ký Thiết bị</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>Thiết bị được chọn đang được đăng ký. Làm mới để xem trạng thái đăng ký được cập nhật.</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>Gửi lệnh tới {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>Gửi lệnh</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0} đã gửi tới {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>Đã gửi lệnh tới {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>Lệnh cho {0}</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>Thiết bị đã kết nối</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>Đã gửi lệnh.</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>Xem trạng thái lệnh</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>Không thể gửi lệnh.</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>Phải chỉ định Lệnh hoặc Tin nhắn.</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>Không thể kết nối thiết bị.</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>Thiết bị</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>Kết nối Thiết bị với {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>Đường dẫn Thiết bị</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>Đường dẫn chính</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>Không có lệnh xác định trước nào được liên kết với thiết bị này. Vui lòng định cấu hình thể loại thiết bị để xem các lệnh được xác định trước.</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>Tính năng Gợi ý IoT đã được bật, vui lòng chờ 24 giờ để áp dụng thay đổi cấu hình cho việc đào tạo mô hình. </value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>Vui lòng xác nhận để tắt tính năng Gợi ý IoT.</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>Xác nhận tắt Gợi ý IoT</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>Bằng việc bật tính năng này, bạn xác nhận rằng tính năng này đang ở giai đoạn bản xem trước và bạn đồng ý với {0}.</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>Điều khoản của bản xem trước</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>Tìm hiểu thêm</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>Dạng xem thiết bị tùy chỉnh</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>Vui lòng nhập thiết bị IoT hợp lệ để tiếp tục.</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>Tổng số đếm là tùy chọn tổng hợp có sẵn duy nhất cho các sự kiện thiết bị.</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>Không thể tạo quá 6 ngăn xếp cho thiết bị hiện tại.</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>Đảm bảo phép đo được chọn là giá trị đo được báo cáo cho thiết bị hiện tại.</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>Thông tin đọc thiết bị đã kết nối</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Nút cấu hình Power BI</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>Đã gửi thành công lệnh đến máy chủ. Vui lòng đồng bộ hóa thiết bị để xem trạng thái của lệnh.</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>Không gửi được lệnh đến máy chủ do sự cố kết nối. Lệnh sẽ được gửi lần tới khi thiết bị của bạn đồng bộ hóa.</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>Bạn cần phải trực tuyến thì mới kéo được dữ liệu.</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>Cần có kết nối Internet để thực hiện hành động này.</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>Bạn cần đồng bộ hóa bản ghi này để thực hiện hành động này.</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>Đã gửi thành công đăng ký thiết bị. Bạn có thể xem trạng thái đăng ký vào lần tới khi bạn đồng bộ hóa hoặc chuyển sang chế độ trực tuyến.</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>Không gửi được đăng ký thiết bị đến máy chủ do sự cố kết nối. Đăng ký sẽ được gửi lần tới khi thiết bị của bạn đồng bộ hóa.</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>Đã gửi thành công yêu cầu lấy dữ liệu thiết bị. Bạn có thể xem kết quả trong tab lịch sử thiết bị vào lần tới khi thiết bị của bạn đồng bộ hóa.</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>Bạn phải có kết nối internet để gửi lệnh.</value>
+  </data>
+</root>

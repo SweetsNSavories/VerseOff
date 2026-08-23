@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LOCID_ASSIGNOBJIDREQD">
+    <value>Anda harus memberikan nilai untuk Ditetapkan ke Pengguna/Tim.</value>
+    <comment>Error message that will be shown to user when editing Rule item.[Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType>8</ObjectType>
+      <ObjectType>9</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="LOCID_ROUTEQUEUEIDREQD">
+    <value>Anda harus memberikan nilai untuk Tambahkan ke Antrean.</value>
+    <comment>Error message that will be shown to user when editing Rule item.[Category="Servicing"]</comment>
+    <ObjectReferences>
+      <ObjectType>8199</ObjectType>
+    </ObjectReferences>
+  </data>
+  <data name="LOCID_ERROR_MISSING_ROUTETO">
+    <value>Informasi tentang cara merutekan item tidak ada atau salah.</value>
+    <comment>Error message that is displayed to the user in the Rule item form when Assign To User lookup is empty.</comment>
+  </data>
+  <data name="LOCID_ERROR_MISSING_CODNTION_REF">
+    <value>Beberapa kondisi tidak ada atau salah.</value>
+    <comment>Error message that is displayed to the user in the Convert rule,Rule item form when any condition refrences are missing.</comment>
+  </data>
+  <data name="LOCID_ERROR_MISSING_ALL">
+    <value>Beberapa kondisi dan informasi tentang cara merutekan item tidak ada atau salah.</value>
+    <comment>Error message that is displayed to the user in the Rule item form when route the item  is  missing.</comment>
+  </data>
+  <data name="LOCID_ERROR_CREATE_UCI">
+    <value>Item aturan ini tidak dapat dibuat di sini. Anda dapat membuat item aturan di klien web lama.</value>
+    <comment>Error message that is displayed to the user in the Rule item form when the item is creating in UCI </comment>
+  </data>
+  <data name="LOCID_ERROR_EDIT_UCI">
+    <value>Item aturan ini tidak dapat diedit di sini. Anda dapat mengedit item aturan di klien web lama.</value>
+    <comment>Error message that is displayed to the user in the Rule item form when the item is editing in UCI </comment>
+  </data>
+  <data name="INFO_DEPRECATION_NOTICE_FOR_LEGACY_ROUTINGRULE" xml:space="preserve">
+		<value>Sebaiknya gunakan pengalaman Antarmuka Terpadu Aturan Perutean. Baca Selengkapnya https://docs.microsoft.com/dynamics365/customer-service/create-rules-automatically-route-cases</value>
+		<comment>Legacy Routing Rule is deprecated in legacy web client. </comment>
+	</data>
+  <data name="TURN_ON_UNIFIED_ROUTING_NOTIFICATION_ROUTINGRULE" xml:space="preserve">
+		<value>Aktifkan perutean terpadu untuk mengklasifikasikan, merutekan, dan menetapkan item kerja secara otomatis. Buka Konfigurasi Layanan atau https://go.microsoft.com/fwlink/?linkid=2155113 untuk selengkapnya.</value>
+		<comment>Enable unified routing to automatically classify, route and assign work items</comment>
+	</data>
+  <data name="SAVEAS_DIALOG_TITLE_ROUTINGRULE" xml:space="preserve">
+		<value>Simpan sebagai</value>
+		<comment>Save as dialog title</comment>
+	</data>
+  <data name="SAVEAS_OVERWRITE_WARNING_MESSAGE" xml:space="preserve">
+		<value>Tindakan ini akan menimpa rangkaian aturan perutean dan tidak dapat dikembalikan.</value>
+		<comment>Warning message when user selects overwrite in saveas dialog</comment>
+	</data>
+  <data name="SAVEAS_DIALOG_NEWRECORD_OPTION" xml:space="preserve">
+		<value>Buat kloning</value>
+		<comment>Option to choose clone</comment>
+	</data>
+  <data name="SAVEAS_DIALOG_OVERWRITE_OPTION" xml:space="preserve">
+		<value>Timpa rangkaian aturan lain</value>
+		<comment>Option to choose overwrite</comment>
+	</data>
+  <data name="GENERIC_ERROR" xml:space="preserve">
+		<value>Terjadi kesalahan. Tindakan gagal.</value>
+		<comment>Generic errors</comment>
+	</data>
+  <data name="MISSING_RULEITEM_LOOKUPVALUE" xml:space="preserve">
+		<value>Pencarian item aturan tidak memiliki nilai</value>
+		<comment>Error when we couldn't get lookup value in rule item selector in Move Rule Item dialog</comment>
+	</data>
+  <data name="MISSING_ROUTINGRULE_LOOKUPVALUE" xml:space="preserve">
+		<value>Pencarian rangkaian aturan perutean target tidak memiliki nilai</value>
+		<comment>Error when we couldn't get lookup value in routing rule set selector in clone routing ruleset dialog</comment>
+	</data>
+  <data name="ERROR_RR_UX_ENHANCEMENTS_FEATURE_OFF" xml:space="preserve">
+		<value>Anda belum memilih ikut serta dalam fitur ini.</value>
+		<comment>Message to show customer when FCB is off</comment>
+	</data>
+  <data name="IN_PROGRESS_MESSAGE_ON_SAVE_AS" xml:space="preserve">
+		<value>Tunggu...</value>
+		<comment>Progress message</comment>
+	</data>
+  <data name="IN_PROGRESS_MESSAGE" xml:space="preserve">
+		<value>Sedang memproses</value>
+		<comment>Processing</comment>
+	</data>
+  <data name="SAVEAS_DIALOG_NEWRECORDNAME_PREFIX" xml:space="preserve">
+		<value>Salin</value>
+		<comment>Prefix used when we give name to new record</comment>
+	</data>
+  <data name="IN_PROGRESS_MESSAGE_ON_SAVE_AS_NEWRECORD" xml:space="preserve">
+		<value>Membuat rangkaian aturan perutean yang dikloning (sekitar 2 menit)...</value>
+		<comment>Progress message on creating cloned copy of ruleset</comment>
+	</data>
+  <data name="IN_PROGRESS_MESSAGE_ON_SAVE_AS_OVERWRITE" xml:space="preserve">
+		<value>Menimpa rangkaian aturan perutean (sekitar 2 menit)...</value>
+		<comment>Progress message on overwriting existing ruleset</comment>
+	</data>
+  <data name="MOVE_BEFORE_RULEITEM_DIALOG_TITLE" xml:space="preserve">
+		<value>Pindahkan Sebelum</value>
+		<comment>Move before dialog title</comment>
+	</data>
+  <data name="MOVE_BEFORE_RULEITEM_DIALOG_DESC" xml:space="preserve">
+		<value>Memindahkan rekaman '{0}' item aturan yang dipilih di kisi sebelum item aturan berikut.</value>
+		<comment>Move before dialog's description.{0} refers name of rule item</comment>
+	</data>
+  <data name="MOVE_AFTER_RULEITEM_DIALOG_TITLE" xml:space="preserve">
+		<value>Pindahkan Setelah</value>
+		<comment>Move after dialog title</comment>
+	</data>
+  <data name="MOVE_AFTER_RULEITEM_DIALOG_DESC" xml:space="preserve">
+		<value>Memindahkan rekaman '{0}' item aturan yang dipilih di kisi setelah item aturan berikut.</value>
+		<comment>Move after dialog's description.{0} refers name of rule item</comment>
+	</data>
+  <data name="ACTIVATE_ROUTINGRULE_DIALOG_UR_ENABLED" xml:space="preserve">
+		<value>Anda ingin mengaktifkan rangkaian aturan perutean dasar ini?</value>
+		<comment>Activate routing rule set dialog when unified routing is enabled.</comment>
+	</data>
+  <data name="ACTIVATE_ROUTINGRULE_DIALOG_HRR_ENABLED" xml:space="preserve">
+		<value>Anda yakin ingin mengaktifkan 1 Rangkaian Aturan Perutean yang dipilih? Hal ini akan mengubah Rangkaian Aturan Perutean ke status Aktif.</value>
+		<comment>Activate routing rule set dialog for hierarchical routing rule enable.</comment>
+	</data>
+  <data name="ACTIVATE_ROUTINGRULE_DIALOG_HEADER_HRR_ENABLED" xml:space="preserve">
+		<value>Konfirmasikan Pengaktifan Rangkaian Aturan Perutean</value>
+		<comment>Activate routing rule set dialog header when hierarchical routing rule enable.</comment>
+	</data>
+</root>

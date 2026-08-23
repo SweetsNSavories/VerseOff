@@ -1,0 +1,63 @@
+<html>
+<head>
+    <link href="/uclient/resources/styles/Styles.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        function setStrings() {
+            let slaStringsWebresourceName = "Localization/Languages/SLAStrings";
+            let headerNotification = parent.Xrm.Utility.getResourceString(slaStringsWebresourceName, "SLAKPI_Performance_Indicator_Notification");
+            let learMoreText = parent.Xrm.Utility.getResourceString(slaStringsWebresourceName, "SLAKPI_Hyperlink_Label");
+
+            // USSec and USNat do not support redirection so we set to a static help URL
+            let baseLink = "https://docs.microsoft.com";
+			let orgSettings = parent.Xrm.Utility.getGlobalContext().organizationSettings;
+            if(orgSettings)
+            {
+                let currentGeo = orgSettings.organizationGeo;
+                baseLink = currentGeo === "USR" ? "https://docs.microsoft.scloud"
+                         : currentGeo === "USE" ? "https://docs.eaglex.ic.gov"
+                      				    		: "https://docs.microsoft.com";
+            }
+
+            let featureDocumentationAnchor = headerNotification + " " + `<a href='${baseLink}/dynamics365/customer-service/define-service-level-agreements' target='_blank'>` + learMoreText + "</a>";
+            document.getElementById("preview-text").innerHTML = featureDocumentationAnchor;
+        }
+    </script>
+    <style>
+        .preview-text-body {
+            background-color: #EFEFEF !important;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .preview {
+            padding-top: 0.7em;
+            padding-right: 0.7em;
+            padding-left: 4.0em;
+            display: table;
+            color: #333333;
+        }
+
+        #msdyn-previewimage {
+            top: 0.175em;
+            position: relative;
+            display: table-cell;
+            padding: 0.2em;
+            font-size: inherit;
+            color: #3B79B7;
+        }
+
+        #preview-string-wrap {
+            display: table-cell;
+        }
+    </style>
+    <meta>
+    <meta>
+</head>
+<body onload="setStrings();" class="preview-text-body" style="overflow-wrap: break-word;">
+    <div class="preview">
+        <span id="msdyn-previewimage" class="symbolFont InformationIcon-symbol"></span>
+        <span id="preview-string-wrap">
+            <span id="preview-text"></span>
+        </span>
+    </div>
+</body>
+</html>

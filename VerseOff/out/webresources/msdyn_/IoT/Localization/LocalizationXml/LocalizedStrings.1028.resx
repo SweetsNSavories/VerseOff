@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="deviceBeingRegisteredInBackground" xml:space="preserve">
+    <value>正在背景中註冊此裝置。您可以繼續使用 Microsoft Dynamics 365。</value>
+  </data>
+  <data name="pullingSingleDeviceDataInBackground" xml:space="preserve">
+    <value>正在背景中提取裝置資料。您可以繼續使用 Microsoft Dynamics 365。</value>
+  </data>
+  <data name="errorWhilePerfomingActionTryAgain" xml:space="preserve">
+    <value>執行動作時發生錯誤。請稍後再試一次。</value>
+  </data>
+  <data name="noRecordSelected" xml:space="preserve">
+    <value>請至少選取一個記錄。</value>
+  </data>
+  <data name="devicesNotRegistered" xml:space="preserve">
+    <value>請先註冊裝置，再嘗試提取裝置資料。</value>
+  </data>
+  <data name="someDevicesNotRegistered" xml:space="preserve">
+    <value>正在背景中提取裝置資料。您可以繼續使用 Microsoft Dynamics 365。當中有少數幾部未註冊，因此無法擷取資料。</value>
+  </data>
+  <data name="selectedDevicesBeingRegisteredInBackground" xml:space="preserve">
+    <value>正在背景中註冊所選裝置。您可以繼續使用 Microsoft Dynamics 365。</value>
+  </data>
+  <data name="pullingSelectedDeviceDataInBackground" xml:space="preserve">
+    <value>正在背景中提取裝置資料。您可以繼續使用 Microsoft Dynamics 365。</value>
+  </data>
+  <data name="pullingAllDeviceDataInBackground" xml:space="preserve">
+    <value>正在背景中提取裝置資料。您可以繼續使用 Microsoft Dynamics 365。</value>
+  </data>
+  <data name="importingAllDeviceDataInBackground" xml:space="preserve">
+    <value>正在匯入背景中的所有新裝置。瀏覽到 [裝置] 頁面，以查看來自 IoT 提供者的新裝置。</value>
+  </data>
+  <data name="importingAllDeviceDataInBackgroundFromDeviceGrid" xml:space="preserve">
+    <value>正在匯入背景中的所有新裝置。請重新整理清單，以查看新的裝置。</value>
+  </data>
+  <data name="selectOnlyOneRecord" xml:space="preserve">
+    <value>請選取一筆記錄。</value>
+  </data>
+  <data name="loginText" xml:space="preserve">
+    <value>驗證不成功。您必須登入您的 Power BI 帳戶，才能檢視或編輯 Power BI 圖標。</value>
+  </data>
+  <data name="loginLabel" xml:space="preserve">
+    <value>登入</value>
+  </data>
+  <data name="deviceNotFound" xml:space="preserve">
+    <value>找不到已註冊的裝置。</value>
+  </data>
+  <data name="connectedDevicesNotFound" xml:space="preserve">
+    <value>找不到已註冊的連線裝置。</value>
+  </data>
+  <data name="deviceIdNotFound" xml:space="preserve">
+    <value>找不到裝置識別碼。請新增裝置識別碼以檢視 Power BI 圖標。</value>
+  </data>
+  <data name="powerBIConfigTitle" xml:space="preserve">
+    <value>Power BI 圖標</value>
+  </data>
+  <data name="powerBIDashboardLabel" xml:space="preserve">
+    <value>Power BI 儀表板</value>
+  </data>
+  <data name="powerBITileLabel" xml:space="preserve">
+    <value>圖標</value>
+  </data>
+  <data name="configDataNotFound" xml:space="preserve">
+    <value>無法擷取已儲存 PowerBI embedded 的設定檔</value>
+  </data>
+  <data name="unableToSavePowerBISelection" xml:space="preserve">
+    <value>發生錯誤，無法儲存您的自訂。錯誤詳細資料: {0}</value>
+  </data>
+  <data name="entityNotSupported" xml:space="preserve">
+    <value>目前的實體尚未設定為支援裝置識別碼篩選套用至 Power BI 圖標。</value>
+  </data>
+  <data name="choosePowerBITileToPin" xml:space="preserve">
+    <value>選擇要新增到表單的 Power BI 圖標。</value>
+  </data>
+  <data name="powerBITileTitle" xml:space="preserve">
+    <value>Power BI 圖標</value>
+  </data>
+  <data name="saveButton" xml:space="preserve">
+    <value>儲存​​</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>取消​​</value>
+  </data>
+  <data name="addPowerBITileForDevice" xml:space="preserve">
+    <value>新增已連線裝置的 Power BI 圖標。</value>
+  </data>
+  <data name="publishingCustomization" xml:space="preserve">
+    <value>正在發行自訂</value>
+  </data>
+  <data name="applyDeviceFilter" xml:space="preserve">
+    <value>將篩選 Power BI 圖標以顯示目前裝置資料。</value>
+  </data>
+  <data name="confirmCommandSave" xml:space="preserve">
+    <value>儲存此命令也會造成將命令傳送至裝置，您要繼續嗎?</value>
+  </data>
+  <data name="tag" xml:space="preserve">
+    <value>標籤</value>
+  </data>
+  <data name="property" xml:space="preserve">
+    <value>屬性</value>
+  </data>
+  <data name="IoTCentralLinkText" xml:space="preserve">
+    <value>深入了解 Azure IoT Central 整合，這是一套完全受管理的全域 IoT SaaS 解決方案。</value>
+  </data>
+  <data name="CFSDeploymentLinkText" xml:space="preserve">
+    <value>與現有 IoT 中樞整合，或部署新的中樞，並從您自己的 Azure 訂用帳戶管理預先設定的 IoT PaaS 解決方案。</value>
+  </data>
+  <data name="associateAlertToEntity" xml:space="preserve">
+    <value>無法傳送命令。必須將 IoT 警示與此記錄建立關聯，才能傳送命令。</value>
+  </data>
+  <data name="oneDeviceBeingRegistered" xml:space="preserve">
+    <value>裝置正在背景中進行註冊。請重新整理，以查看更新的註冊狀態。</value>
+  </data>
+  <data name="inProgressDeviceRegistrationStatus" xml:space="preserve">
+    <value>此裝置正在進行註冊。您要重新註冊此裝置嗎?</value>
+  </data>
+  <data name="yesConfirmationDialog" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="noConfirmationDialog" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="registeredDeviceRegistrationStatus" xml:space="preserve">
+    <value>此裝置已註冊。您要重新註冊此裝置嗎?</value>
+  </data>
+  <data name="titleRegisterDeviceConfirmationDialog" xml:space="preserve">
+    <value>註冊裝置</value>
+  </data>
+  <data name="moreThanOneDeviceBeingRegistered" xml:space="preserve">
+    <value>選取的裝置正在進行註冊。請重新整理，以查看更新的註冊狀態。</value>
+  </data>
+  <data name="sendCommandTo" xml:space="preserve">
+    <value>傳送命令至 {0}</value>
+  </data>
+  <data name="sendCommand" xml:space="preserve">
+    <value>傳送命令</value>
+  </data>
+  <data name="iotCommandNameWithCommandFilled" xml:space="preserve">
+    <value>{0} 已傳送至 {1}</value>
+  </data>
+  <data name="iotCommandNameOnlyMessageFilled" xml:space="preserve">
+    <value>命令已傳送至 {0}</value>
+  </data>
+  <data name="commandViewDisplayName" xml:space="preserve">
+    <value>{0} 的命令</value>
+  </data>
+  <data name="deviceViewDisplayName" xml:space="preserve">
+    <value>已連線的裝置</value>
+  </data>
+  <data name="commandSentToast" xml:space="preserve">
+    <value>命令已傳送。</value>
+  </data>
+  <data name="commandViewRecord" xml:space="preserve">
+    <value>檢視命令狀態</value>
+  </data>
+  <data name="commandCreationFailed" xml:space="preserve">
+    <value>無法傳送命令。</value>
+  </data>
+  <data name="commandLookupAndMessageCannotBeBothEmpty" xml:space="preserve">
+    <value>必須指定命令或訊息。</value>
+  </data>
+  <data name="connectDeviceFailed" xml:space="preserve">
+    <value>無法連接裝置。</value>
+  </data>
+  <data name="connectDeviceViewDisplayName" xml:space="preserve">
+    <value>裝置</value>
+  </data>
+  <data name="connectDeviceLabelKey" xml:space="preserve">
+    <value>將裝置連線到 {0}</value>
+  </data>
+  <data name="devicePath" xml:space="preserve">
+    <value>裝置路徑</value>
+  </data>
+  <data name="keyPath" xml:space="preserve">
+    <value>金鑰值路徑</value>
+  </data>
+  <data name="commandLookupDeviceCategoryNotSet" xml:space="preserve">
+    <value>沒有與此裝置相關聯的預先定義命令。請設定裝置類別，以查看預先定義的命令。</value>
+  </data>
+  <data name="provisionRequestCompleted" xml:space="preserve">
+    <value>IoT 建議功能已啟用，請等候 24 小時，套用設定變更以訓練模型。</value>
+  </data>
+  <data name="disableIoTSuggestionsText" xml:space="preserve">
+    <value>請確認以停用 IoT 建議功能。</value>
+  </data>
+  <data name="disableIoTSuggestionsTitle" xml:space="preserve">
+    <value>確認停用 IoT 建議</value>
+  </data>
+  <data name="IoTSuggestionsTermsContent" xml:space="preserve">
+    <value>啟用此功能，即表示您確認此功能為預覽版功能，並同意 {0}。</value>
+  </data>
+  <data name="IoTSuggestionsTermsPreviewTerms" xml:space="preserve">
+    <value>預覽版條款</value>
+  </data>
+  <data name="IoTSuggestionsTermsLearnMore" xml:space="preserve">
+    <value>深入了解</value>
+  </data>
+  <data name="deviceViewDefaultName" xml:space="preserve">
+    <value>自訂裝置檢視</value>
+  </data>
+  <data name="enterValidDevice" xml:space="preserve">
+    <value>請輸入有效的 IoT 裝置以繼續。</value>
+  </data>
+  <data name="countOnlyAggregationOptionForServiceHistory" xml:space="preserve">
+    <value>[計數] 是裝置事件唯一可用的彙總選項。</value>
+  </data>
+  <data name="max6Tiles" xml:space="preserve">
+    <value>無法為目前的裝置建立超過 6 個圖標。</value>
+  </data>
+  <data name="measurementWarningForDevice" xml:space="preserve">
+    <value>請確認選取的度量是目前裝置的報告量值。</value>
+  </data>
+  <data name="connectedDeviceReadings" xml:space="preserve">
+    <value>已連線裝置的讀數</value>
+  </data>
+  <data name="powerBIConfigButton" xml:space="preserve">
+    <value>Power BI 設定按鈕</value>
+  </data>
+  <data name="commandSentOffline" xml:space="preserve">
+    <value>命令已成功傳送至伺服器。請同步處理裝置，以查看命令的狀態。</value>
+  </data>
+  <data name="commandNotSentOffline" xml:space="preserve">
+    <value>命令因連線問題而未傳送至伺服器，下次裝置同步處理時將會傳送命令。</value>
+  </data>
+  <data name="cannotPullDataDuringOffline" xml:space="preserve">
+    <value>您必須連線才能提取資料。</value>
+  </data>
+  <data name="internetConnectionIsRequiredForAction" xml:space="preserve">
+    <value>執行此動作需要網際網路連線。</value>
+  </data>
+  <data name="entitySyncIsRequired" xml:space="preserve">
+    <value>您必須同步處理此記錄，才能執行此動作。</value>
+  </data>
+  <data name="deviceRegistrationSentOffline" xml:space="preserve">
+    <value>已成功傳送裝置註冊。您可以在下次同步處理或進入線上模式時查看註冊狀態。</value>
+  </data>
+  <data name="deviceRegistrationNotSentOffline" xml:space="preserve">
+    <value>裝置註冊因連線問題而未傳送至伺服器。下次裝置同步處理時將會傳送註冊。</value>
+  </data>
+  <data name="pullDeviceDataRequestSentOffline" xml:space="preserve">
+    <value>已成功傳送提取裝置資料要求。下次裝置同步處理時，您可以在 [裝置歷程記錄] 索引標籤中查看結果。</value>
+  </data>
+  <data name="sendCommandRequiresInternetConnection" xml:space="preserve">
+    <value>您必須具有網際網路連線，才能傳送命令。</value>
+  </data>
+</root>

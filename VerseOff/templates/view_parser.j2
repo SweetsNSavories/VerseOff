@@ -190,6 +190,10 @@ class ViewParser:
         attribute = condition.get("attribute")
         operator = str(condition.get("operator") or "eq").lower()
         actual = cls._record_value(record, attribute)
+        if actual is None and attribute == "statecode":
+            actual = 0
+        if actual is None and attribute == "statuscode":
+            actual = 1
         expected = condition.get("value")
         values = condition.get("values") or []
 
@@ -250,13 +254,35 @@ class ViewParser:
         if operator == "ends-with":
             return actual_text.casefold().endswith(expected_text.casefold())
 
-        logger.warning(
-            "Unsupported local FetchXML operator %s on %s; "
-            "excluding the record to avoid broadening the view.",
+        # Dynamics 365 User / Organization Context Operators
+        if operator in {
+            "eq-userid",
+            "eq-useroruserteams",
+            "eq-userteams",
+            "eq-useroruserhierarchy",
+            "eq-userhierarchy",
+            "eq-businessid",
+        }:
+            return True
+        if operator in {"ne-userid", "ne-businessid"}:
+            return False
+
+        # Date-based Dynamics 365 Operators
+        if operator in {
+            "today", "yesterday", "tomorrow", "this-week", "last-week", "next-week",
+            "this-month", "last-month", "next-month", "this-year", "last-year", "next-year",
+            "last-seven-days", "next-seven-days", "last-x-days", "next-x-days",
+            "last-x-hours", "next-x-hours", "olderthan-x-months", "olderthan-x-days",
+            "on", "on-or-after", "on-or-before",
+        }:
+            return True
+
+        logger.debug(
+            "FetchXML operator %s on %s evaluated leniently offline.",
             operator,
             attribute,
         )
-        return False
+        return True
 
     @classmethod
     def _filter_matches(cls, filter_definition, record):
@@ -283,17 +309,6 @@ class ViewParser:
         additional_filters=None,
     ):
         additional_filters = additional_filters or {}
-        if not query_definition.get("supported", True):
-            logger.warning(
-                "FetchXML is malformed or unsupported; excluding records."
-            )
-            return []
-        if query_definition.get("links"):
-            logger.warning(
-                "FetchXML link-entity joins are not available in the local "
-                "JSON store; excluding records to avoid broadening the view."
-            )
-            return []
         filtered = []
         search_value = str(search_string or "").casefold()
         for record in records:

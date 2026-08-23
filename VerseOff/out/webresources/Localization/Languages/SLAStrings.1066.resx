@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SLA_DefaultSLASelectionConfirmDialogText">
+    <value>Bạn có chắc chắn muốn đặt bản ghi thỏa thuận cấp độ dịch vụ (SLA) này thành mặc định đối với thực thể đã chỉ định không?</value>
+  </data>
+  <data name="SLA_DefaultSLASelectionConfirmDialogTitle">
+    <value>Xác nhận Đặt thành Mặc định</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogText">
+    <value>Bạn có một bản ghi thỏa thuận cấp độ dịch vụ (SLA) khác được đặt thành mặc định cho thực thể {0}. Bạn muốn đánh dấu SLA đã chọn làm mặc định thay thế không?</value>
+  </data>
+  <data name="SLA_DefaultSLAOverrideConfirmDialogTitle">
+    <value>Đổi Thỏa thuận Cấp độ Dịch vụ mặc định</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertText">
+    <value>Bạn không thể đặt SLA không hoạt động làm mặc định.</value>
+  </data>
+  <data name="SLA_SettingInactiveSLAAsDefaultAlertTitle">
+    <value>Không thể đặt thành mặc định</value>
+  </data>
+  <data name="SLA_DefaultSLAWarning">
+    <value>SLA đã chọn hiện đã là mặc định</value>
+  </data>
+  <data name="SLA_DefaultSLASetttingInProgress">
+    <value>Đặt SLA mặc định</value>
+  </data>
+  <data name="SLA_ErrorResettingDefaultSLA">
+    <value>Đã xảy ra lỗi khi cập nhật Thỏa thuận Cấp độ Dịch vụ mặc định</value>
+  </data>
+  <data name="SLA_ErrorSettingNewSLA">
+    <value>Đã xảy ra lỗi khi đặt SLA Mặc định mới</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsGeneralNotification">
+    <value>Nhấp vào Cấu hình Hành động để thiết lập các hành động thành công, cảnh báo và thất bại.</value>
+  </data>
+  <data name="SLAItem_ConfigureActionsSetupNotification">
+    <value>Hành động thành công, cảnh báo và thất bại chưa được thiết lập. Nhấp vào Cấu hình Hành động để thiết lập.</value>
+  </data>
+  <data name="SLAItem_WarningTimeHigherThanFailureTimeAlert">
+    <value>Cảnh báo sau khoảng thời gian không được lớn hơn thất bại sau khoảng thời gian</value>
+  </data>
+  <data name="SLAItem_SuccessConditionsEmptyAlert">
+    <value>Không được để trống điều kiện thành công</value>
+  </data>
+  <data name="SLAItem_PauseConditionsEmptyAlert">
+    <value>Không được để trống điều kiện tạm dừng khi nút bật tắt thay thế cấu hình tạm dừng ở trạng thái bật</value>
+  </data>
+  <data name="SLAItem_KPIEmptyAlert">
+    <value>không được để trống KPI</value>
+  </data>
+  <data name="SLAItem_Notification_SLA_ActivatedState">
+    <value>Hủy kích hoạt Thỏa thuận Cấp độ Dịch vụ để chỉnh sửa mục Thỏa thuận Cấp độ Dịch vụ</value>
+  </data>
+  <data name="SLAKPI_Activate">
+    <value>Kích hoạt</value>
+  </data>
+  <data name="SLAKPI_Deactivate">
+    <value>Hủy kích hoạt</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Message">
+    <value>Bạn có muốn hủy kích hoạt Chỉ số Đánh giá Hiệu suất Chính cho thực thể {0} đã chọn không?</value>
+  </data>
+  <data name="SLAKPI_Activate_Message">
+    <value>Bạn có muốn kích hoạt Chỉ số Đánh giá Hiệu suất Chính cho thực thể {0} đã chọn không?</value>
+  </data>
+  <data name="Progress_Message">
+    <value>Đang cập nhật Chỉ số Đánh giá Hiệu suất Chính</value>
+  </data>
+  <data name="SLAKPI_Deactivate_Title">
+    <value>Xác nhận Hủy kích hoạt</value>
+  </data>
+  <data name="SLAKPI_Activate_Title">
+    <value>Xác nhận Kích hoạt</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_UC">
+    <value>Đây là một bản ghi cũ. Để chỉnh sửa bản ghi này, vui lòng truy cập máy khách web cũ.</value>
+  </data>
+  <data name="SLA_Cannot_Edit_In_WC">
+    <value>Không thể chỉnh sửa bản ghi này ở đây. Vui lòng đến ứng dụng giao diện hợp nhất để chỉnh sửa.</value>
+  </data>
+  <data name="SLA_UC_Preview_Text">
+    <value>Các hành động được sử dụng để thực hiện tập hợp các tác vụ, tùy thuộc vào việc các tiêu chí có được đáp ứng hay không. Trước khi các hành động có thể được xác định, mục Thỏa thuận Cấp độ Dịch vụ phải được lưu. Nhấp {0} để biết thêm thông tin.</value>
+  </data>
+  <data name="SLA_AdvancedPauseConfig_Text">
+    <value>Định cấu hình các điều kiện tạm dừng trong phần này để thay thế cấu hình tạm dừng cấp thực thể được xác định trong Cấu hình dịch vụ và cấu hình tạm dừng cấp Chỉ số đánh giá hiệu suất chính. {0}.</value>
+  </data>
+  <data name="SLA_KPIAdvancedPauseConfig_Text">
+    <value>Định cấu hình các điều kiện tạm dừng trong phần này để thay thế cấu hình tạm dừng cấp thực thể được xác định trong Cấu hình dịch vụ. {0}.</value>
+  </data>
+  <data name="SLA_UC_Preview_FeatureDocumentation_Hyperlink_Label">
+    <value>tài liệu tính năng</value>
+  </data>
+  <data name="SLA_AdavncedPauseConfig_Hyperlink_Label" xml:space="preserve">
+    <value>Tìm hiểu thêm</value>
+  </data>
+  <data name="SLAKPI_LearnMoreLink_Text">
+    <value>Thực thể cần được bật cho Thỏa thuận cấp độ dịch vụ. {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is the Learn More link.</comment>
+  </data>
+  <data name="SLAKPI_Hyperlink_Label" xml:space="preserve">
+    <value>Tìm hiểu thêm</value>
+  </data>
+  <data name="SLAItem_ConditionControl_Notification_Text">
+    <value>Bạn nên tránh đặt cấu hình tùy chọn Áp dụng khi và Tiêu chí thành công trên cùng một thuộc tính.</value>
+  </data>
+  <data name="SLAItem_ConditionOnSameAttributeAlert">
+    <value>Bạn nên tránh đặt cấu hình tùy chọn Áp dụng khi và Tiêu chí thành công trên cùng một thuộc tính. Bạn có muốn tiếp tục không?</value>
+  </data>
+  <data name="SLAKPI_BusinessProcessError_Title" xml:space="preserve">
+    <value>Lỗi quy trình công việc</value>
+  </data>
+  <data name="SDKMessagingStepNotInActiveState" xml:space="preserve">
+    <value>Một số bước thông báo SDK {0} được liên kết có thể không ở trạng thái hiện hoạt. Vui lòng kích hoạt Bước thông báo SDK trước khi kích hoạt Thỏa thuận cấp độ dịch vụ.</value>
+    <comment>Error message when dependent SDK Message Step is not enabled. step Id.</comment>
+  </data>
+  <data name="SLAIsDisabledInSetting" xml:space="preserve">
+    <value>Tùy chọn thiết đặt được liên kết ‘Tắt Thỏa thuận cấp độ dịch vụ’ được bật trong phần thiết đặt cấu hình dịch vụ. Vui lòng hủy kích hoạt tùy chọn thiết đặt đó trước khi kích hoạt Thỏa thuận cấp độ dịch vụ.</value>
+    <comment>Error message when SLA is not enabled in Service Configuration Settings.</comment>
+  </data>
+  <data name="WorkflowNotInActiveState" xml:space="preserve">
+    <value>Một số quy trình làm việc {0} được liên kết có thể không ở trạng thái hiện hoạt. Vui lòng kích hoạt quy trình làm việc trước khi kích hoạt Thỏa thuận cấp độ dịch vụ.</value>
+    <comment>Error message when dependent Workflow/CustomAction is not enabled.</comment>
+  </data>
+  <data name="SLAItem_ApplicableAndSuccessSameAttribute" xml:space="preserve">
+    <value>Bạn nên tránh đặt cấu hình tùy chọn Áp dụng khi và Tiêu chí thành công trên cùng một thuộc tính</value>
+    <comment>Warning message when SLA Applicable and Success conditions are configured on the same attribute</comment>
+  </data>
+  <data name="WorkflowOwnerIsDisabled" xml:space="preserve">
+    <value>Cần cập nhật chủ sở hữu trong Quy trình làm việc theo SLA sau: {0} với người dùng hiện hoạt.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is a workflow name which is owned by disabled user.</comment>
+  </data>
+  <data name="NoSLASetAsDefault" xml:space="preserve">
+    <value>Thỏa thuận Cấp độ Dịch vụ mặc định không được duy trì cho thực thể {0}.</value>
+    <comment>{Placeholder='{0}'} Placeholder '0' is an SLA's primary entity name.</comment>
+  </data>
+  <data name="OpenLearnMoreForSetAsDefaultSLA" xml:space="preserve">
+    <value>Tìm hiểu thêm</value>
+  </data>
+  <data name="SLAKPI_Recommendation_Entityname" xml:space="preserve">
+    <value>Thực thể cần được bật cho Thỏa thuận cấp độ dịch vụ.</value>
+    <comment>Recommendation message for EntityName field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_KPIField" xml:space="preserve">
+    <value>Chỉ số đánh giá hiệu suất chính được tính dựa trên Thực thể đã chọn.</value>
+    <comment>Recommendation message for KPI field.</comment>
+  </data>
+  <data name="SLAKPI_Recommendation_PrimaryEntity" xml:space="preserve">
+    <value>Thực thể cần được bật cho Thỏa thuận cấp độ dịch vụ.</value>
+    <comment>Recommendation message for Primary Entity field.</comment>
+  </data>
+  <data name="SLA_WebClientDeprecationNotification" xml:space="preserve">
+    <value>Có hiệu lực từ ngày 01 tháng 04 năm 2023, các Thỏa thuận cấp độ dịch vụ (SLA) cũ trên máy khách web không được dùng nữa trước đó, đã quá thời gian Kết thúc hỗ trợ (EoS). Bạn cần di chuyển những SLA cũ đã được tạo trên máy khách web sang trải nghiệm Giao diện Hợp nhất ngay lập tức để tránh nguy cơ không sử dụng được sản phẩm và dịch vụ. Để biết thêm thông tin về cách di chuyển các mục, hãy xem {0}</value>
+    <comment>Notification message about SLA web client deprecation. {Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_WebClientDeprecation_Ack_Button_Text" xml:space="preserve">
+    <value>Tôi xác nhận</value>
+  </data>
+  <data name="SLA_WebClientDeprecation_Cancel_Button_Text" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="SLAKPI_Activation_Error_Message" xml:space="preserve">
+    <value>Không thể kích hoạt SLAKPI, vui lòng kích hoạt từ mục quản lý SLAKPI.</value>
+    <comment>Error message when it fails to activate SLAKPI from quick create form.</comment>
+  </data>
+  <data name="SLAKPI_Performance_Indicator_Notification" xml:space="preserve">
+    <value>Chỉ số đánh giá hiệu suất chính theo Thỏa thuận cấp độ dịch vụ là các chỉ số hiệu suất</value>
+    <comment>Header notification in SLA KPI form.</comment>
+  </data>
+  <data name="SLA_ChangedAttribiteNullNotification" xml:space="preserve">
+    <value>Bạn cần kích hoạt lại Thỏa thuận cấp độ dịch vụ {0} để khắc phục những vấn đề đã xác định được với các điều kiện trong đó. Để biết thêm thông tin, hãy xem {1}</value>
+    <comment>Notification message when SLA item's 'ChangedAttributeList" field value is NULL and SLA is active. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_RelatedEntitiesNotification" xml:space="preserve">
+    <value>Những thực thể liên quan được đặt cấu hình trong các điều kiện cho Mục {{0}} thuộc Thỏa thuận cấp độ dịch vụ không được hỗ trợ đầy đủ. Để biết thêm thông tin, hãy xem – {1}</value>
+    <comment>Notification message when SLA item has related entities in the applicable when or success or pause conditions. {Placeholder='{0}'} refers SLA items, {Placeholder='{1}'} refers documentation link.</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogDepreciationText" xml:space="preserve">
+    <value>Kể từ ngày 1 tháng 10 năm 2020, Thỏa thuận cấp độ dịch vụ không còn được dùng trong máy khách web. Để biết thêm thông tin, hãy truy cập - {0}</value>
+    <comment>Depreciation Message when user try to create new Legacy SLA and ask customer to move to UCI to create new SLAs.{Placeholder='{0}'} Placeholder '0' is a documentation link about legacy SLA migration</comment>
+  </data>
+  <data name="SLA_DisableLegacyCreateSLADialogConfirmationText" xml:space="preserve">
+    <value>Chọn 'OK' để tiếp tục tạo Thỏa thuận cấp độ dịch vụ mới trong Giao diện hợp nhất.</value>
+    <comment>Confirmation to direct user to UCI to create new SLAs.</comment>
+  </data>
+  <data name="SLAWorkingHoursEmptyNotification" xml:space="preserve">
+    <value>Lịch doanh nghiệp được liên kết với Thỏa thuận cấp độ dịch vụ {0} chưa có giờ làm việc.</value>
+    <comment>Notification message when SLA item has business calendar with empty working hours. {Placeholder='{0}'} refers SLA items.</comment>
+  </data>
+</root>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root"
+    xmlns=""
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConsentBanner_Title" xml:space="preserve">
+    <value>Data Enrichment analyzes your Microsoft 365 emails and Dataverse to generate sales insights and suggest updates to opportunity records.</value>
+  </data>
+  <data name="ConsentBanner_Body" xml:space="preserve">
+    <value>Your organization controls this feature.</value>
+  </data>
+  <data name="ConsentBanner_Title_With_Meeting_Enrichments" xml:space="preserve">
+    <value>Data Enrichment analyzes your Microsoft 365 emails, meetings and Dataverse to generate sales insights and suggest updates to opportunity records.</value>
+  </data>
+  <data name="SuggestionsBanner_Title" xml:space="preserve">
+    <value>{0} new agent suggestions</value>
+  </data>
+  <data name="SuggestionsBanner_Body" xml:space="preserve">
+    <value>Data Enrichment has new suggestions based on recent customer conversations.</value>
+  </data>
+  <data name="Loading_Message" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="SuggestionsBanner_DataEnrichmentSuggestions" xml:space="preserve">
+    <value>Data Enrichment suggestions</value>
+  </data>
+  <data name="AllowButton" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="LearnMoreButton" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="AutoEnrollSuccessNotification_Title" xml:space="preserve">
+    <value>Data Enrichment analyzes your Microsoft 365 emails, meetings and Dataverse to generate insights and suggest updates to active records.</value>
+    <comment>Title shown in the one-time success banner after auto-enroll provisioning completes for the current seller.</comment>
+  </data>
+  <data name="AutoEnrollSuccessNotification_Body" xml:space="preserve">
+    <value>Your admin has enabled this feature for you. You can disable it anytime.</value>
+    <comment>Body shown in the one-time success banner after auto-enroll provisioning completes for the current seller.</comment>
+  </data>
+  <data name="ConsentPrivilegeError_Title" xml:space="preserve">
+    <value>You require additional permissions to start data enrichment</value>
+    <comment>Title of the error banner shown when a seller clicks Enable on the Data Enrichment consent banner but is missing a privilege required to set up the feature.</comment>
+  </data>
+  <data name="ConsentPrivilegeError_Body" xml:space="preserve">
+    <value>Ask your admin for access.</value>
+    <comment>Body of the error banner shown when a seller clicks Enable on the Data Enrichment consent banner but is missing a privilege (Power Automate flow or connector) required to set up the feature. Directs the seller to contact their administrator.</comment>
+  </data>
+  <data name="DQA_SuggestionsControl_PaneTitle" xml:space="preserve">
+    <value>Suggestions Control</value>
+  </data>
+  <data name="UpdateSignalConnectionDialog_MeetingTitle" xml:space="preserve">
+    <value>Update meeting match</value>
+    <comment>Header title shown in the Update Signal Connection dialog when launched for a meeting or untracked meeting (signal types 4 and 5). The default 'Update email match' title is used for email and Outlook signal types.</comment>
+  </data>
+</root>

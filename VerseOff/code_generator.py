@@ -120,9 +120,20 @@ class CodeGenerator:
         self._render_template("generated_main.j2", "main.py", manifest=manifest)
         generated_files.append("main.py")
         
-        # 3. Database Layer
+        # 3. Database Layer & Enterprise Crypto
         self._render_template("generated_db.j2", "db.py", manifest=manifest)
         generated_files.append("db.py")
+
+        crypto_manager_source = os.path.join(
+            self.base_dir,
+            "crypto_manager.py",
+        )
+        if os.path.exists(crypto_manager_source):
+            shutil.copyfile(
+                crypto_manager_source,
+                os.path.join(self.output_dir, "crypto_manager.py"),
+            )
+            generated_files.append("crypto_manager.py")
 
         timeline_metadata_source = os.path.join(
             self.base_dir,
@@ -138,6 +149,13 @@ class CodeGenerator:
             os.path.join(self.output_dir, "timeline_metadata.py"),
         )
         generated_files.append("timeline_metadata.py")
+        
+        for logo_file in ("logo.png", "logo.jpg"):
+            logo_src = os.path.join(self.base_dir, "templates", logo_file)
+            if os.path.exists(logo_src):
+                shutil.copyfile(logo_src, os.path.join(self.output_dir, logo_file))
+                generated_files.append(logo_file)
+            
         client_script_metadata_source = os.path.join(
             self.base_dir,
             "client_script_metadata.py",
@@ -236,6 +254,8 @@ class CodeGenerator:
             wr_base_dir = os.path.join(self.output_dir, "webresources", "webresources")
             os.makedirs(wr_base_dir, exist_ok=True)
             for wr in web_resources:
+                if not isinstance(wr, dict):
+                    continue
                 name = wr.get("name")
                 if not name:
                     continue
@@ -389,6 +409,8 @@ python main.py
         generated_files = []
         paths_by_resource = {}
         for resource in manifest.get("web_resources", []):
+            if isinstance(resource, str):
+                continue
             name = resource.get("name")
             content = resource.pop("content", None)
             content_base64 = resource.pop("content_base64", None)

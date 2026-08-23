@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConvertActivity_Action_CloseEmail" xml:space="preserve">
+    <value>ई-मेल प्रपत्र को बंद करें</value>
+    <comment>on convert activity to opportunity dialog for emails</comment>
+  </data>
+  <data name="ConvertActivity_Action_SaveActivity" xml:space="preserve">
+    <value>{0} की स्थिति पूर्ण में बदलें और प्रपत्र बंद करें</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the activity name. on convert activity to opportunity dialog for all activities except emails</comment>
+  </data>
+  <data name="Alert_Conv_Act_Customer_Must" xml:space="preserve">
+    <value>आपको किसी ग्राहक का चयन करना होगा.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="Alert_Conv_Act_Currency_Must" xml:space="preserve">
+    <value>एक मुद्रा आवश्यक है. एक मुद्रा का चयन करें और पुनः प्रयास करें.</value>
+    <comment>Error message displayed to the user on convert activity to opportunity dialog when the user does not supply a value for currency field.</comment>
+  </data>
+  <data name="Alert_Conv_Act_Campaign_Must" xml:space="preserve">
+    <value>कोई अभियान प्रत्युत्तर बनाने के लिए आपको किसी स्रोत अभियान का चयन करना होगा.</value>
+    <comment>on convert activity to opportunity dialog</comment>
+  </data>
+  <data name="ConvActSaveWarning" xml:space="preserve">
+    <value>इस गतिविधि को रूपांतरित करने से पहले आपको परिवर्तनों को सहेजना होगा.</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Alert_Lead_Company_Must_Be_Supplied" xml:space="preserve">
+    <value>लीड को किसी खाते में रूपांतरित करने से पहले, आपको लीड रिकॉर्ड में कंपनी जानकारी जोड़नी होगी.</value>
+    <comment>Convert response dialog page's alter message if user is starting convert lead process to account without having Lead Company name.</comment>
+  </data>
+  <data name="Alert_Lead_Must_Be_Supplied" xml:space="preserve">
+    <value>आपको इस विकल्प के लिए कोई लीड अवश्य देनी होगी.</value>
+    <comment>Convert response dialog page's alter message if user is starting convert lead process without supplying the Lead.</comment>
+  </data>
+  <data name="Alert_Customer_Must_Be_Supplied" xml:space="preserve">
+    <value>आपको किसी ग्राहक का चयन करना होगा. ग्राहक कोई खाता या कोई संपर्क हो सकता है.</value>
+    <comment>Convert response dialog page's alter message if user is trying to create new quote/order or opportunity without supplying the Customer which could be only Account/Contact.</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>ठीक</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Lead_Disqualify_Lost_LabelText" xml:space="preserve">
+    <value>हारा</value>
+    <comment>Disqualify a lead as lost label text</comment>
+  </data>
+  <data name="Lead_Disqualify_CannotContact_LabelText" xml:space="preserve">
+    <value>संपर्क नहीं किया जा सकता</value>
+    <comment>Disqualify a lead as cannot contact label text</comment>
+  </data>
+  <data name="Lead_Disqualify_NoLongerInterested_LabelText" xml:space="preserve">
+    <value>अब दिलचस्पी नहीं</value>
+    <comment>Disqualify a lead as no longer interested label text</comment>
+  </data>
+  <data name="Lead_Disqualify_Canceled_LabelText" xml:space="preserve">
+    <value>रद्द</value>
+    <comment>Disqualify a lead as canceled label text</comment>
+  </data>
+  <data name="Lead_Disqualify_Lost_ToolTipDescription" xml:space="preserve">
+    <value>हारे गए के रूप में</value>
+    <comment>Disqualify a lead as lost tooltip</comment>
+  </data>
+  <data name="Lead_Disqualify_CannotContact_ToolTipDescription" xml:space="preserve">
+    <value>संपर्क नहीं किया जा सकता के रूप में</value>
+    <comment>Disqualify a lead as cannot contact tooltip</comment>
+  </data>
+  <data name="Lead_Disqualify_NoLongerInterested_ToolTipDescription" xml:space="preserve">
+    <value>अब दिलचस्पी नहीं के रूप में</value>
+    <comment>Disqualify a lead as no longer interested tooltip</comment>
+  </data>
+  <data name="Lead_Disqualify_Canceled_ToolTipDescription" xml:space="preserve">
+    <value>रद्द के रूप में</value>
+    <comment>Disqualify a lead as canceled tooltip</comment>
+  </data>
+  <data name="ErrorMessage_Lead_ReQualify_ProcessNoActiveStage" xml:space="preserve">
+    <value>सक्रिय अवस्था '{0}' निकाय पर मौजूद नहीं है</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the lead name. Error message when process active stage doesn't belong to entity.</comment>
+  </data>
+  <data name="ErrorMessage_Convert_Lead_lastName" xml:space="preserve">
+    <value>आपको अंतिम नाम दर्ज करना होगा</value>
+    <comment>Convert to lead Error message for last name</comment>
+  </data>
+  <data name="ErrorMessage_Convert_Lead_email" xml:space="preserve">
+    <value>आपको ईमेल दर्ज करना होगा</value>
+    <comment>Convert to lead Error message for email</comment>
+  </data>
+  <data name="ErrorMessage_No_Lead_Selecteed" xml:space="preserve">
+    <value>कोई लीड चुनी नहीं गई</value>
+    <comment>Select Lead to continue</comment>
+  </data>
+  <data name="ConvertLeadGrid_Description" xml:space="preserve">
+    <value>चयनित लीड को योग्य के रूप में रूपांतरित करें और प्रत्येक के लिए निम्न रिकॉर्ड बनाएँ:</value>
+    <comment>Description for convert lead options dialog on grid</comment>
+  </data>
+  <data name="ConvertLeadGrid_Header" xml:space="preserve">
+    <value>योग्य लीड</value>
+    <comment>Header for convert lead options dialog on grid</comment>
+  </data>
+  <data name="ConvertLead_Description" xml:space="preserve">
+    <value>इस लीड को योग्य के रूप में रूपांतरित करें और निम्न रिकॉर्ड बनाएँ:</value>
+    <comment>Description for convert lead options dialog</comment>
+  </data>
+  <data name="ConvertLead_Header" xml:space="preserve">
+    <value>योग्य लीड</value>
+    <comment>Header for convert lead options dialog</comment>
+  </data>
+  <data name="ToastMessage_Lead_Qualify" xml:space="preserve">
+    <value>{0} सफलतापूर्वक योग्य बनाया गया. </value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the lead name. Toast message when lead is qualified and navigated to opportunity.</comment>
+  </data>
+  <data name="ToastMessage_Navigate_Lead_LinkMessage" xml:space="preserve">
+    <value>{0} पर जाएँ</value>
+    <comment>Hyperlink message for the qualified Lead.</comment>
+  </data>
+  <data name="ToastMessage_Lead_Disqualify" xml:space="preserve">
+    <value>{0} को सफलतापूर्वक अयोग्य बना दिया गया था</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is replaced with the lead name. Toast message when lead is disqualified.</comment>
+  </data>
+  <data name="COPY_COMPETITORS" xml:space="preserve">
+    <value>{competitor} की जानकारी कॉपी करना</value>
+    <comment>Copying Competitors Information step in StepError execution flow</comment>
+  </data>
+  <data name="COPY_LEAD_CONNECTIONS" xml:space="preserve">
+    <value>{lead} कनेक्शन कॉपी करना</value>
+    <comment>Copying Lead Connections step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_ACCOUNT" xml:space="preserve">
+    <value>{account} बनाना</value>
+    <comment>Creating Account step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_CONTACT" xml:space="preserve">
+    <value>{contact} बनाना</value>
+    <comment>Creating Contact step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_OPPORTUNITY" xml:space="preserve">
+    <value>{opportunity} बनाना</value>
+    <comment>Creating Opportunity step in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_ACCOUNT" xml:space="preserve">
+    <value>{account} जानकारी अपडेट करना</value>
+    <comment>Updating Account Information step in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_LEAD_STATUSCODE" xml:space="preserve">
+    <value>{lead} StatusCode अपडेट करना</value>
+    <comment>Updating Lead StatusCode step in StepError execution flow</comment>
+  </data>
+  <data name="VALIDATING_BPF" xml:space="preserve">
+    <value>व्यवसाय प्रोसेस फ़्लो का सत्यापन करना</value>
+    <comment>Validating BPF step in StepError execution flow</comment>
+  </data>
+  <data name="VALIDATING_LEAD" xml:space="preserve">
+    <value>{lead} जानकारी पुनः प्राप्त करना</value>
+    <comment>Retrieving Lead Information in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_PARENTACCOUNT" xml:space="preserve">
+    <value>मौजूदा {account} जानकारी अपडेट करना</value>
+    <comment>Updating parent account Information step in StepError execution flow</comment>
+  </data>
+  <data name="UPDATE_PARENTCONTACT" xml:space="preserve">
+    <value>मौजूदा {contact} जानकारी अपडेट करना</value>
+    <comment>Updating parent contact Information step in StepError execution flow</comment>
+  </data>
+  <data name="CREATE_OPPORTUNITIES" xml:space="preserve">
+    <value>अनेक {opportunity} बनाना</value>
+    <comment>Creating multiple Opportunities step in StepError execution flow</comment>
+  </data>
+  <data name="RelatedEntities_Fetch_Fail_Message" xml:space="preserve">
+    <value> "खाते और संपर्क निकायों के लिए 'initializeFrom' करना विफल रहा."</value>
+    <comment>Failure alert for lead's realated entities account and contact 'initialiseFrom' Failed.</comment>
+  </data>
+  <data name="RequiredFieldsNotFilledError" xml:space="preserve">
+    <value>कृपया सुनिश्चित करें कि सभी आवश्यक फ़ील्ड भर दी हैं और उनमें मान्य जानकारी है.</value>
+    <comment>Message shown when required fields are not filled or form data is invalid and not resolved</comment>
+  </data>
+  <data name="RecordsSelectedExceededLimitError" xml:space="preserve">
+    <value>चयनित रिकॉर्ड की संख्या समवर्ती अनुरोध सीमा 52 को पार कर गई है. कृपया 52 से कम रिकॉर्ड चुनें और फिर से प्रयास करें.</value>
+    <comment>Message shown when selected records exceeded concurrent requests limit of 52 during disqualify or qualify from lead homepage grid.</comment>
+  </data>
+  <data name="OpportunityDuplicateRecordCreationErrorEntityName" xml:space="preserve">
+    <value>अवसर</value>
+    <comment>Concatinates oppotunity name to Qualify lead duplicate error message.</comment>
+  </data>
+  <data name="LeadDuplicateRecordCreationErrorEntityName" xml:space="preserve">
+    <value>लीड</value>
+    <comment>Concatinates Lead name to Qualify lead duplicate error message.</comment>
+  </data>
+  <data name="LeadDuplicateRecordCreationErrorOpportunityDescription" xml:space="preserve">
+    <value>अवसर रिकॉर्ड बनाया या अपडेट नहीं किया गया था, क्योंकि वर्तमान रिकॉर्ड का एक डुप्लिकेट पहले से मौजूद था.</value>
+    <comment>Opportunity record was not Created or Updated because a duplicate of the current record already exists.</comment>
+  </data>
+  <data name="LeadDuplicateRecordCreationErrorOpportunityTitle" xml:space="preserve">
+    <value>रिकॉर्ड बनाया या अपडेट नहीं किया गया था, क्योंकि वर्तमान रिकॉर्ड का एक डुप्लिकेट पहले से मौजूद था.</value>
+    <comment>A record was not created or updated because a duplicate of the current record already exists.</comment>
+  </data>
+  <data name="QualifyLabel" xml:space="preserve">
+    <value>पात्र बनाएँ</value>
+    <comment>Qualify button label.</comment>
+  </data>
+  <data name="FinishLabel" xml:space="preserve">
+    <value>समाप्त करें</value>
+    <comment>Finish button label.</comment>
+  </data>
+  <data name="QualifyConfirmationDialogTitle" xml:space="preserve">
+    <value>योग्य लीड?</value>
+    <comment>Qualify confirmation dialog's title.</comment>
+  </data>
+  <data name="QualifyConfirmationDialogContext" xml:space="preserve">
+    <value>आप इस लीड के लिए कोई अवसर बनाए बिना ही इस लीड को योग्य बना रहे हैं.</value>
+    <comment>Qualify confirmation dialog's content.</comment>
+  </data>
+  <data name="CancelLabel" xml:space="preserve">
+    <value>रद्द करें</value>
+    <comment>Cancel button label.</comment>
+  </data>
+  <data name="InvalidaOpportunityForm_error_message" xml:space="preserve">
+    <value>कुछ गलत हुआ. यदि ऐसा जारी रहता है, तो कृपया पुनः प्रयास करें या अपने व्यवस्थापक से संपर्क करें.</value>
+    <comment>Toast message when new lead qualification's add/edit opportunity form is invalid</comment>
+  </data>
+</root>

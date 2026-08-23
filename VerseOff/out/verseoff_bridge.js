@@ -2404,9 +2404,11 @@
         const name = parts[parts.length - 1];
         const handler = owner && owner[name];
         if (typeof handler !== "function") {
-            throw new Error(
-                "Client script function was not found: " + functionName
-            );
+            console.warn("VerseOff: Client script function was not found: " + functionName);
+            return {
+                owner: global,
+                handler: function() { console.warn("VerseOff: Dummy handler executed for missing function: " + functionName); }
+            };
         }
         return { owner: owner, handler: handler };
     }
@@ -2521,6 +2523,12 @@
                 (parameters || []).forEach(function (parameter) {
                     args.push(parameter);
                 });
+                console.log(
+                    "[VerseOff Event] [START] Event: '" + event + "'" +
+                    (controlName ? " | Control: '" + controlName + "'" : "") +
+                    " -> Invoking: " + descriptor +
+                    " (passContext=" + Boolean(passContext) + ")"
+                );
                 returned = handler.apply(owner, args);
                 if (eventArgs && eventArgs._finishSyncPhase) {
                     eventArgs._finishSyncPhase();
@@ -2545,12 +2553,22 @@
                         );
                     }
                 }
+                console.log(
+                    "[VerseOff Event] [SUCCESS] Handler '" + descriptor +
+                    "' completed successfully on event '" + event + "'."
+                );
             } catch (error) {
+                console.error(
+                    "[VerseOff Event Error] [EXCEPTION] Caught error in handler '" + descriptor +
+                    "' on event '" + event + "':\n" +
+                    (error && error.stack ? error.stack : (error && error.message ? error.message : error))
+                );
                 errors.push({
                     function: descriptor,
                     message: String(
                         error && error.message ? error.message : error
                     ),
+                    stack: String(error && error.stack ? error.stack : ""),
                     name: error && error.name ? error.name : "Error"
                 });
                 if (
@@ -2655,11 +2673,9 @@
             },
             SelectedControl: function () {
                 if (!controlName) {
-                    throw new Error(
-                        "SelectedControl requires a grid controlName"
-                    );
+                    return global.formContext;
                 }
-                return formControl(controlName);
+                return formControl(controlName) || global.formContext;
             },
             CommandProperties: function () {
                 return commandContext.commandProperties || {};
@@ -2797,6 +2813,11 @@
             };
         }
         try {
+            console.log(
+                "[VerseOff Ribbon] [START] Executing Ribbon action: '" +
+                (descriptor.function_name || "") + "' (Library: " +
+                (descriptor.library_name || "inline") + ")"
+            );
             const resolved = resolveFunction(descriptor.function_name);
             const args = (descriptor.children || []).map(function (
                 parameter
@@ -2810,11 +2831,20 @@
                     ASYNC_HANDLER_TIMEOUT_MS
                 );
             }
+            console.log(
+                "[VerseOff Ribbon] [SUCCESS] Ribbon action '" +
+                descriptor.function_name + "' executed successfully."
+            );
             return {
                 executed: true,
                 errors: []
             };
         } catch (error) {
+            console.error(
+                "[VerseOff Ribbon Error] [EXCEPTION] Error in Ribbon action '" +
+                descriptor.function_name + "':\n" +
+                (error && error.stack ? error.stack : (error && error.message ? error.message : error))
+            );
             return {
                 executed: false,
                 errors: [{
@@ -2822,6 +2852,7 @@
                     message: String(
                         error && error.message ? error.message : error
                     ),
+                    stack: String(error && error.stack ? error.stack : ""),
                     name: error && error.name ? error.name : "Error"
                 }]
             };
@@ -2855,6 +2886,11 @@
                 errors: []
             };
         } catch (error) {
+            console.warn(
+                "[VerseOff Ribbon Rule Warning] Custom rule '" +
+                descriptor.function_name + "' failed or threw exception: " +
+                (error && error.message ? error.message : error)
+            );
             return {
                 value: false,
                 errors: [{
@@ -2862,10 +2898,24 @@
                     message: String(
                         error && error.message ? error.message : error
                     ),
+                    stack: String(error && error.stack ? error.stack : ""),
                     name: error && error.name ? error.name : "Error"
                 }]
             };
         }
+    };
+
+    global.evaluateAllRibbonRules = async function (
+        rulesMap,
+        commandContext
+    ) {
+        const results = {};
+        const entries = Object.entries(rulesMap || {});
+        for (let i = 0; i < entries.length; i++) {
+            const [key, rule] = entries[i];
+            results[key] = await global.evaluateRibbonRule(rule, commandContext);
+        }
+        return results;
     };
 
     global.updateStateFromPython = function (fieldName, value) {

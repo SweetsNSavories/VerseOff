@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>आपको कोई ऐसा समाप्ति समय निर्दिष्ट करना होगा, जो प्रारंभ समय के बाद आए.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>आपको ऐसा प्रारंभ समय निर्दिष्ट करना चाहिए जो अंत समय से पहले हो.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>प्रारंभ दिनांक रिक्त नहीं हो सकती.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>अंतिम दिनांक रिक्त नहीं हो सकती.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>{0} आवश्यक है.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>विषय आवश्यक है.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>विषय आवश्यक है.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>टेम्पलेट आवश्यक है.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>प्रारंभ समय आवश्यक है.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>समाप्ति समय आवश्यक है.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>नया {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>अभियान (टेम्प्लेट)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>यह गतिविधि वितरित करने से पहले आपको परिवर्तनों को सहेजना होगा.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>अभियान गतिविधि केवल एक बार वितरित की जा सकती है.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>चैनल प्रकार चयन करें, प्रपत्र सहेजें और फिर पुनः प्रयास करें.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>यह विकल्प तभी उपलब्ध होता है जब संपर्क विधि चुनी हो. कोई संपर्क विधि इस प्रपत्र पर उपलब्ध नहीं है. गतिविधि वितरित नहीं की जा सकती. कृपया अपने {#Brand_CRM} व्यवस्थापक से संपर्क करें.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>मेल मर्ज के माध्यम से सीधे ईमेल बंद है. गतिविधि वितरित नहीं की जा सकती. कृपया अपने {#Brand_CRM} व्यवस्थापक से संपर्क करें.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>वितरित क्षमता चयनित चैनल के लिए उपलब्ध नहीं है</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>मेल मर्ज {#Brand_CRM} वेब क्लायंट में उपलब्ध नहीं है. मेल मर्ज निष्पादित करने के लिए, आपको {#Brand_CRM_Outlook_Short} का उपयोग करना होगा.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>इस अभियान गतिविधि को वितरित नहीं किया जा सकता क्योंकि इसमें कोई मार्केटिंग सूचियाँ संबद्ध नहीं हैं. कृपया इस अभियान गतिविधि के साथ मार्केटिंग सूचियाँ संबद्ध करें और पुनः प्रयास करें.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>कृपया, प्रपत्र पर मौजूद सभी चेतावनियाँ और त्रुटियाँ ठीक करें.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>इस अभियान गतिविधि को वितरित नहीं किया जा सका. कृपया अपने {#Brand_CRM} व्यवस्थापक से संपर्क करें.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>{0} निकालें</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>क्या आप अभियान से चयनित {0} {1} को निकालना चाहते हैं?</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>त्वरित अभियान नहीं बनाया जा सकता क्योंकि वर्तमान पृष्ठ पर कोई रिकॉर्ड्स नहीं मिले.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>आप एक समय पर एक से अधिक मार्केटिंग सूचियों के लिए एक त्वरित अभियान नहीं बना सकते.  कृपया केवल एक मार्केटिंग सूची का चयन करें.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>यह विकल्प वर्तमान दृश्य के लिए उपलब्ध नहीं है. सभी दृश्य विकल्प {0} के साथ काम नहीं करेंगे. किसी भिन्न दृश्य या कोई भिन्न त्वरित अभियान विकल्प का चयन करें और पुनः प्रयास करें.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>त्वरित अभियान किसी ऐसी मार्केटिंग सूची पर नहीं चलाया जा सकते, जो निष्क्रिय हो. मार्केटिंग सूची सक्रिय करें या किसी भिन्न मार्केटिंग सूची का चयन करें और पुनः प्रयास करें.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>यह विकल्प वर्तमान दृश्य के लिए उपलब्ध नहीं है. किसी भिन्न त्वरित अभियान विकल्प का चयन करें और पुनः प्रयास करें.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>स्वामी आवश्यक है.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>क्यू आवश्यक है.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>चयनित रिकॉर्ड के लिए</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>वर्तमान पृष्ठ पर सभी रिकॉर्ड्स के लिए</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>सभी पृष्ठों पर सभी रिकॉर्ड्स के लिए</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>यह रिबन क्रिया समर्थित नहीं है.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>आपको यह क्रिया करने से पहले एक या एक से अधिक रिकॉर्ड का चयन करना होगा.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>इस संक्रिया के लिए 50 से अधिक रिकॉर्ड अनुमत नहीं हैं</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>आप केवल एक ही प्रकार के रिकॉर्ड्स के लिए यह क्रिया कर सकते हैं.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>संसाधित कर रहा, कृपया प्रतीक्षा करें ...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>कोई त्रुटि हुई. एक या अधिक रिकॉर्ड के लिए चयनित क्रिया पूरी नहीं की गई.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>{0} निकालें</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>निकालने के लिए खोज मापदंड के आधार पर सदस्यों को ढूँढ़ें.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>जोड़ने के लिए खोज मापदंड के आधार पर सदस्यों को ढूँढ़ें.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>मूल्यांकन करें कि खोज मापदंड के आधार पर किन सदस्यों को मार्केटिंग सूची में रखना है. मार्केटिंग सूची अद्यतन करें.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>आपको आगे बढ़ने से पहले रिकॉर्ड चुनने होंगे</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>निकालें</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>जोड़ें</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>खाता</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>संपर्क</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>लीड</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>मूल्यांकन करें</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>क्या आप सूची से चयनित {0} {1} को निकालना चाहते हैं?</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>एक मार्केटिंग सूची को अन्य मार्केटिंग सूची में प्रतिलिपि करने की पुष्टि</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>आपने अन्य मार्केटिंग सूची में प्रतिलिपि करने के लिए मार्केटिंग सूचियाँ चुनी हैं</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>यह कार्रवाई चयनित मार्केटिंग सूची के सभी सदस्यों को लक्षित मार्केटिंग सूची में जोड़ देगी.</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>आपके परिवर्तन सहेजे नहीं गए हैं. परिवर्तन सहेजें और पुनः प्रयास करें.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>ठीक</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>संसाधित हो रहा है...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>कृपया आपके अनुरोध पर कार्यवाही किए जाने तक प्रतीक्षा करें...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>त्‍वरित अभियान बनाने में असमर्थ</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>नाम: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>गतिविधि: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>कार्यक्षेत्र: चयनित रिकॉर्ड के लिए ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>कार्यक्षेत्र: वर्तमान पृष्ठ पर सभी रिकॉर्ड के लिए ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>कार्यक्षेत्र: सभी पृष्ठों पर सभी रिकॉर्ड के लिए</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>स्वामी: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>त्वरित अभियान का नाम आवश्यक है.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>गतिविधि प्रकार आवश्यक है.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>त्वरित अभियान में शामिल रिकॉर्ड्स के स्‍वामी</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>मैं</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>इस अभियान को निष्क्रिय नहीं किया जा सकता क्योंकि यहाँ इससे संबद्ध खुली अभियान गतिविधियाँ हैं. अभियान गतिविधियों को बंद करें और पुनः प्रयास करें.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>हम चयनित अभियानों के {0} को निष्क्रिय नहीं कर सकते, क्योंकि उनमें एक या अधिक जारी अभियान गतिविधियाँ मौजूद हैं जो उनसे संबद्ध हैं. कृपया जारी अभियान गतिविधियों को बंद करें और पुनः प्रयास करें.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>इस विज़ार्ड के लिए आपकी ईमेल सामग्री बहुत बड़ी है. कृपया इसे एक ईमेल टेम्पलेट के रूप में बनाएँ और फिर उस टेम्पलेट का चयन यहाँ करें.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>त्वरित अभियान सामूहिक संपादन का समर्थन नहीं करते.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>सूची लॉक की गई है</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>सूचियाँ {0} लॉक हैं</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>गतिशील सूची पर क्रिया नहीं की जा सकती.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>निष्क्रिय आइटम को अभियान से संबद्ध नहीं किया जा सकता.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>निष्क्रिय आइटम को अभियान से संबद्ध नहीं किया जा सकता.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>अनुलग्नक का संदर्भ नहीं मिला.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>ई-मेल प्राप्तकर्ता या तो मौजूद नहीं है या ई-मेल प्राप्तकर्ता के लिए ई-मेल पता मान्य नहीं है.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>अनुलग्नक मान्य प्रकार का नहीं है या बहुत लंबा है. इसे अपलोड या डाउनलोड नहीं किया जा सकता.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>प्राप्तकर्ता "फ़ैक्स न करें" के रूप में चिह्नित है.</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>अमान्य ईमेल प्राप्तकर्ता.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>ईमेल टेम्पलेट क्रिया में त्रुटि.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>ईमेल भेजने की क्रिया में त्रुटि.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>निर्माण अनुलग्नक क्रिया में त्रुटि.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>नोट निर्माण क्रिया में त्रुटि.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>अप्रबंधित गतिविधि क्रिया में त्रुटि.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>हैंडल गतिविधि क्रिया में त्रुटि.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>गतिविधि अनुलग्नक क्रिया में त्रुटि.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>गतिविधि निर्माण क्रिया में त्रुटि.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>मार्केटिंग सूची के इस सदस्य से संपर्क नहीं किया गया था, क्योंकि यह सदस्य पहले यह संचार प्राप्त कर चुका है.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>पक्ष रिकॉर्ड पर प्रेषक का ईमेल पता नहीं है</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>कोई ईमेल पता निर्दिष्ट नहीं किया गया और कॉलिंग उपयोगकर्ता का ईमेल पता सेट नहीं है</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>प्राप्तकर्ता की संचार प्राथमिकताओं या उनके ईमेल पते में किसी समस्या के कारण ईमेल भेजा नहीं गया.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>अमान्य ग्राहक पता प्रकार.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>मेल मर्ज के दौरान कोई अनपेक्षित त्रुटि हुई.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>उपयोगकर्ता द्वारा मेल मर्ज कार्रवाई रद्द की गई.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>अनुपलब्ध ईमेल पते के कारण इस ग्राहक को फ़िल्टर किया गया.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>प्राप्तकर्ता को शामिल नहीं किया गया, क्योंकि वह निष्क्रिय है.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>सामूहिक कार्रवाई संबंधित कार्यप्रवाह नियम अनुपलब्ध हैं.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>एंटी-स्पैम सेटिंग या प्राप्तकर्ता की संचार प्राथमिकताओं के कारण प्राप्तकर्ता को शामिल नहीं किया गया.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>अपॉइंटमेंट वितरण के लिए सहभागी निर्दिष्ट नहीं किया जा सकता.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>अपॉइंटमेंट वितरण के लिए प्रेषक निर्दिष्ट नहीं किया जा सकता</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>अपॉइंटमेंट वितरण के लिए आयोजक निर्दिष्ट नहीं किया जा सकता</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>असमर्थित सूची सदस्य प्रकार.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>कोई अनाधिकृत कार्रवाई निष्पादित करने का प्रयास किया.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>उपयोगकर्ता के पास आवश्यक विशेषाधिकार नहीं हैं.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>उपयोगकर्ता के पास इस क्रिया को करने का विशेषाधिकार नहीं है.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>अमान्य ई-मेल पता. अधिक जानकारी के लिए, अपने सिस्टम व्यवस्थापक से संपर्क करें.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>प्रपत्र में निम्न तत्व मौजूद नहीं हैं: {0}. इससे कार्यक्षमताएँ प्रभावित होंगी.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>आप इस निकाय प्रकार को लक्षित करने वाले मार्केटिंग सूची के लिए अवसर नहीं बना सकते.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>पहले से ही एक मौजूदा अनुरोध जारी है, कृपया कुछ समय बाद पुनः प्रयास करें.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>अनुरोध सबमिट किया गया. कृपया तब तक प्रतीक्षा करें जब तक पृष्ठ प्रतिलिपि बनाई गई सूची पर पुनर्निर्देशित न हो जाए.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>नया {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>आपने मार्केटिंग सूची में जिन सदस्यों का चयन किया है, उनके लिए {0} बनाने हेतु इस प्रपत्र को भरें. प्रत्येक सदस्य के रिकॉर्ड में इस {0} को नए {0} के रूप में जोड़ने के लिए, वितरित करें पर क्लिक करें.</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>सफलतापूर्वक सहेजा गया</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MA_Alert_EndDate_LessThan_StartDate" xml:space="preserve">
+    <value>Πρέπει να καθορίσετε μια ώρα λήξης που να είναι μεταγενέστερη της ώρας έναρξης.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_GreaterThan_EndDate" xml:space="preserve">
+    <value>Πρέπει να καθορίσετε μια ώρα έναρξης που προηγείται της ώρας λήξης.</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="MA_Alert_StartDate_Cannot_Empty" xml:space="preserve">
+    <value>Η ημερομηνία έναρξης δεν μπορεί να είναι κενή.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated start date and makes it empty.</comment>
+  </data>
+  <data name="MA_Alert_EndDate_Cannot_Empty" xml:space="preserve">
+    <value>Η ημερομηνία λήξης δεν μπορεί να είναι κενή.</value>
+    <comment>Alert message on CampaignActivity Deactivate form when user tries to remove the populated end date and makes it empty.</comment>
+  </data>
+  <data name="MA.Activity.IsRequired" xml:space="preserve">
+    <value>Το {0} απαιτείται.</value>
+    <comment>Value is missing validation message. {NumberedPlaceholder="{0}"}. Placeholder 0 is attribute display name.</comment>
+  </data>
+  <data name="MA.Activity.TopicRequired" xml:space="preserve">
+    <value>Απαιτείται θέμα.</value>
+    <comment>Topic is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.SubjectRequired" xml:space="preserve">
+    <value>Απαιτείται το θέμα.</value>
+    <comment>Subject is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.TemplateRequired" xml:space="preserve">
+    <value>Απαιτείται το πρότυπο.</value>
+    <comment>Template is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.StartTimeRequired" xml:space="preserve">
+    <value>Απαιτείται η ώρα έναρξης.</value>
+    <comment>Start time is missing validation message.</comment>
+  </data>
+  <data name="MA.Activity.EndTimeRequired" xml:space="preserve">
+    <value>Απαιτείται ώρα λήξης.</value>
+    <comment>End time is missing validation message.</comment>
+  </data>
+  <data name="Form_Title_New_With_Entity_Display_Name" xml:space="preserve">
+    <value>Δημιουργία στοιχείου {0}</value>
+    <comment>{NumberedPlaceholder="{0}"}. Placeholder 0 is entity display name. [Category="Orion AIR"]</comment>
+  </data>
+  <data name="Object_Singular_CampaignTemplate" xml:space="preserve">
+    <value>Εκστρατεία (Πρότυπο)</value>
+  </data>
+  <data name="MA.CampaignActivity.DirtyFormForDistribute" xml:space="preserve">
+    <value>Πρέπει να αποθηκεύσετε τις αλλαγές, για να είναι δυνατή η κατανομή αυτής της δραστηριότητας.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate" xml:space="preserve">
+    <value>Η δραστηριότητα εκστρατείας μπορεί να κατανεμηθεί μόνο μία φορά.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Nochannel" xml:space="preserve">
+    <value>Επιλέξτε έναν τύπο καναλιού, αποθηκεύστε τη φόρμα και προσπαθήστε ξανά.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.NochannelField" xml:space="preserve">
+    <value>Αυτή η επιλογή είναι διαθέσιμη μόνο όταν επιλεχθεί μέθοδος επαφής. Δεν υπάρχει διαθέσιμη μέθοδος επαφής σε αυτήν τη φόρμα. Δεν είναι δυνατή η διανομή της δραστηριότητας. Επικοινωνήστε με το διαχειριστή του {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.CA.CannotpropagateEmail.MM.Off" xml:space="preserve">
+    <value>Η άμεση αλληλογραφία μέσω συγχώνευσης αλληλογραφίας είναι απενεργοποιημένη. Δεν είναι δυνατή η διανομή της δραστηριότητας. Επικοινωνήστε με το διαχειριστή του {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel" xml:space="preserve">
+    <value>Η δυνατότητα κατανομής δεν είναι διαθέσιμη για το επιλεγμένο κανάλι</value>
+  </data>
+  <data name="MA.CampaignActivity.Cannotpropagate.Invalidchannel.MM" xml:space="preserve">
+    <value>Η συγχώνευση αλληλογραφίας δεν είναι διαθέσιμη στο πρόγραμμα-πελάτη Web του {#Brand_CRM}. Για να εκτελέσετε συγχώνευση αλληλογραφίας, πρέπει να χρησιμοποιήσετε το {#Brand_CRM_Outlook_Short}.</value>
+  </data>
+  <data name="MA.CampaignActivity.NoListAssociated" xml:space="preserve">
+    <value>Δεν είναι δυνατή η κατανομή αυτής της δραστηριότητας εκστρατείας, επειδή δεν έχει συσχετισμένες λίστες μάρκετινγκ. Συσχετίστε τις λίστες μάρκετινγκ με αυτήν τη δραστηριότητα εκστρατείας και προσπαθήστε ξανά.</value>
+  </data>
+  <data name="MA.CampaignActivity.FillRequiredActivityFields" xml:space="preserve">
+    <value>Διορθώστε όλες τις προειδοποιήσεις και τα σφάλματα στη φόρμα.</value>
+  </data>
+  <data name="MA.CampaignActivity.DistributionWasUnsuccessful" xml:space="preserve">
+    <value>Δεν είναι δυνατή η διανομή αυτής της δραστηριότητας εκστρατείας. Επικοινωνήστε με τον διαχειριστή του {#Brand_CRM}.</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Κατάργηση {0}</value>
+  </data>
+  <data name="MA.Campaign.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Θέλετε να καταργήσετε τις επιλεγμένες {0} {1} από την εκστρατεία;</value>
+  </data>
+  <data name="MiniCampaign_AllItems_NoRecordReturned" xml:space="preserve">
+    <value>Δεν είναι δυνατή η δημιουργία της γρήγορης εκστρατείας, επειδή δεν βρέθηκαν καρτέλες στην τρέχουσα σελίδα.</value>
+  </data>
+  <data name="MiniCampaign_SelectedItems_TooManyRecords" xml:space="preserve">
+    <value>Δεν μπορείτε να δημιουργήσετε γρήγορη εκστρατεία για περισσότερες από μία λίστες μάρκετινγκ τη φορά. Επιλέξτε μόνο μία λίστα μάρκετινγκ.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_QueryApi" xml:space="preserve">
+    <value>Αυτή η επιλογή δεν είναι διαθέσιμη για την τρέχουσα προβολή. Δεν θα λειτουργούν όλες οι προβολές με την επιλογή {0}. Επιλέξτε μια άλλη προβολή ή μια διαφορετική επιλογή γρήγορης εκστρατείας και προσπαθήστε ξανά.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder 0 is a text 'For All Records on All Pages'.</comment>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_InactiveList" xml:space="preserve">
+    <value>Δεν είναι δυνατή η εκτέλεση γρήγορων εκστρατειών σε λίστα μάρκετινγκ που δεν είναι ενεργή. Ενεργοποιήστε τη λίστα μάρκετινγκ ή επιλέξτε μια άλλη λίστα μάρκετινγκ και δοκιμάστε ξανά.</value>
+  </data>
+  <data name="MiniCampaign_CanNotRun_On_Associated" xml:space="preserve">
+    <value>Αυτή η επιλογή δεν είναι διαθέσιμη για την τρέχουσα προβολή. Ενεργοποιήστε μια άλλη επιλογή γρήγορης εκστρατείας και προσπαθήστε ξανά.</value>
+  </data>
+  <data name="MA.OwnerRequired" xml:space="preserve">
+    <value>Απαιτείται ο κάτοχος.</value>
+    <comment>Owner is missing validation message.</comment>
+  </data>
+  <data name="MA.QueueRequired" xml:space="preserve">
+    <value>Απαιτούμενη ουρά.</value>
+    <comment>Queue is missing validation message.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_SelectedItems" xml:space="preserve">
+    <value>Για επιλεγμένες καρτέλες</value>
+    <comment>Menu Item label for invoking Quick Campaign for selected items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnPage" xml:space="preserve">
+    <value>Για όλες τις καρτέλες στην τρέχουσα σελίδα</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on current page.</comment>
+  </data>
+  <data name="MenuItem_Label_MC_AllItemsOnAllPages" xml:space="preserve">
+    <value>Για όλες τις καρτέλες σε όλες τις σελίδες</value>
+    <comment>Menu Item label for invoking Quick Campaign for all items on across all pages.</comment>
+  </data>
+  <data name="MA.UnsupportedRibbonAction" xml:space="preserve">
+    <value>Αυτή η ενέργεια κορδέλας δεν υποστηρίζεται.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NoItemSelected" xml:space="preserve">
+    <value>Για να εκτελέσετε αυτήν την ενέργεια, πρέπει να επιλέξετε μία ή περισσότερες καρτέλες.</value>
+    <comment>Shown when a user tries to invoke an action that requires selected records before it can be performed.</comment>
+  </data>
+  <data name="Members_Convert_opportunity_Error_Message" xml:space="preserve">
+    <value>Δεν επιτρέπονται περισσότερες από 50 καρτέλες για αυτήν τη λειτουργία</value>
+    <comment>Shown when a user tries to invoke convert to opportunity action on more than 50 members at a time.</comment>
+  </data>
+  <data name="MA_Grid_Apply_Rule_Heterogenous_Type_Records_Selected" xml:space="preserve">
+    <value>Μπορείτε να εκτελέσετε αυτήν την ενέργεια μόνο για καρτέλες του ίδιου τύπου.</value>
+    <comment>Shown when a user tries to invoke an action that requires to be of the same type.</comment>
+  </data>
+  <data name="InProgress_ListAction_Processing_Message" xml:space="preserve">
+    <value>Γίνεται επεξεργασία, περιμένετε ...</value>
+    <comment>Shown while processing actions performed on a list.</comment>
+  </data>
+  <data name="MA_Error_Message_Action_MultipleErrorsFound" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα. Η επιλεγμένη ενέργεια δεν ολοκληρώθηκε για μία ή περισσότερες καρτέλες.</value>
+    <comment>Shown when a list action failed for one or more records.</comment>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Title" xml:space="preserve">
+    <value>Κατάργηση {0}</value>
+  </data>
+  <data name="MA.List.Manage.Remove.SubLabel" xml:space="preserve">
+    <value>Βρείτε μέλη για κατάργηση με βάση τα κριτήρια αναζήτησης.</value>
+  </data>
+  <data name="MA.List.Manage.Add.SubLabel" xml:space="preserve">
+    <value>Βρείτε μέλη για προσθήκη με βάση τα κριτήρια αναζήτησης.</value>
+  </data>
+  <data name="MA.List.Manage.Evaluate.SubLabel" xml:space="preserve">
+    <value>Αξιολογήστε ποια μέλη θα διατηρήσετε στη λίστα μάρκετινγκ, με βάση τα κριτήρια αναζήτησης. Ενημερώστε τη λίστα μάρκετινγκ.</value>
+  </data>
+  <data name="MA.List.MustSelectRecords" xml:space="preserve">
+    <value>Πρέπει να επιλέξετε καρτέλες για να συνεχίσετε</value>
+  </data>
+  <data name="MA.Generic.Remove.Title" xml:space="preserve">
+    <value>Κατάργηση</value>
+  </data>
+  <data name="MA.Generic.Add.Title" xml:space="preserve">
+    <value>Προσθήκη</value>
+  </data>
+  <data name="MA.Generic.Account" xml:space="preserve">
+    <value>Λογαριασμός</value>
+  </data>
+  <data name="MA.Generic.Contact" xml:space="preserve">
+    <value>Επικοινωνία</value>
+  </data>
+  <data name="MA.Generic.Lead" xml:space="preserve">
+    <value>Υποψήφιος πελάτης</value>
+  </data>
+  <data name="MA.Generic.Evaluate.Title" xml:space="preserve">
+    <value>Αξιολόγηση</value>
+  </data>
+  <data name="MA.List.RemoveItem.Confirmation.Body" xml:space="preserve">
+    <value>Θέλετε να καταργήσετε τις επιλεγμένες {0} {1} από τη λίστα;</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Title" xml:space="preserve">
+    <value>Επιβεβαίωση αντιγραφής λίστας μάρκετινγκ σε άλλη λίστα μάρκετινγκ</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.SubTitle" xml:space="preserve">
+    <value>Επιλέξατε τις λίστες μάρκετινγκ για αντιγραφή σε άλλη λίστα μάρκετινγκ</value>
+  </data>
+  <data name="MA.List.CopyTo.Confirmation.Body" xml:space="preserve">
+    <value>Αυτή η λειτουργία θα προσθέσει όλα τα μέλη της επιλεγμένης λίστας μάρκετινγκ στη λίστα μάρκετινγκ με πελάτες-στόχους</value>
+  </data>
+  <data name="ListForm.Dirty.Message" xml:space="preserve">
+    <value>Οι αλλαγές σας δεν έχουν αποθηκευθεί. Αποθηκεύστε τις αλλαγές και δοκιμάστε ξανά.</value>
+    <comment>This message is displayed on list from if form is dirty.[Category="MA Enh: Dynamic members support in Marketing list"]</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>ΟΚ</value>
+    <comment>Default Ok button label on Alert/Confrim Dialog.</comment>
+  </data>
+  <data name="Msg_Processing_Dialog" xml:space="preserve">
+    <value>Γίνεται επεξεργασία...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="Msg_Processing_Wait_Long_Dialog" xml:space="preserve">
+    <value>Περιμένετε κατά την επεξεργασία του αιτήματός σας...</value>
+    <comment>Message which is displayed on processing window for dialogs.</comment>
+  </data>
+  <data name="MA.QuickCampaign.CreationWasUnsuccessful" xml:space="preserve">
+    <value>Δεν είναι δυνατή η δημιουργία μιας γρήγορης εκστρατείας</value>
+    <comment>Request to create quick campaign wasn't successful.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Name" xml:space="preserve">
+    <value>Όνομα: {0}</value>
+    <comment>Name label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Activity" xml:space="preserve">
+    <value>Δραστηριότητα: {0}</value>
+    <comment>Activity label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.SelectedRecords" xml:space="preserve">
+    <value>Πεδίο: Για επιλεγμένες καρτέλες ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.CurrentPage" xml:space="preserve">
+    <value>Πεδίο: Για όλες τις καρτέλες στην τρέχουσα σελίδα ({0})</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Scope.AllPages" xml:space="preserve">
+    <value>Πεδίο: Για όλες τις καρτέλες σε όλες τις σελίδες</value>
+    <comment>Scope label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.Owner" xml:space="preserve">
+    <value>Κάτοχος: {0}</value>
+    <comment>Owner label for Quick Campaign summary page.</comment>
+  </data>
+  <data name="MA.QuickCampaign.QuickCampaignNameRequired" xml:space="preserve">
+    <value>Απαιτείται το όνομα της γρήγορης εκστρατείας.</value>
+    <comment>Quick campaign name is missing validation message.</comment>
+  </data>
+  <data name="MA.QuickCampaign.ActivityTypeRequired" xml:space="preserve">
+    <value>Ο τύπος δραστηριότητας απαιτείται.</value>
+    <comment>Activity type is missing validation message.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Record" xml:space="preserve">
+    <value>Οι κάτοχοι των καρτελών που περιλαμβάνονται στη γρήγορη εκστρατεία</value>
+    <comment>Ownership option display name for Record option.</comment>
+  </data>
+  <data name="MA.OwnershipOption.Me" xml:space="preserve">
+    <value>Εμένα</value>
+    <comment>Ownership option display name for Me option.</comment>
+  </data>
+  <data name="MA.Campaign.DeactivateError" xml:space="preserve">
+    <value>Η απενεργοποίηση αυτής της εκστρατείας δεν είναι δυνατή, επειδή υπάρχουν ανοικτές δραστηριότητες εκστρατείας που σχετίζονται με αυτήν. Κλείστε τις δραστηριότητες εκστρατείας και προσπαθήστε ξανά.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.Campaign.MultipleCampaignsDeactivateError" xml:space="preserve">
+    <value>Δεν μπορούμε να απενεργοποιήσουμε {0} των επιλεγμένων εκστρατειών, επειδή έχουν μία ή περισσότερες ανοιχτές δραστηριότητες εκστρατείας συσχετισμένες με αυτές. Κλείστε τις ανοιχτές δραστηριότητες εκστρατείας και δοκιμάστε ξανά.</value>
+    <comment>Error message when a campaign cannot be deactivated.</comment>
+  </data>
+  <data name="MA.BulkOperation.ContentTooLarge" xml:space="preserve">
+    <value>Το περιεχόμενο του ηλεκτρονικού ταχυδρομείου σας είναι πολύ μεγάλο για αυτόν τον οδηγό. Δημιουργήστε το ως πρότυπο ηλεκτρονικού ταχυδρομείου και, στη συνέχεια, επιλέξτε αυτό το πρότυπο εδώ.</value>
+    <comment>Error message when content is more than the size of the character limit</comment>
+  </data>
+  <data name="MA.BulkOperation.BulkEditNotSupported" xml:space="preserve">
+    <value>Οι γρήγορες εκστρατείες δεν υποστηρίζουν μαζική επεξεργασία.</value>
+    <comment>Error message when user tried to use bulk edit on quick campaign.</comment>
+  </data>
+  <data name="List_Action_ListLocked" xml:space="preserve">
+    <value>Η λίστα είναι κλειδωμένη</value>
+    <comment>Action is not allowed on list since it locked.</comment>
+  </data>
+  <data name="Lists_Action_ListsLocked" xml:space="preserve">
+    <value>Οι λίστες {0} είναι κλειδωμένες</value>
+    <comment>Action is not allowed on lists since they are locked.</comment>
+  </data>
+  <data name="List_Action_ListDynamic" xml:space="preserve">
+    <value>Η ενέργεια δεν μπορεί να εκτελεστεί σε δυναμική λίστα.</value>
+    <comment>Error message when performing non-supported action on dynamic list (such as deleting member).</comment>
+  </data>
+  <data name="80040304" xml:space="preserve">
+    <value>Δεν είναι δυνατός ο συσχετισμός ενός ανενεργού στοιχείου με μια εκστρατεία.</value>
+  </data>
+  <data name="CannotAssociateInactiveItemToCampaign" xml:space="preserve">
+    <value>Δεν είναι δυνατός ο συσχετισμός ενός ανενεργού στοιχείου με μια εκστρατεία.</value>
+  </data>
+  <data name="0x80048493" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η εύρεση της αναφοράς στο συνημμένο.</value>
+  </data>
+  <data name="0x80048422" xml:space="preserve">
+    <value>Ο παραλήπτης ηλεκτρονικού ταχυδρομείου δεν υπάρχει ή η διεύθυνση ηλεκτρονικού ταχυδρομείου του παραλήπτη δεν είναι έγκυρη.</value>
+  </data>
+  <data name="0x80043e09" xml:space="preserve">
+    <value>Το συνημμένο είτε δεν είναι έγκυρος τύπος είτε είναι υπερβολικά μεγάλο. Δεν είναι δυνατή η αποστολή ή η λήψη του.</value>
+  </data>
+  <data name="0x80043510" xml:space="preserve">
+    <value>Ο παραλήπτης φέρει τη σήμανση "Χωρίς αποστολή φαξ".</value>
+  </data>
+  <data name="0x80042c35" xml:space="preserve">
+    <value>Μη έγκυρος παραλήπτης ηλεκτρονικού ταχυδρομείου.</value>
+  </data>
+  <data name="0x80042c21" xml:space="preserve">
+    <value>Σφάλμα στην ενέργεια πρότυπο μηνύματος ηλεκτρονικού ταχυδρομείου.</value>
+  </data>
+  <data name="0x80042c20" xml:space="preserve">
+    <value>Σφάλμα στην ενέργεια αποστολή μηνύματος ηλεκτρονικού ταχυδρομείου.</value>
+  </data>
+  <data name="0x80042c1c" xml:space="preserve">
+    <value>Σφάλμα στο συνημμένο σημείωσης ενέργειας.</value>
+  </data>
+  <data name="0x80042c1b" xml:space="preserve">
+    <value>Σφάλμα στη σημείωση δημιουργίας ενέργειας.</value>
+  </data>
+  <data name="0x80042c1a" xml:space="preserve">
+    <value>Σφάλμα στη δραστηριότητα μη χειρισμού ενέργειας.</value>
+  </data>
+  <data name="0x80042c19" xml:space="preserve">
+    <value>Σφάλμα στη δραστηριότητα χειρισμού ενέργειας.</value>
+  </data>
+  <data name="0x80042c18" xml:space="preserve">
+    <value>Σφάλμα στο συνημμένο δημιουργίας ενέργειας.</value>
+  </data>
+  <data name="0x80042c17" xml:space="preserve">
+    <value>Σφάλμα στη δραστηριότητα δημιουργίας ενέργειας.</value>
+  </data>
+  <data name="0x8004140e" xml:space="preserve">
+    <value>Δεν πραγματοποιήθηκε επικοινωνία με αυτό το μέλος λίστας μάρκετινγκ, επειδή είχε ήδη λάβει αυτήν την ανακοίνωση.</value>
+  </data>
+  <data name="0x80040b08" xml:space="preserve">
+    <value>Ο αποστολέας δεν έχει διεύθυνση ηλεκτρονικού ταχυδρομείου στην καρτέλα μέλους</value>
+  </data>
+  <data name="0x80040b02" xml:space="preserve">
+    <value>Δεν καθορίστηκε διεύθυνση ηλεκτρονικού ταχυδρομείου και ο χρήστης που καλεί δεν έχει ορίσει διεύθυνση ηλεκτρονικού ταχυδρομείου</value>
+  </data>
+  <data name="0x80040b00" xml:space="preserve">
+    <value>Δεν έγινε αποστολή του μηνύματος ηλεκτρονικού ταχυδρομείου λόγω των προτιμήσεων επικοινωνίας του παραλήπτη ή κάποιο πρόβλημα με τη διεύθυνση ηλεκτρονικού ταχυδρομείου του.</value>
+  </data>
+  <data name="0x80040514" xml:space="preserve">
+    <value>Μη έγκυρος τύπος διεύθυνσης πελάτη.</value>
+  </data>
+  <data name="0x80040330" xml:space="preserve">
+    <value>Παρουσιάστηκε μη αναμενόμενο σφάλμα κατά τη συγχώνευση αλληλογραφίας.</value>
+  </data>
+  <data name="0x8004032f" xml:space="preserve">
+    <value>Η λειτουργία συγχώνευσης αλληλογραφίας ακυρώθηκε από τον χρήστη.</value>
+  </data>
+  <data name="0x8004032e" xml:space="preserve">
+    <value>Αυτός ο πελάτης έχει φιλτραριστεί λόγω διεύθυνσης ηλεκτρονικού ταχυδρομείου που λείπει.</value>
+  </data>
+  <data name="0x8004032a" xml:space="preserve">
+    <value>Ο παραλήπτης αποκλείστηκε επειδή είναι ανενεργός.</value>
+  </data>
+  <data name="0x80040329" xml:space="preserve">
+    <value>Λείπουν οι σχετικοί κανόνες ροής εργασίας μαζικής λειτουργίας.</value>
+  </data>
+  <data name="0x80040325" xml:space="preserve">
+    <value>Ο παραλήπτης αποκλείστηκε λόγω των ρυθμίσεων κατά της ανεπιθύμητης ηλεκτρονικής αλληλογραφίας ή των προτιμήσεων επικοινωνίας του παραλήπτη.</value>
+  </data>
+  <data name="0x8004031c" xml:space="preserve">
+    <value>Δεν είναι δυνατός ο καθορισμός συμμετέχοντα για την κατανομή συνάντησης.</value>
+  </data>
+  <data name="0x8004031b" xml:space="preserve">
+    <value>Δεν είναι δυνατός ο καθορισμός αποστολέα για την κατανομή συνάντησης</value>
+  </data>
+  <data name="0x8004031a" xml:space="preserve">
+    <value>Δεν είναι δυνατός ο καθορισμός διοργανωτή για την κατανομή συνάντησης</value>
+  </data>
+  <data name="0x80040301" xml:space="preserve">
+    <value>Μη υποστηριζόμενος τύπος μέλους λίστας.</value>
+  </data>
+  <data name="0x80040277" xml:space="preserve">
+    <value>Επιχειρήθηκε η εκτέλεση μιας μη εξουσιοδοτημένης ενέργειας.</value>
+  </data>
+  <data name="0x80040220" xml:space="preserve">
+    <value>Ο χρήστης δεν έχει τα απαραίτητα προνόμια.</value>
+  </data>
+  <data name="0x80040204" xml:space="preserve">
+    <value>Ο χρήστης δεν διαθέτει το προνόμιο εκτέλεσης αυτής της ενέργειας.</value>
+  </data>
+  <data name="0x80044192" xml:space="preserve">
+    <value>Μη έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου. Για περισσότερες πληροφορίες, επικοινωνήστε με τον διαχειριστή συστήματος.</value>
+  </data>
+  <data name="MA.List.ValidateForm.MissingElements" xml:space="preserve">
+    <value>Από τη φόρμα λείπουν τα ακόλουθα στοιχεία: {0}. Οι λειτουργίες θα επηρεαστούν.</value>
+  </data>
+  <data name="MA_Error_Message_Action_NotValidForOpportunity" xml:space="preserve">
+    <value>Δεν μπορείτε να δημιουργήσετε ευκαιρίες για μια λίστα μάρκετινγκ με στόχευση αυτού του τύπου οντότητας.</value>
+    <comment>Alert message on a Marketing List when user tries to create opportunities for an invalid entity type</comment>
+  </data>
+  <data name="MA.List.CopyToStatic" xml:space="preserve">
+    <value>Υπάρχει ήδη μια υπάρχουσα αίτηση σε εξέλιξη, δοκιμάστε ξανά μετά από λίγο.</value>
+  </data>
+  <data name="MA.List.CopyToStatic.ProcessingMessage" xml:space="preserve">
+    <value>Αίτηση που υποβλήθηκε. Περιμένετε έως ότου η σελίδα ανακατευθύνει στη λίστα που έχει αντιγραφεί.</value>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Title" xml:space="preserve">
+    <value>Νέο {0}</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Campaign_Distribution_Dialog_Description" xml:space="preserve">
+    <value>Συμπληρώστε αυτήν τη φόρμα για να δημιουργήσετε {0} για τα μέλη που επιλέξατε στη λίστα μάρκετινγκ. Για να προσθέσετε αυτό το {0} ως νέο {0} στην καρτέλα κάθε μέλους, κάντε κλικ στην επιλογή «Κατανομή».</value>
+    <comment>Placeholder {0} is for channel type</comment>
+  </data>
+  <data name="Marketing_Settings_Saved_Successfully" xml:space="preserve">
+    <value>Αποθηκεύτηκε με επιτυχία</value>
+    <comment>Success Message on saving data</comment>
+  </data>
+</root>

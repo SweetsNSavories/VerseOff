@@ -39,6 +39,8 @@ try:
         project_directory_name,
     )
     from VerseOff.metadata_fetcher import MetadataFetcher
+    from VerseOff.sitemap_editor_page import SiteMapEditorPage
+    from VerseOff.component_selector_page import ComponentSelectorPage
 except ImportError:
     from auth import MsalAuth
     from generation import (
@@ -50,6 +52,8 @@ except ImportError:
         project_directory_name,
     )
     from metadata_fetcher import MetadataFetcher
+    from sitemap_editor_page import SiteMapEditorPage
+    from component_selector_page import ComponentSelectorPage
 
 
 logger = logging.getLogger(__name__)
@@ -619,6 +623,12 @@ class ProjectSettingsPage(QWizardPage):
             "Four is recommended to avoid throttling."
         )
         form.addRow("Metadata download workers:", self.metadata_workers_input)
+
+        self.download_full_schema_checkbox = QCheckBox(
+            "Download Complete Graph Schema Topology & Metadata in SQLite (Recommended)"
+        )
+        self.download_full_schema_checkbox.setChecked(True)
+        form.addRow("Schema Strategy:", self.download_full_schema_checkbox)
         layout.addLayout(form)
 
         self.preview_label = QLabel()
@@ -682,6 +692,7 @@ class ProjectSettingsPage(QWizardPage):
         wizard.output_dir = self.output_dir()
         wizard.sync_interval = self.sync_interval_input.value()
         wizard.metadata_workers = self.metadata_workers_input.value()
+        wizard.download_full_schema = self.download_full_schema_checkbox.isChecked()
         return True
 
     def isComplete(self):
@@ -768,6 +779,9 @@ class GenerationPage(QWizardPage):
             sync_interval=wizard.sync_interval,
             max_workers=wizard.metadata_workers,
             bpf_definitions=wizard.bpf_definitions,
+            modified_sitemap=getattr(wizard, "modified_sitemap", None),
+            selected_components=getattr(wizard, "selected_components", None),
+            full_schema_topology=getattr(wizard, "download_full_schema", True),
         )
         generation_key = (
             request.org_url,
@@ -858,7 +872,7 @@ class MakerWizard(QWizard):
         super().__init__()
         self.setWindowTitle("VerseOff Maker")
         self.setWizardStyle(QWizard.WizardStyle.ModernStyle)
-        self.setMinimumSize(760, 560)
+        self.setMinimumSize(800, 600)
         self.setOption(QWizard.WizardOption.NoBackButtonOnStartPage)
         self.setOption(QWizard.WizardOption.NoCancelButtonOnLastPage)
 
@@ -867,18 +881,23 @@ class MakerWizard(QWizard):
         self.selected_app_metadata = None
         self.selected_entities = []
         self.bpf_definitions = {}
+        self.modified_sitemap = None
+        self.selected_components = None
+        self.download_full_schema = True
         self.output_dir = None
         self.sync_interval = 300
         self.metadata_workers = 4
 
         self.connection_page = ConnectionPage()
         self.app_page = AppSelectionPage()
-        self.component_page = ComponentReviewPage()
+        self.sitemap_page = SiteMapEditorPage()
+        self.component_page = ComponentSelectorPage()
         self.settings_page = ProjectSettingsPage()
         self.generation_page = GenerationPage()
 
         self.addPage(self.connection_page)
         self.addPage(self.app_page)
+        self.addPage(self.sitemap_page)
         self.addPage(self.component_page)
         self.addPage(self.settings_page)
         self.addPage(self.generation_page)

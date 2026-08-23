@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OC_LimitQuestions_AlertDialogConfirmButton" xml:space="preserve">
+    <value>ΟΚ</value>
+  </data>
+  <data name="OC_RecordPermissions_AlertDialogText" xml:space="preserve">
+    <value>Δεν έχετε δικαιώματα εκτέλεσης αυτής της ενέργειας.</value>
+  </data>
+  <data name="OC_LimitQuestions_AlertDialogText" xml:space="preserve">
+    <value>Δεν μπορείτε να προσθέσετε περισσότερες από πέντε ερωτήσεις. Διαγράψτε μερικές ερωτήσεις για να προσθέσετε περισσότερες.</value>
+  </data>
+  <data name="OC_PickAuthFailed" xml:space="preserve">
+    <value>Η επιλογή απέτυχε λόγω αποτυχίας ελέγχου ταυτότητας. Δοκιμάστε ξανά αργότερα. Στοιχείο εργασίας: {0}</value>
+  </data>
+  <data name="OC_PickedByAnotherAgent" xml:space="preserve">
+    <value>Η επιλογή απέτυχε. Το στοιχείο επιλέχθηκε από άλλον εκπρόσωπο. Στοιχείο εργασίας: {0}</value>
+  </data>
+  <data name="OC_PickInternalError" xml:space="preserve">
+    <value>Η επιλογή απέτυχε. Προσπαθήστε να επιλέξετε ξανά το στοιχείο. Στοιχείο εργασίας: {0}</value>
+  </data>
+  <data name="OC_PickMaxCapacityReached" xml:space="preserve">
+    <value>Η επιλογή απέτυχε. Έχετε συμπληρώσει τη μέγιστη χωρητικότητα. Στοιχείο εργασίας: {0}</value>
+  </data>
+  <data name="OC_PickMaxConcurrencyReached" xml:space="preserve">
+    <value>Η επιλογή απέτυχε. Έχετε συμπληρώσει τον μέγιστο αριθμό ταυτόχρονων εκτελέσεων. Στοιχείο εργασίας: {0}</value>
+  </data>
+  <data name="OC_PickNotAvailable" xml:space="preserve">
+    <value>Η επιλογή απέτυχε. Το στοιχείο δεν είναι διαθέσιμο. Στοιχείο εργασίας: {0}</value>
+  </data>
+  <data name="OC_PickPresenceError" xml:space="preserve">
+    <value>Η επιλογή απέτυχε λόγω της κατάστασης παρουσίας σας. Στοιχείο εργασίας: {0}</value>
+  </data>
+  <data name="OC_PickSuccess" xml:space="preserve">
+    <value>Το στοιχείο εργασίας επιλέχθηκε με επιτυχία. Στοιχείο εργασίας: {0}</value>
+  </data>
+  <data name="OC_OpenFormFail" xml:space="preserve">
+    <value>Το άνοιγμα της φόρμας απέτυχε. Δοκιμάστε ξανά να ανοίξετε τη φόρμα. Εάν το πρόβλημα συνεχίσει να εμφανίζεται, επικοινωνήστε με τον διαχειριστή σας.</value>
+  </data>
+  <data name="OC_OpenSessionFail" xml:space="preserve">
+    <value>Το άνοιγμα της περιόδου λειτουργίας απέτυχε. Δοκιμάστε ξανά να ανοίξετε την περίοδο λειτουργίας. Εάν το πρόβλημα συνεχίσει να εμφανίζεται, επικοινωνήστε με τον διαχειριστή σας.</value>
+  </data>
+  <data name="OC_InputTimeFormat" xml:space="preserve">
+    <value>Πληκτρολογήστε ώρα στη σωστή 24ωρη μορφή (ΩΩ:λλ).</value>
+  </data>
+  <data name="OC_InputTimesDifferenceValidation" xml:space="preserve">
+    <value>Η ώρα λήξης δεν μπορεί να οριστεί νωρίτερα ή λιγότερο από {0} λεπτά από την ώρα έναρξης.</value>
+  </data>
+  <data name="OC_SendMessageToConversationSuccessMessage" xml:space="preserve">
+    <value>Τέλος! Αυτό το μήνυμα εστάλη στη συνομιλία.</value>
+  </data>
+  <data name="OC_SendMessageToConversationFailureMessage" xml:space="preserve">
+    <value>Παρουσιάστηκε πρόβλημα. Δοκιμάστε να στείλετε ξανά το μήνυμα στη συνομιλία.</value>
+  </data>
+  <data name="OC_SupervisorOpenRecord" xml:space="preserve">
+    <value>Οι καρτέλες συνομιλίας είναι μόνο για προβολή και δεν είναι δυνατό το άνοιγμα.</value>
+  </data>
+  <data name="OC_LinkToConversationSuccessMessage" xml:space="preserve">
+    <value>Τέλος! Αυτό {0} συνδεόταν με τη συνομιλία.</value>
+  </data>
+  <data name="OC_LinkToConversationFailureMessage" xml:space="preserve">
+    <value>Κάτι πήγε στραβά. Δοκιμάστε να συνδέσετε ξανά τη συνομιλία.</value>
+  </data>
+  <data name="OC_LinkToConversationUpdatedMessage" xml:space="preserve">
+    <value>Ενημέρωση! Αυτό {0} αντικατέστησε το προηγούμενο {0} που συνδέθηκε σε αυτήν τη συνομιλία.</value>
+  </data>
+  <data name="OC_Presence_Available" xml:space="preserve">
+    <value>Διαθέσιμος</value>
+  </data>
+  <data name="OC_Presence_Busy" xml:space="preserve">
+    <value>Απασχολημένος</value>
+  </data>
+  <data name="OC_Presence_DoNotDisturb" xml:space="preserve">
+    <value>Μην ενοχλείτε</value>
+  </data>
+  <data name="OC_Presence_Away" xml:space="preserve">
+    <value>Εμφανίζεται να απουσιάζει</value>
+  </data>
+  <data name="OC_Presence_Offline" xml:space="preserve">
+    <value>Εκτός σύνδεσης</value>
+  </data>
+  <data name="MaskingRule.LimitReached" xml:space="preserve">
+    <value>Δεν επιτρέπεται η δημιουργία περισσότερων των {0} κανόνων συγκάλυψης. Διαγράψτε κανόνες για να περιορίσετε τον συνολικό αριθμό τους σε {0}.</value>
+  </data>
+  <data name="MaskingRule.PluginError" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα στην προσθήκη PreValidationMaskingRuleLimitPlugin.</value>
+  </data>
+  <data name="MaskingRule.RegexException.InvalidEscape" xml:space="preserve">
+    <value>SyntaxError: Μη έγκυρη τακτική παράσταση: /{0}/: μη έγκυρη διαφυγή</value>
+  </data>
+  <data name="MaskingRule.RegexException.EndOfPattern" xml:space="preserve">
+    <value>SyntaxError: Μη έγκυρη τακτική παράσταση: /{0}/: \ στο τέλος του μοτίβου</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedCharacterClass" xml:space="preserve">
+    <value>SyntaxError: Μη έγκυρη τακτική παράσταση: /{0}/: κλάση χαρακτήρων που δεν έχει τερματιστεί</value>
+  </data>
+  <data name="MaskingRule.RegexException.IncompleteQuantifier" xml:space="preserve">
+    <value>SyntaxError: Μη έγκυρη τακτική παράσταση: /{0}/: ελλιπής τελεστής ποσοτικοποίησης</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedGroup" xml:space="preserve">
+    <value>SyntaxError: Μη έγκυρη τακτική παράσταση: /{0}/: ομάδα που δεν έχει τερματιστεί</value>
+  </data>
+  <data name="MaskingRule.RegexException.LoneQuantifierBrackets" xml:space="preserve">
+    <value>SyntaxError: Μη έγκυρη τακτική παράσταση: /{0}/: μοναχικές αγκύλες τελεστή ποσοτικοποίησης</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnmatchedParen" xml:space="preserve">
+    <value>SyntaxError: Μη έγκυρη τακτική παράσταση: /{0}/: αταίριαστη ')'</value>
+  </data>
+  <data name="MaskingRule.RegexException.NothingToRepeat" xml:space="preserve">
+    <value>SyntaxError: Μη έγκυρη τακτική παράσταση: /{0}/: δεν υπάρχουν στοιχεία για επανάληψη</value>
+  </data>
+  <data name="MaskingRule.RegexException.Timeout" xml:space="preserve">
+    <value>TimeoutError: η κανονική παράσταση διήρκεσε υπερβολικά πολύ για να εκτιμηθεί: /{0}/: τερματίστηκε μετά από {1} ms.</value>
+  </data>
+  <data name="MaskingRule.MaskingInProgress" xml:space="preserve">
+    <value>Μάσκα δεδομένων δοκιμής με κανονική παράσταση.</value>
+  </data>
+  <data name="SentimentAnalysis.WrongName" xml:space="preserve">
+    <value>Το όνομα της καρτέλας πρέπει να είναι {0}.</value>
+  </data>
+  <data name="SentimentAnalysis.DeleteNotAllowed" xml:space="preserve">
+    <value>Η διαγραφή καρτελών δεν επιτρέπεται.</value>
+  </data>
+  <data name="Entity.OnlyOneAllowed" xml:space="preserve">
+    <value>Επιτρέπεται μόνο μία καρτέλα αυτού του τύπου.</value>
+  </data>
+  <data name="Entity.DeleteNotAllowed" xml:space="preserve">
+    <value>Η διαγραφή καρτελών δεν επιτρέπεται.</value>
+  </data>
+  <data name="DefaultQueue.DeleteNotAllowed" xml:space="preserve">
+    <value>Δεν μπορείτε να διαγράψετε το DefaultQueue επειδή η ουρά είναι μόνο για ανάγνωση.</value>
+  </data>
+  <data name="DefaultQueue.UpdateNotAllowed" xml:space="preserve">
+    <value>Δεν μπορείτε να επεξεργαστείτε το DefaultQueue επειδή η ουρά είναι μόνο για ανάγνωση.</value>
+  </data>
+  <data name="Queue.IncorrectEntityError" xml:space="preserve">
+    <value>Σφάλμα καταχώρησης προσθήκης: το λογικό όνομα οντότητας δεν είναι Queue.</value>
+  </data>
+  <data name="Queue.QueueTypeUpdateError" xml:space="preserve">
+    <value>Δεν μπορείτε να ενημερώσετε τον τύπο ουράς.</value>
+  </data>
+  <data name="Queue.NonEntityQueueSelected" xml:space="preserve">
+    <value>Δεν είναι δυνατή η δημιουργία του στοιχείου κανόνα δρομολόγησης, καθώς η επιλεγμένη ουρά δεν είναι τύπου οντότητας. Μπορείτε να δρομολογήσετε μόνο την ουρά τύπου οντότητας.</value>
+  </data>
+  <data name="RoutingRuleItem.NonEntityQueueSelected" xml:space="preserve">
+    <value>Δεν είναι δυνατή η προσθήκη καταγραφής στην επιλεγμένη ουρά, καθώς η επιλεγμένη ουρά δεν είναι τύπου οντότητας. Επιλέξτε μια ουρά οντότητας και προσπαθήστε ξανά.</value>
+  </data>
+  <data name="OC_Refresh_Grid" xml:space="preserve">
+    <value>Δεν είναι δυνατή η μετακίνηση της καρτέλας ως πλέγμα σε λειτουργία ταξινόμησης. Ανανεώστε το πλέγμα και δοκιμάστε ξανά</value>
+  </data>
+  <data name="GeoLocationProvider.IncorrectEntityError" xml:space="preserve">
+    <value>Σφάλμα καταχώρησης προσθήκης: το λογικό όνομα οντότητας δεν είναι GeoLocationProvider.</value>
+  </data>
+  <data name="GeoLocationProvider.PluginError" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα στην προσθήκη GeoLocationProviderPlugIn.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelsNotSupported" xml:space="preserve">
+    <value>Τα κανάλια οντοτήτων δεν υποστηρίζονται σε αυτήν την έκδοση. Για περισσότερες πληροφορίες, ανατρέξτε στο αρχείο ReadMe.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelTypeNotSupported" xml:space="preserve">
+    <value>Το κανάλι οντότητας δεν υποστηρίζεται σε αυτήν την έκδοση. Επιλέξτε άλλους τύπους καναλιών. Για περισσότερες πληροφορίες, ανατρέξτε στο αρχείο ReadMe.</value>
+  </data>
+  <data name="EntityRouting.EntityWorkStreamsNotSupported" xml:space="preserve">
+    <value>Οι ροές εργασίας δεν υποστηρίζονται σε αυτήν την έκδοση. Για περισσότερες πληροφορίες, ανατρέξτε στο αρχείο ReadMe.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForDSF" xml:space="preserve">
+    <value>Οι αλλαγές ρύθμισης παραμέτρων του Πανκαναλικού χρειάζονται έως 15 λεπτά για να ληφθούν υπόψη.</value>
+  </data>
+  <data name="OC_CaseRoutingFormNotificationMessage" xml:space="preserve">
+    <value>Μόνο η δρομολόγηση υποθέσεων υποστηρίζεται σε αυτήν την έκδοση. Άλλες καρτέλες οντοτήτων θα υποστηρίζονται στη μελλοντική έκδοση.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForRoutingSolutionDep" xml:space="preserve">
+    <value>Πρέπει να εγκαταστήσετε τη λύση της έκδοσης προεπισκόπησης των κανόνων δρομολόγησης για να χρησιμοποιήσετε τη δρομολόγηση οντότητας υπόθεσης. Για να μάθετε περισσότερα, ανατρέξτε στο {0}</value>
+  </data>
+  <data name="OC_Preview_Message" xml:space="preserve">
+    <value>Ενεργοποιώντας αυτήν τη δυνατότητα, αποδέχεστε ότι αυτή η δυνατότητα είναι σε έκδοση προεπισκόπησης και αποδέχεστε τους {0}.{1}</value>
+    <comment>Template Preview Text for all features</comment>
+  </data>
+  <data name="OC_Preview_Link_Label" xml:space="preserve">
+    <value>Όροι έκδοσης προεπισκόπησης</value>
+    <comment>Preview Terms label to point to the relevant Preview Terms</comment>
+  </data>
+  <data name="OC_LearnMore_Link_Label" xml:space="preserve">
+    <value>Μάθετε περισσότερα</value>
+    <comment>Hyperlink label to point to the relevant feature documentation</comment>
+  </data>
+  <data name="AutomaticQueueName" xml:space="preserve">
+    <value>Ουρά αυτόματης κατανομής</value>
+  </data>
+  <data name="AutomaticQueueSelectionRecommendation" xml:space="preserve">
+    <value>Επιλέξτε μια ουρά για την αυτόματη κατανομή και ανάθεση στοιχείων εργασίας σε εκπροσώπους.</value>
+  </data>
+  <data name="ConfigureRoutingRulesAtERCNotification" xml:space="preserve">
+    <value>Οι κανόνες δρομολόγησης για ροές εργασίας καρτελών οντοτήτων ρυθμίζονται σε επίπεδο καναλιού. Μεταβείτε στο Κανάλια &gt; Καρτέλες οντότητας &gt; {0} &gt; Κανόνες δρομολόγησης για ρύθμιση παραμέτρων.</value>
+  </data>
+  <data name="isOmnichannelQueueGuidanceNotification" xml:space="preserve">
+    <value>Ορίστε "Ναι" για να ενεργοποιήσετε την ουρά για την αυτόματη κατανομή εργασίας του Πανκαναλικού. Για να μάθετε περισσότερα, ανατρέξτε στο {0}</value>
+  </data>
+  <data name="ManualQueueName" xml:space="preserve">
+    <value>Μη αυτόματη ουρά</value>
+  </data>
+  <data name="ManualQueueSelectionRecommendation" xml:space="preserve">
+    <value>Επιλέξτε Ουρά για αυτόματη κατανομή εργασίας για να αναθέσετε αυτόματα καρτέλες οντοτήτων σε εκπροσώπους.</value>
+  </data>
+  <data name="ERCDeletionWarningMessage" xml:space="preserve">
+    <value>Η διαγραφή της καρτέλας {0} θα απενεργοποιήσει τη δρομολόγηση καρτελών οντοτήτων για την οντότητα {1}. Είστε βέβαιοι ότι θέλετε να διαγράψετε;</value>
+  </data>
+  <data name="InstallRoutingRuleForERCNotification" xml:space="preserve">
+    <value>Πρέπει να εγκαταστήσετε τη λύση κανόνων δρομολόγησης για να χρησιμοποιήσετε τη δρομολόγηση καρτελών οντότητας. Για να μάθετε περισσότερα, ανατρέξτε στο {0}.</value>
+  </data>
+  <data name="EntityRoutingPlugins.GenericError" xml:space="preserve">
+    <value>Δεν είναι δυνατή η ολοκλήρωση της λειτουργίας λόγω σφάλματος. Δοκιμάστε ξανά αργότερα. Εάν το πρόβλημα συνεχίσει να εμφανίζεται, επικοινωνήστε με την υποστήριξη της Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.CreateError" xml:space="preserve">
+    <value>Δεν είναι δυνατή η δημιουργία {0}. Δοκιμάστε ξανά αργότερα. Εάν το πρόβλημα συνεχίσει να εμφανίζεται, επικοινωνήστε με την υποστήριξη της Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.SaveError" xml:space="preserve">
+    <value>Δεν είναι δυνατή η αποθήκευση {0}. Δοκιμάστε ξανά αργότερα. Εάν το πρόβλημα συνεχίσει να εμφανίζεται, επικοινωνήστε με την υποστήριξη της Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.DeleteError" xml:space="preserve">
+    <value>Δεν είναι δυνατή η διαγραφή {0}. Δοκιμάστε ξανά αργότερα. Εάν το πρόβλημα συνεχίσει να εμφανίζεται, επικοινωνήστε με την υποστήριξη της Microsoft.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityMissing" xml:space="preserve">
+    <value>Το πεδίο οντότητας είναι κενό. Επιλέξτε μια τιμή για το πεδίο οντότητας και δοκιμάστε ξανά.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityNotRequired" xml:space="preserve">
+    <value>Το πεδίο οντότητας έχει μια τιμή. Αφήστε το πεδίο οντότητας κενό και δοκιμάστε ξανά.</value>
+  </data>
+  <data name="EntityRoutingPlugins.BothEntityConfigurationsNotRequired" xml:space="preserve">
+    <value>Και τα δύο πεδία ρύθμισης παραμέτρων οντότητας έχουν τιμή. Αφήστε κενό οποιοδήποτε πεδίο ρύθμισης παραμέτρων οντότητας και δοκιμάστε ξανά.</value>
+    <comment>Liveworkstream has ercId and mercId fields, and only one can have value</comment>
+  </data>
+  <data name="EntityRoutingPlugins.DefaultWorkStreamName" xml:space="preserve">
+    <value>{0} ροή εργασίας</value>
+  </data>
+  <data name="EntityRoutingPlugins.FlowConfigurationError" xml:space="preserve">
+    <value>Η λειτουργία απέτυχε λόγω εσφαλμένης ρύθμισης παραμέτρων στη ροή διανομής των καρτελών οντοτήτων. Βεβαιωθείτε ότι το {0} δεν έχει διαγραφεί ή μετονομαστεί.</value>
+  </data>
+  <data name="EntityRoutingPlugins.TroubleshootingLearnMore" xml:space="preserve">
+    <value>Για να μάθετε περισσότερα, ανατρέξτε στο θέμα Αντιμετώπιση προβλημάτων Πανκαναλικού - {0}</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>Επιβεβαίωση</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Άκυρο</value>
+  </data>
+  <data name="OC_IncidentQueueItemWarningNessage" xml:space="preserve">
+    <value>Αυτή η καρτέλα μεταφέρθηκε στην ουρά Πανκαναλικό και δεν είναι πλέον ορατή εδώ. Για να δείτε αυτήν την καρτέλα, ανοίξτε την από τον πίνακα εργαλείων του Πανκαναλικού.</value>
+  </data>
+  <data name="OC_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Δήλωση ιδιωτικού απορρήτου της Microsoft</value>
+  </data>
+  <data name="OC_ChannelPreviewDisclaimer" xml:space="preserve">
+    <value>Χρησιμοποιώντας αυτό το κανάλι, αποδέχεστε ότι αυτή η δυνατότητα είναι σε έκδοση προεπισκόπησης και συμφωνείτε με τους Όρους της έκδοσης προεπισκόπησης.</value>
+  </data>
+  <data name="OC_SeePreviewTerms" xml:space="preserve">
+    <value>Βλέπε τους όρους της έκδοσης προεπισκόπησης</value>
+  </data>
+  <data name="OC_ThirdPartyChannelPrivacyDisclaimer" xml:space="preserve">
+    <value>Ενεργοποιώντας αυτό το κανάλι, συναινείτε στην κοινή χρήση των δεδομένων σας με συστήματα τρίτων μερών και με τη ροή εκτός του ορίου συμμόρφωσης και των γεωγραφικών ορίων του οργανισμού σας (συμπεριλαμβανομένων περιβαλλόντων Government Cloud). Μάθετε περισσότερα στο {0}.</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_FeatureDocumentation" xml:space="preserve">
+    <value>μετάφραση σε πραγματικό χρόνο</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Δήλωση προστασίας προσωπικών δεδομένων της Microsoft</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_Text" xml:space="preserve">
+    <value>Ενεργοποιώντας αυτήν τη δυνατότητα, αποδέχεστε ότι τα δεδομένα σας ενδέχεται να ρέουν εκτός των ορίων συμμόρφωσης και των γεωγραφικών ορίων του οργανισμού. Αυτό περιλαμβάνει περιβάλλοντα Government Cloud. Μάθετε περισσότερα για το {0} και το {1}.</value>
+    <comment>DO NOT CHANGE {0} and {1}, as they will be replaced with OC_LanguageTranslation_Disclaimer_FeatureDocumentation and OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement respectively.</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_DocumentFeature_Text" xml:space="preserve">
+    <value>Κάντε κλικ εδώ για τεκμηρίωση δυνατοτήτων</value>
+    <comment>Indicates this is the link for feature documentation</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Link" xml:space="preserve">
+    <value>διαμόρφωση πόρου web</value>
+    <comment>  This is the link for real time translation webresource documentation </comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Text" xml:space="preserve">
+    <value>Ρυθμίστε τις παραμέτρους ενός πόρου Web για τη δημιουργία της διεύθυνσης URL σας. Στη συνέχεια, αντιγράψτε και επικολλήστε αυτήν τη διεύθυνση URL παρακάτω. Μάθετε περισσότερα για το {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder "0" will be replaced by a OC_LanguageTranslation_Webresource_Disclaimer_Link. Link text is "here".</comment>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_Text" xml:space="preserve">
+    <value>Ενεργοποιώντας αυτήν τη δυνατότητα, αποδέχεστε ότι αυτή η δυνατότητα είναι σε έκδοση προεπισκόπησης και αποδέχεστε τους </value>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_LinkText" xml:space="preserve">
+    <value>Όροι έκδοσης προεπισκόπησης</value>
+  </data>
+  <data name="LanguageTranslation_Invalid_webresource_url" xml:space="preserve">
+    <value>Η διεύθυνση URL που πληκτρολογήσατε δεν συμφωνεί με τον πόρο Web. Δοκιμάστε να αντιγράψετε και να επικολλήσετε τη διεύθυνση URL του πόρου Web ξανά.</value>
+  </data>
+  <data name="DeprecationBanner" xml:space="preserve">
+    <value>Από τον Ιούλιο του 2022, αυτή η εφαρμογή δεν θα είναι πλέον διαθέσιμη για χρήση. Θα πρέπει να κάνετε μετεγκατάσταση των ροών εργασίας σας στο Πανκαναλικό κέντρο διαχείρισης, για να συνεχίσετε να χρησιμοποιείτε το Πανκαναλικό για Customer Service.</value>
+  </data>
+  <data name="OC_Deprecation_Title_Text" xml:space="preserve">
+    <value>Η Διαχείριση Πανκαναλικού δεν υποστηρίζεται πλέον</value>
+  </data>
+  <data name="OC_Deprecation_Description_Text" xml:space="preserve">
+    <value>Η υποστήριξη για την εφαρμογή Διαχείρισης Πανκαναλικού έληξε στις 30 Δεκεμβρίου 2022. Για να ρυθμίσετε τις παραμέτρους του Customer Service, ξεκινήστε να χρησιμοποιείτε την εφαρμογή κέντρου διαχείρισης του Customer Service. Μετεγκαταστήστε αμέσως όλους τους ορισμούς ροής εργασίας από την εφαρμογή Διαχείρισης Πανκαναλικού στην εφαρμογή κέντρου διαχείρισης εξυπηρέτησης του Customer Service. {0}</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More" xml:space="preserve">
+    <value>Μάθετε περισσότερα</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More_Aria_Label" xml:space="preserve">
+    <value>Μάθετε περισσότερα για την απόσυρση της Διαχείρισης Πανκαναλικού</value>
+  </data>
+  <data name="OC_Deprecation_Acknowledge_Checkbox_Label" xml:space="preserve">
+    <value>Κατανοώ ότι η εφαρμογή Διαχείρισης Πανκαναλικού δεν υποστηρίζεται πλέον.</value>
+  </data>
+  <data name="OC_Deprecation_Redirect_Button_Text" xml:space="preserve">
+    <value>Άνοιγμα κέντρου διαχείρισης του Customer Service</value>
+  </data>
+  <data name="OC_Deprecation_Dismiss_Button_Text" xml:space="preserve">
+    <value>Συνέχεια στη Διαχείριση Πανκαναλικού</value>
+  </data>
+  <data name="PostConversationSurveyMessage" xml:space="preserve">
+    <value>Πώς ήταν η εμπειρία σας; Κάντε κοινή χρήση των σχολίων σας σε αυτήν την έρευνα. </value>
+  </data>
+  <data name="OC_FormsProSurvey_Disclaimer" xml:space="preserve">
+    <value>Αυτή η ενέργεια θα εκτελείται από το Microsoft Dynamics 365 Customer Voice.</value>
+  </data>
+  <data name="Presence.InactivePresenceUpdateNotAllowed" xml:space="preserve">
+    <value>Οι ενημερώσεις σε αυτό το πεδίο για αυτήν την καρτέλα έχουν απενεργοποιηθεί.</value>
+  </data>
+  <data name="Presence.IncorrectEntityError" xml:space="preserve">
+    <value>Σφάλμα καταχώρησης προσθήκης: το λογικό όνομα οντότητας δεν είναι msdyn_presence.</value>
+  </data>
+  <data name="OperatingHours.Hours" xml:space="preserve">
+    <value> ώρες</value>
+  </data>
+  <data name="OperatingHours.Minutes" xml:space="preserve">
+    <value> λεπτά</value>
+  </data>
+  <data name="OperatingHours.TotalOperatingHours" xml:space="preserve">
+    <value>Σύνολο ωρών λειτουργίας: </value>
+  </data>
+  <data name="Presence.DefaultDeletePlugin" xml:space="preserve">
+    <value>Δεν είναι δυνατή η διαγραφή μιας προεπιλεγμένης παρουσίας</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Δεν βρέθηκαν προβλήματα.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα στο {0}.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Μη έγκυρη χωρητικότητα εκπροσώπου, Η τιμή πρέπει να είναι μεγαλύτερη από 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Βρέθηκε ένας εκπρόσωπός με εσφαλμένη ρύθμιση παραμέτρων. Η χωρητικότητα του εκπροσώπου πρέπει να οριστεί σε τιμή μεγαλύτερη από 0.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Εντοπίστηκαν {0} εκπρόσωποι που έχουν ρυθμιστεί εσφαλμένα. Η χωρητικότητα των εκπροσώπων πρέπει να είναι μεγαλύτερη από 0.</value>
+    <comment>The error message for OcAgentsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Μη έγκυρη χωρητικότητα bot. Η τιμή πρέπει να είναι μεγαλύτερη από 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Βρέθηκε ένα bot με εσφαλμένη ρύθμιση παραμέτρων. Η χωρητικότητα του bot πρέπει να οριστεί σε τιμή μεγαλύτερη από 0.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Υπάρχουν {0} εσφαλμένα ρυθμισμένα bot. Η χωρητικότητα των bot πρέπει να είναι μεγαλύτερη από 0.</value>
+    <comment>The error message for OcBotsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Υπάρχει 1 ουρά χωρίς εκπροσώπους.</value>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Υπάρχουν {0} ουρές χωρίς εκπροσώπους.</value>
+    <comment>The error message for OcQueuesShouldHaveAgentsRule rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ErrorMessage" xml:space="preserve">
+    <value>Το Πανκαναλικό δεν είναι πλήρως λειτουργικό, ορισμένα βήματα επεξεργασίας μηνυμάτων είναι απενεργοποιημένα.</value>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ResultEntityMessage" xml:space="preserve">
+    <value>Το βήμα επεξεργασίας μηνυμάτων πρέπει να είναι ενεργοποιημένο για να εξασφαλιστεί η σωστή λειτουργία του Πανκαναλικού.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointIsNotConfigured" xml:space="preserve">
+    <value>Οι παράμετροι του τελικού σημείου υπηρεσίας OC δεν έχουν ρυθμιστεί.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointPathIsEmpty" xml:space="preserve">
+    <value>Η διαδρομή τελικού σημείου υπηρεσίας OC είναι κενή.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.ResultEntityMessage" xml:space="preserve">
+    <value>Εκπρόσωποι: {0} (αναγνωριστικό: {1})</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is agent name and {1} is agent Id</comment>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Υπάρχει 1 ροή εργασίας με χωρητικότητα μεγαλύτερη από τους εκπροσώπους τους.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Υπάρχουν {0} ροές εργασίας με χωρητικότητα μεγαλύτερη από τους εκπροσώπους τους.</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.ResultEntityMessage" xml:space="preserve">
+    <value>Η ροή εργασίας δεν έχει καθορισμένα ορισμένα πρότυπα ειδοποιήσεων.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Υπάρχει 1 ροή εργασίας χωρίς πρότυπο ειδοποίησης.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Υπάρχουν {0} ροές εργασίας χωρίς πρότυπα ειδοποίησης.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoSessionTemplates" xml:space="preserve">
+    <value>Η ροή εργασίας {0} έχει σενάρια χωρίς πρότυπο περιόδου λειτουργίας.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoScenarios" xml:space="preserve">
+    <value>Η ροή εργασίας {0} δεν έχει σενάρια.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Υπάρχει 1 ροή εργασίας χωρίς πρότυπο περιόδου λειτουργίας.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Υπάρχουν {0} ροές εργασίας χωρίς πρότυπο περιόδου λειτουργίας.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.ResultEntityMessage" xml:space="preserve">
+    <value>Η ροή εργασίας έχει διπλότυπες μεταβλητές περιβάλλοντος: {0}</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is duplicated context names</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Υπάρχει 1 ροή εργασίας με διπλότυπες μεταβλητές περιβάλλοντος.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Υπάρχουν {0} ροές εργασίας με διπλότυπες μεταβλητές περιβάλλοντος.</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.ResultEntityMessage" xml:space="preserve">
+    <value>Κανόνες δρομολόγησης χωρίς όρους: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities list</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Υπάρχουν {0} ροές εργασίας με κενούς κανόνες δρομολόγησης πάνω από κανόνες με συνθήκη.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Υπάρχει 1 ροή εργασίας με κενούς κανόνες δρομολόγησης πάνω από κανόνες με συνθήκη.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Υπάρχει 1 ροή εργασίας με λειτουργία ώθησης που επιτρέπει τη λειτουργία χωρίς σύνδεση.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Υπάρχουν {0} ροές εργασίας με λειτουργία ώθησης που επιτρέπει τη λειτουργία χωρίς σύνδεση.</value>
+    <comment>The error message for WorkstreamWithPushModeShouldNotAllowOfflineMode rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Το bot έχει δυνητικά χαμηλή χωρητικότητα.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Υπάρχει 1 bot που έχει δυνητικά χαμηλή χωρητικότητα.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Υπάρχουν {0} bot που έχουν δυνητικά χαμηλή χωρητικότητα.</value>
+    <comment>The error message for OcBotsShouldNotHavePotentiallyLowCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.EntityMessage" xml:space="preserve">
+    <value>Ρύθμιση παραμέτρων υπηρεσίας παροχής διπλότυπων καναλιών.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultDuplicatedChannel" xml:space="preserve">
+    <value>Βρέθηκαν ρυθμίσεις παραμέτρων υπηρεσίας παροχής διπλότυπων καναλιών.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ProviderNotFound" xml:space="preserve">
+    <value>Η υπηρεσία παροχής καναλιού Πανκαναλικού δεν βρέθηκε.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsEmpty" xml:space="preserve">
+    <value>Το πεδίο διεύθυνσης URL καναλιού είναι κενό</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsInvalid" xml:space="preserve">
+    <value>Το πεδίο διεύθυνσης URL καναλιού δεν είναι έγκυρο</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.UnifiedInterfaceAppsFieldNoOCApp" xml:space="preserve">
+    <value>Το πεδίο εφαρμογών ενοποιημένου περιβάλλοντος εργασίας δεν περιέχει την εφαρμογή Πανκαναλικού</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AgentRoleNotAssigned" xml:space="preserve">
+    <value>Δεν έχει ανατεθεί ρόλος εκπροσώπου Πανκαναλικού</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.SupervisorRoleNotAssigned" xml:space="preserve">
+    <value>Δεν έχει ανατεθεί ρόλος επόπτη Πανκαναλικού</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AdministratorRoleNotAssigned" xml:space="preserve">
+    <value>Δεν έχει ανατεθεί ρόλος διαχειριστή Πανκαναλικού.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultImproperlyConfigured" xml:space="preserve">
+    <value>Η υπηρεσία παροχής καναλιών Πανκαναλικού έχει ρυθμιστεί εσφαλμένα.</value>
+  </data>
+  <data name="OC_OH_Preview_Message" xml:space="preserve">
+    <value>Χρησιμοποιώντας αυτήν τη δυνατότητα, αποδέχεστε ότι αυτή η δυνατότητα είναι σε έκδοση προεπισκόπησης και αποδέχεστε τους {0}. {1}</value>
+    <comment>Template Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_OH_Preview_Notification" xml:space="preserve">
+    <value>Χρησιμοποιώντας αυτήν τη δυνατότητα, αποδέχεστε ότι αυτή η δυνατότητα είναι σε έκδοση προεπισκόπησης και συμφωνείτε με τους Όρους της έκδοσης προεπισκόπησης.</value>
+    <comment>Notification Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_InstanceLevelBanner" xml:space="preserve">
+    <value>Εφαρμόστηκαν οι ρυθμίσεις αυτοματοποιημένου μηνύματος για το {0}. Για να δημιουργήσετε ένα αυτοματοποιημένο μήνυμα για το {1}, επιλέξτε «Δημιουργία».</value>
+  </data>
+  <data name="OC_CustomSystemMessage_ConfirmDelete" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το μήνυμα; Διαγράφοντάς το, θα επαναφέρουμε τις ρυθμίσεις αυτοματοποιημένου μηνύματος για το {0}.</value>
+  </data>
+  <data name="OC_Channel_Chat" xml:space="preserve">
+    <value>Συνομιλία</value>
+    <comment>Messaging channel chat</comment>
+  </data>
+  <data name="OC_Channel_Custom" xml:space="preserve">
+    <value>Προσαρμογή</value>
+    <comment>Messaging channel Custom</comment>
+  </data>
+  <data name="OC_Channel_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>Messaging channel Facebook</comment>
+  </data>
+  <data name="OC_Channel_LINE" xml:space="preserve">
+    <value>LINE</value>
+    <comment>Messaging channel LINE</comment>
+  </data>
+  <data name="OC_Channel_SMS" xml:space="preserve">
+    <value>SMS</value>
+    <comment>Messaging channel SMS</comment>
+  </data>
+  <data name="OC_Channel_Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+    <comment>Messaging channel Microsoft Teams</comment>
+  </data>
+  <data name="OC_Channel_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Messaging channel Twitter</comment>
+  </data>
+  <data name="OC_Channel_unknown" xml:space="preserve">
+    <value>Άγνωστο κανάλι</value>
+    <comment>Messaging channel unknown channel</comment>
+  </data>
+  <data name="OC_Channel_WeChat" xml:space="preserve">
+    <value>WeChat</value>
+    <comment>Messaging channel WeChat</comment>
+  </data>
+  <data name="OC_Channel_WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+    <comment>Messaging channel WhatsApp</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_DuplicateNameMessage" xml:space="preserve">
+    <value>Έχει ήδη δημιουργηθεί αυτοματοποιημένο μήνυμα ή πρότυπο μηνύματος με το ίδιο όνομα.</value>
+  </data>
+  <data name="OC_FeaturePreviewDisclaimer" xml:space="preserve">
+    <value>Χρησιμοποιώντας αυτήν τη δυνατότητα, αποδέχεστε ότι αυτή η δυνατότητα είναι σε έκδοση προεπισκόπησης και συμφωνείτε με τους Όρους της έκδοσης προεπισκόπησης.</value>
+  </data>
+  <data name="OC_ProgressIndicator_Loading" xml:space="preserve">
+    <value>Φόρτωση...</value>
+    <comment>Progress indicator message</comment>
+  </data>
+  <data name="OC_TokenAcquireFailed_AlertText" xml:space="preserve">
+    <value>Η απόκτηση διακριτικού απέτυχε</value>
+    <comment>Alert message for token acquire failures</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationTitle" xml:space="preserve">
+    <value>Μετάβαση στον προρυθμισμένο χώρο εργασίας</value>
+    <comment>Analytics PaaS feature confirmation dialog body text</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationText" xml:space="preserve">
+    <value>Με τη μετάβαση σε προρύθμιση θα διαγραφούν οι προσαρμοσμένες ρυθμίσεις του χώρου εργασίας σας. Μπορείτε να επιστρέψετε στον προσαρμοσμένο χώρο εργασίας οποιαδήποτε στιγμή, αλλά θα πρέπει να ρυθμίσετε ξανά τις παραμέτρους του χώρου εργασίας σας.</value>
+    <comment>Analytics PaaS feature confirmation dialog title</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationButtonLabel" xml:space="preserve">
+    <value>Μετάβαση σε προρύθμιση</value>
+    <comment>Analytics PaaS feature confirmation dialog confirm button label</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimer" xml:space="preserve">
+    <value>Το WhatsApp έχει προθεσμία απόκρισης 24 ωρών. Αν περάσουν 24 ώρες από το τελευταίο μήνυμα ενός πελάτη, οι εκπρόσωποι θα μπορούν να στέλνουν μόνο πρότυπα μηνυμάτων που έχουν εγκριθεί από το WhatsApp μέχρι να απαντήσει ο πελάτης. Βεβαιωθείτε ότι το WhatsApp έχει εγκρίνει τα πρότυπα μηνυμάτων σας πριν τα προσθέσετε εδώ. {0}</value>
+    <comment>{0} will be replaced by a link "learn more"</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimerLearnMore" xml:space="preserve">
+    <value>Μάθετε περισσότερα</value>
+    <comment>learn more link for OC_WhatsAppMessageTemplateDisclaimer</comment>
+  </data>
+  <data name="MessageTemplateFeatureName" xml:space="preserve">
+    <value>Πρότυπο μηνύματος</value>
+    <comment>This should be the same as what we show in the sitemap</comment>
+  </data>
+  <data name="AutomatedMessageRequiredFieldNotFilled" xml:space="preserve">
+    <value>Πρέπει να συμπληρωθούν τα απαιτούμενα πεδία.</value>
+    <comment>Shown in banner when required fields are not populated</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitor" xml:space="preserve">
+    <value>Επισκέπτης</value>
+    <comment>Used when user name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleLiveWorkStream" xml:space="preserve">
+    <value>Ζωντανή ροή εργασίας</value>
+    <comment>Used when live work stream name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitorFormatter" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} and {1} should not be changed. They will be replaced by customer name and workstream name respectively. Example, James: WorkStream1</comment>
+  </data>
+  <data name="DefaultFieldsRquiredForMessageTemplate" xml:space="preserve">
+    <value>Απαιτείται προεπιλεγμένη γλώσσα και προεπιλεγμένο κείμενο μηνύματος για ένα πρότυπο μηνύματος.</value>
+  </data>
+  <data name="DefaultLocalizationDataNotFoundForMessageTemplate" xml:space="preserve">
+    <value>Δεν βρέθηκαν προεπιλεγμένα δεδομένα τοπικής προσαρμογής για αυτό το πρότυπο μηνύματος.</value>
+  </data>
+  <data name="SavingPrivacyTerms" xml:space="preserve">
+    <value>Φόρτωση...</value>
+    <comment>Shown after user agrees to privacy terms</comment>
+  </data>
+  <data name="ConversationFormReadonlyNotificationText" xml:space="preserve">
+    <value>Μόνο για ανάγνωση. Η αιτιολογία κατάστασης αυτής της καρτέλας: {0}</value>
+    <comment>{0} will be replaced with statuscode text. Any changes to this will have an impact on msdyn_customersummaryscripts.ts</comment>
+  </data>
+  <data name="OC_IntradayInsights_ConfigTitle" xml:space="preserve">
+    <value>Ρύθμιση παραμέτρων ενδοημερήσιων πληροφοριών</value>
+    <comment>Title for Intraday insights configuration</comment>
+  </data>
+  <data name="OC_FormsPro_Button_Text" xml:space="preserve">
+    <value>Άνοιγμα του Dynamics 365 Customer Voice</value>
+  </data>
+  <data name="FbAppNotFound" xml:space="preserve">
+    <value>Το αναγνωριστικό εφαρμογής στο Facebook δεν βρέθηκε. Δοκιμάστε ένα άλλο.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PrivacyNotFound" xml:space="preserve">
+    <value>Οι όροι προστασίας προσωπικών δεδομένων δεν έχουν γίνει αποδεκτοί για το κανάλι.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="CantProvisionFBPage" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η παροχή της σελίδας σας στο Facebook. Ελέγξτε ξανά όλες τις πληροφορίες που υποβάλατε και δοκιμάστε ξανά.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PreValidationFacebookApplicationCreatePluginFailure" xml:space="preserve">
+    <value>Παρουσιάστηκε απροσδόκητο σφάλμα κατά τη δημιουργία μιας εφαρμογής στο Facebook. Δοκιμάστε ξανά αργότερα.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageCreatePluginFailure" xml:space="preserve">
+    <value>Παρουσιάστηκε απροσδόκητο σφάλμα κατά τη δημιουργία μιας σελίδας στο Facebook. Δοκιμάστε ξανά αργότερα.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageUpdatePluginFailure" xml:space="preserve">
+    <value>Παρουσιάστηκε απροσδόκητο σφάλμα κατά την ενημέρωση της σελίδας στο Facebook. Δοκιμάστε ξανά αργότερα.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ExistingFbPageFound" xml:space="preserve">
+    <value>Έχετε ήδη ρυθμίσει αυτήν τη σελίδα στο Facebook. Εισαγάγετε διαφορετική σελίδα και δοκιμάστε ξανά.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ErrorProcessingRequestParameter" xml:space="preserve">
+    <value>Σφάλμα επεξεργασίας παραμέτρων αίτησης. Σφάλμα: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="InvalidContextVariable" xml:space="preserve">
+    <value>Τα contextVariables δεν είναι έγκυρα. Σφάλμα: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="MissingRequestId" xml:space="preserve">
+    <value>Λείπει το RequestId.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingVersion" xml:space="preserve">
+    <value>Το Version δεν είναι έγκυρο.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingChannelInstance" xml:space="preserve">
+    <value>Το ChannelInstance λείπει.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingDirection" xml:space="preserve">
+    <value>Το Direction λείπει.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidDirection" xml:space="preserve">
+    <value>Το Direction δεν είναι έγκυρο.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingContextVariables" xml:space="preserve">
+    <value>Τα ContextVariables λείπουν.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingMessageText" xml:space="preserve">
+    <value>Το MessageText λείπει.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingOffsetTime" xml:space="preserve">
+    <value>Το OffsetTime λείπει.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidChannelInstance" xml:space="preserve">
+    <value>Ο φόρτος εργασίας παρουσίας καναλιού δεν είναι έγκυρος.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiParameterMissing" xml:space="preserve">
+    <value>Το {0} λείπει ή δεν είναι έγκυρο.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays parameter value.</comment>
+  </data>
+  <data name="ChannelApiUnsupportedVersion" xml:space="preserve">
+    <value>Το ApiVersion {0} δεν υποστηρίζεται.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays version number.</comment>
+  </data>
+  <data name="ChannelApiInternalError" xml:space="preserve">
+    <value>Παρουσιάστηκε εσωτερικό σφάλμα. {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the exception message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationSend" xml:space="preserve">
+    <value>Η συνομιλία δεν υπάρχει ή η συνομιλία έκλεισε.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiMessageNullSend" xml:space="preserve">
+    <value>Το κείμενο του μηνύματος δεν μπορεί να είναι null ή κενό.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationGet" xml:space="preserve">
+    <value>Η συνομιλία δεν υπάρχει.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationEnd" xml:space="preserve">
+    <value>Η συνομιλία δεν υπάρχει ή η συνομιλία έκλεισε.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Title" xml:space="preserve">
+    <value>Αναγκαστικός τερματισμός συνομιλίας</value>
+    <comment>Title of the confirmation window displayed before force close is triggered</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Text" xml:space="preserve">
+    <value>Θέλετε σίγουρα να κλείσετε το στοιχείο εργασίας;</value>
+    <comment>Confirmation text for force close</comment>
+  </data>
+  <data name="ForceClose_Confirmation_OKButtonLabel" xml:space="preserve">
+    <value>Συνέχεια</value>
+    <comment>Proceed</comment>
+  </data>
+  <data name="NewCase_Label">
+    <value>Νέα υπόθεση</value>
+    <comment>Label for Create a Case button</comment>
+  </data>
+</root>

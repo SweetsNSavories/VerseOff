@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/uclient/resources/styles/Styles.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css">
+    <style>
+        .disclaimer-text-body {
+            overflow-wrap: break-word;
+            border: 1px solid #EEACB2;
+            overflow: hidden;
+            border-radius: 5px;
+            height: -webkit-fill-available;
+            width: -webkit-fill-available;
+        }
+
+        .disclaimer-title {
+            padding-right: 4px;
+            font-weight: bold;
+        }
+
+        .disclaimer-text-body {
+            background-color: #FDF3F4 !important;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .disclaimer-text {
+            padding: 1em;
+            display: table;
+        }
+
+        .IconStyle::before {
+            padding-right: 4px;
+            color: #B10E1C;
+        }
+
+        #msdyn_disclaimerimage {
+            top: 0.175em;
+            position: relative;
+            display: table-cell;
+            padding: 0.2em;
+            font-size: inherit;
+        }
+
+        #more-information {
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+        }
+
+        #disclamer-string-wrap {
+            display: table-cell;
+        }
+    </style>
+</head>
+<body onload="setLocalizedStrings();" class="disclaimer-text-body" onfocusout="parent.setEmailRange();">
+    <div class="disclaimer-text" aria-hidden="true">
+        <span id="msdyn_disclaimerimage" class="IconStyle ms-Icon ms-Icon--StatusErrorFull" aria-hidden="true"></span>
+        <span id="disclamer-string-wrap">
+            <span class="disclaimer-title" id="disclaimer-title"></span><span id="disclaimer-string"></span>
+        </span>
+    </div>
+
+    <script type="text/javascript">
+        function setLocalizedStrings() {
+            var webresourcename = "msdyncrm_/KnowledgeManagement/Localization/Languages/KnowledgeManagement";
+            var message = window.top.Xrm.Utility.getResourceString(webresourcename, "KnowledgeArticle_Disclaimer_Non_Compliance_FormNotificationText") || "This article didn’t meet your organization’s compliance standards. Revise the content and try again.";
+            var title = window.top.Xrm.Utility.getResourceString(webresourcename, "KnowledgeArticle_Disclaimer_Non_Compliance_Title_FormNotificationText") || "Compliance Issue";
+            document.getElementById("disclaimer-string").innerHTML = message;
+            document.getElementById("disclaimer-title").innerHTML = title;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OC_LimitQuestions_AlertDialogConfirmButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OC_RecordPermissions_AlertDialogText" xml:space="preserve">
+    <value>Sie sind zu diesem Vorgang nicht berechtigt.</value>
+  </data>
+  <data name="OC_LimitQuestions_AlertDialogText" xml:space="preserve">
+    <value>Sie können nicht mehr als fünf Fragen hinzufügen. Bitte löschen Sie einige Fragen, um weitere hinzuzufügen.</value>
+  </data>
+  <data name="OC_PickAuthFailed" xml:space="preserve">
+    <value>Fehler bei der Auswahl aufgrund von Authentifizierungsfehler. Versuchen Sie es später noch einmal. Arbeitsaufgabe: {0}</value>
+  </data>
+  <data name="OC_PickedByAnotherAgent" xml:space="preserve">
+    <value>Fehler bei Auswahl. Artikel wurde von einem anderen Agenten ausgewählt. Arbeitsaufgabe: {0}</value>
+  </data>
+  <data name="OC_PickInternalError" xml:space="preserve">
+    <value>Fehler bei Auswahl. Versuchen Sie erneut, das Element auswählen. Arbeitsaufgabe: {0}</value>
+  </data>
+  <data name="OC_PickMaxCapacityReached" xml:space="preserve">
+    <value>Fehler bei Auswahl. Sie haben die maximale Kapazität erreicht. Arbeitsaufgabe: {0}</value>
+  </data>
+  <data name="OC_PickMaxConcurrencyReached" xml:space="preserve">
+    <value>Fehler bei Auswahl. Sie haben die maximale Parallelität erreicht. Arbeitsaufgabe: {0}</value>
+  </data>
+  <data name="OC_PickNotAvailable" xml:space="preserve">
+    <value>Fehler bei Auswahl. Element ist nicht verfügbar. Arbeitsaufgabe: {0}</value>
+  </data>
+  <data name="OC_PickPresenceError" xml:space="preserve">
+    <value>Fehler bei Auswahl aufgrund Ihres Anwesenheitsstatus. Arbeitsaufgabe: {0}</value>
+  </data>
+  <data name="OC_PickSuccess" xml:space="preserve">
+    <value>Arbeitsaufgabe erfolgreich ausgewählt. Arbeitsaufgabe: {0}</value>
+  </data>
+  <data name="OC_OpenFormFail" xml:space="preserve">
+    <value>Fehler beim Öffnen des Formulars. Wiederholen Sie den Vorgang zum Öffnen des Formulars. Falls das Problem weiterhin besteht, wenden Sie sich an Ihren Administrator.</value>
+  </data>
+  <data name="OC_OpenSessionFail" xml:space="preserve">
+    <value>Fehler beim Öffnen der Sitzung. Wiederholen Sie den Vorgang zum Öffnen der Sitzung. Falls das Problem weiterhin besteht, wenden Sie sich an Ihren Administrator.</value>
+  </data>
+  <data name="OC_InputTimeFormat" xml:space="preserve">
+    <value>Geben Sie die Uhrzeit im richtigen 24-Stunden-Format ein (HH:MM).</value>
+  </data>
+  <data name="OC_InputTimesDifferenceValidation" xml:space="preserve">
+    <value>Die Endzeit darf nicht vor oder weniger als {0} Minuten nach der Startzeit liegen.</value>
+  </data>
+  <data name="OC_SendMessageToConversationSuccessMessage" xml:space="preserve">
+    <value>Fertig! Diese Nachricht wurde an die Unterhaltung gesendet.</value>
+  </data>
+  <data name="OC_SendMessageToConversationFailureMessage" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten. Versuchen Sie erneut, eine Nachricht an die Unterhaltung zu senden.</value>
+  </data>
+  <data name="OC_SupervisorOpenRecord" xml:space="preserve">
+    <value>Die Unterhaltungsdatensätze dienen nur zur Ansicht und können nicht geöffnet werden.</value>
+  </data>
+  <data name="OC_LinkToConversationSuccessMessage" xml:space="preserve">
+    <value>Fertig! Diese(r/s) {0} wurde mit der Unterhaltung verknüpft.</value>
+  </data>
+  <data name="OC_LinkToConversationFailureMessage" xml:space="preserve">
+    <value>Irgendetwas ist schief gelaufen. Versuchen Sie erneut, eine Verknüpfung mit der Unterhaltung zu erstellen.</value>
+  </data>
+  <data name="OC_LinkToConversationUpdatedMessage" xml:space="preserve">
+    <value>Aktualisiert! Diese(r/s) {0} hat mit dieser Unterhaltung verknüpfte(n/s) vorherige(n/s) {0} ersetzt.</value>
+  </data>
+  <data name="OC_Presence_Available" xml:space="preserve">
+    <value>Verfügbar</value>
+  </data>
+  <data name="OC_Presence_Busy" xml:space="preserve">
+    <value>Beschäftigt</value>
+  </data>
+  <data name="OC_Presence_DoNotDisturb" xml:space="preserve">
+    <value>Nicht stören</value>
+  </data>
+  <data name="OC_Presence_Away" xml:space="preserve">
+    <value>Als abwesend anzeigen</value>
+  </data>
+  <data name="OC_Presence_Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="MaskingRule.LimitReached" xml:space="preserve">
+    <value>Mehr als {0} Maskierungsregeln dürfen nicht erstellt werden. Löschen Sie Regeln, um die Gesamtanzahl auf {0} zu reduzieren.</value>
+  </data>
+  <data name="MaskingRule.PluginError" xml:space="preserve">
+    <value>Im PreValidationMaskingRuleLimitPlugin-Plug-In ist ein Fehler aufgetreten.</value>
+  </data>
+  <data name="MaskingRule.RegexException.InvalidEscape" xml:space="preserve">
+    <value>SyntaxError: Ungültiger regulärer Ausdruck: /{0}/: Ungültiges Escape</value>
+  </data>
+  <data name="MaskingRule.RegexException.EndOfPattern" xml:space="preserve">
+    <value>SyntaxError: Ungültiger regulärer Ausdruck: /{0}/: \ am Ende des Musters</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedCharacterClass" xml:space="preserve">
+    <value>SyntaxError: Ungültiger regulärer Ausdruck: /{0}/: unbegrenzte Zeichenklasse</value>
+  </data>
+  <data name="MaskingRule.RegexException.IncompleteQuantifier" xml:space="preserve">
+    <value>SyntaxError: Ungültiger regulärer Ausdruck: /{0}/: unvollständiger Quantifizierer</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnterminatedGroup" xml:space="preserve">
+    <value>SyntaxError: Ungültiger regulärer Ausdruck: /{0}/: unbegrenzte Gruppe</value>
+  </data>
+  <data name="MaskingRule.RegexException.LoneQuantifierBrackets" xml:space="preserve">
+    <value>SyntaxError: Ungültiger regulärer Ausdruck: /{0}/: einzelne Quantifiziererklammer</value>
+  </data>
+  <data name="MaskingRule.RegexException.UnmatchedParen" xml:space="preserve">
+    <value>SyntaxError: Ungültiger regulärer Ausdruck: /{0}/: keine Übereinstimmung ')'</value>
+  </data>
+  <data name="MaskingRule.RegexException.NothingToRepeat" xml:space="preserve">
+    <value>SyntaxError: Ungültiger regulärer Ausdruck: /{0}/: \ nichts zu wiederholen</value>
+  </data>
+  <data name="MaskingRule.RegexException.Timeout" xml:space="preserve">
+    <value>TimeoutError: Die Auswertung des regulären Ausdrucks /{0}/ hat zu lange gedauert: Beendung nach {1} ms.</value>
+  </data>
+  <data name="MaskingRule.MaskingInProgress" xml:space="preserve">
+    <value>Testdaten werden mit regulärem Ausdruck maskiert.</value>
+  </data>
+  <data name="SentimentAnalysis.WrongName" xml:space="preserve">
+    <value>Der Datensatzname muss {0} sein.</value>
+  </data>
+  <data name="SentimentAnalysis.DeleteNotAllowed" xml:space="preserve">
+    <value>Datensatzlöschung ist nicht zulässig.</value>
+  </data>
+  <data name="Entity.OnlyOneAllowed" xml:space="preserve">
+    <value>Es ist nur ein Datensatz dieses Typs zulässig.</value>
+  </data>
+  <data name="Entity.DeleteNotAllowed" xml:space="preserve">
+    <value>Datensatzlöschung ist nicht zulässig.</value>
+  </data>
+  <data name="DefaultQueue.DeleteNotAllowed" xml:space="preserve">
+    <value>DefaultQueue kann nicht gelöscht werden, da die Warteschlange schreibgeschützt ist.</value>
+  </data>
+  <data name="DefaultQueue.UpdateNotAllowed" xml:space="preserve">
+    <value>DefaultQueue kann nicht bearbeitet werden, da die Warteschlange schreibgeschützt ist.</value>
+  </data>
+  <data name="Queue.IncorrectEntityError" xml:space="preserve">
+    <value>Plug-In-Registrierungsfehler: Logischer Name der Entität ist nicht „Queue“.</value>
+  </data>
+  <data name="Queue.QueueTypeUpdateError" xml:space="preserve">
+    <value>Der Warteschlangentyp kann nicht aktualisiert werden.</value>
+  </data>
+  <data name="Queue.NonEntityQueueSelected" xml:space="preserve">
+    <value>Das Routingregelelement kann nicht erstellt werden, da die ausgewählte Warteschlange nicht vom Typ „Entität“ ist. Eine Weiterleitung ist nur an Warteschlagen des Typs „Entität“ möglich.</value>
+  </data>
+  <data name="RoutingRuleItem.NonEntityQueueSelected" xml:space="preserve">
+    <value>Der ausgewählten Warteschlange kann kein Datensatz hinzugefügt werden, da die ausgewählte Warteschlange nicht vom Typ „Entität“ ist. Wählen Sie eine Entitätswarteschlange aus, und versuchen Sie es erneut.</value>
+  </data>
+  <data name="OC_Refresh_Grid" xml:space="preserve">
+    <value>Der Datensatz kann nicht verschoben werden, weil das Raster im Sortiermodus ist. Aktualisieren Sie das Raster, und versuchen Sie es erneut.</value>
+  </data>
+  <data name="GeoLocationProvider.IncorrectEntityError" xml:space="preserve">
+    <value>Plug-In-Registrierungsfehler: Logischer Name der Entität ist nicht GeoLocationProvider.</value>
+  </data>
+  <data name="GeoLocationProvider.PluginError" xml:space="preserve">
+    <value>Im Plug-In „GeoLocationProviderPlugIn“ ist ein Fehler aufgetreten.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelsNotSupported" xml:space="preserve">
+    <value>Entitätskanäle werden in dieser Version nicht unterstützt. Weitere Informationen finden Sie in der Infodatei.</value>
+  </data>
+  <data name="EntityRouting.EntityChannelTypeNotSupported" xml:space="preserve">
+    <value>Der Entitätskanal wird in dieser Version nicht unterstützt. Bitte wählen Sie andere Kanaltypen aus. Weitere Informationen finden Sie in der Infodatei.</value>
+  </data>
+  <data name="EntityRouting.EntityWorkStreamsNotSupported" xml:space="preserve">
+    <value>Entitätsarbeitsstreams werden in dieser Version nicht unterstützt. Weitere Informationen finden Sie in der Infodatei.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForDSF" xml:space="preserve">
+    <value>Omnichannel-Konfigurationsänderungen können bis zu 15 Minuten in Anspruch nehmen.</value>
+  </data>
+  <data name="OC_CaseRoutingFormNotificationMessage" xml:space="preserve">
+    <value>In dieser Version wird nur das Anfragerouting unterstützt. Andere Entitätsdatensätze werden in der zukünftigen Version unterstützt.</value>
+  </data>
+  <data name="OC_FormNotificationMessageForRoutingSolutionDep" xml:space="preserve">
+    <value>Sie müssen die Routingregeln – Vorschauversion-Lösung – installieren, um die Anfrage-Entität-Weiterleitung zu verwenden. Weitere Informationen finden Sie unter {0}</value>
+  </data>
+  <data name="OC_Preview_Message" xml:space="preserve">
+    <value>Indem Sie diese Funktion aktivieren, erkennen Sie an, dass sich diese Funktion in der Vorschauversion befindet, und Sie stimmen den {0} zu. {1}</value>
+    <comment>Template Preview Text for all features</comment>
+  </data>
+  <data name="OC_Preview_Link_Label" xml:space="preserve">
+    <value>Nutzungsbedingungen der Vorschauversion</value>
+    <comment>Preview Terms label to point to the relevant Preview Terms</comment>
+  </data>
+  <data name="OC_LearnMore_Link_Label" xml:space="preserve">
+    <value>Weitere Informationen</value>
+    <comment>Hyperlink label to point to the relevant feature documentation</comment>
+  </data>
+  <data name="AutomaticQueueName" xml:space="preserve">
+    <value>Automatische Verteilungswarteschlange</value>
+  </data>
+  <data name="AutomaticQueueSelectionRecommendation" xml:space="preserve">
+    <value>Wählen Sie eine Warteschlange aus, um Arbeitselemente automatisch zu verteilen und Agenten zuzuweisen.</value>
+  </data>
+  <data name="ConfigureRoutingRulesAtERCNotification" xml:space="preserve">
+    <value>Routingregeln für Entitätsdatensätze-Arbeitsstreams werden auf Kanalebene konfiguriert. Wechseln Sie zu „Kanäle“ &gt; „Entitätsdatensätze“ &gt; „{0}“ &gt; „Routingregeln“, um sie zu konfigurieren.</value>
+  </data>
+  <data name="isOmnichannelQueueGuidanceNotification" xml:space="preserve">
+    <value>Legen Sie „Ja“ fest, um die Warteschlange für die automatische Omnichannel-Arbeitsverteilung zu aktivieren. Weitere Informationen finden Sie unter {0}</value>
+  </data>
+  <data name="ManualQueueName" xml:space="preserve">
+    <value>Manuelle Warteschlange</value>
+  </data>
+  <data name="ManualQueueSelectionRecommendation" xml:space="preserve">
+    <value>Wählen Sie „Warteschlange für automatische Arbeitsverteilung“ aus, um Entitätsdatensätze automatisch Agenten zuzuweisen.</value>
+  </data>
+  <data name="ERCDeletionWarningMessage" xml:space="preserve">
+    <value>Durch Löschen des Datensatzes {0} wird das Routing der Entitätsdatensätze für die Entität {1} deaktiviert. Möchten Sie wirklich löschen?</value>
+  </data>
+  <data name="InstallRoutingRuleForERCNotification" xml:space="preserve">
+    <value>Sie müssen die Lösung „Routingregeln“ installieren, um Routing für Entitätsdatensätze zu verwenden. Weitere Informationen finden Sie unter {0}.</value>
+  </data>
+  <data name="EntityRoutingPlugins.GenericError" xml:space="preserve">
+    <value>Fehler beim Abschließen des Vorgangs aufgrund eines Fehlers. Bitte versuchen Sie es später noch einmal. Falls das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.</value>
+  </data>
+  <data name="EntityRoutingPlugins.CreateError" xml:space="preserve">
+    <value>Fehler beim Erstellen von {0}. Bitte versuchen Sie es später noch einmal. Falls das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.</value>
+  </data>
+  <data name="EntityRoutingPlugins.SaveError" xml:space="preserve">
+    <value>Fehler beim Speichern von {0}. Bitte versuchen Sie es später noch einmal. Falls das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.</value>
+  </data>
+  <data name="EntityRoutingPlugins.DeleteError" xml:space="preserve">
+    <value>Fehler beim Löschen von {0}. Bitte versuchen Sie es später noch einmal. Falls das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityMissing" xml:space="preserve">
+    <value>Das Entitätsfeld ist leer. Wählen Sie einen Wert für das Entitätsfeld aus, und wiederholen Sie den Vorgang.</value>
+  </data>
+  <data name="EntityRoutingPlugins.EntityNotRequired" xml:space="preserve">
+    <value>Das Entitätsfeld verfügt über einen Wert. Entfernen Sie den Wert aus dem Entitätsfeld, und wiederholen Sie den Vorgang.</value>
+  </data>
+  <data name="EntityRoutingPlugins.BothEntityConfigurationsNotRequired" xml:space="preserve">
+    <value>Beide Entitätskonfigurationsfelder haben einen Wert. Lassen Sie ein Feld für die Entitätskonfiguration leer, und versuchen Sie es erneut.</value>
+    <comment>Liveworkstream has ercId and mercId fields, and only one can have value</comment>
+  </data>
+  <data name="EntityRoutingPlugins.DefaultWorkStreamName" xml:space="preserve">
+    <value>Arbeitsstream {0}</value>
+  </data>
+  <data name="EntityRoutingPlugins.FlowConfigurationError" xml:space="preserve">
+    <value>Beim Vorgang ist ein Fehler aufgrund einer falschen Konfiguration im Entitätsdatensatz-Verteilungsflow aufgetreten. Stellen Sie sicher, dass {0} nicht gelöscht oder umbenannt wurde.</value>
+  </data>
+  <data name="EntityRoutingPlugins.TroubleshootingLearnMore" xml:space="preserve">
+    <value>Weitere Informationen finden Sie im Thema zur Omnichannel-Problembehandlung – {0}</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="OC_IncidentQueueItemWarningNessage" xml:space="preserve">
+    <value>Dieser Datensatz wurde in die Omnichannel-Warteschlange übertragen und kann hier nicht mehr angezeigt werden. Um diesen Datensatz anzuzeigen, öffnen Sie ihn über das Omnichannel-Dashboard.</value>
+  </data>
+  <data name="OC_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsoft-Datenschutzbestimmung</value>
+  </data>
+  <data name="OC_ChannelPreviewDisclaimer" xml:space="preserve">
+    <value>Indem Sie diesen Kanal verwenden, erkennen Sie an, dass sich diese Funktion in der Vorschauversion befindet, und Sie stimmen den Nutzungsbedingungen der Vorschauversion zu.</value>
+  </data>
+  <data name="OC_SeePreviewTerms" xml:space="preserve">
+    <value>Nutzungsbedingungen der Vorschauversion anzeigen</value>
+  </data>
+  <data name="OC_ThirdPartyChannelPrivacyDisclaimer" xml:space="preserve">
+    <value>Durch das Aktivieren dieses Kanals erklären Sie sich damit einverstanden, dass Ihre Daten für Drittanbietersysteme freigegeben und außerhalb der Konformitäts- und geografischen Grenzen Ihres Unternehmens übertragen werden (einschließlich Government Cloud-Umgebungen). Weitere Informationen finden Sie unter {0}.</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_FeatureDocumentation" xml:space="preserve">
+    <value>Echtzeitübersetzung</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement" xml:space="preserve">
+    <value>Microsoft-Datenschutzbestimmungen</value>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_Text" xml:space="preserve">
+    <value>Indem Sie diese Funktion aktivieren, erklären Sie sich damit einverstanden, dass Ihre Daten möglicherweise außerhalb der Konformitäts- und geografischen Grenzen Ihres Unternehmens übertragen werden. Dies gilt auch für Government Cloud-Umgebungen. Erfahren Sie mehr über {0} und {1}.</value>
+    <comment>DO NOT CHANGE {0} and {1}, as they will be replaced with OC_LanguageTranslation_Disclaimer_FeatureDocumentation and OC_LanguageTranslation_Disclaimer_MicrosoftPrivacyStatement respectively.</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Disclaimer_DocumentFeature_Text" xml:space="preserve">
+    <value>Hier klicken, um die Funktionsdokumentation zu öffnen</value>
+    <comment>Indicates this is the link for feature documentation</comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Link" xml:space="preserve">
+    <value>Webressourcenkonfiguration</value>
+    <comment>  This is the link for real time translation webresource documentation </comment>
+  </data>
+  <data name="OC_LanguageTranslation_Webresource_Disclaimer_Text" xml:space="preserve">
+    <value>Konfigurieren Sie eine Webressource, um Ihre URL zu generieren. Kopieren Sie anschließend die folgende URL, und fügen Sie sie ein. Erfahren Sie mehr über die {0}.</value>
+    <comment>{NumberedPlaceholder="{0}"} Placeholder "0" will be replaced by a OC_LanguageTranslation_Webresource_Disclaimer_Link. Link text is "here".</comment>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_Text" xml:space="preserve">
+    <value>Indem Sie diese Funktion aktivieren, erkennen Sie an, dass sich diese Funktion in der Vorschauversion befindet, und Sie akzeptieren die </value>
+  </data>
+  <data name="OC_LanguageOC_LanguageTranslation_Preview_LinkText" xml:space="preserve">
+    <value>Nutzungsbedingungen der Vorschauversion</value>
+  </data>
+  <data name="LanguageTranslation_Invalid_webresource_url" xml:space="preserve">
+    <value>Die eingegebene URL stimmt nicht mit der Webressource überein. Kopieren Sie die Webressourcen-URL, und fügen Sie sie erneut ein.</value>
+  </data>
+  <data name="DeprecationBanner" xml:space="preserve">
+    <value>Ab Juli 2022 wird diese App nicht mehr verfügbar sein. Migrieren Sie Ihre Arbeitsstreams in das Omnichannel-Admin Center, um Omnichannel for Customer Service weiter zu verwenden.</value>
+  </data>
+  <data name="OC_Deprecation_Title_Text" xml:space="preserve">
+    <value>Die Omnichannel-Verwaltung wird nicht mehr unterstützt.</value>
+  </data>
+  <data name="OC_Deprecation_Description_Text" xml:space="preserve">
+    <value>Der Support für die Omnichannel-Verwaltungs-App wurde am 30. Dezember 2022 eingestellt. Verwenden Sie zur Konfiguration der App „Customer Service-Admin Center“. Migrieren Sie umgehend alle Workstream-Definitionen von der Omnichannel-Verwaltungs-App auf die App „Customer Service-Admin Center“. {0}</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More" xml:space="preserve">
+    <value>Weitere Informationen</value>
+  </data>
+  <data name="OC_Deprecation_Description_Learn_More_Aria_Label" xml:space="preserve">
+    <value>Weitere Informationen zur Veraltung der Omnichannel-Verwaltung</value>
+  </data>
+  <data name="OC_Deprecation_Acknowledge_Checkbox_Label" xml:space="preserve">
+    <value>Mir ist bekannt, dass die Omnichannel-Verwaltungs-App nicht mehr unterstützt wird.</value>
+  </data>
+  <data name="OC_Deprecation_Redirect_Button_Text" xml:space="preserve">
+    <value>Customer Service-Admin Center öffnen</value>
+  </data>
+  <data name="OC_Deprecation_Dismiss_Button_Text" xml:space="preserve">
+    <value>Weiter in Omnichannel-Verwaltung</value>
+  </data>
+  <data name="PostConversationSurveyMessage" xml:space="preserve">
+    <value>Wie war Ihre Gesamterfahrung? Teilen Sie Ihr Feedback in dieser Befragung mit. </value>
+  </data>
+  <data name="OC_FormsProSurvey_Disclaimer" xml:space="preserve">
+    <value>Dies wird von Microsoft Dynamics 365 Customer Voice betrieben.</value>
+  </data>
+  <data name="Presence.InactivePresenceUpdateNotAllowed" xml:space="preserve">
+    <value>Updates für dieses Feld dieses Datensatzes wurden deaktiviert.</value>
+  </data>
+  <data name="Presence.IncorrectEntityError" xml:space="preserve">
+    <value>Plug-In-Registrierungsfehler: Logischer Name der Entität ist nicht msdyn_presence.</value>
+  </data>
+  <data name="OperatingHours.Hours" xml:space="preserve">
+    <value> Stunde(n)</value>
+  </data>
+  <data name="OperatingHours.Minutes" xml:space="preserve">
+    <value> Minute(n)</value>
+  </data>
+  <data name="OperatingHours.TotalOperatingHours" xml:space="preserve">
+    <value>Betriebszeit gesamt: </value>
+  </data>
+  <data name="Presence.DefaultDeletePlugin" xml:space="preserve">
+    <value>Standardanwesenheit kann nicht gelöscht werden</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ValidationResultMessage" xml:space="preserve">
+    <value>Es wurden keine Probleme gefunden.</value>
+  </data>
+  <data name="OCValidation.BaseRulePlugin.ErrorMessage" xml:space="preserve">
+    <value>Ein Fehler ist in {0} aufgetreten.</value>
+    <comment>The error message for BaseRule where placeholder {0} is validation rule plugin name</comment>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Ungültige Agent-Kapazität. Der Wert muss größer als 0 sein.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Ein nicht ordnungsgemäß konfigurierter Agent wurde gefunden. Die Kapazität des Agents muss auf einen Wert festgelegt werden, der größer als 0 ist.</value>
+  </data>
+  <data name="OCValidation.OcAgentsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>{0} nicht ordnungsgemäß konfigurierte Agents wurden gefunden. Die Kapazität der Agents muss größer als 0 sein.</value>
+    <comment>The error message for OcAgentsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Ungültige Botkapazität. Der Wert muss größer als 0 sein.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Ein nicht ordnungsgemäß konfigurierter Bot wurde gefunden. Die Botkapazität muss auf einen Wert festgelegt werden, der größer als 0 ist.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldHaveCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Es sind {0} nicht ordnungsgemäß konfigurierte Bots vorhanden. Die Kapazität der Bots muss größer als 0 sein.</value>
+    <comment>The error message for OcBotsShouldHaveCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Es ist eine Warteschlange ohne Agents vorhanden.</value>
+  </data>
+  <data name="OCValidation.OcQueuesShouldHaveAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Es sind {0} Warteschlangen ohne Agents vorhanden.</value>
+    <comment>The error message for OcQueuesShouldHaveAgentsRule rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ErrorMessage" xml:space="preserve">
+    <value>Omnichannel ist nicht voll funktionsfähig. Einige Nachrichtenverarbeitungsschritte sind deaktiviert.</value>
+  </data>
+  <data name="OCValidation.OcSdkShouldBeActiveRule.ResultEntityMessage" xml:space="preserve">
+    <value>Der Nachrichtenverarbeitungsschritt muss aktiviert sein, damit Omnichannel ordnungsgemäß funktioniert.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointIsNotConfigured" xml:space="preserve">
+    <value>Der OC-Dienstendpunkt ist nicht konfiguriert.</value>
+  </data>
+  <data name="OCValidation.OcServiceEndpointShouldBeConfiguredRule.EndpointPathIsEmpty" xml:space="preserve">
+    <value>Der OC-Dienstendpunktpfad ist leer.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.ResultEntityMessage" xml:space="preserve">
+    <value>Agents: {0} (ID: {1})</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is agent name and {1} is agent Id</comment>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Es ist ein Arbeitsstream vorhanden, dessen Kapazität größer ist als die seiner Agents.</value>
+  </data>
+  <data name="OCValidation.WorkstreamCapacityShouldBeLessThanAgentsRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Es sind {0} Arbeitsstreams vorhanden, deren Kapazität größer ist als die ihrer Agents.</value>
+    <comment>The error message for WorkstreamCapacityShouldBeLessThanAgents rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.ResultEntityMessage" xml:space="preserve">
+    <value>Für den Arbeitsstream sind keine Benachrichtigungsvorlagen festgelegt.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Es ist 1 Arbeitsstream ohne Benachrichtigungsvorlage vorhanden.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveNotificationTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Es sind {0} Arbeitsstreams ohne Benachrichtigungsvorlagen vorhanden.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoSessionTemplates" xml:space="preserve">
+    <value>Der Arbeitsstream {0} weist Szenarios ohne eine Sitzungsvorlage.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.ResultEntityMessageNoScenarios" xml:space="preserve">
+    <value>Der Arbeitsstream {0} weist keine Szenarios auf.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is work stream name</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Es ist ein Arbeitsstream ohne eine Sitzungsvorlage vorhanden.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldHaveSessionTemplatesRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Es sind {0} Arbeitsstreams ohne eine Sitzungsvorlage vorhanden.</value>
+    <comment>The error message for WorkstreamShouldHaveSessionTemplates rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.ResultEntityMessage" xml:space="preserve">
+    <value>Der Arbeitsstream hat doppelte Kontextvariablen: {0}</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is duplicated context names</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Es ist ein Arbeitsstream mit doppelten Kontextvariablen vorhanden.</value>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveDuplicateContextRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Es sind {0} Arbeitsstreams mit doppelten Kontextvariablen vorhanden.</value>
+    <comment>The error message for WorkstreamShouldNotHaveDuplicateContext rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.ResultEntityMessage" xml:space="preserve">
+    <value>Routingregeln ohne Bedingungen: {0}.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities list</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Es sind {0} Arbeitsstreams mit leeren Routingregeln oberhalb der Regeln mit Bedingung vorhanden.</value>
+    <comment>The error message for WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithCondition rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.WorkstreamShouldNotHaveEmptyRoutingRulesAboveRulesWithConditionRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Es ist ein Arbeitsstream mit leeren Routingregeln oberhalb der Regeln mit Bedingung vorhanden.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Es ist ein Arbeitsstream mit Push-Modus vorhanden, der den Offlinemodus zulässt.</value>
+  </data>
+  <data name="OCValidation.WorkstreamWithPushModeShouldNotAllowOfflineModeRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Es sind {0} Arbeitsstreams mit Push-Modus vorhanden, der den Offlinemodus zulässt.</value>
+    <comment>The error message for WorkstreamWithPushModeShouldNotAllowOfflineMode rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.ResultEntityMessage" xml:space="preserve">
+    <value>Der Bot hat eine potenziell geringe Kapazität.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.InvalidEntityMessage" xml:space="preserve">
+    <value>Es ist ein Bot mit einer potenziell geringe Kapazität vorhanden.</value>
+  </data>
+  <data name="OCValidation.OcBotsShouldNotHavePotentiallyLowCapacityRule.MultipleInvalidEntitiesMessage" xml:space="preserve">
+    <value>Es sind {0} Bots mit einer potenziell geringe Kapazität vorhanden.</value>
+    <comment>The error message for OcBotsShouldNotHavePotentiallyLowCapacity rule where placeholder {0} is invalid entities count</comment>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.EntityMessage" xml:space="preserve">
+    <value>Duplizierte Kanalanbieterkonfiguration.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultDuplicatedChannel" xml:space="preserve">
+    <value>Es wurden duplizierte Kanalanbieterkonfigurationen gefunden.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ProviderNotFound" xml:space="preserve">
+    <value>Der Omnichannel-Kanalanbieter wurde nicht gefunden.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsEmpty" xml:space="preserve">
+    <value>Das Feld „Kanal-URL“ ist leer.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.URLFieldIsInvalid" xml:space="preserve">
+    <value>Das Feld „Kanal-URL“ ist ungültig.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.UnifiedInterfaceAppsFieldNoOCApp" xml:space="preserve">
+    <value>Das Feld „Apps für einheitliche Oberfläche“ enthält keine Omnichannel-Anwendung.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AgentRoleNotAssigned" xml:space="preserve">
+    <value>Die Omnichannel-Agent-Rolle ist nicht zugewiesen</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.SupervisorRoleNotAssigned" xml:space="preserve">
+    <value>Die Omnichannel-Vorgesetztenrolle ist nicht zugewiesen.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.AdministratorRoleNotAssigned" xml:space="preserve">
+    <value>Die Omnichannel-Administratorrolle ist nicht zugewiesen.</value>
+  </data>
+  <data name="OCValidation.OcChannelProviderShouldHaveAllRequiredFieldsRule.ValidationResultImproperlyConfigured" xml:space="preserve">
+    <value>Der Omnichannel-Kanalanbieter ist nicht ordnungsgemäß konfiguriert.</value>
+  </data>
+  <data name="OC_OH_Preview_Message" xml:space="preserve">
+    <value>Indem Sie diese Funktion verwenden, erkennen Sie an, dass sie sich in der Vorschauversion befindet, und Sie stimmen den {0} zu. {1}</value>
+    <comment>Template Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_OH_Preview_Notification" xml:space="preserve">
+    <value>Indem Sie diese Funktion verwenden, erkennen Sie an, dass sie sich in der Vorschauversion befindet, und Sie stimmen den Nutzungsbedingungen der Vorschauversion zu.</value>
+    <comment>Notification Preview Text for OperatingHours feature</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_InstanceLevelBanner" xml:space="preserve">
+    <value>Die automatischen Nachrichteneinstellungen für {0} wurden angewendet. Wählen Sie „Neu“ aus, um eine automatische Nachricht für {1} zu erstellen.</value>
+  </data>
+  <data name="OC_CustomSystemMessage_ConfirmDelete" xml:space="preserve">
+    <value>Möchten Sie diese Nachricht wirklich löschen? Wenn Sie sie löschen, werden die automatischen Nachrichteneinstellungen für {0} wiederhergestellt.</value>
+  </data>
+  <data name="OC_Channel_Chat" xml:space="preserve">
+    <value>Chat</value>
+    <comment>Messaging channel chat</comment>
+  </data>
+  <data name="OC_Channel_Custom" xml:space="preserve">
+    <value>Benutzerdefiniert</value>
+    <comment>Messaging channel Custom</comment>
+  </data>
+  <data name="OC_Channel_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>Messaging channel Facebook</comment>
+  </data>
+  <data name="OC_Channel_LINE" xml:space="preserve">
+    <value>LINE</value>
+    <comment>Messaging channel LINE</comment>
+  </data>
+  <data name="OC_Channel_SMS" xml:space="preserve">
+    <value>SMS</value>
+    <comment>Messaging channel SMS</comment>
+  </data>
+  <data name="OC_Channel_Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+    <comment>Messaging channel Microsoft Teams</comment>
+  </data>
+  <data name="OC_Channel_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>Messaging channel Twitter</comment>
+  </data>
+  <data name="OC_Channel_unknown" xml:space="preserve">
+    <value>Unbekannter Kanal</value>
+    <comment>Messaging channel unknown channel</comment>
+  </data>
+  <data name="OC_Channel_WeChat" xml:space="preserve">
+    <value>WeChat</value>
+    <comment>Messaging channel WeChat</comment>
+  </data>
+  <data name="OC_Channel_WhatsApp" xml:space="preserve">
+    <value>WhatsApp</value>
+    <comment>Messaging channel WhatsApp</comment>
+  </data>
+  <data name="OC_CustomSystemMessage_DuplicateNameMessage" xml:space="preserve">
+    <value>Es wurde bereits eine automatische Nachricht oder Nachrichtenvorlage mit dem gleichen Namen erstellt.</value>
+  </data>
+  <data name="OC_FeaturePreviewDisclaimer" xml:space="preserve">
+    <value>Indem Sie diese Funktion verwenden, erkennen Sie an, dass sie sich in der Vorschauversion befindet, und Sie stimmen den Nutzungsbedingungen der Vorschauversion zu.</value>
+  </data>
+  <data name="OC_ProgressIndicator_Loading" xml:space="preserve">
+    <value>Wird geladen …</value>
+    <comment>Progress indicator message</comment>
+  </data>
+  <data name="OC_TokenAcquireFailed_AlertText" xml:space="preserve">
+    <value>Fehler beim Erwerb des Tokens</value>
+    <comment>Alert message for token acquire failures</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationTitle" xml:space="preserve">
+    <value>Zu vorkonfiguriertem Arbeitsbereich wechseln</value>
+    <comment>Analytics PaaS feature confirmation dialog body text</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationText" xml:space="preserve">
+    <value>Bei einem Wechsel zur Vorkonfiguration werden die benutzerdefinierten Arbeitsbereichseinstellungen gelöscht. Sie können jederzeit wieder zum benutzerdefinierten Arbeitsbereich wechseln, müssen diesen aber erneut konfigurieren.</value>
+    <comment>Analytics PaaS feature confirmation dialog title</comment>
+  </data>
+  <data name="OC_AnalyticsPaaS_ConfirmationButtonLabel" xml:space="preserve">
+    <value>Zur Vorkonfiguration wechseln</value>
+    <comment>Analytics PaaS feature confirmation dialog confirm button label</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimer" xml:space="preserve">
+    <value>WhatsApp hat ein 24-stündiges Antwortfenster. Wenn 24 Stunden nach der letzten Nachricht eines Kunden vergangen sind, können die Agents nur WhatsApp-genehmigte Nachrichtenvorlagen senden, bis der Kunde antwortet. Stellen Sie sicher, dass WhatsApp Ihre Nachrichtenvorlagen genehmigt, bevor Sie sie hier hinzufügen. {0}</value>
+    <comment>{0} will be replaced by a link "learn more"</comment>
+  </data>
+  <data name="OC_WhatsAppMessageTemplateDisclaimerLearnMore" xml:space="preserve">
+    <value>Weitere Informationen</value>
+    <comment>learn more link for OC_WhatsAppMessageTemplateDisclaimer</comment>
+  </data>
+  <data name="MessageTemplateFeatureName" xml:space="preserve">
+    <value>Nachrichtenvorlage</value>
+    <comment>This should be the same as what we show in the sitemap</comment>
+  </data>
+  <data name="AutomatedMessageRequiredFieldNotFilled" xml:space="preserve">
+    <value>Erforderliche Felder müssen ausgefüllt werden.</value>
+    <comment>Shown in banner when required fields are not populated</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitor" xml:space="preserve">
+    <value>Besucher</value>
+    <comment>Used when user name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleLiveWorkStream" xml:space="preserve">
+    <value>Live-Arbeitsstream</value>
+    <comment>Used when live work stream name is not available</comment>
+  </data>
+  <data name="LiveWorkItemTitleVisitorFormatter" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} and {1} should not be changed. They will be replaced by customer name and workstream name respectively. Example, James: WorkStream1</comment>
+  </data>
+  <data name="DefaultFieldsRquiredForMessageTemplate" xml:space="preserve">
+    <value>Die Standardsprache und der Standardnachrichtentext sind für eine Nachrichtenvorlage erforderlich.</value>
+  </data>
+  <data name="DefaultLocalizationDataNotFoundForMessageTemplate" xml:space="preserve">
+    <value>Es wurden keine standardmäßigen Lokalisierungsdaten für diese Nachrichtenvorlage gefunden.</value>
+  </data>
+  <data name="SavingPrivacyTerms" xml:space="preserve">
+    <value>Wird geladen …</value>
+    <comment>Shown after user agrees to privacy terms</comment>
+  </data>
+  <data name="ConversationFormReadonlyNotificationText" xml:space="preserve">
+    <value>Schreibgeschützt. Der Statusgrund dieses Datensatzes: {0}</value>
+    <comment>{0} will be replaced with statuscode text. Any changes to this will have an impact on msdyn_customersummaryscripts.ts</comment>
+  </data>
+  <data name="OC_IntradayInsights_ConfigTitle" xml:space="preserve">
+    <value>Intraday-Erkenntnisse-Konfigurationen</value>
+    <comment>Title for Intraday insights configuration</comment>
+  </data>
+  <data name="OC_FormsPro_Button_Text" xml:space="preserve">
+    <value>Dynamics 365 Customer Voice öffnen</value>
+  </data>
+  <data name="FbAppNotFound" xml:space="preserve">
+    <value>Facebook-Anwendungs-ID wurde nicht gefunden. Versuchen Sie es noch einmal.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PrivacyNotFound" xml:space="preserve">
+    <value>Die Datenschutzbedingungen für den Kanal wurden nicht akzeptiert.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="CantProvisionFBPage" xml:space="preserve">
+    <value>Ihre Facebook-Seite konnte nicht bereitgestellt werden. Überprüfen Sie alle von Ihnen angegebenen Informationen, und versuchen Sie es erneut.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PreValidationFacebookApplicationCreatePluginFailure" xml:space="preserve">
+    <value>Beim Erstellen der Facebook-Anwendung ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageCreatePluginFailure" xml:space="preserve">
+    <value>Beim Erstellen dieser Facebook-Seite ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="PostOperationFacebookPageUpdatePluginFailure" xml:space="preserve">
+    <value>Beim Aktualisieren dieser Facebook-Seite ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ExistingFbPageFound" xml:space="preserve">
+    <value>Sie haben diese Facebook-Seite bereits eingerichtet. Geben Sie eine andere Seite ein, und versuchen Sie es erneut.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ErrorProcessingRequestParameter" xml:space="preserve">
+    <value>Fehler beim Verarbeiten der Anforderungsparameter. Fehler: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="InvalidContextVariable" xml:space="preserve">
+    <value>ContextVariables ist nicht gültig. Fehler: {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the numerical value and text of the error.</comment>
+  </data>
+  <data name="MissingRequestId" xml:space="preserve">
+    <value>RequestId ist nicht vorhanden.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingVersion" xml:space="preserve">
+    <value>Version ist ungültig.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingChannelInstance" xml:space="preserve">
+    <value>ChannelInstance ist nicht vorhanden.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingDirection" xml:space="preserve">
+    <value>Direction fehlt.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidDirection" xml:space="preserve">
+    <value>Direction ist ungültig.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingContextVariables" xml:space="preserve">
+    <value>ContextVariables ist nicht vorhanden.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingMessageText" xml:space="preserve">
+    <value>MessageText ist nicht vorhanden.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="MissingOffsetTime" xml:space="preserve">
+    <value>OffsetTime ist nicht vorhanden.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="InvalidChannelInstance" xml:space="preserve">
+    <value>Nutzlast der Kanalinstanz ist ungültig.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiParameterMissing" xml:space="preserve">
+    <value>{0} fehlt oder ist ungültig.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays parameter value.</comment>
+  </data>
+  <data name="ChannelApiUnsupportedVersion" xml:space="preserve">
+    <value>ApiVersion {0} wird nicht unterstützt.</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays version number.</comment>
+  </data>
+  <data name="ChannelApiInternalError" xml:space="preserve">
+    <value>Ein interner Fehler ist aufgetreten. {0}</value>
+    <comment>This is an error message. {Placeholder='{0}'} Placeholder '0' displays the exception message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationSend" xml:space="preserve">
+    <value>Unterhaltung ist nicht vorhanden oder ist geschlossen.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiMessageNullSend" xml:space="preserve">
+    <value>Nachrichtentext darf nicht Null oder leer sein.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationGet" xml:space="preserve">
+    <value>Unterhaltung ist nicht vorhanden.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ChannelApiInvalidConversationEnd" xml:space="preserve">
+    <value>Unterhaltung ist nicht vorhanden oder ist geschlossen.</value>
+    <comment>This is an error message.</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Title" xml:space="preserve">
+    <value>Schließen der Unterhaltung erzwingen</value>
+    <comment>Title of the confirmation window displayed before force close is triggered</comment>
+  </data>
+  <data name="ForceClose_Confirmation_Text" xml:space="preserve">
+    <value>Möchten Sie das Arbeitselement schließen?</value>
+    <comment>Confirmation text for force close</comment>
+  </data>
+  <data name="ForceClose_Confirmation_OKButtonLabel" xml:space="preserve">
+    <value>Fortfahren</value>
+    <comment>Proceed</comment>
+  </data>
+  <data name="NewCase_Label">
+    <value>Neue Anfrage</value>
+    <comment>Label for Create a Case button</comment>
+  </data>
+</root>

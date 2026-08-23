@@ -1,0 +1,67 @@
+<html>
+<head>
+    <link href="/uclient/resources/styles/Styles.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+
+        function setStrings() {
+            let slakpiStringsWebresourceName = "Localization/Languages/SLAStrings";
+
+            let previewFormatText = parent.Xrm.Utility.getResourceString(slakpiStringsWebresourceName, "SLAKPI_LearnMoreLink_Text");
+            let featureDocumentationText = parent.Xrm.Utility.getResourceString(slakpiStringsWebresourceName, "SLAKPI_Hyperlink_Label");
+
+            // USSec and USNat do not support redirection so we set to a static help URL
+            let baseLink = "https://docs.microsoft.com";
+			let orgSettings = parent.Xrm.Utility.getGlobalContext().organizationSettings;
+            if(orgSettings)
+            {
+                let currentGeo = orgSettings.organizationGeo;
+                baseLink = currentGeo === "USR" ? "https://docs.microsoft.scloud"
+                         : currentGeo === "USE" ? "https://docs.eaglex.ic.gov"
+                                                : "https://docs.microsoft.com";
+            }
+
+            let featureDocumentationAnchor = `<a href='${baseLink}/en-us/dynamics365/customer-service/enable-entities-service-level-agreements' target='_blank'>${featureDocumentationText}</a>`;
+            let previewHtml = previewFormatText ? previewFormatText.replace(/\{0\}/, featureDocumentationAnchor).trim() : "SLAKPI_LearnMoreLink_Text";
+
+            document.getElementById("preview-text").innerHTML = previewHtml;
+        }
+    </script>
+    <style>
+        .preview-text-body {
+            background-color: #EFEFEF !important;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .preview {
+            padding-top: 0.7em;
+            padding-right: 0.7em;
+            padding-left: 0em;
+            display: table;
+            color: #333333;
+        }
+
+        #msdyn-previewimage {
+            top: 0.175em;
+            position: relative;
+            display: table-cell;
+            padding: 0.2em;
+            font-size: inherit;
+            color: #3B79B7;
+        }
+
+        #preview-string-wrap {
+            display: table-cell;
+        }
+    </style>
+    <meta>
+    <meta>
+</head>
+<body onload="setStrings();" class="preview-text-body" style="overflow-wrap: break-word;">
+    <div class="preview">
+        <span id="msdyn-previewimage" class="symbolFont InformationIcon-symbol"></span>
+        <span id="preview-string-wrap">
+            <span id="preview-text"></span>
+        </span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EscalateMultipleLimitExceededTitle" xml:space="preserve">
+    <value>Unable to escalate cases</value>
+    <comment>Alert title shown when the user selects more cases than the supported bulk escalation limit.</comment>
+  </data>
+  <data name="EscalateMultipleLimitExceededText" xml:space="preserve">
+    <value>You can escalate a maximum of {maxCount} cases at a time. You selected {selectedCount}. Remove some cases and try again.</value>
+    <comment>Alert body shown when the user selects more cases than the supported bulk escalation limit. {Placeholder='{maxCount}'} is the maximum supported case count and {Placeholder='{selectedCount}'} is the number of selected cases.</comment>
+  </data>
+  <data name="EscalateMultiplePartialIssueTitle" xml:space="preserve">
+    <value>Unable to escalate some cases</value>
+    <comment>Alert title shown when at least one selected case was compatible, but some selected cases were skipped or failed to escalate.</comment>
+  </data>
+  <data name="EscalateMultipleAllSkippedTitle" xml:space="preserve">
+    <value>Unable to escalate selected cases</value>
+    <comment>Alert title shown when all selected cases were skipped because none had an AI agent status record.</comment>
+  </data>
+  <data name="EscalateMultipleSkippedCasesText" xml:space="preserve">
+    <value>Skipped cases without an AI Agent status record:&#10;{caseList}</value>
+    <comment>Section shown in the bulk escalation alert when selected cases are skipped because no AI agent status record was found. {Placeholder='{caseList}'} is the newline-delimited list of case numbers.</comment>
+  </data>
+  <data name="EscalateMultipleFailedCasesText" xml:space="preserve">
+    <value>Failed to escalate cases:&#10;{caseList}</value>
+    <comment>Section shown in the bulk escalation alert when one or more compatible case escalation updates fail. {Placeholder='{caseList}'} is the newline-delimited list of case numbers.</comment>
+  </data>
+  <data name="EscalateMultipleSuccessCountZeroText" xml:space="preserve">
+    <value>No cases were escalated</value>
+    <comment>Summary line shown at the top of the bulk escalation alert when no selected cases were successfully escalated.</comment>
+  </data>
+  <data name="EscalateMultipleSuccessCountSingularText" xml:space="preserve">
+    <value>Successfully escalated {caseCount} case</value>
+    <comment>Summary line shown at the top of the bulk escalation alert when exactly one case was successfully escalated. {Placeholder='{caseCount}'} is the number of cases successfully escalated.</comment>
+  </data>
+  <data name="EscalateMultipleSuccessCountPluralText" xml:space="preserve">
+    <value>Successfully escalated {caseCount} cases</value>
+    <comment>Summary line shown at the top of the bulk escalation alert when multiple or zero cases were successfully escalated. {Placeholder='{caseCount}'} is the number of cases successfully escalated.</comment>
+  </data>
+  <data name="EscalateMultipleProgressMessage" xml:space="preserve">
+    <value>Escalating selected cases</value>
+    <comment>Message shown in the progress indicator while bulk escalation is in progress.</comment>
+  </data>
+  <data name="SupervisorLimitExceededTitle" xml:space="preserve">
+    <value>Too many cases selected</value>
+    <comment>Alert title shown when the user selects more cases than the supported bulk limit.</comment>
+  </data>
+  <data name="SupervisorLimitExceededText" xml:space="preserve">
+    <value>You can stop a maximum of {maxCount} cases at a time. You selected {selectedCount}. Remove some cases and try again.</value>
+    <comment>Alert body shown when the user exceeds the bulk limit. {Placeholder='{maxCount}'} the maximum, {Placeholder='{selectedCount}'} the selected count.</comment>
+  </data>
+  <data name="SupervisorPartialIssueTitle" xml:space="preserve">
+    <value>Some cases were not stopped</value>
+    <comment>Alert title shown when at least one case was compatible but some were skipped or failed.</comment>
+  </data>
+  <data name="SupervisorAllSkippedTitle" xml:space="preserve">
+    <value>No cases were stopped</value>
+    <comment>Alert title shown when all selected cases were skipped (no applicable AI agent status record).</comment>
+  </data>
+  <data name="SupervisorSkippedCasesText" xml:space="preserve">
+    <value>Skipped cases (no applicable AI Agent status):&#10;{caseList}</value>
+    <comment>Section shown when cases are skipped. {Placeholder='{caseList}'} is the newline-delimited list of case numbers.</comment>
+  </data>
+  <data name="SupervisorServerSkippedCasesText" xml:space="preserve">
+    <value>Skipped cases (already stopped or not applicable):&#10;{caseList}</value>
+    <comment>Section shown when the server skipped cases that already have an AI agent status record (already stopped or not applicable). {Placeholder='{caseList}'} is the newline-delimited list of case numbers.</comment>
+  </data>
+  <data name="SupervisorFailedCasesText" xml:space="preserve">
+    <value>Failed cases:&#10;{caseList}</value>
+    <comment>Section shown when one or more case updates fail. {Placeholder='{caseList}'} is the newline-delimited list of case numbers.</comment>
+  </data>
+  <data name="SupervisorSuccessCountZeroText" xml:space="preserve">
+    <value>No cases were stopped</value>
+    <comment>Summary line when no cases succeeded.</comment>
+  </data>
+  <data name="SupervisorSuccessCountSingularText" xml:space="preserve">
+    <value>Successfully stopped {caseCount} case</value>
+    <comment>Summary line when exactly one case succeeded. {Placeholder='{caseCount}'} the count.</comment>
+  </data>
+  <data name="SupervisorSuccessCountPluralText" xml:space="preserve">
+    <value>Successfully stopped {caseCount} cases</value>
+    <comment>Summary line when multiple cases succeeded. {Placeholder='{caseCount}'} the count.</comment>
+  </data>
+  <data name="SupervisorProgressMessage" xml:space="preserve">
+    <value>Stopping the selected cases</value>
+    <comment>Message shown in the progress indicator while a bulk supervisor action is in progress.</comment>
+  </data>
+  <data name="SupervisorSingleProgressMessage" xml:space="preserve">
+    <value>Stopping the case</value>
+    <comment>Message shown in the progress indicator while a single-case stop action is in progress.</comment>
+  </data>
+  <data name="SupervisorSingleSuccess" xml:space="preserve">
+    <value>The case was stopped.</value>
+    <comment>Confirmation shown after a single-case supervisor action succeeds.</comment>
+  </data>
+  <data name="SupervisorSingleSuccessTitle" xml:space="preserve">
+    <value>Case stopped</value>
+    <comment>Alert title shown above the confirmation after a single-case stop succeeds.</comment>
+  </data>
+  <data name="SupervisorSingleFailure" xml:space="preserve">
+    <value>The action could not be completed: {reason}</value>
+    <comment>Error shown after a single-case supervisor action fails. {Placeholder='{reason}'} is the localized server reason.</comment>
+  </data>
+  <data name="SupervisorSingleFailureTitle" xml:space="preserve">
+    <value>Couldn't stop the case</value>
+    <comment>Alert title shown above the error message after a single-case stop fails.</comment>
+  </data>
+  <data name="SupervisorBulkSuccessTitle" xml:space="preserve">
+    <value>Cases stopped</value>
+    <comment>Alert title shown when every selected case in a bulk supervisor action succeeded.</comment>
+  </data>
+  <data name="SupervisorSingleAlreadyStoppedTitle" xml:space="preserve">
+    <value>The case is already stopped</value>
+    <comment>Alert title shown when a single-case Stop was a no-op because the AI agent was already stopped.</comment>
+  </data>
+  <data name="SupervisorSingleAlreadyStoppedText" xml:space="preserve">
+    <value>This case's AI Agent is already stopped, so no change was made.</value>
+    <comment>Alert body shown when a single-case Stop was a no-op because the AI agent was already stopped.</comment>
+  </data>
+  <data name="SupervisorSingleShadowTitle" xml:space="preserve">
+    <value>AI Agent is in Shadow mode</value>
+    <comment>Alert title shown when a single-case Stop was a no-op because a person is already working the case.</comment>
+  </data>
+  <data name="SupervisorSingleShadowText" xml:space="preserve">
+    <value>AI Agent cannot be stopped in Shadow mode.</value>
+    <comment>Alert body shown when a single-case Stop was a no-op because a person is already working the case.</comment>
+  </data>
+  <data name="SupervisorSingleNoStatusTitle" xml:space="preserve">
+    <value>No active AI Agent to stop</value>
+    <comment>Alert title shown when a single-case Stop was skipped because the case has no active AI agent.</comment>
+  </data>
+  <data name="SupervisorSingleNoStatusText" xml:space="preserve">
+    <value>This case doesn't have an active AI Agent, so there was nothing to stop.</value>
+    <comment>Alert body shown when a single-case Stop was skipped because the case has no active AI agent.</comment>
+  </data>
+  <data name="SupervisorSingleInProgressTitle" xml:space="preserve">
+    <value>AI Agent is currently working</value>
+    <comment>Alert title shown when a single-case Stop was a no-op because the AI agent is still working the case (InProgress).</comment>
+  </data>
+  <data name="SupervisorSingleInProgressText" xml:space="preserve">
+    <value>This case's AI Agent is currently working on the case, so it can't be stopped right now. Try again once it finishes.</value>
+    <comment>Alert body shown when a single-case Stop was a no-op because the AI agent is still working the case (InProgress).</comment>
+  </data>
+  <data name="SupervisorSingleInactiveTitle" xml:space="preserve">
+    <value>This case is inactive</value>
+    <comment>Alert title shown when a single-case Stop was skipped because the case is resolved or canceled (inactive).</comment>
+  </data>
+  <data name="SupervisorSingleInactiveText" xml:space="preserve">
+    <value>This case is resolved or canceled. Reactivate it first.</value>
+    <comment>Alert body shown when a single-case Stop was skipped because the case is resolved or canceled (inactive).</comment>
+  </data>
+  <data name="SupervisorSingleNotAppliedTitle" xml:space="preserve">
+    <value>The case wasn't stopped</value>
+    <comment>Alert title shown when a single-case Stop couldn't be applied and no change was made.</comment>
+  </data>
+  <data name="SupervisorSingleNotAppliedText" xml:space="preserve">
+    <value>The stop action couldn't be applied to this case, so no change was made.</value>
+    <comment>Alert body shown when a single-case Stop couldn't be applied and no change was made.</comment>
+  </data>
+  <data name="SupervisorReasonInactiveCase" xml:space="preserve">
+    <value>Inactive case (resolved or canceled)</value>
+    <comment>Per-case label in the bulk skipped list explaining the case was skipped because it is resolved or cancelled (inactive).</comment>
+  </data>
+  <data name="SupervisorReasonNoStatusRecord" xml:space="preserve">
+    <value>AI Agent is not enabled</value>
+    <comment>Per-case label in the bulk skipped list explaining the case has no AI agent status record (AI agent not enabled).</comment>
+  </data>
+  <data name="SupervisorReasonIncompleteStatusRecord" xml:space="preserve">
+    <value>Malformed AI Agent status record</value>
+    <comment>Per-case label in the bulk skipped list explaining the case was skipped because its AI agent status record is incomplete or malformed.</comment>
+  </data>
+  <data name="SupervisorReasonFcsOff" xml:space="preserve">
+    <value>Feature is not available yet</value>
+    <comment>Per-case label in the bulk skipped list explaining the case was skipped because the feature (feature control switch) is off.</comment>
+  </data>
+  <data name="SupervisorReasonIgnoredShadow" xml:space="preserve">
+    <value>AI Agent is in Shadow mode</value>
+    <comment>Per-case label in the bulk skipped list explaining the action was skipped because the AI agent is in Shadow mode.</comment>
+  </data>
+  <data name="SupervisorReasonAgentBusy" xml:space="preserve">
+    <value>AI Agent is currently working</value>
+    <comment>Per-case label in the bulk skipped list explaining the action was skipped because the AI agent is currently working (an in-progress run).</comment>
+  </data>
+  <data name="SupervisorReasonAlreadyStopped" xml:space="preserve">
+    <value>Already stopped</value>
+    <comment>Per-case label in the bulk skipped list explaining the case was skipped because its AI agent was already stopped.</comment>
+  </data>
+</root>

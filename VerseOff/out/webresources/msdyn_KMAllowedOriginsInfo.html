@@ -1,0 +1,64 @@
+<html><head><meta><meta><meta><meta><meta><meta></head><body onload="setLocalizedStrings();" class="disclaimer-text-body" style="overflow-wrap: break-word;" onfocusout="parent.setEmailRange();">﻿
+
+	<link href="/uclient/resources/styles/Styles.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript">
+		function setLocalizedStrings()
+		{
+			var webresourcename = "msdyncrm_/KnowledgeManagement/Localization/Languages/KnowledgeManagement";
+			var learnMoreMessage = window.top.Xrm.Utility.getResourceString(webresourcename, "KnowledgeArticle_Disclaimer_Allowed_Origins_FormNotificationText");
+			var learnMoreLabel = window.top.Xrm.Utility.getResourceString(webresourcename, "KnowledgeArticle_Disclaimer_Allowed_Origins_Learn_More_FormNotificationText");
+			document.getElementById("disclaimer-string").innerHTML = learnMoreMessage;
+			document.getElementById("more-information").innerHTML = learnMoreLabel;
+			document.getElementById("more-information").setAttribute("aria-label", learnMoreMessage + " " + learnMoreLabel);
+
+			let link = "https://go.microsoft.com/fwlink/p/?linkid=2171989";
+			let orgSettings = window.top.Xrm.Utility.getGlobalContext().organizationSettings;
+			if(orgSettings)
+			{
+				let currentGeo = orgSettings.organizationGeo;
+				link = currentGeo === "USR" ? "https://aka.microsoft.scloud/fwlink/p/?linkid=2171989"
+                	 : currentGeo === "USE" ? "https://aka.eaglex.ic.gov/fwlink/p/?linkid=2171989"
+                     						: "https://go.microsoft.com/fwlink/p/?linkid=2171989";
+			}
+			document.getElementById("more-information").href = link;
+		}
+	</script>
+	<style>
+		.disclaimer-text-body {
+			background-color: #EFEFEF !important;
+			font-family: "Segoe UI", sans-serif;
+		}
+
+		.disclaimer-text {
+			margin-top: -1.4em;
+			padding: 1em;
+			display: table;
+		}
+
+		#msdyn_disclaimerimage {
+			top: 0.175em;
+			position: relative;
+			display: table-cell;
+			padding: 0.2em;
+			font-size: inherit;
+		}
+
+		#more-information {
+			padding-left: 0.25rem;
+			padding-right: 0.25rem;
+		}
+
+		#disclamer-string-wrap {
+			display: table-cell;
+		}
+	</style>
+
+
+	<div class="disclaimer-text">
+		<span id="msdyn_disclaimerimage" class="symbolFont InformationIcon-symbol" aria-hidden="true"></span>
+		<span id="disclamer-string-wrap">
+			<span id="disclaimer-string"></span> <a id="more-information" href="https://go.microsoft.com/fwlink/p/?linkid=2171989" target="_blank"></a><span>.</span>
+		</span>
+	</div>
+</body>
+</html>

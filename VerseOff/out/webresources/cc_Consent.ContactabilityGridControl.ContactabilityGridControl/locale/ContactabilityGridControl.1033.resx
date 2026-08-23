@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="App.HelpText" xml:space="preserve">
+    <value>View and change communication preferences for this contact point</value>
+  </data>
+  <data name="ContactPointDropdown.ImproperAudienceConfig" xml:space="preserve">
+    <value>Audience configuration not properly configured</value>
+  </data>
+  <data name="ContactPointDropdown.ErrorLoadingContactPoints" xml:space="preserve">
+    <value>There was an error loading the contact points</value>
+  </data>
+  <data name="ContactPointDropdown.NonNullContactPointsNotPresent" xml:space="preserve">
+    <value>There are no filled out fields for this entity. Please fill out some contactable fields</value>
+  </data>
+  <data name="ContactPointDropdown.Label" xml:space="preserve">
+    <value>Contact point</value>
+  </data>
+  <data name="ContactPointDropdown.Placeholder" xml:space="preserve">
+    <value>Select a contact point</value>
+  </data>
+    <data name="ContactPointDropdown.DropdownEntryEmailKey" xml:space="preserve">
+    <value>Email: $EmailAddress</value>
+    <comment>Label shown in a dropdown to indicate user can select an email with a particular value. $EmailAddress is a placeholder that will be replaced with an email address. </comment>
+  </data>
+  <data name="ContactPointDropdown.DropdownEntrySmsKey" xml:space="preserve">
+    <value>Text message: $PhoneNumber</value>
+    <comment>Label shown in a dropdown to indicate user can select a phone number to send text messages to with a given value. $PhoneNumber is a placeholder that will be replaced with a phone number. </comment>
+  </data>
+  <data name="ContactPointDropdown.DropdownEntryCustomKey" xml:space="preserve">
+    <value>Custom: $CustomContactPoint</value>
+    <comment>Label shown in a dropdown to indicate user can select a custom channel contact point. These can be any string, e.g. a phone number, an email address, a physical address etc. $CustomContactPoint is a placeholder that will be replaced with the custom contact point value</comment>
+  </data>
+  <data name="ComplianceProfileDropdown.ErrorFetching" xml:space="preserve">
+    <value>There was an error loading the compliance profiles</value>
+    <comment>Displayed under a dropdown when there's an error fetching values</comment>
+  </data>
+  <data name="ComplianceProfileDropdown.NotFound" xml:space="preserve">
+    <value>There are no compliance profiles in the system. Please create some</value>
+    <comment>Displayed under a dropdown when there's no entities to be found in the system</comment>
+  </data>
+  <data name="ComplianceProfileDropdown.Label" xml:space="preserve">
+    <value>Compliance profile</value>
+    <comment>Label of a dropdown for compliance profile entities</comment>
+  </data>
+  <data name="ComplianceProfileDropdown.Placeholder" xml:space="preserve">
+    <value>Select a compliance profile</value>
+    <comment>Placeholder displayed in a dropdown when there's no compliance profile selected</comment>
+  </data>
+  <data name="SuppressionListEntry.Notifications.Success.Title" xml:space="preserve">
+    <value>Success</value>
+    <comment>Title of a toast message when operation ends with success.</comment>
+  </data>
+  <data name="SuppressionListEntry.Notifications.Success.Message" xml:space="preserve">
+    <value>Email address $emailAddress has been removed from the suppression list.</value>
+    <comment>Message of a toast message when operation ends with success. $emailAddress placeholder will be replaced by a specific email address value.</comment>
+  </data>
+  <data name="SuppressionListEntry.BorderBox.Label" xml:space="preserve">
+    <value>Email suppression status</value>
+    <comment>Header of email suppression list section in the UI</comment>
+  </data>
+  <data name="SuppressionListEntry.BorderBox.Tooltip" xml:space="preserve">
+    <value>Recipients added to suppression list may not receive emails because they either unsubscribed, experienced bounces, marked emails as spam or exhibited inactivity. However, it is possible to remove a recipient from the suppression list.</value>
+    <comment>Tooltip of email suppression list section in the UI.</comment>
+  </data>
+  <data name="SuppressionListEntry.Spinner.Label" xml:space="preserve">
+    <value>Processing...</value>
+    <comment>Label for a spiner icon when UI is blocked because of an ongoing operation in the background.</comment>
+  </data>
+  <data name="SuppressionListEntry.RemovableBounce.Title" xml:space="preserve">
+    <value>$emailAddress is on the suppression list</value>
+    <comment>Title of a subsection when email address is present in the suppression list.</comment>
+  </data>
+  <data name="SuppressionListEntry.RemovableBounce.Explanation" xml:space="preserve">
+    <value>No future email will be sent to this address until it is removed from the list.</value>
+    <comment>Explanation of what does it mean that email is in the suppression list. $emailAddress placeholder will be replaced in the runtime with a specific email address value.</comment>
+  </data>
+  <data name="SuppressionListEntry.Bounce.DetailsHeader" xml:space="preserve">
+    <value>Details: </value>
+    <comment>Label of the section</comment>
+  </data>
+  <data name="SuppressionListEntry.Bounce.StartDate" xml:space="preserve">
+    <value>Start date: </value>
+    <comment>Label of the subsection</comment>
+  </data>
+  <data name="SuppressionListEntry.Bounce.EndDate" xml:space="preserve">
+    <value>End date: </value>
+    <comment>Label of the subsection</comment>
+  </data>
+  <data name="SuppressionListEntry.Bounce.Category" xml:space="preserve">
+    <value>Reason: </value>
+    <comment>Label of the subsection, describes the category of issues why email address got put into the suppression list.</comment>
+  </data>
+  <data name="SuppressionListEntry.Bounce.Reason" xml:space="preserve">
+    <value>Description: </value>
+    <comment>Label of the subsection, describes the reason why email address got put into the suppression list.</comment>
+  </data>
+  <data name="SuppressionListEntry.Bounce.RemoveButton" xml:space="preserve">
+    <value>Remove from suppression list</value>
+    <comment>Label on the button for removing the item from the suppression list.</comment>
+  </data>
+  <data name="SuppressionListEntry.NonRemovableBounce.Title" xml:space="preserve">
+    <value>$emailAddress is permanently blocked by the suppression list</value>
+    <comment>Title of a subsection when email address is present in the suppression list and cannot be removed.</comment>
+  </data>
+  <data name="SuppressionListEntry.NonRemovableBounce.Explanation" xml:space="preserve">
+    <value>No future email will be sent to this address. This address cannot be removed from the suppression list.</value>
+    <comment>Explanation of a subsection when email address is present in the suppression list and cannot be removed. $emailAddress is a placeholder and will be replaced by a specific email address value.</comment>
+  </data>
+  <data name="SuppressionListEntry.NonRemovableBounce.AdditionalExplanation" xml:space="preserve">
+    <value>This email address cannot be manually removed from the suppression list.</value>
+  </data>
+  <data name="SuppressionListEntry.NonRemovableBounce.NonRemovableCategory" xml:space="preserve">
+    <value>Entries with the given category cannot be manually removed.</value>
+    <comment>Explenation why the hard bounce is non-removable.</comment>
+  </data>
+  <data name="SuppressionListEntry.NonRemovableBounce.TooManyRemovals" xml:space="preserve">
+    <value>The address has been removed from the suppression list too many times.</value>
+    <comment>Explenation why the hard bounce is non-removable.</comment>
+  </data>
+  <data name="SuppressionListEntry.NotInSuppression.Title" xml:space="preserve">
+    <value>$emailAddress is not on the suppression list</value>
+    <comment>Title of a subsection when email address is not present in the suppression list.</comment>
+  </data>
+  <data name="SuppressionListEntry.NotInSuppression.Explanation" xml:space="preserve">
+    <value>Emails sent to $emailAddress will not be blocked by the suppression list.</value>
+    <comment>Explanation of a subsection when email address is not present in the suppression list. $emailAddress is a placeholder and will be replaced by a specific email address value.</comment>
+  </data>
+  <data name="SuppressionListEntry.Notifications.Errors.Generic.Title" xml:space="preserve">
+    <value>Error</value>
+    <comment>Title on the toast message when operation performed on the UI fails</comment>
+  </data>
+  <data name="SuppressionListEntry.Notifications.Errors.Generic.Message" xml:space="preserve">
+    <value>Error occurred when communicating with suppression list service.</value>
+    <comment>Message on the toast message when operation performed on the UI fails</comment>
+  </data>
+  <data name="SuppressionListEntry.Notifications.Errors.Forbidden.Message" xml:space="preserve">
+    <value>Could not remove email address from the suppression list - bounces with given category cannot be removed.</value>
+  </data>
+  <data name="SuppressionListEntry.Notifications.Errors.Throttling.Message" xml:space="preserve">
+    <value>Could not remove email address from the suppression list - too many removal requests sent. Please wait some time and retry later.</value>
+  </data>
+  <data name="SuppressionListEntry.Error.Title" xml:space="preserve">
+    <value>Error loading suppression list status.</value>
+  </data>
+  <data name="SuppressionListEntry.Error.Explanation" xml:space="preserve">
+    <value>An error occurred when loading suppression list status. Please contact support.</value>
+  </data>
+  <data name="SuppressionListEntry.LearnMoreLink" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="ErrorMessageBarKeys.LearnMore" xml:space="preserve">
+    <value>Learn more</value>
+    <comment>Text displayed for a link that opens documentation in a new tab.</comment>
+  </data>
+  <data name="ObmConsentMessageBarKeys.Blocked" xml:space="preserve">
+    <value>Sending email to this contact is blocked by settings.</value>
+    <comment>Text displayed in a message bar when consent is blocked, in bold.</comment>
+  </data>
+  <data name="ObmConsentMessageBarKeys.SettingsCanBeChanged" xml:space="preserve">
+    <value>The contacts settings can be changed to allow email to be sent.</value>
+    <comment>Text displayed in a message bar when consent is blocked, after bold text.</comment>
+  </data>
+  <data name="ObmConsentMessageBarKeys.Manage" xml:space="preserve">
+    <value>Manage</value>
+    <comment>Button displayed in a message bar when consent is blocked, actionable to open a dialog box and change settings.</comment>
+  </data>
+  <data name="CommunicationReceivabilityCard.WillBeSentLabel" xml:space="preserve">
+    <value>All communication</value>
+    <comment>Label on a card that tells the user whether or not communication will be sent</comment>
+  </data>
+  <data name="ReceivabilityCard.Edit" xml:space="preserve">
+    <value>Edit</value>
+    <comment>Button label for editing consent</comment>
+  </data>
+  <data name="CommunicationReceivabilityCard.MayBeSentLabel" xml:space="preserve">
+    <value>Partial communication</value>
+    <comment>Label on a card that tells the user whether or not communication will be sent</comment>
+  </data>
+  <data name="CommunicationReceivabilityCard.WontBeSentLabel" xml:space="preserve">
+    <value>No communication</value>
+    <comment>Label on a card that tells the user whether or not communication will be sent</comment>
+  </data>
+  <data name="CommunicationReceivabilityCard.WillBeSentMessageTemplate" xml:space="preserve">
+    <value>All $MessageTypePlural to $ContactPoint with $Compliance compliance profile will be sent.</value>
+    <comment>
+      Description shown to the user about message contactability.
+      $MessageTypePlural is either "emails", or "messages"
+      $Compliance is the name of a compliance profile
+      $ContactPoint is an email address or a phone number, or something similar that a user might be contacted through.
+    </comment>
+  </data>
+  <data name="CommunicationReceivabilityCard.MayBeSentMessageTemplate" xml:space="preserve">
+    <value>Some $MessageTypePlural to $ContactPoint with $Compliance compliance profile may not be sent.</value>
+    <comment>
+      Description shown to the user about message contactability.
+      $MessageTypePlural is either "emails", or "messages"
+      $Compliance is the name of a compliance profile
+      $ContactPoint is an email address or a phone number, or something similar that a user might be contacted through.
+    </comment>
+  </data>
+  <data name="CommunicationReceivabilityCard.WontBeSentMessageTemplate" xml:space="preserve">
+    <value>No $MessageTypePlural to $ContactPoint with $Compliance compliance profile will be sent.</value>
+    <comment>
+      Description shown to the user about message contactability.
+      $MessageTypePlural is either "emails", or "messages"
+      $Compliance is the name of a compliance profile
+      $ContactPoint is an email address or a phone number, or something similar that a user might be contacted through.
+    </comment>
+  </data>
+  <data name="CommunicationReceivabilityCard.EmailMessageTypePlural" xml:space="preserve">
+    <value>emails</value>
+    <comment>Plural of email, interpolated into the WillBe,MayBe,WontBeSentMessageTemplates for CommunicationReceivabilityCard</comment>
+  </data>
+  <data name="CommunicationReceivabilityCard.SmsAndCustomMessageTypePlural" xml:space="preserve">
+    <value>messages</value>
+    <comment>Plural of message, interpolated into the WillBe,MayBe,WontBeSentMessageTemplates for CommunicationReceivabilityCard</comment>
+  </data>
+  <data name="CommunicationReceivabilityCard.VoiceMessageTypePlural" xml:space="preserve">
+    <value>calls</value>
+    <comment>Plural of message, interpolated into the WillBe,MayBe,WontBeSentMessageTemplates for CommunicationReceivabilityCard</comment>
+  </data>
+  <data name="CommunicationReceivabilityCard.Title" xml:space="preserve">
+    <value>Communication status</value>
+    <comment>Header of a card that summarizes communication for a user</comment>
+  </data>
+  <data name="TrackingReceivabilityCard.Title" xml:space="preserve">
+    <value>Tracking status</value>
+    <comment>Header of a card that showing tracking status</comment>
+  </data>
+  <data name="TrackingReceivabilityCard.WillBeTrackedLabel" xml:space="preserve">
+    <value>Will be tracked</value>
+    <comment>Label on a card that tells the user whether or not tracking will be sent</comment>
+  </data>
+  <data name="TrackingReceivabilityCard.WontBeTrackedLabel" xml:space="preserve">
+    <value>Will not be tracked</value>
+    <comment>Label on a card that tells the user whether or not tracking will be sent</comment>
+  </data>
+  <data name="TrackingReceivabilityCard.WillBeTrackedMessageTemplate" xml:space="preserve">
+    <value>$ContactPoint contact point's interactions will be tracked.</value>
+    <comment>
+      Description shown to the user about message tracking.
+      $ContactPoint is either an email, phone number, or a custom message address
+    </comment>
+  </data>
+  <data name="TrackingReceivabilityCard.WontBeTrackedMessageTemplate" xml:space="preserve">
+    <value>$ContactPoint contact point's interactions will not be tracked.</value>
+    <comment>
+      Description shown to the user about message tracking.
+      $ContactPoint is either an email, phone number, or a custom message address
+    </comment>
+  </data>
+  <data name="CommonGridKeys.ContactabilityColumnHeaderDisplayName" xml:space="preserve">
+    <value>Contactability</value>
+    <comment>
+      Name of the header for a column in a grid displaying purposes or topics and their receivability.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.ConsentColumnHeaderDisplayName" xml:space="preserve">
+    <value>Consent</value>
+    <comment>
+      Name of the header for a column in a grid displaying topics and their receivability.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.Reason">
+    <value>Reason: $Placeholder</value>
+    <comment>A string displayed in a grid to show the reason for contactability values. $Reason is a placeholder, and will be filled dynamically at runtime with the reason for the field. </comment>
+  </data>
+  <data name="CommonGridKeys.SuppressionListReasonOverride" xml:space="preserve">
+    <value>Email on suppression list</value>
+  </data>
+  <data name="CommonGridKeys.ExternalProviderReason" xml:space="preserve">
+  <value>External consent provider</value>
+</data>
+  <data name="PurposeGrid.PurposeColumnHeaderDisplayName" xml:space="preserve">
+    <value>Purpose</value>
+    <comment>
+      Name of the header for a column in a grid displaying purposes and their receivability.
+    </comment>
+  </data>
+  <data name="PurposeGrid.LoadingContactability" xml:space="preserve">
+    <value>Loading contactability...</value>
+    <comment>Message shown in a spinner when contactability information is loading.</comment>
+  </data>
+  <data name="PurposeGrid.Info.Multiple.Title" xml:space="preserve">
+    <value>Emails to this address are blocked by multiple errors.</value>
+  </data>
+  <data name="PurposeGrid.Info.Multiple.Message" xml:space="preserve">
+    <value>Resolve the errors above to enable sending to this address.</value>
+  </data>
+  <data name="PurposeGrid.Info.Consent.Title" xml:space="preserve">
+    <value>Emails to this address are blocked by the contact's settings.</value>
+  </data>
+  <data name="PurposeGrid.Info.Consent.Message" xml:space="preserve">
+    <value>Update the contact settings to allow the email to be sent.</value>
+  </data>
+  <data name="PurposeGrid.Info.SuppressionList.Title" xml:space="preserve">
+    <value>Emails to this address are blocked by the suppression list.</value>
+  </data>
+  <data name="PurposeGrid.Info.SuppressionList.Message" xml:space="preserve">
+    <value>If possible, remove this email address from the suppression list to allow email to be sent.</value>
+  </data>
+  <data name="TopicGrid.TopicColumnHeaderDisplayName" xml:space="preserve">
+    <value>Topic</value>
+    <comment>
+      Name of the header for a column in a grid displaying topics and their receivability.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.Consent.OptedIn" xml:space="preserve">
+    <value>Opted in</value>
+    <comment>
+      Value of consent shown to user in a grid for a purpose or a topic.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.Consent.OptedOut" xml:space="preserve">
+    <value>Opted out</value>
+    <comment>
+      Value of consent shown to user in a grid for a purpose or a topic.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.Consent.NotSet" xml:space="preserve">
+    <value>Not set</value>
+    <comment>
+      Value of consent shown to user in a grid for a purpose or a topic.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.Consent.Hidden" xml:space="preserve">
+    <value>Hidden</value>
+    <comment>
+      Value of consent shown to user in a grid for a purpose or a topic.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.Consent.CalloutHelp" xml:space="preserve">
+    <value>Obtain sufficient business unit level permissions to view or edit this record.</value>
+    <comment>
+      Value shown in a callout explaining to the user why a consent value is hidden
+    </comment>
+  </data>
+  <data name="CommonGridKeys.EnforcementModel.Restrictive" xml:space="preserve">
+    <value>Restrictive enforcement model</value>
+    <comment>
+      Value of enforcement model shown to user in a grid for a purpose.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.EnforcementModel.NonRestrictive" xml:space="preserve">
+    <value>Non-restrictive enforcement model</value>
+    <comment>
+      Value of enforcement model shown to user in a grid for a purpose.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.EnforcementModel.Disabled" xml:space="preserve">
+    <value>Disabled</value>
+    <comment>
+      Value of enforcement model shown to user in a grid for a purpose.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.Contactability.WillReceive" xml:space="preserve">
+    <value>Will send</value>
+    <comment>
+      Whether or not the user will be sent communication
+    </comment>
+  </data>
+  <data name="CommonGridKeys.Contactability.WillNotReceive" xml:space="preserve">
+    <value>Will not send</value>
+    <comment>
+      Whether or not the user will be sent communication
+    </comment>
+  </data>
+  <data name="CommonGridKeys.EditLink" xml:space="preserve">
+    <value>Edit</value>
+    <comment>
+      Text shown on a link to open a dialog box to edit customer's consent.
+    </comment>
+  </data>
+  <data name="CommonGridKeys.NoData" xml:space="preserve">
+    <value>No data available</value>
+    <comment>Text shown on grid when there's no data available</comment>
+  </data>
+
+  <data name="ObmConsentEditDialog.Title" xml:space="preserve">
+    <value>Contact settings</value>
+    <comment>The header of a dialog box to edit a contact's consent settings.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.Info" xml:space="preserve">
+    <value>Changes to the attributes below will affect all email addresses for this contact. Change these settings to allow email sending if you are sure email should be sent to this contact.</value>
+    <comment>Information for a dialog box to edit a contact's consent settings.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.ContactFieldsSubHeader" xml:space="preserve">
+    <value>Contact fields</value>
+    <comment>Sub header in a dialog box to edit contact's consent settings. This section contains checkboxes for editing consent values.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.DoNotEmailCheckBoxLabel" xml:space="preserve">
+    <value>Set $FieldName (donotemail) field value to “Allow”</value>
+    <comment>Label for a checkbox to edit the donotemail field. The $FieldName is a placeholder. The text donotemail is the logical name of a field in dynamics, and so shouldn't be translated.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.DoNotEmailFieldPlaceholderKey" xml:space="preserve">
+    <value>Do not allow Emails</value>
+    <comment>The friendly name of a field that the user can edit for a contact's consent.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.DoNotEmailCheckBoxSublabel" xml:space="preserve">
+    <value>This will allow this contact to receive email communication.</value>
+    <comment>Extra information on consent displayed under a checkbox label.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.DoNotBulkEmailCheckBoxLabel" xml:space="preserve">
+    <value>Set $FieldName (donotbulkemail) field value to “Allow”</value>
+    <comment>Label for a checkbox to edit the donotbulkemail field. The $FieldName is a placeholder. The text donotbulkemail is the logical name of a field in dynamics, and so shouldn't be translated.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.DoNotBulkEmailCheckBoxPlaceholderKey" xml:space="preserve">
+    <value>Do not allow Bulk Emails</value>
+    <comment>The friendly name of a field that the user can edit for a contact's consent.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.DoNotBulkEmailCheckBoxSublabel" xml:space="preserve">
+    <value>This will allow the contact to receive commercial email communication.</value>
+    <comment>Extra information on consent displayed under a checkbox label.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.DoNotTrackCheckboxLabel" xml:space="preserve">
+    <value>Set $FieldName (donottrack) field value to “Allow”</value>
+    <comment>Label for a checkbox to edit the donottrack field. The $FieldName is a placeholder. The text donottrack is the logical name of a field in dynamics, and so shouldn't be translated.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.DoNotTrackCheckboxPlaceholderKey" xml:space="preserve">
+    <value>Do not allow Tracking</value>
+    <comment>The friendly name of a field that the user can edit for a contact's consent.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.DoNotTrackCheckBoxSublabel" xml:space="preserve">
+    <value>This will allow the contact to be tracked.</value>
+    <comment>Extra information on consent displayed under a checkbox label.</comment>
+  </data>
+  <data name="ObmConsentEditDialog.Continue" xml:space="preserve">
+    <value>Continue</value>
+    <comment>Text on a button</comment>
+  </data>
+  <data name="ObmConsentEditDialog.Cancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Text on a button</comment>
+  </data>
+  <data name="ErrorDialog.Title" xml:space="preserve">
+    <value>Error</value>
+    <comment>Title of a dialog box with an error</comment>
+  </data>
+  <data name="ErrorDialog.Unexpected" xml:space="preserve">
+    <value>Encountered unexpected error. Please see details below</value>
+    <comment>Message shown when encountering unexpected error</comment>
+  </data>
+  <data name="ErrorDialog.PhoneNotValid" xml:space="preserve">
+    <value>The phone number is invalid. Please correct the phone number, otherwise messages may not be sent.</value>
+    <comment>Error when the phone isn't valid</comment>
+  </data>
+  <data name="SuppressionListErrorMessageBarStackItem.ActionButtonLabel.Removable" xml:space="preserve">
+    <value>Manage</value>
+    <comment>Button text to open a modal window and manage opened entity.</comment>
+  </data>
+  <data name="SuppressionListErrorMessageBarStackItem.ActionButtonLabel.NonRemovable" xml:space="preserve">
+    <value>View Details</value>
+    <comment>Button text to open a modal window and manage opened entity.</comment>
+  </data>
+  <data name="SuppressionListErrorMessageBarStackItem.Message.Removable" xml:space="preserve">
+    <value>Emails to $emailAddress are undeliverable.</value>
+    <comment>Error bar message describing the issue.</comment>
+  </data>
+  <data name="SuppressionListErrorMessageBarStackItem.Message.NonRemovable" xml:space="preserve">
+    <value>Emails to $emailAddress are permanently blocked.</value>
+    <comment>Error bar message describing the issue.</comment>
+  </data>
+  <data name="SuppressionListErrorMessageBarStackItem.Explanation.Removable" xml:space="preserve">
+    <value>Future email will not be sent to this address until it is removed from the suppression list.</value>
+    <comment>Error bar detailed explanation of the issue.</comment>
+  </data>
+  <data name="SuppressionListErrorMessageBarStackItem.Explanation.NonRemovable" xml:space="preserve">
+    <value>Future email will not be sent to this address and cannot be removed from the suppression list.</value>
+    <comment>Error bar detailed explanation of the issue.</comment>
+  </data>
+  <data name="SuppressionListModal.Title" xml:space="preserve">
+    <value>Email suppression status</value>
+    <comment>Title displayed in the modal window.</comment>
+  </data>
+  <data name="SuppressionListModal.RemoveButtonText" xml:space="preserve">
+    <value>Remove from suppression list</value>
+    <comment>Action button text</comment>
+  </data>
+  <data name="SuppressionListModal.CancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Cancel operation button text</comment>
+  </data>
+  <data name="SuppressionListModal.SpinnerLabel" xml:space="preserve">
+    <value>Removing...</value>
+    <comment>Removal operation in progress, spinner label</comment>
+  </data>
+  <data name="ContactPointType.TextMessage" xml:space="preserve">
+    <value>Text message</value>
+    <comment>Name of contact point type for text message</comment>
+  </data>
+  <data name="ContactPointType.Email" xml:space="preserve">
+    <value>Email</value>
+    <comment>Name of contact point type for Email</comment>
+  </data>
+  <data name="ContactPointType.Voice" xml:space="preserve">
+    <value>Voice</value>
+    <comment>Name of contact point type for Voice</comment>
+  </data>
+  <data name="ContactPointType.Custom" xml:space="preserve">
+    <value>Custom</value>
+    <comment>Name of contact point type for Custom</comment>
+  </data>
+  <data name="PurposeGrid.CommunicationConsentRecordsTitle" xml:space="preserve">
+    <value>Communication consent records</value>
+    <comment>Title displayed above the grid showing communication consent records</comment>
+  </data>
+</root>

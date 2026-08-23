@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+                Microsoft ResX Schema
+                Version 2.0
+                The primary goals of this format is to allow a simple XML format
+                that is mostly human readable. The generation and parsing of the
+                various data types are done through the TypeConverter classes
+                associated with the data types.
+                Example:
+                ... ado.net/XML headers & schema ...
+                <resheader name="resmimetype">text/microsoft-resx</resheader>
+                <resheader name="version">2.0</resheader>
+                <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+                <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+                <data name="Name1">this is my long string</data>
+                <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+                <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+                                [base64 mime encoded serialized .NET Framework object]
+                </data>
+                <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+                                [base64 mime encoded string representing a byte array form of the .NET Framework object]
+                </data>
+                There are any number of "resheader" rows that contain simple
+                name/value pairs.
+                Each data row contains a name, and value. The row also contains a
+                type or mimetype. Type corresponds to a .NET class that support
+                text/value conversion through the TypeConverter architecture.
+                Classes that don't support this are serialized and stored with the
+                mimetype set.
+                The mimetype is used for serialized objects, and tells the
+                ResXResourceReader how to depersist the object. This is currently not
+                extensible. For a given mimetype the value must be set accordingly:
+                Note - application/x-microsoft.net.object.binary.base64 is the format
+                that the ResXResourceWriter will generate, however the reader can
+                read any of the formats listed below.
+                mimetype: application/x-microsoft.net.object.binary.base64
+                value   : The object must be serialized with
+                                                : System.Serialization.Formatters.Binary.BinaryFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.soap.base64
+                value   : The object must be serialized with
+                                                : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+                                                : and then encoded with base64 encoding.
+                mimetype: application/x-microsoft.net.object.bytearray.base64
+                value   : The object must be serialized into a byte array
+                                                : using a System.ComponentModel.TypeConverter
+                                                : and then encoded with base64 encoding.
+                -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="ObjectReferences" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="DoesNotReference" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                      <xsd:element ref="ObjectType" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ObjectType">
+      <xsd:complexType>
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:int">
+            <xsd:attribute name="Singular" form="unqualified" type="xsd:string" />
+            <xsd:attribute name="Plural" form="unqualified" type="xsd:string" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExchangeSyncAppointmentPrivacyWarning">
+    <value>ผู้รับบางรายอยู่นอกองค์กรของคุณ ผู้รับเหล่านี้จะได้รับการนัดหมายนี้ด้วยเมื่อคุณบันทึก</value>
+    <comment>Warning displayed for appointments and recurring appointments when some attendees are not CRM users and the organizer uses Exchange Sync. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="MA_Alert_EndDate_LessThan_StartDate">
+    <value>คุณต้องระบุเวลาสิ้นสุดที่เกิดขึ้นหลังจากเวลาเริ่มต้นนี้</value>
+    <comment>Alert message on CampaignActivity and Campaign detailed form if user is trying to supply invalid combination of start and end time/dates.</comment>
+  </data>
+  <data name="Error_Message_ETM_Retry">
+    <value>Dynamics 365 CRM ไม่สามารถทำคำขอของคุณให้เสร็จสมบูรณ์ได้ เนื่องจากเซิร์ฟเวอร์ไม่ว่าง กำลังจัดการคำขอของผู้ใช้อื่นในองค์กรของคุณอยู่ ให้คลิก ตกลง เพื่อลองทำคำขอให้เสร็จสมบูรณ์เดี๋ยวนี้ หรือคลิก ยกเลิก เพื่อทำงานต่อไป ถ้าคุณคลิก ยกเลิก คุณจะสามารถลองคำขอของคุณภายหลังได้ ถ้าปัญหานี้ยังอยู่ต่อไป ให้ติดต่อฝ่ายบริการลูกค้า Dynamics 365 CRM เพื่อขอความช่วยเหลือ</value>
+    <comment>CrmSqlGovernorDatabaseRequestDenied message providing user an option to retry.</comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_75">
+    <value>อีเมลต้องมีผู้ส่งหนึ่งคน โปรดเลือกผู้ส่ง</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Web.Activities.Email.edit.aspx_70">
+    <value>อีเมลต้องมีผู้รับอย่างน้อยหนึ่งคนจึงสามารถส่งได้ โปรดเลือกผู้รับ</value>
+    <comment>
+    </comment>
+  </data>
+  <data name="Email_No_Recipient_Found_Error_Title">
+    <value>ไม่พบผู้รับ</value>
+  </data>
+  <data name="Email_No_Sender_Found_Error_Title">
+    <value>ไม่พบผู้ส่ง</value>
+  </data>
+  <data name="Email_Prefix_Reply">
+    <value>ตอบกลับ:</value>
+  </data>
+  <data name="Email_Prefix_Forward">
+    <value>ส่งต่อ:</value>
+  </data>
+  <data name="Brand_CRM">
+    <value>Microsoft Dynamics 365</value>
+    <comment>Branding for CRM.</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveTitle">
+    <value>ใช้แม่แบบ</value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_ConfirmResolveText">
+    <value>คุณต้องการแทนที่บรรทัดหัวเรื่องในข้อความอีเมลด้วยบรรทัดหัวเรื่องในแม่แบบหรือไม่ </value>
+    <comment>This is the Text that will appear on the Confirm Replace Subject with Template Dialog Screen [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_ToRecipientString">
+    <value>ถึงผู้รับ</value>
+    <comment>This is the String that will appear for To Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_CCRecipientString">
+    <value>สำเนาถึงผู้รับ</value>
+    <comment>This is the String that will appear for CC Recipient dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.SelectTemplateRecipient.dlg_RegardingString">
+    <value>การอ้างอิงถึง</value>
+    <comment>This is the String that will appear for Regarding dropdown on dialog [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Web._cs.ApplyEmailTemplate.dlg_InvalidTargetRecipient">
+    <value>เลือกผู้รับหรือเรกคอร์ดที่เกี่ยวข้องซึ่งสามารถเชื่อมโยงกับแม่แบบอีเมล ตัวอย่างเช่น คุณไม่สามารถเลือกคิวได้</value>
+    <comment>This is the Text that will appear if no Valid target object selected for Email Template [Category="KnowledgeArticle"]</comment>
+  </data>
+  <data name="Msg_Progress_MOCA_Dialog">
+    <value>กำลังดำเนินการ...</value>
+    <comment>Message which is displayed on processing window for Moca dialogs.</comment>
+  </data>
+  <data name="UCI.Form.Saving">
+    <value>กำลังบันทึก...</value>
+    <comment>Message which is displayed while UCI main form is getting saved.</comment>
+  </data>
+  <data name="Button_Label_OK">
+    <value>ตกลง</value>
+  </data>
+  <data name="Button_Label_Cancel">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="AddTemplateWithoutAttachment">
+    <value>แม่แบบนี้มีเอกสารแนบ ถ้าคุณต้องการให้เอกสารแนบเป็นส่วนหนึ่งของอีเมล ให้คลิก ยกเลิก บันทึกอีเมล แล้วนำแม่แบบไปใช้อีกครั้ง ถ้าต้องการทำต่อไปโดยไม่มีเอกสารแนบ ให้คลิก ตกลง</value>
+    <comment>Message shown on confirm dialog when user attempts to add a template containing attachments to email without saving the email.[Category="Business Modules"]</comment>
+  </data>
+  <data name="Microsoft_Crm_Msgbody_Default_fonts">
+    <value>Tahoma, Verdana, Arial</value>
+    <comment>
+      This defines the default font for the body of a new e-mail (although users can change the font at runtime by using the HTMLbar).
+      Like the fonts listed in resource Microsoft_Crm_Web_Fonts, the order of the fonts matter, since IE will use the first font and go down the
+      list until it finds the first font that is installed on the user's system.  Therefore the most preferable font should be placed first in the list.
+      However, unlike resource Microsoft_Crm_Web_Fonts, fonts that have spaces should only be enclosed in single quotes - double quotes will cause
+      a formatting error.
+      The list of fonts in this resource should be a proper subset of the list of fonts in resource Web._controls.htmlbar.defaultfonts.
+    </comment>
+  </data>
+  <data name="Email_Followup_Header">
+    <value>------------------- ข้อความต้นฉบับ -------------------</value>
+  </data>
+  <data name="Email_Followup_Sender">
+    <value>จาก:</value>
+  </data>
+  <data name="Email_Followup_ReceivedDate">
+    <value>ได้รับ:</value>
+  </data>
+  <data name="Email_Followup_ToRecipients">
+    <value>ถึง:</value>
+  </data>
+  <data name="Email_Followup_CcRecipients">
+    <value>สำเนาถึง:</value>
+  </data>
+  <data name="Email_Followup_Subject">
+    <value>เรื่อง:</value>
+  </data>
+  <data name="Activity_ConfirmSwap_Title">
+    <value>เปลี่ยนทิศทาง</value>
+    <comment>Title for change direction dialog box.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_Description">
+    <value>ตัดสินใจว่าจะดำเนินการต่อไปด้วยการเปลี่ยนแปลงที่เลือกหรือไม่</value>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_27">
+    <value>คุณได้เพิ่มผู้รับหลายรายในเรกคอร์ด หากคุณกำลังเปลี่ยนทิศทาง มีเพียงผู้รับรายแรกเท่านั้นที่จะถูกเก็บไว้ ผู้รับรายอื่นๆ จะถูกลบออก</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Web.Activities.dlg_confirm_swap.aspx_30">
+    <value>คุณต้องการเปลี่ยนแปลงทิศทางหรือไม่</value>
+    <comment>Description used in confirm swap dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="Activity_ConfirmSwap_OkButton">
+    <value>เปลี่ยนแปลง</value>
+    <comment>Ok button label for change direction dialog.[Category="Orion AIR"]</comment>
+  </data>
+  <data name="ConvActSaveWarning">
+    <value>คุณต้องบันทึกการเปลี่ยนแปลงก่อน คุณจึงจะสามารถแปลงกิจกรรมนี้ได้</value>
+    <comment>on convert activity to opportunity/case dialog</comment>
+  </data>
+  <data name="Error_Message_0x80046fff">
+    <value>ฟิลด์ {0} เป็นของเอนทิตี {1} ซึ่งไม่สามารถลบได้ เนื่องจากฟิลด์นี้ใช้ในการส่งข้อความอีเมล และเอนทิตีนี้ได้เปิดใช้งานสำหรับอีเมล</value>
+    <comment>
+      An emailable entity must have atleast one email attribute. {NumberedPlaceholder="{0}", "{1}"}. Placeholder 0 is attribute name. Placeholder 1 parent entity name[Category="Administration and Deployment"]
+    </comment>
+  </data>
+  <data name="Error_Title_0x80048422">
+    <value>ผู้รับอีเมลไม่ถูกต้อง</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80048422">
+    <value>ไม่มีผู้รับอีเมลนี้อยู่ หรือที่อยู่อีเมลสำหรับผู้รับอีเมลไม่ถูกต้อง</value>
+    <comment>BulkDetectInvalidEmailRecipient</comment>
+  </data>
+  <data name="Error_Message_0x80044192">
+    <value>ที่อยู่อีเมลไม่ถูกต้อง สำหรับข้อมูลเพิ่มเติม โปรดติดต่อผู้ดูแลระบบ {#Brand_CRM} ของคุณ</value>
+    <comment>Description for the error when user tries to send an e-mail and some parties have invalid e-mail addresses. [Category="Cross Browser"]</comment>
+  </data>
+  <data name="Followed_Email_Attachments_Tooltip" xml:space="preserve">
+    <value>รายการของสิ่งที่แนบที่ติดตามเมื่อมีการแสดงต่อผู้รับอีเมล</value>
+    <comment>Text for followed email attachements div aria-label[Category="Email Engagement"]</comment>
+  </data>
+  <data name="Generic_ErrorMessage">
+    <value>เกิดข้อผิดพลาด โปรดลองอีกครั้ง ถ้าปัญหานี้ยังคงอยู่ โปรดติดต่อผู้ดูแลระบบของคุณ</value>
+    <comment>Generic error when error message is not defined properly</comment>
+  </data>
+  <data name="Error">
+    <value>ผิดพลาด</value>
+    <comment>This name is used to indicate error name</comment>
+  </data>
+  <data name="ErrorCode">
+    <value>รหัสข้อผิดพลาด</value>
+    <comment>This name is used to indicate error code</comment>
+  </data>
+  <data name="ErrorMessage">
+    <value>ข้อความแสดงข้อผิดพลาด </value>
+    <comment>This name used to indicate error message</comment>
+  </data>
+  <data name="Url">
+    <value>Url </value>
+    <comment>This name used to indicate Url</comment>
+  </data>
+  <data name="Command">
+    <value>คำสั่ง </value>
+    <comment>This name used to indicate Command</comment>
+  </data>
+  <data name="Parameters">
+    <value>พารามิเตอร์ </value>
+    <comment>This name used to indicate Parameters</comment>
+  </data>
+  <data name="Error_In_Dialog_Open">
+    <value>เกิดข้อผิดพลาดขณะเปิดกล่องโต้ตอบ โปรดลองอีกครั้ง ถ้าปัญหานี้ยังคงอยู่ โปรดติดต่อผู้ดูแลระบบของคุณ</value>
+    <comment>Generic error when error occurred while open a dialog</comment>
+  </data>
+  <data name="Button_Ok">
+    <value>ตกลง</value>
+    <comment>This message is used to indicate ok label on a button</comment>
+  </data>
+  <data name="UnsavedChanges">
+    <value>การเปลี่ยนแปลงที่คุณทำไปอาจไม่ได้รับการบันทึก</value>
+    <comment>This message is used to indicate changes made to the record are not saved</comment>
+  </data>
+  <data name="ConfirmAttachmentRemoval">
+    <value>คุณแน่ใจหรือไม่ว่าต้องการนำสิ่งที่แนบนี้ออก การดำเนินการนี้ไม่สามารถยกเลิกได้</value>
+    <comment>This message is used to indicate user to confirm the removal of attachment as it cannot be added again</comment>
+  </data>
+  <data name="RemovedAttachmentConfirmation">
+    <value>เอกสารที่แนบถูกนำออกไป</value>
+    <comment>This message is used to confirm to user that attachment is removed</comment>
+  </data>
+  <data name="FileNotFound">
+    <value>ไม่พบแฟ้ม</value>
+    <comment>This message is used to indicate not able to locate file</comment>
+  </data>
+  <data name="UnsupportedAttachment">
+    <value>ไม่สามารถเปิดสิ่งที่แนบนี้ได้บนอุปกรณ์ของคุณ</value>
+    <comment>This message is used to indicate selected attachment is not supported on the current device</comment>
+  </data>
+  <data name="FileNameLengthExceeded">
+    <value>ชื่อไฟล์มีความยาวเกิน 165 อักขระ</value>
+    <comment>This message is used to indicate file contains more characters than allowed limit</comment>
+  </data>
+  <data name="EmptyFile">
+    <value>ไฟล์ที่ระบุเป็นไฟล์ว่างหรือไม่มีอยู่ ตรวจสอบว่าชื่อไฟล์ถูกต้องแล้ว หรือระบุไฟล์อื่น แล้วลองอีกครั้ง</value>
+    <comment>This message is used to indicate file is empty or does not exist</comment>
+  </data>
+  <data name="InvalidFileExtension">
+    <value>นี้คือนามสกุลไฟล์ที่ไม่ถูกต้อง</value>
+    <comment>This message is used to indicate file extension is not valid</comment>
+  </data>
+  <data name="FileSizeExceeded">
+    <value>สิ่งที่แนบนี้ใหญ่เกินไป ขนาดไฟล์สูงสุดที่อนุญาตคือ {0} กิโลไบต์</value>
+    <comment>This message is used to attachment size exceeded the allowed limit</comment>
+  </data>
+  <data name="NonEditableDialog">
+    <value>ไม่สามารถแก้ไขกล่องโต้ตอบนี้</value>
+    <comment>This message is used to edit is not allowed in this dialog </comment>
+  </data>
+  <data name="activities/act_dlgs/dlg_seriesaction.aspx_textDeleteInstance">
+    <value>คุณต้องการลบการเกิดขึ้นทั้งหมดของการนัดหมายที่เกิดซ้ำ{0} หรือลบเพียงการเกิดขึ้นนี้</value>
+    <comment>Text of the confirmation dialog when user deletes an instance.[Category="Business Modules"]. {NumberedPlaceholder="{0}"} Placeholder 0 is the truncated subject of the appointment.</comment>
+  </data>
+  <data name="New_Attachment_Form_Description">
+    <value>เลือกแฟ้มที่จะแนบ</value>
+    <comment>Instructional text for attach file dialog, when opened for attaching a new attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="Existing_Attachment_Form_Description">
+    <value>คลิกแฟ้มเพื่อดู หรือคลิก เอาออก เพื่อนำแฟ้มออก</value>
+    <comment>Instructional text for attach file dialog, when opened for an existing attachment. [Category="Application Infrastructure"]</comment>
+  </data>
+  <data name="New_Attachment_Label_Message">
+    <value>ชื่อแฟ้ม</value>
+    <comment>Instructional text to indicate file name</comment>
+  </data>
+  <data name="Error_Message_0x80040b00">
+    <value>ไม่สามารถส่งข้อความนี้ไปยังผู้รับที่เลือกทุกคนได้ ตรวจสอบว่าทั้งผู้ส่งและผู้รับมีที่อยู่อีเมลที่ถูกต้อง และผู้รับได้รับอนุญาตให้รับอีเมล</value>
+    <comment>IDS_COMMUNICATIONS_NOPARTYADDRESS</comment>
+  </data>
+  <data name="Error_Message_0x8004b000" xml:space="preserve">
+    <value>มีข้อผิดพลาดเกิดขึ้นขณะกำลังดำเนินการคำขอของคุณ  ให้ลองอีกครั้ง</value>
+    <comment>CrmLiveGenericError</comment>
+  </data>
+  <data name="Error_Message_Action_NoItemSelected">
+    <value>คุณต้องเลือกเรกคอร์ดตั้งแต่หนึ่งเรกคอร์ดขึ้นไปก่อนจึงจะดำเนินการนี้ได้</value>
+  </data>
+  <data name="ReadOnlyEntity">
+    <value>เอนทิตีที่เลือกเป็นแบบอ่านอย่างเดียวสำหรับไคลเอนต์</value>
+    <comment>Alert shown when user tries to perform action on entity which is Read-only in Mobile</comment>
+  </data>
+  <data name="Grid_Apply_Rule_Heterogenous_Activity_Type_Records_Selected">
+    <value>คุณสามารถดำเนินการกระทำนี้สำหรับกิจกรรมชนิดเดียวกันเท่านั้น</value>
+    <comment>Alert shown when user tries to perform action which can be performed on single entity type on 2 different entity types</comment>
+  </data>
+  <data name="TemplateNotSelected">
+    <value>คุณต้องเลือกแม่แบบที่จะส่งไดเร็คอีเมล</value>
+    <comment>Message shown when user tries to send bulk email and template is not selected</comment>
+  </data>
+  <data name="BPFNavigationBlockAlert">
+    <value>โปรดบันทึกหรือละทิ้งการเปลี่ยนแปลงที่ทำก่อนที่จะย้ายไปยังลำดับขั้นอื่นในกระบวนการ</value>
+    <comment>Message shown when user tries to do a BPF navigation on a unsaved appointment form.</comment>
+  </data>
+  <data name="SenderNotSelected">
+    <value>คุณต้องเลือกผู้ใช้หรือคิว</value>
+    <comment>Message shown when user tries to send bulk email and sender is not selected</comment>
+  </data>
+  <data name="RecipientsNotSelected">
+    <value>คุณต้องเลือกเรกคอร์ดที่จะส่งไดเร็คอีเมลไป</value>
+    <comment>Message shown when user tries to send bulk email and the records to sedn to are not selected</comment>
+  </data>
+  <data name="Form_Title_Draft_Status_Prefix_For_Appointment">
+    <value>[แบบร่าง]</value>
+    <comment>"[Draft]" string to be prefixed for form title for draft appointments.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_Appointment">
+    <value>พบปัญหาเกี่ยวกับการจัดกำหนดการที่อาจเกิดขึ้นต่อไปนี้ คุณอาจไม่สามารถจัดกำหนดการกิจกรรมนี้ได้จนกว่าปัญหาเหล่านี้จะได้รับการแก้ไข</value>
+    <comment>SchedulingConflict Dialog  Description for Appointment</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description_RecurringAppointment">
+    <value>การนัดหมายครั้งแรก: ตรวจพบปัญหาการจัดกำหนดการต่อไปนี้</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_Description1_RecurringAppointment">
+    <value>การนัดหมายที่ตามมา: {#Brand_CRM} ไม่ได้ตรวจสอบความพร้อมของผู้เข้าร่วม</value>
+    <comment>Scheduling warning to be displayed in case the first appointment of a recurring series has scheduling conflicts.</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSave_Button">
+    <value>ละเว้นและบันทึก</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSave Button</comment>
+  </data>
+  <data name="Dialog_SchedulingConflict_IgnoreAndSend_Button">
+    <value>ละเว้นและส่ง</value>
+    <comment>SchedulingConflict Dialog IgnoreAndSend Button</comment>
+  </data>
+  <data name="ErrorCode.ResourceConstraints">
+    <value>ไม่มี {0} เนื่องจากข้อจำกัดทรัพยากร</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceBusy">
+    <value>ไม่มี {0} ณ เวลานี้</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceOverCapacity">
+    <value>{0} ไม่มีกำลังการผลิตที่ต้องการ</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="ErrorCode.ResourceNonBusinessHours">
+    <value>{0} กำลังได้รับการจัดหมายกำหนดการให้บริการนอกชั่วโมงทำงาน</value>
+    <comment>{NumberedPlaceholder="{0}"} text- Placeholder 0=resource name</comment>
+  </data>
+  <data name="PreviewTemplateNotSelected">
+    <value>เพื่อดำเนินการต่อ ให้เลือกแม่แบบจากรายการ</value>
+    <comment>Message to display when user not selected any template.</comment>
+  </data>
+  <data name="LOCID_EMAIL_NORECORDS_MSG">
+    <value>ไม่ได้เลือกเรกคอร์ด</value>
+    <comment>Message to display when bulk email is invoked without any records selected.</comment>
+  </data>
+  <data name="UnresolvedEmailsNotAllowed">
+    <value>องค์กรของคุณไม่อนุญาตให้ส่งอีเมลไปยังผู้รับอีเมลที่ไม่ได้แก้ไข คุณต้องนำผู้รับเหล่านี้ออกหรือติดต่อผู้ดูแลระบบของคุณเพื่ออนุญาตให้ส่งข้อความไปยังผู้รับอีเมลที่ไม่ได้แก้ไข เรียนรู้เพิ่มเติม: https://go.microsoft.com/fwlink/p/?linkid=2127763</value>
+    <comment>Message to display when allowUnresolvedPartiesOnEmailSend is false and the form contains unresolved parties.</comment>
+  </data>
+  <data name="UnresolvedEmailsCanNotSendEmail">
+    <value>ไม่สามารถส่งอีเมลไปยัง:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is false and the control contains unresolved parties.</comment>
+  </data>
+  <data name="AttachmentDownloadError" xml:space="preserve">
+    <value>มีปัญหาขณะดาวน์โหลด {0} โปรดลองอีกครั้งในภายหลัง</value>
+    <comment>Error message shown if an error occurs while trying to download an attachment</comment>
+  </data>
+  <data name="AttachmentDownloadGenericError" xml:space="preserve">
+    <value>มีปัญหาในการดาวน์โหลดสิ่งที่แนบ โปรดลองอีกครั้งในภายหลัง</value>
+    <comment>Error message shown if an error occurs while trying to download attachments</comment>
+  </data>
+  <data name="AttachmentDownloadFormNotification" xml:space="preserve">
+    <value>กำลังดาวน์โหลดสิ่งที่แนบ...</value>
+    <comment>Form notification text that is shown while attachments are downloading</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_LearnMore">
+    <value>เรียนรู้เพิ่มเติม</value>
+    <comment>Continue Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_Button_Continue">
+    <value>ดำเนินการต่อ</value>
+    <comment>Cancel Button label in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultTitle">
+    <value>เรียนรู้เพิ่มเติม</value>
+    <comment>Default title for the learn more dialog</comment>
+  </data>
+  <data name="LearnMoreDialog_DefaultPrimaryText">
+    <value>การดำเนินการนี้ไม่ได้รับอนุญาต</value>
+    <comment>Default primary text for the learn more dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Title">
+    <value>กล่องจดหมายถูกปิดใช้งาน</value>
+    <comment>Title for the Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Text">
+    <value>ไม่สามารถส่งอีเมลได้เนื่องจากกล่องจดหมายของ {0} ถูกปิดใช้งาน การดำเนินการต่อจะทำให้อีเมลอยู่ในสถานะรอดำเนินการ</value>
+    <comment>Text displayed in the Mailbox Not Enabled dialog for Admin</comment>
+  </data>
+  <data name="Mailbox_Not_Enabled_Dialog_Instruction_NonAdmin">
+    <value>ติดต่อผู้ดูแลระบบของคุณเพื่อเปิดใช้งาน</value>
+    <comment>Instruction text for nonadmins in Mailbox Not Enabled dialog</comment>
+  </data>
+  <data name="InsertDataAddDataFieldButtonLabel" xml:space="preserve">
+    <value>เพิ่มฟิลด์ข้อมูล</value>
+    <comment>Button label for adding new entry of dynamic text</comment>
+  </data>
+  <data name="InsertDataDefaultTextLabel" xml:space="preserve">
+    <value>ข้อความเริ่มต้น</value>
+    <comment>Label for default text control</comment>
+  </data>
+  <data name="InsertDataRecordTypeLabel" xml:space="preserve">
+    <value>ชนิดของเรกคอร์ด</value>
+    <comment>Column name of record type in dynamic text</comment>
+  </data>
+  <data name="InsertDataFieldNameLabel" xml:space="preserve">
+    <value>ชื่อฟิลด์</value>
+    <comment>Column name of field names in dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveUpButtonLabel" xml:space="preserve">
+    <value>เลื่อนขึ้น</value>
+    <comment>Button label for moving up one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataMoveDownButtonLabel" xml:space="preserve">
+    <value>เลื่อนลง</value>
+    <comment>Button label for moving down one row of dynamic text</comment>
+  </data>
+  <data name="InsertDataRemoveButtonLabel" xml:space="preserve">
+    <value>เอาออก</value>
+    <comment>Button label for removing one row of dynamic text</comment>
+  </data>
+  <data name="UnableToInsertDynamicText" xml:space="preserve">
+    <value>ไม่สามารถแทรกข้อความไดนามิก เลือกตำแหน่งที่จะแทรกหรือปรับปรุงข้อความไดนามิกของคุณลงในหัวเรื่องหรือเนื้อความของแม่แบบ</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="UnableToInsertDynamicTextInSignature" xml:space="preserve">
+    <value>ไม่สามารถแทรกข้อความไดนามิก เลือกตำแหน่งที่จะแทรกหรือปรับปรุงข้อความไดนามิกของคุณลงในเนื้อความของเทมเพลต</value>
+    <comment>Dialog title when trying to insert dynamic text without selecting an insert location</comment>
+  </data>
+  <data name="PreOctoberNotification" xml:space="preserve">
+    <value>ค้นหาสิ่งนี้จากการเผยแพร่ในอนาคต</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="malformedDefaultValue" xml:space="preserve">
+    <value>ฟิลด์ข้อความเริ่มต้นต้องไม่มีอักขระต่อไปนี้: ; &amp; &lt; &gt; { }</value>
+    <comment>Notification string for pre October</comment>
+  </data>
+  <data name="RequiredFieldMustBeFilledIn" xml:space="preserve">
+    <value>ต้องกรอกข้อมูลในฟิลด์ที่จำเป็น</value>
+    <comment>Required fields must be filled in.</comment>
+  </data>
+  <data name="ConvertingEmailToTemplateProgressMessage" xml:space="preserve">
+    <value>กำลังแปลงอีเมลเป็นแม่แบบ...</value>
+    <comment>Progress message to show during email to template conversion</comment>
+  </data>
+  <data name="CreatingTemplateProgressMessage" xml:space="preserve">
+    <value>กำลังสร้างแม่แบบ...</value>
+    <comment>Progress message to show during new template creation</comment>
+  </data>
+  <data name="RequiredFieldsErrorMessage" xml:space="preserve">
+    <value>ต้องกรอกข้อมูลในฟิลด์ที่จำเป็นทั้งหมด</value>
+    <comment>Error message to show when required fields are not filled in</comment>
+  </data>
+  <data name="CopyingAttachmentsToTemplateMessage" xml:space="preserve">
+    <value>กำลังคัดลอกสิ่งที่แนบไปยังแม่แบบ...</value>
+    <comment>Progress message to show during copying attachments to template on (email or template) -&gt; template conversion</comment>
+  </data>
+  <data name="TemplateCopyString" xml:space="preserve">
+    <value>คัดลอก</value>
+    <comment>'Copy' word to append to the end of the cloned template</comment>
+  </data>
+  <data name="ErrorCopyAttachmentsToTemplate" xml:space="preserve">
+    <value>เราไม่สามารถคัดลอกสิ่งที่แนบบางส่วนจากอีเมลนี้ โปรดลองอัปโหลดไฟล์เหล่านี้อีกครั้ง</value>
+    <comment>Error message shown when one or more attachments fail to copy over to new template.</comment>
+  </data>
+  <data name="ErrorCreateTemplate" xml:space="preserve">
+    <value>มีปัญหาในการสร้างแม่แบบของคุณ โปรดลองอีกครั้ง หรือติดต่อฝ่ายสนับสนุนของ Microsoft</value>
+    <comment>Error message shown when createRecord fails for template creation.</comment>
+  </data>
+  <data name="ErrorRetrievingAttachmentsForTemplate" xml:space="preserve">
+    <value>มีปัญหาในการย้ายสิ่งที่แนบไปยังแม่แบบ โปรดติดต่อผู้ดูแลระบบของคุณหรือฝ่ายสนับสนุนของ Microsoft</value>
+    <comment>Error message shown when the retrieve call fails to get the attachments to copy over to the template.</comment>
+  </data>
+  <data name="WarningSomeAttachmentsNotSupported" xml:space="preserve">
+    <value>ข้อความได้รับการบันทึกเป็นเรกคอร์ดอีเมลของ Microsoft Dynamics 365 แต่สิ่งที่แนบอาจไม่ได้รับการบันทึกทั้งหมด ถ้าสิ่งที่แนบนั้นถูกบล็อกหรือมีชนิดไฟล์ที่ไม่ถูกต้อง</value>
+    <comment>Notification shown when some attachments couldn't be supported for a received email</comment>
+  </data>
+  <data name="WarningEmailSubjectLengthMessage" xml:space="preserve">
+    <value>เพื่อป้องกันไม่ให้บรรทัดหัวเรื่องถูกตัดเมื่อแทรกลงในอีเมล โปรดลดความยาวลง</value>
+    <comment>Warning message shown when the email template subject length is greater than 800</comment>
+  </data>
+  <data name="EndSeriesDialogTopLabel" xml:space="preserve">
+    <value>เลือกว่าเมื่อใดที่คุณต้องการให้ชุดการนัดหมายสิ้นสุดลง เราจะลบการนัดหมายในอนาคตทั้งหมดในชุดนี้</value>
+    <comment>End Series Dialog description</comment>
+  </data>
+  <data name="EndSeriesDialogCompletionTypeLabel" xml:space="preserve">
+    <value>เราจะรักษาการนัดหมายที่ผ่านมาของชุดที่สิ้นสุดลงไว้ คุณต้องการทำสิ่งใดกับการนัดหมายที่ผ่านมาที่ยังเปิดอยู่</value>
+    <comment>End Series Dialog Description of radio options</comment>
+  </data>
+  <data name="EndSeriesDialogOptionCancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+    <comment>Radio option for Cancel in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionComplete" xml:space="preserve">
+    <value>เสร็จสมบูรณ์</value>
+    <comment>Radio option for Complete in End Series Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOptionKeepOpen" xml:space="preserve">
+    <value>เก็บที่เปิด</value>
+    <comment>Radio option for Keep Open in End Series Dialog</comment>
+  </data>
+  <data name="SameDayString" xml:space="preserve">
+    <value>วันเดียวกัน</value>
+    <comment>String for Same Day radio option</comment>
+  </data>
+  <data name="SameWeekString" xml:space="preserve">
+    <value>สัปดาห์เดียวกัน</value>
+    <comment>String for Same Week radio option</comment>
+  </data>
+  <data name="UpdateSeriesDialogCancelCurrentSeries" xml:space="preserve">
+    <value>ยกเลิกชุดข้อมูลปัจจุบัน และสร้างชุดข้อมูลใหม่</value>
+    <comment>Cancel current series</comment>
+  </data>
+  <data name="UpdateSeriesDialogFirstLabel" xml:space="preserve">
+    <value>คุณได้ขอปรับเปลี่ยนข้อมูลการเกิดขึ้นประจำของชุดข้อมูลที่มีอยู่ ชุดข้อมูลปัจจุบันจะถูกยกเลิก และจะมีการสร้างชุดข้อมูลใหม่</value>
+    <comment>Update Series First Label</comment>
+  </data>
+  <data name="UpdateSeriesDialogSecondLabel" xml:space="preserve">
+    <value>ประวัติของอินสแตนซ์ที่ผ่านมาของชุดข้อมูลนี้จะได้รับการรักษาไว้ แต่อินสแตนซ์เปิดใดๆ จะถูกลบ</value>
+    <comment>Update Series Second Label</comment>
+  </data>
+  <data name="RecurrenceErrorIntervalOutOfRange" xml:space="preserve">
+    <value>รูปแบบการเกิดขึ้นประจำไม่สามารถมีค่าน้อยกว่า 1 หรือมากกว่า 99 โปรดใส่รูปแบบการเกิดขึ้นประจำที่ถูกต้อง</value>
+    <comment>Error string for interval Out of Range in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorDayOfMonthOutOfRange" xml:space="preserve">
+    <value>วันในหนึ่งเดือนต้องไม่เกิน 31</value>
+    <comment>Error string for number of days of month in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceWarningDayOfMonthMore" xml:space="preserve">
+    <value>บางเดือนอาจมีน้อยกว่า {0} วัน สำหรับเดือนเหล่านี้ การเกิดขึ้นจะตกอยู่ที่วันสุดท้ายของเดือน</value>
+    <comment>Warning string when number of days specific is more than 28 in Recurrence Dialog</comment>
+  </data>
+  <data name="RecurrenceErrorEndLessThanStartDate" xml:space="preserve">
+    <value>วันที่เริ่มต้นที่คุณใส่เกิดหลังวันที่สิ้นสุด ให้เลือกวันที่เริ่มต้นที่ถูกต้อง</value>
+    <comment>Error string when pattern end date is less than start date</comment>
+  </data>
+  <data name="RecurrenceErrorInvalidDateForMonth" xml:space="preserve">
+    <value>ค่าอยู่นอกช่วงสำหรับเดือนที่เลือก โปรดใส่ค่าที่ถูกต้อง</value>
+    <comment>Error string when number of days is invalid for that month in yearly recurrence pattern</comment>
+  </data>
+  <data name="RecurrenceErrorFebruary29DaysStartDate" xml:space="preserve">
+    <value>วันที่เริ่มต้นรูปแบบควรเป็นปีอธิกสุรทินเพื่อสร้างการนัดหมายสำหรับวันที่ 29 กุมภาพันธ์</value>
+    <comment>Error string when pattern start date is not a leap year for chosen 29th Feb</comment>
+  </data>
+  <data name="RecurrenceWarningFebruary29" xml:space="preserve">
+    <value>ในปีที่ไม่ใช่ปีอธิกสุรทิน เดือนกุมภาพันธ์มีน้อยกว่า 29 วัน ในกรณีดังกล่าว การเกิดขึ้นจะอยู่ในวันสุดท้ายของเดือนกุมภาพันธ์</value>
+    <comment>Warning string for 29th February in Recurrence Dialog</comment>
+  </data>
+  <data name="EndSeriesDialogOpenError" xml:space="preserve">
+    <value>เกิดข้อผิดพลาดในการเปิดกล่องโต้ตอบสิ้นสุดชุดข้อมูล</value>
+    <comment>Error in opening End Series Dialog</comment>
+  </data>
+  <data name="RecurrenceDialogAlert" xml:space="preserve">
+    <value>การแจ้งเตือนของกล่องโต้ตอบการเกิดขึ้นประจำ</value>
+    <comment>Recurrence Dialog alert</comment>
+  </data>
+  <data name="RecurrenceDialogStartTimeField" xml:space="preserve">
+    <value>เวลาเริ่มต้น</value>
+    <comment>Start time control display name</comment>
+  </data>
+  <data name="RecurrenceDialogEndTimeField" xml:space="preserve">
+    <value>เวลาสิ้นสุด</value>
+    <comment>End time control display name</comment>
+  </data>
+  <data name="JoinTeamsMeeting_Label" xml:space="preserve">
+    <value>เข้าร่วมการประชุมผ่าน Teams</value>
+    <comment>Label for the teams meeting button</comment>
+  </data>
+  <data name="TeamsChatsPreview_Label" xml:space="preserve">
+    <value>แชทของ Teams (พรีวิว)</value>
+    <comment>'chat' : displayname for Teams chats (Preview) LabelText</comment>
+  </data>
+  <data name="TeamsChatsJoinNotAllowedDialogAlert" xml:space="preserve">
+    <value>คุณไม่สามารถใช้คุณลักษณะนี้ได้เนื่องจากคุณไม่ใช่สมาชิกของการแชท โปรดติดต่อผู้ดูแลระบบของคุณเพื่อให้สามารถเข้าร่วมการแชทที่คุณไม่ใช่เจ้าของได้</value>
+    <comment>Cannot join teams chat dialog alert</comment>
+  </data>
+  <data name="TeamsChatsDisabledDialogAlert" xml:space="preserve">
+    <value>คุณลักษณะนี้ไม่สามารถใช้ได้เนื่องจาก Microsoft Teams ไม่ได้เปิดใช้งานในโปรไฟล์ประสบการณ์เจ้าหน้าที่ที่คุณเป็นสมาชิก (ตัวจัดการโปรไฟล์แอป) โปรดติดต่อผู้ดูแลระบบของคุณ</value>
+    <comment>Teams integration disabled dialog alert</comment>
+  </data>
+  <data name="InvalidEmailAddressCannotSend">
+    <value>โปรดลบอีเมลที่ไม่ถูกต้องต่อไปนี้:</value>
+    <comment>error notification to display when allowUnresolvedPartiesOnEmailSend is true and the control contains invalid email addresses.</comment>
+  </data>
+  <data name="ReminderToAttachmentKeywords">
+    <value>แนบไฟล์,กำลังแนบไฟล์,แนบไฟล์แล้ว,เอกสารแนบ,เอกสารแนบ</value>
+    <comment>Keywords to find in email body to pop attachment dialog when no attachment is added.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogTitle">
+    <value>ตัวเตือนเอกสารแนบ</value>
+    <comment>Reminder attachment Dialog Title.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogText">
+    <value>คุณอาจลืมแนบไฟล์</value>
+    <comment>Reminder attachment Dialog text.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogOk">
+    <value>ส่ง</value>
+    <comment>Reminder attachment Dialog Ok button.</comment>
+  </data>
+  <data name="ReminderAttachmentDialogCancel">
+    <value>ไม่ต้องส่ง</value>
+    <comment>Reminder attachment Dialog cancel button.</comment>
+  </data>
+  <data name="EmailDraftDeleteMessage" xml:space="preserve">
+    <value>อีเมลนี้จะถูกลบหากไม่ได้บันทึกด้วยตนเองหรือไม่การส่งก่อนที่จะปิด</value>
+    <comment>Used to delete draft emails for multisession apps created from Reply/Reply All/Forward</comment>
+  </data>
+  <data name="DownloadEmailAsAttachment_Download" xml:space="preserve">
+    <value>ดาวน์โหลด </value>
+  </data>
+  <data name="DownloadEmailAsAttachment_MB" xml:space="preserve">
+    <value> mb</value>
+  </data>
+  <data name="DownloadEmailAsAttachment_PreparingFile" xml:space="preserve">
+    <value>กำลังเตรียมไฟล์</value>
+  </data>
+  <data name="EmailDraftDeleteMessageonAttachmentControlLoad" xml:space="preserve">
+    <value>การอัปเดตสิ่งที่แนบไม่ได้รับการบันทึก หากต้องการสูญเสียการอัปเดตไฟล์แนบที่ยังไม่ได้บันทึก โปรดบันทึกแบบฟอร์ม</value>
+    <comment>Used to inform user to save changes when attachments are updated on Email form.</comment>
+  </data>
+  <data name="GuardRailFailedDialogTitle" xml:space="preserve">
+    <value>การตรวจสอบ Guardrail ล้มเหลว</value>
+    <comment>Title shown in the guardrail failure dialog.</comment>
+  </data>
+  <data name="GuardRailFailedDialogText" xml:space="preserve">
+    <value>อีเมลฉบับร่างไม่ผ่านการตรวจสอบ Guardrail โปรดแก้ไขเนื้อหาและส่งอีกครั้งเพื่อให้แน่ใจว่าเนื้อหานั้นตรงตามข้อกําหนดของ Guardrail</value>
+    <comment>Main explanation text shown when guardrails fail in the dialog.</comment>
+  </data>
+  <data name="GuardrailsFailed" xml:space="preserve">
+    <value>Guardrail ที่ล้มเหลว</value>
+    <comment>Label for listing failed guardrail names.</comment>
+  </data>
+  <data name="GuardrailFailureReasons" xml:space="preserve">
+    <value>เหตุผล</value>
+    <comment>Label for listing failure reasons for each violated guardrail.</comment>
+  </data>
+  <data name="GuardrailCloseButton" xml:space="preserve">
+    <value>ปิด</value>
+    <comment>Text for the dialog Close button.</comment>
+  </data>
+  <data name="SeeTerms" xml:space="preserve">
+    <value>ดูเงื่อนไข</value>
+    <comment>Hyperlink label for opening Microsoft Terms URL.</comment>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>ล้มเหลว</value>
+    <comment>Lowercase 'failed' suffix used in inline status messages.</comment>
+  </data>
+  <data name="AiDisclaimerText" xml:space="preserve">
+    <value>เนื้อหาที่สร้างโดย AI อาจไม่ถูกต้อง โปรดตรวจสอบให้แน่ใจว่าเนื้อหาที่สร้างโดย AI มีความถูกต้องและเหมาะสมก่อนนำไปใช้</value>
+    <comment>AI safety disclaimer shown below guardrail messages.</comment>
+  </data>
+</root>
