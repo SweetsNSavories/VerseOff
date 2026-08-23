@@ -158,11 +158,32 @@ class CryptoManager:
             logger.error("Failed to parse decrypted string as JSON.")
             return {}
 
-# Singleton instance initialized when needed
-_crypto_manager_instance = None
+    encrypt_json = encrypt_dict
+    decrypt_json = decrypt_dict
 
-def get_crypto_manager(data_dir: str) -> CryptoManager:
-    global _crypto_manager_instance
-    if _crypto_manager_instance is None:
-        _crypto_manager_instance = CryptoManager(data_dir)
-    return _crypto_manager_instance
+    def secure_wipe(self):
+        """Wipes the encrypted master key from disk."""
+        if os.path.exists(self.key_path):
+            try:
+                file_size = os.path.getsize(self.key_path)
+                with open(self.key_path, "wb") as f:
+                    f.write(os.urandom(max(file_size, 32)))
+                os.remove(self.key_path)
+                logger.info("Master key securely wiped from disk.")
+            except Exception as e:
+                logger.error(f"Error securely wiping key: {e}")
+
+    _instance = None
+
+    @classmethod
+    def get_instance(cls, data_dir: str = None) -> "CryptoManager":
+        """Returns singleton instance, creating it if needed."""
+        if cls._instance is None:
+            if not data_dir:
+                data_dir = os.environ.get("VERSEOFF_DATA_DIR") or os.getcwd()
+            cls._instance = cls(data_dir)
+        return cls._instance
+
+
+def get_crypto_manager(data_dir: str = None) -> CryptoManager:
+    return CryptoManager.get_instance(data_dir)

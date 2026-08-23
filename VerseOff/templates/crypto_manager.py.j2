@@ -1,172 +1,189 @@
 import os
 import ctypes
-import base64
-import json
 from ctypes import wintypes
+import base64
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+import logging
+import json
 
-# Windows DPAPI structures
+logger = logging.getLogger(__name__)
+
+# Windows DPAPI constants
+CRYPTPROTECT_UI_FORBIDDEN = 0x1
+
 class DATA_BLOB(ctypes.Structure):
     _fields_ = [("cbData", wintypes.DWORD),
                 ("pbData", ctypes.POINTER(ctypes.c_byte))]
 
-class CRYPTPROTECT_PROMPTSTRUCT(ctypes.Structure):
-    _fields_ = [("cbSize", wintypes.DWORD),
-                ("dwPromptFlags", wintypes.DWORD),
-                ("hwndApp", wintypes.HWND),
-                ("szPrompt", wintypes.LPCWSTR)]
-
-CRYPTPROTECT_UI_FORBIDDEN = 0x01
-
-def dpapi_encrypt(data: bytes, entropy: bytes = None) -> bytes:
-    if not isinstance(data, bytes):
-        raise TypeError("data must be bytes")
-    
-    data_in = DATA_BLOB(len(data), ctypes.cast(data, ctypes.POINTER(ctypes.c_byte)))
-    
-    p_entropy = None
-    if entropy:
-        entropy_blob = DATA_BLOB(len(entropy), ctypes.cast(entropy, ctypes.POINTER(ctypes.c_byte)))
-        p_entropy = ctypes.byref(entropy_blob)
-        
-    data_out = DATA_BLOB()
-    
-    # 0x01 = CRYPTPROTECT_UI_FORBIDDEN
-    if ctypes.windll.crypt32.CryptProtectData(
-        ctypes.byref(data_in),
-        "VerseOff Local DB Key",
-        p_entropy,
-        None,
-        None,
-        CRYPTPROTECT_UI_FORBIDDEN,
-        ctypes.byref(data_out)
-    ):
-        result = ctypes.string_at(data_out.pbData, data_out.cbData)
-        ctypes.windll.kernel32.LocalFree(data_out.pbData)
-        return result
-    else:
-        raise Exception(f"DPAPI Encryption failed with error code: {ctypes.GetLastError()}")
-
-def dpapi_decrypt(encrypted_data: bytes, entropy: bytes = None) -> bytes:
-    if not isinstance(encrypted_data, bytes):
-        raise TypeError("encrypted_data must be bytes")
-        
-    data_in = DATA_BLOB(len(encrypted_data), ctypes.cast(encrypted_data, ctypes.POINTER(ctypes.c_byte)))
-    
-    p_entropy = None
-    if entropy:
-        entropy_blob = DATA_BLOB(len(entropy), ctypes.cast(entropy, ctypes.POINTER(ctypes.c_byte)))
-        p_entropy = ctypes.byref(entropy_blob)
-        
-    data_out = DATA_BLOB()
-    
-    if ctypes.windll.crypt32.CryptUnprotectData(
-        ctypes.byref(data_in),
-        None,
-        p_entropy,
-        None,
-        None,
-        CRYPTPROTECT_UI_FORBIDDEN,
-        ctypes.byref(data_out)
-    ):
-        result = ctypes.string_at(data_out.pbData, data_out.cbData)
-        ctypes.windll.kernel32.LocalFree(data_out.pbData)
-        return result
-    else:
-        raise Exception(f"DPAPI Decryption failed with error code: {ctypes.GetLastError()}")
-
 class CryptoManager:
-    PREFIX = "ENC:v1:"
+    """
+    Enterprise-Grade Encryption at Rest using AES-256-GCM + Windows DPAPI.
     
-    def __init__(self, key_file_path: str):
-        self.key_file_path = key_file_path
+    The Master Key is generated via CSPRNG (os.urandom(32)) and protected via
+    Windows DPAPI (CryptProtectData). This binds the key to the Windows User Account
+    and the local machine (TPM-backed if available).
+    
+    Database records are encrypted individually using AES-256-GCM.
+    Ciphertext format: ENC:v1:<base64( nonce(12) + ciphertext + tag(16) )>
+    """
+    
+    PREFIX = "ENC:v1:"
+    KEY_FILE = "master_key.bin"
+
+    def __init__(self, data_dir: str):
+        self.data_dir = data_dir
+        self.key_path = os.path.join(data_dir, self.KEY_FILE)
         self.master_key = self._load_or_create_key()
         self.aesgcm = AESGCM(self.master_key)
         
     def _load_or_create_key(self) -> bytes:
-        # User-bound entropy for DPAPI
-        entropy = b"VerseOff_Offline_DB_Entropy"
-        
-        if os.path.exists(self.key_file_path):
-            with open(self.key_file_path, "rb") as f:
-                encrypted_key = f.read()
+        if os.path.exists(self.key_path):
             try:
-                return dpapi_decrypt(encrypted_key, entropy)
+                with open(self.key_path, "rb") as f:
+                    encrypted_key = f.read()
+                return self._dpapi_decrypt(encrypted_key)
             except Exception as e:
-                # If decryption fails (e.g. copied to another machine), we can't read the DB.
-                raise RuntimeError("Failed to decrypt master key. This database cannot be accessed on this user/machine.") from e
-        else:
-            # Generate a new 256-bit AES master key
-            master_key = AESGCM.generate_key(bit_length=256)
-            encrypted_key = dpapi_encrypt(master_key, entropy)
-            
-            # Ensure directory exists
-            os.makedirs(os.path.dirname(self.key_file_path), exist_ok=True)
-            with open(self.key_file_path, "wb") as f:
-                f.write(encrypted_key)
-            return master_key
-            
-    def encrypt_string(self, data: str) -> str:
-        """Encrypts a string and returns a base64 encoded ciphertext with prefix."""
-        if not data:
-            return data
-            
-        data_bytes = data.encode('utf-8')
-        # 96-bit nonce for GCM
-        nonce = os.urandom(12)
-        ciphertext = self.aesgcm.encrypt(nonce, data_bytes, None)
+                logger.error(f"Failed to load/decrypt master key: {e}")
+                # If we fail, it's a catastrophic error for reading old data.
+                # In a real app we might prompt the user or abort.
+                raise RuntimeError("Could not decrypt database master key. Are you logged in as the correct Windows user?")
         
-        # Prepend nonce to ciphertext
-        combined = nonce + ciphertext
-        encoded = base64.b64encode(combined).decode('utf-8')
+        # Create new key
+        logger.info("Generating new AES-256 master key protected by DPAPI...")
+        new_key = AESGCM.generate_key(bit_length=256)
+        encrypted_key = self._dpapi_encrypt(new_key)
+        
+        os.makedirs(self.data_dir, exist_ok=True)
+        with open(self.key_path, "wb") as f:
+            f.write(encrypted_key)
+            
+        return new_key
+
+    def _dpapi_encrypt(self, data: bytes) -> bytes:
+        """Encrypt data using Windows DPAPI (tied to current user)."""
+        data_in = DATA_BLOB(len(data), ctypes.cast(ctypes.c_char_p(data), ctypes.POINTER(ctypes.c_byte)))
+        data_out = DATA_BLOB()
+        
+        # CryptProtectData(pDataIn, szDataDescr, pOptionalEntropy, pvReserved, pPromptStruct, dwFlags, pDataOut)
+        if ctypes.windll.crypt32.CryptProtectData(
+                ctypes.byref(data_in),
+                u"VerseOff Master Key",
+                None, # Optional entropy could go here for extra security
+                None,
+                None,
+                CRYPTPROTECT_UI_FORBIDDEN,
+                ctypes.byref(data_out)):
+            
+            result = bytes(ctypes.cast(data_out.pbData, ctypes.POINTER(ctypes.c_byte * data_out.cbData)).contents)
+            ctypes.windll.kernel32.LocalFree(data_out.pbData)
+            return result
+        else:
+            raise ctypes.WinError()
+
+    def _dpapi_decrypt(self, encrypted_data: bytes) -> bytes:
+        """Decrypt data using Windows DPAPI."""
+        data_in = DATA_BLOB(len(encrypted_data), ctypes.cast(ctypes.c_char_p(encrypted_data), ctypes.POINTER(ctypes.c_byte)))
+        data_out = DATA_BLOB()
+        
+        if ctypes.windll.crypt32.CryptUnprotectData(
+                ctypes.byref(data_in),
+                None,
+                None,
+                None,
+                None,
+                CRYPTPROTECT_UI_FORBIDDEN,
+                ctypes.byref(data_out)):
+            
+            result = bytes(ctypes.cast(data_out.pbData, ctypes.POINTER(ctypes.c_byte * data_out.cbData)).contents)
+            ctypes.windll.kernel32.LocalFree(data_out.pbData)
+            return result
+        else:
+            raise ctypes.WinError()
+
+    def encrypt_string(self, plaintext: str) -> str:
+        """Encrypt a string and return the ENC:v1 format."""
+        if plaintext is None:
+            return None
+            
+        nonce = os.urandom(12)
+        # AESGCM.encrypt appends the 16-byte authentication tag automatically
+        ciphertext = self.aesgcm.encrypt(nonce, plaintext.encode('utf-8'), None)
+        
+        # Payload: nonce (12) + ciphertext + tag (16)
+        payload = nonce + ciphertext
+        encoded = base64.b64encode(payload).decode('utf-8')
+        
         return f"{self.PREFIX}{encoded}"
         
-    def decrypt_string(self, encrypted_data: str) -> str:
-        """Decrypts a prefixed base64 string back to original string."""
-        if not encrypted_data or not encrypted_data.startswith(self.PREFIX):
-            return encrypted_data
-            
-        encoded = encrypted_data[len(self.PREFIX):]
-        try:
-            combined = base64.b64decode(encoded)
-            # Extract nonce (first 12 bytes) and ciphertext
-            nonce = combined[:12]
-            ciphertext = combined[12:]
-            
-            plaintext_bytes = self.aesgcm.decrypt(nonce, ciphertext, None)
-            return plaintext_bytes.decode('utf-8')
-        except Exception as e:
-            # If authentication fails or format is invalid
-            raise ValueError("Failed to decrypt data. The data may be tampered with or corrupted.") from e
-
-    def encrypt_json(self, data: dict) -> str:
-        """Encrypts a dictionary to a secure string."""
-        if not data:
+    def decrypt_string(self, encrypted_string: str) -> str:
+        """Decrypt an ENC:v1 format string."""
+        if encrypted_string is None:
             return None
-        json_str = json.dumps(data)
-        return self.encrypt_string(json_str)
+            
+        if not encrypted_string.startswith(self.PREFIX):
+            # Return as-is (e.g. for migrating unencrypted data, or if it's plain JSON)
+            return encrypted_string
+            
+        try:
+            b64_data = encrypted_string[len(self.PREFIX):]
+            payload = base64.b64decode(b64_data)
+            
+            if len(payload) < 28: # 12(nonce) + 16(tag) = 28 min
+                raise ValueError("Payload too short to be valid AES-GCM")
+                
+            nonce = payload[:12]
+            ciphertext = payload[12:]
+            
+            plaintext = self.aesgcm.decrypt(nonce, ciphertext, None)
+            return plaintext.decode('utf-8')
+        except Exception as e:
+            logger.error(f"Decryption failed: {e}")
+            raise ValueError("Data corrupted or tampered with.")
+
+    def encrypt_dict(self, data_dict: dict) -> str:
+        """Helper to serialize dict to JSON and encrypt."""
+        if data_dict is None:
+            return None
+        return self.encrypt_string(json.dumps(data_dict))
         
-    def decrypt_json(self, encrypted_data: str) -> dict:
-        """Decrypts a secure string back to a dictionary."""
-        if not encrypted_data:
+    def decrypt_dict(self, encrypted_string: str) -> dict:
+        """Helper to decrypt and parse JSON to dict."""
+        if encrypted_string is None:
+            return None
+            
+        plaintext = self.decrypt_string(encrypted_string)
+        try:
+            return json.loads(plaintext)
+        except json.JSONDecodeError:
+            logger.error("Failed to parse decrypted string as JSON.")
             return {}
-        if not encrypted_data.startswith(self.PREFIX):
+
+    encrypt_json = encrypt_dict
+    decrypt_json = decrypt_dict
+
+    def secure_wipe(self):
+        """Wipes the encrypted master key from disk."""
+        if os.path.exists(self.key_path):
             try:
-                return json.loads(encrypted_data)
-            except:
-                return {}
-        
-        json_str = self.decrypt_string(encrypted_data)
-        return json.loads(json_str)
+                file_size = os.path.getsize(self.key_path)
+                with open(self.key_path, "wb") as f:
+                    f.write(os.urandom(max(file_size, 32)))
+                os.remove(self.key_path)
+                logger.info("Master key securely wiped from disk.")
+            except Exception as e:
+                logger.error(f"Error securely wiping key: {e}")
 
-# Global singleton
-_manager_instance = None
+    _instance = None
 
-def get_crypto_manager(db_path: str = None) -> CryptoManager:
-    global _manager_instance
-    if _manager_instance is None:
-        if db_path is None:
-            raise ValueError("db_path must be provided to initialize CryptoManager for the first time")
-        key_path = os.path.splitext(db_path)[0] + ".key"
-        _manager_instance = CryptoManager(key_path)
-    return _manager_instance
+    @classmethod
+    def get_instance(cls, data_dir: str = None) -> "CryptoManager":
+        """Returns singleton instance, creating it if needed."""
+        if cls._instance is None:
+            if not data_dir:
+                data_dir = os.environ.get("VERSEOFF_DATA_DIR") or os.getcwd()
+            cls._instance = cls(data_dir)
+        return cls._instance
+
+
+def get_crypto_manager(data_dir: str = None) -> CryptoManager:
+    return CryptoManager.get_instance(data_dir)
