@@ -25,6 +25,7 @@ from PyQt6.QtWidgets import (
     QToolButton,
     QVBoxLayout,
     QWidget,
+    QMenu,
 )
 
 from db import ENTITY_NAMES, LocalDatabase
@@ -380,134 +381,396 @@ class TimelineWidget(QWidget):
     def _build_ui(self):
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
-        root.setSpacing(7)
+        root.setSpacing(8)
 
+        # 1. Top Toolbar (Timeline Header & Action Icons)
         toolbar = QHBoxLayout()
+        toolbar.setContentsMargins(0, 0, 0, 0)
+        toolbar.setSpacing(4)
+        
         title = QLabel("Timeline")
         title.setStyleSheet(
-            "font-size:16px;font-weight:600;color:#201f1e;"
+            "font-size: 15px; font-weight: 600; color: #201f1e;"
         )
         toolbar.addWidget(title)
         toolbar.addStretch()
 
-        self.create_combo = QComboBox()
-        self._populate_create_options()
-        toolbar.addWidget(self.create_combo)
-        create_button = QPushButton("Create")
-        create_button.clicked.connect(self._create_selected)
-        toolbar.addWidget(create_button)
-        refresh_button = QPushButton("Refresh")
-        refresh_button.clicked.connect(self.refresh)
-        toolbar.addWidget(refresh_button)
+        btn_style = """
+            QPushButton {
+                background-color: transparent;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                padding: 4px 6px;
+                font-size: 14px;
+                color: #323130;
+            }
+            QPushButton:hover {
+                background-color: #f3f2f1;
+                border-color: #e1dfdd;
+                color: #0f6cbd;
+            }
+            QPushButton:pressed {
+                background-color: #edebe9;
+            }
+        """
+
+        # ＋ Add button with popup menu
+        self.add_btn = QPushButton("＋")
+        self.add_btn.setFixedSize(28, 28)
+        self.add_btn.setStyleSheet(btn_style)
+        self.add_btn.setToolTip("Add note or activity")
+        self.add_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.add_btn.clicked.connect(self._show_add_menu)
+        toolbar.addWidget(self.add_btn)
+
+        # 🔖 Bookmark / Pinned toggle button
+        self.bookmark_btn = QPushButton("🔖")
+        self.bookmark_btn.setFixedSize(28, 28)
+        self.bookmark_btn.setStyleSheet(btn_style)
+        self.bookmark_btn.setToolTip("Filter by bookmarks / pinned")
+        self.bookmark_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.bookmark_btn.clicked.connect(self._toggle_pinned_only)
+        toolbar.addWidget(self.bookmark_btn)
+
+        # ▽ Filter pane toggle button
+        self.filter_btn = QPushButton("▽")
+        self.filter_btn.setFixedSize(28, 28)
+        self.filter_btn.setStyleSheet(btn_style)
+        self.filter_btn.setToolTip("Open filter pane")
+        self.filter_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.filter_btn.clicked.connect(self._toggle_filter_pane)
+        toolbar.addWidget(self.filter_btn)
+
+        # ⇅ Sort order button
+        self.sort_btn = QPushButton("⇅")
+        self.sort_btn.setFixedSize(28, 28)
+        self.sort_btn.setStyleSheet(btn_style)
+        self.sort_btn.setToolTip("Toggle sort order (Newest / Oldest)")
+        self.sort_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.sort_btn.clicked.connect(self._toggle_sort_order)
+        toolbar.addWidget(self.sort_btn)
+
+        # ↻ Refresh button
+        self.refresh_btn = QPushButton("↻")
+        self.refresh_btn.setFixedSize(28, 28)
+        self.refresh_btn.setStyleSheet(btn_style)
+        self.refresh_btn.setToolTip("Refresh timeline")
+        self.refresh_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.refresh_btn.clicked.connect(self.refresh)
+        toolbar.addWidget(self.refresh_btn)
+
+        # ⋮ More commands button
+        self.more_btn = QPushButton("⋮")
+        self.more_btn.setFixedSize(28, 28)
+        self.more_btn.setStyleSheet(btn_style)
+        self.more_btn.setToolTip("More commands")
+        self.more_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.more_btn.clicked.connect(self._show_more_menu)
+        toolbar.addWidget(self.more_btn)
+
         root.addLayout(toolbar)
 
-        search_row = QHBoxLayout()
+        # 2. Search Bar
+        search_box = QWidget()
+        search_box_layout = QHBoxLayout(search_box)
+        search_box_layout.setContentsMargins(0, 0, 0, 0)
         self.search = QLineEdit()
-        self.search.setPlaceholderText("Search timeline")
-        self.search.setVisible(
-            bool(self.definition.get("show_search", True))
-        )
+        self.search.setPlaceholderText("🔍 Search timeline")
+        self.search.setClearButtonEnabled(True)
+        self.search.setStyleSheet("""
+            QLineEdit {
+                background-color: #f8f9fa;
+                border: 1px solid #e1dfdd;
+                border-radius: 4px;
+                padding: 6px 10px;
+                font-size: 13px;
+                color: #201f1e;
+            }
+            QLineEdit:focus {
+                background-color: #ffffff;
+                border-color: #0f6cbd;
+            }
+        """)
         self.search.textChanged.connect(self._filters_changed)
-        search_row.addWidget(self.search, 1)
+        search_box_layout.addWidget(self.search)
+        root.addWidget(search_box)
+
+        # 3. Quick Note Composer ("Enter a note...")
+        self.note_composer = QWidget()
+        self.note_composer.setStyleSheet("""
+            QWidget {
+                background-color: #ffffff;
+                border: 1px solid #e1dfdd;
+                border-radius: 4px;
+            }
+        """)
+        note_layout = QHBoxLayout(self.note_composer)
+        note_layout.setContentsMargins(8, 4, 8, 4)
+        note_layout.setSpacing(6)
+
+        note_icon = QLabel("✏️")
+        note_icon.setStyleSheet("border: none; background: transparent; font-size: 13px;")
+        note_layout.addWidget(note_icon)
+
+        self.quick_note_input = QLineEdit()
+        self.quick_note_input.setPlaceholderText("Enter a note...")
+        self.quick_note_input.setStyleSheet("""
+            QLineEdit {
+                border: none;
+                background: transparent;
+                font-size: 13px;
+                color: #201f1e;
+            }
+        """)
+        self.quick_note_input.returnPressed.connect(self._quick_add_note)
+        note_layout.addWidget(self.quick_note_input, 1)
+
+        self.attach_btn = QPushButton("📎")
+        self.attach_btn.setFixedSize(24, 24)
+        self.attach_btn.setToolTip("Attach file")
+        self.attach_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.attach_btn.setStyleSheet("""
+            QPushButton {
+                border: none;
+                background: transparent;
+                color: #605e5c;
+                font-size: 14px;
+            }
+            QPushButton:hover {
+                color: #0f6cbd;
+            }
+        """)
+        self.attach_btn.clicked.connect(self._create_note)
+        note_layout.addWidget(self.attach_btn)
+        root.addWidget(self.note_composer)
+
+        # 4. Collapsible Filter Pane (matching Screenshot 3)
+        self.filter_pane = QFrame()
+        self.filter_pane.setStyleSheet("""
+            QFrame {
+                background-color: #f8f9fa;
+                border: 1px solid #e1dfdd;
+                border-radius: 4px;
+                padding: 6px;
+            }
+        """)
+        filter_layout = QVBoxLayout(self.filter_pane)
+        filter_layout.setContentsMargins(4, 4, 4, 4)
+        filter_layout.setSpacing(6)
+
+        filter_header = QHBoxLayout()
+        filter_title = QLabel("<b>Filter by</b>")
+        filter_title.setStyleSheet("font-size: 13px; color: #201f1e; border: none; background: transparent;")
+        filter_header.addWidget(filter_title)
+        filter_header.addStretch()
+
+        close_filter_btn = QPushButton("✕")
+        close_filter_btn.setFixedSize(20, 20)
+        close_filter_btn.setStyleSheet("QPushButton { border: none; background: transparent; color: #605e5c; font-size: 11px; } QPushButton:hover { color: #a4262c; }")
+        close_filter_btn.clicked.connect(lambda: self.filter_pane.setVisible(False))
+        filter_header.addWidget(close_filter_btn)
+        filter_layout.addLayout(filter_header)
+
+        # Filter combos in grid
+        combos_layout = QHBoxLayout()
+        combos_layout.setSpacing(6)
 
         self.record_type_filter = QComboBox()
-        self.record_type_filter.addItem("All records", "")
-        for module in self.definition.get("modules", []):
-            self.record_type_filter.addItem(module, module.lower())
-        preferred_record_type = self.preferences.get("record_type", "")
-        preferred_index = self.record_type_filter.findData(
-            preferred_record_type
-        )
-        if preferred_index >= 0:
-            self.record_type_filter.setCurrentIndex(preferred_index)
-        self.record_type_filter.currentIndexChanged.connect(
-            self._filters_changed
-        )
-        self.record_type_filter.setVisible(
-            bool(self.definition.get("show_filter_pane", True))
-        )
-        search_row.addWidget(self.record_type_filter)
+        self.record_type_filter.addItem("Record type: All", "")
+        for module in self.definition.get("modules", ["Activities", "Notes", "Posts"]):
+            self.record_type_filter.addItem(f"Record type: {module}", module.lower())
+        self.record_type_filter.currentIndexChanged.connect(self._filters_changed)
+        combos_layout.addWidget(self.record_type_filter)
 
         self.activity_filter = QComboBox()
-        self.activity_filter.addItem("All activity types", "")
-        for activity in self.definition.get("activities", []):
+        self.activity_filter.addItem("Activity: All", "")
+        for activity in self.definition.get("activities", ["task", "email", "phonecall", "appointment"]):
             self.activity_filter.addItem(
-                self._entity_label(activity),
+                f"Activity: {self._entity_label(activity)}",
                 activity,
             )
-        preferred_activity = self.preferences.get("activity_type", "")
-        preferred_index = self.activity_filter.findData(preferred_activity)
-        if preferred_index >= 0:
-            self.activity_filter.setCurrentIndex(preferred_index)
-        self.activity_filter.currentIndexChanged.connect(
-            self._filters_changed
-        )
-        self.activity_filter.setVisible(
-            bool(self.definition.get("show_filter_pane", True))
-            and "Activities" in self.definition.get("modules", [])
-        )
-        search_row.addWidget(self.activity_filter)
+        self.activity_filter.currentIndexChanged.connect(self._filters_changed)
+        combos_layout.addWidget(self.activity_filter)
 
         self.status_filter = QComboBox()
-        self.status_filter.addItem("All statuses", "")
+        self.status_filter.addItem("Status: All", "")
         for status in ("Active", "Overdue", "Completed", "Canceled"):
-            self.status_filter.addItem(status, status.lower())
-        preferred_status = self.preferences.get("status", "")
-        preferred_index = self.status_filter.findData(preferred_status)
-        if preferred_index >= 0:
-            self.status_filter.setCurrentIndex(preferred_index)
-        self.status_filter.currentIndexChanged.connect(
-            self._filters_changed
-        )
-        self.status_filter.setVisible(
-            bool(self.definition.get("show_filter_pane", True))
-        )
-        search_row.addWidget(self.status_filter)
+            self.status_filter.addItem(f"Status: {status}", status.lower())
+        self.status_filter.currentIndexChanged.connect(self._filters_changed)
+        combos_layout.addWidget(self.status_filter)
 
         self.sort_combo = QComboBox()
-        self.sort_combo.addItem("Newest first", "descending")
-        self.sort_combo.addItem("Oldest first", "ascending")
-        configured_order = self.preferences.get(
-            "order",
-            self.definition.get("order", "descending"),
-        )
-        index = self.sort_combo.findData(configured_order)
-        if index >= 0:
-            self.sort_combo.setCurrentIndex(index)
-        self.sort_combo.currentIndexChanged.connect(
-            self._filters_changed
-        )
-        search_row.addWidget(self.sort_combo)
-        root.addLayout(search_row)
+        self.sort_combo.addItem("Date: Newest first", "descending")
+        self.sort_combo.addItem("Date: Oldest first", "ascending")
+        self.sort_combo.currentIndexChanged.connect(self._filters_changed)
+        combos_layout.addWidget(self.sort_combo)
 
-        if self.definition.get("custom_record_sources"):
-            custom_warning = QLabel(
-                "Custom Timeline record sources require an online adapter "
-                "and are not loaded in this offline client."
-            )
-            custom_warning.setWordWrap(True)
-            custom_warning.setStyleSheet(
-                "background:#fff4ce;color:#604b00;border-radius:4px;"
-                "padding:7px;"
-            )
-            root.addWidget(custom_warning)
+        filter_layout.addLayout(combos_layout)
+        self.filter_pane.setVisible(False)
+        root.addWidget(self.filter_pane)
 
+        # 5. Highlights Section (Collapsible)
+        self.highlights_box = QWidget()
+        highlights_layout = QVBoxLayout(self.highlights_box)
+        highlights_layout.setContentsMargins(0, 4, 0, 4)
+        highlights_layout.setSpacing(2)
+
+        highlights_header = QHBoxLayout()
+        hl_title = QLabel("✨  <b>Highlights</b>")
+        hl_title.setStyleSheet("font-size: 13px; color: #201f1e;")
+        highlights_header.addWidget(hl_title)
+        highlights_header.addStretch()
+
+        self.hl_toggle_btn = QPushButton("∧")
+        self.hl_toggle_btn.setFixedSize(20, 20)
+        self.hl_toggle_btn.setStyleSheet("border: none; background: transparent; color: #605e5c;")
+        self.hl_toggle_btn.clicked.connect(self._toggle_highlights)
+        highlights_header.addWidget(self.hl_toggle_btn)
+        highlights_layout.addLayout(highlights_header)
+
+        self.hl_content = QLabel("No AI highlights available offline.")
+        self.hl_content.setStyleSheet("color: #605e5c; font-size: 12px; padding: 4px 6px;")
+        self.hl_content.setVisible(False) # Hidden by default if empty
+        highlights_layout.addWidget(self.hl_content)
+        root.addWidget(self.highlights_box)
+
+        # 6. Stream Header
+        stream_header = QLabel("<span style='color: #605e5c; font-size: 12px; font-weight: 600;'>∨ Recent</span>")
+        root.addWidget(stream_header)
+
+        # 7. Timeline Cards Scroll Area
         self.scroll = QScrollArea()
         self.scroll.setWidgetResizable(True)
+        self.scroll.setStyleSheet("QScrollArea { border: none; background: transparent; }")
         self.cards_host = QWidget()
+        self.cards_host.setStyleSheet("background: transparent;")
         self.cards_layout = QVBoxLayout(self.cards_host)
-        self.cards_layout.setContentsMargins(2, 2, 2, 2)
-        self.cards_layout.setSpacing(8)
+        self.cards_layout.setContentsMargins(0, 0, 0, 0)
+        self.cards_layout.setSpacing(6)
         self.cards_layout.addStretch()
         self.scroll.setWidget(self.cards_host)
-        root.addWidget(self.scroll)
+        root.addWidget(self.scroll, 1)
 
         self.load_more = QPushButton("Load more")
+        self.load_more.setStyleSheet("QPushButton { background-color: #f3f2f1; border: 1px solid #e1dfdd; border-radius: 4px; padding: 6px; } QPushButton:hover { background-color: #edebe9; }")
         self.load_more.clicked.connect(self._load_more)
         root.addWidget(self.load_more)
         self.status_label = QLabel()
         self.status_label.setStyleSheet("color:#605e5c;font-size:11px;")
         root.addWidget(self.status_label)
+
+    def _show_add_menu(self):
+        menu = QMenu(self)
+        
+        # 1. Activity Submenu
+        act_menu = menu.addMenu("📅  Activity")
+        activities = [
+            ("☑  Task", "task"),
+            ("📅  Appointment", "appointment"),
+            ("✉  Email", "email"),
+            ("📞  Phone Call", "phonecall"),
+            ("📋  Customer Voice alert", "customervoicealert"),
+            ("📋  Invite Redemption", "inviteredemption"),
+            ("💬  Outbound message", "outboundmessage"),
+            ("💬  Portal Comment", "portalcomment"),
+            ("💻  Session", "session"),
+            ("🎙  Voicemail", "voicemail"),
+        ]
+        for label, act_type in activities:
+            action = act_menu.addAction(label)
+            action.triggered.connect(lambda _, a=act_type: self._open_new_activity(a))
+
+        # 2. Note Action
+        note_action = menu.addAction("📝  Note")
+        note_action.triggered.connect(self._create_note)
+
+        # 3. Post Action
+        post_action = menu.addAction("📢  Post")
+        post_action.triggered.connect(self._create_post)
+
+        menu.exec(self.add_btn.mapToGlobal(self.add_btn.rect().bottomLeft()))
+
+    def _open_new_activity(self, activity_type: str):
+        if self.open_form_callback:
+            self.open_form_callback(activity_type, None)
+
+    def _toggle_pinned_only(self):
+        if not hasattr(self, "_pinned_only"):
+            self._pinned_only = False
+        self._pinned_only = not self._pinned_only
+        self.bookmark_btn.setStyleSheet(
+            "QPushButton { background-color: #e1dfdd; border-radius: 4px; padding: 4px; }"
+            if self._pinned_only
+            else "QPushButton { background-color: transparent; border: none; padding: 4px; }"
+        )
+        self._apply_filters()
+        self._render_cards()
+
+    def _toggle_filter_pane(self):
+        self.filter_pane.setVisible(not self.filter_pane.isVisible())
+
+    def _toggle_sort_order(self):
+        cur = self.sort_combo.currentData()
+        new_order = "ascending" if cur == "descending" else "descending"
+        idx = self.sort_combo.findData(new_order)
+        if idx >= 0:
+            self.sort_combo.setCurrentIndex(idx)
+
+    def _show_more_menu(self):
+        menu = QMenu(self)
+        exp_action = menu.addAction("Expand all")
+        exp_action.triggered.connect(self._expand_all)
+        col_action = menu.addAction("Collapse all")
+        col_action.triggered.connect(self._collapse_all)
+        menu.addSeparator()
+        clear_action = menu.addAction("Clear all filters")
+        clear_action.triggered.connect(self._clear_all_filters)
+        menu.exec(self.more_btn.mapToGlobal(self.more_btn.rect().bottomLeft()))
+
+    def _expand_all(self):
+        for i in range(self.cards_layout.count()):
+            w = self.cards_layout.itemAt(i).widget()
+            if isinstance(w, TimelineCard) and not w.expanded:
+                w._toggle_expanded()
+
+    def _collapse_all(self):
+        for i in range(self.cards_layout.count()):
+            w = self.cards_layout.itemAt(i).widget()
+            if isinstance(w, TimelineCard) and w.expanded:
+                w._toggle_expanded()
+
+    def _clear_all_filters(self):
+        self.search.clear()
+        self.record_type_filter.setCurrentIndex(0)
+        self.activity_filter.setCurrentIndex(0)
+        self.status_filter.setCurrentIndex(0)
+        self._pinned_only = False
+        self.bookmark_btn.setStyleSheet("QPushButton { background-color: transparent; border: none; padding: 4px; }")
+        self._filters_changed()
+
+    def _toggle_highlights(self):
+        is_vis = self.hl_content.isVisible()
+        self.hl_content.setVisible(not is_vis)
+        self.hl_toggle_btn.setText("∨" if is_vis else "∧")
+
+    def _quick_add_note(self):
+        text = self.quick_note_input.text().strip()
+        if not text:
+            return
+        note_id = str(uuid.uuid4())
+        payload = {
+            "annotationid": note_id,
+            "subject": text[:40] if len(text) > 40 else "Note",
+            "notetext": text,
+            "objectid": self.record_id,
+            "_objectid_value": self.record_id,
+            "_objectid_value@Microsoft.Dynamics.CRM.lookuplogicalname": self.parent_entity,
+            "modifiedon": datetime.now(timezone.utc).isoformat(),
+            "createdon": datetime.now(timezone.utc).isoformat(),
+        }
+        self.database.upsert_record("annotation", note_id, payload)
+        self.quick_note_input.clear()
+        self.refresh()
 
     def _populate_create_options(self):
         self.create_combo.clear()
@@ -766,6 +1029,11 @@ class TimelineWidget(QWidget):
                         )
                     ).lower()
                 )
+            ]
+        if getattr(self, "_pinned_only", False):
+            records = [
+                record for record in records
+                if (record.get("__entity"), str(record.get("__id"))) in self.pins
             ]
         descending = self.sort_combo.currentData() == "descending"
         records.sort(

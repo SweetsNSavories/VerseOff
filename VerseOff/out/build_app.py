@@ -13,7 +13,7 @@ os.chdir(base_dir)
 print("Building generated VerseOff application...")
 PyInstaller.__main__.run([
    "main.py",
-   "--name=VerseOffSampleSalesApp",
+   "--name=CustomerServiceHub",
    "--onefile",
    "--windowed",
    "--clean",
@@ -28,4 +28,4 @@ PyInstaller.__main__.run([
        else []
    ),
 ])
-print("Build complete. Check the dist folder for VerseOffSampleSalesApp.")
+print("Build complete. Check the dist folder for CustomerServiceHub.")

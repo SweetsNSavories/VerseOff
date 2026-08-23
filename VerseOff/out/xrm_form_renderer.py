@@ -167,20 +167,82 @@ class LookupWidget(QWidget):
         
         layout = QHBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(2)
         
         self.line_edit = QLineEdit()
         self.line_edit.setReadOnly(True)
-        self.line_edit.textChanged.connect(self.textChanged)
+        self.line_edit.setPlaceholderText("Select a record...")
+        self.line_edit.textChanged.connect(self._on_internal_text_changed)
+        self.line_edit.setStyleSheet("""
+            QLineEdit {
+                background-color: #ffffff;
+                border: 1px solid #d1d1d1;
+                border-radius: 4px;
+                padding: 4px 8px;
+                color: #0f6cbd;
+                font-weight: 500;
+            }
+            QLineEdit:hover {
+                border-color: #8a8886;
+            }
+        """)
+        
+        self.clear_btn = QPushButton("✕")
+        self.clear_btn.setFixedSize(24, 24)
+        self.clear_btn.setToolTip("Clear lookup value")
+        self.clear_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.clear_btn.setStyleSheet("""
+            QPushButton {
+                background: transparent;
+                border: none;
+                color: #605e5c;
+                font-size: 11px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                color: #a4262c;
+                background-color: #f3f2f1;
+                border-radius: 12px;
+            }
+        """)
+        self.clear_btn.setVisible(False)
+        self.clear_btn.clicked.connect(self.clear_value)
         
         self.search_btn = QPushButton("🔍")
-        self.search_btn.setFixedWidth(30)
+        self.search_btn.setFixedSize(28, 28)
+        self.search_btn.setToolTip("Search records")
+        self.search_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.search_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #ffffff;
+                border: 1px solid #d1d1d1;
+                border-radius: 4px;
+                font-size: 13px;
+            }
+            QPushButton:hover {
+                background-color: #f3f2f1;
+                border-color: #0f6cbd;
+            }
+        """)
         self.search_btn.clicked.connect(self.open_lookup_dialog)
         
         layout.addWidget(self.line_edit)
+        layout.addWidget(self.clear_btn)
         layout.addWidget(self.search_btn)
         
+    def _on_internal_text_changed(self, text):
+        self.clear_btn.setVisible(bool(text.strip()))
+        self.textChanged.emit(text)
+
+    def clear_value(self):
+        self.current_id = None
+        self.current_logical_name = None
+        self.line_edit.clear()
+        self._is_dirty = True
+
     def setText(self, text):
         self.line_edit.setText(text)
+        self.clear_btn.setVisible(bool(str(text or "").strip()))
         
     def text(self):
         return self.line_edit.text()
@@ -5162,9 +5224,11 @@ class XrmFormRenderer(QWidget):
         form_id: str = None,
         is_quick_view: bool = False,
         on_close=None,
+        on_saved=None,
         form_parameters: dict = None,
         navigation_options: dict = None,
         form_type: int = None,
+        **kwargs,
     ):
         super().__init__(parent)
         self.manifest = manifest_data
@@ -5175,6 +5239,7 @@ class XrmFormRenderer(QWidget):
         self.form_id = form_id
         self.is_quick_view = is_quick_view
         self.on_close = on_close
+        self.on_saved = on_saved or kwargs.get("on_save")
         self._raw_form_parameters = dict(form_parameters or {})
         self.form_parameters = {}
         self.form_parameter_definitions = {}
@@ -6194,52 +6259,69 @@ class XrmFormRenderer(QWidget):
         
         disp_name = self.entity_def.get("DisplayName", {}).get("UserLocalizedLabel", {}).get("Label") or self.entity_def.get("display_name") or self.logical_name.capitalize()
         self.setWindowTitle(f"{disp_name} - Dynamics 365")
-        
-        # --- Top Breadcrumb / Record Title & Command Bar Container ---
+         # --- Top Breadcrumb / Record Title & Command Bar Container ---
         top_bar = QWidget()
-        top_bar.setStyleSheet("background-color: #ffffff; border-bottom: 1px solid #e1dfdd; padding: 6px 10px;")
+        top_bar.setStyleSheet("""
+            QWidget {
+                background-color: #ffffff;
+                border-bottom: 1px solid #e1dfdd;
+            }
+        """)
         top_bar_layout = QVBoxLayout(top_bar)
-        top_bar_layout.setContentsMargins(0, 0, 0, 0)
-        top_bar_layout.setSpacing(4)
+        top_bar_layout.setContentsMargins(8, 4, 8, 4)
+        top_bar_layout.setSpacing(0)
         
         # Command Bar (Ribbon)
         cmd_layout = QHBoxLayout()
-        cmd_layout.setContentsMargins(0, 8, 0, 8)
-        cmd_layout.setSpacing(6)
+        cmd_layout.setContentsMargins(0, 4, 0, 4)
+        cmd_layout.setSpacing(4)
         
         back_btn = QPushButton("←")
-        back_btn.setFixedSize(36, 36)
+        back_btn.setFixedSize(32, 32)
         back_btn.setToolTip(f"Back to {disp_name}s")
-        back_btn.setStyleSheet("QPushButton { background-color: transparent; border: 1px solid #e1dfdd; border-radius: 18px; color: #0f6cbd; font-weight: bold; font-size: 22px; text-align: center; padding-top: 3px; padding-right: 1px; } QPushButton:hover { background-color: #f3f2f1; }")
+        back_btn.setStyleSheet("""
+            QPushButton {
+                background-color: transparent;
+                border: 1px solid transparent;
+                border-radius: 16px;
+                color: #0f6cbd;
+                font-weight: bold;
+                font-size: 20px;
+                text-align: center;
+                padding-bottom: 2px;
+            }
+            QPushButton:hover {
+                background-color: #f3f2f1;
+                border-color: #e1dfdd;
+            }
+        """)
         back_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         back_btn.clicked.connect(self.handle_close)
         cmd_layout.addWidget(back_btn)
         
-        # Standard command bar buttons with unified Fluent UI styling
+        # Standard command bar buttons with unified Fluent UI styling matching screenshot
         fluent_cmd_btn_style = """
             QPushButton, QToolButton {
-                background-color: #ffffff;
+                background-color: transparent;
                 color: #201f1e;
                 font-weight: 500;
                 font-size: 13px;
-                padding: 6px 12px;
+                padding: 6px 10px;
                 border-radius: 4px;
-                border: 1px solid #d1d1d1;
+                border: 1px solid transparent;
             }
             QPushButton:hover, QToolButton:hover {
                 background-color: #f3f2f1;
-                border-color: #0f6cbd;
+                border-color: #e1dfdd;
                 color: #0f6cbd;
             }
             QPushButton:pressed, QToolButton:pressed {
                 background-color: #edebe9;
-                border-color: #0c3b5e;
                 color: #0c3b5e;
             }
             QPushButton:disabled, QToolButton:disabled {
-                background-color: #faf9f8;
+                background-color: transparent;
                 color: #a19f9d;
-                border-color: #f3f2f1;
             }
         """
 
@@ -6255,54 +6337,49 @@ class XrmFormRenderer(QWidget):
         save_close_btn.clicked.connect(self.save_and_close)
         cmd_layout.addWidget(save_close_btn)
         
-        save_new_btn = QPushButton("＋  Save & New")
+        save_new_btn = QPushButton("＋  New")
         save_new_btn.setStyleSheet(fluent_cmd_btn_style)
         save_new_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         save_new_btn.clicked.connect(self.save_and_new)
         cmd_layout.addWidget(save_new_btn)
+
+        refresh_btn = QPushButton("↻  Refresh")
+        refresh_btn.setStyleSheet(fluent_cmd_btn_style)
+        refresh_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        refresh_btn.clicked.connect(lambda: self._populate_data() if self.record_id else None)
+        cmd_layout.addWidget(refresh_btn)
         
         delete_btn = QPushButton("🗑  Delete")
         delete_btn.setStyleSheet(fluent_cmd_btn_style)
         delete_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         delete_btn.clicked.connect(self.delete_record)
         cmd_layout.addWidget(delete_btn)
-        
-        refresh_btn = QPushButton("↻  Refresh")
-        refresh_btn.setStyleSheet(fluent_cmd_btn_style)
-        refresh_btn.setCursor(Qt.CursorShape.PointingHandCursor)
-        refresh_btn.clicked.connect(lambda: self.load_data() if self.record_id else None)
-        cmd_layout.addWidget(refresh_btn)
 
         self._add_form_ribbon_buttons(cmd_layout)
+        
+        cmd_layout.addStretch()
         
         # Form Selector dropdown (LTRDisplay inspired)
         main_forms = self._get_main_form_defs()
             
         if not self.is_quick_view and len(main_forms) > 1:
             self.form_combo = QComboBox()
-            self.form_combo.setMinimumWidth(210)
-            self.form_combo.setMaximumWidth(350)
+            self.form_combo.setMinimumWidth(180)
+            self.form_combo.setMaximumWidth(320)
             self.form_combo.setCursor(Qt.CursorShape.PointingHandCursor)
             self.form_combo.setStyleSheet("""
                 QComboBox {
                     border: 1px solid #d1d1d1;
                     border-radius: 4px;
                     background-color: #ffffff;
-                    font-weight: 600;
-                    font-size: 14px;
+                    font-weight: 500;
+                    font-size: 12px;
                     color: #201f1e;
-                    padding: 5px 10px;
+                    padding: 3px 8px;
                 }
                 QComboBox:hover {
                     background-color: #f3f2f1;
                     border-color: #8a8886;
-                }
-                QComboBox QAbstractItemView {
-                    background-color: #ffffff;
-                    color: #201f1e;
-                    selection-background-color: #edebe9;
-                    selection-color: #201f1e;
-                    border: 1px solid #d1d1d1;
                 }
             """)
             for f in main_forms:
@@ -6322,8 +6399,7 @@ class XrmFormRenderer(QWidget):
                         self.form_combo.setCurrentIndex(idx)
                         break
             self.form_combo.currentIndexChanged.connect(self._on_form_selector_changed)
-        
-        cmd_layout.addStretch()
+            
         top_bar_layout.addLayout(cmd_layout)
         if not self.is_quick_view:
             main_layout.addWidget(top_bar)
@@ -6341,23 +6417,142 @@ class XrmFormRenderer(QWidget):
         if bpf_layout:
             main_layout.addLayout(bpf_layout)
             
-        # --- Form Header (Metrics & Form Selector) ---
+        # --- Form Header (Fluent 2 Record Title, Subtitle & Metrics Columns) ---
         self.header_widget = QWidget()
         self.header_widget.setObjectName("FormHeaderWidget")
-        self.header_widget.setStyleSheet("QWidget#FormHeaderWidget { background-color: #ffffff; border-bottom: 1px solid #e1dfdd; padding: 4px 16px; }")
+        self.header_widget.setStyleSheet("""
+            QWidget#FormHeaderWidget {
+                background-color: #ffffff;
+                border-bottom: 1px solid #e1dfdd;
+                padding: 10px 16px 8px 16px;
+            }
+        """)
         self.header_layout = QHBoxLayout(self.header_widget)
-        self.header_layout.setContentsMargins(0, 4, 0, 4)
-        self.header_layout.setSpacing(16)
+        self.header_layout.setContentsMargins(0, 0, 0, 0)
+        self.header_layout.setSpacing(20)
         
-        rec_title = QLabel(f"<b>{disp_name}</b>: <span style='color: #605e5c;'>{'New Record' if not self.record_id else self.record_id[:8] + '...'}</span>")
-        rec_title.setStyleSheet("font-size: 16px; color: #201f1e; margin-right: 8px;")
-        self.header_layout.addWidget(rec_title)
+        # Left title column
+        title_col = QVBoxLayout()
+        title_col.setSpacing(2)
         
+        title_row = QHBoxLayout()
+        title_row.setSpacing(8)
+        self.title_label = QLabel(f"<b>New {disp_name}</b>" if not self.record_id else f"<b>{disp_name} Record</b>")
+        self.title_label.setStyleSheet("font-size: 20px; font-weight: 600; color: #201f1e;")
+        self.status_tag = QLabel("Saved" if self.record_id else "Unsaved")
+        self.status_tag.setStyleSheet("font-size: 12px; color: #605e5c; padding-top: 4px;")
+        
+        title_row.addWidget(self.title_label)
+        title_row.addWidget(self.status_tag)
+        title_row.addStretch()
+        title_col.addLayout(title_row)
+        
+        sub_row = QHBoxLayout()
+        sub_row.setSpacing(6)
+        ent_subtitle = QLabel(f"<span style='color: #605e5c; font-size: 12px; font-weight: 500;'>{disp_name}</span> <span style='color: #a19f9d;'>·</span>")
+        sub_row.addWidget(ent_subtitle)
         if hasattr(self, "form_combo"):
-            self.header_layout.addWidget(self.form_combo)
-            
-        self.header_layout.addStretch() # Right-align the header fields
+            sub_row.addWidget(self.form_combo)
+        else:
+            active_f = self._get_active_form_def()
+            fname = active_f.get("name") if active_f else "Information"
+            form_lbl = QLabel(f"<span style='color: #605e5c; font-size: 12px;'>{fname}</span>")
+            sub_row.addWidget(form_lbl)
+        sub_row.addStretch()
+        title_col.addLayout(sub_row)
+        
+        self.header_layout.addLayout(title_col, 2)
+        self.header_layout.addStretch(1)
+        
+        # Right metrics columns
+        self.header_metrics_layout = QHBoxLayout()
+        self.header_metrics_layout.setSpacing(24)
+        self.header_layout.addLayout(self.header_metrics_layout)
+        
+        self._populate_header_metrics()
         main_layout.addWidget(self.header_widget)
+
+    def _populate_header_metrics(self, row=None):
+        if not hasattr(self, "header_metrics_layout"):
+            return
+        while self.header_metrics_layout.count():
+            item = self.header_metrics_layout.takeAt(0)
+            if item.widget(): item.widget().deleteLater()
+            elif item.layout():
+                while item.layout().count():
+                    sub = item.layout().takeAt(0)
+                    if sub.widget(): sub.widget().deleteLater()
+
+        row = row or {}
+        # 1. Number / ID
+        num_val = row.get("ticketnumber") or row.get("casenumber") or row.get("accountnumber") or (self.record_id[:12].upper() if self.record_id else "NEW")
+        col1 = QVBoxLayout()
+        col1.setSpacing(1)
+        val1 = QLabel(f"<b>{num_val}</b>")
+        val1.setStyleSheet("font-size: 13px; font-weight: 600; color: #201f1e;")
+        lbl_text = "Case Number" if self.logical_name == "incident" else f"{self.logical_name.replace('_', ' ').title()} Number"
+        lbl1 = QLabel(lbl_text)
+        lbl1.setStyleSheet("font-size: 11px; color: #605e5c;")
+        col1.addWidget(val1)
+        col1.addWidget(lbl1)
+        self.header_metrics_layout.addLayout(col1)
+
+        # 2. Origin
+        origin_val = row.get("caseorigincode@OData.Community.Display.V1.FormattedValue") or row.get("caseorigincode") or "Web"
+        col2 = QVBoxLayout()
+        col2.setSpacing(1)
+        val2 = QLabel(f"<b>{origin_val}</b>")
+        val2.setStyleSheet("font-size: 13px; font-weight: 600; color: #201f1e;")
+        lbl2 = QLabel("Origin")
+        lbl2.setStyleSheet("font-size: 11px; color: #605e5c;")
+        col2.addWidget(val2)
+        col2.addWidget(lbl2)
+        self.header_metrics_layout.addLayout(col2)
+
+        # 3. Created On
+        created_val = row.get("createdon@OData.Community.Display.V1.FormattedValue") or row.get("createdon") or (row.get("last_modified") if row else "") or "Just now"
+        if len(str(created_val)) > 16:
+            created_val = str(created_val)[:16].replace("T", " ")
+        col3 = QVBoxLayout()
+        col3.setSpacing(1)
+        val3 = QLabel(f"<b>{created_val}</b>")
+        val3.setStyleSheet("font-size: 13px; font-weight: 600; color: #201f1e;")
+        lbl3 = QLabel("Created On")
+        lbl3.setStyleSheet("font-size: 11px; color: #605e5c;")
+        col3.addWidget(val3)
+        col3.addWidget(lbl3)
+        self.header_metrics_layout.addLayout(col3)
+
+        # 4. Owner Badge
+        owner_tile = QHBoxLayout()
+        owner_tile.setSpacing(8)
+        
+        avatar = QLabel("AT")
+        avatar.setFixedSize(32, 32)
+        avatar.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        avatar.setStyleSheet("""
+            QLabel {
+                background-color: #5c2d91;
+                color: #ffffff;
+                font-weight: 700;
+                font-size: 12px;
+                border-radius: 16px;
+            }
+        """)
+        
+        owner_text_col = QVBoxLayout()
+        owner_text_col.setSpacing(1)
+        owner_name_str = row.get("_ownerid_value@OData.Community.Display.V1.FormattedValue") or "admin thonda"
+        owner_name = QLabel(f"<b>{owner_name_str}</b>")
+        owner_name.setStyleSheet("font-size: 13px; font-weight: 600; color: #201f1e;")
+        owner_lbl = QLabel("Owner")
+        owner_lbl.setStyleSheet("font-size: 11px; color: #605e5c;")
+        owner_text_col.addWidget(owner_name)
+        owner_text_col.addWidget(owner_lbl)
+        
+        owner_tile.addWidget(avatar)
+        owner_tile.addLayout(owner_text_col)
+        self.header_metrics_layout.addLayout(owner_tile)
 
         # --- Form Body ---
         self.form_container = QWidget()
@@ -8456,6 +8651,16 @@ class XrmFormRenderer(QWidget):
             for field, widgets in self.control_instances.items():
                 for widget in widgets:
                     self._set_widget_value(field, widget, row)
+                    
+            if hasattr(self, "title_label"):
+                primary_name_attr = (self.entity_def.get("PrimaryNameAttribute") if self.entity_def else None) or "name"
+                title_val = row.get(primary_name_attr) or row.get("title") or row.get("name") or row.get("fullname") or row.get("casenumber") or self.record_id
+                if title_val:
+                    self.title_label.setText(f"<b>{title_val}</b>")
+            if hasattr(self, "status_tag"):
+                self.status_tag.setText("Saved")
+            if hasattr(self, "_populate_header_metrics"):
+                self._populate_header_metrics(row)
                             
         # Refresh any associated grids in the Related tab
         if hasattr(self, 'associated_grids'):
@@ -9658,6 +9863,20 @@ class XrmFormRenderer(QWidget):
         )
         for widget in self.controls.values():
             widget._is_dirty = False
+
+        # Immediately notify grid/parent listeners that this record was saved
+        if callable(getattr(self, "on_saved", None)):
+            try:
+                self.on_saved(self.logical_name, self.record_id)
+            except Exception as exc:
+                logger.debug(f"on_saved callback error: {exc}")
+
+        app_win = self.window()
+        if hasattr(app_win, "on_record_saved_globally"):
+            try:
+                app_win.on_record_saved_globally(self.logical_name, self.record_id)
+            except Exception as exc:
+                logger.debug(f"app_win.on_record_saved_globally error: {exc}")
 
         if save_mode == 2:
             self.handle_close(force=True)

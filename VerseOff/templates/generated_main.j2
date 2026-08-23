@@ -8,10 +8,10 @@ from PyQt6.QtWidgets import (
     QSplitter, QTableWidget, QTableWidgetItem, QLineEdit,
     QTreeWidget, QTreeWidgetItem, QTreeWidgetItemIterator,
     QStackedWidget, QMessageBox,
-    QToolButton, QMenu, QHeaderView
+    QToolButton, QMenu, QHeaderView, QInputDialog
 )
 from PyQt6.QtCore import QTimer, QThread, pyqtSignal, Qt, QSize
-from PyQt6.QtGui import QPixmap
+from PyQt6.QtGui import QPixmap, QIcon, QFont, QColor
 from db import LocalDatabase, _resource_path
 from sync_engine import SyncEngine
 from ui_components import FluentComboBox as QComboBox
@@ -22,6 +22,39 @@ from xrm_form_renderer import XrmFormRenderer
 
 logger = logging.getLogger(__name__)
 SITEMAP_ROUTE_ROLE = int(Qt.ItemDataRole.UserRole) + 1
+
+
+class DataverseTableWidgetItem(QTableWidgetItem):
+    """
+    QTableWidgetItem with smart multi-type sorting:
+    - Numeric values sort numerically (e.g. 10 > 2)
+    - ISO timestamps sort chronologically
+    - Strings sort alphabetically case-insensitively
+    """
+    def __init__(self, text, raw_value=None):
+        super().__init__(str(text if text is not None else ""))
+        self.raw_value = raw_value
+
+    def __lt__(self, other):
+        if not isinstance(other, QTableWidgetItem):
+            return super().__lt__(other)
+        
+        val1 = self.raw_value if self.raw_value is not None else self.text()
+        val2 = getattr(other, "raw_value", None) if getattr(other, "raw_value", None) is not None else other.text()
+        
+        # Try numeric comparison
+        try:
+            str1 = str(val1).replace(",", "").replace("$", "").replace("€", "").replace("£", "").strip()
+            str2 = str(val2).replace(",", "").replace("$", "").replace("€", "").replace("£", "").strip()
+            if str1 != "" and str2 != "":
+                num1 = float(str1)
+                num2 = float(str2)
+                return num1 < num2
+        except (ValueError, TypeError):
+            pass
+        
+        return str(val1 or "").casefold() < str(val2 or "").casefold()
+
 
 class SyncWorker(QThread):
     succeeded = pyqtSignal(object)
@@ -42,6 +75,9 @@ class OfflineApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self._close_after_sync = False
+        self.column_filters = {}
+        self.raw_column_headers = []
+        self.current_columns = []
         self.setWindowTitle("Dynamics 365 - Offline Client")
         self.resize(1380, 860)
         self.setMinimumSize(1020, 700)
@@ -565,8 +601,10 @@ class OfflineApp(QMainWindow):
         self.view_combo.currentIndexChanged.connect(self.refresh_grid)
         
         self.search_bar = QLineEdit()
-        self.search_bar.setPlaceholderText("🔍 Quick Find Search...")
-        self.search_bar.setMinimumWidth(240)
+        self.search_bar.setPlaceholderText("🔍 Quick Find Search / Filter...")
+        self.search_bar.setClearButtonEnabled(True)
+        self.search_bar.setMinimumWidth(260)
+        self.search_bar.textChanged.connect(self.on_quick_search_changed)
         self.search_bar.returnPressed.connect(self.do_quick_find)
         
         top_view_bar.addWidget(self.entity_header_label)
@@ -584,7 +622,15 @@ class OfflineApp(QMainWindow):
         self.data_grid.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.data_grid.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         self.data_grid.setAlternatingRowColors(True)
-        self.data_grid.horizontalHeader().setStretchLastSection(True)
+        self.data_grid.setSortingEnabled(True)
+        
+        header = self.data_grid.horizontalHeader()
+        header.setStretchLastSection(True)
+        header.setSortIndicatorShown(True)
+        header.setSectionsClickable(True)
+        header.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        header.customContextMenuRequested.connect(self.show_column_header_menu)
+        header.sectionDoubleClicked.connect(self.on_column_header_double_clicked)
         grid_layout.addWidget(self.data_grid)
         
         # Footer (Record Count & Status)
@@ -1027,8 +1073,112 @@ class OfflineApp(QMainWindow):
             self.refresh_grid()
 
     def do_quick_find(self):
-        search_text = self.search_bar.text().strip()
-        self.refresh_grid(search_string=search_text)
+        self._apply_active_filters()
+
+    def on_quick_search_changed(self, text: str):
+        self._apply_active_filters()
+
+    def show_column_header_menu(self, pos):
+        header = self.data_grid.horizontalHeader()
+        col_idx = header.logicalIndexAt(pos)
+        if col_idx < 0 or col_idx >= self.data_grid.columnCount():
+            return
+        
+        col_label = self.raw_column_headers[col_idx] if hasattr(self, "raw_column_headers") and col_idx < len(self.raw_column_headers) else f"Column {col_idx + 1}"
+        
+        menu = QMenu(self)
+        filter_action = menu.addAction(f"🔍 Search & Filter by \"{col_label}\"...")
+        filter_action.triggered.connect(lambda: self.prompt_column_filter(col_idx, col_label))
+        
+        if col_idx in self.column_filters:
+            clear_col_action = menu.addAction(f"✕ Clear Filter on \"{col_label}\"")
+            clear_col_action.triggered.connect(lambda: self.clear_column_filter(col_idx))
+            
+        menu.addSeparator()
+        sort_asc = menu.addAction("▲ Sort Ascending (A-Z / 0-9)")
+        sort_asc.triggered.connect(lambda: self.data_grid.sortItems(col_idx, Qt.SortOrder.AscendingOrder))
+        
+        sort_desc = menu.addAction("▼ Sort Descending (Z-A / 9-0)")
+        sort_desc.triggered.connect(lambda: self.data_grid.sortItems(col_idx, Qt.SortOrder.DescendingOrder))
+        
+        if self.column_filters:
+            menu.addSeparator()
+            clear_all_action = menu.addAction("🔄 Clear All Column Filters")
+            clear_all_action.triggered.connect(self.clear_all_column_filters)
+            
+        menu.exec(header.mapToGlobal(pos))
+
+    def on_column_header_double_clicked(self, col_idx: int):
+        if 0 <= col_idx < len(getattr(self, "raw_column_headers", [])):
+            col_label = self.raw_column_headers[col_idx]
+            self.prompt_column_filter(col_idx, col_label)
+
+    def prompt_column_filter(self, col_idx: int, col_label: str):
+        current_val = self.column_filters.get(col_idx, "")
+        text, ok = QInputDialog.getText(
+            self,
+            f"Filter {col_label}",
+            f"Show records where '{col_label}' contains:",
+            QLineEdit.EchoMode.Normal,
+            current_val,
+        )
+        if ok:
+            text = text.strip()
+            if text:
+                self.column_filters[col_idx] = text
+            else:
+                self.column_filters.pop(col_idx, None)
+            self._apply_active_filters()
+
+    def clear_column_filter(self, col_idx: int):
+        self.column_filters.pop(col_idx, None)
+        self._apply_active_filters()
+
+    def clear_all_column_filters(self):
+        self.column_filters.clear()
+        self.search_bar.clear()
+        self._apply_active_filters()
+
+    def _apply_active_filters(self):
+        search_term = self.search_bar.text().strip().casefold()
+        total_rows = self.data_grid.rowCount()
+        visible_rows = 0
+        
+        for row in range(total_rows):
+            matches_search = True
+            if search_term:
+                row_matches = False
+                for col in range(self.data_grid.columnCount()):
+                    item = self.data_grid.item(row, col)
+                    if item and search_term in item.text().casefold():
+                        row_matches = True
+                        break
+                matches_search = row_matches
+                
+            matches_col_filters = True
+            for col_idx, filter_val in self.column_filters.items():
+                item = self.data_grid.item(row, col_idx)
+                if not item or filter_val.casefold() not in item.text().casefold():
+                    matches_col_filters = False
+                    break
+                    
+            should_show = matches_search and matches_col_filters
+            self.data_grid.setRowHidden(row, not should_show)
+            if should_show:
+                visible_rows += 1
+                
+        # Update column header labels to visually show active filters
+        for j in range(self.data_grid.columnCount()):
+            base_label = self.raw_column_headers[j] if hasattr(self, "raw_column_headers") and j < len(self.raw_column_headers) else ""
+            if j in self.column_filters:
+                filter_text = self.column_filters[j]
+                self.data_grid.setHorizontalHeaderItem(j, QTableWidgetItem(f"🔍 {base_label} [{filter_text}]"))
+            elif base_label:
+                self.data_grid.setHorizontalHeaderItem(j, QTableWidgetItem(base_label))
+                
+        filter_count = len(self.column_filters) + (1 if search_term else 0)
+        filter_str = f" ({filter_count} filter{'s' if filter_count != 1 else ''} active)" if filter_count > 0 else ""
+        self.footer_label.setText(f"Showing {visible_rows} of {total_rows} record{'s' if total_rows != 1 else ''}{filter_str}")
 
     def refresh_grid(self, search_string=None):
         selected_nav = self.nav_tree.selectedItems()
@@ -1177,7 +1327,8 @@ class OfflineApp(QMainWindow):
                         if record.get("statecode") not in (None, 0, "0")
                     ]
 
-                # Populate QTableWidget
+                # Populate QTableWidget with smart sorting
+                self.data_grid.setSortingEnabled(False)
                 self.data_grid.setColumnCount(len(columns))
                 
                 attr_meta = {a["LogicalName"]: a for a in (ent_def or {}).get("attributes", []) if isinstance(a, dict)}
@@ -1198,11 +1349,9 @@ class OfflineApp(QMainWindow):
                             else:
                                 lbl = part.replace("_", " ").title()
                         else:
-                            # If we still have a dot in lbl, it's a raw alias string.
                             if lbl and "." in lbl:
                                 part = lbl.split(".")[-1]
                             lbl = part.replace("_", " ").title()
-                            # Extra cleanup for common squished words like Emailaddress1 -> Email Address 1
                             lbl = lbl.replace("address", " Address ").replace("1", " 1").strip()
                     headers.append(str(lbl))
                     
@@ -1211,6 +1360,8 @@ class OfflineApp(QMainWindow):
                     if width:
                         self.data_grid.setColumnWidth(j, int(width) + 20)
                 
+                self.raw_column_headers = list(headers)
+                self.current_columns = list(columns)
                 self.data_grid.setHorizontalHeaderLabels(headers)
                 self.data_grid.horizontalHeader().setStretchLastSection(True)
                 self.data_grid.setRowCount(len(rows_data))
@@ -1226,15 +1377,21 @@ class OfflineApp(QMainWindow):
                         if formatted_key in row:
                             val = str(row[formatted_key])
                         if val == "None": val = ""
-                        item = QTableWidgetItem(val)
+                        item = DataverseTableWidgetItem(val, raw_value=row.get(col["name"]))
                         if j == 0:
                             item.setData(Qt.ItemDataRole.UserRole, rec_id)
                         self.data_grid.setItem(i, j, item)
                         
-                self.footer_label.setText(f"Showing {len(rows_data)} record{'s' if len(rows_data) != 1 else ''}")
+                self.data_grid.setSortingEnabled(True)
+                self._apply_active_filters()
                         
         except Exception as e:
             logger.error(f"Error loading homepage grid: {e}")
+
+    def on_record_saved_globally(self, entity_name: str, record_id: str):
+        """Immediately refreshes the grid view when any record is created or saved."""
+        logger.info(f"Record saved globally ({entity_name}: {record_id}), refreshing active view immediately.")
+        self.refresh_grid()
 
     def open_record_from_grid(self, item):
         row = item.row()
@@ -1249,7 +1406,6 @@ class OfflineApp(QMainWindow):
         
         if record_id:
             if entity_name in ("activitypointer", "activity"):
-                # Determine concrete activity type (task, email, phonecall, etc.)
                 concrete_type = first_cell.data(Qt.ItemDataRole.UserRole + 2)
                 if not concrete_type:
                     try:
@@ -1274,7 +1430,14 @@ class OfflineApp(QMainWindow):
             if widget:
                 widget.deleteLater()
                 
-        self.current_form = XrmFormRenderer(self.config, entity_name, record_id, parent=self, on_close=self.close_form_view)
+        self.current_form = XrmFormRenderer(
+            self.config,
+            entity_name,
+            record_id,
+            parent=self,
+            on_close=self.close_form_view,
+            on_saved=self.on_record_saved_globally,
+        )
         self.form_page_layout.addWidget(self.current_form)
         self.main_stack.setCurrentIndex(1) # Inline transition to Form View
 
