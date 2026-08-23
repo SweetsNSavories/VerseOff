@@ -17,10 +17,13 @@ import json
 import logging
 import sqlite3
 import os
+import threading
+import time
 
 logger = logging.getLogger(__name__)
 
 DB_PATH = "verseoff_cache.db"
+_db_lock = threading.RLock()
 
 # ---------------------------------------------------------------------------
 # Dataverse AttributeType → SQLite column type mapping
@@ -156,34 +159,35 @@ def create_entity_table(entity_def: dict, db_path: str = None):
         return
 
     logical_name = entity_def.get("LogicalName", "unknown")
-    try:
-        conn = sqlite3.connect(path, timeout=60.0)
-        cursor = conn.cursor()
-        cursor.execute("PRAGMA journal_mode=WAL;")
-        cursor.execute(sql)
+    with _db_lock:
+        try:
+            conn = sqlite3.connect(path, timeout=60.0)
+            cursor = conn.cursor()
+            cursor.execute("PRAGMA journal_mode=WAL;")
+            cursor.execute(sql)
 
-        # Schema evolution: check for new columns not yet in the table
-        cursor.execute(f"PRAGMA table_info({_sanitize_table_name(logical_name)})")
-        existing_cols = {row[1] for row in cursor.fetchall()}
+            # Schema evolution: check for new columns not yet in the table
+            cursor.execute(f"PRAGMA table_info({_sanitize_table_name(logical_name)})")
+            existing_cols = {row[1] for row in cursor.fetchall()}
 
-        for attr in entity_def.get("attributes", []):
-            col_name = _sanitize_column_name(attr.get("LogicalName", ""))
-            if col_name and col_name not in existing_cols:
-                attr_type = attr.get("AttributeType", "String")
-                if isinstance(attr_type, dict):
-                    attr_type = attr_type.get("Value", "String")
-                sqlite_type = _get_sqlite_type(attr_type)
-                try:
-                    cursor.execute(f"ALTER TABLE {_sanitize_table_name(logical_name)} ADD COLUMN {col_name} {sqlite_type}")
-                    logger.info(f"Schema evolution: added column '{col_name}' to '{logical_name}'")
-                except sqlite3.OperationalError:
-                    pass  # Column already exists (race condition guard)
+            for attr in entity_def.get("attributes", []):
+                col_name = _sanitize_column_name(attr.get("LogicalName", ""))
+                if col_name and col_name not in existing_cols:
+                    attr_type = attr.get("AttributeType", "String")
+                    if isinstance(attr_type, dict):
+                        attr_type = attr_type.get("Value", "String")
+                    sqlite_type = _get_sqlite_type(attr_type)
+                    try:
+                        cursor.execute(f"ALTER TABLE {_sanitize_table_name(logical_name)} ADD COLUMN {col_name} {sqlite_type}")
+                        logger.info(f"Schema evolution: added column '{col_name}' to '{logical_name}'")
+                    except sqlite3.OperationalError:
+                        pass  # Column already exists (race condition guard)
 
-        conn.commit()
-        conn.close()
-        logger.info(f"Created/verified table for entity '{logical_name}' with {len(entity_def.get('attributes', []))} columns")
-    except Exception as e:
-        logger.error(f"Failed to create table for '{logical_name}': {e}")
+            conn.commit()
+            conn.close()
+            logger.info(f"Created/verified table for entity '{logical_name}' with {len(entity_def.get('attributes', []))} columns")
+        except Exception as e:
+            logger.error(f"Failed to create table for '{logical_name}': {e}")
 
 
 def persist_entity_metadata(entity_def: dict, db_path: str = None):
@@ -193,30 +197,31 @@ def persist_entity_metadata(entity_def: dict, db_path: str = None):
     if not logical_name:
         return
 
-    conn = sqlite3.connect(path, timeout=60.0)
-    try:
-        cursor = conn.cursor()
-        cursor.execute("PRAGMA journal_mode=WAL;")
-        cursor.execute(
-            "CREATE TABLE IF NOT EXISTS entity_metadata (logical_name TEXT PRIMARY KEY, metadata TEXT NOT NULL)"
-        )
-        cursor.execute(
-            "CREATE TABLE IF NOT EXISTS entity_relationships ("
-            "relationship_name TEXT PRIMARY KEY, "
-            "relationship_type TEXT NOT NULL, "
-            "referenced_entity TEXT NOT NULL, "
-            "referencing_entity TEXT NOT NULL, "
-            "referenced_attribute TEXT, "
-            "referencing_attribute TEXT, "
-            "relationship_role TEXT, "
-            "cascade_assign TEXT, "
-            "cascade_delete TEXT, "
-            "cascade_merge TEXT, "
-            "cascade_reparent TEXT, "
-            "cascade_share TEXT, "
-            "cascade_unshare TEXT, "
-            "metadata_json TEXT)"
-        )
+    with _db_lock:
+        conn = sqlite3.connect(path, timeout=60.0)
+        try:
+            cursor = conn.cursor()
+            cursor.execute("PRAGMA journal_mode=WAL;")
+            cursor.execute(
+                "CREATE TABLE IF NOT EXISTS entity_metadata (logical_name TEXT PRIMARY KEY, metadata TEXT NOT NULL)"
+            )
+            cursor.execute(
+                "CREATE TABLE IF NOT EXISTS entity_relationships ("
+                "relationship_name TEXT PRIMARY KEY, "
+                "relationship_type TEXT NOT NULL, "
+                "referenced_entity TEXT NOT NULL, "
+                "referencing_entity TEXT NOT NULL, "
+                "referenced_attribute TEXT, "
+                "referencing_attribute TEXT, "
+                "relationship_role TEXT, "
+                "cascade_assign TEXT, "
+                "cascade_delete TEXT, "
+                "cascade_merge TEXT, "
+                "cascade_reparent TEXT, "
+                "cascade_share TEXT, "
+                "cascade_unshare TEXT, "
+                "metadata_json TEXT)"
+            )
         cursor.execute(
             "INSERT OR REPLACE INTO entity_metadata (logical_name, metadata) VALUES (?, ?)",
             (logical_name, json.dumps(entity_def, default=str, sort_keys=True)),
@@ -306,18 +311,19 @@ def create_intersect_entity_table(intersect_rel: dict, db_path: str = None):
     idx1 = f"CREATE INDEX IF NOT EXISTS idx_{table_name}_{col1} ON {table_name} ({col1});"
     idx2 = f"CREATE INDEX IF NOT EXISTS idx_{table_name}_{col2} ON {table_name} ({col2});"
 
-    try:
-        conn = sqlite3.connect(path, timeout=60.0)
-        cursor = conn.cursor()
-        cursor.execute("PRAGMA journal_mode=WAL;")
-        cursor.execute(sql)
-        cursor.execute(idx1)
-        cursor.execute(idx2)
-        conn.commit()
-        conn.close()
-        logger.info(f"Created/verified N:N intersect table '{table_name}' ({col1} <-> {col2})")
-    except Exception as e:
-        logger.error(f"Failed to create intersect table '{table_name}': {e}")
+    with _db_lock:
+        try:
+            conn = sqlite3.connect(path, timeout=60.0)
+            cursor = conn.cursor()
+            cursor.execute("PRAGMA journal_mode=WAL;")
+            cursor.execute(sql)
+            cursor.execute(idx1)
+            cursor.execute(idx2)
+            conn.commit()
+            conn.close()
+            logger.info(f"Created/verified N:N intersect table '{table_name}' ({col1} <-> {col2})")
+        except Exception as e:
+            logger.error(f"Failed to create intersect table '{table_name}': {e}")
 
 
 def create_all_entity_tables(db_path: str = None):
@@ -333,21 +339,22 @@ def create_all_entity_tables(db_path: str = None):
         logger.warning(f"Database not found at {path}. Run init_db() first.")
         return
 
-    try:
-        conn = sqlite3.connect(path, timeout=60.0)
-        cursor = conn.cursor()
-        cursor.execute("PRAGMA journal_mode=WAL;")
+    with _db_lock:
+        try:
+            conn = sqlite3.connect(path, timeout=60.0)
+            cursor = conn.cursor()
+            cursor.execute("PRAGMA journal_mode=WAL;")
 
-        # Check if entity_metadata table exists
-        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='entity_metadata'")
-        if not cursor.fetchone():
-            logger.warning("entity_metadata table not found. Skipping schema generation.")
+            # Check if entity_metadata table exists
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='entity_metadata'")
+            if not cursor.fetchone():
+                logger.warning("entity_metadata table not found. Skipping schema generation.")
+                conn.close()
+                return
+
+            cursor.execute("SELECT logical_name, metadata FROM entity_metadata")
+            rows = cursor.fetchall()
             conn.close()
-            return
-
-        cursor.execute("SELECT logical_name, metadata FROM entity_metadata")
-        rows = cursor.fetchall()
-        conn.close()
 
         if not rows:
             logger.info("No entity metadata found in cache. Skipping schema generation.")
