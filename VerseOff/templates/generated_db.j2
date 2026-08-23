@@ -40,7 +40,19 @@ TIMELINE_PARENT_FIELDS = (
 
 def _resource_path(filename):
     base_dir = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_dir, filename)
+    target = os.path.join(base_dir, filename)
+    if os.path.exists(target):
+        return target
+    if filename == "manifest.json":
+        for fallback in [
+            os.path.join(base_dir, "mock_manifest.json"),
+            os.path.join(os.path.dirname(base_dir), "mock_manifest.json"),
+            os.path.join(os.path.dirname(base_dir), "manifest.json"),
+            os.path.join(os.path.dirname(os.path.dirname(base_dir)), "VerseOff", "mock_manifest.json"),
+        ]:
+            if os.path.exists(fallback):
+                return fallback
+    return target
 
 
 def _default_data_dir():

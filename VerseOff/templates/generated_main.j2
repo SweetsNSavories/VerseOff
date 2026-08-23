@@ -12,7 +12,7 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import QTimer, QThread, pyqtSignal, Qt, QSize
 from PyQt6.QtGui import QPixmap
-from db import LocalDatabase
+from db import LocalDatabase, _resource_path
 from sync_engine import SyncEngine
 from ui_components import FluentComboBox as QComboBox
 from view_parser import ViewParser
@@ -65,12 +65,7 @@ class OfflineApp(QMainWindow):
             
     def _initialize_core_components(self):
         self.db = LocalDatabase()
-        resource_dir = getattr(
-            sys,
-            "_MEIPASS",
-            os.path.dirname(os.path.abspath(__file__)),
-        )
-        self.manifest_path = os.path.join(resource_dir, "manifest.json")
+        self.manifest_path = _resource_path("manifest.json")
         if not os.path.exists(self.manifest_path):
             raise RuntimeError("Missing required manifest.json file. Application cannot start securely without manifest.")
             
