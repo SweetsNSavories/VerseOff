@@ -6176,7 +6176,6 @@ class XrmFormRenderer(QWidget):
         back_btn.clicked.connect(self.handle_close)
         cmd_layout.addWidget(back_btn)
         
-        # Standard command bar buttons with unified Fluent UI styling matching screenshot
         fluent_cmd_btn_style = """
             QPushButton, QToolButton {
                 background-color: transparent;
@@ -6233,10 +6232,8 @@ class XrmFormRenderer(QWidget):
         cmd_layout.addWidget(delete_btn)
 
         self._add_form_ribbon_buttons(cmd_layout)
-        
         cmd_layout.addStretch()
         
-        # Form Selector dropdown (LTRDisplay inspired)
         main_forms = self._get_main_form_defs()
             
         if not self.is_quick_view and len(main_forms) > 1:
@@ -6349,6 +6346,58 @@ class XrmFormRenderer(QWidget):
         if self.bpf_widget:
             main_layout.addWidget(self.bpf_widget)
 
+        # --- Form Body ---
+        self.form_container = QWidget()
+        self.form_layout = QVBoxLayout()
+
+        # Parse FormXML from selected active form
+        active_form = self._get_active_form_def()
+        self._active_form = active_form
+        if active_form and active_form.get("formxml"):
+            self._configure_form_parameters(
+                active_form.get("formxml")
+            )
+            self._configure_form_event_handlers(
+                active_form.get("formxml")
+            )
+            self._render_from_xml(active_form.get("formxml"))
+        elif active_form:
+            self._configure_form_parameters("<form />")
+            self._render_from_json(active_form)
+        self._apply_form_parameters_to_controls()
+            
+        # Hook Ribbon ValueRules to widget signals for real-time evaluation
+        for item in self.ribbon_widgets:
+            rules = item["data"].get("display_rules", []) + item["data"].get("enable_rules", [])
+            for rule in self._flatten_ribbon_rules(rules):
+                if rule.get("type") == "ValueRule" and rule.get("field"):
+                    field = rule.get("field")
+                    if field in self.controls:
+                        ctrl = self.controls[field]
+                        if isinstance(ctrl, QLineEdit):
+                            ctrl.textChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
+                        elif isinstance(ctrl, QTextEdit):
+                            ctrl.textChanged.connect(self.evaluate_ribbon_rules)
+                        elif isinstance(ctrl, QComboBox):
+                            ctrl.currentIndexChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
+                        elif isinstance(ctrl, MultiSelectOptionWidget):
+                            ctrl.valueChanged.connect(
+                                self.evaluate_ribbon_rules
+                            )
+                        elif isinstance(ctrl, QCheckBox):
+                            ctrl.stateChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
+                        elif isinstance(ctrl, QSpinBox) or isinstance(ctrl, QDoubleSpinBox):
+                            ctrl.valueChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
+                        elif isinstance(ctrl, QDateTimeEdit):
+                            ctrl.dateTimeChanged.connect(
+                                lambda _: self.evaluate_ribbon_rules()
+                            )
+
+        self.form_container.setLayout(self.form_layout)
+        main_layout.addWidget(self.form_container)
+
+        self.setLayout(main_layout)
+
     def _populate_header_metrics(self, row=None):
         if not hasattr(self, "header_metrics_layout"):
             return
@@ -6430,58 +6479,6 @@ class XrmFormRenderer(QWidget):
         owner_tile.addWidget(avatar)
         owner_tile.addLayout(owner_text_col)
         self.header_metrics_layout.addLayout(owner_tile)
-
-        # --- Form Body ---
-        self.form_container = QWidget()
-        self.form_layout = QVBoxLayout()
-
-        # Parse FormXML from selected active form
-        active_form = self._get_active_form_def()
-        self._active_form = active_form
-        if active_form and active_form.get("formxml"):
-            self._configure_form_parameters(
-                active_form.get("formxml")
-            )
-            self._configure_form_event_handlers(
-                active_form.get("formxml")
-            )
-            self._render_from_xml(active_form.get("formxml"))
-        elif active_form:
-            self._configure_form_parameters("<form />")
-            self._render_from_json(active_form)
-        self._apply_form_parameters_to_controls()
-            
-        # Hook Ribbon ValueRules to widget signals for real-time evaluation
-        for item in self.ribbon_widgets:
-            rules = item["data"].get("display_rules", []) + item["data"].get("enable_rules", [])
-            for rule in self._flatten_ribbon_rules(rules):
-                if rule.get("type") == "ValueRule" and rule.get("field"):
-                    field = rule.get("field")
-                    if field in self.controls:
-                        ctrl = self.controls[field]
-                        if isinstance(ctrl, QLineEdit):
-                            ctrl.textChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
-                        elif isinstance(ctrl, QTextEdit):
-                            ctrl.textChanged.connect(self.evaluate_ribbon_rules)
-                        elif isinstance(ctrl, QComboBox):
-                            ctrl.currentIndexChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
-                        elif isinstance(ctrl, MultiSelectOptionWidget):
-                            ctrl.valueChanged.connect(
-                                self.evaluate_ribbon_rules
-                            )
-                        elif isinstance(ctrl, QCheckBox):
-                            ctrl.stateChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
-                        elif isinstance(ctrl, QSpinBox) or isinstance(ctrl, QDoubleSpinBox):
-                            ctrl.valueChanged.connect(lambda _, f=field: self.evaluate_ribbon_rules())
-                        elif isinstance(ctrl, QDateTimeEdit):
-                            ctrl.dateTimeChanged.connect(
-                                lambda _: self.evaluate_ribbon_rules()
-                            )
-
-        self.form_container.setLayout(self.form_layout)
-        main_layout.addWidget(self.form_container)
-
-        self.setLayout(main_layout)
 
     def _configure_form_event_handlers(self, form_xml):
         self._form_event_handlers = parse_form_event_handlers(form_xml)
@@ -7689,110 +7686,163 @@ class XrmFormRenderer(QWidget):
                     lambda _, view=quick_view: view.refresh_from_controls()
                 )
 
-    def _create_bpf_ui(self) -> QHBoxLayout:
-        """Dynamically renders the BPF chevron progress bar if an active BPF exists."""
-        # Find if any BPF applies to this entity
-        bpfs = self.manifest.get("bpfs", {})
+    def _create_bpf_ui(self):
+        """Dynamically renders modern Fluent 2 BPF horizontal track bar & flyout card."""
+        entity_bpfs = self.entity_def.get("bpfs") or {}
+        manifest_bpfs = self.manifest.get("bpfs") or {}
+        
         active_bpf = None
-        active_bpf_id = None
-        for bpf_name, bpf_def in bpfs.items():
-            if bpf_def.get("primary_entity") == self.logical_name:
-                active_bpf = bpf_def
-                active_bpf_id = bpf_name
-                break
-                
+        active_bpf_name = None
+        if isinstance(entity_bpfs, dict) and entity_bpfs:
+            active_bpf_name, active_bpf = next(iter(entity_bpfs.items()))
+        elif isinstance(entity_bpfs, list) and entity_bpfs:
+            active_bpf = entity_bpfs[0]
+            active_bpf_name = active_bpf.get("name", "Business Process")
+        elif isinstance(manifest_bpfs, dict):
+            for bpf_name, bpf_def in manifest_bpfs.items():
+                if bpf_def.get("primary_entity") == self.logical_name or bpf_def.get("entity") == self.logical_name:
+                    active_bpf = bpf_def
+                    active_bpf_name = bpf_name
+                    break
+                    
         if not active_bpf:
             return None
-            
-        bpf_layout = QHBoxLayout()
-        bpf_layout.setContentsMargins(0, 10, 0, 10)
-        bpf_layout.setSpacing(0)
-        
-        # In a real scenario, we'd query the specific BPF table (e.g. leadtoopportunitysalesprocess) 
-        # to find the active stage. For this engine MVP, we render all stages linearly.
-        stages = active_bpf.get("stages", [])
-        
-        for idx, stage in enumerate(stages):
-            stage_id = (
-                stage.get("id")
-                or stage.get("processstageid")
-                or f"{active_bpf_id}:stage:{idx}"
-            )
-            btn = QPushButton(f"{stage.get('name', 'Stage')} ")
-            # Styling to simulate a chevron
-            btn.setStyleSheet("""
-                QPushButton {
-                    background-color: #f3f2f1;
-                    border: 1px solid #c8c6c4;
-                    padding: 8px 15px;
-                    margin: 0px;
-                    border-radius: 0px;
-                    font-weight: bold;
-                    color: #323130;
-                }
-                QPushButton:hover { background-color: #e1dfdd; }
-            """)
-            
-            # If this stage belongs to a different entity, show a visual indicator
-            if stage.get("entity") != self.logical_name:
-                btn.setText(f"{btn.text()} ({stage.get('entity')})")
-                btn.setStyleSheet(btn.styleSheet().replace("color: #323130;", "color: #0078d4;"))
-                
-            btn.clicked.connect(
-                lambda _, selected_stage=stage_id:
-                self._request_bpf_stage(selected_stage)
-            )
-            self.bpf_stage_buttons[stage_id] = btn
-            bpf_layout.addWidget(btn)
-            
-            # Add chevron separator except for last item
-            if idx < len(stages) - 1:
-                sep = QLabel(" > ")
-                sep.setStyleSheet("font-weight: bold; color: #a19f9d; padding: 0px 5px;")
-                bpf_layout.addWidget(sep)
-                
-        bpf_layout.addStretch()
-        self._update_bpf_stage_styles()
-        return bpf_layout
 
-    def _request_bpf_stage(self, stage_id):
-        if not self._runtime_ready:
-            self.set_form_notification(
-                "The client runtime is still loading.",
-                "WARNING",
-                "verseoff_bpf_runtime",
-            )
+        self._active_bpf_def = active_bpf
+        self._active_bpf_name = active_bpf_name or active_bpf.get("name", "Process")
+        self._bpf_stages = active_bpf.get("stages", [])
+        self._active_bpf_stage_index = 0
+        self.bpf_stage_buttons = {}
+
+        # Container widget for both track bar and flyout
+        bpf_container = QWidget()
+        bpf_container.setObjectName("BpfMainContainer")
+        bpf_container_layout = QVBoxLayout(bpf_container)
+        bpf_container_layout.setContentsMargins(0, 0, 0, 0)
+        bpf_container_layout.setSpacing(6)
+
+        # Track Bar Frame
+        track_frame = QFrame()
+        track_frame.setObjectName("BpfTrackFrame")
+        track_frame.setStyleSheet("""
+            QFrame#BpfTrackFrame {
+                background-color: #ffffff;
+                border: 1px solid #e1dfdd;
+                border-radius: 6px;
+                padding: 4px 8px;
+            }
+        """)
+        track_layout = QHBoxLayout(track_frame)
+        track_layout.setContentsMargins(8, 4, 8, 4)
+        track_layout.setSpacing(6)
+
+        # Process title badge
+        title_badge = QLabel(f"🗲  <b>{self._active_bpf_name}</b>")
+        title_badge.setStyleSheet("""
+            QLabel {
+                color: #0f6cbd;
+                font-size: 13px;
+                padding-right: 12px;
+                border-right: 1px solid #edebe9;
+            }
+        """)
+        track_layout.addWidget(title_badge)
+
+        # Stages
+        for idx, stage in enumerate(self._bpf_stages):
+            stage_name = stage.get("stagename") or stage.get("name") or f"Stage {idx+1}"
+            stage_id = stage.get("stageid") or stage.get("id") or f"stage_{idx}"
+
+            btn = QPushButton()
+            btn.setCursor(Qt.CursorShape.PointingHandCursor)
+            btn.clicked.connect(lambda _, s_idx=idx: self._on_bpf_stage_button_clicked(s_idx))
+            self.bpf_stage_buttons[idx] = (btn, stage)
+            track_layout.addWidget(btn)
+
+            if idx < len(self._bpf_stages) - 1:
+                chevron = QLabel("›")
+                chevron.setStyleSheet("color: #a19f9d; font-size: 16px; font-weight: bold; padding: 0 4px;")
+                track_layout.addWidget(chevron)
+
+        track_layout.addStretch()
+        bpf_container_layout.addWidget(track_frame)
+
+        # Stage Flyout Card
+        self.bpf_stage_panel = StageFlyoutPanel(self)
+        bpf_container_layout.addWidget(self.bpf_stage_panel)
+
+        self._update_bpf_track_bar()
+        return bpf_container
+
+    def _update_bpf_track_bar(self):
+        if not hasattr(self, "bpf_stage_buttons"):
             return
-        self.browser.page().runJavaScript(
-            "formContext.data.process.setActiveStage("
-            + json.dumps(stage_id)
-            + ", function() {});"
-        )
-
-    def _update_bpf_stage_styles(self):
-        state = self._process_runtime_state()
-        active_stage = state.get("activeStageId")
-        selected_stage = state.get("selectedStageId")
-        for stage_id, button in self.bpf_stage_buttons.items():
-            if stage_id == active_stage:
-                background = "#0f6cbd"
-                foreground = "#ffffff"
-            elif stage_id == selected_stage:
-                background = "#deecf9"
-                foreground = "#005a9e"
+        for idx, (btn, stage) in self.bpf_stage_buttons.items():
+            stage_name = stage.get("stagename") or stage.get("name") or f"Stage {idx+1}"
+            if idx == self._active_bpf_stage_index:
+                btn.setText(f"◎  {stage_name}")
+                btn.setStyleSheet("""
+                    QPushButton {
+                        background-color: #0078d4;
+                        color: #ffffff;
+                        font-weight: 600;
+                        font-size: 12px;
+                        padding: 6px 14px;
+                        border-radius: 4px;
+                        border: 1px solid #0078d4;
+                    }
+                    QPushButton:hover {
+                        background-color: #106ebe;
+                    }
+                """)
+            elif idx < self._active_bpf_stage_index:
+                btn.setText(f"✓  {stage_name}")
+                btn.setStyleSheet("""
+                    QPushButton {
+                        background-color: #f3f2f1;
+                        color: #107c10;
+                        font-weight: 600;
+                        font-size: 12px;
+                        padding: 6px 14px;
+                        border-radius: 4px;
+                        border: 1px solid #d1d1d1;
+                    }
+                    QPushButton:hover {
+                        background-color: #edebe9;
+                    }
+                """)
             else:
-                background = "#f3f2f1"
-                foreground = "#323130"
-            button.setStyleSheet(
-                "QPushButton {"
-                f"background-color: {background};"
-                "border: 1px solid #c8c6c4;"
-                "padding: 8px 15px; margin: 0px;"
-                "border-radius: 0px; font-weight: bold;"
-                f"color: {foreground};"
-                "}"
-                "QPushButton:hover { background-color: #e1dfdd; }"
-            )
+                btn.setText(f"◯  {stage_name}")
+                btn.setStyleSheet("""
+                    QPushButton {
+                        background-color: transparent;
+                        color: #605e5c;
+                        font-weight: 500;
+                        font-size: 12px;
+                        padding: 6px 14px;
+                        border-radius: 4px;
+                        border: 1px solid transparent;
+                    }
+                    QPushButton:hover {
+                        background-color: #f3f2f1;
+                        border-color: #e1dfdd;
+                    }
+                """)
+
+    def _on_bpf_stage_button_clicked(self, stage_idx):
+        if not hasattr(self, "_bpf_stages") or stage_idx >= len(self._bpf_stages):
+            return
+        stage = self._bpf_stages[stage_idx]
+        if hasattr(self, "bpf_stage_panel"):
+            if self.bpf_stage_panel.isVisible() and self.bpf_stage_panel.stage_idx == stage_idx:
+                self.bpf_stage_panel.hide()
+            else:
+                self.bpf_stage_panel.populate_stage(
+                    stage,
+                    stage_idx,
+                    len(self._bpf_stages),
+                    is_active=(stage_idx == self._active_bpf_stage_index)
+                )
 
     def _render_from_json(self, form_dict: dict):
         """Renders the structured parser fallback while preserving columns."""
