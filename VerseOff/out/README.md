@@ -31,6 +31,10 @@ The executable is written to `dist\VerseOffEnterpriseSalesService.exe`.
 - `incident`
 - `opportunity`
 - `lead`
+- `task`
+- `email`
+- `phonecall`
+- `appointment`
 
 ## Safe customization
 

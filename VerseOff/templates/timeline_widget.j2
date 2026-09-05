@@ -30,6 +30,7 @@ from PyQt6.QtWidgets import (
 
 from db import ENTITY_NAMES, LocalDatabase
 from ui_components import FluentComboBox as QComboBox
+from timeline_metadata import ACTIVITY_DEFAULT_COLORS, get_default_card_form
 
 
 def _normalize_id(value):
@@ -96,6 +97,7 @@ def _relative_time(value):
 
 class TimelineCard(QFrame):
     open_requested = pyqtSignal(dict)
+    edit_requested = pyqtSignal(dict)
     delete_requested = pyqtSignal(dict)
     pin_requested = pyqtSignal(dict, bool)
     transition_requested = pyqtSignal(dict, str)
@@ -114,6 +116,8 @@ class TimelineCard(QFrame):
         status,
         pinned,
         show_status,
+        footer_lines=None,
+        color_strip=None,
         parent=None,
     ):
         super().__init__(parent)
@@ -121,34 +125,70 @@ class TimelineCard(QFrame):
         self.expanded = False
         self.setObjectName("TimelineCard")
         self.setFrameShape(QFrame.Shape.StyledPanel)
-        self.setStyleSheet("""
-            QFrame#TimelineCard {
+        
+        strip_color = color_strip or "#0f6cbd"
+        self.setStyleSheet(f"""
+            QFrame#TimelineCard {{
                 background: #ffffff;
                 border: 1px solid #e1dfdd;
+                border-left: 4px solid {strip_color};
                 border-radius: 6px;
-            }
-            QFrame#TimelineCard:hover {
+            }}
+            QFrame#TimelineCard:hover {{
                 border-color: #a19f9d;
-            }
-            QLabel#TimelineStatus {
+                border-left-color: {strip_color};
+            }}
+            QLabel#TimelineStatus {{
                 border-radius: 8px;
                 padding: 2px 7px;
                 font-size: 10px;
                 font-weight: 600;
-            }
+            }}
+            QPushButton#TimelineActionBtn {{
+                background: #f3f2f1;
+                border: 1px solid #d1d1d1;
+                border-radius: 4px;
+                padding: 3px 8px;
+                font-size: 11px;
+                color: #323130;
+            }}
+            QPushButton#TimelineActionBtn:hover {{
+                background: #edebe9;
+                border-color: #8a8886;
+            }}
+            QPushButton#TimelinePrimaryActionBtn {{
+                background: #0078d4;
+                border: 1px solid #0078d4;
+                border-radius: 4px;
+                padding: 3px 8px;
+                font-size: 11px;
+                color: #ffffff;
+                font-weight: 600;
+            }}
+            QPushButton#TimelinePrimaryActionBtn:hover {{
+                background: #106ebe;
+            }}
         """)
         root = QVBoxLayout(self)
-        root.setContentsMargins(12, 9, 12, 9)
+        root.setContentsMargins(14, 10, 12, 10)
         root.setSpacing(6)
 
         header = QHBoxLayout()
-        type_label = QLabel(
-            record.get("__type_label")
-            or record.get("__kind", "Record").title()
-        )
-        type_label.setStyleSheet(
-            "color: #0f6cbd; font-size: 11px; font-weight: 600;"
-        )
+        act_kind = record.get("__activity_type") or record.get("__kind", "Record")
+        type_icons = {
+            "task": "☑",
+            "email": "✉",
+            "phonecall": "📞",
+            "appointment": "📅",
+            "customervoicealert": "📋",
+            "note": "📝",
+            "post": "📢",
+        }
+        icon_symbol = type_icons.get(str(act_kind).lower(), "📋")
+        type_display = record.get("__type_label") or str(act_kind).replace("_", " ").title()
+        type_label = QLabel(f"<span style='font-size:12px;'>{icon_symbol}</span> <b>{html.escape(type_display)}</b>")
+        type_label.setTextFormat(Qt.TextFormat.RichText)
+        type_label.setStyleSheet(f"color: {strip_color}; font-size: 12px;")
         header.addWidget(type_label)
         header.addStretch()
 
@@ -177,11 +217,16 @@ class TimelineCard(QFrame):
         header.addWidget(pin_button)
         root.addLayout(header)
 
-        title_label = QLabel(title or "Untitled")
+        # Card Title (clickable)
+        title_text = title or "Untitled"
+        title_label = QLabel(f"<a href='#' style='color:#201f1e; text-decoration:none;'>{html.escape(title_text)}</a>")
+        title_label.setTextFormat(Qt.TextFormat.RichText)
         title_label.setWordWrap(True)
+        title_label.setCursor(Qt.CursorShape.PointingHandCursor)
         title_label.setStyleSheet(
             "font-size: 13px; font-weight: 600; color: #201f1e;"
         )
+        title_label.linkActivated.connect(lambda _: self.open_requested.emit(record))
         root.addWidget(title_label)
 
         if subtitle:
@@ -228,9 +273,25 @@ class TimelineCard(QFrame):
         self.expanded_container.setVisible(False)
         root.addWidget(self.expanded_container)
 
+        # Card Form Footer metadata section
+        if footer_lines:
+            footer_meta = QHBoxLayout()
+            footer_meta.setSpacing(8)
+            for f_label, f_val in footer_lines:
+                if f_val in (None, ""):
+                    continue
+                chip = QLabel(f"<span style='color:#605e5c;'>{html.escape(str(f_label))}:</span> <b>{html.escape(_plain_text(str(f_val)))}</b>")
+                chip.setTextFormat(Qt.TextFormat.RichText)
+                chip.setStyleSheet("background:#f3f2f1;border-radius:4px;padding:2px 6px;font-size:11px;color:#323130;")
+                footer_meta.addWidget(chip)
+            footer_meta.addStretch()
+            root.addLayout(footer_meta)
+
+        # Bottom Actions Bar
         footer = QHBoxLayout()
         timestamp_label = QLabel(_relative_time(timestamp))
-        timestamp_label.setStyleSheet("color:#797775;font-size:10px;")
+        timestamp_label.setToolTip(str(timestamp or ""))
+        timestamp_label.setStyleSheet("color:#797775;font-size:11px;")
         footer.addWidget(timestamp_label)
         footer.addStretch()
 
@@ -239,11 +300,13 @@ class TimelineCard(QFrame):
                 attachment = QPushButton(
                     record.get("filename") or "Open attachment"
                 )
+                attachment.setObjectName("TimelineActionBtn")
                 attachment.clicked.connect(
                     lambda: self.attachment_requested.emit(record)
                 )
                 footer.addWidget(attachment)
             edit = QPushButton("Edit")
+            edit.setObjectName("TimelineActionBtn")
             edit.clicked.connect(
                 lambda: self.edit_note_requested.emit(record)
             )
@@ -252,7 +315,8 @@ class TimelineCard(QFrame):
         if record.get("__kind") == "activity":
             state = str(record.get("statecode", "0"))
             if state in {"0", "3"}:
-                complete = QPushButton("Complete")
+                complete = QPushButton("✓ Complete")
+                complete.setObjectName("TimelinePrimaryActionBtn")
                 complete.clicked.connect(
                     lambda: self.transition_requested.emit(
                         record,
@@ -260,14 +324,24 @@ class TimelineCard(QFrame):
                     )
                 )
                 footer.addWidget(complete)
+            
+            edit_btn = QPushButton("✏ Edit")
+            edit_btn.setObjectName("TimelineActionBtn")
+            edit_btn.setToolTip("View or edit details in Card Form")
+            edit_btn.clicked.connect(
+                lambda: self.edit_requested.emit(record)
+            )
+            footer.addWidget(edit_btn)
 
         open_button = QPushButton("Open")
+        open_button.setObjectName("TimelineActionBtn")
         open_button.clicked.connect(
             lambda: self.open_requested.emit(record)
         )
         footer.addWidget(open_button)
 
         delete_button = QPushButton("Delete")
+        delete_button.setObjectName("TimelineActionBtn")
         delete_button.clicked.connect(
             lambda: self.delete_requested.emit(record)
         )
@@ -275,9 +349,11 @@ class TimelineCard(QFrame):
 
         if expanded_lines:
             self.expand_button = QPushButton("Expand")
+            self.expand_button.setObjectName("TimelineActionBtn")
             self.expand_button.clicked.connect(self._toggle_expanded)
             footer.addWidget(self.expand_button)
         root.addLayout(footer)
+
 
     def _toggle_expanded(self):
         self.expanded = not self.expanded
@@ -334,6 +410,233 @@ class TimelineEntryDialog(QDialog):
         if path:
             self.attachment_path = path
             self.attachment_label.setText(os.path.basename(path))
+
+
+class ActivityCardFormDialog(QDialog):
+    """
+    Card Form modal for quick-creating, viewing, or editing timeline activities
+    according to Power Platform Card Form (type=11) field definitions.
+    """
+    def __init__(
+        self,
+        activity_type: str,
+        card_definition: dict = None,
+        record: dict = None,
+        parent_record_id: str = None,
+        parent_entity: str = None,
+        parent=None,
+    ):
+        super().__init__(parent)
+        self.activity_type = activity_type
+        self.card_definition = card_definition or {}
+        self.record = record or {}
+        self.parent_record_id = parent_record_id or self.record.get("regardingobjectid") or ""
+        self.parent_entity = parent_entity or self.record.get("regardingobjectid_entity") or ""
+        self.is_new = not bool(record and (record.get("__id") or record.get("activityid") or record.get("id")))
+        
+        type_labels = {
+            "email": ("✉", "Email"),
+            "phonecall": ("📞", "Phone Call"),
+            "task": ("☑", "Task"),
+            "appointment": ("📅", "Appointment"),
+            "customervoicealert": ("📋", "Customer Voice Alert"),
+            "inviteredemption": ("📋", "Invite Redemption"),
+            "outboundmessage": ("💬", "Outbound Message"),
+            "portalcomment": ("💬", "Portal Comment"),
+            "session": ("💻", "Session"),
+            "voicemail": ("🎙", "Voicemail"),
+        }
+        icon, display_type = type_labels.get(activity_type.lower(), ("📋", activity_type.capitalize()))
+        
+        mode_prefix = "New" if self.is_new else "Edit"
+        self.setWindowTitle(f"{icon} {mode_prefix} {display_type} - Card Form")
+        self.setMinimumSize(560, 480)
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #ffffff;
+                color: #201f1e;
+                font-family: 'Segoe UI', sans-serif;
+            }
+            QLabel {
+                font-size: 13px;
+                color: #323130;
+                font-weight: 500;
+            }
+            QLineEdit, QTextEdit, QComboBox {
+                border: 1px solid #8a8886;
+                border-radius: 4px;
+                padding: 6px 10px;
+                background-color: #ffffff;
+                color: #201f1e;
+                font-size: 13px;
+            }
+            QLineEdit:focus, QTextEdit:focus, QComboBox:focus {
+                border: 2px solid #0078d4;
+            }
+            QPushButton {
+                padding: 6px 18px;
+                border-radius: 4px;
+                font-size: 13px;
+                font-weight: 600;
+            }
+            QPushButton#PrimaryBtn {
+                background-color: #0078d4;
+                color: #ffffff;
+                border: 1px solid #0078d4;
+            }
+            QPushButton#PrimaryBtn:hover {
+                background-color: #106ebe;
+            }
+            QPushButton#SecondaryBtn {
+                background-color: #ffffff;
+                color: #323130;
+                border: 1px solid #8a8886;
+            }
+            QPushButton#SecondaryBtn:hover {
+                background-color: #f3f2f1;
+            }
+        """)
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(20, 16, 20, 16)
+        layout.setSpacing(12)
+
+        # Header Title Banner
+        header_banner = QHBoxLayout()
+        icon_lbl = QLabel(icon)
+        icon_lbl.setStyleSheet("font-size: 22px; color: #0078d4; padding-right: 4px;")
+        title_lbl = QLabel(f"<b>{mode_prefix} {display_type}</b>")
+        title_lbl.setStyleSheet("font-size: 16px; font-weight: 600; color: #201f1e;")
+        header_banner.addWidget(icon_lbl)
+        header_banner.addWidget(title_lbl)
+        header_banner.addStretch()
+        layout.addLayout(header_banner)
+
+        # Form Scroll Area
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QFrame.Shape.NoFrame)
+        scroll_content = QWidget()
+        form_layout = QVBoxLayout(scroll_content)
+        form_layout.setContentsMargins(0, 4, 0, 4)
+        form_layout.setSpacing(10)
+
+        # Subject
+        form_layout.addWidget(QLabel("Subject *"))
+        self.subject_edit = QLineEdit(str(self.record.get("subject") or ""))
+        self.subject_edit.setPlaceholderText(f"Enter {display_type.lower()} subject...")
+        form_layout.addWidget(self.subject_edit)
+
+        # Due Date / Scheduled End
+        due_row = QHBoxLayout()
+        due_col = QVBoxLayout()
+        due_col.addWidget(QLabel("Due Date / Scheduled End"))
+        current_due = str(self.record.get("scheduledend") or self.record.get("sortdate") or "")
+        if not current_due and self.is_new:
+            current_due = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
+        self.due_edit = QLineEdit(current_due)
+        self.due_edit.setPlaceholderText("YYYY-MM-DD HH:MM")
+        due_col.addWidget(self.due_edit)
+        due_row.addLayout(due_col)
+
+        # Priority
+        pri_col = QVBoxLayout()
+        pri_col.addWidget(QLabel("Priority"))
+        self.priority_combo = QComboBox()
+        self.priority_combo.addItem("Low", 0)
+        self.priority_combo.addItem("Normal", 1)
+        self.priority_combo.addItem("High", 2)
+        cur_pri = self.record.get("prioritycode", 1)
+        pri_idx = self.priority_combo.findData(cur_pri)
+        if pri_idx >= 0:
+            self.priority_combo.setCurrentIndex(pri_idx)
+        else:
+            self.priority_combo.setCurrentIndex(1)
+        pri_col.addWidget(self.priority_combo)
+        due_row.addLayout(pri_col)
+        form_layout.addLayout(due_row)
+
+        # Regarding
+        reg_row = QVBoxLayout()
+        reg_row.addWidget(QLabel("Regarding"))
+        regarding_display = f"{self.parent_entity}: {self.parent_record_id}" if self.parent_record_id else "None"
+        self.regarding_edit = QLineEdit(regarding_display)
+        self.regarding_edit.setReadOnly(True)
+        self.regarding_edit.setStyleSheet("background-color: #f3f2f1; color: #605e5c;")
+        reg_row.addWidget(self.regarding_edit)
+        form_layout.addLayout(reg_row)
+
+        # Status (if editing)
+        if not self.is_new:
+            status_row = QHBoxLayout()
+            status_col = QVBoxLayout()
+            status_col.addWidget(QLabel("Status"))
+            self.status_combo = QComboBox()
+            self.status_combo.addItem("Open / Active", 0)
+            self.status_combo.addItem("Completed", 1)
+            self.status_combo.addItem("Canceled", 2)
+            cur_state = int(self.record.get("statecode", 0))
+            st_idx = self.status_combo.findData(cur_state)
+            if st_idx >= 0:
+                self.status_combo.setCurrentIndex(st_idx)
+            status_col.addWidget(self.status_combo)
+            status_row.addLayout(status_col)
+            form_layout.addLayout(status_row)
+
+        # Description / Content
+        form_layout.addWidget(QLabel("Description"))
+        self.desc_edit = QTextEdit()
+        self.desc_edit.setPlainText(_plain_text(self.record.get("description") or ""))
+        self.desc_edit.setPlaceholderText(f"Enter {display_type.lower()} details...")
+        self.desc_edit.setMinimumHeight(120)
+        form_layout.addWidget(self.desc_edit)
+
+        scroll.setWidget(scroll_content)
+        layout.addWidget(scroll, 1)
+
+        # Footer Buttons
+        buttons = QHBoxLayout()
+        buttons.addStretch()
+        cancel_btn = QPushButton("Cancel")
+        cancel_btn.setObjectName("SecondaryBtn")
+        cancel_btn.clicked.connect(self.reject)
+        save_btn = QPushButton("Save & Close" if self.is_new else "Save Changes")
+        save_btn.setObjectName("PrimaryBtn")
+        save_btn.clicked.connect(self._validate_and_save)
+        buttons.addWidget(cancel_btn)
+        buttons.addWidget(save_btn)
+        layout.addLayout(buttons)
+
+    def _validate_and_save(self):
+        if not self.subject_edit.text().strip():
+            QMessageBox.warning(self, "Validation Error", "Please provide a Subject.")
+            self.subject_edit.setFocus()
+            return
+        self.accept()
+
+    def get_payload(self):
+        now_iso = datetime.now(timezone.utc).isoformat()
+        act_id = self.record.get("__id") or self.record.get("activityid") or self.record.get("id") or str(uuid.uuid4())
+        state = self.status_combo.currentData() if hasattr(self, "status_combo") else 0
+        payload = {
+            "activityid": act_id,
+            "id": act_id,
+            "activitytypecode": self.activity_type,
+            "subject": self.subject_edit.text().strip(),
+            "description": self.desc_edit.toPlainText(),
+            "prioritycode": self.priority_combo.currentData(),
+            "statecode": state,
+            "statuscode": 1 if state == 0 else (2 if state == 1 else 3),
+            "scheduledend": self.due_edit.text().strip(),
+            "sortdate": self.due_edit.text().strip(),
+            "regardingobjectid": self.parent_record_id,
+            "_regardingobjectid_value": self.parent_record_id,
+            "_regardingobjectid_value@Microsoft.Dynamics.CRM.lookuplogicalname": self.parent_entity,
+            "modifiedon": now_iso,
+        }
+        if self.is_new:
+            payload["createdon"] = now_iso
+        return payload
 
 
 class TimelineWidget(QWidget):
@@ -690,9 +993,72 @@ class TimelineWidget(QWidget):
 
         menu.exec(self.add_btn.mapToGlobal(self.add_btn.rect().bottomLeft()))
 
+    def _has_main_form(self, logical_name):
+        definition = self._entity_definition(logical_name)
+        if not definition:
+            return False
+        forms = definition.get("forms", [])
+        return any(str(f.get("type", "2")) in ("2", "") for f in forms)
+
+    def _create_quick_activity(self, activity_type: str):
+        card_def = None
+        if hasattr(self, "definition") and isinstance(self.definition, dict):
+            card_def = self.definition.get("activity_card_map", {}).get(activity_type)
+        dialog = ActivityCardFormDialog(
+            activity_type=activity_type,
+            card_definition=card_def,
+            parent_record_id=self.record_id,
+            parent_entity=self.parent_entity,
+            parent=self,
+        )
+        if dialog.exec() != QDialog.DialogCode.Accepted:
+            return
+        payload = dialog.get_payload()
+        act_id = payload["activityid"]
+        
+        target_tables = ["activitypointer"]
+        if activity_type in ENTITY_NAMES:
+            target_tables.append(activity_type)
+        for tbl in target_tables:
+            self.database.upsert_record(
+                tbl,
+                act_id,
+                payload,
+                sync_status="pending_create",
+            )
+        self.refresh()
+
+    def _view_or_edit_activity(self, record: dict):
+        act_type = record.get("__activity_type") or record.get("__entity") or "task"
+        dialog = ActivityCardFormDialog(
+            activity_type=act_type,
+            card_definition=self._card_definition(record),
+            record=record,
+            parent_record_id=self.record_id,
+            parent_entity=self.parent_entity,
+            parent=self,
+        )
+        if dialog.exec() != QDialog.DialogCode.Accepted:
+            return
+        payload = dialog.get_payload()
+        act_id = payload["activityid"]
+        target_tables = ["activitypointer"]
+        if act_type in ENTITY_NAMES:
+            target_tables.append(act_type)
+        for tbl in target_tables:
+            self.database.upsert_record(
+                tbl,
+                act_id,
+                payload,
+                sync_status="pending_update",
+            )
+        self.refresh()
+
     def _open_new_activity(self, activity_type: str):
-        if self.open_form_callback:
+        if self._has_main_form(activity_type) and self.open_form_callback:
             self.open_form_callback(activity_type, None)
+        else:
+            self._create_quick_activity(activity_type)
 
     def _toggle_pinned_only(self):
         if not hasattr(self, "_pinned_only"):
@@ -1117,48 +1483,42 @@ class TimelineWidget(QWidget):
         )
 
     def _card_definition(self, record):
-        activity_type = record.get("__activity_type")
+        activity_type = record.get("__activity_type") or record.get("__entity")
         definition = self._entity_definition(activity_type)
-        if not definition:
-            return None
-        card_map = self.definition.get("activity_card_map", {}).get(
-            activity_type,
-            {},
-        )
-        form_id = _normalize_id(card_map.get("form_id"))
-        card_forms = definition.get("card_forms", [])
-        if form_id:
-            selected = next(
-                (
-                    form
-                    for form in card_forms
-                    if _normalize_id(form.get("form_id")) == form_id
-                ),
-                None,
+        if definition:
+            card_map = self.definition.get("activity_card_map", {}).get(
+                activity_type,
+                {},
             )
-            if selected:
-                return selected
-        return card_forms[0] if card_forms else None
+            form_id = _normalize_id(card_map.get("form_id"))
+            card_forms = definition.get("card_forms", [])
+            if form_id:
+                selected = next(
+                    (
+                        form
+                        for form in card_forms
+                        if _normalize_id(form.get("form_id")) == form_id
+                    ),
+                    None,
+                )
+                if selected:
+                    return selected
+            if card_forms:
+                return card_forms[0]
+        return get_default_card_form(activity_type)
 
     def _project_activity_card(self, record):
+        act_type = record.get("__activity_type") or record.get("__entity") or "task"
         configuration = self.definition.get(
             "activity_configuration",
             {},
-        ).get(record.get("__activity_type"), {})
-        card = self._card_definition(record)
-        if card:
-            header_fields = card.get("header", [])
-            detail_fields = card.get("details", [])
-        else:
-            header_fields = [
-                {"attribute": "subject", "label": "Subject"},
-                {"attribute": "modifiedon", "label": "Modified On"},
-            ]
-            detail_fields = [
-                {"attribute": "description", "label": "Description"},
-                {"attribute": "ownerid", "label": "Owner"},
-                {"attribute": "regardingobjectid", "label": "Regarding"},
-            ]
+        ).get(act_type, {})
+        card = self._card_definition(record) or get_default_card_form(act_type)
+        header_fields = card.get("header", [])
+        detail_fields = card.get("details", [])
+        footer_fields = card.get("footer", [])
+        color_strip = card.get("color_strip") or ACTIVITY_DEFAULT_COLORS.get(act_type, "#0078d4")
+
         fields_config = configuration.get("fieldsConfig", {})
         title = _formatted(
             record,
@@ -1167,7 +1527,7 @@ class TimelineWidget(QWidget):
         timestamp = (
             _formatted(record, header_fields[1]["attribute"])
             if len(header_fields) > 1
-            else record.get("modifiedon")
+            else record.get("modifiedon") or record.get("createdon")
         )
         summary = []
         expanded = []
@@ -1184,6 +1544,8 @@ class TimelineWidget(QWidget):
                 else "Show"
             )
             value = _formatted(record, field["attribute"])
+            if value in (None, ""):
+                continue
             item = (
                 field["label"] if label_option != "Hide" else "",
                 value,
@@ -1192,6 +1554,14 @@ class TimelineWidget(QWidget):
                 expanded.append(item)
             elif display != "Hide":
                 summary.append(item)
+
+        footer_items = []
+        for f in footer_fields:
+            attr = f.get("attribute")
+            val = _formatted(record, attr)
+            if val not in (None, ""):
+                footer_items.append((f.get("label", attr.replace("_", " ").title()), val))
+
         return (
             title,
             record.get("__type_label"),
@@ -1199,6 +1569,8 @@ class TimelineWidget(QWidget):
             expanded,
             timestamp,
             configuration.get("showStatus", True),
+            footer_items,
+            color_strip,
         )
 
     def _create_card(self, record):
@@ -1211,6 +1583,8 @@ class TimelineWidget(QWidget):
                 expanded,
                 timestamp,
                 show_status,
+                footer_items,
+                color_strip,
             ) = self._project_activity_card(record)
         elif kind == "note":
             title = record.get("subject") or "Note"
@@ -1219,6 +1593,8 @@ class TimelineWidget(QWidget):
             expanded = []
             timestamp = record.get("modifiedon") or record.get("createdon")
             show_status = False
+            footer_items = []
+            color_strip = ACTIVITY_DEFAULT_COLORS.get("note", "#ffaa44")
         else:
             title = _formatted(record, "createdby") or "Post"
             subtitle = ""
@@ -1226,6 +1602,8 @@ class TimelineWidget(QWidget):
             expanded = []
             timestamp = record.get("modifiedon") or record.get("createdon")
             show_status = False
+            footer_items = []
+            color_strip = ACTIVITY_DEFAULT_COLORS.get("post", "#008272")
         key = (record["__entity"], str(record["__id"]))
         card = TimelineCard(
             record,
@@ -1237,9 +1615,12 @@ class TimelineWidget(QWidget):
             status=self._record_status(record),
             pinned=key in self.pins,
             show_status=show_status,
+            footer_lines=footer_items,
+            color_strip=color_strip,
             parent=self,
         )
         card.open_requested.connect(self._open_record)
+        card.edit_requested.connect(self._view_or_edit_activity)
         card.delete_requested.connect(self._delete_record)
         card.pin_requested.connect(self._set_pin)
         card.transition_requested.connect(self._transition_activity)
@@ -1420,11 +1801,15 @@ class TimelineWidget(QWidget):
         self.refresh()
 
     def _open_record(self, record):
-        entity_name = record["__entity"]
+        entity_name = record.get("__entity") or "activitypointer"
         if entity_name == "annotation":
             self._edit_note(record)
-        elif self.open_form_callback:
-            self.open_form_callback(entity_name, record["__id"])
+            return
+        actual_type = record.get("__activity_type") or entity_name
+        if self._has_main_form(actual_type) and self.open_form_callback:
+            self.open_form_callback(actual_type, record.get("__id"))
+        else:
+            self._view_or_edit_activity(record)
 
     def _delete_record(self, record):
         if QMessageBox.question(

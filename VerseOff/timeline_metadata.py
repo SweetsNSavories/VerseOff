@@ -353,6 +353,114 @@ def _card_field(cell):
     }
 
 
+ACTIVITY_DEFAULT_COLORS = {
+    "task": "#0f6cbd",
+    "email": "#0078d4",
+    "phonecall": "#107c10",
+    "appointment": "#5c2d91",
+    "customervoicealert": "#d83b01",
+    "portalcomment": "#008272",
+    "note": "#ffaa44",
+    "post": "#008272",
+}
+
+DEFAULT_CARD_FORMS = {
+    "task": {
+        "form_id": "default-card-task",
+        "name": "Task Card Form",
+        "color_strip": "#0f6cbd",
+        "header": [
+            {"attribute": "subject", "label": "Subject", "show_label": False},
+            {"attribute": "modifiedon", "label": "Modified On", "show_label": False},
+        ],
+        "details": [
+            {"attribute": "description", "label": "Description", "show_label": True},
+            {"attribute": "regardingobjectid", "label": "Regarding", "show_label": True},
+        ],
+        "footer": [
+            {"attribute": "scheduledend", "label": "Due Date", "show_label": True},
+            {"attribute": "prioritycode", "label": "Priority", "show_label": True},
+            {"attribute": "ownerid", "label": "Owner", "show_label": True},
+        ],
+    },
+    "email": {
+        "form_id": "default-card-email",
+        "name": "Email Card Form",
+        "color_strip": "#0078d4",
+        "header": [
+            {"attribute": "subject", "label": "Subject", "show_label": False},
+            {"attribute": "modifiedon", "label": "Date", "show_label": False},
+        ],
+        "details": [
+            {"attribute": "description", "label": "Body", "show_label": False},
+            {"attribute": "regardingobjectid", "label": "Regarding", "show_label": True},
+        ],
+        "footer": [
+            {"attribute": "sender", "label": "From", "show_label": True},
+            {"attribute": "torecipients", "label": "To", "show_label": True},
+            {"attribute": "prioritycode", "label": "Priority", "show_label": True},
+        ],
+    },
+    "phonecall": {
+        "form_id": "default-card-phonecall",
+        "name": "Phone Call Card Form",
+        "color_strip": "#107c10",
+        "header": [
+            {"attribute": "subject", "label": "Subject", "show_label": False},
+            {"attribute": "scheduledend", "label": "Due", "show_label": False},
+        ],
+        "details": [
+            {"attribute": "description", "label": "Call Summary", "show_label": True},
+            {"attribute": "phonenumber", "label": "Phone Number", "show_label": True},
+        ],
+        "footer": [
+            {"attribute": "directioncode", "label": "Direction", "show_label": True},
+            {"attribute": "prioritycode", "label": "Priority", "show_label": True},
+            {"attribute": "ownerid", "label": "Owner", "show_label": True},
+        ],
+    },
+    "appointment": {
+        "form_id": "default-card-appointment",
+        "name": "Appointment Card Form",
+        "color_strip": "#5c2d91",
+        "header": [
+            {"attribute": "subject", "label": "Subject", "show_label": False},
+            {"attribute": "scheduledstart", "label": "Start Time", "show_label": False},
+        ],
+        "details": [
+            {"attribute": "description", "label": "Details", "show_label": True},
+            {"attribute": "location", "label": "Location", "show_label": True},
+        ],
+        "footer": [
+            {"attribute": "scheduledend", "label": "End Time", "show_label": True},
+            {"attribute": "prioritycode", "label": "Priority", "show_label": True},
+            {"attribute": "requiredattendees", "label": "Required", "show_label": True},
+        ],
+    },
+}
+
+
+def get_default_card_form(activity_type: str) -> dict:
+    normalized = str(activity_type or "").strip().lower()
+    return DEFAULT_CARD_FORMS.get(normalized, {
+        "form_id": f"default-card-{normalized}",
+        "name": f"{normalized.title()} Card Form",
+        "color_strip": ACTIVITY_DEFAULT_COLORS.get(normalized, "#0078d4"),
+        "header": [
+            {"attribute": "subject", "label": "Subject", "show_label": False},
+            {"attribute": "modifiedon", "label": "Modified On", "show_label": False},
+        ],
+        "details": [
+            {"attribute": "description", "label": "Description", "show_label": True},
+            {"attribute": "regardingobjectid", "label": "Regarding", "show_label": True},
+        ],
+        "footer": [
+            {"attribute": "scheduledend", "label": "Due Date", "show_label": True},
+            {"attribute": "prioritycode", "label": "Priority", "show_label": True},
+        ],
+    })
+
+
 def parse_card_form(form):
     form_xml = form.get("formxml") or ""
     if str(form.get("type") or "") != "11" or not form_xml:
@@ -367,8 +475,10 @@ def parse_card_form(form):
             or form.get("formidunique")
         ),
         "name": form.get("name") or "Card",
+        "colorstrip": [],
         "header": [],
         "details": [],
+        "footer": [],
     }
     for section in root.findall(".//section"):
         section_name = str(
@@ -384,11 +494,15 @@ def parse_card_form(form):
             )
             if field
         ]
-        if "header" in section_name:
+        if "colorstrip" in section_name or "color_strip" in section_name:
+            result["colorstrip"].extend(fields)
+        elif "header" in section_name:
             result["header"].extend(fields)
+        elif "footer" in section_name:
+            result["footer"].extend(fields)
         elif "detail" in section_name or "body" in section_name:
             result["details"].extend(fields)
-    if not result["header"] and not result["details"]:
+    if not result["header"] and not result["details"] and not result["footer"]:
         fields = [
             field
             for field in (
@@ -398,9 +512,11 @@ def parse_card_form(form):
             if field
         ]
         result["header"] = fields[:2]
-        result["details"] = fields[2:5]
-    result["header"] = result["header"][:2]
-    result["details"] = result["details"][:3]
+        result["details"] = fields[2:4]
+        result["footer"] = fields[4:7]
+    result["header"] = result["header"][:3]
+    result["details"] = result["details"][:4]
+    result["footer"] = result["footer"][:4]
     return result
 
 
@@ -413,3 +529,4 @@ def extract_card_forms(forms):
         )
         if definition
     ]
+

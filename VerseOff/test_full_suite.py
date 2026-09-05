@@ -30,8 +30,14 @@ for ent in entities:
         logical_name=ent,
         record_id=None
     )
+    if ent in ("task", "email", "phonecall", "appointment"):
+        print(f"Verified activity '{ent}' (Card Form):")
+        print(f"  - Card form rendered: {len(form_renderer.controls)} controls bound")
+        assert len(form_renderer.controls) >= 2, f"Activity '{ent}' should have card form controls"
+        continue
+
     # Verify multi-tab presence
-    tab_count = form_renderer.tab_widget.count() if hasattr(form_renderer, "tab_widget") else 0
+    tab_count = form_renderer.tab_widget.count() if (hasattr(form_renderer, "tab_widget") and form_renderer.tab_widget is not None) else 0
     tabs = [form_renderer.tab_widget.tabText(i) for i in range(tab_count)] if tab_count else []
     bpf_present = form_renderer.bpf_widget is not None
 

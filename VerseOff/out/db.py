@@ -20,6 +20,10 @@ ENTITY_NAMES = {
     "incident",
     "opportunity",
     "lead",
+    "task",
+    "email",
+    "phonecall",
+    "appointment",
 }
 DYNAMIC_TABLES_CREATED = set()
 APP_STORAGE_KEY = "00000000-0000-0000-0000-000000000001"
@@ -149,7 +153,7 @@ class LocalDatabase:
             raise ValueError(f"Invalid entity name: {entity_name}")
 
     def _ensure_table(self, conn, entity_name):
-        if entity_name in ENTITY_NAMES or entity_name in DYNAMIC_TABLES_CREATED:
+        if entity_name in DYNAMIC_TABLES_CREATED:
             return
         conn.execute(f"""
             CREATE TABLE IF NOT EXISTS {entity_name} (
@@ -216,6 +220,54 @@ class LocalDatabase:
                     last_modified TEXT
                 )
             """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS task (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS email (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS phonecall (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS appointment (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+
+            for support_table in ("activitypointer", "annotation", "post", "postcomment"):
+                cursor.execute(f"""
+                    CREATE TABLE IF NOT EXISTS {support_table} (
+                        id TEXT PRIMARY KEY,
+                        data_json TEXT NOT NULL,
+                        sync_status TEXT NOT NULL DEFAULT 'synced',
+                        sync_error TEXT,
+                        last_modified TEXT
+                    )
+                """)
+
 
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS _sync_state (
@@ -442,6 +494,7 @@ class LocalDatabase:
         data_json = self._serialize_data(data)
         last_modified = data.get("modifiedon")
         with self.get_connection() as conn:
+            self._ensure_table(conn, entity_name)
             conn.execute(
                 f"""
                 INSERT INTO {entity_name} (

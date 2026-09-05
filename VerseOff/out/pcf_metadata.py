@@ -29,6 +29,214 @@ VERSEOFF_PCF_FEATURES = {
     "WebAPI",
 }
 
+OOB_PCF_REGISTRY = {
+    "MscrmControls.FieldControls.ToggleControl": {
+        "display_name": "Flip - Toggle Switch",
+        "widget_type": "toggle",
+        "description": "Fluent 2 animated toggle switch for boolean/two-options fields",
+        "compatible_types": ["TwoOptions", "Boolean"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "TwoOptions"},
+        },
+    },
+    "MscrmControls.Toggle.ToggleControl": {
+        "display_name": "Flip - Toggle Switch",
+        "widget_type": "toggle",
+        "description": "Fluent 2 animated toggle switch for boolean/two-options fields",
+        "compatible_types": ["TwoOptions", "Boolean"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "TwoOptions"},
+        },
+    },
+    "MscrmControls.Slider.SliderControl": {
+        "display_name": "Linear Slider",
+        "widget_type": "slider",
+        "description": "Fluent 2 slider with draggable thumb and live value tooltip",
+        "compatible_types": ["Whole.None", "Decimal", "FP", "Currency", "Integer"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "Whole.None"},
+            "min": {"usage": "input", "of_type": "Whole.None", "default": 0},
+            "max": {"usage": "input", "of_type": "Whole.None", "default": 100},
+            "step": {"usage": "input", "of_type": "Whole.None", "default": 1},
+        },
+    },
+    "MscrmControls.Slider.LinearSliderControl": {
+        "display_name": "Linear Slider",
+        "widget_type": "slider",
+        "description": "Fluent 2 linear slider with active track fill and tooltip",
+        "compatible_types": ["Whole.None", "Decimal", "FP", "Currency", "Integer"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "Whole.None"},
+            "min": {"usage": "input", "of_type": "Whole.None", "default": 0},
+            "max": {"usage": "input", "of_type": "Whole.None", "default": 100},
+            "step": {"usage": "input", "of_type": "Whole.None", "default": 1},
+        },
+    },
+    "MscrmControls.Slider.RadialSliderControl": {
+        "display_name": "Radial Arc Slider",
+        "widget_type": "slider",
+        "description": "Fluent 2 radial arc slider",
+        "compatible_types": ["Whole.None", "Decimal", "FP", "Currency", "Integer"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "Whole.None"},
+            "min": {"usage": "input", "of_type": "Whole.None", "default": 0},
+            "max": {"usage": "input", "of_type": "Whole.None", "default": 100},
+        },
+    },
+    "MscrmControls.FieldControls.RatingControl": {
+        "display_name": "Star Rating",
+        "widget_type": "rating",
+        "description": "Fluent 2 interactive 5-star rating control",
+        "compatible_types": ["Whole.None", "Integer", "OptionSet", "Picklist"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "Whole.None"},
+            "max": {"usage": "input", "of_type": "Whole.None", "default": 5},
+        },
+    },
+    "MscrmControls.Rating.RatingControl": {
+        "display_name": "Star Rating",
+        "widget_type": "rating",
+        "description": "Fluent 2 interactive 5-star rating control",
+        "compatible_types": ["Whole.None", "Integer", "OptionSet", "Picklist"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "Whole.None"},
+            "max": {"usage": "input", "of_type": "Whole.None", "default": 5},
+        },
+    },
+    "MscrmControls.OptionSet.OptionSetControl": {
+        "display_name": "OptionSet Segmented Bar",
+        "widget_type": "optionset_pills",
+        "description": "Fluent 2 horizontal segmented pill bar for optionset values",
+        "compatible_types": ["OptionSet", "Picklist", "State", "Status"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "OptionSet"},
+        },
+    },
+    "MscrmControls.OptionSet.RadioGroupControl": {
+        "display_name": "Radio Group",
+        "widget_type": "optionset_pills",
+        "description": "Fluent 2 clean radio group for option set items",
+        "compatible_types": ["OptionSet", "Picklist", "State", "Status"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "OptionSet"},
+        },
+    },
+    "MscrmControls.NumberInput.NumberInputControl": {
+        "display_name": "Number Input Stepper",
+        "widget_type": "number_input",
+        "description": "Fluent 2 numeric input with +/- stepper buttons",
+        "compatible_types": ["Whole.None", "Decimal", "FP", "Currency", "Integer"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "Whole.None"},
+            "min": {"usage": "input", "of_type": "Whole.None", "default": 0},
+            "max": {"usage": "input", "of_type": "Whole.None", "default": 1000000},
+            "step": {"usage": "input", "of_type": "Whole.None", "default": 1},
+        },
+    },
+    "MscrmControls.FieldControls.NumberInputControl": {
+        "display_name": "Number Input Stepper",
+        "widget_type": "number_input",
+        "description": "Fluent 2 numeric input with +/- stepper buttons",
+        "compatible_types": ["Whole.None", "Decimal", "FP", "Currency", "Integer"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "Whole.None"},
+            "min": {"usage": "input", "of_type": "Whole.None", "default": 0},
+            "max": {"usage": "input", "of_type": "Whole.None", "default": 1000000},
+            "step": {"usage": "input", "of_type": "Whole.None", "default": 1},
+        },
+    },
+    "MscrmControls.MaskedInput.MaskedInputControl": {
+        "display_name": "Masked Input",
+        "widget_type": "masked_input",
+        "description": "Fluent 2 text box with input formatting mask",
+        "compatible_types": ["SingleLine.Text", "String"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "SingleLine.Text"},
+            "mask": {"usage": "input", "of_type": "SingleLine.Text", "default": ""},
+        },
+    },
+    "MscrmControls.Knob.LinearGaugeControl": {
+        "display_name": "Linear Gauge",
+        "widget_type": "linear_gauge",
+        "description": "Fluent 2 horizontal progress gauge with gradient fill",
+        "compatible_types": ["Whole.None", "Decimal", "FP", "Integer"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "Whole.None"},
+            "min": {"usage": "input", "of_type": "Whole.None", "default": 0},
+            "max": {"usage": "input", "of_type": "Whole.None", "default": 100},
+        },
+    },
+    "MscrmControls.Knob.KnobControl": {
+        "display_name": "Knob Dial",
+        "widget_type": "linear_gauge",
+        "description": "Fluent 2 progress gauge dial",
+        "compatible_types": ["Whole.None", "Decimal", "FP", "Integer"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "Whole.None"},
+            "min": {"usage": "input", "of_type": "Whole.None", "default": 0},
+            "max": {"usage": "input", "of_type": "Whole.None", "default": 100},
+        },
+    },
+    "MscrmControls.PenControl.PenControl": {
+        "display_name": "Pen / Signature Capture",
+        "widget_type": "pen_control",
+        "description": "Fluent 2 interactive drawing and signature canvas",
+        "compatible_types": ["SingleLine.TextArea", "Memo", "Multiple"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "SingleLine.TextArea"},
+        },
+    },
+    "MscrmControls.Signature.SignatureControl": {
+        "display_name": "Signature Capture",
+        "widget_type": "pen_control",
+        "description": "Fluent 2 interactive drawing and signature canvas",
+        "compatible_types": ["SingleLine.TextArea", "Memo", "Multiple"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "SingleLine.TextArea"},
+        },
+    },
+    "MscrmControls.RichTextEditor.RichTextEditorControl": {
+        "display_name": "Rich Text Editor",
+        "widget_type": "rich_text",
+        "description": "Fluent 2 WYSIWYG rich text editor with toolbar",
+        "compatible_types": ["SingleLine.TextArea", "Memo", "Multiple"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "SingleLine.TextArea"},
+        },
+    },
+    "MscrmControls.AutoComplete.AutoCompleteControl": {
+        "display_name": "Auto-Complete Search",
+        "widget_type": "auto_complete",
+        "description": "Fluent 2 auto-complete search text input",
+        "compatible_types": ["SingleLine.Text", "String"],
+        "parameters": {
+            "value": {"usage": "bound", "of_type": "SingleLine.Text"},
+        },
+    },
+}
+
+
+def is_oob_pcf_control(name: str) -> bool:
+    if not name:
+        return False
+    return name in OOB_PCF_REGISTRY or name.startswith("MscrmControls.")
+
+
+def get_oob_pcf_descriptor(name: str) -> dict:
+    if name in OOB_PCF_REGISTRY:
+        desc = dict(OOB_PCF_REGISTRY[name])
+        desc["name"] = name
+        return desc
+    # Default descriptor for unlisted MscrmControls
+    return {
+        "name": name,
+        "display_name": name.rsplit(".", 1)[-1],
+        "widget_type": "standard",
+        "description": f"First-party Microsoft control {name}",
+        "compatible_types": [],
+        "parameters": {"value": {"usage": "bound", "of_type": "SingleLine.Text"}},
+    }
+
 
 def _local_name(tag):
     return str(tag or "").rsplit("}", 1)[-1]
@@ -262,9 +470,7 @@ def parse_pcf_manifest(manifest_xml):
         "unsupported_required_features": required_unsupported_features,
         "unsupported_property_types": unsupported_property_types,
         "can_host": (
-            control_type == "standard"
-            and not platform_libraries
-            and not required_unsupported_features
+            not required_unsupported_features
             and not unsupported_property_types
         ),
     }

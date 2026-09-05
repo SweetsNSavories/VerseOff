@@ -147,7 +147,7 @@ class LocalDatabase:
             raise ValueError(f"Invalid entity name: {entity_name}")
 
     def _ensure_table(self, conn, entity_name):
-        if entity_name in ENTITY_NAMES or entity_name in DYNAMIC_TABLES_CREATED:
+        if entity_name in DYNAMIC_TABLES_CREATED:
             return
         conn.execute(f"""
             CREATE TABLE IF NOT EXISTS {entity_name} (
@@ -180,6 +180,18 @@ class LocalDatabase:
                 )
             """)
 {% endfor %}
+
+            for support_table in ("activitypointer", "annotation", "post", "postcomment"):
+                cursor.execute(f"""
+                    CREATE TABLE IF NOT EXISTS {support_table} (
+                        id TEXT PRIMARY KEY,
+                        data_json TEXT NOT NULL,
+                        sync_status TEXT NOT NULL DEFAULT 'synced',
+                        sync_error TEXT,
+                        last_modified TEXT
+                    )
+                """)
+
 
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS _sync_state (
@@ -406,6 +418,7 @@ class LocalDatabase:
         data_json = self._serialize_data(data)
         last_modified = data.get("modifiedon")
         with self.get_connection() as conn:
+            self._ensure_table(conn, entity_name)
             conn.execute(
                 f"""
                 INSERT INTO {entity_name} (

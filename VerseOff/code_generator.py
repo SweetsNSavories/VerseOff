@@ -94,6 +94,16 @@ class CodeGenerator:
             "webresources/ClientGlobalContext.js.aspx"
         )
         
+        # Populate Card Forms for entities
+        from timeline_metadata import extract_card_forms, get_default_card_form
+        for entity in manifest.get("entities", []):
+            if not entity.get("card_forms"):
+                extracted = extract_card_forms(entity.get("forms", []))
+                if extracted:
+                    entity["card_forms"] = extracted
+                elif entity.get("LogicalName", "").lower() in ("task", "email", "phonecall", "appointment"):
+                    entity["card_forms"] = [get_default_card_form(entity.get("LogicalName"))]
+
         # 1. Manifest / Config JSON
         config_path = os.path.join(self.output_dir, "manifest.json")
         with open(config_path, "w", encoding="utf-8") as f:

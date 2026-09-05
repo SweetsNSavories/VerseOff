@@ -14,16 +14,24 @@ from PyQt6.QtWidgets import (
     QLabel, QLineEdit, QCheckBox, QGroupBox, QTabWidget, QGridLayout,
     QMessageBox, QDateTimeEdit, QSpinBox, QDoubleSpinBox, QTableWidget,
     QTableWidgetItem, QSizePolicy, QTextEdit, QListWidget, QListWidgetItem,
-    QToolButton, QMenu, QFileDialog, QDialog, QDialogButtonBox, QFrame
+    QToolButton, QMenu, QFileDialog, QDialog, QDialogButtonBox, QFrame,
+    QSlider, QProgressBar, QTextBrowser
+)
+from PyQt6.QtGui import (
+    QPainter, QColor, QBrush, QPen, QFont, QPixmap, QImage
 )
 from PyQt6 import sip
 from PyQt6.QtCore import (
     Qt, QDateTime, QObject, pyqtSlot, pyqtSignal, QUrl, QUrlQuery,
-    QEventLoop, QTimer
+    QEventLoop, QTimer, QRectF, QBuffer, QByteArray, QIODevice, QVariantAnimation
 )
 from PyQt6.QtQml import QJSEngine, QJSValue
-from PyQt6.QtWidgets import QTextBrowser
 from db import LocalDatabase
+from pcf_metadata import (
+    is_oob_pcf_control,
+    get_oob_pcf_descriptor,
+    OOB_PCF_REGISTRY,
+)
 from timeline_metadata import (
     is_timeline_control,
     parse_timeline_control,
@@ -1639,6 +1647,8 @@ class PythonAttribute:
             return None
         elif isinstance(self.widget, PcfControlWidget):
             return self.widget.value()
+        elif hasattr(self.widget, "value") and callable(self.widget.value):
+            return self.widget.value()
         return None
 
     def setValue(self, val):
@@ -1680,6 +1690,8 @@ class PythonAttribute:
                 self.widget.current_id = None
                 self.widget.setText("")
         elif isinstance(self.widget, PcfControlWidget):
+            self.widget.setValue(val)
+        elif hasattr(self.widget, "setValue") and callable(self.widget.setValue):
             self.widget.setValue(val)
         
         self.widget._is_dirty = True
@@ -4629,14 +4641,596 @@ class WebResourceWidget(QWidget):
         self.data = str(data or "")
         self._load()
 
-    def refresh(self):
-        self._load()
+class FluentPcfToggleSwitch(QWidget):
+    """Fluent 2 animated pill switch for TwoOptions / Boolean PCF controls."""
+    valueChanged = pyqtSignal(bool)
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self._checked = False
+        self._thumb_pos = 0.0
+        self.setFixedSize(58, 28)
+        self.setCursor(Qt.CursorShape.PointingHandCursor)
+        self._anim = QVariantAnimation(self)
+        self._anim.setDuration(160)
+        self._anim.setStartValue(0.0)
+        self._anim.setEndValue(1.0)
+        self._anim.valueChanged.connect(self._on_anim_step)
+
+    def _on_anim_step(self, val):
+        self._thumb_pos = float(val)
+        self.update()
+
+    def isChecked(self):
+        return self._checked
+
+    def setChecked(self, checked):
+        checked = bool(checked)
+        if self._checked != checked:
+            self._checked = checked
+            self._anim.stop()
+            self._anim.setStartValue(self._thumb_pos)
+            self._anim.setEndValue(1.0 if checked else 0.0)
+            self._anim.start()
+            self.valueChanged.emit(self._checked)
+
+    def value(self):
+        return self._checked
+
+    def setValue(self, val):
+        self.setChecked(bool(val))
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.setChecked(not self._checked)
+
+    def keyPressEvent(self, event):
+        if event.key() in (Qt.Key.Key_Space, Qt.Key.Key_Return):
+            self.setChecked(not self._checked)
+        else:
+            super().keyPressEvent(event)
+
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        w, h = self.width(), self.height()
+        radius = h / 2.0
+        track_rect = QRectF(2, 2, w - 4, h - 4)
+        if self._checked:
+            painter.setBrush(QBrush(QColor("#0078d4")))
+            painter.setPen(Qt.PenStyle.NoPen)
+            painter.drawRoundedRect(track_rect, radius, radius)
+            thumb_color = QColor("#ffffff")
+        else:
+            painter.setBrush(QBrush(QColor("#ffffff")))
+            painter.setPen(QPen(QColor("#8a8886"), 1.5))
+            painter.drawRoundedRect(track_rect, radius, radius)
+            thumb_color = QColor("#605e5c")
+        thumb_diameter = h - 10
+        min_x = 5
+        max_x = w - 5 - thumb_diameter
+        current_x = min_x + (max_x - min_x) * self._thumb_pos
+        thumb_rect = QRectF(current_x, 5, thumb_diameter, thumb_diameter)
+        painter.setBrush(QBrush(thumb_color))
+        painter.setPen(Qt.PenStyle.NoPen)
+        painter.drawEllipse(thumb_rect)
+
+
+class FluentPcfSlider(QWidget):
+    """Fluent 2 slider with live value tooltip label for Whole.None / Decimal PCF controls."""
+    valueChanged = pyqtSignal(int)
+
+    def __init__(self, parent=None, min_val=0, max_val=100, step=1):
+        super().__init__(parent)
+        layout = QHBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(10)
+        self.slider = QSlider(Qt.Orientation.Horizontal, self)
+        try:
+            self.slider.setRange(int(min_val), int(max_val))
+            self.slider.setSingleStep(int(step))
+        except (ValueError, TypeError):
+            self.slider.setRange(0, 100)
+        self.slider.setStyleSheet("""
+            QSlider::groove:horizontal {
+                height: 4px;
+                background: #edebe9;
+                border-radius: 2px;
+            }
+            QSlider::sub-page:horizontal {
+                background: #0078d4;
+                border-radius: 2px;
+            }
+            QSlider::handle:horizontal {
+                background: #0078d4;
+                border: 2px solid #ffffff;
+                width: 16px;
+                height: 16px;
+                margin: -6px 0;
+                border-radius: 8px;
+            }
+            QSlider::handle:horizontal:hover {
+                background: #106ebe;
+            }
+        """)
+        self.value_label = QLabel("0", self)
+        self.value_label.setMinimumWidth(36)
+        self.value_label.setStyleSheet("font-weight: 600; color: #0078d4; font-size: 13px;")
+        layout.addWidget(self.slider, 1)
+        layout.addWidget(self.value_label)
+        self.slider.valueChanged.connect(self._on_slider_changed)
+
+    def _on_slider_changed(self, val):
+        self.value_label.setText(str(val))
+        self.valueChanged.emit(val)
+
+    def value(self):
+        return self.slider.value()
+
+    def setValue(self, val):
+        try:
+            val = int(val or 0)
+        except (ValueError, TypeError):
+            val = 0
+        self.slider.setValue(val)
+        self.value_label.setText(str(val))
+
+
+class FluentPcfRating(QWidget):
+    """Fluent 2 5-star interactive rating control for Whole.None / OptionSet PCF controls."""
+    valueChanged = pyqtSignal(int)
+
+    def __init__(self, parent=None, max_stars=5):
+        super().__init__(parent)
+        try:
+            self.max_stars = max(1, min(10, int(max_stars or 5)))
+        except (ValueError, TypeError):
+            self.max_stars = 5
+        self._current_rating = 0
+        self.layout = QHBoxLayout(self)
+        self.layout.setContentsMargins(0, 0, 0, 0)
+        self.layout.setSpacing(4)
+        self.star_labels = []
+        for i in range(1, self.max_stars + 1):
+            lbl = QLabel("★", self)
+            lbl.setCursor(Qt.CursorShape.PointingHandCursor)
+            lbl.setStyleSheet("font-size: 20px; color: #d1d1d1;")
+            lbl.mousePressEvent = lambda e, rating=i: self._on_star_clicked(rating)
+            self.star_labels.append(lbl)
+            self.layout.addWidget(lbl)
+        self.clear_btn = QPushButton("✕", self)
+        self.clear_btn.setFixedSize(20, 20)
+        self.clear_btn.setToolTip("Clear rating")
+        self.clear_btn.setStyleSheet("border:none; color:#a19f9d; font-size:11px;")
+        self.clear_btn.clicked.connect(lambda: self.setValue(0))
+        self.layout.addWidget(self.clear_btn)
+        self.layout.addStretch()
+
+    def _on_star_clicked(self, rating):
+        if self._current_rating == rating:
+            self.setValue(0)
+        else:
+            self.setValue(rating)
+
+    def value(self):
+        return self._current_rating
+
+    def setValue(self, val):
+        try:
+            val = int(val or 0)
+        except (ValueError, TypeError):
+            val = 0
+        self._current_rating = max(0, min(self.max_stars, val))
+        for i, lbl in enumerate(self.star_labels, 1):
+            if i <= self._current_rating:
+                lbl.setStyleSheet("font-size: 20px; color: #ffb900;")
+            else:
+                lbl.setStyleSheet("font-size: 20px; color: #d1d1d1;")
+        self.valueChanged.emit(self._current_rating)
+
+
+class FluentPcfOptionSetPills(QWidget):
+    """Fluent 2 horizontal segmented pill buttons for OptionSet / RadioGroup PCF controls."""
+    valueChanged = pyqtSignal(int)
+
+    def __init__(self, parent=None, options=None):
+        super().__init__(parent)
+        self._value = None
+        self._options = options or []
+        self._buttons = []
+        self.layout = QHBoxLayout(self)
+        self.layout.setContentsMargins(0, 0, 0, 0)
+        self.layout.setSpacing(6)
+        self._rebuild()
+
+    def setOptions(self, options):
+        self._options = options or []
+        self._rebuild()
+
+    def _rebuild(self):
+        while self.layout.count():
+            item = self.layout.takeAt(0)
+            w = item.widget()
+            if w: w.deleteLater()
+        self._buttons = []
+        for opt in self._options:
+            val = opt.get("value")
+            lbl = opt.get("label") or str(val)
+            btn = QPushButton(lbl, self)
+            btn.setCheckable(True)
+            btn.setCursor(Qt.CursorShape.PointingHandCursor)
+            btn.clicked.connect(lambda _, v=val: self.setValue(v))
+            self._buttons.append((val, btn))
+            self.layout.addWidget(btn)
+        self.layout.addStretch()
+        self._update_styles()
+
+    def _update_styles(self):
+        for val, btn in self._buttons:
+            is_active = (val == self._value)
+            btn.setChecked(is_active)
+            if is_active:
+                btn.setStyleSheet("""
+                    QPushButton {
+                        background-color: #0078d4;
+                        color: #ffffff;
+                        border: 1px solid #0078d4;
+                        border-radius: 14px;
+                        padding: 4px 14px;
+                        font-weight: 600;
+                        font-size: 12px;
+                    }
+                """)
+            else:
+                btn.setStyleSheet("""
+                    QPushButton {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        border: 1px solid #edebe9;
+                        border-radius: 14px;
+                        padding: 4px 14px;
+                        font-size: 12px;
+                    }
+                    QPushButton:hover {
+                        background-color: #e1dfdd;
+                    }
+                """)
+
+    def value(self):
+        return self._value
+
+    def setValue(self, val):
+        self._value = val
+        self._update_styles()
+        self.valueChanged.emit(val if val is not None else 0)
+
+
+class FluentPcfNumberInput(QWidget):
+    """Fluent 2 stepper number widget for Whole.None / Decimal PCF controls."""
+    valueChanged = pyqtSignal(float)
+
+    def __init__(self, parent=None, min_val=0, max_val=1000000, step=1):
+        super().__init__(parent)
+        try:
+            self.step = float(step or 1)
+            self.min_val = float(min_val or 0)
+            self.max_val = float(max_val or 1000000)
+        except (ValueError, TypeError):
+            self.step, self.min_val, self.max_val = 1.0, 0.0, 1000000.0
+        self._val = 0.0
+        layout = QHBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(4)
+        self.minus_btn = QPushButton("−", self)
+        self.minus_btn.setFixedSize(30, 30)
+        self.minus_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.minus_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #f3f2f1;
+                border: 1px solid #8a8886;
+                border-radius: 4px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #201f1e;
+            }
+            QPushButton:hover {
+                background-color: #edebe9;
+            }
+        """)
+        self.minus_btn.clicked.connect(self._decrement)
+
+        self.line_edit = QLineEdit("0", self)
+        self.line_edit.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.line_edit.setStyleSheet("""
+            QLineEdit {
+                border: 1px solid #8a8886;
+                border-radius: 4px;
+                padding: 4px 8px;
+                font-size: 13px;
+                font-weight: 600;
+                color: #201f1e;
+            }
+            QLineEdit:focus {
+                border: 2px solid #0078d4;
+            }
+        """)
+        self.line_edit.textChanged.connect(self._on_text_changed)
+
+        self.plus_btn = QPushButton("+", self)
+        self.plus_btn.setFixedSize(30, 30)
+        self.plus_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.plus_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #0078d4;
+                border: 1px solid #0078d4;
+                border-radius: 4px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #ffffff;
+            }
+            QPushButton:hover {
+                background-color: #106ebe;
+            }
+        """)
+        self.plus_btn.clicked.connect(self._increment)
+        layout.addWidget(self.minus_btn)
+        layout.addWidget(self.line_edit, 1)
+        layout.addWidget(self.plus_btn)
+
+    def _decrement(self):
+        self.setValue(max(self.min_val, self._val - self.step))
+
+    def _increment(self):
+        self.setValue(min(self.max_val, self._val + self.step))
+
+    def _on_text_changed(self, text):
+        try:
+            self._val = float(text)
+            self.valueChanged.emit(self._val)
+        except ValueError:
+            pass
+
+    def value(self):
+        return self._val
+
+    def setValue(self, val):
+        try:
+            self._val = float(val or 0)
+        except (ValueError, TypeError):
+            self._val = 0.0
+        display = str(int(self._val)) if self._val.is_integer() else f"{self._val:.2f}"
+        self.line_edit.blockSignals(True)
+        self.line_edit.setText(display)
+        self.line_edit.blockSignals(False)
+        self.valueChanged.emit(self._val)
+
+
+class FluentPcfMaskedInput(QLineEdit):
+    """Fluent 2 text box with input formatting mask for SingleLine.Text PCF controls."""
+    def __init__(self, mask="", parent=None):
+        super().__init__(parent)
+        if mask:
+            self.setInputMask(str(mask))
+        self.setStyleSheet("""
+            QLineEdit {
+                border: 1px solid #8a8886;
+                border-radius: 4px;
+                padding: 6px 10px;
+                background-color: #ffffff;
+                color: #201f1e;
+                font-size: 13px;
+            }
+            QLineEdit:focus {
+                border: 2px solid #0078d4;
+            }
+        """)
+
+    def value(self):
+        return self.text()
+
+    def setValue(self, val):
+        self.setText(str(val or ""))
+
+
+class FluentPcfPenSignature(QWidget):
+    """Fluent 2 signature / drawing canvas for SingleLine.TextArea PCF controls."""
+    valueChanged = pyqtSignal(str)
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setMinimumSize(280, 140)
+        self._image = QImage(280, 140, QImage.Format.Format_ARGB32)
+        self._image.fill(Qt.GlobalColor.white)
+        self._last_pt = None
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(4)
+        self.canvas = QLabel(self)
+        self.canvas.setFrameShape(QFrame.Shape.Box)
+        self.canvas.setStyleSheet("border: 1px dashed #0078d4; background: #ffffff; border-radius: 4px;")
+        self.canvas.setPixmap(QPixmap.fromImage(self._image))
+        layout.addWidget(self.canvas, 1)
+
+        btn_row = QHBoxLayout()
+        btn_row.setSpacing(6)
+        self.clear_btn = QPushButton("🧹 Clear Signature", self)
+        self.clear_btn.setStyleSheet("font-size: 11px; padding: 2px 8px;")
+        self.clear_btn.clicked.connect(self._clear)
+        btn_row.addStretch()
+        btn_row.addWidget(self.clear_btn)
+        layout.addLayout(btn_row)
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton:
+            self._last_pt = event.pos()
+
+    def mouseMoveEvent(self, event):
+        if (event.buttons() & Qt.MouseButton.LeftButton) and self._last_pt:
+            painter = QPainter(self._image)
+            painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+            painter.setPen(QPen(QColor("#002050"), 2.0, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap))
+            painter.drawLine(self._last_pt, event.pos())
+            self._last_pt = event.pos()
+            self.canvas.setPixmap(QPixmap.fromImage(self._image))
+
+    def mouseReleaseEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton:
+            self._last_pt = None
+            self._emit_value()
+
+    def _clear(self):
+        self._image.fill(Qt.GlobalColor.white)
+        self.canvas.setPixmap(QPixmap.fromImage(self._image))
+        self._emit_value()
+
+    def _emit_value(self):
+        import base64
+        ba = QByteArray()
+        buff = QBuffer(ba)
+        buff.open(QIODevice.OpenModeFlag.WriteOnly)
+        self._image.save(buff, "PNG")
+        b64 = base64.b64encode(ba.data()).decode("ascii")
+        self.valueChanged.emit(b64)
+
+    def value(self):
+        import base64
+        ba = QByteArray()
+        buff = QBuffer(ba)
+        buff.open(QIODevice.OpenModeFlag.WriteOnly)
+        self._image.save(buff, "PNG")
+        return base64.b64encode(ba.data()).decode("ascii")
+
+    def setValue(self, val):
+        if not val:
+            self._clear()
+            return
+        try:
+            import base64
+            data = base64.b64decode(str(val))
+            self._image.loadFromData(data, "PNG")
+            self.canvas.setPixmap(QPixmap.fromImage(self._image))
+        except Exception:
+            pass
+
+
+class FluentPcfLinearGauge(QWidget):
+    """Fluent 2 linear progress gauge for Whole.None / Decimal PCF controls."""
+    valueChanged = pyqtSignal(float)
+
+    def __init__(self, parent=None, min_val=0, max_val=100):
+        super().__init__(parent)
+        try:
+            self.min_val = float(min_val or 0)
+            self.max_val = float(max_val or 100)
+        except (ValueError, TypeError):
+            self.min_val, self.max_val = 0.0, 100.0
+        self._value = 0.0
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(4)
+        self.bar = QProgressBar(self)
+        self.bar.setRange(int(self.min_val), int(self.max_val))
+        self.bar.setValue(int(self._value))
+        self.bar.setTextVisible(True)
+        self.bar.setStyleSheet("""
+            QProgressBar {
+                border: 1px solid #edebe9;
+                border-radius: 6px;
+                height: 18px;
+                text-align: center;
+                font-size: 11px;
+                font-weight: 600;
+                color: #201f1e;
+                background-color: #f3f2f1;
+            }
+            QProgressBar::chunk {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #0078d4, stop:1 #50e6ff);
+                border-radius: 5px;
+            }
+        """)
+        layout.addWidget(self.bar)
+
+    def value(self):
+        return self._value
+
+    def setValue(self, val):
+        try:
+            self._value = float(val or 0)
+        except (ValueError, TypeError):
+            self._value = 0.0
+        self.bar.setValue(int(self._value))
+        self.valueChanged.emit(self._value)
+
+
+class FluentPcfRichTextEditor(QWidget):
+    """Fluent 2 rich text editor with toolbar for Memo / Multiple PCF controls."""
+    textChanged = pyqtSignal()
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(4)
+        toolbar = QHBoxLayout()
+        toolbar.setSpacing(4)
+
+        bold_btn = QPushButton("B", self)
+        bold_btn.setFixedSize(26, 26)
+        bold_btn.setStyleSheet("font-weight: bold;")
+        bold_btn.clicked.connect(lambda: self.editor.setFontWeight(QFont.Weight.Bold if self.editor.fontWeight() != QFont.Weight.Bold else QFont.Weight.Normal))
+
+        italic_btn = QPushButton("I", self)
+        italic_btn.setFixedSize(26, 26)
+        italic_btn.setStyleSheet("font-style: italic;")
+        italic_btn.clicked.connect(lambda: self.editor.setFontItalic(not self.editor.fontItalic()))
+
+        underline_btn = QPushButton("U", self)
+        underline_btn.setFixedSize(26, 26)
+        underline_btn.setStyleSheet("text-decoration: underline;")
+        underline_btn.clicked.connect(lambda: self.editor.setFontUnderline(not self.editor.fontUnderline()))
+
+        toolbar.addWidget(bold_btn)
+        toolbar.addWidget(italic_btn)
+        toolbar.addWidget(underline_btn)
+        toolbar.addStretch()
+        layout.addLayout(toolbar)
+
+        self.editor = QTextEdit(self)
+        self.editor.setMinimumHeight(100)
+        self.editor.setStyleSheet("""
+            QTextEdit {
+                border: 1px solid #8a8886;
+                border-radius: 4px;
+                padding: 6px;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 13px;
+                color: #201f1e;
+            }
+            QTextEdit:focus {
+                border: 2px solid #0078d4;
+            }
+        """)
+        self.editor.textChanged.connect(self.textChanged.emit)
+        layout.addWidget(self.editor, 1)
+
+    def value(self):
+        return self.editor.toHtml()
+
+    def setValue(self, val):
+        self.editor.setHtml(str(val or ""))
+
+    def toPlainText(self):
+        return self.editor.toPlainText()
 
 
 class PcfHostBridge(QObject):
     def __init__(self, widget):
         super().__init__(widget)
         self.widget = widget
+
+    @pyqtSlot(str)
+    def syncDom(self, html):
+        self.widget._sync_rendered_html(html)
 
     @pyqtSlot()
     def runtimeReady(self):
@@ -4904,7 +5498,7 @@ class PcfControlWidget(QWidget):
         renderer,
         field_name,
         definition,
-        custom_control,
+        custom_control=None,
         parent=None,
     ):
         super().__init__(parent)
@@ -4933,10 +5527,38 @@ class PcfControlWidget(QWidget):
         self.display_container = QWidget(self)
         self.display_layout = QVBoxLayout(self.display_container)
         self.display_layout.setContentsMargins(0, 0, 0, 0)
+        self.html_view = QTextBrowser(self.display_container)
+        self.html_view.setOpenExternalLinks(False)
+        self.html_view.setReadOnly(True)
+        self.html_view.setFrameShape(QFrame.Shape.NoFrame)
+        self.html_view.setStyleSheet("""
+            QTextBrowser {
+                background-color: transparent;
+                border: 1px solid #edebe9;
+                border-radius: 4px;
+                padding: 4px;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 13px;
+                color: #201f1e;
+            }
+        """)
+        self.display_layout.addWidget(self.html_view)
         layout.addWidget(self.display_container)
 
         self.bridge = PcfHostBridge(self)
         self._load_runtime()
+
+    def _sync_rendered_html(self, html_content):
+        css = (
+            "body { font-family: 'Segoe UI', sans-serif; font-size: 13px; color: #201f1e; margin: 0; padding: 2px; }\n"
+            ".ms-Button { padding: 6px 16px; border-radius: 4px; font-weight: 600; text-decoration: none; display: inline-block; }\n"
+            ".ms-Button--primary { background-color: #0078d4; color: white; border: none; }\n"
+            ".ms-Button--default { background-color: white; color: #323130; border: 1px solid #8a8886; }\n"
+            ".ms-TextField input { width: 100%; padding: 6px; border: 1px solid #8a8886; border-radius: 4px; }\n"
+            ".ms-Toggle button { width: 40px; height: 20px; border-radius: 10px; border: none; }\n"
+        )
+        styled = "<html><head><style>" + css + "</style></head><body>" + str(html_content or "") + "</body></html>"
+        self.html_view.setHtml(styled)
 
     def _show_error(self, message):
         logger.error(
@@ -5045,6 +5667,9 @@ class PcfControlWidget(QWidget):
                 path = self._resource_path(code_res)
                 with open(path, "r", encoding="utf-8", errors="replace") as f:
                     self.renderer.js_engine.evaluate(f.read(), os.path.basename(path))
+
+            if self.definition.get("bundle_script"):
+                self.renderer.js_engine.evaluate(self.definition["bundle_script"], "pcf_bundle.js")
 
             pcf_bridge_obj = self.renderer.js_engine.newQObject(self.bridge)
             self.renderer.js_engine.globalObject().setProperty("pcfBridge", pcf_bridge_obj)
@@ -6970,7 +7595,9 @@ class XrmFormRenderer(QWidget):
             if form.get("type") in (None, "", 2, "2")
             and str(form.get("formactivationstate", "1")) != "0"
         ]
-        return sorted(fallback_forms, key=self._form_score, reverse=True)
+        if fallback_forms:
+            return sorted(fallback_forms, key=self._form_score, reverse=True)
+        return sorted(forms, key=self._form_score, reverse=True)
 
     def _get_active_form_def(self):
         forms = self.entity_def.get("forms", [])
@@ -7847,6 +8474,10 @@ class XrmFormRenderer(QWidget):
                             prev_r,
                         )
                     )
+                elif hasattr(widget, "valueChanged"):
+                    widget.valueChanged.connect(
+                        lambda _, f=field_name: self._fire_events("onchange", f)
+                    )
                  
         except (
             ET.ParseError,
@@ -8480,31 +9111,76 @@ class XrmFormRenderer(QWidget):
                 definition is None
                 or self._pcf_is_compatible(definition, attr_type)
             )
-            known_first_party = {
-                "MscrmControls.FieldControls.ToggleControl": QCheckBox,
-                "MscrmControls.Slider.SliderControl": QSpinBox,
-                "MscrmControls.OptionSet.OptionSetControl": QComboBox,
-                "MscrmControls.FieldControls.RatingControl": QSpinBox,
-            }
-            if pcf_name in known_first_party:
-                fallback = known_first_party[pcf_name]()
-                if isinstance(fallback, QSpinBox):
-                    fallback.setRange(-2147483648, 2147483647)
-                fallback.setProperty("verseoffPcfName", pcf_name)
-                fallback.setProperty(
-                    "verseoffPcfMode",
-                    "native-first-party",
-                )
-                if not compatible:
-                    fallback.setProperty(
-                        "verseoffPcfConfigurationError",
-                        True,
+            if is_oob_pcf_control(pcf_name):
+                params = {}
+                for p_elem in custom_control.findall(".//parameters/parameter"):
+                    p_name = p_elem.get("name")
+                    p_val = p_elem.text or p_elem.get("value") or ""
+                    if p_name:
+                        params[p_name] = p_val
+
+                options = []
+                if "OptionSet" in pcf_name:
+                    options = self.entity_def.get("option_sets", {}).get(field_name, [])
+
+                oob_widget = None
+                if pcf_name == "MscrmControls.FieldControls.ToggleControl":
+                    oob_widget = FluentPcfToggleSwitch()
+                elif pcf_name == "MscrmControls.Slider.SliderControl":
+                    try:
+                        min_v = int(float(params.get("MinValue", 0)))
+                        max_v = int(float(params.get("MaxValue", 100)))
+                        step_v = int(float(params.get("Step", 1)))
+                    except (ValueError, TypeError):
+                        min_v, max_v, step_v = 0, 100, 1
+                    oob_widget = FluentPcfSlider(min_val=min_v, max_val=max_v, step=step_v)
+                elif pcf_name == "MscrmControls.FieldControls.RatingControl":
+                    try:
+                        max_rating = int(float(params.get("Max", 5)))
+                    except (ValueError, TypeError):
+                        max_rating = 5
+                    oob_widget = FluentPcfRating(max_stars=max_rating)
+                elif pcf_name == "MscrmControls.OptionSet.OptionSetControl":
+                    oob_widget = FluentPcfOptionSetPills(options=options)
+                elif pcf_name in ("MscrmControls.FieldControls.NumberInputControl", "MscrmControls.NumberInput.NumberInputControl"):
+                    try:
+                        min_v = float(params.get("MinValue", -1e9))
+                        max_v = float(params.get("MaxValue", 1e9))
+                        step_v = float(params.get("Step", 1))
+                    except (ValueError, TypeError):
+                        min_v, max_v, step_v = -1e9, 1e9, 1
+                    oob_widget = FluentPcfNumberInput(min_val=min_v, max_val=max_v, step=step_v)
+                elif pcf_name == "MscrmControls.InputMask.InputMaskControl":
+                    mask_v = params.get("Mask", "")
+                    oob_widget = FluentPcfMaskedInput(mask=mask_v)
+                elif pcf_name == "MscrmControls.PenControl.PenControl":
+                    oob_widget = FluentPcfPenSignature()
+                elif pcf_name == "MscrmControls.LinearGauge.LinearGaugeControl":
+                    try:
+                        min_v = float(params.get("MinValue", 0))
+                        max_v = float(params.get("MaxValue", 100))
+                    except (ValueError, TypeError):
+                        min_v, max_v = 0, 100
+                    oob_widget = FluentPcfLinearGauge(min_val=min_v, max_val=max_v)
+                elif pcf_name == "MscrmControls.RichTextEditorControl.RichTextEditorControl":
+                    oob_widget = FluentPcfRichTextEditor()
+
+                if oob_widget is not None:
+                    oob_widget.setProperty("verseoffPcfName", pcf_name)
+                    oob_widget.setProperty(
+                        "verseoffPcfMode",
+                        "native-first-party",
                     )
-                    fallback.setToolTip(
-                        f"{pcf_name} is not declared compatible with "
-                        f"{attr_type}; the native field control is used."
-                    )
-                return fallback
+                    if not compatible:
+                        oob_widget.setProperty(
+                            "verseoffPcfConfigurationError",
+                            True,
+                        )
+                        oob_widget.setToolTip(
+                            f"{pcf_name} is not declared compatible with "
+                            f"{attr_type}; using native Fluent control."
+                        )
+                    return oob_widget
             if definition and definition.get("is_dataset"):
                 subgrid = SubgridWidget(
                     self,
@@ -8710,6 +9386,8 @@ class XrmFormRenderer(QWidget):
                 widget.setText("")
             elif isinstance(widget, PcfControlWidget):
                 widget.setValue(None)
+            elif hasattr(widget, "setValue") and callable(widget.setValue):
+                widget.setValue(None)
             return
         if isinstance(widget, QLineEdit):
             widget.setText(str(value))
@@ -8763,6 +9441,8 @@ class XrmFormRenderer(QWidget):
             )
             widget.setText(str(display_value))
         elif isinstance(widget, PcfControlWidget):
+            widget.setValue(value)
+        elif hasattr(widget, "setValue") and callable(widget.setValue):
             widget.setValue(value)
         elif isinstance(widget, TimerWidget):
             widget.refresh_from_record(row)
@@ -8830,6 +9510,8 @@ class XrmFormRenderer(QWidget):
             elif isinstance(widget, QSpinBox) or isinstance(widget, QDoubleSpinBox):
                 widget._initial_value = widget.value()
             elif isinstance(widget, PcfControlWidget):
+                widget._initial_value = widget.value()
+            elif hasattr(widget, "value") and callable(widget.value):
                 widget._initial_value = widget.value()
                             
         # Re-evaluate rules after data load
@@ -9904,6 +10586,8 @@ class XrmFormRenderer(QWidget):
                     ] = widget.current_logical_name
             elif isinstance(widget, PcfControlWidget):
                 data_to_save[field] = widget.value()
+            elif hasattr(widget, "value") and callable(widget.value):
+                data_to_save[field] = widget.value()
 
         save_success = False
         try:
@@ -10022,6 +10706,14 @@ class XrmFormRenderer(QWidget):
                 )
 
     def _open_timeline_form(self, entity_name, record_id):
+        manifest_entities = {e.get("LogicalName") for e in self.manifest.get("entities", [])}
+        if entity_name not in manifest_entities:
+            QMessageBox.information(
+                self,
+                "Entity Form Unavailable",
+                f"The '{entity_name}' form is not available because '{entity_name}' is not configured in this offline app manifest.",
+            )
+            return
         app_window = self.window()
         if hasattr(app_window, "open_form"):
             app_window.open_form(entity_name, record_id)

@@ -1428,6 +1428,17 @@ class OfflineApp(QMainWindow):
                 self.open_form(entity_name, record_id)
 
     def open_form(self, entity_name, record_id):
+        # Validate that entity exists in manifest
+        manifest_entities = {e.get("LogicalName") for e in self.config.get("entities", [])}
+        if entity_name not in manifest_entities:
+            QMessageBox.information(
+                self,
+                "Entity Form Unavailable",
+                f"The form for '{entity_name}' cannot be opened because '{entity_name}' is not configured in this offline app manifest.\n\n"
+                f"Configured offline entities: {', '.join(sorted(manifest_entities)) if manifest_entities else 'None'}",
+            )
+            return
+
         # Clear existing form from form_page_layout
         while self.form_page_layout.count():
             item = self.form_page_layout.takeAt(0)
