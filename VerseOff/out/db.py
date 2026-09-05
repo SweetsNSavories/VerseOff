@@ -15,15 +15,11 @@ except ImportError:
 
 
 ENTITY_NAMES = {
-    "knowledgebaserecord",
-    "msdyn_customerasset",
-    "msdyn_iotdeviceregistrationhistory",
-    "msdyn_iotpropertydefinition",
-    "msdyn_iotsettings",
-    "msdyn_iottocaseprocess",
+    "account",
+    "contact",
 }
 DYNAMIC_TABLES_CREATED = set()
-APP_STORAGE_KEY = "generated-app"
+APP_STORAGE_KEY = "00000000-0000-0000-0000-000000000001"
 TIMELINE_TEXT_FIELDS = (
     "subject",
     "title",
@@ -160,7 +156,7 @@ class LocalDatabase:
             cursor = conn.cursor()
 
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS knowledgebaserecord (
+                CREATE TABLE IF NOT EXISTS account (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',
@@ -169,43 +165,7 @@ class LocalDatabase:
                 )
             """)
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS msdyn_customerasset (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT NOT NULL,
-                    sync_status TEXT NOT NULL DEFAULT 'synced',
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS msdyn_iotdeviceregistrationhistory (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT NOT NULL,
-                    sync_status TEXT NOT NULL DEFAULT 'synced',
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS msdyn_iotpropertydefinition (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT NOT NULL,
-                    sync_status TEXT NOT NULL DEFAULT 'synced',
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS msdyn_iotsettings (
-                    id TEXT PRIMARY KEY,
-                    data_json TEXT NOT NULL,
-                    sync_status TEXT NOT NULL DEFAULT 'synced',
-                    sync_error TEXT,
-                    last_modified TEXT
-                )
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS msdyn_iottocaseprocess (
+                CREATE TABLE IF NOT EXISTS contact (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',

@@ -2460,7 +2460,7 @@
         return keys;
     }
 
-    global.executeJsEvent = async function (
+    global.executeJsEvent = function (
         eventName,
         controlName,
         eventPayload
@@ -2497,7 +2497,33 @@
             });
         }
 
-        async function invoke(
+        function handleError(error, executionContext, eventArgs, descriptor) {
+            console.error(
+                "[VerseOff Event Error] [EXCEPTION] Caught error in handler '" + descriptor +
+                "' on event '" + event + "':\n" +
+                (error && error.stack ? error.stack : (error && error.message ? error.message : error))
+            );
+            errors.push({
+                function: descriptor,
+                message: String(
+                    error && error.message ? error.message : error
+                ),
+                stack: String(error && error.stack ? error.stack : ""),
+                name: error && error.name ? error.name : "Error"
+            });
+            if (
+                eventArgs &&
+                eventArgs._shouldPreventOnError &&
+                eventArgs._shouldPreventOnError()
+            ) {
+                saveState.prevented = true;
+            }
+            if (executionContext) {
+                executionContext._deactivate();
+            }
+        }
+
+        function invoke(
             descriptor,
             handler,
             owner,
@@ -2505,129 +2531,125 @@
             parameters,
             depth
         ) {
-            const executionContext = createExecutionContext(
-                event,
-                controlName,
-                payload,
-                depth,
-                sharedVariables,
-                saveState
-            );
-            const eventArgs = executionContext._eventArgs;
-            let returned;
-            try {
-                const args = [];
-                if (passContext) {
-                    args.push(executionContext);
-                }
-                (parameters || []).forEach(function (parameter) {
-                    args.push(parameter);
-                });
-                console.log(
-                    "[VerseOff Event] [START] Event: '" + event + "'" +
-                    (controlName ? " | Control: '" + controlName + "'" : "") +
-                    " -> Invoking: " + descriptor +
-                    " (passContext=" + Boolean(passContext) + ")"
+            return new Promise(function (resolve) {
+                const executionContext = createExecutionContext(
+                    event,
+                    controlName,
+                    payload,
+                    depth,
+                    sharedVariables,
+                    saveState
                 );
-                returned = handler.apply(owner, args);
-                if (eventArgs && eventArgs._finishSyncPhase) {
-                    eventArgs._finishSyncPhase();
-                }
-                if (returned && typeof returned.then === "function") {
-                    if (!ASYNC_EVENTS.has(event)) {
-                        returned.catch(function () {});
-                        throw new Error(
-                            event + " does not support Promise-returning handlers"
-                        );
+                const eventArgs = executionContext._eventArgs;
+                try {
+                    const args = [];
+                    if (passContext) {
+                        args.push(executionContext);
                     }
-                    if (
-                        eventArgs &&
-                        eventArgs._isTimeoutDisabled &&
-                        eventArgs._isTimeoutDisabled()
-                    ) {
-                        await returned;
-                    } else {
-                        await promiseWithTimeout(
-                            returned,
-                            ASYNC_HANDLER_TIMEOUT_MS
-                        );
+                    (parameters || []).forEach(function (parameter) {
+                        args.push(parameter);
+                    });
+                    console.log(
+                        "[VerseOff Event] [START] Event: '" + event + "'" +
+                        (controlName ? " | Control: '" + controlName + "'" : "") +
+                        " -> Invoking: " + descriptor +
+                        " (passContext=" + Boolean(passContext) + ")"
+                    );
+                    const returned = handler.apply(owner, args);
+                    if (eventArgs && eventArgs._finishSyncPhase) {
+                        eventArgs._finishSyncPhase();
                     }
+                    if (returned && typeof returned.then === "function") {
+                        if (!ASYNC_EVENTS.has(event)) {
+                            returned.catch(function () {});
+                            throw new Error(
+                                event + " does not support Promise-returning handlers"
+                            );
+                        }
+                        const promiseToWait = (
+                            eventArgs &&
+                            eventArgs._isTimeoutDisabled &&
+                            eventArgs._isTimeoutDisabled()
+                        ) ? returned : promiseWithTimeout(returned, ASYNC_HANDLER_TIMEOUT_MS);
+
+                        promiseToWait.then(function () {
+                            console.log(
+                                "[VerseOff Event] [SUCCESS] Handler '" + descriptor +
+                                "' completed successfully on event '" + event + "'."
+                            );
+                            executionContext._deactivate();
+                            resolve();
+                        }).catch(function (error) {
+                            handleError(error, executionContext, eventArgs, descriptor);
+                            resolve();
+                        });
+                        return;
+                    }
+                    console.log(
+                        "[VerseOff Event] [SUCCESS] Handler '" + descriptor +
+                        "' completed successfully on event '" + event + "'."
+                    );
+                    executionContext._deactivate();
+                    resolve();
+                } catch (error) {
+                    handleError(error, executionContext, eventArgs, descriptor);
+                    resolve();
                 }
-                console.log(
-                    "[VerseOff Event] [SUCCESS] Handler '" + descriptor +
-                    "' completed successfully on event '" + event + "'."
-                );
-            } catch (error) {
-                console.error(
-                    "[VerseOff Event Error] [EXCEPTION] Caught error in handler '" + descriptor +
-                    "' on event '" + event + "':\n" +
-                    (error && error.stack ? error.stack : (error && error.message ? error.message : error))
-                );
-                errors.push({
-                    function: descriptor,
-                    message: String(
-                        error && error.message ? error.message : error
-                    ),
-                    stack: String(error && error.stack ? error.stack : ""),
-                    name: error && error.name ? error.name : "Error"
-                });
-                if (
-                    eventArgs &&
-                    eventArgs._shouldPreventOnError &&
-                    eventArgs._shouldPreventOnError()
-                ) {
-                    saveState.prevented = true;
-                }
-            } finally {
-                executionContext._deactivate();
-            }
+            });
         }
 
+        let promiseChain = Promise.resolve();
         let depth = 0;
-        for (const descriptor of configured.slice(0, 50)) {
-            try {
-                const resolved = resolveFunction(descriptor.function);
-                await invoke(
-                    descriptor.function,
-                    resolved.handler,
-                    resolved.owner,
-                    Boolean(descriptor.pass_context),
-                    descriptor.parameters || [],
-                    depth
-                );
-            } catch (error) {
-                errors.push({
-                    function: descriptor.function || "<unnamed>",
-                    message: String(
-                        error && error.message ? error.message : error
-                    ),
-                    name: error && error.name ? error.name : "Error"
-                });
-            }
-            depth += 1;
-        }
-        for (const handler of dynamic.slice(0, Math.max(0, 50 - depth))) {
-            await invoke(
-                handler.name || "<code-added handler>",
-                handler,
-                global,
-                true,
-                [],
-                depth
-            );
-            depth += 1;
-        }
+        configured.slice(0, 50).forEach(function (descriptor) {
+            promiseChain = promiseChain.then(function () {
+                try {
+                    const resolved = resolveFunction(descriptor.function);
+                    return invoke(
+                        descriptor.function,
+                        resolved.handler,
+                        resolved.owner,
+                        Boolean(descriptor.pass_context),
+                        descriptor.parameters || [],
+                        depth++
+                    );
+                } catch (error) {
+                    errors.push({
+                        function: descriptor.function || "<unnamed>",
+                        message: String(
+                            error && error.message ? error.message : error
+                        ),
+                        name: error && error.name ? error.name : "Error"
+                    });
+                    return Promise.resolve();
+                }
+            });
+        });
 
-        if ((event === "onsave" || event === "gridonsave") && errors.length) {
-            saveState.prevented = true;
-        }
-        return {
-            event: event,
-            control: controlName || null,
-            prevented: Boolean(saveState.prevented),
-            errors: errors,
-            handlerCount: Math.min(pipelineLength, 50)
-        };
+        dynamic.slice(0, Math.max(0, 50 - configured.length)).forEach(function (handler) {
+            promiseChain = promiseChain.then(function () {
+                return invoke(
+                    handler.name || "<code-added handler>",
+                    handler,
+                    global,
+                    true,
+                    [],
+                    depth++
+                );
+            });
+        });
+
+        return promiseChain.then(function () {
+            if ((event === "onsave" || event === "gridonsave") && errors.length) {
+                saveState.prevented = true;
+            }
+            return {
+                event: event,
+                control: controlName || null,
+                prevented: Boolean(saveState.prevented),
+                errors: errors,
+                handlerCount: Math.min(pipelineLength, 50)
+            };
+        });
     };
 
     function gridParameterRows(controlName, selection) {
@@ -2649,103 +2671,95 @@
     function rowReferences(rows, fallbackEntityName) {
         return rows.map(function (row) {
             return {
-                id: row.id || "",
-                entityType: row.entityName || fallbackEntityName || "",
-                name: row.primaryName || ""
+                Id: String(row.id || ""),
+                TypeName: String(row.entityName || fallbackEntityName || "")
             };
         });
     }
 
-    function crmRibbonParameter(value, commandContext) {
-        const parameter = String(value || "");
-        const controlName = commandContext.controlName || "";
-        const grid = gridState(controlName);
+    function crmRibbonParameter(parameter, commandContext) {
+        const context = commandContext || {};
+        const controlName = context.controlName || "";
+        const entityName = context.entityName || "";
+        const primaryControl = context.primaryControl || (
+            global.formContext || global.Xrm.Page
+        );
         const selectedRows = gridParameterRows(controlName, "selected");
         const allRows = gridParameterRows(controlName, "all");
-        const unselectedRows = gridParameterRows(
-            controlName,
-            "unselected"
-        );
-        const globalApiContext = globalContext();
-        const mappings = {
+        const unselectedRows = gridParameterRows(controlName, "unselected");
+        const parameterMap = {
             PrimaryControl: function () {
-                return global.formContext;
-            },
-            SelectedControl: function () {
-                if (!controlName) {
-                    return global.formContext;
-                }
-                return formControl(controlName) || global.formContext;
+                return primaryControl;
             },
             CommandProperties: function () {
-                return commandContext.commandProperties || {};
+                return context.commandProperties || {};
             },
-            PrimaryEntityTypeName: function () {
-                return formEntity.getEntityName();
+            SelectedControl: function () {
+                return (
+                    primaryControl &&
+                    typeof primaryControl.getControl === "function"
+                ) ? primaryControl.getControl(controlName) : null;
             },
-            PrimaryEntityTypeCode: function () {
-                return global.verseOffState.entity.objectTypeCode || null;
+            SelectedControlSelectedItemReferences: function () {
+                return rowReferences(selectedRows, entityName);
             },
-            FirstPrimaryItemId: function () {
-                return formEntity.getId();
-            },
-            PrimaryItemIds: function () {
-                return formEntity.getId() ? [formEntity.getId()] : [];
+            SelectedControlSelectedItemIds: function () {
+                return selectedRows.map(function (row) {
+                    return String(row.id || "");
+                });
             },
             SelectedControlSelectedItemCount: function () {
                 return selectedRows.length;
             },
-            SelectedControlSelectedItemIds: function () {
-                return selectedRows.map(function (row) {
-                    return row.id || "";
-                });
+            SelectedControlAllItemReferences: function () {
+                return rowReferences(allRows, entityName);
             },
-            SelectedControlSelectedItemReferences: function () {
-                return rowReferences(selectedRows, grid.entityName);
+            SelectedControlAllItemIds: function () {
+                return allRows.map(function (row) {
+                    return String(row.id || "");
+                });
             },
             SelectedControlAllItemCount: function () {
                 return allRows.length;
             },
-            SelectedControlAllItemIds: function () {
-                return allRows.map(function (row) {
-                    return row.id || "";
-                });
+            SelectedControlUnselectedItemReferences: function () {
+                return rowReferences(unselectedRows, entityName);
             },
-            SelectedControlAllItemReferences: function () {
-                return rowReferences(allRows, grid.entityName);
+            SelectedControlUnselectedItemIds: function () {
+                return unselectedRows.map(function (row) {
+                    return String(row.id || "");
+                });
             },
             SelectedControlUnselectedItemCount: function () {
                 return unselectedRows.length;
             },
-            SelectedControlUnselectedItemIds: function () {
-                return unselectedRows.map(function (row) {
-                    return row.id || "";
-                });
-            },
-            SelectedControlUnselectedItemReferences: function () {
-                return rowReferences(unselectedRows, grid.entityName);
-            },
             SelectedEntityTypeName: function () {
+                return entityName;
+            },
+            PrimaryEntityTypeName: function () {
+                return entityName;
+            },
+            PrimaryItemId: function () {
                 return (
-                    (selectedRows[0] || {}).entityName ||
-                    grid.entityName ||
-                    ""
-                );
+                    primaryControl &&
+                    primaryControl.data &&
+                    primaryControl.data.entity &&
+                    typeof primaryControl.data.entity.getId === "function"
+                ) ? primaryControl.data.entity.getId() : "";
             },
-            SelectedEntityTypeCode: function () {
-                return grid.objectTypeCode || null;
-            },
-            OrgName: function () {
-                return globalApiContext.organizationSettings.uniqueName;
-            },
-            OrgLcid: function () {
-                return globalApiContext.organizationSettings.languageId;
-            },
-            UserLcid: function () {
-                return globalApiContext.userSettings.languageId;
+            PrimaryItemSummaries: function () {
+                return [{
+                    Id: (
+                        primaryControl &&
+                        primaryControl.data &&
+                        primaryControl.data.entity &&
+                        typeof primaryControl.data.entity.getId === "function"
+                    ) ? primaryControl.data.entity.getId() : "",
+                    TypeName: entityName
+                }];
             }
         };
-        const resolver = mappings[parameter];
+        const resolver = parameterMap[parameter];
         if (!resolver) {
             throw unsupported(
                 "Ribbon CrmParameter",
@@ -2794,14 +2808,52 @@
         );
     }
 
-    global.executeRibbonAction = async function (
+    function handleRibbonError(error, descriptor) {
+        console.error(
+            "[VerseOff Ribbon Error] [EXCEPTION] Error in Ribbon action '" +
+            descriptor.function_name + "':\n" +
+            (error && error.stack ? error.stack : (error && error.message ? error.message : error))
+        );
+        return {
+            executed: false,
+            errors: [{
+                function: descriptor.function_name || "<ribbon>",
+                message: String(
+                    error && error.message ? error.message : error
+                ),
+                stack: String(error && error.stack ? error.stack : ""),
+                name: error && error.name ? error.name : "Error"
+            }]
+        };
+    }
+
+    function handleRuleError(error, descriptor) {
+        console.warn(
+            "[VerseOff Ribbon Rule Warning] Custom rule '" +
+            descriptor.function_name + "' failed or threw exception: " +
+            (error && error.message ? error.message : error)
+        );
+        return {
+            value: false,
+            errors: [{
+                function: descriptor.function_name || "<custom rule>",
+                message: String(
+                    error && error.message ? error.message : error
+                ),
+                stack: String(error && error.stack ? error.stack : ""),
+                name: error && error.name ? error.name : "Error"
+            }]
+        };
+    }
+
+    global.executeRibbonAction = function (
         action,
         commandContext
     ) {
         const descriptor = action || {};
         const context = commandContext || {};
         if (descriptor.type !== "JavaScriptFunction") {
-            return {
+            return Promise.resolve({
                 executed: false,
                 errors: [{
                     function: descriptor.function_name || "<ribbon>",
@@ -2810,7 +2862,7 @@
                         String(descriptor.type || "")
                     )
                 }]
-            };
+            });
         }
         try {
             console.log(
@@ -2826,40 +2878,36 @@
             });
             const result = resolved.handler.apply(resolved.owner, args);
             if (result && typeof result.then === "function") {
-                await promiseWithTimeout(
+                return promiseWithTimeout(
                     result,
                     ASYNC_HANDLER_TIMEOUT_MS
-                );
+                ).then(function () {
+                    console.log(
+                        "[VerseOff Ribbon] [SUCCESS] Ribbon action '" +
+                        descriptor.function_name + "' executed successfully."
+                    );
+                    return {
+                        executed: true,
+                        errors: []
+                    };
+                }).catch(function (error) {
+                    return handleRibbonError(error, descriptor);
+                });
             }
             console.log(
                 "[VerseOff Ribbon] [SUCCESS] Ribbon action '" +
                 descriptor.function_name + "' executed successfully."
             );
-            return {
+            return Promise.resolve({
                 executed: true,
                 errors: []
-            };
+            });
         } catch (error) {
-            console.error(
-                "[VerseOff Ribbon Error] [EXCEPTION] Error in Ribbon action '" +
-                descriptor.function_name + "':\n" +
-                (error && error.stack ? error.stack : (error && error.message ? error.message : error))
-            );
-            return {
-                executed: false,
-                errors: [{
-                    function: descriptor.function_name || "<ribbon>",
-                    message: String(
-                        error && error.message ? error.message : error
-                    ),
-                    stack: String(error && error.stack ? error.stack : ""),
-                    name: error && error.name ? error.name : "Error"
-                }]
-            };
+            return Promise.resolve(handleRibbonError(error, descriptor));
         }
     };
 
-    global.evaluateRibbonRule = async function (
+    global.evaluateRibbonRule = function (
         rule,
         commandContext
     ) {
@@ -2876,46 +2924,46 @@
             });
             let value = resolved.handler.apply(resolved.owner, args);
             if (value && typeof value.then === "function") {
-                value = await promiseWithTimeout(
+                return promiseWithTimeout(
                     value,
                     ASYNC_HANDLER_TIMEOUT_MS
-                );
+                ).then(function (val) {
+                    return {
+                        value: Boolean(val),
+                        errors: []
+                    };
+                }).catch(function (error) {
+                    return handleRuleError(error, descriptor);
+                });
             }
-            return {
+            return Promise.resolve({
                 value: Boolean(value),
                 errors: []
-            };
+            });
         } catch (error) {
-            console.warn(
-                "[VerseOff Ribbon Rule Warning] Custom rule '" +
-                descriptor.function_name + "' failed or threw exception: " +
-                (error && error.message ? error.message : error)
-            );
-            return {
-                value: false,
-                errors: [{
-                    function: descriptor.function_name || "<custom rule>",
-                    message: String(
-                        error && error.message ? error.message : error
-                    ),
-                    stack: String(error && error.stack ? error.stack : ""),
-                    name: error && error.name ? error.name : "Error"
-                }]
-            };
+            return Promise.resolve(handleRuleError(error, descriptor));
         }
     };
 
-    global.evaluateAllRibbonRules = async function (
+    global.evaluateAllRibbonRules = function (
         rulesMap,
         commandContext
     ) {
         const results = {};
         const entries = Object.entries(rulesMap || {});
-        for (let i = 0; i < entries.length; i++) {
-            const [key, rule] = entries[i];
-            results[key] = await global.evaluateRibbonRule(rule, commandContext);
-        }
-        return results;
+        let chain = Promise.resolve();
+        entries.forEach(function (entry) {
+            const key = entry[0];
+            const rule = entry[1];
+            chain = chain.then(function () {
+                return global.evaluateRibbonRule(rule, commandContext).then(function (res) {
+                    results[key] = res;
+                });
+            });
+        });
+        return chain.then(function () {
+            return results;
+        });
     };
 
     global.updateStateFromPython = function (fieldName, value) {
@@ -3592,4 +3640,4 @@
         })
     };
     global.GetGlobalContext = globalContext;
-})(typeof window !== "undefined" ? window : globalThis);
+})(typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" ? globalThis : this));

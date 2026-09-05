@@ -695,4 +695,4 @@
     };
 
     global.ComponentFramework = global.ComponentFramework || {};
-})(typeof window !== "undefined" ? window : globalThis);
+})(typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" ? globalThis : this));

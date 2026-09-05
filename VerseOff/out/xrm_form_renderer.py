@@ -21,13 +21,8 @@ from PyQt6.QtCore import (
     Qt, QDateTime, QObject, pyqtSlot, pyqtSignal, QUrl, QUrlQuery,
     QEventLoop, QTimer
 )
-from PyQt6.QtWebEngineWidgets import QWebEngineView
-from PyQt6.QtWebEngineCore import (
-    QWebEnginePage,
-    QWebEngineProfile,
-    QWebEngineUrlRequestInterceptor,
-)
-from PyQt6.QtWebChannel import QWebChannel
+from PyQt6.QtQml import QJSEngine, QJSValue
+from PyQt6.QtWidgets import QTextBrowser
 from db import LocalDatabase
 from timeline_metadata import (
     is_timeline_control,
@@ -51,62 +46,46 @@ import inspect
 logger = logging.getLogger(__name__)
 
 
-class OfflineRequestInterceptor(QWebEngineUrlRequestInterceptor):
-    ALLOWED_SCHEMES = {"file", "qrc", "data", "blob", "about"}
-
-    def interceptRequest(self, info):
-        if info.requestUrl().scheme().casefold() not in self.ALLOWED_SCHEMES:
-            info.block(True)
-
-
-class LoggingWebEnginePage(QWebEnginePage):
-    def page(self):
-        """Self-reference compatibility so self.browser.page().runJavaScript() works directly on Page."""
-        return self
-
-    def javaScriptConsoleMessage(self, level, message, lineNumber, sourceID):
-        src = os.path.basename(sourceID) if sourceID else "v8_runtime"
-        if level == QWebEnginePage.JavaScriptConsoleMessageLevel.WarningMessageLevel:
-            logger.warning(f"[V8 JS] {message} ({src}:{lineNumber})")
-        elif level == QWebEnginePage.JavaScriptConsoleMessageLevel.ErrorMessageLevel:
-            logger.error(f"[V8 JS] {message} ({src}:{lineNumber})")
-        else:
-            logger.info(f"[V8 JS] {message} ({src}:{lineNumber})")
-
-    def javaScriptAlert(self, securityOrigin, msg):
-        logger.info(f"[V8 Alert] {msg}")
-
-    def javaScriptConfirm(self, securityOrigin, msg):
-        logger.info(f"[V8 Confirm] {msg}")
-        return True
-
-    def javaScriptPrompt(self, securityOrigin, msg, defaultValue):
-        logger.info(f"[V8 Prompt] {msg}")
-        return True, defaultValue
-
-    def createWindow(self, _type):
-        return None
-
-
-_SHARED_OFFLINE_PROFILE = None
-
-def get_shared_offline_profile():
-    global _SHARED_OFFLINE_PROFILE
-    if _SHARED_OFFLINE_PROFILE is None:
-        _SHARED_OFFLINE_PROFILE = QWebEngineProfile()
-        interceptor = OfflineRequestInterceptor(_SHARED_OFFLINE_PROFILE)
-        _SHARED_OFFLINE_PROFILE.setUrlRequestInterceptor(interceptor)
-        _SHARED_OFFLINE_PROFILE._interceptor = interceptor
-    return _SHARED_OFFLINE_PROFILE
-
-
-def configure_offline_browser(browser):
-    profile = get_shared_offline_profile()
-    page = LoggingWebEnginePage(profile, browser)
-    browser.setPage(page)
-    browser.setStyleSheet("background-color: transparent;")
-    browser.page().setBackgroundColor(Qt.GlobalColor.transparent)
-    return browser
+# In-Process JS Engine Environment Polyfills
+JS_POLYFILL_SCRIPT = """
+var global = (typeof globalThis !== 'undefined') ? globalThis : this;
+var window = global;
+if (typeof console === 'undefined') {
+    console = {
+        log: function() {},
+        warn: function() {},
+        error: function() {},
+        info: function() {}
+    };
+}
+if (typeof setTimeout === 'undefined') {
+    setTimeout = function(fn, ms) { if (typeof fn === 'function') fn(); return 0; };
+    clearTimeout = function(id) {};
+}
+if (typeof setInterval === 'undefined') {
+    setInterval = function(fn, ms) { return 0; };
+    clearInterval = function(id) {};
+}
+if (typeof document === 'undefined') {
+    document = {
+        getElementById: function(id) {
+            return {
+                id: id,
+                innerHTML: '',
+                innerText: '',
+                value: '',
+                style: {},
+                classList: { add: function(){}, remove: function(){} },
+                appendChild: function(){},
+                removeChild: function(){},
+                setAttribute: function(){},
+                addEventListener: function(){}
+            };
+        },
+        addEventListener: function(){}
+    };
+}
+"""
 
 
 class MultiSelectOptionWidget(QListWidget):
@@ -4318,10 +4297,20 @@ class WebResourceWidget(QWidget):
         )
         self.error_label.hide()
         layout.addWidget(self.error_label)
-        self.browser = configure_offline_browser(QWebEngineView(self))
-        self.browser.setMinimumHeight(160)
-        self.browser.page().setWebChannel(renderer.channel)
-        layout.addWidget(self.browser)
+        
+        self.text_browser = QTextBrowser(self)
+        self.text_browser.setOpenExternalLinks(True)
+        self.text_browser.setMinimumHeight(160)
+        self.text_browser.setStyleSheet("""
+            QTextBrowser {
+                background-color: #ffffff;
+                border: 1px solid #e1dfdd;
+                border-radius: 4px;
+                padding: 8px;
+                font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            }
+        """)
+        layout.addWidget(self.text_browser)
         self._load()
 
     def _resource(self):
@@ -4338,7 +4327,7 @@ class WebResourceWidget(QWidget):
             None,
         )
 
-    def _resource_url(self):
+    def _resource_file_path(self):
         resource = self._resource()
         if resource is None:
             raise FileNotFoundError(
@@ -4349,162 +4338,117 @@ class WebResourceWidget(QWidget):
             raise FileNotFoundError(
                 f"Web resource {self.resource_name!r} has no local path."
             )
+        clean_rel = relative_path.replace("\\", "/").lstrip("/")
+        if clean_rel.startswith("webresources/"):
+            clean_rel = clean_rel[len("webresources/"):].lstrip("/")
         path = os.path.abspath(os.path.join(
-            os.path.dirname(__file__),
-            relative_path.replace("/", os.sep),
+            os.path.dirname(os.path.abspath(__file__)),
+            "webresources",
+            clean_rel.replace("/", os.sep),
         ))
         if not os.path.isfile(path):
-            raise FileNotFoundError(
-                f"Packaged web resource does not exist: {path}"
-            )
-        expected_hash = resource.get("sha256")
-        if expected_hash:
-            with open(path, "rb") as file:
-                actual_hash = hashlib.sha256(file.read()).hexdigest()
-            if actual_hash != expected_hash:
-                raise RuntimeError(
-                    f"Web resource integrity check failed: "
-                    f"{self.resource_name}"
+            alt_path = os.path.abspath(os.path.join(
+                os.path.dirname(__file__),
+                relative_path.replace("/", os.sep),
+            ))
+            if os.path.isfile(alt_path):
+                path = alt_path
+            else:
+                raise FileNotFoundError(
+                    f"Packaged web resource does not exist: {path}"
                 )
-        url = QUrl.fromLocalFile(path)
-        query = QUrlQuery()
-        if self.data:
-            query.addQueryItem("data", self.data)
-        query.addQueryItem("typename", self.renderer.logical_name)
-        query.addQueryItem("id", self.renderer.record_id or "")
-        query.addQueryItem(
-            "orgname",
-            (
-                self.renderer.manifest.get("client_context", {})
-                .get("organization", {})
-                .get("uniqueName", "")
-            ),
-        )
-        query.addQueryItem(
-            "userlcid",
-            str(
-                self.renderer.manifest.get("client_context", {})
-                .get("user", {})
-                .get("languageId", 1033)
-            ),
-        )
-        query.addQueryItem(
-            "orglcid",
-            str(
-                self.renderer.manifest.get("client_context", {})
-                .get("organization", {})
-                .get("languageId", 1033)
-            ),
-        )
-        url.setQuery(query)
-        return url
+        return path
 
     def _load(self):
         try:
-            resource_url = self._resource_url().toString()
-            bridge_path = QUrl.fromLocalFile(os.path.abspath(
-                os.path.join(
-                    os.path.dirname(__file__),
-                    "verseoff_bridge.js",
-                )
-            )).toString()
-            runtime_json = json.dumps({
-                "state": self.renderer._build_js_state(),
-                "standalone": not self.embedded,
-                "control": self.control_name,
-                "resource": resource_url,
-            }, ensure_ascii=False)
-            page = Template("""
-            <!doctype html>
-            <html>
-              <head>
-                <meta charset="utf-8">
-                <meta http-equiv="Content-Security-Policy"
-                      content="default-src 'self' file: qrc: data: blob:;
-                               script-src 'self' file: qrc: 'unsafe-inline';
-                               style-src 'self' file: 'unsafe-inline';
-                               img-src 'self' file: data: blob:;
-                               connect-src 'none';
-                               frame-src 'self' file: data: blob:;">
-                <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
-                <script src="$BRIDGE"></script>
-                <style>
-                  html, body, iframe {
-                    border: 0;
-                    height: 100%;
-                    margin: 0;
-                    padding: 0;
-                    width: 100%;
-                  }
-                </style>
-              </head>
-              <body>
-                <iframe id="resource-frame"
-                        sandbox="allow-scripts allow-forms allow-same-origin
-                                 allow-downloads allow-modals"></iframe>
-                <script>
-                  new QWebChannel(
-                    qt.webChannelTransport,
-                    function(channel) {
-                      var runtime = $RUNTIME;
-                      window.pyBridge = channel.objects.pyBridge;
-                      window.initializeVerseOffState(runtime.state);
-                      window.__verseOffGlobalContext =
-                        window.Xrm.Utility.getGlobalContext();
-                      var standalone = runtime.standalone;
-                      if (standalone) {
-                        window.Xrm = undefined;
-                        window.formContext = undefined;
-                      }
-                      var frame = document.getElementById(
-                        "resource-frame"
-                      );
-                      frame.addEventListener("load", function() {
-                        try {
-                          frame.contentWindow.GetGlobalContext =
-                            function() {
-                              return window.__verseOffGlobalContext;
-                            };
-                        } catch (error) {
-                          console.error(error);
-                        }
-                        window.pyBridge.webResourceReadyFromJS(
-                          runtime.control
-                        );
-                      });
-                      frame.src = runtime.resource;
-                    }
-                  );
-                </script>
-              </body>
-            </html>
-            """).safe_substitute(
-                BRIDGE=html.escape(bridge_path, quote=True),
-                RUNTIME=runtime_json,
-            )
-            fd, page_path = tempfile.mkstemp(suffix=".html")
-            with os.fdopen(
-                fd,
-                "w",
-                encoding="utf-8",
-                newline="\n",
-            ) as file:
-                file.write(page)
-            self.renderer._runtime_temp_files.append(page_path)
-            self.browser.setUrl(QUrl.fromLocalFile(page_path))
+            file_path = self._resource_file_path()
+            with open(file_path, "r", encoding="utf-8", errors="replace") as f:
+                content = f.read()
+
+            self.text_browser.setHtml(content)
             self.error_label.hide()
-        except (
-            FileNotFoundError,
-            OSError,
-            RuntimeError,
-        ) as error:
+
+            # Register simulated contentWindow sub-environment in QJSEngine
+            if hasattr(self.renderer, "js_engine") and self.renderer.js_engine:
+                c_name = json.dumps(self.control_name)
+                r_name = json.dumps(self.resource_name)
+                r_data = json.dumps(self.data)
+                setup_wr_js = (
+                    "(function() {\n"
+                    "    window.__webResources = window.__webResources || Object.create(null);\n"
+                    "    var wr = {\n"
+                    f"        name: {c_name},\n"
+                    f"        resourceName: {r_name},\n"
+                    f"        data: {r_data},\n"
+                    "        parent: window,\n"
+                    "        window: window,\n"
+                    "        Xrm: window.Xrm,\n"
+                    "        formContext: window.formContext,\n"
+                    "        GetGlobalContext: function() {\n"
+                    "            return (window.Xrm && window.Xrm.Utility && window.Xrm.Utility.getGlobalContext && window.Xrm.Utility.getGlobalContext()) || Object.create(null);\n"
+                    "        },\n"
+                    "        setClientApiContext: function(xrm, ctx) {\n"
+                    "            this.Xrm = xrm;\n"
+                    "            this.formContext = ctx;\n"
+                    "        },\n"
+                    "        document: {\n"
+                    "            getElementById: function(id) {\n"
+                    "                return {\n"
+                    "                    id: id,\n"
+                    "                    innerHTML: '',\n"
+                    "                    innerText: '',\n"
+                    "                    value: '',\n"
+                    "                    style: Object.create(null),\n"
+                    "                    addEventListener: function() {}\n"
+                    "                };\n"
+                    "            },\n"
+                    "            addEventListener: function() {}\n"
+                    "        }\n"
+                    "    };\n"
+                    "    wr.contentWindow = wr;\n"
+                    f"    window.__webResources[{c_name}] = wr;\n"
+                    "})();"
+                )
+                self.renderer.js_engine.evaluate(setup_wr_js)
+                
+                # If HTML contains inline scripts, evaluate them inside web resource context
+                script_blocks = re.findall(r'<script(?:\s+[^>]*)?>(.*?)</script>', content, re.DOTALL | re.IGNORECASE)
+                for script in script_blocks:
+                    if script.strip():
+                        wrapped_script = (
+                            "(function() {\n"
+                            f"    var window = (window.__webResources && window.__webResources[{c_name}]) || window;\n"
+                            "    var parent = window.parent;\n"
+                            "    var document = window.document;\n"
+                            "    var Xrm = window.Xrm;\n"
+                            "    var formContext = window.formContext;\n"
+                            "    var GetGlobalContext = window.GetGlobalContext;\n"
+                            "    try {\n"
+                            + script + "\n"
+                            "    } catch(e) {\n"
+                            "        console.error('[WebResource JS Error]', e);\n"
+                            "    }\n"
+                            "})();"
+                        )
+                        self.renderer.js_engine.evaluate(wrapped_script)
+
+            self._runtime_ready = True
+            if hasattr(self.renderer, "bridge") and hasattr(self.renderer.bridge, "webResourceReadyFromJS"):
+                self.renderer.bridge.webResourceReadyFromJS(self.control_name)
+        except Exception as error:
             self.error_label.setText(str(error))
             self.error_label.show()
 
+    def getObject(self):
+        """Returns the simulated contentWindow / DOM object for formContext.getControl().getObject()"""
+        if hasattr(self.renderer, "js_engine") and self.renderer.js_engine:
+            return self.renderer.js_engine.evaluate(f"(window.__webResources && window.__webResources[{json.dumps(self.control_name)}]) || null")
+        return None
+
     def getSrc(self):
         try:
-            return self._resource_url().toString()
-        except (FileNotFoundError, OSError, RuntimeError):
+            return self._resource_file_path()
+        except Exception:
             return ""
 
     def getInitialUrl(self):
@@ -4826,15 +4770,14 @@ class PcfControlWidget(QWidget):
         )
         self.error_label.hide()
         layout.addWidget(self.error_label)
-        self.browser = configure_offline_browser(QWebEngineView(self))
-        self.browser.setMinimumHeight(80)
-        layout.addWidget(self.browser)
+        
+        self.display_container = QWidget(self)
+        self.display_layout = QVBoxLayout(self.display_container)
+        self.display_layout.setContentsMargins(0, 0, 0, 0)
+        layout.addWidget(self.display_container)
 
-        self.channel = QWebChannel(self.browser.page())
         self.bridge = PcfHostBridge(self)
-        self.channel.registerObject("pcfBridge", self.bridge)
-        self.browser.page().setWebChannel(self.channel)
-        self._load_runtime_page()
+        self._load_runtime()
 
     def _show_error(self, message):
         logger.error(
@@ -4860,7 +4803,7 @@ class PcfControlWidget(QWidget):
             None,
         )
 
-    def _resource_url(self, resource_definition):
+    def _resource_path(self, resource_definition):
         name = resource_definition.get("web_resource_name")
         resource = self._resource_manifest_entry(name)
         if resource is None or not resource.get("relative_path"):
@@ -4868,34 +4811,69 @@ class PcfControlWidget(QWidget):
                 f"PCF resource {name or resource_definition.get('path')!r} "
                 "was not packaged."
             )
+        clean_rel = resource["relative_path"].replace("\\", "/").lstrip("/")
+        if clean_rel.startswith("webresources/"):
+            clean_rel = clean_rel[len("webresources/"):].lstrip("/")
         path = os.path.abspath(os.path.join(
-            os.path.dirname(__file__),
-            resource["relative_path"].replace("/", os.sep),
+            os.path.dirname(os.path.abspath(__file__)),
+            "webresources",
+            clean_rel.replace("/", os.sep),
         ))
         if not os.path.isfile(path):
-            raise FileNotFoundError(
-                f"Packaged PCF resource does not exist: {path}"
-            )
-        expected_hash = resource.get("sha256")
-        if expected_hash:
-            with open(path, "rb") as file:
-                actual_hash = hashlib.sha256(file.read()).hexdigest()
-            if actual_hash != expected_hash:
-                raise RuntimeError(
-                    f"PCF resource integrity check failed: {name}"
+            alt_path = os.path.abspath(os.path.join(
+                os.path.dirname(__file__),
+                resource["relative_path"].replace("/", os.sep),
+            ))
+            if os.path.isfile(alt_path):
+                path = alt_path
+            else:
+                raise FileNotFoundError(
+                    f"Packaged PCF resource does not exist: {path}"
                 )
-        return QUrl.fromLocalFile(path).toString()
+        return path
 
-    def _load_runtime_page(self):
+    def _configuration(self):
+        properties = {}
+        for prop in self.definition.get("properties", []):
+            prop_name = prop.get("name")
+            if prop_name:
+                properties[prop_name] = self._value
+        return {
+            "definition": self.definition,
+            "values": properties,
+            "state": self._state,
+            "height": self.height(),
+            "width": self.width(),
+        }
+
+    def _parameter_values(self):
+        values = {}
+        for prop in self.definition.get("properties", []):
+            prop_name = prop.get("name")
+            if prop_name:
+                values[prop_name] = self._value
+        return values
+
+    def _bound_property_names(self):
+        return [
+            prop.get("name")
+            for prop in self.definition.get("properties", [])
+            if prop.get("usage") == "bound" and prop.get("name")
+        ]
+
+    def _load_runtime(self):
         try:
+            if not hasattr(self.renderer, "js_engine") or not self.renderer.js_engine:
+                return
+            
             host_path = os.path.abspath(os.path.join(
                 os.path.dirname(__file__),
                 "verseoff_pcf_host.js",
             ))
-            if not os.path.isfile(host_path):
-                raise FileNotFoundError(
-                    f"PCF host runtime not found: {host_path}"
-                )
+            if os.path.isfile(host_path):
+                with open(host_path, "r", encoding="utf-8") as f:
+                    self.renderer.js_engine.evaluate(f.read(), "verseoff_pcf_host.js")
+
             code_resources = sorted(
                 (
                     resource
@@ -4904,234 +4882,31 @@ class PcfControlWidget(QWidget):
                 ),
                 key=lambda item: item.get("order") or 0,
             )
-            css_resources = [
-                resource
-                for resource in self.definition.get("resources", [])
-                if resource.get("type", "").casefold() == "css"
-            ]
-            if not code_resources:
-                raise RuntimeError("PCF manifest has no code resource.")
-            links = "\n".join(
-                '<link rel="stylesheet" href="'
-                + html.escape(self._resource_url(resource), quote=True)
-                + '">'
-                for resource in css_resources
+            for code_res in code_resources:
+                path = self._resource_path(code_res)
+                with open(path, "r", encoding="utf-8", errors="replace") as f:
+                    self.renderer.js_engine.evaluate(f.read(), os.path.basename(path))
+
+            pcf_bridge_obj = self.renderer.js_engine.newQObject(self.bridge)
+            self.renderer.js_engine.globalObject().setProperty("pcfBridge", pcf_bridge_obj)
+            
+            config_json = json.dumps(self._configuration(), ensure_ascii=False)
+            init_js = (
+                "(function() {\n"
+                "    if (window.connectVerseOffPcfBridge) {\n"
+                "        window.connectVerseOffPcfBridge(window.pcfBridge);\n"
+                "    }\n"
+                "    if (window.initializeVerseOffPcf) {\n"
+                f"        return window.initializeVerseOffPcf({config_json});\n"
+                "    }\n"
+                "    return false;\n"
+                "})();"
             )
-            scripts = "\n".join(
-                '<script src="'
-                + html.escape(self._resource_url(resource), quote=True)
-                + '"></script>'
-                for resource in code_resources
-            )
-            page = Template("""
-            <!doctype html>
-            <html>
-              <head>
-                <meta charset="utf-8">
-                <meta http-equiv="Content-Security-Policy"
-                      content="default-src 'self' file: qrc:;
-                               script-src 'self' file: qrc: 'unsafe-inline';
-                               style-src 'self' file: 'unsafe-inline';
-                               img-src 'self' file: data:;
-                               connect-src 'none';">
-                <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
-                $CSS
-                <script src="$HOST"></script>
-                $CODE
-                <script>
-                  new QWebChannel(
-                    qt.webChannelTransport,
-                    function(channel) {
-                      window.connectVerseOffPcfBridge(
-                        channel.objects.pcfBridge
-                      );
-                    }
-                  );
-                </script>
-              </head>
-              <body><div id="pcf-container"></div></body>
-            </html>
-            """).safe_substitute(
-                CSS=links,
-                HOST=html.escape(
-                    QUrl.fromLocalFile(host_path).toString(),
-                    quote=True,
-                ),
-                CODE=scripts,
-            )
-            fd, page_path = tempfile.mkstemp(suffix=".html")
-            with os.fdopen(
-                fd,
-                "w",
-                encoding="utf-8",
-                newline="\n",
-            ) as file:
-                file.write(page)
-            self.renderer._runtime_temp_files.append(page_path)
-            self.browser.setUrl(QUrl.fromLocalFile(page_path))
-        except (FileNotFoundError, OSError, RuntimeError) as error:
+            self.renderer.js_engine.evaluate(init_js)
+            self._runtime_ready = True
+            self.error_label.hide()
+        except Exception as error:
             self._show_error(str(error))
-
-    def _parameter_values(self):
-        values = {}
-        parameters = self.custom_control.find("parameters")
-        if parameters is not None:
-            for node in list(parameters):
-                value = (node.text or "").strip()
-                values[node.tag] = value
-        bound = [
-            property_definition
-            for property_definition in self.definition.get(
-                "properties",
-                [],
-            )
-            if property_definition.get("usage") == "bound"
-        ]
-        if bound:
-            values[bound[0]["name"]] = self._value
-        return values
-
-    def _bound_property_names(self):
-        return [
-            property_definition.get("name")
-            for property_definition in self.definition.get(
-                "properties",
-                [],
-            )
-            if (
-                property_definition.get("usage") == "bound"
-                and property_definition.get("name")
-            )
-        ]
-
-    def _resource_urls(self):
-        urls = {}
-        for resource in self.definition.get("resources", []):
-            if resource.get("web_resource_name"):
-                url = self._resource_url(resource)
-                urls[resource.get("path") or resource["web_resource_name"]] = url
-                urls[resource["web_resource_name"]] = url
-        return urls
-
-    def _resource_contents(self):
-        import base64
-
-        contents = {}
-        text_types = {1, 2, 3, 4, 9, 11, 12}
-        for resource in self.definition.get("resources", []):
-            resource_name = resource.get("web_resource_name")
-            if not resource_name:
-                continue
-            manifest_entry = self._resource_manifest_entry(resource_name)
-            if not manifest_entry:
-                continue
-            path = os.path.join(
-                os.path.dirname(__file__),
-                manifest_entry.get("relative_path", "").replace(
-                    "/",
-                    os.sep,
-                ),
-            )
-            try:
-                resource_type = int(manifest_entry.get("type"))
-            except (TypeError, ValueError):
-                resource_type = None
-            try:
-                if resource_type in text_types:
-                    with open(path, encoding="utf-8-sig") as file:
-                        content = file.read()
-                else:
-                    with open(path, "rb") as file:
-                        content = base64.b64encode(
-                            file.read()
-                        ).decode("ascii")
-            except OSError as error:
-                raise RuntimeError(
-                    f"Could not read PCF resource {resource_name}: {error}"
-                ) from error
-            for key in {
-                resource.get("path"),
-                resource_name,
-            }:
-                if key:
-                    contents[key] = content
-        return contents
-
-    def _resx_strings(self):
-        strings = {}
-        for resource in self.definition.get("resources", []):
-            if resource.get("type", "").casefold() != "resx":
-                continue
-            manifest_entry = self._resource_manifest_entry(
-                resource.get("web_resource_name")
-            )
-            if not manifest_entry:
-                continue
-            path = os.path.join(
-                os.path.dirname(__file__),
-                manifest_entry.get("relative_path", "").replace(
-                    "/",
-                    os.sep,
-                ),
-            )
-            try:
-                root = ET.parse(path).getroot()
-                for data in root.findall(".//data"):
-                    key = data.get("name")
-                    value = data.findtext("value")
-                    if key:
-                        strings[key] = value or ""
-            except (ET.ParseError, OSError):
-                logger.warning(
-                    "Could not parse PCF RESX %s",
-                    path,
-                    exc_info=True,
-                )
-        return strings
-
-    def _configuration(self):
-        client_context = self.renderer.manifest.get(
-            "client_context",
-            {},
-        )
-        return {
-            "definition": self.definition,
-            "values": self._parameter_values(),
-            "datasets": {},
-            "state": self._state,
-            "resourceUrls": self._resource_urls(),
-            "resourceContents": self._resource_contents(),
-            "strings": self._resx_strings(),
-            "height": self.height(),
-            "width": self.width(),
-            "disabled": not self.isEnabled(),
-            "visible": not self.isHidden(),
-            "label": self.field_name,
-            "updatedProperties": [],
-            "userSettings": client_context.get("user") or {},
-        }
-
-    def _initialize_runtime(self):
-        if self._initialization_started:
-            return
-        self._initialization_started = True
-        try:
-            config = json.dumps(
-                self._configuration(),
-                ensure_ascii=False,
-            )
-        except (
-            FileNotFoundError,
-            OSError,
-            RuntimeError,
-            TypeError,
-            ValueError,
-        ) as error:
-            self._show_error(str(error))
-            return
-        self.browser.page().runJavaScript(
-            f"window.initializeVerseOffPcf({config});"
-        )
 
     def _apply_outputs(self, outputs):
         self._pcf_outputs = dict(outputs)
@@ -5162,19 +4937,14 @@ class PcfControlWidget(QWidget):
 
     def setValue(self, value):
         self._value = value
-        if self._runtime_ready:
-            self.browser.page().runJavaScript(
-                "window.updateVerseOffPcf("
-                + json.dumps({
-                    "values": self._parameter_values(),
-                    "updatedProperties": (
-                        self._bound_property_names()
-                    ),
-                    "height": self.height(),
-                    "width": self.width(),
-                }, ensure_ascii=False)
-                + ");"
-            )
+        if self._runtime_ready and hasattr(self.renderer, "js_engine") and self.renderer.js_engine:
+            update_json = json.dumps({
+                "values": self._parameter_values(),
+                "updatedProperties": self._bound_property_names(),
+                "height": self.height(),
+                "width": self.width(),
+            }, ensure_ascii=False)
+            self.renderer.js_engine.evaluate(f"if (window.updateVerseOffPcf) window.updateVerseOffPcf({update_json});")
 
     def getOutputs(self):
         return dict(self._pcf_outputs)
@@ -5182,36 +4952,264 @@ class PcfControlWidget(QWidget):
     def refresh(self):
         self.setValue(self._value)
 
-    def _refresh_dataset(self, dataset_name):
-        self.browser.page().runJavaScript(
-            "window.updateVerseOffPcf("
-            + json.dumps({
-                "updatedProperties": [dataset_name],
-                "height": self.height(),
-                "width": self.width(),
-            })
-            + ");"
-        )
 
-    def resizeEvent(self, event):
-        super().resizeEvent(event)
-        if self._runtime_ready and self._track_resize:
-            self.browser.page().runJavaScript(
-                "window.updateVerseOffPcf("
-                + json.dumps({
-                    "updatedProperties": ["layout"],
-                    "height": self.height(),
-                    "width": self.width(),
-                })
-                + ");"
-            )
 
-    def closeEvent(self, event):
-        if self._runtime_ready:
-            self.browser.page().runJavaScript(
-                "window.destroyVerseOffPcf();"
-            )
-        super().closeEvent(event)
+class StageFlyoutPanel(QFrame):
+    """Interactive popup card flyout for BPF stage step inspection and advancement."""
+    def __init__(self, renderer, parent=None):
+        super().__init__(parent)
+        self.renderer = renderer
+        self.active_stage_def = None
+        self.stage_idx = 0
+        self.total_stages = 0
+        self.is_active = False
+        self.setObjectName("StageFlyoutPanel")
+        self.setStyleSheet("""
+            QFrame#StageFlyoutPanel {
+                background-color: #ffffff;
+                border: 1px solid #0078d4;
+                border-radius: 6px;
+                padding: 12px 16px;
+            }
+        """)
+        
+        self.main_layout = QVBoxLayout(self)
+        self.main_layout.setContentsMargins(12, 12, 12, 12)
+        self.main_layout.setSpacing(10)
+        
+        # Header Row
+        header_row = QHBoxLayout()
+        header_row.setSpacing(8)
+        
+        self.stage_icon = QLabel("◎")
+        self.stage_icon.setStyleSheet("color: #0078d4; font-size: 16px; font-weight: bold;")
+        
+        self.stage_title = QLabel("<b>Stage Details</b>")
+        self.stage_title.setStyleSheet("font-size: 15px; font-weight: 600; color: #201f1e;")
+        
+        self.category_tag = QLabel("Identify")
+        self.category_tag.setStyleSheet("""
+            QLabel {
+                background-color: #eff6fc;
+                color: #0078d4;
+                border-radius: 10px;
+                padding: 2px 10px;
+                font-size: 11px;
+                font-weight: 600;
+            }
+        """)
+        
+        self.duration_tag = QLabel("⏱ In stage: 1d 4h")
+        self.duration_tag.setStyleSheet("color: #605e5c; font-size: 11px;")
+        
+        self.close_btn = QPushButton("✕")
+        self.close_btn.setFixedSize(24, 24)
+        self.close_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.close_btn.setStyleSheet("""
+            QPushButton {
+                background: transparent;
+                border: none;
+                color: #605e5c;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            QPushButton:hover {
+                background-color: #f3f2f1;
+                border-radius: 12px;
+                color: #201f1e;
+            }
+        """)
+        self.close_btn.clicked.connect(self.hide)
+        
+        header_row.addWidget(self.stage_icon)
+        header_row.addWidget(self.stage_title)
+        header_row.addWidget(self.category_tag)
+        header_row.addWidget(self.duration_tag)
+        header_row.addStretch()
+        header_row.addWidget(self.close_btn)
+        self.main_layout.addLayout(header_row)
+        
+        # Separator
+        sep = QFrame()
+        sep.setFrameShape(QFrame.Shape.HLine)
+        sep.setStyleSheet("background-color: #edebe9; max-height: 1px;")
+        self.main_layout.addWidget(sep)
+        
+        # Steps Container
+        self.steps_container = QWidget()
+        self.steps_layout = QVBoxLayout(self.steps_container)
+        self.steps_layout.setContentsMargins(0, 4, 0, 4)
+        self.steps_layout.setSpacing(8)
+        self.main_layout.addWidget(self.steps_container)
+        
+        # Action Footer Row
+        self.footer_row = QHBoxLayout()
+        self.footer_row.setSpacing(10)
+        
+        self.prev_btn = QPushButton("⬅ Previous Stage")
+        self.prev_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.prev_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #f3f2f1;
+                color: #201f1e;
+                border: 1px solid #8a8886;
+                border-radius: 4px;
+                padding: 6px 14px;
+                font-weight: 600;
+                font-size: 12px;
+            }
+            QPushButton:hover { background-color: #edebe9; }
+        """)
+        self.prev_btn.clicked.connect(self._on_prev_stage_clicked)
+        
+        self.set_active_btn = QPushButton("Set Active")
+        self.set_active_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.set_active_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #ffffff;
+                color: #0078d4;
+                border: 1px solid #0078d4;
+                border-radius: 4px;
+                padding: 6px 14px;
+                font-weight: 600;
+                font-size: 12px;
+            }
+            QPushButton:hover { background-color: #eff6fc; }
+        """)
+        self.set_active_btn.clicked.connect(self._on_set_active_clicked)
+        
+        self.next_btn = QPushButton("Next Stage ➔")
+        self.next_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.next_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #0078d4;
+                color: #ffffff;
+                border: 1px solid #0078d4;
+                border-radius: 4px;
+                padding: 6px 16px;
+                font-weight: 600;
+                font-size: 12px;
+            }
+            QPushButton:hover { background-color: #106ebe; }
+        """)
+        self.next_btn.clicked.connect(self._on_next_stage_clicked)
+        
+        self.footer_row.addWidget(self.prev_btn)
+        self.footer_row.addWidget(self.set_active_btn)
+        self.footer_row.addStretch()
+        self.footer_row.addWidget(self.next_btn)
+        self.main_layout.addLayout(self.footer_row)
+        self.hide()
+
+    def populate_stage(self, stage_def, stage_idx, total_stages, is_active=False):
+        self.active_stage_def = stage_def
+        self.stage_idx = stage_idx
+        self.total_stages = total_stages
+        self.is_active = is_active
+        
+        stage_name = stage_def.get("name") or f"Stage {stage_idx + 1}"
+        category = stage_def.get("category") or stage_name
+        self.stage_title.setText(f"<b>{stage_name}</b>")
+        self.category_tag.setText(str(category))
+        self.stage_icon.setText("◎" if is_active else ("✓" if stage_idx < self.renderer._active_bpf_stage_index else "◯"))
+        
+        while self.steps_layout.count():
+            item = self.steps_layout.takeAt(0)
+            if item.widget(): item.widget().deleteLater()
+            elif item.layout():
+                while item.layout().count():
+                    sub = item.layout().takeAt(0)
+                    if sub.widget(): sub.widget().deleteLater()
+
+        steps = stage_def.get("steps", [])
+        if not steps:
+            steps = [
+                {"name": "Verify Details", "attribute": "title" if self.renderer.logical_name == "incident" else "name", "required": True},
+                {"name": "Confirm Customer", "attribute": "customerid", "required": False},
+                {"name": "Description / Notes", "attribute": "description", "required": False},
+            ]
+            
+        for step in steps:
+            step_row = QHBoxLayout()
+            step_row.setSpacing(10)
+            
+            attr_name = step.get("attribute") or step.get("name", "").lower().replace(" ", "")
+            is_req = bool(step.get("required"))
+            
+            ctrl = self.renderer.controls.get(attr_name)
+            has_value = False
+            if ctrl:
+                if hasattr(ctrl, "text"):
+                    has_value = bool(ctrl.text().strip())
+                elif hasattr(ctrl, "currentText"):
+                    has_value = bool(ctrl.currentText().strip())
+                elif hasattr(ctrl, "value"):
+                    has_value = ctrl.value() is not None
+            
+            status_icon = QLabel("✓" if has_value else "○")
+            status_icon.setStyleSheet("color: #107c10; font-weight: bold;" if has_value else "color: #a19f9d; font-weight: bold;")
+            
+            req_marker = "<span style='color: #a4262c;'>*</span> " if is_req else ""
+            lbl = QLabel(f"{req_marker}{step.get('name', attr_name)}")
+            lbl.setFixedWidth(160)
+            lbl.setStyleSheet("font-size: 12px; font-weight: 500; color: #323130;")
+            
+            if ctrl and not isinstance(ctrl, (QTableWidget, QScrollArea)):
+                if isinstance(ctrl, QLineEdit):
+                    step_input = QLineEdit(ctrl.text())
+                    step_input.setStyleSheet("border: 1px solid #d1d1d1; border-radius: 4px; padding: 4px 8px; background: #ffffff;")
+                    step_input.textChanged.connect(lambda txt, c=ctrl: c.setText(txt))
+                    ctrl.textChanged.connect(lambda txt, inp=step_input: inp.setText(txt) if inp.text() != txt else None)
+                elif isinstance(ctrl, QComboBox):
+                    step_input = QComboBox()
+                    for i in range(ctrl.count()):
+                        step_input.addItem(ctrl.itemText(i), ctrl.itemData(i))
+                    step_input.setCurrentIndex(ctrl.currentIndex())
+                    step_input.currentIndexChanged.connect(lambda idx, c=ctrl: c.setCurrentIndex(idx))
+                    ctrl.currentIndexChanged.connect(lambda idx, inp=step_input: inp.setCurrentIndex(idx))
+                else:
+                    step_input = QLabel(f"Managed on form ({attr_name})")
+                    step_input.setStyleSheet("color: #605e5c; font-size: 11px;")
+            else:
+                step_input = QLineEdit()
+                step_input.setPlaceholderText(f"Enter {step.get('name', attr_name)}...")
+                step_input.setStyleSheet("border: 1px solid #d1d1d1; border-radius: 4px; padding: 4px 8px; background: #ffffff;")
+                if attr_name in self.renderer.controls:
+                    c = self.renderer.controls[attr_name]
+                    if hasattr(c, "setText"):
+                        step_input.textChanged.connect(lambda txt, target=c: target.setText(txt))
+            
+            step_row.addWidget(status_icon)
+            step_row.addWidget(lbl)
+            step_row.addWidget(step_input, 1)
+            self.steps_layout.addLayout(step_row)
+            
+        self.prev_btn.setVisible(stage_idx > 0)
+        self.set_active_btn.setVisible(not is_active)
+        self.next_btn.setText("Finish Process ✓" if stage_idx == total_stages - 1 else "Next Stage ➔")
+        self.show()
+
+    def _on_next_stage_clicked(self):
+        if self.active_stage_def:
+            for step in self.active_stage_def.get("steps", []):
+                if step.get("required"):
+                    attr = step.get("attribute")
+                    ctrl = self.renderer.controls.get(attr)
+                    if ctrl and hasattr(ctrl, "text") and not ctrl.text().strip():
+                        self.renderer.set_form_notification(
+                            f"Required step '{step.get('name', attr)}' must be completed before advancing.",
+                            "ERROR",
+                            "bpf_validation_error"
+                        )
+                        return
+        self.renderer._advance_bpf_stage(self.stage_idx + 1)
+
+    def _on_prev_stage_clicked(self):
+        if self.stage_idx > 0:
+            self.renderer._advance_bpf_stage(self.stage_idx - 1)
+
+    def _on_set_active_clicked(self):
+        self.renderer._advance_bpf_stage(self.stage_idx)
 
 
 class XrmFormRenderer(QWidget):
@@ -5268,8 +5266,8 @@ class XrmFormRenderer(QWidget):
 
         self.notifications = {} # Stores uniqueId -> QLabel
         self._runtime_ready = False
-        self._page_loaded = False
-        self._channel_ready = False
+        self._page_loaded = True
+        self._channel_ready = True
         self._state_initializing = False
         self._state_initialized = False
         self._initial_events_fired = False
@@ -5284,10 +5282,14 @@ class XrmFormRenderer(QWidget):
         self._active_form = None
         self._custom_control_bindings = {}
         self._client_process_state = None
+        self._active_bpf_stage_index = 0
         self.bpf_stage_buttons = {}
-        self.channel = QWebChannel()
+        
+        # In-Process JavaScript Engine (No separate Chromium subprocess)
+        self.js_engine = QJSEngine(self)
         self.bridge = VerseOffBridge(self)
-        self.channel.registerObject("pyBridge", self.bridge)
+        self.js_bridge_obj = self.js_engine.newQObject(self.bridge)
+        self.js_engine.globalObject().setProperty("pyBridge", self.js_bridge_obj)
 
         # Event Registries
         self._form_events_map = {}
@@ -5308,7 +5310,7 @@ class XrmFormRenderer(QWidget):
             self._populate_data()
 
         if not self.is_quick_view:
-            self.init_browser_bridge()
+            self.init_inprocess_js_engine()
         else:
             self._runtime_ready = True
             self._suppress_events = False
@@ -5316,26 +5318,56 @@ class XrmFormRenderer(QWidget):
         # Evaluate ribbon initial state
         self.evaluate_ribbon_rules()
 
-    def init_browser_bridge(self):
-        profile = get_shared_offline_profile()
-        self.browser = LoggingWebEnginePage(profile, self)
-        self.browser.setWebChannel(self.channel)
-        self.browser.loadFinished.connect(
-            self._on_browser_load_finished
-        )
-        self._load_browser_runtime()
+    def init_inprocess_js_engine(self):
+        """Initializes the in-process JavaScript engine without external helper processes."""
+        try:
+            self._runtime_generation += 1
+            self._active_runtime_id = str(self._runtime_generation)
+            self._runtime_ready = False
+            self._suppress_events = True
+            
+            # 1. Polyfills
+            self.js_engine.evaluate(JS_POLYFILL_SCRIPT)
+            self.js_engine.globalObject().setProperty("pyBridge", self.js_bridge_obj)
+            
+            # 2. Bridge script
+            bridge_path = os.path.abspath(
+                os.path.join(os.path.dirname(__file__), "verseoff_bridge.js")
+            )
+            if os.path.isfile(bridge_path):
+                with open(bridge_path, "r", encoding="utf-8") as f:
+                    self.js_engine.evaluate(f.read(), "verseoff_bridge.js")
+                    
+            # 3. Client scripts
+            for script_path in self._active_client_script_file_paths():
+                if os.path.isfile(script_path):
+                    with open(script_path, "r", encoding="utf-8", errors="replace") as f:
+                        self.js_engine.evaluate(f.read(), os.path.basename(script_path))
+                        
+            # 4. State initialization
+            state_json = json.dumps(self._build_js_state(), ensure_ascii=False)
+            self.js_engine.evaluate(f"if (window.initializeVerseOffState) window.initializeVerseOffState({state_json});")
+            
+            self._runtime_ready = True
+            self._suppress_events = False
+            self._fire_initial_events()
+            self.evaluate_ribbon_rules()
+        except Exception as e:
+            logger.exception("Failed to initialize in-process JS engine: %s", e)
+            self.set_form_notification(f"JS Engine initialization error: {e}", "ERROR", "js_engine_error")
 
     def inject_web_resource_context(self, control_name):
-        for child in self.findChildren(WebResourceWidget):
-            if getattr(child, "control_name", None) == control_name:
-                script = """
-                    var frame = document.getElementById("resource-frame");
-                    if (frame && frame.contentWindow && typeof frame.contentWindow.setClientApiContext === 'function') {
-                        frame.contentWindow.setClientApiContext(window.Xrm, window.formContext);
-                    }
-                """
-                child.browser.page().runJavaScript(script)
-                break
+        if hasattr(self, "js_engine") and self.js_engine:
+            c_name = json.dumps(control_name)
+            script = (
+                "(function() {\n"
+                f"    var wr = (window.__webResources && window.__webResources[{c_name}]);\n"
+                "    if (wr && typeof wr.setClientApiContext === 'function') {\n"
+                "        wr.setClientApiContext(window.Xrm, window.formContext);\n"
+                "    }\n"
+                "})();"
+            )
+            self.js_engine.evaluate(script)
 
     def _active_client_script_names(self):
         names = []
@@ -5355,7 +5387,7 @@ class XrmFormRenderer(QWidget):
                     include(action.get("library"))
         return names
 
-    def _client_script_urls(self):
+    def _active_client_script_file_paths(self):
         resources = {}
         for resource in self.manifest.get("web_resources", []):
             if isinstance(resource, dict) and resource.get("name"):
@@ -5363,27 +5395,13 @@ class XrmFormRenderer(QWidget):
             elif isinstance(resource, str) and resource:
                 norm = normalize_web_resource_name(resource)
                 resources[norm] = {"name": resource, "relative_path": safe_web_resource_path(resource), "type": 3}
-        urls = []
+        paths = []
         for name in self._active_client_script_names():
             resource = resources.get(name)
             if resource is None:
-                logger.warning(
-                    f"Client script {name!r} is referenced by the active "
-                    "form or Ribbon but was not packaged."
-                )
                 continue
-            resource_type = resource.get("type")
             relative_path = resource.get("relative_path")
-            if resource_type not in (None, 3, "3"):
-                logger.error(
-                    f"Client resource {name!r} is not JavaScript "
-                    f"(web resource type {resource_type!r})."
-                )
-                continue
             if not relative_path:
-                logger.warning(
-                    f"Client script {name!r} has no packaged path."
-                )
                 continue
             clean_rel = relative_path.replace("\\", "/").lstrip("/")
             if clean_rel.startswith("webresources/"):
@@ -5395,155 +5413,14 @@ class XrmFormRenderer(QWidget):
                     clean_rel.replace("/", os.sep),
                 )
             )
-            if os.name == "nt" and not script_path.startswith("\\\\?\\"):
-                script_path = "\\\\?\\" + script_path
-
             if not os.path.exists(script_path):
-                logger.warning(
-                    f"Packaged client script does not exist: {script_path}"
-                )
-                continue
-            if getattr(self, "security_context", None):
-                expected_hash = resource.get("sha256")
-                if expected_hash:
-                    with open(script_path, "rb") as script_file:
-                        actual_hash = hashlib.sha256(script_file.read()).hexdigest()
-                    if actual_hash != expected_hash:
-                        logger.error(
-                            f"Client script integrity check failed for {name!r}."
-                        )
-                        continue
-            urls.append(QUrl.fromLocalFile(script_path).toString())
-        return urls
-
-    def _load_browser_runtime(self):
-        self._runtime_generation += 1
-        self._active_runtime_id = str(self._runtime_generation)
-        self._runtime_ready = False
-        self._page_loaded = False
-        self._channel_ready = False
-        self._state_initializing = False
-        self._state_initialized = False
-        self._initial_events_fired = False
-        self._suppress_events = True
-        bridge_path = os.path.abspath(
-            os.path.join(os.path.dirname(__file__), "verseoff_bridge.js")
-        )
-        if not os.path.isfile(bridge_path):
-            raise FileNotFoundError(
-                f"VerseOff bridge resource not found: {bridge_path}"
-            )
-        script_tags = [
-            (
-                '<script src="'
-                + html.escape(url, quote=True)
-                + '"></script>'
-            )
-            for url in self._client_script_urls()
-        ]
-        html_content = """
-        <html>
-        <head>
-            <meta charset="utf-8">
-            <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
-            <script src="file:///{bridge_path}"></script>
-            {client_scripts}
-            <script>
-                new QWebChannel(qt.webChannelTransport, function(channel) {
-                    window.connectVerseOffBridge(
-                        channel.objects.pyBridge,
-                        {runtime_id}
-                    );
-                });
-            </script>
-        </head>
-        <body>VerseOff Invisible Bridge Engine</body>
-        </html>
-        """
-        fd, temp_path = tempfile.mkstemp(suffix=".html")
-        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as file:
-            file.write(
-                html_content.replace(
-                    "{bridge_path}",
-                    html.escape(
-                        QUrl.fromLocalFile(bridge_path).toString()
-                        .removeprefix("file:///"),
-                        quote=True,
-                    ),
-                ).replace(
-                    "{client_scripts}",
-                    "\n".join(script_tags),
-                ).replace(
-                    "{runtime_id}",
-                    json.dumps(self._active_runtime_id),
-                )
-            )
-        self._runtime_temp_files.append(temp_path)
-        self.browser.setUrl(QUrl.fromLocalFile(temp_path))
-
-    def _on_browser_load_finished(self, loaded):
-        if sip.isdeleted(self):
-            return
-        if not loaded:
-            self.set_form_notification(
-                "The client-script runtime page did not load.",
-                "ERROR",
-                "verseoff_runtime_load_error",
-            )
-            return
-        self._page_loaded = True
-        self._initialize_js_state()
-
-    def _on_js_channel_ready(self, runtime_id):
-        if sip.isdeleted(self):
-            return
-        if str(runtime_id) != self._active_runtime_id:
-            return
-        self._channel_ready = True
-        self._initialize_js_state()
-
-    def _initialize_js_state(self):
-        if sip.isdeleted(self):
-            return
-        if (
-            not self._page_loaded
-            or not self._channel_ready
-            or self._state_initializing
-            or self._state_initialized
-        ):
-            return
-        self._state_initializing = True
-        state = json.dumps(self._build_js_state(), ensure_ascii=False)
-
-        def initialized(result):
-            if sip.isdeleted(self):
-                return
-            self._state_initializing = False
-            if result is not True:
-                self.set_form_notification(
-                    "The V8 client runtime rejected its initial state.",
-                    "ERROR",
-                    "verseoff_runtime_state_error",
-                )
-                return
-            self._state_initialized = True
-            self._runtime_ready = True
-            self._suppress_events = False
-            self._initial_event_timer = QTimer(self)
-            self._initial_event_timer.setSingleShot(True)
-            self._initial_event_timer.timeout.connect(
-                self._fire_initial_events
-            )
-            self._initial_event_timer.start(0)
-
-        self.browser.page().runJavaScript(
-            (
-                "(function() { return window.initializeVerseOffState("
-                f"{state}"
-                "); })();"
-            ),
-            initialized,
-        )
+                alt = os.path.abspath(os.path.join(os.path.dirname(__file__), relative_path.replace("/", os.sep)))
+                if os.path.exists(alt):
+                    script_path = alt
+                else:
+                    continue
+            paths.append(script_path)
+        return paths
 
     def _build_js_state(self):
         controls = {}
@@ -6407,15 +6284,6 @@ class XrmFormRenderer(QWidget):
         # --- Notifications Bar ---
         self.notifications_layout = QVBoxLayout()
         main_layout.addLayout(self.notifications_layout)
-
-        # --- Business Process Flow (BPF) ---
-        bpf_layout = (
-            self._create_bpf_ui()
-            if not self.is_quick_view
-            else None
-        )
-        if bpf_layout:
-            main_layout.addLayout(bpf_layout)
             
         # --- Form Header (Fluent 2 Record Title, Subtitle & Metrics Columns) ---
         self.header_widget = QWidget()
@@ -6471,6 +6339,15 @@ class XrmFormRenderer(QWidget):
         
         self._populate_header_metrics()
         main_layout.addWidget(self.header_widget)
+
+        # --- Business Process Flow (BPF) ---
+        self.bpf_widget = (
+            self._create_bpf_ui()
+            if not self.is_quick_view
+            else None
+        )
+        if self.bpf_widget:
+            main_layout.addWidget(self.bpf_widget)
 
     def _populate_header_metrics(self, row=None):
         if not hasattr(self, "header_metrics_layout"):
@@ -7058,9 +6935,8 @@ class XrmFormRenderer(QWidget):
                             state_json = json.dumps(
                                 self._build_js_state(), ensure_ascii=False
                             )
-                            self.browser.page().runJavaScript(
-                                f"if (window.initializeVerseOffState) window.initializeVerseOffState({state_json});"
-                            )
+                            if hasattr(self, "js_engine") and self.js_engine:
+                                self.js_engine.evaluate(f"if (window.initializeVerseOffState) window.initializeVerseOffState({state_json});")
                             self._fire_initial_events()
                             self.evaluate_ribbon_rules()
                         else:
@@ -9477,6 +9353,8 @@ class XrmFormRenderer(QWidget):
             widget.setEnabled(should_enable)
 
     def _dispatch_async_js_ribbon_rules(self, custom_rules_map):
+        if not hasattr(self, "js_engine") or not self.js_engine:
+            return
         arguments_json = json.dumps({
             "state": self._build_js_state(),
             "rules": custom_rules_map,
@@ -9485,27 +9363,24 @@ class XrmFormRenderer(QWidget):
                 "commandProperties": {},
             },
         }, ensure_ascii=False)
-        script = """
-        (function() {
-          var args = __ARGUMENTS__;
-          try {
-            window.initializeVerseOffState(args.state);
-            return Promise.resolve(
-              window.evaluateAllRibbonRules(args.rules, args.context)
-            );
-          } catch(e) {
-            return Promise.resolve({});
-          }
-        })();
-        """.replace("__ARGUMENTS__", arguments_json)
-        def on_js_done(result):
-            if isinstance(result, dict):
-                self._apply_ribbon_rules_state(result)
-
-        self.browser.page().runJavaScript(script, on_js_done)
+        script = (
+            "(function() {\n"
+            f"    var args = {arguments_json};\n"
+            "    try {\n"
+            "        window.initializeVerseOffState(args.state);\n"
+            "        var p = window.evaluateAllRibbonRules(args.rules, args.context);\n"
+            "        if (p && typeof p.then === 'function') {\n"
+            "            p.then(function(result) {\n"
+            "                if (result) window.pyBridge.ribbonRulesEvaluated(JSON.stringify(result));\n"
+            "            });\n"
+            "        }\n"
+            "    } catch(e) {}\n"
+            "})();"
+        )
+        self.js_engine.evaluate(script)
 
     def _dispatch_js_ribbon_rule(self, rule):
-        if not self._runtime_ready:
+        if not self._runtime_ready or not hasattr(self, "js_engine") or not self.js_engine:
             return False
         token = str(uuid.uuid4())
         loop = QEventLoop()
@@ -9545,59 +9420,40 @@ class XrmFormRenderer(QWidget):
             },
             "token": token,
         }, ensure_ascii=False)
-        script = """
-        (function() {
-          var args = __ARGUMENTS__;
-          try {
-            window.initializeVerseOffState(args.state);
-            Promise.resolve(
-              window.evaluateRibbonRule(args.rule, args.context)
-            ).then(function(result) {
-              window.pyBridge.eventDispatchCompleted(
-                args.token,
-                JSON.stringify(result)
-              );
-            }).catch(function(error) {
-              window.pyBridge.eventDispatchCompleted(
-                args.token,
-                JSON.stringify({
-                  value: false,
-                  errors: [{
-                    function: "<custom rule>",
-                    message: String(
-                      error && error.message ? error.message : error
-                    )
-                  }]
-                })
-              );
-            });
-          } catch (e) {
-            window.pyBridge.eventDispatchCompleted(
-              args.token,
-              JSON.stringify({ value: false })
-            );
-          }
-        })();
-        """.replace("__ARGUMENTS__", arguments_json)
-        self.browser.page().runJavaScript(script)
-        loop.exec()
-        result = waiter["result"] or {
-            "value": False,
-            "errors": [{
-                "function": rule.get("function_name") or "<custom rule>",
-                "message": "Ribbon custom rule returned no result.",
-            }],
-        }
+        script = (
+            "(function() {\n"
+            f"    var args = {arguments_json};\n"
+            "    try {\n"
+            "        window.initializeVerseOffState(args.state);\n"
+            "        var p = window.evaluateRibbonRule(args.rule, args.context);\n"
+            "        if (p && typeof p.then === 'function') {\n"
+            "            p.then(function(result) {\n"
+            "                window.pyBridge.eventDispatchCompleted(args.token, JSON.stringify(result));\n"
+            "            }).catch(function(error) {\n"
+            "                window.pyBridge.eventDispatchCompleted(args.token, JSON.stringify({ value: false }));\n"
+            "            });\n"
+            "        } else {\n"
+            "            window.pyBridge.eventDispatchCompleted(args.token, JSON.stringify(p || { value: false }));\n"
+            "        }\n"
+            "    } catch (e) {\n"
+            "        window.pyBridge.eventDispatchCompleted(args.token, JSON.stringify({ value: false }));\n"
+            "    }\n"
+            "})();"
+        )
+        self.js_engine.evaluate(script)
+        if waiter["result"] is None:
+            loop.exec()
+        result = waiter["result"] or {"value": False}
         self._event_waiters.pop(token, None)
         return bool(result.get("value"))
 
     def _dispatch_js_ribbon_action(self, action, button_data):
-        if not self._runtime_ready:
+        if not self._runtime_ready or not hasattr(self, "js_engine") or not self.js_engine:
             return {
                 "executed": False,
                 "errors": [{
                     "function": action.get("function_name") or "<ribbon>",
-                    "message": "The V8 client runtime is not ready.",
+                    "message": "The client runtime is not ready.",
                 }],
             }
         token = str(uuid.uuid4())
@@ -9642,38 +9498,36 @@ class XrmFormRenderer(QWidget):
 
         timer.timeout.connect(timed_out)
         timer.start(15000)
-        script = """
-        (function() {
-            var args = __ARGUMENTS__;
-            window.initializeVerseOffState(args.state);
-            Promise.resolve(
-                window.executeRibbonAction(args.action, args.context)
-            ).then(function(result) {
-                window.pyBridge.eventDispatchCompleted(
-                    args.token,
-                    JSON.stringify(result)
-                );
-            }).catch(function(error) {
-                window.pyBridge.eventDispatchCompleted(
-                    args.token,
-                    JSON.stringify({
-                        executed: false,
-                        errors: [{
-                            function: "<ribbon>",
-                            message: String(
-                                error && error.message
-                                    ? error.message
-                                    : error
-                            )
-                        }]
-                    })
-                );
-            });
-        })();
-        """.replace("__ARGUMENTS__", arguments_json)
-        self.browser.page().runJavaScript(script)
-        loop.exec()
-        result = waiter["result"]
+        script = (
+            "(function() {\n"
+            f"    var args = {arguments_json};\n"
+            "    try {\n"
+            "        window.initializeVerseOffState(args.state);\n"
+            "        var p = window.executeRibbonAction(args.action, args.context);\n"
+            "        if (p && typeof p.then === 'function') {\n"
+            "            p.then(function(result) {\n"
+            "                window.pyBridge.eventDispatchCompleted(args.token, JSON.stringify(result));\n"
+            "            }).catch(function(error) {\n"
+            "                window.pyBridge.eventDispatchCompleted(args.token, JSON.stringify({\n"
+            "                    executed: false,\n"
+            "                    errors: [{ function: '<ribbon>', message: String(error && error.message ? error.message : error) }]\n"
+            "                }));\n"
+            "            });\n"
+            "        } else {\n"
+            "            window.pyBridge.eventDispatchCompleted(args.token, JSON.stringify(p || { executed: true, errors: [] }));\n"
+            "        }\n"
+            "    } catch(error) {\n"
+            "        window.pyBridge.eventDispatchCompleted(args.token, JSON.stringify({\n"
+            "            executed: false,\n"
+            "            errors: [{ function: '<ribbon>', message: String(error && error.message ? error.message : error) }]\n"
+            "        }));\n"
+            "    }\n"
+            "})();"
+        )
+        self.js_engine.evaluate(script)
+        if waiter["result"] is None:
+            loop.exec()
+        result = waiter["result"] or {"executed": False, "errors": []}
         self._event_waiters.pop(token, None)
         return result
 
