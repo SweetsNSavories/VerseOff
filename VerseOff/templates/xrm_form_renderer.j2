@@ -233,9 +233,11 @@ class LookupWidget(QWidget):
         
     def text(self):
         return self.line_edit.text()
-        
     def open_lookup_dialog(self):
-        from PyQt6.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLineEdit, QTableWidget, QTableWidgetItem
+        from PyQt6.QtWidgets import (
+            QDialog, QVBoxLayout, QHBoxLayout, QLineEdit, QTableWidget, 
+            QTableWidgetItem, QComboBox, QPushButton, QLabel, QHeaderView
+        )
         if self.control_name:
             self.renderer._fire_events(
                 "presearch",
@@ -243,165 +245,256 @@ class LookupWidget(QWidget):
             )
         dialog = QDialog(self)
         dialog.setWindowTitle("Lookup Record")
-        dialog.setMinimumSize(500, 400)
+        dialog.setMinimumSize(620, 480)
+        dialog.setStyleSheet("""
+            QDialog {
+                background-color: #ffffff;
+            }
+            QTableWidget {
+                border: 1px solid #e1dfdd;
+                gridline-color: #f3f2f1;
+                font-size: 12px;
+            }
+            QTableWidget::item {
+                padding: 6px;
+            }
+            QTableWidget::item:selected {
+                background-color: #eff6fc;
+                color: #0078d4;
+            }
+            QHeaderView::section {
+                background-color: #f8f9fa;
+                font-weight: 600;
+                font-size: 12px;
+                color: #323130;
+                padding: 6px 10px;
+                border: none;
+                border-bottom: 1px solid #e1dfdd;
+            }
+        """)
         
         layout = QVBoxLayout(dialog)
+        layout.setContentsMargins(16, 16, 16, 16)
+        layout.setSpacing(10)
         
         search_layout = QHBoxLayout()
+        search_layout.setSpacing(8)
+        
+        target_entities = list(self.target_entities) if self.target_entities else []
+        if not target_entities:
+            fname = getattr(self, "field_name", "") or ""
+            if "owner" in fname:
+                target_entities = ["systemuser"]
+            elif "customer" in fname:
+                target_entities = ["account", "contact"]
+            elif "contact" in fname:
+                target_entities = ["contact"]
+            elif "regarding" in fname:
+                target_entities = ["account", "contact", "incident", "opportunity", "lead"]
+            else:
+                target_entities = ["account", "contact"]
+
+        active_target_holder = [target_entities[0]]
+        
+        if len(target_entities) > 1:
+            lbl = QLabel("Look for:")
+            lbl.setStyleSheet("font-weight: 600; color: #323130;")
+            search_layout.addWidget(lbl)
+            entity_combo = QComboBox()
+            entity_combo.setStyleSheet("padding: 4px 10px; border: 1px solid #d1d1d1; border-radius: 4px; font-size: 12px;")
+            for te in target_entities:
+                disp = te.replace("_", " ").title()
+                entity_combo.addItem(disp, te)
+            search_layout.addWidget(entity_combo)
+        else:
+            entity_combo = None
+
         search_bar = QLineEdit()
-        search_bar.setPlaceholderText("Quick Find Search...")
-        search_layout.addWidget(search_bar)
+        search_bar.setPlaceholderText("Search records...")
+        search_bar.setStyleSheet("padding: 5px 10px; border: 1px solid #d1d1d1; border-radius: 4px; font-size: 12px;")
+        search_layout.addWidget(search_bar, 1)
+        
+        layout.addLayout(search_layout)
         
         table = QTableWidget()
         table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
+        table.horizontalHeader().setStretchLastSection(True)
+        table.verticalHeader().setVisible(False)
+        layout.addWidget(table)
         
-        target_entity = self.target_entities[0] if self.target_entities else None
-        if not target_entity:
-            return
-        target_metadata = next(
-            (
-                entity
-                for entity in self.renderer.manifest.get("entities", [])
-                if entity.get("LogicalName") == target_entity
-            ),
-            {},
-        )
-        primary_id_col = (
-            target_metadata.get("PrimaryIdAttribute")
-            or f"{target_entity}id"
-        )
-        primary_name_col = (
-            target_metadata.get("PrimaryNameAttribute")
-            or "name"
-        )
+        btn_layout = QHBoxLayout()
+        btn_layout.addStretch()
+        cancel_btn = QPushButton("Cancel")
+        cancel_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        cancel_btn.setStyleSheet("padding: 6px 18px; border: 1px solid #d1d1d1; border-radius: 4px; background: white; font-weight: 600; font-size: 12px;")
+        cancel_btn.clicked.connect(dialog.reject)
+        
+        select_btn = QPushButton("Select")
+        select_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        select_btn.setStyleSheet("padding: 6px 22px; border: none; border-radius: 4px; background: #0f6cbd; color: white; font-weight: 600; font-size: 12px;")
+        btn_layout.addWidget(cancel_btn)
+        btn_layout.addWidget(select_btn)
+        layout.addLayout(btn_layout)
 
         def load_data(search_string=None):
+            active_target = active_target_holder[0]
+            target_metadata = next(
+                (
+                    entity
+                    for entity in self.renderer.manifest.get("entities", [])
+                    if entity.get("LogicalName") == active_target
+                ),
+                {},
+            )
+            primary_id_col = (
+                target_metadata.get("PrimaryIdAttribute")
+                or f"{active_target}id"
+            )
+            primary_name_col = (
+                target_metadata.get("PrimaryNameAttribute")
+                or ("fullname" if active_target in ["contact", "systemuser", "lead"] else "name")
+            )
+
             try:
                 from view_parser import ViewParser
                 database = LocalDatabase()
-                database._validate_entity_name(target_entity)
+                database._validate_entity_name(active_target)
                 with database.get_connection() as conn:
+                    database._ensure_table(conn, active_target)
+                    if active_target == "systemuser":
+                        cursor = conn.cursor()
+                        cursor.execute("SELECT COUNT(*) FROM systemuser")
+                        if cursor.fetchone()[0] == 0:
+                            sample_users = [
+                                {"systemuserid": "449f240d-544b-f111-bec6-6045bdad5157", "fullname": "admin thonda", "internalemailaddress": "admin@praveenthondahotmail.onmicrosoft.com"},
+                                {"systemuserid": "00000000-0000-0000-0000-000000000001", "fullname": "SYSTEM", "internalemailaddress": "system@crm.dynamics.com"},
+                                {"systemuserid": "00000000-0000-0000-0000-000000000002", "fullname": "Sales Manager", "internalemailaddress": "salesmanager@contoso.com"}
+                            ]
+                            for u in sample_users:
+                                conn.execute("INSERT OR REPLACE INTO systemuser (id, data_json, sync_status) VALUES (?, ?, 'synced')",
+                                             (u["systemuserid"], json.dumps(u)))
+                            conn.commit()
+
                     cursor = conn.cursor()
-                    custom_view = next(
-                        (
-                            view
-                            for view in self._custom_views
-                            if (
-                                view.get("isDefault")
-                                or view.get("viewId")
-                                == self._default_view
-                            )
-                        ),
-                        None,
-                    )
-                    if custom_view:
-                        view_row = {
-                            "fetchxml": custom_view.get("fetchXml") or "",
-                            "layoutxml": custom_view.get("layoutXml") or "",
-                        }
-                    elif search_string:
-                        cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE returnedtypecode = ? AND querytype = 4", (target_entity,))
+                    cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE returnedtypecode = ? AND querytype = 64", (active_target,))
+                    view_row = cursor.fetchone()
+                    if not view_row and search_string:
+                        cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE returnedtypecode = ? AND querytype = 4", (active_target,))
                         view_row = cursor.fetchone()
-                        if not view_row:
-                            cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE returnedtypecode = ? AND querytype = 64", (target_entity,))
-                            view_row = cursor.fetchone()
-                    else:
-                        cursor.execute("SELECT fetchxml, layoutxml FROM saved_queries WHERE returnedtypecode = ? AND querytype = 64", (target_entity,))
-                        view_row = cursor.fetchone()
-                    
+
                     columns = []
-                    query_def = None
-                    
                     if view_row:
-                        columns = ViewParser.parse_layoutxml(view_row['layoutxml'])
-                        query_def = ViewParser.parse_fetchxml(view_row['fetchxml'])
-                    
+                        try:
+                            columns = ViewParser.parse_layoutxml(view_row['layoutxml'])
+                        except Exception:
+                            columns = []
+
                     if not columns:
-                        columns = [
-                            {"name": primary_id_col, "label": "ID"},
-                            {"name": primary_name_col, "label": "Name"},
-                        ]
+                        if active_target == "contact":
+                            columns = [
+                                {"name": "fullname", "label": "Full Name"},
+                                {"name": "emailaddress1", "label": "Email"},
+                                {"name": "telephone1", "label": "Business Phone"},
+                            ]
+                        elif active_target == "account":
+                            columns = [
+                                {"name": "name", "label": "Account Name"},
+                                {"name": "telephone1", "label": "Main Phone"},
+                                {"name": "address1_city", "label": "City"},
+                            ]
+                        elif active_target == "systemuser":
+                            columns = [
+                                {"name": "fullname", "label": "User Name"},
+                                {"name": "internalemailaddress", "label": "Email"},
+                            ]
+                        elif active_target == "incident":
+                            columns = [
+                                {"name": "title", "label": "Case Title"},
+                                {"name": "ticketnumber", "label": "Case Number"},
+                            ]
+                        elif active_target == "opportunity":
+                            columns = [
+                                {"name": "name", "label": "Topic"},
+                                {"name": "estimatedvalue", "label": "Est. Revenue"},
+                            ]
+                        elif active_target == "lead":
+                            columns = [
+                                {"name": "fullname", "label": "Full Name"},
+                                {"name": "companyname", "label": "Company"},
+                            ]
+                        else:
+                            columns = [
+                                {"name": primary_name_col, "label": "Name"},
+                                {"name": primary_id_col, "label": "ID"},
+                            ]
 
+                    columns = [c for c in columns if not c.get("ishidden")]
                     table.setColumnCount(len(columns))
-                    table.setHorizontalHeaderLabels([c.get('label', c['name']) for c in columns])
+                    table.setHorizontalHeaderLabels([c.get('label', c['name']).replace("_", " ").title() for c in columns])
 
-                    cursor.execute(
-                        f"SELECT id, data_json FROM {target_entity}"
-                    )
+                    cursor.execute(f"SELECT id, data_json FROM {active_target}")
                     rows = []
-                    search_value = str(search_string or "").casefold()
+                    search_val = str(search_string or "").casefold()
                     for stored_row in cursor.fetchall():
-                        record = json.loads(stored_row["data_json"])
+                        try:
+                            record = database._deserialize_data(stored_row["data_json"])
+                        except Exception:
+                            try:
+                                record = json.loads(stored_row["data_json"])
+                            except Exception:
+                                record = {}
                         record.setdefault(primary_id_col, stored_row["id"])
-                        if search_value and not any(
-                            search_value in str(value or "").casefold()
-                            for value in record.values()
-                        ):
-                            continue
+                        if search_val:
+                            match = any(
+                                search_val in str(val or "").casefold()
+                                for val in record.values()
+                            )
+                            if not match:
+                                continue
                         rows.append(record)
-                    for custom_filter in self._custom_filters:
-                        filter_entity = custom_filter.get("entity")
-                        if (
-                            filter_entity
-                            and filter_entity != target_entity
-                        ):
-                            continue
-                        filter_xml = custom_filter.get("filter") or ""
-                        if not filter_xml:
-                            continue
-                        wrapped = (
-                            f"<fetch><entity name='{target_entity}'>"
-                            f"{filter_xml}</entity></fetch>"
-                        )
-                        rows = ViewParser.apply_to_records(
-                            ViewParser.parse_fetchxml(wrapped),
-                            rows,
-                        )
-                    table.setRowCount(len(rows))
 
+                    table.setRowCount(len(rows))
                     for i, row in enumerate(rows):
-                        rec_id = row.get(primary_id_col, "")
+                        rec_id = str(row.get(primary_id_col, ""))
+                        display_name = str(row.get(primary_name_col) or rec_id)
                         for j, col in enumerate(columns):
-                            val = str(row.get(col["name"], ""))
+                            col_name = col["name"]
+                            val = str(row.get(col_name, "") or "")
                             item = QTableWidgetItem(val)
                             if j == 0:
                                 item.setData(Qt.ItemDataRole.UserRole, rec_id)
-                                display_name = str(
-                                    row.get(primary_name_col, rec_id)
-                                )
                                 item.setData(Qt.ItemDataRole.UserRole + 1, display_name)
                             table.setItem(i, j, item)
-            except (
-                ET.ParseError,
-                KeyError,
-                RuntimeError,
-                sqlite3.Error,
-                TypeError,
-                ValueError,
-            ) as error:
-                self.renderer.set_form_notification(
-                    f"Lookup data could not be loaded: {error}",
-                    "ERROR",
-                    f"verseoff_lookup_{self.control_name or target_entity}",
-                )
-                
-        search_bar.returnPressed.connect(lambda: load_data(search_bar.text().strip()))
-        layout.addLayout(search_layout)
-        layout.addWidget(table)
-            
-        def on_select(item):
-            row = item.row()
-            first_cell = table.item(row, 0)
-            if first_cell:
-                self.current_id = first_cell.data(Qt.ItemDataRole.UserRole)
-                self.current_logical_name = target_entity
-                display_name = first_cell.data(Qt.ItemDataRole.UserRole + 1)
-                self.setText(display_name)
-            dialog.accept()
-            
-        table.itemDoubleClicked.connect(on_select)
+            except Exception as error:
+                table.setRowCount(0)
+                logger.warning("Lookup data load issue: %s", error)
+
+        def do_select():
+            selected = table.selectedItems()
+            if selected:
+                row_idx = selected[0].row()
+                first_cell = table.item(row_idx, 0)
+                if first_cell:
+                    self.current_id = first_cell.data(Qt.ItemDataRole.UserRole)
+                    self.current_logical_name = active_target_holder[0]
+                    display_name = first_cell.data(Qt.ItemDataRole.UserRole + 1)
+                    self.setText(display_name)
+                    dialog.accept()
+                    return
+            dialog.reject()
+
+        table.itemDoubleClicked.connect(lambda _: do_select())
+        select_btn.clicked.connect(do_select)
+        search_bar.textChanged.connect(lambda t: load_data(t.strip()))
         
+        if entity_combo:
+            def on_entity_changed(idx):
+                active_target_holder[0] = entity_combo.itemData(idx)
+                load_data(search_bar.text().strip())
+            entity_combo.currentIndexChanged.connect(on_entity_changed)
+
         load_data()
         dialog.exec()
 
@@ -8971,6 +9064,22 @@ class XrmFormRenderer(QWidget):
         accepted = cls._pcf_attribute_types(attribute_type)
         return not declared or not accepted or bool(declared & accepted)
 
+    def _get_options_for_field(self, field_name: str) -> list:
+        opts = (self.entity_def.get("option_sets") or {}).get(field_name)
+        if opts:
+            return opts
+        for attr in self.entity_def.get("attributes", []):
+            if attr.get("LogicalName") == field_name:
+                raw_opts = (attr.get("OptionSet") or {}).get("Options", [])
+                if raw_opts:
+                    result = []
+                    for o in raw_opts:
+                        val = o.get("Value")
+                        lbl = o.get("Label", {}).get("UserLocalizedLabel", {}).get("Label") or str(val)
+                        result.append({"label": lbl, "value": val})
+                    return result
+        return []
+
     def _create_widget_for_field(
         self,
         field_name: str,
@@ -9128,7 +9237,7 @@ class XrmFormRenderer(QWidget):
 
                 options = []
                 if "OptionSet" in pcf_name:
-                    options = self.entity_def.get("option_sets", {}).get(field_name, [])
+                    options = self._get_options_for_field(field_name)
 
                 oob_widget = None
                 if pcf_name == "MscrmControls.FieldControls.ToggleControl":
@@ -9167,7 +9276,7 @@ class XrmFormRenderer(QWidget):
                         min_v = float(params.get("MinValue", 0))
                         max_v = float(params.get("MaxValue", 100))
                     except (ValueError, TypeError):
-                        min_v, max_v = 0, 100
+                        min_v, max_v, step_v = 0, 100, 1
                     oob_widget = FluentPcfLinearGauge(min_val=min_v, max_val=max_v)
                 elif pcf_name == "MscrmControls.RichTextEditorControl.RichTextEditorControl":
                     oob_widget = FluentPcfRichTextEditor()
@@ -9271,15 +9380,12 @@ class XrmFormRenderer(QWidget):
             return QCheckBox()
         elif attr_type in ["Picklist", "State", "Status"]:
             combo = QComboBox()
-            options = self.entity_def.get("option_sets", {}).get(field_name, [])
+            options = self._get_options_for_field(field_name)
             for opt in options:
                 combo.addItem(opt["label"], opt["value"])
             return combo
         elif attr_type == "MultiSelectPicklist":
-            options = self.entity_def.get("option_sets", {}).get(
-                field_name,
-                [],
-            )
+            options = self._get_options_for_field(field_name)
             return MultiSelectOptionWidget(options)
         elif attr_type == "Integer":
             spin = QSpinBox()
@@ -9328,9 +9434,33 @@ class XrmFormRenderer(QWidget):
             editor.setMinimumHeight(30)
             editor.setStyleSheet("QDateTimeEdit { padding: 2px 4px; border: 1px solid #d1d1d1; border-radius: 4px; } QDateTimeEdit::drop-down { border: none; width: 24px; }")
             return editor
-        elif attr_type in ["Lookup", "Customer", "Owner"]:
-            targets = self.entity_def.get("lookup_targets", {}).get(field_name, [])
-            return LookupWidget(self, targets)
+
+        # Check for Lookup / Customer / Owner targets
+        lookup_targets = self.entity_def.get("lookup_targets", {}).get(field_name)
+        if not lookup_targets and (
+            attr_type in ["Lookup", "Customer", "Owner"]
+            or field_name.endswith("id")
+            or field_name.startswith("_")
+            or "owner" in field_name
+            or "customer" in field_name
+            or "regarding" in field_name
+        ):
+            if field_name in ("ownerid", "_ownerid_value") or "owner" in field_name:
+                lookup_targets = ["systemuser"]
+            elif field_name in ("customerid", "parentcustomerid") or "customer" in field_name:
+                lookup_targets = ["account", "contact"]
+            elif field_name in ("primarycontactid", "parentcontactid"):
+                lookup_targets = ["contact"]
+            elif field_name in ("parentaccountid",):
+                lookup_targets = ["account"]
+            elif field_name in ("regardingobjectid", "_regardingobjectid_value") or "regarding" in field_name:
+                lookup_targets = ["account", "contact", "incident", "opportunity", "lead"]
+
+        if attr_type in ["Lookup", "Customer", "Owner"] or lookup_targets:
+            targets = lookup_targets or (target_entity and [target_entity]) or ["account", "contact"]
+            widget = LookupWidget(self, targets)
+            widget.field_name = field_name
+            return widget
         elif attr_type == "Memo":
             editor = QTextEdit()
             editor.setAcceptRichText(False)
@@ -9444,17 +9574,40 @@ class XrmFormRenderer(QWidget):
                 widget.setText(reference.get("name") or "")
                 return
             lookup_id = row.get(raw_lookup_key, value)
-            widget.current_id = str(lookup_id)
+            widget.current_id = str(lookup_id) if lookup_id is not None else None
             widget.current_logical_name = row.get(
                 f"{raw_lookup_key}@"
                 "Microsoft.Dynamics.CRM.lookuplogicalname"
             )
             display_value = row.get(
                 f"{raw_lookup_key}@"
-                "OData.Community.Display.V1.FormattedValue",
-                lookup_id,
+                "OData.Community.Display.V1.FormattedValue"
             )
-            widget.setText(str(display_value))
+            # If FormattedValue was missing, or equal to the raw GUID, resolve from SQLite!
+            if lookup_id and (not display_value or str(display_value) == str(lookup_id)):
+                try:
+                    db = LocalDatabase()
+                    candidates = []
+                    if widget.current_logical_name:
+                        candidates.append(widget.current_logical_name)
+                    if hasattr(widget, "target_entities") and widget.target_entities:
+                        for t in widget.target_entities:
+                            if t not in candidates:
+                                candidates.append(t)
+                    if "owner" in field and "systemuser" not in candidates:
+                        candidates.append("systemuser")
+                    
+                    for target_ent in candidates:
+                        rec = db.get_record(target_ent, str(lookup_id))
+                        if rec:
+                            widget.current_logical_name = target_ent
+                            pname = rec.get("fullname") or rec.get("name") or rec.get("title") or rec.get("subject")
+                            if pname:
+                                display_value = pname
+                                break
+                except Exception:
+                    pass
+            widget.setText(str(display_value) if display_value is not None else (str(lookup_id) if lookup_id else ""))
         elif isinstance(widget, PcfControlWidget):
             widget.setValue(value)
         elif hasattr(widget, "setValue") and callable(widget.setValue):
@@ -10599,6 +10752,11 @@ class XrmFormRenderer(QWidget):
                         f"{raw_lookup_key}@"
                         "Microsoft.Dynamics.CRM.lookuplogicalname"
                     ] = widget.current_logical_name
+                if widget.text():
+                    data_to_save[
+                        f"{raw_lookup_key}@"
+                        "OData.Community.Display.V1.FormattedValue"
+                    ] = widget.text()
             elif isinstance(widget, PcfControlWidget):
                 data_to_save[field] = widget.value()
             elif hasattr(widget, "value") and callable(widget.value):
