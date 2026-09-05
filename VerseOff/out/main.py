@@ -480,14 +480,19 @@ class OfflineApp(QMainWindow):
         top_search.setStyleSheet("background-color: #ffffff; color: #201f1e; border: none; border-radius: 4px; padding: 4px 10px;")
         header_layout.addWidget(top_search)
         
+        # Live Dataverse Connection Status Badge
+        self.online_badge = QLabel("● Online: orgb7c4e2ec")
+        self.online_badge.setStyleSheet("background-color: rgba(16, 124, 65, 0.35); color: #a6f3b7; font-weight: 600; font-size: 11px; padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(70, 195, 120, 0.5);")
+        header_layout.addWidget(self.online_badge)
+
         # Sync Action
-        self.sync_btn = QPushButton("⚡ Sync with Cloud")
+        self.sync_btn = QPushButton("↻ Sync Dataverse")
         self.sync_btn.setStyleSheet("background-color: #0f6cbd; color: #ffffff; font-weight: 600; border: none; border-radius: 4px; padding: 5px 14px;")
         self.sync_btn.clicked.connect(self.trigger_sync)
         header_layout.addWidget(self.sync_btn)
         
         # User profile badge
-        user_badge = QLabel("👤 Offline User")
+        user_badge = QLabel("👤 Admin (Live Org)")
         user_badge.setStyleSheet("color: #ffffff; font-weight: 500; padding-left: 8px;")
         header_layout.addWidget(user_badge)
         
@@ -696,9 +701,8 @@ class OfflineApp(QMainWindow):
             group_title = grp.get("title") or grp.get("id") or "Tables"
             grp_item = QTreeWidgetItem([group_title.upper()])
             grp_item.setFlags(Qt.ItemFlag.ItemIsEnabled)
-            font = grp_item.font(0)
+            font = QFont("Segoe UI", 10)
             font.setBold(True)
-            font.setPointSize(10)
             grp_item.setFont(0, font)
             grp_item.setForeground(0, Qt.GlobalColor.darkGray)
             

@@ -1211,15 +1211,22 @@ class AssociatedGridWidget(QWidget):
         layout.addWidget(self.table)
         
     def on_add_new(self):
-        if hasattr(self.parent_renderer, "window") and self.parent_renderer.window:
-            self.parent_renderer.window.open_form(self.target_entity, None)
+        win = self.parent_renderer.window() if callable(getattr(self.parent_renderer, "window", None)) else getattr(self.parent_renderer, "window", None)
+        if win and hasattr(win, "open_form"):
+            win.open_form(self.target_entity, None)
+        elif hasattr(self.parent_renderer, "open_form_callback") and self.parent_renderer.open_form_callback:
+            self.parent_renderer.open_form_callback(self.target_entity, None)
             
     def on_row_double_clicked(self, row, col):
         item = self.table.item(row, 0)
         if item:
             rec_id = item.data(Qt.ItemDataRole.UserRole)
-            if rec_id and hasattr(self.parent_renderer, "window") and self.parent_renderer.window:
-                self.parent_renderer.window.open_form(self.target_entity, rec_id)
+            if rec_id:
+                win = self.parent_renderer.window() if callable(getattr(self.parent_renderer, "window", None)) else getattr(self.parent_renderer, "window", None)
+                if win and hasattr(win, "open_form"):
+                    win.open_form(self.target_entity, rec_id)
+                elif hasattr(self.parent_renderer, "open_form_callback") and self.parent_renderer.open_form_callback:
+                    self.parent_renderer.open_form_callback(self.target_entity, rec_id)
                 
     def on_filter_changed(self, text):
         query = text.strip().lower()
@@ -9374,6 +9381,8 @@ class XrmFormRenderer(QWidget):
                 widget.clear()
             elif isinstance(widget, QTextEdit):
                 widget.clear()
+            elif isinstance(widget, (QSpinBox, QDoubleSpinBox)):
+                widget.clear()
             elif isinstance(widget, QCheckBox):
                 widget.setChecked(False)
             elif isinstance(widget, QComboBox):
@@ -9387,7 +9396,13 @@ class XrmFormRenderer(QWidget):
             elif isinstance(widget, PcfControlWidget):
                 widget.setValue(None)
             elif hasattr(widget, "setValue") and callable(widget.setValue):
-                widget.setValue(None)
+                try:
+                    widget.setValue(None)
+                except TypeError:
+                    try:
+                        widget.setValue(0)
+                    except Exception:
+                        pass
             return
         if isinstance(widget, QLineEdit):
             widget.setText(str(value))

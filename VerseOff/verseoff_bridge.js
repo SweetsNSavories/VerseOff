@@ -28,6 +28,9 @@
         pendingOperations: Object.create(null)
     };
 
+    var formEntity;
+    var formUi;
+
     function emptyState() {
         return {
             attributes: {},
@@ -1301,7 +1304,7 @@
         }
     );
 
-    const formEntity = {
+    formEntity = {
         attributes: formAttributes,
         getId: function () {
             return global.verseOffState.entity.id || "";
@@ -1998,7 +2001,7 @@
         };
     }
 
-    const formUi = {
+    formUi = {
         controls: formControls,
         tabs: formTabs,
         formSelector: {

@@ -57,7 +57,13 @@ class SyncEngine:
             self.entities = dict(raw_entities or {})
         self.deep_sync_entities = {}
         self._discover_subgrid_entities()
-        self.cache_path = Path(_default_data_dir()) / "verseoff_token_cache.bin"
+        candidate_paths = [
+            Path(_default_data_dir()) / "verseoff_token_cache.bin",
+            Path(os.getcwd()) / "verseoff_token_cache.bin",
+            Path(os.path.dirname(os.path.abspath(__file__))) / "verseoff_token_cache.bin",
+            Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) / "verseoff_token_cache.bin",
+        ]
+        self.cache_path = next((p for p in candidate_paths if p.exists()), candidate_paths[0])
 
     def _discover_subgrid_entities(self):
         """Analyze form XML to find subgrid targets for automatic syncing."""
@@ -216,10 +222,20 @@ class SyncEngine:
                         queue.add(target_entity)
         return normalized
 
-    def _push_entity(self, logical_name, entity, token):
+    @staticmethod
+    def _resolve_entity_set_name(entity, logical_name):
         entity_set = entity.get("EntitySetName")
-        if not entity_set:
-            raise ValueError(f"{logical_name} has no EntitySetName metadata.")
+        if entity_set:
+            return entity_set
+        name = str(logical_name or entity.get("LogicalName", "")).lower()
+        if name.endswith("y"):
+            return name[:-1] + "ies"
+        elif name.endswith("s"):
+            return name + "es"
+        return name + "s"
+
+    def _push_entity(self, logical_name, entity, token):
+        entity_set = self._resolve_entity_set_name(entity, logical_name)
 
         summary = {
             "pushed": 0,
@@ -349,15 +365,11 @@ class SyncEngine:
         return summary
 
     def _initial_pull_url(self, entity):
-        entity_set = entity.get("EntitySetName")
-        if not entity_set:
-            raise ValueError(
-                f"{entity.get('LogicalName')} has no EntitySetName metadata."
-            )
+        entity_set = self._resolve_entity_set_name(entity, entity.get("LogicalName"))
         readable = []
         for attribute in entity.get("attributes", []):
             logical_name = attribute.get("LogicalName")
-            if not attribute.get("IsValidForRead") or not logical_name:
+            if attribute.get("IsValidForRead") is False or not logical_name:
                 continue
             if self._is_lookup_attribute(attribute):
                 readable.append(f"_{logical_name}_value")
