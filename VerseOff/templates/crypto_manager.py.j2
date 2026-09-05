@@ -162,7 +162,7 @@ class CryptoManager:
     decrypt_json = decrypt_dict
 
     def secure_wipe(self):
-        """Wipes the encrypted master key from disk."""
+        """Wipes the encrypted master key from disk and regenerates a clean persistent key."""
         if os.path.exists(self.key_path):
             try:
                 file_size = os.path.getsize(self.key_path)
@@ -172,15 +172,26 @@ class CryptoManager:
                 logger.info("Master key securely wiped from disk.")
             except Exception as e:
                 logger.error(f"Error securely wiping key: {e}")
+        self.master_key = self._load_or_create_key()
+        self.aesgcm = AESGCM(self.master_key)
 
     _instance = None
 
     @classmethod
     def get_instance(cls, data_dir: str = None) -> "CryptoManager":
         """Returns singleton instance, creating it if needed."""
-        if cls._instance is None:
+        if not data_dir:
+            data_dir = os.environ.get("VERSEOFF_DATA_DIR")
             if not data_dir:
-                data_dir = os.environ.get("VERSEOFF_DATA_DIR") or os.getcwd()
+                import platform
+                from pathlib import Path
+                if platform.system() == "Windows":
+                    base = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
+                else:
+                    base = Path.home() / ".local" / "share"
+                data_dir = str(base / "VerseOff" / "00000000-0000-0000-0000-000000000001")
+        
+        if cls._instance is None or (data_dir and os.path.abspath(cls._instance.data_dir) != os.path.abspath(data_dir)):
             cls._instance = cls(data_dir)
         return cls._instance
 

@@ -1284,9 +1284,14 @@ class OfflineApp(QMainWindow):
                     for rec in cursor.fetchall():
                         rec_id, data_str, status, mod_on = rec
                         try:
-                            item_data = json.loads(data_str) if data_str else {}
+                            item_data = self.db._deserialize_data(data_str) if data_str else {}
                         except Exception:
                             item_data = {}
+                        if not item_data and data_str:
+                            try:
+                                item_data = json.loads(data_str)
+                            except Exception:
+                                item_data = {}
                         item_data["id"] = rec_id
                         item_data[primary_id_attr] = rec_id
                         item_data["sync_status"] = status
@@ -1450,6 +1455,27 @@ class OfflineApp(QMainWindow):
                 target = item
                 break
             iterator += 1
+
+        # If not in current active area, search across all areas and switch area
+        if target is None and hasattr(self, "sitemap_structure") and hasattr(self, "area_combo"):
+            for area_idx, area in enumerate(self.sitemap_structure):
+                for group in area.get("groups", []):
+                    for sub in group.get("subareas", []):
+                        if sub.get("entity") == entity_name:
+                            self.area_combo.setCurrentIndex(area_idx)
+                            iterator = QTreeWidgetItemIterator(self.nav_tree)
+                            while iterator.value():
+                                item = iterator.value()
+                                if item.data(0, Qt.ItemDataRole.UserRole) == entity_name:
+                                    target = item
+                                    break
+                                iterator += 1
+                            break
+                    if target:
+                        break
+                if target:
+                    break
+
         if target is None:
             raise ValueError(
                 f"Table {entity_name!r} is not present in the SiteMap."

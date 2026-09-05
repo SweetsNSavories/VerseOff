@@ -92,11 +92,13 @@ class LocalDatabase:
             data_dir = _default_data_dir()
             data_dir.mkdir(parents=True, exist_ok=True)
             self.db_path = str(data_dir / "verseoff_local.db")
+            resolved_dir = str(data_dir)
         else:
             self.db_path = str(db_path)
+            resolved_dir = os.path.dirname(os.path.abspath(self.db_path))
 
         if CryptoManager:
-            self.crypto = CryptoManager.get_instance()
+            self.crypto = CryptoManager.get_instance(resolved_dir)
         else:
             self.crypto = None
 

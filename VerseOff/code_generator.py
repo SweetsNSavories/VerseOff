@@ -183,6 +183,25 @@ class CodeGenerator:
             os.path.join(self.output_dir, "pcf_metadata.py"),
         )
         generated_files.append("pcf_metadata.py")
+
+        schema_manager_source = os.path.join(
+            self.base_dir,
+            "schema_manager.py",
+        )
+        if os.path.exists(schema_manager_source):
+            shutil.copyfile(
+                schema_manager_source,
+                os.path.join(self.output_dir, "schema_manager.py"),
+            )
+            generated_files.append("schema_manager.py")
+
+        schemas_source = os.path.join(self.base_dir, "schemas")
+        if os.path.isdir(schemas_source):
+            schemas_target = os.path.join(self.output_dir, "schemas")
+            if os.path.exists(schemas_target):
+                shutil.rmtree(schemas_target)
+            shutil.copytree(schemas_source, schemas_target)
+            generated_files.append("schemas")
         self._render_template(
             "timeline_widget.j2",
             "timeline_widget.py",

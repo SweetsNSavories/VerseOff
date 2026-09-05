@@ -511,6 +511,165 @@ class QuickViewWidget(QGroupBox):
             ): lookup.current_logical_name,
         })
 
+class TimerWidget(QFrame):
+    """
+    Implements Power Platform FormXml Timer Control (ClassID: {9c563dcb-b617-4847-a7eb-6c1c385c5b4e}).
+    Renders an active countdown or elapsed SLA timer with Fluent badges:
+    In Progress, Warning, Succeeded, Canceled, or Expired.
+    """
+    def __init__(self, renderer, field_name, control_elem=None, parent=None):
+        super().__init__(parent)
+        self.renderer = renderer
+        self.field_name = field_name
+        self.control_elem = control_elem
+        self.failure_field = "resolveby"
+        self.success_field = "statuscode"
+        self.success_value = "1"
+        self.warning_field = ""
+        self.warning_value = ""
+        self.cancel_field = "statecode"
+        self.cancel_value = "2"
+        self.target_time = None
+        self.is_success = False
+        self.is_canceled = False
+
+        if control_elem is not None:
+            params = control_elem.find("parameters")
+            if params is not None:
+                for child in params:
+                    tag_l = child.tag.lower()
+                    val = (child.text or "").strip()
+                    if tag_l == "failuretimefield":
+                        self.failure_field = val
+                    elif tag_l == "successconditionname":
+                        self.success_field = val
+                    elif tag_l == "successconditionvalue":
+                        self.success_value = val
+                    elif tag_l == "warningconditionname":
+                        self.warning_field = val
+                    elif tag_l == "warningconditionvalue":
+                        self.warning_value = val
+                    elif tag_l == "cancelconditionname":
+                        self.cancel_field = val
+                    elif tag_l == "cancelconditionvalue":
+                        self.cancel_value = val
+
+        self.setObjectName("TimerWidget")
+        self.setStyleSheet("""
+            QFrame#TimerWidget {
+                background: #faf9f8;
+                border: 1px solid #edebe9;
+                border-radius: 6px;
+            }
+        """)
+        layout = QHBoxLayout(self)
+        layout.setContentsMargins(12, 8, 12, 8)
+        layout.setSpacing(12)
+
+        lbl_box = QVBoxLayout()
+        lbl_box.setSpacing(2)
+        title_text = self.field_name.replace("_", " ").title() if self.field_name else "SLA Timer"
+        self.title_lbl = QLabel(title_text)
+        self.title_lbl.setStyleSheet("font-size: 12px; font-weight: 600; color: #323130;")
+        self.target_lbl = QLabel("Tracking SLA Resolution")
+        self.target_lbl.setStyleSheet("font-size: 11px; color: #605e5c;")
+        lbl_box.addWidget(self.title_lbl)
+        lbl_box.addWidget(self.target_lbl)
+        layout.addLayout(lbl_box)
+        layout.addStretch()
+
+        time_box = QVBoxLayout()
+        time_box.setSpacing(2)
+        self.timer_val_lbl = QLabel("--:--:--")
+        self.timer_val_lbl.setStyleSheet("font-size: 15px; font-weight: 700; color: #0078d4;")
+        self.status_badge = QLabel("In Progress")
+        self.status_badge.setStyleSheet("font-size: 10px; font-weight: 600; color: #0078d4; background: #eff6fc; padding: 2px 8px; border-radius: 4px;")
+        time_box.addWidget(self.timer_val_lbl, alignment=Qt.AlignmentFlag.AlignRight)
+        time_box.addWidget(self.status_badge, alignment=Qt.AlignmentFlag.AlignRight)
+        layout.addLayout(time_box)
+
+        self.qtimer = QTimer(self)
+        self.qtimer.setInterval(1000)
+        self.qtimer.timeout.connect(self._update_countdown)
+        self.qtimer.start()
+
+    def refresh_from_record(self, record):
+        from datetime import datetime, timezone
+        if not record:
+            return
+        if self.success_field and str(record.get(self.success_field, "")) == str(self.success_value):
+            self.is_success = True
+        if self.cancel_field and str(record.get(self.cancel_field, "")) == str(self.cancel_value):
+            self.is_canceled = True
+
+        raw_time = record.get(self.failure_field) or record.get("resolveby") or record.get("followupby")
+        if raw_time:
+            try:
+                clean_time = str(raw_time).replace("Z", "+00:00")
+                self.target_time = datetime.fromisoformat(clean_time)
+                if self.target_time.tzinfo is None:
+                    self.target_time = self.target_time.replace(tzinfo=timezone.utc)
+            except Exception:
+                self.target_time = None
+        else:
+            self.target_time = None
+        self._update_countdown()
+
+    def _update_countdown(self):
+        from datetime import datetime, timezone
+        if self.is_success:
+            self.timer_val_lbl.setText("00:00:00")
+            self.timer_val_lbl.setStyleSheet("font-size: 15px; font-weight: 700; color: #107c10;")
+            self.status_badge.setText("Succeeded")
+            self.status_badge.setStyleSheet("font-size: 10px; font-weight: 600; color: #107c10; background: #dff6dd; padding: 2px 8px; border-radius: 4px;")
+            self.qtimer.stop()
+            return
+
+        if self.is_canceled:
+            self.timer_val_lbl.setText("Canceled")
+            self.timer_val_lbl.setStyleSheet("font-size: 13px; font-weight: 700; color: #605e5c;")
+            self.status_badge.setText("Canceled")
+            self.status_badge.setStyleSheet("font-size: 10px; font-weight: 600; color: #605e5c; background: #f3f2f1; padding: 2px 8px; border-radius: 4px;")
+            self.qtimer.stop()
+            return
+
+        if not self.target_time:
+            self.timer_val_lbl.setText("04:00:00")
+            self.status_badge.setText("Active")
+            return
+
+        now = datetime.now(timezone.utc)
+        delta = self.target_time - now
+        total_seconds = int(delta.total_seconds())
+
+        if total_seconds > 0:
+            hrs = total_seconds // 3600
+            mins = (total_seconds % 3600) // 60
+            secs = total_seconds % 60
+            self.timer_val_lbl.setText(f"{hrs:02d}:{mins:02d}:{secs:02d}")
+            if total_seconds < 1800:
+                self.timer_val_lbl.setStyleSheet("font-size: 15px; font-weight: 700; color: #d83b01;")
+                self.status_badge.setText("Warning: Near Expiry")
+                self.status_badge.setStyleSheet("font-size: 10px; font-weight: 600; color: #d83b01; background: #fed9cc; padding: 2px 8px; border-radius: 4px;")
+            else:
+                self.timer_val_lbl.setStyleSheet("font-size: 15px; font-weight: 700; color: #0078d4;")
+                self.status_badge.setText("In Progress")
+                self.status_badge.setStyleSheet("font-size: 10px; font-weight: 600; color: #0078d4; background: #eff6fc; padding: 2px 8px; border-radius: 4px;")
+        else:
+            abs_sec = abs(total_seconds)
+            hrs = abs_sec // 3600
+            mins = (abs_sec % 3600) // 60
+            self.timer_val_lbl.setText(f"Expired {hrs}h {mins}m ago")
+            self.timer_val_lbl.setStyleSheet("font-size: 13px; font-weight: 700; color: #a80000;")
+            self.status_badge.setText("Noncompliant")
+            self.status_badge.setStyleSheet("font-size: 10px; font-weight: 600; color: #a80000; background: #fde7e9; padding: 2px 8px; border-radius: 4px;")
+
+    def value(self):
+        return self.timer_val_lbl.text()
+
+    def setValue(self, val):
+        pass
+
 
 class SubgridWidget(QWidget):
     def __init__(
@@ -7133,19 +7292,33 @@ class XrmFormRenderer(QWidget):
             widget.sizePolicy().verticalPolicy(),
         )
 
+        is_full_width_widget = (
+            isinstance(widget, (TimelineWidget, SubgridWidget, WebResourceWidget, TimerWidget, QuickViewWidget))
+            or (control_element is not None and is_timeline_control(control_element))
+            or (class_id and str(class_id).lower() in {
+                "{06375649-c143-495e-a496-c962e5b4488e}",
+                "{e7a81278-8635-4d9e-8d4d-59480b391c5b}",
+                "{fd2a7985-3187-444e-a0e2-63b716fbd9d7}",
+                "{9c563dcb-b617-4847-a7eb-6c1c385c5b4e}",
+            })
+        )
+
         cell_widget = QWidget()
         label_position = str(
             section_element.get("celllabelposition") or "Left"
         ).lower()
-        if label_position == "top":
+        if label_position == "top" or is_full_width_widget:
             cell_layout = QVBoxLayout(cell_widget)
+            cell_layout.setContentsMargins(0, 0, 0, 0)
+            cell_layout.setSpacing(0)
         else:
             cell_layout = QHBoxLayout(cell_widget)
-        cell_layout.setContentsMargins(0, 2, 0, 2)
-        cell_layout.setSpacing(10)
+            cell_layout.setContentsMargins(0, 2, 0, 2)
+            cell_layout.setSpacing(10)
 
         show_label = (
             str(cell_element.get("showlabel", "true")).lower() != "false"
+            and not is_full_width_widget
         )
         if show_label:
             label_widget = QLabel(control_label)
@@ -7584,6 +7757,34 @@ class XrmFormRenderer(QWidget):
                 
             self.tab_widget.currentChanged.connect(self._on_tab_changed)
             self.form_layout.addWidget(self.tab_widget)
+
+            # --- Render Footer ---
+            footer_node = root.find(".//footer")
+            if footer_node is not None:
+                footer_widget = QWidget()
+                footer_widget.setStyleSheet("background: #faf9f8; border-top: 1px solid #edebe9; border-radius: 4px; padding: 4px 12px;")
+                footer_layout = QHBoxLayout(footer_widget)
+                footer_layout.setContentsMargins(12, 6, 12, 6)
+                status_code = footer_node.get("statuscode", "")
+                footer_lbl = QLabel(f"Status: {status_code}" if status_code else "Offline Ready")
+                footer_lbl.setStyleSheet("color: #605e5c; font-size: 11px; font-weight: 500;")
+                footer_layout.addWidget(footer_lbl)
+                footer_layout.addStretch()
+                for cell in footer_node.findall(".//cell"):
+                    ctrl_elem = cell.find("control")
+                    if ctrl_elem is not None:
+                        df = ctrl_elem.get("datafieldname") or ctrl_elem.get("id")
+                        clbl = self._get_label_from_xml(cell.find("labels")) or df
+                        if df:
+                            flbl = QLabel(f"{clbl}:")
+                            flbl.setStyleSheet("font-size: 11px; color: #605e5c; font-weight: 600;")
+                            fval = QLabel("Active")
+                            fval.setStyleSheet("font-size: 11px; color: #201f1e;")
+                            self.controls.setdefault(df, fval)
+                            footer_layout.addWidget(flbl)
+                            footer_layout.addWidget(fval)
+                self.form_layout.addWidget(footer_widget)
+
             self._wire_quick_view_lookups()
 
             # Wire up PyQt Signals for OnChange events
@@ -8206,6 +8407,14 @@ class XrmFormRenderer(QWidget):
             self.subgrids.append(subgrid)
             return subgrid
 
+        # Detect Timer Control (ClassID {9c563dcb-b617-4847-a7eb-6c1c385c5b4e})
+        if (
+            (class_id and class_id.lower() == "{9c563dcb-b617-4847-a7eb-6c1c385c5b4e}")
+            or (control_elem is not None and control_elem.find(".//parameters/FailureTimeField") is not None)
+        ):
+            timer_widget = TimerWidget(self, field_name, control_elem=control_elem, parent=self)
+            return timer_widget
+
         # Detect Web Resources
         if class_id and class_id.lower() == "{fd2a7985-3187-444e-a0e2-63b716fbd9d7}":
             wr_url = ""
@@ -8555,6 +8764,8 @@ class XrmFormRenderer(QWidget):
             widget.setText(str(display_value))
         elif isinstance(widget, PcfControlWidget):
             widget.setValue(value)
+        elif isinstance(widget, TimerWidget):
+            widget.refresh_from_record(row)
 
     def _populate_data(self):
         previous = self._suppress_events

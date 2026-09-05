@@ -218,28 +218,43 @@ def build_manifest():
                                     <row><cell id='{c_contact}'><labels><label description='Primary Contact' languagecode='1033'/></labels><control id='primarycontactid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='primarycontactid'/></cell></row>
                                 </rows>
                             </section>
-                        </sections>
-                    </column>
-                    <column width='33%'>
-                        <sections>
                             <section name='ADDRESS_SECTION' id='{sec_acc_addr}'>
-                                <labels><label description='Address &amp; Location' languagecode='1033'/></labels>
+                                <labels><label description='Address' languagecode='1033'/></labels>
                                 <rows>
-                                    <row><cell id='{c_addr1}'><labels><label description='Street Address' languagecode='1033'/></labels><control id='address1_line1' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_line1'/></cell></row>
+                                    <row><cell id='{c_addr1}'><labels><label description='Street' languagecode='1033'/></labels><control id='address1_line1' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_line1'/></cell></row>
                                     <row><cell id='{c_city}'><labels><label description='City' languagecode='1033'/></labels><control id='address1_city' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_city'/></cell></row>
-                                    <row><cell id='{c_state}'><labels><label description='State/Province' languagecode='1033'/></labels><control id='address1_stateorprovince' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_stateorprovince'/></cell></row>
-                                    <row><cell id='{c_zip}'><labels><label description='Postal Code' languagecode='1033'/></labels><control id='address1_postalcode' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_postalcode'/></cell></row>
-                                    <row><cell id='{c_country}'><labels><label description='Country/Region' languagecode='1033'/></labels><control id='address1_country' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_country'/></cell></row>
+                                    <row><cell id='{c_state}'><labels><label description='State' languagecode='1033'/></labels><control id='address1_stateorprovince' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_stateorprovince'/></cell></row>
+                                    <row><cell id='{c_zip}'><labels><label description='ZIP Code' languagecode='1033'/></labels><control id='address1_postalcode' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_postalcode'/></cell></row>
                                 </rows>
                             </section>
                         </sections>
                     </column>
-                    <column width='33%'>
+                    <column width='36%'>
                         <sections>
                             <section name='TIMELINE_SECTION' id='{sec_acc_timeline}'>
-                                <labels><label description='Timeline &amp; Activities' languagecode='1033'/></labels>
+                                <labels><label description='Timeline' languagecode='1033'/></labels>
                                 <rows>
-                                    <row><cell id='{c_timeline}'><labels><label description='Activities' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>
+                                    <row><cell id='{c_timeline}' showlabel='false'><labels><label description='Timeline' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>
+                                </rows>
+                            </section>
+                        </sections>
+                    </column>
+                    <column width='30%'>
+                        <sections>
+                            <section name='COMPANY_PROFILE' id='{sec_acc_prof}'>
+                                <labels><label description='Company Profile' languagecode='1033'/></labels>
+                                <rows>
+                                    <row><cell id='{c_ind}'><labels><label description='Industry' languagecode='1033'/></labels><control id='industrycode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='industrycode'/></cell></row>
+                                    <row><cell id='{c_emp}'><labels><label description='Employees' languagecode='1033'/></labels><control id='numberofemployees' classid='{C6D124CA-7EDD-4813-A4D4-976E90702F9E}' datafieldname='numberofemployees'/></cell></row>
+                                    <row><cell id='{c_rev}'><labels><label description='Annual Revenue' languagecode='1033'/></labels><control id='revenue' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='revenue'/></cell></row>
+                                    <row><cell id='{c_ticker}'><labels><label description='Ticker Symbol' languagecode='1033'/></labels><control id='tickersymbol' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='tickersymbol'/></cell></row>
+                                </rows>
+                            </section>
+                            <section name='BILLING_PREF' id='{sec_acc_bill}'>
+                                <labels><label description='Billing &amp; Preferences' languagecode='1033'/></labels>
+                                <rows>
+                                    <row><cell id='{c_pref}'><labels><label description='Preferred Contact' languagecode='1033'/></labels><control id='preferredcontactmethodcode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='preferredcontactmethodcode'/></cell></row>
+                                    <row><cell id='{c_cred}'><labels><label description='Credit Limit' languagecode='1033'/></labels><control id='creditlimit' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='creditlimit'/></cell></row>
                                 </rows>
                             </section>
                         </sections>
@@ -249,26 +264,11 @@ def build_manifest():
             <tab name='DETAILS_TAB' id='{tab_acc_details}'>
                 <labels><label description='Details' languagecode='1033'/></labels>
                 <columns>
-                    <column width='50%'>
+                    <column width='100%'>
                         <sections>
-                            <section name='COMPANY_PROFILE' id='{sec_acc_prof}'>
-                                <labels><label description='Company Profile' languagecode='1033'/></labels>
+                            <section name='ADDITIONAL_INFO' id='{sec_acc_addl}'>
+                                <labels><label description='Description &amp; Notes' languagecode='1033'/></labels>
                                 <rows>
-                                    <row><cell id='{c_ind}'><labels><label description='Industry' languagecode='1033'/></labels><control id='industrycode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='industrycode'/></cell></row>
-                                    <row><cell id='{c_emp}'><labels><label description='Number of Employees' languagecode='1033'/></labels><control id='numberofemployees' classid='{C6D124CA-7EDD-4813-A4D4-976E90702F9E}' datafieldname='numberofemployees'/></cell></row>
-                                    <row><cell id='{c_rev}'><labels><label description='Annual Revenue' languagecode='1033'/></labels><control id='revenue' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='revenue'/></cell></row>
-                                    <row><cell id='{c_ticker}'><labels><label description='Ticker Symbol' languagecode='1033'/></labels><control id='tickersymbol' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='tickersymbol'/></cell></row>
-                                </rows>
-                            </section>
-                        </sections>
-                    </column>
-                    <column width='50%'>
-                        <sections>
-                            <section name='BILLING_PREF' id='{sec_acc_bill}'>
-                                <labels><label description='Billing &amp; Preferences' languagecode='1033'/></labels>
-                                <rows>
-                                    <row><cell id='{c_pref}'><labels><label description='Preferred Contact Method' languagecode='1033'/></labels><control id='preferredcontactmethodcode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='preferredcontactmethodcode'/></cell></row>
-                                    <row><cell id='{c_cred}'><labels><label description='Credit Limit' languagecode='1033'/></labels><control id='creditlimit' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='creditlimit'/></cell></row>
                                     <row><cell id='{c_desc}'><labels><label description='Description' languagecode='1033'/></labels><control id='description' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='description'/></cell></row>
                                 </rows>
                             </section>
@@ -345,6 +345,25 @@ def build_manifest():
             "primarycontactid": {"contact": {"navigation_property": "primarycontactid", "entity_set_name": "contacts"}},
             "ownerid": {"systemuser": {"navigation_property": "ownerid", "entity_set_name": "systemusers"}}
         },
+        "relationships": {
+            "one_to_many": [
+                {
+                    "ReferencingEntity": "contact",
+                    "ReferencingAttribute": "parentcustomerid",
+                    "RelationshipName": "account_contacts"
+                },
+                {
+                    "ReferencingEntity": "incident",
+                    "ReferencingAttribute": "customerid",
+                    "RelationshipName": "account_incidents"
+                },
+                {
+                    "ReferencingEntity": "opportunity",
+                    "ReferencingAttribute": "parentaccountid",
+                    "RelationshipName": "account_opportunities"
+                }
+            ]
+        },
         "saved_queries": [
             {
                 "savedqueryid": "1111",
@@ -387,10 +406,6 @@ def build_manifest():
                                     <row><cell id='{c_mob}'><labels><label description='Mobile Phone' languagecode='1033'/></labels><control id='mobilephone' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='mobilephone'/></cell></row>
                                 </rows>
                             </section>
-                        </sections>
-                    </column>
-                    <column width='33%'>
-                        <sections>
                             <section name='ADDRESS_INFO' id='{sec_cnt_addr}'>
                                 <labels><label description='Address Details' languagecode='1033'/></labels>
                                 <rows>
@@ -402,12 +417,31 @@ def build_manifest():
                             </section>
                         </sections>
                     </column>
-                    <column width='33%'>
+                    <column width='36%'>
                         <sections>
                             <section name='TIMELINE_INFO' id='{sec_cnt_timeline}'>
-                                <labels><label description='Timeline &amp; Notes' languagecode='1033'/></labels>
+                                <labels><label description='Timeline' languagecode='1033'/></labels>
                                 <rows>
-                                    <row><cell id='{c_ctimeline}'><labels><label description='Notes' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>
+                                    <row><cell id='{c_ctimeline}' showlabel='false'><labels><label description='Timeline' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>
+                                </rows>
+                            </section>
+                        </sections>
+                    </column>
+                    <column width='30%'>
+                        <sections>
+                            <section name='PERSONAL_INFO' id='{sec_cnt_pers}'>
+                                <labels><label description='Personal Info' languagecode='1033'/></labels>
+                                <rows>
+                                    <row><cell id='{c_gender}'><labels><label description='Gender' languagecode='1033'/></labels><control id='gendercode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='gendercode'/></cell></row>
+                                    <row><cell id='{c_bday}'><labels><label description='Birthday' languagecode='1033'/></labels><control id='birthdate' classid='{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}' datafieldname='birthdate'/></cell></row>
+                                    <row><cell id='{c_spouse}'><labels><label description='Spouse/Partner' languagecode='1033'/></labels><control id='spousesname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='spousesname'/></cell></row>
+                                </rows>
+                            </section>
+                            <section name='MARKETING_PREF' id='{sec_cnt_mkt}'>
+                                <labels><label description='Preferences' languagecode='1033'/></labels>
+                                <rows>
+                                    <row><cell id='{c_noemail}'><labels><label description='Do Not Allow Email' languagecode='1033'/></labels><control id='donotemail' classid='{67037D90-A9A8-4390-84E3-8E5536582EB5}' datafieldname='donotemail'/></cell></row>
+                                    <row><cell id='{c_nophone}'><labels><label description='Do Not Allow Phone' languagecode='1033'/></labels><control id='donotphone' classid='{67037D90-A9A8-4390-84E3-8E5536582EB5}' datafieldname='donotphone'/></cell></row>
                                 </rows>
                             </section>
                         </sections>
@@ -415,27 +449,14 @@ def build_manifest():
                 </columns>
             </tab>
             <tab name='DETAILS_TAB' id='{tab_cnt_details}'>
-                <labels><label description='Personal &amp; Marketing' languagecode='1033'/></labels>
+                <labels><label description='Details' languagecode='1033'/></labels>
                 <columns>
-                    <column width='50%'>
+                    <column width='100%'>
                         <sections>
-                            <section name='PERSONAL_INFO' id='{sec_cnt_pers}'>
-                                <labels><label description='Personal Information' languagecode='1033'/></labels>
+                            <section name='SYSTEM_INFO' id='{sec_cnt_sys}'>
+                                <labels><label description='System Information' languagecode='1033'/></labels>
                                 <rows>
-                                    <row><cell id='{c_gender}'><labels><label description='Gender' languagecode='1033'/></labels><control id='gendercode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='gendercode'/></cell></row>
-                                    <row><cell id='{c_bday}'><labels><label description='Birthday' languagecode='1033'/></labels><control id='birthdate' classid='{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}' datafieldname='birthdate'/></cell></row>
-                                    <row><cell id='{c_spouse}'><labels><label description='Spouse/Partner' languagecode='1033'/></labels><control id='spousesname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='spousesname'/></cell></row>
-                                </rows>
-                            </section>
-                        </sections>
-                    </column>
-                    <column width='50%'>
-                        <sections>
-                            <section name='MARKETING_PREF' id='{sec_cnt_mkt}'>
-                                <labels><label description='Contact Preferences' languagecode='1033'/></labels>
-                                <rows>
-                                    <row><cell id='{c_noemail}'><labels><label description='Do Not Allow Email' languagecode='1033'/></labels><control id='donotemail' classid='{67037D90-A9A8-4390-84E3-8E5536582EB5}' datafieldname='donotemail'/></cell></row>
-                                    <row><cell id='{c_nophone}'><labels><label description='Do Not Allow Phone' languagecode='1033'/></labels><control id='donotphone' classid='{67037D90-A9A8-4390-84E3-8E5536582EB5}' datafieldname='donotphone'/></cell></row>
+                                    <row><cell id='{c_cid}'><labels><label description='Contact ID' languagecode='1033'/></labels><control id='contactid' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='contactid'/></cell></row>
                                 </rows>
                             </section>
                         </sections>
@@ -471,6 +492,20 @@ def build_manifest():
         ],
         "lookup_targets": {"parentcustomerid": ["account"]},
         "lookup_bindings": {"parentcustomerid": {"account": {"navigation_property": "parentcustomerid_account", "entity_set_name": "accounts"}}},
+        "relationships": {
+            "one_to_many": [
+                {
+                    "ReferencingEntity": "incident",
+                    "ReferencingAttribute": "customerid",
+                    "RelationshipName": "contact_incidents"
+                },
+                {
+                    "ReferencingEntity": "opportunity",
+                    "ReferencingAttribute": "parentcontactid",
+                    "RelationshipName": "contact_opportunities"
+                }
+            ]
+        },
         "saved_queries": [
             {
                 "savedqueryid": "4444",
@@ -511,12 +546,8 @@ def build_manifest():
                                     <row><cell id='{c_orig}'><labels><label description='Origin' languagecode='1033'/></labels><control id='caseorigincode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='caseorigincode'/></cell></row>
                                 </rows>
                             </section>
-                        </sections>
-                    </column>
-                    <column width='33%'>
-                        <sections>
                             <section name='ISSUE_DETAILS' id='{sec_inc_issue}'>
-                                <labels><label description='Description &amp; Context' languagecode='1033'/></labels>
+                                <labels><label description='Description' languagecode='1033'/></labels>
                                 <rows>
                                     <row><cell id='{c_desc}'><labels><label description='Description' languagecode='1033'/></labels><control id='description' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='description'/></cell></row>
                                     <row><cell id='{c_prod}'><labels><label description='Product' languagecode='1033'/></labels><control id='productname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='productname'/></cell></row>
@@ -524,12 +555,22 @@ def build_manifest():
                             </section>
                         </sections>
                     </column>
-                    <column width='33%'>
+                    <column width='36%'>
                         <sections>
                             <section name='TIMELINE_SECTION' id='{sec_inc_timeline}'>
-                                <labels><label description='Case Activities' languagecode='1033'/></labels>
+                                <labels><label description='Timeline' languagecode='1033'/></labels>
                                 <rows>
-                                    <row><cell id='{c_notes}'><labels><label description='Notes &amp; Resolution' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>
+                                    <row><cell id='{c_notes}' showlabel='false'><labels><label description='Timeline' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>
+                                </rows>
+                            </section>
+                        </sections>
+                    </column>
+                    <column width='30%'>
+                        <sections>
+                            <section name='RESOLUTION_SUMMARY' id='{sec_inc_res_box}'>
+                                <labels><label description='Resolution &amp; Notes' languagecode='1033'/></labels>
+                                <rows>
+                                    <row><cell id='{c_res}'><labels><label description='Resolution' languagecode='1033'/></labels><control id='resolution' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='resolution'/></cell></row>
                                 </rows>
                             </section>
                         </sections>
@@ -537,14 +578,14 @@ def build_manifest():
                 </columns>
             </tab>
             <tab name='RESOLUTION_TAB' id='{tab_inc_res}'>
-                <labels><label description='Resolution' languagecode='1033'/></labels>
+                <labels><label description='Resolution Details' languagecode='1033'/></labels>
                 <columns>
                     <column width='100%'>
                         <sections>
                             <section name='RES_INFO' id='{sec_inc_res}'>
-                                <labels><label description='Resolution Summary' languagecode='1033'/></labels>
+                                <labels><label description='Case Resolution' languagecode='1033'/></labels>
                                 <rows>
-                                    <row><cell id='{c_res}'><labels><label description='Resolution' languagecode='1033'/></labels><control id='resolution' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='resolution'/></cell></row>
+                                    <row><cell id='{c_res2}'><labels><label description='Resolution' languagecode='1033'/></labels><control id='resolution' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='resolution'/></cell></row>
                                 </rows>
                             </section>
                         </sections>
@@ -607,36 +648,41 @@ def build_manifest():
                     <column width='34%'>
                         <sections>
                             <section name='OPP_INFO' id='{sec_opp_info}'>
-                                <labels><label description='Opportunity Information' languagecode='1033'/></labels>
+                                <labels><label description='Opportunity Details' languagecode='1033'/></labels>
                                 <rows>
                                     <row><cell id='{c_name}'><labels><label description='Topic' languagecode='1033'/></labels><control id='name' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='name'/></cell></row>
                                     <row><cell id='{c_cust}'><labels><label description='Account' languagecode='1033'/></labels><control id='parentaccountid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='parentaccountid'/></cell></row>
                                     <row><cell id='{c_contact}'><labels><label description='Contact' languagecode='1033'/></labels><control id='parentcontactid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='parentcontactid'/></cell></row>
-                                    <row><cell id='{c_time}'><labels><label description='Purchase Timeframe' languagecode='1033'/></labels><control id='purchasetimeframe' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='purchasetimeframe'/></cell></row>
-                                    <row><cell id='{c_budget}'><labels><label description='Budget Amount' languagecode='1033'/></labels><control id='budgetamount' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='budgetamount'/></cell></row>
+                                    <row><cell id='{c_time}'><labels><label description='Timeframe' languagecode='1033'/></labels><control id='purchasetimeframe' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='purchasetimeframe'/></cell></row>
                                 </rows>
                             </section>
-                        </sections>
-                    </column>
-                    <column width='33%'>
-                        <sections>
-                            <section name='FORECAST' id='{sec_opp_fc}'>
-                                <labels><label description='Estimates &amp; Forecast' languagecode='1033'/></labels>
+                            <section name='PROPOSAL_SUMMARY' id='{sec_opp_prop_sum}'>
+                                <labels><label description='Customer Need' languagecode='1033'/></labels>
                                 <rows>
-                                    <row><cell id='{c_est_val}'><labels><label description='Estimated Revenue' languagecode='1033'/></labels><control id='estimatedvalue' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='estimatedvalue'/></cell></row>
-                                    <row><cell id='{c_est_date}'><labels><label description='Est. Close Date' languagecode='1033'/></labels><control id='estimatedclosedate' classid='{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}' datafieldname='estimatedclosedate'/></cell></row>
-                                    <row><cell id='{c_prob}'><labels><label description='Probability (%)' languagecode='1033'/></labels><control id='closeprobability' classid='{C6D124CA-7EDD-4813-A4D4-976E90702F9E}' datafieldname='closeprobability'/></cell></row>
-                                    <row><cell id='{c_need}'><labels><label description='Customer Need' languagecode='1033'/></labels><control id='need' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='need'/></cell></row>
+                                    <row><cell id='{c_need}'><labels><label description='Need' languagecode='1033'/></labels><control id='need' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='need'/></cell></row>
                                 </rows>
                             </section>
                         </sections>
                     </column>
-                    <column width='33%'>
+                    <column width='36%'>
                         <sections>
                             <section name='TIMELINE_SECTION' id='{sec_opp_timeline}'>
-                                <labels><label description='Timeline &amp; Notes' languagecode='1033'/></labels>
+                                <labels><label description='Timeline' languagecode='1033'/></labels>
                                 <rows>
-                                    <row><cell id='{c_notes}'><labels><label description='Activities' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>
+                                    <row><cell id='{c_notes}' showlabel='false'><labels><label description='Timeline' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>
+                                </rows>
+                            </section>
+                        </sections>
+                    </column>
+                    <column width='30%'>
+                        <sections>
+                            <section name='FORECAST' id='{sec_opp_fc}'>
+                                <labels><label description='Forecast &amp; Estimates' languagecode='1033'/></labels>
+                                <rows>
+                                    <row><cell id='{c_est_val}'><labels><label description='Est. Revenue' languagecode='1033'/></labels><control id='estimatedvalue' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='estimatedvalue'/></cell></row>
+                                    <row><cell id='{c_est_date}'><labels><label description='Est. Close Date' languagecode='1033'/></labels><control id='estimatedclosedate' classid='{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}' datafieldname='estimatedclosedate'/></cell></row>
+                                    <row><cell id='{c_prob}'><labels><label description='Probability (%)' languagecode='1033'/></labels><control id='closeprobability' classid='{C6D124CA-7EDD-4813-A4D4-976E90702F9E}' datafieldname='closeprobability'/></cell></row>
+                                    <row><cell id='{c_budget}'><labels><label description='Budget' languagecode='1033'/></labels><control id='budgetamount' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='budgetamount'/></cell></row>
                                 </rows>
                             </section>
                         </sections>
@@ -644,12 +690,12 @@ def build_manifest():
                 </columns>
             </tab>
             <tab name='PROPOSAL_TAB' id='{tab_opp_prop}'>
-                <labels><label description='Proposal &amp; Solution' languagecode='1033'/></labels>
+                <labels><label description='Proposal Details' languagecode='1033'/></labels>
                 <columns>
                     <column width='100%'>
                         <sections>
                             <section name='SOLUTION_SECTION' id='{sec_opp_sol}'>
-                                <labels><label description='Proposed Solution &amp; Competitors' languagecode='1033'/></labels>
+                                <labels><label description='Solution &amp; Competitors' languagecode='1033'/></labels>
                                 <rows>
                                     <row><cell id='{c_sol}'><labels><label description='Proposed Solution' languagecode='1033'/></labels><control id='proposedsolution' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='proposedsolution'/></cell></row>
                                     <row><cell id='{c_comp}'><labels><label description='Current Situation' languagecode='1033'/></labels><control id='currentsituation' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='currentsituation'/></cell></row>
@@ -728,12 +774,22 @@ def build_manifest():
                                     <row><cell id='{c_fn}'><labels><label description='Full Name' languagecode='1033'/></labels><control id='fullname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='fullname'/></cell></row>
                                     <row><cell id='{c_comp}'><labels><label description='Company' languagecode='1033'/></labels><control id='companyname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='companyname'/></cell></row>
                                     <row><cell id='{c_email}'><labels><label description='Email' languagecode='1033'/></labels><control id='emailaddress1' classid='{ADA2203E-B4CD-49BE-9DDF-234642B44B52}' datafieldname='emailaddress1'/></cell></row>
-                                    <row><cell id='{c_phone}'><labels><label description='Business Phone' languagecode='1033'/></labels><control id='telephone1' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='telephone1'/></cell></row>
+                                    <row><cell id='{c_phone}'><labels><label description='Phone' languagecode='1033'/></labels><control id='telephone1' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='telephone1'/></cell></row>
                                 </rows>
                             </section>
                         </sections>
                     </column>
-                    <column width='33%'>
+                    <column width='36%'>
+                        <sections>
+                            <section name='TIMELINE_SECTION' id='{sec_lead_timeline}'>
+                                <labels><label description='Timeline' languagecode='1033'/></labels>
+                                <rows>
+                                    <row><cell id='{c_notes}' showlabel='false'><labels><label description='Timeline' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>
+                                </rows>
+                            </section>
+                        </sections>
+                    </column>
+                    <column width='30%'>
                         <sections>
                             <section name='QUALIFICATION' id='{sec_lead_qual}'>
                                 <labels><label description='Qualification' languagecode='1033'/></labels>
@@ -741,16 +797,6 @@ def build_manifest():
                                     <row><cell id='{c_budget}'><labels><label description='Budget Amount' languagecode='1033'/></labels><control id='budgetamount' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='budgetamount'/></cell></row>
                                     <row><cell id='{c_time}'><labels><label description='Purchase Timeframe' languagecode='1033'/></labels><control id='purchasetimeframe' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='purchasetimeframe'/></cell></row>
                                     <row><cell id='{c_source}'><labels><label description='Lead Source' languagecode='1033'/></labels><control id='leadsourcecode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='leadsourcecode'/></cell></row>
-                                </rows>
-                            </section>
-                        </sections>
-                    </column>
-                    <column width='33%'>
-                        <sections>
-                            <section name='TIMELINE_SECTION' id='{sec_lead_timeline}'>
-                                <labels><label description='Activities &amp; Notes' languagecode='1033'/></labels>
-                                <rows>
-                                    <row><cell id='{c_notes}'><labels><label description='Timeline' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>
                                 </rows>
                             </section>
                         </sections>
@@ -838,6 +884,7 @@ def build_manifest():
     ]
 
     manifest["bpfs"] = {
+        "Account Onboarding & Growth Process": account_bpf,
         "Lead to Opportunity Sales Process": lead_to_opp_bpf,
         "Phone to Case Resolution Process": case_bpf
     }
@@ -848,4 +895,4 @@ if __name__ == "__main__":
     manifest = build_manifest()
     with open("mock_manifest.json", "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=4)
-    print("Upgraded mock_manifest.json with 5 entities, rich multi-tab multi-section FormXML, and BPF!")
+    print("Upgraded mock_manifest.json with relationships and multi-row layout!")
