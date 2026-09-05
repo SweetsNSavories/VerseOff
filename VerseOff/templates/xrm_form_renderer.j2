@@ -5825,7 +5825,7 @@ class XrmFormRenderer(QWidget):
                         or stage.get("entity_name")
                         or self.logical_name
                     ),
-                    "category": int(stage.get("category") or 0),
+                    "category": int(stage.get("category")) if str(stage.get("category", "")).isdigit() else (stage.get("category") or 0),
                     "status": stage.get("status") or "active",
                     "steps": steps,
                 })

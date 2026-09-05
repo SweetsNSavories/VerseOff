@@ -1,15 +1,15 @@
 {
     "manifest_version": 1,
-    "generator": "VerseOff Maker",
-    "app_name": "VerseOff Sample Sales App",
+    "generator": "VerseOff Maker Studio",
+    "app_name": "VerseOff Enterprise Sales & Service",
     "source_app": {
         "appmoduleid": "00000000-0000-0000-0000-000000000001",
         "appmoduleidunique": "00000000-0000-0000-0000-000000000002",
-        "name": "VerseOff Sample Sales App",
-        "uniquename": "verseoff_sample_sales",
-        "description": "Sanitized sample used to validate generated source."
+        "name": "VerseOff Enterprise Sales & Service",
+        "uniquename": "verseoff_enterprise_crm",
+        "description": "Full-featured offline enterprise CRM with Accounts, Contacts, Cases, Leads, and Opportunities."
     },
-    "org_url": "https://mockorg.crm.dynamics.com",
+    "org_url": "https://verseoff-prod.crm.dynamics.com",
     "client_id": "51f81489-12ee-4a9e-aaae-a2591f45987d",
     "tenant_id": "common",
     "sync_interval": 300,
@@ -24,8 +24,49 @@
                         "id": "Group_Customers",
                         "title": "Customers",
                         "subareas": [
-                            {"id": "SubArea_Accounts", "entity": "account", "title": "Accounts"},
-                            {"id": "SubArea_Contacts", "entity": "contact", "title": "Contacts"}
+                            {
+                                "id": "SubArea_Accounts",
+                                "entity": "account",
+                                "title": "Accounts"
+                            },
+                            {
+                                "id": "SubArea_Contacts",
+                                "entity": "contact",
+                                "title": "Contacts"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Group_SalesPipeline",
+                        "title": "Sales Pipeline",
+                        "subareas": [
+                            {
+                                "id": "SubArea_Leads",
+                                "entity": "lead",
+                                "title": "Leads"
+                            },
+                            {
+                                "id": "SubArea_Opportunities",
+                                "entity": "opportunity",
+                                "title": "Opportunities"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "Area_Service",
+                "title": "Customer Service",
+                "groups": [
+                    {
+                        "id": "Group_ServiceManagement",
+                        "title": "Cases & Tickets",
+                        "subareas": [
+                            {
+                                "id": "SubArea_Incidents",
+                                "entity": "incident",
+                                "title": "Cases"
+                            }
                         ]
                     }
                 ]
@@ -36,13 +77,12 @@
                 "groups": [
                     {
                         "id": "Group_Reports",
-                        "title": "Reports",
+                        "title": "Reports & Dashboards",
                         "subareas": [
-                            {"id": "SubArea_AccountReports", "entity": "account", "title": "Account Reports"},
                             {
                                 "id": "SubArea_Dashboard",
                                 "entity": "",
-                                "title": "Sales Dashboard",
+                                "title": "Executive Sales Dashboard",
                                 "destination_type": "dashboard",
                                 "default_dashboard": "00000000-0000-0000-0000-000000000010",
                                 "available_offline": false
@@ -56,25 +96,295 @@
     "entities": [
         {
             "LogicalName": "account",
-            "DisplayName": {"UserLocalizedLabel": {"Label": "Account"}},
+            "DisplayName": {
+                "UserLocalizedLabel": {
+                    "Label": "Account"
+                }
+            },
             "EntitySetName": "accounts",
             "PrimaryIdAttribute": "accountid",
             "PrimaryNameAttribute": "name",
             "ChangeTrackingEnabled": true,
             "attributes": [
-                {"LogicalName": "accountid", "AttributeType": "Uniqueidentifier", "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": false},
-                {"LogicalName": "name", "AttributeType": "String", "DisplayName": {"UserLocalizedLabel": {"Label": "Account Name"}}, "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": true},
-                {"LogicalName": "telephone1", "AttributeType": "String", "DisplayName": {"UserLocalizedLabel": {"Label": "Main Phone"}}, "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": true},
-                {"LogicalName": "primarycontactid", "AttributeType": "Lookup", "DisplayName": {"UserLocalizedLabel": {"Label": "Primary Contact"}}, "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": true}
+                {
+                    "LogicalName": "accountid",
+                    "AttributeType": "Uniqueidentifier",
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": false
+                },
+                {
+                    "LogicalName": "name",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Account Name"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "accountnumber",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Account Number"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "telephone1",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Main Phone"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "fax",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Fax"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "websiteurl",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Website"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "primarycontactid",
+                    "AttributeType": "Lookup",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Primary Contact"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "address1_line1",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Street 1"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "address1_city",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "City"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "address1_stateorprovince",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "State/Province"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "address1_postalcode",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "ZIP/Postal Code"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "address1_country",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Country"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "industrycode",
+                    "AttributeType": "Picklist",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Industry"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "numberofemployees",
+                    "AttributeType": "Integer",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Employees"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "revenue",
+                    "AttributeType": "Money",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Annual Revenue"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "tickersymbol",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Ticker Symbol"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "creditlimit",
+                    "AttributeType": "Money",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Credit Limit"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "preferredcontactmethodcode",
+                    "AttributeType": "Picklist",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Preferred Contact"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "description",
+                    "AttributeType": "Memo",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Description"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "ownerid",
+                    "AttributeType": "Lookup",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Owner"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "createdon",
+                    "AttributeType": "DateTime",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Created On"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": false,
+                    "IsValidForUpdate": false
+                },
+                {
+                    "LogicalName": "modifiedon",
+                    "AttributeType": "DateTime",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Modified On"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": false,
+                    "IsValidForUpdate": false
+                }
             ],
             "lookup_targets": {
-                "primarycontactid": ["contact"]
+                "primarycontactid": [
+                    "contact"
+                ],
+                "ownerid": [
+                    "systemuser"
+                ]
             },
             "lookup_bindings": {
                 "primarycontactid": {
                     "contact": {
                         "navigation_property": "primarycontactid",
                         "entity_set_name": "contacts"
+                    }
+                },
+                "ownerid": {
+                    "systemuser": {
+                        "navigation_property": "ownerid",
+                        "entity_set_name": "systemusers"
                     }
                 }
             },
@@ -85,17 +395,8 @@
                     "returnedtypecode": "account",
                     "querytype": 0,
                     "isdefault": true,
-                    "fetchxml": "<fetch><entity name='account'><attribute name='name'/><attribute name='telephone1'/></entity></fetch>",
-                    "layoutxml": "<grid name='resultset' object='1' jump='name' select='1' icon='1' preview='1'><row name='result' id='accountid'><cell name='name' width='150'/><cell name='telephone1' width='100'/></row></grid>"
-                },
-                {
-                    "savedqueryid": "2222",
-                    "name": "Account Quick Find",
-                    "returnedtypecode": "account",
-                    "querytype": 4,
-                    "isdefault": false,
-                    "fetchxml": "<fetch><entity name='account'><attribute name='name'/><attribute name='telephone1'/><filter type='or'><condition attribute='name' operator='like' value='{0}'/></filter></entity></fetch>",
-                    "layoutxml": "<grid name='resultset' object='1' jump='name' select='1' icon='1' preview='1'><row name='result' id='accountid'><cell name='name' width='150'/><cell name='telephone1' width='100'/></row></grid>"
+                    "fetchxml": "<fetch><entity name='account'><attribute name='name'/><attribute name='telephone1'/><attribute name='address1_city'/><attribute name='primarycontactid'/></entity></fetch>",
+                    "layoutxml": "<grid name='resultset' object='1' jump='name' select='1' icon='1' preview='1'><row name='result' id='accountid'><cell name='name' width='200'/><cell name='telephone1' width='140'/><cell name='address1_city' width='120'/><cell name='primarycontactid' width='160'/></row></grid>"
                 }
             ],
             "forms": [
@@ -103,33 +404,268 @@
                     "formid": "3333",
                     "name": "Account Main Form",
                     "type": 2,
-                    "formxml": "<form><tabs><tab name='general' id='{tab1}'><labels><label description='General' languagecode='1033'/></labels><columns><column width='100%'><sections><section name='info' id='{sec1}'><labels><label description='Account Information' languagecode='1033'/></labels><rows><row><cell id='{c1}'><labels><label description='Account Name' languagecode='1033'/></labels><control id='name' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='name'/></cell></row><row><cell id='{c2}'><labels><label description='Phone' languagecode='1033'/></labels><control id='telephone1' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='telephone1'/></cell></row></rows></section></sections></column></columns></tab></tabs></form>"
+                    "formxml": "<form>\n        <tabs>\n            <tab name='SUMMARY_TAB' id='{tab_acc_summary}'>\n                <labels><label description='Summary' languagecode='1033'/></labels>\n                <columns>\n                    <column width='34%'>\n                        <sections>\n                            <section name='ACCOUNT_INFORMATION' id='{sec_acc_info}'>\n                                <labels><label description='Account Information' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_name}'><labels><label description='Account Name' languagecode='1033'/></labels><control id='name' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='name'/></cell></row>\n                                    <row><cell id='{c_phone}'><labels><label description='Phone' languagecode='1033'/></labels><control id='telephone1' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='telephone1'/></cell></row>\n                                    <row><cell id='{c_fax}'><labels><label description='Fax' languagecode='1033'/></labels><control id='fax' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='fax'/></cell></row>\n                                    <row><cell id='{c_web}'><labels><label description='Website' languagecode='1033'/></labels><control id='websiteurl' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='websiteurl'/></cell></row>\n                                    <row><cell id='{c_contact}'><labels><label description='Primary Contact' languagecode='1033'/></labels><control id='primarycontactid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='primarycontactid'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='33%'>\n                        <sections>\n                            <section name='ADDRESS_SECTION' id='{sec_acc_addr}'>\n                                <labels><label description='Address &amp; Location' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_addr1}'><labels><label description='Street Address' languagecode='1033'/></labels><control id='address1_line1' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_line1'/></cell></row>\n                                    <row><cell id='{c_city}'><labels><label description='City' languagecode='1033'/></labels><control id='address1_city' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_city'/></cell></row>\n                                    <row><cell id='{c_state}'><labels><label description='State/Province' languagecode='1033'/></labels><control id='address1_stateorprovince' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_stateorprovince'/></cell></row>\n                                    <row><cell id='{c_zip}'><labels><label description='Postal Code' languagecode='1033'/></labels><control id='address1_postalcode' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_postalcode'/></cell></row>\n                                    <row><cell id='{c_country}'><labels><label description='Country/Region' languagecode='1033'/></labels><control id='address1_country' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_country'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='33%'>\n                        <sections>\n                            <section name='TIMELINE_SECTION' id='{sec_acc_timeline}'>\n                                <labels><label description='Timeline &amp; Activities' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_timeline}'><labels><label description='Activities' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n            <tab name='DETAILS_TAB' id='{tab_acc_details}'>\n                <labels><label description='Details' languagecode='1033'/></labels>\n                <columns>\n                    <column width='50%'>\n                        <sections>\n                            <section name='COMPANY_PROFILE' id='{sec_acc_prof}'>\n                                <labels><label description='Company Profile' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_ind}'><labels><label description='Industry' languagecode='1033'/></labels><control id='industrycode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='industrycode'/></cell></row>\n                                    <row><cell id='{c_emp}'><labels><label description='Number of Employees' languagecode='1033'/></labels><control id='numberofemployees' classid='{C6D124CA-7EDD-4813-A4D4-976E90702F9E}' datafieldname='numberofemployees'/></cell></row>\n                                    <row><cell id='{c_rev}'><labels><label description='Annual Revenue' languagecode='1033'/></labels><control id='revenue' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='revenue'/></cell></row>\n                                    <row><cell id='{c_ticker}'><labels><label description='Ticker Symbol' languagecode='1033'/></labels><control id='tickersymbol' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='tickersymbol'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='50%'>\n                        <sections>\n                            <section name='BILLING_PREF' id='{sec_acc_bill}'>\n                                <labels><label description='Billing &amp; Preferences' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_pref}'><labels><label description='Preferred Contact Method' languagecode='1033'/></labels><control id='preferredcontactmethodcode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='preferredcontactmethodcode'/></cell></row>\n                                    <row><cell id='{c_cred}'><labels><label description='Credit Limit' languagecode='1033'/></labels><control id='creditlimit' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='creditlimit'/></cell></row>\n                                    <row><cell id='{c_desc}'><labels><label description='Description' languagecode='1033'/></labels><control id='description' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='description'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n            <tab name='ADMIN_TAB' id='{tab_acc_admin}'>\n                <labels><label description='Administration' languagecode='1033'/></labels>\n                <columns>\n                    <column width='50%'>\n                        <sections>\n                            <section name='INTERNAL_DETAILS' id='{sec_acc_admin_1}'>\n                                <labels><label description='Record Details' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_owner}'><labels><label description='Owner' languagecode='1033'/></labels><control id='ownerid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='ownerid'/></cell></row>\n                                    <row><cell id='{c_acc_num}'><labels><label description='Account Number' languagecode='1033'/></labels><control id='accountnumber' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='accountnumber'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='50%'>\n                        <sections>\n                            <section name='AUDIT_INFO' id='{sec_acc_audit}'>\n                                <labels><label description='Audit Information' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_created}'><labels><label description='Created On' languagecode='1033'/></labels><control id='createdon' classid='{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}' datafieldname='createdon'/></cell></row>\n                                    <row><cell id='{c_modified}'><labels><label description='Modified On' languagecode='1033'/></labels><control id='modifiedon' classid='{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}' datafieldname='modifiedon'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n        </tabs>\n    </form>"
                 }
             ],
-            "relationships": {
-                "one_to_many": [
-                    {
-                        "ReferencingEntity": "contact",
-                        "ReferencingAttribute": "parentcustomerid",
-                        "RelationshipName": "account_contacts"
-                    }
-                ]
+            "bpfs": {
+                "Account Onboarding & Growth Process": {
+                    "processid": "bpf-003",
+                    "name": "Account Onboarding & Growth Process",
+                    "primary_entity": "account",
+                    "stages": [
+                        {
+                            "stageid": "acc_s_onboard",
+                            "stagename": "Onboard",
+                            "category": "Intake",
+                            "steps": [
+                                {
+                                    "stepid": "acc_st_1",
+                                    "name": "Primary Contact",
+                                    "attribute": "primarycontactid",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "acc_st_2",
+                                    "name": "Main Phone",
+                                    "attribute": "telephone1",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "acc_st_3",
+                                    "name": "Credit Limit",
+                                    "attribute": "creditlimit",
+                                    "required": false
+                                }
+                            ]
+                        },
+                        {
+                            "stageid": "acc_s_kyc",
+                            "stagename": "Compliance",
+                            "category": "Verification",
+                            "steps": [
+                                {
+                                    "stepid": "acc_st_4",
+                                    "name": "Industry",
+                                    "attribute": "industrycode",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "acc_st_5",
+                                    "name": "Annual Revenue",
+                                    "attribute": "revenue",
+                                    "required": false
+                                }
+                            ]
+                        },
+                        {
+                            "stageid": "acc_s_growth",
+                            "stagename": "Expansion",
+                            "category": "Growth",
+                            "steps": [
+                                {
+                                    "stepid": "acc_st_6",
+                                    "name": "Account Owner",
+                                    "attribute": "ownerid",
+                                    "required": true
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         },
         {
             "LogicalName": "contact",
-            "DisplayName": {"UserLocalizedLabel": {"Label": "Contact"}},
+            "DisplayName": {
+                "UserLocalizedLabel": {
+                    "Label": "Contact"
+                }
+            },
             "EntitySetName": "contacts",
             "PrimaryIdAttribute": "contactid",
             "PrimaryNameAttribute": "fullname",
             "ChangeTrackingEnabled": true,
             "attributes": [
-                {"LogicalName": "contactid", "AttributeType": "Uniqueidentifier", "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": false},
-                {"LogicalName": "fullname", "AttributeType": "String", "DisplayName": {"UserLocalizedLabel": {"Label": "Full Name"}}, "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": true},
-                {"LogicalName": "parentcustomerid", "AttributeType": "Lookup", "DisplayName": {"UserLocalizedLabel": {"Label": "Parent Customer"}}, "IsValidForRead": true, "IsValidForCreate": true, "IsValidForUpdate": true}
+                {
+                    "LogicalName": "contactid",
+                    "AttributeType": "Uniqueidentifier",
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": false
+                },
+                {
+                    "LogicalName": "fullname",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Full Name"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "jobtitle",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Job Title"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "parentcustomerid",
+                    "AttributeType": "Lookup",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Parent Account"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "emailaddress1",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Email"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "mobilephone",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Mobile Phone"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "address1_line1",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Street"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "address1_city",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "City"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "address1_stateorprovince",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "State"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "address1_postalcode",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Postal Code"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "gendercode",
+                    "AttributeType": "Picklist",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Gender"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "birthdate",
+                    "AttributeType": "DateTime",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Birthdate"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "spousesname",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Spouse/Partner"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "donotemail",
+                    "AttributeType": "Boolean",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Do Not Email"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "donotphone",
+                    "AttributeType": "Boolean",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Do Not Phone"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                }
             ],
             "lookup_targets": {
-                "parentcustomerid": ["account"]
+                "parentcustomerid": [
+                    "account"
+                ]
             },
             "lookup_bindings": {
                 "parentcustomerid": {
@@ -146,17 +682,8 @@
                     "returnedtypecode": "contact",
                     "querytype": 0,
                     "isdefault": true,
-                    "fetchxml": "<fetch><entity name='contact'><attribute name='fullname'/></entity></fetch>",
-                    "layoutxml": "<grid name='resultset' object='2' jump='fullname' select='1' icon='1' preview='1'><row name='result' id='contactid'><cell name='fullname' width='150'/></row></grid>"
-                },
-                {
-                    "savedqueryid": "5555",
-                    "name": "Associated Contacts",
-                    "returnedtypecode": "contact",
-                    "querytype": 2,
-                    "isdefault": false,
-                    "fetchxml": "<fetch><entity name='contact'><attribute name='fullname'/></entity></fetch>",
-                    "layoutxml": "<grid name='resultset' object='2' jump='fullname' select='1' icon='1' preview='1'><row name='result' id='contactid'><cell name='fullname' width='150'/></row></grid>"
+                    "fetchxml": "<fetch><entity name='contact'><attribute name='fullname'/><attribute name='jobtitle'/><attribute name='parentcustomerid'/><attribute name='emailaddress1'/></entity></fetch>",
+                    "layoutxml": "<grid name='resultset' object='2' jump='fullname' select='1' icon='1' preview='1'><row name='result' id='contactid'><cell name='fullname' width='180'/><cell name='jobtitle' width='140'/><cell name='parentcustomerid' width='180'/><cell name='emailaddress1' width='200'/></row></grid>"
                 }
             ],
             "forms": [
@@ -164,10 +691,955 @@
                     "formid": "6666",
                     "name": "Contact Main Form",
                     "type": 2,
-                    "formxml": "<form><tabs><tab name='general' id='{tab2}'><labels><label description='General' languagecode='1033'/></labels><columns><column width='100%'><sections><section name='info' id='{sec2}'><labels><label description='Contact Information' languagecode='1033'/></labels><rows><row><cell id='{c3}'><labels><label description='Full Name' languagecode='1033'/></labels><control id='fullname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='fullname'/></cell></row><row><cell id='{c4}'><labels><label description='Account' languagecode='1033'/></labels><control id='parentcustomerid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='parentcustomerid'/></cell></row></rows></section></sections></column></columns></tab></tabs></form>"
+                    "formxml": "<form>\n        <tabs>\n            <tab name='SUMMARY_TAB' id='{tab_cnt_summary}'>\n                <labels><label description='Summary' languagecode='1033'/></labels>\n                <columns>\n                    <column width='34%'>\n                        <sections>\n                            <section name='CONTACT_INFO' id='{sec_cnt_info}'>\n                                <labels><label description='Contact Information' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_fn}'><labels><label description='Full Name' languagecode='1033'/></labels><control id='fullname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='fullname'/></cell></row>\n                                    <row><cell id='{c_job}'><labels><label description='Job Title' languagecode='1033'/></labels><control id='jobtitle' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='jobtitle'/></cell></row>\n                                    <row><cell id='{c_acc}'><labels><label description='Account' languagecode='1033'/></labels><control id='parentcustomerid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='parentcustomerid'/></cell></row>\n                                    <row><cell id='{c_email}'><labels><label description='Email' languagecode='1033'/></labels><control id='emailaddress1' classid='{ADA2203E-B4CD-49BE-9DDF-234642B44B52}' datafieldname='emailaddress1'/></cell></row>\n                                    <row><cell id='{c_mob}'><labels><label description='Mobile Phone' languagecode='1033'/></labels><control id='mobilephone' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='mobilephone'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='33%'>\n                        <sections>\n                            <section name='ADDRESS_INFO' id='{sec_cnt_addr}'>\n                                <labels><label description='Address Details' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_caddr}'><labels><label description='Street' languagecode='1033'/></labels><control id='address1_line1' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_line1'/></cell></row>\n                                    <row><cell id='{c_ccity}'><labels><label description='City' languagecode='1033'/></labels><control id='address1_city' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_city'/></cell></row>\n                                    <row><cell id='{c_cstate}'><labels><label description='State' languagecode='1033'/></labels><control id='address1_stateorprovince' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_stateorprovince'/></cell></row>\n                                    <row><cell id='{c_czip}'><labels><label description='Postal Code' languagecode='1033'/></labels><control id='address1_postalcode' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='address1_postalcode'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='33%'>\n                        <sections>\n                            <section name='TIMELINE_INFO' id='{sec_cnt_timeline}'>\n                                <labels><label description='Timeline &amp; Notes' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_ctimeline}'><labels><label description='Notes' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n            <tab name='DETAILS_TAB' id='{tab_cnt_details}'>\n                <labels><label description='Personal &amp; Marketing' languagecode='1033'/></labels>\n                <columns>\n                    <column width='50%'>\n                        <sections>\n                            <section name='PERSONAL_INFO' id='{sec_cnt_pers}'>\n                                <labels><label description='Personal Information' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_gender}'><labels><label description='Gender' languagecode='1033'/></labels><control id='gendercode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='gendercode'/></cell></row>\n                                    <row><cell id='{c_bday}'><labels><label description='Birthday' languagecode='1033'/></labels><control id='birthdate' classid='{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}' datafieldname='birthdate'/></cell></row>\n                                    <row><cell id='{c_spouse}'><labels><label description='Spouse/Partner' languagecode='1033'/></labels><control id='spousesname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='spousesname'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='50%'>\n                        <sections>\n                            <section name='MARKETING_PREF' id='{sec_cnt_mkt}'>\n                                <labels><label description='Contact Preferences' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_noemail}'><labels><label description='Do Not Allow Email' languagecode='1033'/></labels><control id='donotemail' classid='{67037D90-A9A8-4390-84E3-8E5536582EB5}' datafieldname='donotemail'/></cell></row>\n                                    <row><cell id='{c_nophone}'><labels><label description='Do Not Allow Phone' languagecode='1033'/></labels><control id='donotphone' classid='{67037D90-A9A8-4390-84E3-8E5536582EB5}' datafieldname='donotphone'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n        </tabs>\n    </form>"
                 }
             ],
             "bpfs": {}
+        },
+        {
+            "LogicalName": "incident",
+            "DisplayName": {
+                "UserLocalizedLabel": {
+                    "Label": "Case"
+                }
+            },
+            "EntitySetName": "incidents",
+            "PrimaryIdAttribute": "incidentid",
+            "PrimaryNameAttribute": "title",
+            "ChangeTrackingEnabled": true,
+            "attributes": [
+                {
+                    "LogicalName": "incidentid",
+                    "AttributeType": "Uniqueidentifier",
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": false
+                },
+                {
+                    "LogicalName": "title",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Case Title"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "ticketnumber",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Case Number"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "customerid",
+                    "AttributeType": "Lookup",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Customer"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "prioritycode",
+                    "AttributeType": "Picklist",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Priority"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "caseorigincode",
+                    "AttributeType": "Picklist",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Origin"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "description",
+                    "AttributeType": "Memo",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Description"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "productname",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Product"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "resolution",
+                    "AttributeType": "Memo",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Resolution"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                }
+            ],
+            "lookup_targets": {
+                "customerid": [
+                    "account",
+                    "contact"
+                ]
+            },
+            "lookup_bindings": {
+                "customerid": {
+                    "account": {
+                        "navigation_property": "customerid_account",
+                        "entity_set_name": "accounts"
+                    }
+                }
+            },
+            "saved_queries": [
+                {
+                    "savedqueryid": "case_query_1",
+                    "name": "Active Cases",
+                    "returnedtypecode": "incident",
+                    "querytype": 0,
+                    "isdefault": true,
+                    "fetchxml": "<fetch><entity name='incident'><attribute name='title'/><attribute name='ticketnumber'/><attribute name='prioritycode'/><attribute name='caseorigincode'/></entity></fetch>",
+                    "layoutxml": "<grid name='resultset' object='112' jump='title' select='1' icon='1' preview='1'><row name='result' id='incidentid'><cell name='title' width='220'/><cell name='ticketnumber' width='130'/><cell name='prioritycode' width='100'/><cell name='caseorigincode' width='100'/></row></grid>"
+                }
+            ],
+            "forms": [
+                {
+                    "formid": "case_form_1",
+                    "name": "Case Main Form",
+                    "type": 2,
+                    "formxml": "<form>\n        <tabs>\n            <tab name='SUMMARY_TAB' id='{tab_inc_summary}'>\n                <labels><label description='Summary' languagecode='1033'/></labels>\n                <columns>\n                    <column width='34%'>\n                        <sections>\n                            <section name='CASE_INFO' id='{sec_inc_info}'>\n                                <labels><label description='Case Details' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_title}'><labels><label description='Case Title' languagecode='1033'/></labels><control id='title' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='title'/></cell></row>\n                                    <row><cell id='{c_ticket}'><labels><label description='Ticket Number' languagecode='1033'/></labels><control id='ticketnumber' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='ticketnumber'/></cell></row>\n                                    <row><cell id='{c_cust}'><labels><label description='Customer' languagecode='1033'/></labels><control id='customerid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='customerid'/></cell></row>\n                                    <row><cell id='{c_pri}'><labels><label description='Priority' languagecode='1033'/></labels><control id='prioritycode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='prioritycode'/></cell></row>\n                                    <row><cell id='{c_orig}'><labels><label description='Origin' languagecode='1033'/></labels><control id='caseorigincode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='caseorigincode'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='33%'>\n                        <sections>\n                            <section name='ISSUE_DETAILS' id='{sec_inc_issue}'>\n                                <labels><label description='Description &amp; Context' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_desc}'><labels><label description='Description' languagecode='1033'/></labels><control id='description' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='description'/></cell></row>\n                                    <row><cell id='{c_prod}'><labels><label description='Product' languagecode='1033'/></labels><control id='productname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='productname'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='33%'>\n                        <sections>\n                            <section name='TIMELINE_SECTION' id='{sec_inc_timeline}'>\n                                <labels><label description='Case Activities' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_notes}'><labels><label description='Notes &amp; Resolution' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n            <tab name='RESOLUTION_TAB' id='{tab_inc_res}'>\n                <labels><label description='Resolution' languagecode='1033'/></labels>\n                <columns>\n                    <column width='100%'>\n                        <sections>\n                            <section name='RES_INFO' id='{sec_inc_res}'>\n                                <labels><label description='Resolution Summary' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_res}'><labels><label description='Resolution' languagecode='1033'/></labels><control id='resolution' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='resolution'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n        </tabs>\n    </form>"
+                }
+            ],
+            "bpfs": {
+                "Phone to Case Resolution Process": {
+                    "processid": "bpf-002",
+                    "name": "Phone to Case Resolution Process",
+                    "primary_entity": "incident",
+                    "stages": [
+                        {
+                            "stageid": "s_identify",
+                            "stagename": "Identify",
+                            "category": "Intake",
+                            "steps": [
+                                {
+                                    "stepid": "c_step_1",
+                                    "name": "Verify Customer",
+                                    "attribute": "customerid",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "c_step_2",
+                                    "name": "Case Title",
+                                    "attribute": "title",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "c_step_3",
+                                    "name": "Case Origin",
+                                    "attribute": "caseorigincode",
+                                    "required": false
+                                }
+                            ]
+                        },
+                        {
+                            "stageid": "s_research",
+                            "stagename": "Research",
+                            "category": "Investigation",
+                            "steps": [
+                                {
+                                    "stepid": "c_step_4",
+                                    "name": "Description / Symptoms",
+                                    "attribute": "description",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "c_step_5",
+                                    "name": "Priority Assessment",
+                                    "attribute": "prioritycode",
+                                    "required": false
+                                }
+                            ]
+                        },
+                        {
+                            "stageid": "s_resolve",
+                            "stagename": "Resolve",
+                            "category": "Resolution",
+                            "steps": [
+                                {
+                                    "stepid": "c_step_6",
+                                    "name": "Resolution Summary",
+                                    "attribute": "resolution",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "c_step_7",
+                                    "name": "Customer Satisfaction",
+                                    "attribute": "cstatus",
+                                    "required": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "LogicalName": "opportunity",
+            "DisplayName": {
+                "UserLocalizedLabel": {
+                    "Label": "Opportunity"
+                }
+            },
+            "EntitySetName": "opportunities",
+            "PrimaryIdAttribute": "opportunityid",
+            "PrimaryNameAttribute": "name",
+            "ChangeTrackingEnabled": true,
+            "attributes": [
+                {
+                    "LogicalName": "opportunityid",
+                    "AttributeType": "Uniqueidentifier",
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": false
+                },
+                {
+                    "LogicalName": "name",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Topic"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "parentaccountid",
+                    "AttributeType": "Lookup",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Account"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "parentcontactid",
+                    "AttributeType": "Lookup",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Contact"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "estimatedvalue",
+                    "AttributeType": "Money",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Est. Revenue"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "estimatedclosedate",
+                    "AttributeType": "DateTime",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Est. Close Date"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "closeprobability",
+                    "AttributeType": "Integer",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Probability"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "purchasetimeframe",
+                    "AttributeType": "Picklist",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Purchase Timeframe"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "budgetamount",
+                    "AttributeType": "Money",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Budget Amount"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "need",
+                    "AttributeType": "Memo",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Need"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "proposedsolution",
+                    "AttributeType": "Memo",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Proposed Solution"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "currentsituation",
+                    "AttributeType": "Memo",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Current Situation"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "description",
+                    "AttributeType": "Memo",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Description"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                }
+            ],
+            "lookup_targets": {
+                "parentaccountid": [
+                    "account"
+                ],
+                "parentcontactid": [
+                    "contact"
+                ]
+            },
+            "lookup_bindings": {
+                "parentaccountid": {
+                    "account": {
+                        "navigation_property": "parentaccountid",
+                        "entity_set_name": "accounts"
+                    }
+                },
+                "parentcontactid": {
+                    "contact": {
+                        "navigation_property": "parentcontactid",
+                        "entity_set_name": "contacts"
+                    }
+                }
+            },
+            "saved_queries": [
+                {
+                    "savedqueryid": "opp_query_1",
+                    "name": "Open Opportunities",
+                    "returnedtypecode": "opportunity",
+                    "querytype": 0,
+                    "isdefault": true,
+                    "fetchxml": "<fetch><entity name='opportunity'><attribute name='name'/><attribute name='parentaccountid'/><attribute name='estimatedvalue'/><attribute name='estimatedclosedate'/></entity></fetch>",
+                    "layoutxml": "<grid name='resultset' object='3' jump='name' select='1' icon='1' preview='1'><row name='result' id='opportunityid'><cell name='name' width='220'/><cell name='parentaccountid' width='160'/><cell name='estimatedvalue' width='120'/><cell name='estimatedclosedate' width='140'/></row></grid>"
+                }
+            ],
+            "forms": [
+                {
+                    "formid": "opp_form_1",
+                    "name": "Opportunity Main Form",
+                    "type": 2,
+                    "formxml": "<form>\n        <tabs>\n            <tab name='SUMMARY_TAB' id='{tab_opp_summary}'>\n                <labels><label description='Summary' languagecode='1033'/></labels>\n                <columns>\n                    <column width='34%'>\n                        <sections>\n                            <section name='OPP_INFO' id='{sec_opp_info}'>\n                                <labels><label description='Opportunity Information' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_name}'><labels><label description='Topic' languagecode='1033'/></labels><control id='name' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='name'/></cell></row>\n                                    <row><cell id='{c_cust}'><labels><label description='Account' languagecode='1033'/></labels><control id='parentaccountid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='parentaccountid'/></cell></row>\n                                    <row><cell id='{c_contact}'><labels><label description='Contact' languagecode='1033'/></labels><control id='parentcontactid' classid='{270BD3DB-D9AF-4782-9025-509E298DEC0A}' datafieldname='parentcontactid'/></cell></row>\n                                    <row><cell id='{c_time}'><labels><label description='Purchase Timeframe' languagecode='1033'/></labels><control id='purchasetimeframe' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='purchasetimeframe'/></cell></row>\n                                    <row><cell id='{c_budget}'><labels><label description='Budget Amount' languagecode='1033'/></labels><control id='budgetamount' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='budgetamount'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='33%'>\n                        <sections>\n                            <section name='FORECAST' id='{sec_opp_fc}'>\n                                <labels><label description='Estimates &amp; Forecast' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_est_val}'><labels><label description='Estimated Revenue' languagecode='1033'/></labels><control id='estimatedvalue' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='estimatedvalue'/></cell></row>\n                                    <row><cell id='{c_est_date}'><labels><label description='Est. Close Date' languagecode='1033'/></labels><control id='estimatedclosedate' classid='{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}' datafieldname='estimatedclosedate'/></cell></row>\n                                    <row><cell id='{c_prob}'><labels><label description='Probability (%)' languagecode='1033'/></labels><control id='closeprobability' classid='{C6D124CA-7EDD-4813-A4D4-976E90702F9E}' datafieldname='closeprobability'/></cell></row>\n                                    <row><cell id='{c_need}'><labels><label description='Customer Need' languagecode='1033'/></labels><control id='need' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='need'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='33%'>\n                        <sections>\n                            <section name='TIMELINE_SECTION' id='{sec_opp_timeline}'>\n                                <labels><label description='Timeline &amp; Notes' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_notes}'><labels><label description='Activities' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n            <tab name='PROPOSAL_TAB' id='{tab_opp_prop}'>\n                <labels><label description='Proposal &amp; Solution' languagecode='1033'/></labels>\n                <columns>\n                    <column width='100%'>\n                        <sections>\n                            <section name='SOLUTION_SECTION' id='{sec_opp_sol}'>\n                                <labels><label description='Proposed Solution &amp; Competitors' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_sol}'><labels><label description='Proposed Solution' languagecode='1033'/></labels><control id='proposedsolution' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='proposedsolution'/></cell></row>\n                                    <row><cell id='{c_comp}'><labels><label description='Current Situation' languagecode='1033'/></labels><control id='currentsituation' classid='{E0DECE4B-6FC8-4a8f-A065-082708572369}' datafieldname='currentsituation'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n        </tabs>\n    </form>"
+                }
+            ],
+            "bpfs": {
+                "Lead to Opportunity Sales Process": {
+                    "processid": "bpf-001",
+                    "name": "Lead to Opportunity Sales Process",
+                    "primary_entity": "opportunity",
+                    "stages": [
+                        {
+                            "stageid": "s_qualify",
+                            "stagename": "Qualify",
+                            "category": "Identify",
+                            "steps": [
+                                {
+                                    "stepid": "step_qual_1",
+                                    "name": "Existing Contact?",
+                                    "attribute": "parentcontactid",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "step_qual_2",
+                                    "name": "Existing Account?",
+                                    "attribute": "parentaccountid",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "step_qual_3",
+                                    "name": "Purchase Timeframe",
+                                    "attribute": "purchasetimeframe",
+                                    "required": false
+                                },
+                                {
+                                    "stepid": "step_qual_4",
+                                    "name": "Estimated Budget",
+                                    "attribute": "budgetamount",
+                                    "required": false
+                                }
+                            ]
+                        },
+                        {
+                            "stageid": "s_develop",
+                            "stagename": "Develop",
+                            "category": "Research",
+                            "steps": [
+                                {
+                                    "stepid": "step_dev_1",
+                                    "name": "Customer Need",
+                                    "attribute": "need",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "step_dev_2",
+                                    "name": "Proposed Solution",
+                                    "attribute": "proposedsolution",
+                                    "required": false
+                                },
+                                {
+                                    "stepid": "step_dev_3",
+                                    "name": "Identify Competitors",
+                                    "attribute": "currentsituation",
+                                    "required": false
+                                }
+                            ]
+                        },
+                        {
+                            "stageid": "s_propose",
+                            "stagename": "Propose",
+                            "category": "Proposal",
+                            "steps": [
+                                {
+                                    "stepid": "step_prop_1",
+                                    "name": "Present Proposal",
+                                    "attribute": "description",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "step_prop_2",
+                                    "name": "Confirm Price / Quote",
+                                    "attribute": "estimatedvalue",
+                                    "required": true
+                                }
+                            ]
+                        },
+                        {
+                            "stageid": "s_close",
+                            "stagename": "Close",
+                            "category": "Finalize",
+                            "steps": [
+                                {
+                                    "stepid": "step_close_1",
+                                    "name": "Final Decision Date",
+                                    "attribute": "estimatedclosedate",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "step_close_2",
+                                    "name": "File De-brief Notes",
+                                    "attribute": "description",
+                                    "required": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "LogicalName": "lead",
+            "DisplayName": {
+                "UserLocalizedLabel": {
+                    "Label": "Lead"
+                }
+            },
+            "EntitySetName": "leads",
+            "PrimaryIdAttribute": "leadid",
+            "PrimaryNameAttribute": "fullname",
+            "ChangeTrackingEnabled": true,
+            "attributes": [
+                {
+                    "LogicalName": "leadid",
+                    "AttributeType": "Uniqueidentifier",
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": false
+                },
+                {
+                    "LogicalName": "subject",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Topic"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "fullname",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Full Name"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "companyname",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Company"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "emailaddress1",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Email"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "telephone1",
+                    "AttributeType": "String",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Phone"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "budgetamount",
+                    "AttributeType": "Money",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Budget Amount"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "purchasetimeframe",
+                    "AttributeType": "Picklist",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Purchase Timeframe"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                },
+                {
+                    "LogicalName": "leadsourcecode",
+                    "AttributeType": "Picklist",
+                    "DisplayName": {
+                        "UserLocalizedLabel": {
+                            "Label": "Lead Source"
+                        }
+                    },
+                    "IsValidForRead": true,
+                    "IsValidForCreate": true,
+                    "IsValidForUpdate": true
+                }
+            ],
+            "lookup_targets": {},
+            "lookup_bindings": {},
+            "saved_queries": [
+                {
+                    "savedqueryid": "lead_query_1",
+                    "name": "Open Leads",
+                    "returnedtypecode": "lead",
+                    "querytype": 0,
+                    "isdefault": true,
+                    "fetchxml": "<fetch><entity name='lead'><attribute name='fullname'/><attribute name='companyname'/><attribute name='emailaddress1'/><attribute name='telephone1'/></entity></fetch>",
+                    "layoutxml": "<grid name='resultset' object='4' jump='fullname' select='1' icon='1' preview='1'><row name='result' id='leadid'><cell name='fullname' width='180'/><cell name='companyname' width='180'/><cell name='emailaddress1' width='200'/><cell name='telephone1' width='140'/></row></grid>"
+                }
+            ],
+            "forms": [
+                {
+                    "formid": "lead_form_1",
+                    "name": "Lead Main Form",
+                    "type": 2,
+                    "formxml": "<form>\n        <tabs>\n            <tab name='SUMMARY_TAB' id='{tab_lead_summary}'>\n                <labels><label description='Summary' languagecode='1033'/></labels>\n                <columns>\n                    <column width='34%'>\n                        <sections>\n                            <section name='LEAD_INFO' id='{sec_lead_info}'>\n                                <labels><label description='Lead Contact' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_topic}'><labels><label description='Topic' languagecode='1033'/></labels><control id='subject' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='subject'/></cell></row>\n                                    <row><cell id='{c_fn}'><labels><label description='Full Name' languagecode='1033'/></labels><control id='fullname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='fullname'/></cell></row>\n                                    <row><cell id='{c_comp}'><labels><label description='Company' languagecode='1033'/></labels><control id='companyname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='companyname'/></cell></row>\n                                    <row><cell id='{c_email}'><labels><label description='Email' languagecode='1033'/></labels><control id='emailaddress1' classid='{ADA2203E-B4CD-49BE-9DDF-234642B44B52}' datafieldname='emailaddress1'/></cell></row>\n                                    <row><cell id='{c_phone}'><labels><label description='Business Phone' languagecode='1033'/></labels><control id='telephone1' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='telephone1'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='33%'>\n                        <sections>\n                            <section name='QUALIFICATION' id='{sec_lead_qual}'>\n                                <labels><label description='Qualification' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_budget}'><labels><label description='Budget Amount' languagecode='1033'/></labels><control id='budgetamount' classid='{533B9E00-756B-4312-95A0-DC888637AC78}' datafieldname='budgetamount'/></cell></row>\n                                    <row><cell id='{c_time}'><labels><label description='Purchase Timeframe' languagecode='1033'/></labels><control id='purchasetimeframe' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='purchasetimeframe'/></cell></row>\n                                    <row><cell id='{c_source}'><labels><label description='Lead Source' languagecode='1033'/></labels><control id='leadsourcecode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='leadsourcecode'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='33%'>\n                        <sections>\n                            <section name='TIMELINE_SECTION' id='{sec_lead_timeline}'>\n                                <labels><label description='Activities &amp; Notes' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_notes}'><labels><label description='Timeline' languagecode='1033'/></labels><control id='notescontrol' classid='{06375649-C143-495E-A496-C962E5B4488E}' datafieldname='notescontrol'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n            <tab name='DETAILS_TAB' id='{tab_lead_details}'>\n                <labels><label description='Details &amp; Marketing' languagecode='1033'/></labels>\n                <columns>\n                    <column width='50%'>\n                        <sections>\n                            <section name='COMPANY_DETAILS' id='{sec_lead_comp}'>\n                                <labels><label description='Company Information' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_ind}'><labels><label description='Industry' languagecode='1033'/></labels><control id='companyname' classid='{4273EDBD-AC1D-40d3-9FB2-095C621B552D}' datafieldname='companyname'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                    <column width='50%'>\n                        <sections>\n                            <section name='MARKETING_PREF' id='{sec_lead_mkt}'>\n                                <labels><label description='Preferences' languagecode='1033'/></labels>\n                                <rows>\n                                    <row><cell id='{c_source_2}'><labels><label description='Lead Source' languagecode='1033'/></labels><control id='leadsourcecode' classid='{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}' datafieldname='leadsourcecode'/></cell></row>\n                                </rows>\n                            </section>\n                        </sections>\n                    </column>\n                </columns>\n            </tab>\n        </tabs>\n    </form>"
+                }
+            ],
+            "bpfs": {
+                "Lead to Opportunity Sales Process": {
+                    "processid": "bpf-001",
+                    "name": "Lead to Opportunity Sales Process",
+                    "primary_entity": "opportunity",
+                    "stages": [
+                        {
+                            "stageid": "s_qualify",
+                            "stagename": "Qualify",
+                            "category": "Identify",
+                            "steps": [
+                                {
+                                    "stepid": "step_qual_1",
+                                    "name": "Existing Contact?",
+                                    "attribute": "parentcontactid",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "step_qual_2",
+                                    "name": "Existing Account?",
+                                    "attribute": "parentaccountid",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "step_qual_3",
+                                    "name": "Purchase Timeframe",
+                                    "attribute": "purchasetimeframe",
+                                    "required": false
+                                },
+                                {
+                                    "stepid": "step_qual_4",
+                                    "name": "Estimated Budget",
+                                    "attribute": "budgetamount",
+                                    "required": false
+                                }
+                            ]
+                        },
+                        {
+                            "stageid": "s_develop",
+                            "stagename": "Develop",
+                            "category": "Research",
+                            "steps": [
+                                {
+                                    "stepid": "step_dev_1",
+                                    "name": "Customer Need",
+                                    "attribute": "need",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "step_dev_2",
+                                    "name": "Proposed Solution",
+                                    "attribute": "proposedsolution",
+                                    "required": false
+                                },
+                                {
+                                    "stepid": "step_dev_3",
+                                    "name": "Identify Competitors",
+                                    "attribute": "currentsituation",
+                                    "required": false
+                                }
+                            ]
+                        },
+                        {
+                            "stageid": "s_propose",
+                            "stagename": "Propose",
+                            "category": "Proposal",
+                            "steps": [
+                                {
+                                    "stepid": "step_prop_1",
+                                    "name": "Present Proposal",
+                                    "attribute": "description",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "step_prop_2",
+                                    "name": "Confirm Price / Quote",
+                                    "attribute": "estimatedvalue",
+                                    "required": true
+                                }
+                            ]
+                        },
+                        {
+                            "stageid": "s_close",
+                            "stagename": "Close",
+                            "category": "Finalize",
+                            "steps": [
+                                {
+                                    "stepid": "step_close_1",
+                                    "name": "Final Decision Date",
+                                    "attribute": "estimatedclosedate",
+                                    "required": true
+                                },
+                                {
+                                    "stepid": "step_close_2",
+                                    "name": "File De-brief Notes",
+                                    "attribute": "description",
+                                    "required": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
         }
-    ]
+    ],
+    "bpfs": {
+        "Lead to Opportunity Sales Process": {
+            "processid": "bpf-001",
+            "name": "Lead to Opportunity Sales Process",
+            "primary_entity": "opportunity",
+            "stages": [
+                {
+                    "stageid": "s_qualify",
+                    "stagename": "Qualify",
+                    "category": "Identify",
+                    "steps": [
+                        {
+                            "stepid": "step_qual_1",
+                            "name": "Existing Contact?",
+                            "attribute": "parentcontactid",
+                            "required": true
+                        },
+                        {
+                            "stepid": "step_qual_2",
+                            "name": "Existing Account?",
+                            "attribute": "parentaccountid",
+                            "required": true
+                        },
+                        {
+                            "stepid": "step_qual_3",
+                            "name": "Purchase Timeframe",
+                            "attribute": "purchasetimeframe",
+                            "required": false
+                        },
+                        {
+                            "stepid": "step_qual_4",
+                            "name": "Estimated Budget",
+                            "attribute": "budgetamount",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "stageid": "s_develop",
+                    "stagename": "Develop",
+                    "category": "Research",
+                    "steps": [
+                        {
+                            "stepid": "step_dev_1",
+                            "name": "Customer Need",
+                            "attribute": "need",
+                            "required": true
+                        },
+                        {
+                            "stepid": "step_dev_2",
+                            "name": "Proposed Solution",
+                            "attribute": "proposedsolution",
+                            "required": false
+                        },
+                        {
+                            "stepid": "step_dev_3",
+                            "name": "Identify Competitors",
+                            "attribute": "currentsituation",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "stageid": "s_propose",
+                    "stagename": "Propose",
+                    "category": "Proposal",
+                    "steps": [
+                        {
+                            "stepid": "step_prop_1",
+                            "name": "Present Proposal",
+                            "attribute": "description",
+                            "required": true
+                        },
+                        {
+                            "stepid": "step_prop_2",
+                            "name": "Confirm Price / Quote",
+                            "attribute": "estimatedvalue",
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "stageid": "s_close",
+                    "stagename": "Close",
+                    "category": "Finalize",
+                    "steps": [
+                        {
+                            "stepid": "step_close_1",
+                            "name": "Final Decision Date",
+                            "attribute": "estimatedclosedate",
+                            "required": true
+                        },
+                        {
+                            "stepid": "step_close_2",
+                            "name": "File De-brief Notes",
+                            "attribute": "description",
+                            "required": false
+                        }
+                    ]
+                }
+            ]
+        },
+        "Phone to Case Resolution Process": {
+            "processid": "bpf-002",
+            "name": "Phone to Case Resolution Process",
+            "primary_entity": "incident",
+            "stages": [
+                {
+                    "stageid": "s_identify",
+                    "stagename": "Identify",
+                    "category": "Intake",
+                    "steps": [
+                        {
+                            "stepid": "c_step_1",
+                            "name": "Verify Customer",
+                            "attribute": "customerid",
+                            "required": true
+                        },
+                        {
+                            "stepid": "c_step_2",
+                            "name": "Case Title",
+                            "attribute": "title",
+                            "required": true
+                        },
+                        {
+                            "stepid": "c_step_3",
+                            "name": "Case Origin",
+                            "attribute": "caseorigincode",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "stageid": "s_research",
+                    "stagename": "Research",
+                    "category": "Investigation",
+                    "steps": [
+                        {
+                            "stepid": "c_step_4",
+                            "name": "Description / Symptoms",
+                            "attribute": "description",
+                            "required": true
+                        },
+                        {
+                            "stepid": "c_step_5",
+                            "name": "Priority Assessment",
+                            "attribute": "prioritycode",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "stageid": "s_resolve",
+                    "stagename": "Resolve",
+                    "category": "Resolution",
+                    "steps": [
+                        {
+                            "stepid": "c_step_6",
+                            "name": "Resolution Summary",
+                            "attribute": "resolution",
+                            "required": true
+                        },
+                        {
+                            "stepid": "c_step_7",
+                            "name": "Customer Satisfaction",
+                            "attribute": "cstatus",
+                            "required": false
+                        }
+                    ]
+                }
+            ]
+        }
+    }
 }

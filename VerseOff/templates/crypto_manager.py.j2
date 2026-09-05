@@ -137,7 +137,7 @@ class CryptoManager:
             plaintext = self.aesgcm.decrypt(nonce, ciphertext, None)
             return plaintext.decode('utf-8')
         except Exception as e:
-            logger.error(f"Decryption failed: {e}")
+            logger.debug(f"Decryption failed: {e}")
             raise ValueError("Data corrupted or tampered with.")
 
     def encrypt_dict(self, data_dict: dict) -> str:

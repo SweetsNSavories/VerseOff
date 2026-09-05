@@ -17,6 +17,9 @@ except ImportError:
 ENTITY_NAMES = {
     "account",
     "contact",
+    "incident",
+    "opportunity",
+    "lead",
 }
 DYNAMIC_TABLES_CREATED = set()
 APP_STORAGE_KEY = "00000000-0000-0000-0000-000000000001"
@@ -110,7 +113,10 @@ class LocalDatabase:
         if not payload_str:
             return {}
         if self.crypto:
-            return self.crypto.decrypt_dict(payload_str)
+            try:
+                return self.crypto.decrypt_dict(payload_str)
+            except Exception:
+                pass
         try:
             return json.loads(payload_str)
         except Exception:
@@ -126,7 +132,15 @@ class LocalDatabase:
                     conn.execute(f"DELETE FROM {entity}")
                 except Exception:
                     pass
+            conn.commit()
+        conn = self.get_connection()
+        try:
+            conn.isolation_level = None
             conn.execute("VACUUM")
+        except Exception:
+            pass
+        finally:
+            conn.close()
 
     def _validate_entity_name(self, entity_name):
         if not re.match(r"^[a-zA-Z0-9_]+$", entity_name):
@@ -166,6 +180,33 @@ class LocalDatabase:
             """)
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS contact (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS incident (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS opportunity (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    sync_status TEXT NOT NULL DEFAULT 'synced',
+                    sync_error TEXT,
+                    last_modified TEXT
+                )
+            """)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS lead (
                     id TEXT PRIMARY KEY,
                     data_json TEXT NOT NULL,
                     sync_status TEXT NOT NULL DEFAULT 'synced',

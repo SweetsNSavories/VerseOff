@@ -904,10 +904,10 @@ class MakerWizard(QWizard):
 
     def closeEvent(self, event):
         workers = [
-            self.connection_page.worker,
-            self.app_page.worker,
-            self.component_page.worker,
-            self.generation_page.worker,
+            getattr(self.connection_page, "worker", None),
+            getattr(self.app_page, "worker", None),
+            getattr(self.component_page, "worker", None),
+            getattr(self.generation_page, "worker", None),
         ]
         if any(worker and worker.isRunning() for worker in workers):
             QMessageBox.information(

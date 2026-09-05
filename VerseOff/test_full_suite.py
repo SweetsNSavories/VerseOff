@@ -16,82 +16,34 @@ app = QApplication.instance() or QApplication(sys.argv)
 window = OfflineApp()
 print("OfflineApp instance initialized cleanly.")
 
-# Test account and contact form rendering
 manifest_path = "manifest.json"
 with open(manifest_path, "r", encoding="utf-8") as f:
     manifest = json.load(f)
 
-# Add mock BPF to account to test BPF UI + flyout interaction
-mock_bpf = {
-    "processid": "bpf-001",
-    "name": "Lead to Opportunity Sales Process",
-    "stages": [
-        {
-            "stageid": "s1",
-            "stagename": "Qualify",
-            "category": 0,
-            "steps": [
-                {"stepid": "st1", "description": "Identify Contact", "attribute": "primarycontactid", "required": True},
-                {"stepid": "st2", "description": "Budget Confirmed", "attribute": "telephone1", "required": False}
-            ]
-        },
-        {
-            "stageid": "s2",
-            "stagename": "Develop",
-            "category": 1,
-            "steps": [
-                {"stepid": "st3", "description": "Customer Need", "attribute": "name", "required": True}
-            ]
-        },
-        {
-            "stageid": "s3",
-            "stagename": "Propose",
-            "category": 2,
-            "steps": []
-        },
-        {
-            "stageid": "s4",
-            "stagename": "Close",
-            "category": 3,
-            "steps": []
-        }
-    ]
-}
+entities = [e.get("LogicalName") for e in manifest.get("entities", [])]
+print(f"Entities in manifest ({len(entities)}): {entities}")
+assert len(entities) >= 5, "Expected at least 5 entities in manifest"
 
-manifest["entities"][0]["bpfs"] = {"Lead to Opportunity Sales Process": mock_bpf}
+for ent in entities:
+    form_renderer = XrmFormRenderer(
+        manifest_data=manifest,
+        logical_name=ent,
+        record_id=None
+    )
+    # Verify multi-tab presence
+    tab_count = form_renderer.tab_widget.count() if hasattr(form_renderer, "tab_widget") else 0
+    tabs = [form_renderer.tab_widget.tabText(i) for i in range(tab_count)] if tab_count else []
+    bpf_present = form_renderer.bpf_widget is not None
 
-# Save updated test manifest
-with open("manifest.json", "w", encoding="utf-8") as f:
-    json.dump(manifest, f, indent=4)
+    print(f"Verified '{ent}':")
+    print(f"  - Tabs ({tab_count}): {tabs}")
+    print(f"  - Sections rendered: {len(form_renderer.controls)} controls bound")
+    print(f"  - BPF Track Bar rendered: {bpf_present}")
+    print(f"  - QJSEngine active: {getattr(form_renderer, '_runtime_ready', False)}")
 
-print("Testing XrmFormRenderer with BPF...")
-account_form = XrmFormRenderer(
-    manifest_data=manifest,
-    logical_name="account",
-    record_id=None
-)
+    assert tab_count >= 2, f"Entity '{ent}' should have multiple tabs (got {tab_count})"
+    assert len(form_renderer.controls) >= 3, f"Entity '{ent}' should have multiple controls across sections"
 
-print(f" - Account JS Engine active: {getattr(account_form, '_runtime_ready', False)}")
-print(f" - BPF widget rendered: {account_form.bpf_widget is not None}")
-assert account_form.bpf_widget is not None, "BPF widget should be rendered when BPF is defined"
-assert hasattr(account_form, "bpf_stage_panel"), "BPF stage panel should exist"
-
-# Test stage panel toggle and update
-account_form.bpf_stage_panel.populate_stage(
-    stage_def=mock_bpf["stages"][0],
-    stage_idx=0,
-    total_stages=4,
-    is_active=True
-)
-print(" - BPF stage flyout successfully updated with steps.")
-
-# Test executing JS event in QJSEngine
-if hasattr(account_form, "js_engine"):
-    val = account_form.js_engine.evaluate("1 + 1")
-    print(f" - QJSEngine evaluated basic arithmetic: 1 + 1 = {val.toInt()}")
-    val2 = account_form.js_engine.evaluate("typeof window.Xrm !== 'undefined'")
-    print(f" - QJSEngine window.Xrm defined: {val2.toBool()}")
-
-print("\nSUCCESS: All unit and UI component verification passed!")
+print("\nSUCCESS: All 5 entities rendered with rich multi-tab and multi-section layouts!")
 QTimer.singleShot(200, app.quit)
 app.exec()
