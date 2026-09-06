@@ -30,6 +30,9 @@ public sealed class DeviceStoreInitializerTests
             CollectionAssert.Contains(
                 migrations.ToArray(),
                 "20260906210521_AddTimelineCache");
+            CollectionAssert.Contains(
+                migrations.ToArray(),
+                "20260906225128_AddSyncCursor");
         }
         finally
         {

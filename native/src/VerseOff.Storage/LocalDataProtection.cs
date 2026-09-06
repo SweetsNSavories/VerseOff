@@ -124,4 +124,9 @@ public static class LocalProtectionPurpose
 
     public static string TimelineAttachment(Guid attachmentId) =>
         $"timeline-attachment:{attachmentId:D}";
+
+    public static string SyncCursor(
+        string scope,
+        string tableLogicalName) =>
+        $"sync-cursor:{scope}:{tableLogicalName}";
 }

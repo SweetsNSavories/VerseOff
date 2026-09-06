@@ -112,6 +112,90 @@ public sealed class LocalRecordStoreTests
         Assert.IsEmpty(await verification.OutboxEntries.ToArrayAsync());
     }
 
+    [TestMethod]
+    public async Task ServerChangeUpdatesSyncedRecordWithoutOutbox()
+    {
+        await using var connection = new SqliteConnection(
+            "Data Source=:memory:");
+        await connection.OpenAsync();
+        var options = new DbContextOptionsBuilder<VerseOffDbContext>()
+            .UseSqlite(connection)
+            .Options;
+        await using (var setup = new VerseOffDbContext(options))
+        {
+            await setup.Database.EnsureCreatedAsync();
+        }
+
+        var store = new LocalRecordStore(
+            new TestDbContextFactory(options),
+            TimeProvider.System,
+            Protector());
+        var recordId = Guid.NewGuid();
+        using var payload = JsonDocument.Parse("""{"name":"Server"}""");
+
+        await store.ApplyServerChangeAsync(
+            new(
+                "account",
+                recordId,
+                payload.RootElement.Clone(),
+                "W/\"server-1\"",
+                IsDeleted: false),
+            "security-v2");
+
+        var record = await store.RetrieveAsync("account", recordId);
+        Assert.IsNotNull(record);
+        Assert.AreEqual(LocalSyncState.Synced, record.SyncState);
+        Assert.AreEqual("W/\"server-1\"", record.Etag);
+        StringAssert.Contains(record.DataJson, "Server");
+        await using var verification = new VerseOffDbContext(options);
+        Assert.IsEmpty(await verification.OutboxEntries.ToArrayAsync());
+    }
+
+    [TestMethod]
+    public async Task ServerChangeDoesNotOverwritePendingLocalWrite()
+    {
+        await using var connection = new SqliteConnection(
+            "Data Source=:memory:");
+        await connection.OpenAsync();
+        var options = new DbContextOptionsBuilder<VerseOffDbContext>()
+            .UseSqlite(connection)
+            .Options;
+        await using (var setup = new VerseOffDbContext(options))
+        {
+            await setup.Database.EnsureCreatedAsync();
+        }
+
+        var store = new LocalRecordStore(
+            new TestDbContextFactory(options),
+            TimeProvider.System,
+            Protector());
+        var recordId = Guid.NewGuid();
+        using var local = JsonDocument.Parse("""{"name":"Local"}""");
+        using var server = JsonDocument.Parse("""{"name":"Server"}""");
+        await store.SaveLocalAsync(
+            "account",
+            recordId,
+            local,
+            Guid.NewGuid(),
+            "device",
+            "security-v1",
+            "correlation");
+
+        await store.ApplyServerChangeAsync(
+            new(
+                "account",
+                recordId,
+                server.RootElement.Clone(),
+                "W/\"server-1\"",
+                IsDeleted: false),
+            "security-v2");
+
+        var record = await store.RetrieveAsync("account", recordId);
+        Assert.IsNotNull(record);
+        Assert.AreEqual(LocalSyncState.Conflict, record.SyncState);
+        StringAssert.Contains(record.DataJson, "Local");
+    }
+
     private sealed class TestDbContextFactory(
         DbContextOptions<VerseOffDbContext> options)
         : IDbContextFactory<VerseOffDbContext>

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VerseOff.Storage;
 
@@ -10,9 +11,11 @@ using VerseOff.Storage;
 namespace VerseOff.Storage.Migrations
 {
     [DbContext(typeof(VerseOffDbContext))]
-    partial class VerseOffDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260906225128_AddSyncCursor")]
+    partial class AddSyncCursor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.11");

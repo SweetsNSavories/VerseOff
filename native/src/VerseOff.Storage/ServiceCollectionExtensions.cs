@@ -24,6 +24,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ILocalRecordStore, LocalRecordStore>();
         services.AddScoped<IEntitlementLeaseStore, EntitlementLeaseStore>();
         services.AddScoped<ITimelineCacheStore, TimelineCacheStore>();
+        services.AddScoped<ISyncCursorStore, SyncCursorStore>();
         services.AddSingleton<DeviceStoreInitializer>();
         return services;
     }

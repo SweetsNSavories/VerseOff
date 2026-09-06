@@ -7,7 +7,8 @@ public sealed record PullRequest(
     string TableLogicalName,
     string SecuritySnapshotVersion,
     string? DeltaLink,
-    int MaximumPages = 20);
+    int MaximumPages = 20,
+    string CursorScope = "default");
 
 public sealed record PullSummary(
     int Pages,
@@ -25,7 +26,8 @@ public interface IDataverseChangeGateway
 
 public sealed class PullCoordinator(
     IDataverseChangeGateway gateway,
-    ILocalRecordStore localRecordStore)
+    ILocalRecordStore localRecordStore,
+    ISyncCursorStore? cursorStore = null)
 {
     public async ValueTask<PullSummary> PullAsync(
         PullRequest request,
@@ -44,7 +46,13 @@ public sealed class PullCoordinator(
         var pages = 0;
         var upserts = 0;
         var deletes = 0;
-        var pageLink = request.DeltaLink;
+        var pageLink = request.DeltaLink
+            ?? (cursorStore is null
+                ? null
+                : await cursorStore.GetAsync(
+                    request.CursorScope,
+                    request.TableLogicalName,
+                    cancellationToken));
         string? finalDeltaLink = null;
 
         while (pages < request.MaximumPages)
@@ -90,9 +98,22 @@ public sealed class PullCoordinator(
             break;
         }
 
-        return finalDeltaLink is null
-            ? throw new InvalidDataException(
-                "Dataverse change tracking did not produce a delta link within the configured page limit.")
-            : new(pages, upserts, deletes, finalDeltaLink);
+        if (finalDeltaLink is null)
+        {
+            throw new InvalidDataException(
+                "Dataverse change tracking did not produce a delta link within the configured page limit.");
+        }
+
+        if (cursorStore is not null)
+        {
+            await cursorStore.SetAsync(
+                request.CursorScope,
+                request.TableLogicalName,
+                finalDeltaLink,
+                cancellationToken);
+        }
+
+        return
+            new(pages, upserts, deletes, finalDeltaLink);
     }
 }

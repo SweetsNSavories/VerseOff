@@ -22,6 +22,8 @@ public sealed class VerseOffDbContext(DbContextOptions<VerseOffDbContext> option
     public DbSet<TimelineAttachmentEntity> TimelineAttachments =>
         Set<TimelineAttachmentEntity>();
 
+    public DbSet<SyncCursorEntity> SyncCursors => Set<SyncCursorEntity>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         ArgumentNullException.ThrowIfNull(modelBuilder);
@@ -125,6 +127,22 @@ public sealed class VerseOffDbContext(DbContextOptions<VerseOffDbContext> option
                 .HasForeignKey(attachment => attachment.TimelineRecordId)
                 .OnDelete(DeleteBehavior.Cascade);
             entity.HasIndex(attachment => attachment.TimelineRecordId);
+        });
+
+        modelBuilder.Entity<SyncCursorEntity>(entity =>
+        {
+            entity.HasKey(cursor => new
+            {
+                cursor.Scope,
+                cursor.TableLogicalName,
+            });
+            entity.Property(cursor => cursor.Scope).HasMaxLength(256);
+            entity.Property(cursor => cursor.TableLogicalName)
+                .HasMaxLength(128);
+            entity.Property(cursor => cursor.UpdatedAt)
+                .HasConversion(
+                    value => value.UtcDateTime.Ticks,
+                    value => new DateTimeOffset(value, TimeSpan.Zero));
         });
     }
 }
@@ -253,4 +271,15 @@ public sealed class TimelineAttachmentEntity
     public int TransferState { get; set; }
 
     public required string ProtectedStorageReference { get; set; }
+}
+
+public sealed class SyncCursorEntity
+{
+    public required string Scope { get; set; }
+
+    public required string TableLogicalName { get; set; }
+
+    public required string ProtectedDeltaLink { get; set; }
+
+    public DateTimeOffset UpdatedAt { get; set; }
 }
