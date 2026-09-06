@@ -9,6 +9,7 @@ build/
 *.egg
 # Generated output (regenerated from templates + manifest)
 VerseOff/out/manifest.json
+VerseOff/out/webresources/msdyn_/
 VerseOff/Schemas.zip
 *.so
 *.egg-info/
@@ -59,6 +60,11 @@ server_side_extract.txt
 
 # Scratch / temp
 scratch/
+/.o/
+
+# .NET build output
+**/bin/
+**/obj/
 
 # Plan artifacts (keep in repo for documentation)
 # implementation_plan.md

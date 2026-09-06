@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\VerseOff.Domain\VerseOff.Domain.csproj" />
+    <ProjectReference Include="..\VerseOff.Sync\VerseOff.Sync.csproj" />
+    <ProjectReference Include="..\VerseOff.ReadModel\VerseOff.ReadModel.csproj" />
+    <ProjectReference Include="..\VerseOff.Integrations\VerseOff.Integrations.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.21.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="10.0.11" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>

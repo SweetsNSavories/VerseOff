@@ -1,3 +1,12 @@
+# Deprecated Prototype Task List
+
+> These tasks track the superseded Python/PyQt/VS Code prototype. New product
+> work must follow
+> [Native Microsoft Architecture](docs/NATIVE_MICROSOFT_ARCHITECTURE.md) and
+> [ALM, Profiles, Distribution, and Extensibility](docs/ALM_PROFILES_DISTRIBUTION_EXTENSIBILITY.md).
+> Completed prototype items remain useful as behavioral fixtures and migration
+> inputs, but they are not evidence that the native .NET product is complete.
+
 # VerseOff — VS Code Extension Pivot Tasks
 
 ## Phase 1.5 — Azure Telemetry Shift

@@ -1,0 +1,65 @@
+name: Native .NET
+
+on:
+  pull_request:
+    paths:
+      - "native/**"
+      - ".github/workflows/native-ci.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "native/**"
+      - ".github/workflows/native-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: windows-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install MAUI Windows workload
+        run: dotnet workload install maui-windows
+
+      - name: Restore local tools
+        run: dotnet tool restore --tool-manifest native/dotnet-tools.json
+
+      - name: Restore
+        run: dotnet restore native/VerseOff.Native.sln
+
+      - name: Build
+        run: dotnet build native/VerseOff.Native.sln -c Release --no-restore
+
+      - name: Test
+        run: dotnet test native/VerseOff.Native.sln -c Release --no-build
+
+      - name: Audit NuGet dependencies
+        run: dotnet list native/VerseOff.Native.sln package --vulnerable --include-transitive
+
+      - name: Publish unpackaged Maker validation artifact
+        run: >
+          dotnet publish
+          native/src/VerseOff.App/VerseOff.App.csproj
+          -f net10.0-windows10.0.19041.0
+          -c Release
+          --no-restore
+          -p:WindowsPackageType=None
+          -p:RuntimeIdentifierOverride=win-x64
+
+      - name: Upload Maker artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: verseoff-maker-win-x64
+          path: native/src/VerseOff.App/bin/Release/net10.0-windows10.0.19041.0/win-x64/publish/
+          if-no-files-found: error

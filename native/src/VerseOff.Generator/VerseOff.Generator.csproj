@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\VerseOff.Domain\VerseOff.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource
+      Include="..\VerseOff.Domain\**\*.cs"
+      Exclude="..\VerseOff.Domain\bin\**;..\VerseOff.Domain\obj\**"
+      LogicalName="VerseOff.RuntimeSources/VerseOff.Domain/%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource
+      Include="..\VerseOff.Storage\**\*.cs"
+      Exclude="..\VerseOff.Storage\bin\**;..\VerseOff.Storage\obj\**"
+      LogicalName="VerseOff.RuntimeSources/VerseOff.Storage/%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource
+      Include="..\VerseOff.ClientApi\**\*.cs"
+      Exclude="..\VerseOff.ClientApi\bin\**;..\VerseOff.ClientApi\obj\**"
+      LogicalName="VerseOff.RuntimeSources/VerseOff.ClientApi/%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource
+      Include="..\VerseOff.ReadModel\**\*.cs"
+      Exclude="..\VerseOff.ReadModel\bin\**;..\VerseOff.ReadModel\obj\**"
+      LogicalName="VerseOff.RuntimeSources/VerseOff.ReadModel/%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource
+      Include="..\VerseOff.Sync\**\*.cs"
+      Exclude="..\VerseOff.Sync\bin\**;..\VerseOff.Sync\obj\**"
+      LogicalName="VerseOff.RuntimeSources/VerseOff.Sync/%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource
+      Include="..\VerseOff.Controls\**\*.cs"
+      Exclude="..\VerseOff.Controls\bin\**;..\VerseOff.Controls\obj\**"
+      LogicalName="VerseOff.RuntimeSources/VerseOff.Controls/%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource
+      Include="..\VerseOff.Integrations\**\*.cs"
+      Exclude="..\VerseOff.Integrations\bin\**;..\VerseOff.Integrations\obj\**"
+      LogicalName="VerseOff.RuntimeSources/VerseOff.Integrations/%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

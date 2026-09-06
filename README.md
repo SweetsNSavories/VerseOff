@@ -1,12 +1,32 @@
 # VerseOff — Dynamics 365 Offline Client Engine
 
-A model-driven offline desktop client for Microsoft Dynamics 365 Customer Engagement, built with **Python**, **PyQt6**, and **Jinja2** code generation.
+> **Architecture pivot:** the commercial shipping target is now a native
+> Microsoft-centered stack using **C#, .NET 10 LTS, .NET MAUI, WinUI 3, XAML,
+> MSAL.NET, EF Core SQLite, and a constrained Jint runtime for approved
+> customer-owned scripts**. Microsoft OOTB/internal scripts and bundles are
+> never decompiled or executed. The Python/PyQt/Chromium implementation in
+> this branch is an R&D prototype and migration oracle, not the product
+> runtime.
+
+Canonical documentation:
+
+- [Native Microsoft Architecture](docs/NATIVE_MICROSOFT_ARCHITECTURE.md)
+- [ALM, Profiles, Distribution, and Extensibility](docs/ALM_PROFILES_DISTRIBUTION_EXTENSIBILITY.md)
+- [Hybrid Data and Channel Integration](docs/HYBRID_DATA_AND_CHANNEL_INTEGRATION.md)
+- [Regulated Enterprise Acceptance](docs/REGULATED_ENTERPRISE_ACCEPTANCE.md)
+- [License-Bound Distribution and Authentication](docs/LICENSE_BOUND_DISTRIBUTION_AND_AUTHENTICATION.md)
+- [Prototype Session Worklog](docs/SESSION_WORKLOG_LAST_10_HOURS.md)
+
+## Legacy prototype
+
+The material below describes the current prototype repository, retained for
+metadata fixtures, behavioral research, and compatibility tests.
 
 VerseOff fetches your Dynamics 365 organization metadata (entities, forms, views, ribbons, sitemap, BPFs, web resources) via the Dataverse Web API, generates a fully functional offline PyQt6 desktop application, and syncs data bidirectionally when connectivity is available.
 
 ---
 
-## Architecture
+## Legacy Prototype Architecture
 
 ```
 ┌──────────────────────────────────────────────┐

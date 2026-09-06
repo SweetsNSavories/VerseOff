@@ -1,3 +1,12 @@
+# Deprecated Prototype Plan
+
+> This document describes the superseded Python/PyQt/browser prototype. Do
+> not use it as the shipping architecture. The canonical direction is
+> [Native Microsoft Architecture](docs/NATIVE_MICROSOFT_ARCHITECTURE.md), with
+> ALM and extension details in
+> [ALM, Profiles, Distribution, and Extensibility](docs/ALM_PROFILES_DISTRIBUTION_EXTENSIBILITY.md).
+> Retain this file only as historical research and a source of test cases.
+
 # Architecture Research: Resilient Offline Windows Client for Dynamics 365 / Dataverse
 
 This document summarizes the research into building a highly defensive, offline-first Windows application that dynamically renders Model-Driven Apps and ensures critical data capture during emergencies or connectivity loss.
