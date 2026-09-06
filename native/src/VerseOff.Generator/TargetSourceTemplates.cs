@@ -91,6 +91,7 @@ internal static class TargetSourceTemplates
             <SingleProject>true</SingleProject>
             <ImplicitUsings>enable</ImplicitUsings>
             <Nullable>enable</Nullable>
+            <MauiXamlInflator>SourceGen</MauiXamlInflator>
             <ApplicationTitle>{{title}}</ApplicationTitle>
             <ApplicationId>{{applicationId}}</ApplicationId>
             <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
