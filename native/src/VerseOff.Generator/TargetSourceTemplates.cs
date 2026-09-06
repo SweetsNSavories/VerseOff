@@ -141,7 +141,6 @@ internal static class TargetSourceTemplates
             <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
             <AnalysisLevel>latest-recommended</AnalysisLevel>
             <Deterministic>true</Deterministic>
-            <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory).o\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
           </PropertyGroup>
         </Project>
         """;
