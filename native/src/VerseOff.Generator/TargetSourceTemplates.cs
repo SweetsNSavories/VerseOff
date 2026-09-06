@@ -252,11 +252,19 @@ internal static class TargetSourceTemplates
                 </CollectionView>
               </Border>
 
-              <ScrollView Grid.Column="1">
-                <VerticalStackLayout x:Name="ContentHost"
-                                     Padding="28"
-                                     Spacing="16" />
-              </ScrollView>
+              <Grid Grid.Column="1"
+                    RowDefinitions="Auto,*">
+                <ScrollView HorizontalScrollBarVisibility="Never">
+                  <HorizontalStackLayout x:Name="CommandBarHost"
+                                         Padding="20,12"
+                                         Spacing="8" />
+                </ScrollView>
+                <ScrollView Grid.Row="1">
+                  <VerticalStackLayout x:Name="ContentHost"
+                                       Padding="28"
+                                       Spacing="16" />
+                </ScrollView>
+              </Grid>
             </Grid>
           </Grid>
         </ContentPage>
@@ -385,6 +393,8 @@ internal static class TargetSourceTemplates
                     Guid.Empty,
                     tableLogicalName,
                     TimelineProvider: null);
+                RenderCommands(form);
+                RenderControls(form.HeaderControls, runtimeContext, "Header");
                 foreach (var tab in form.Tabs)
                 {
                     if (!tab.IsVisible)
@@ -447,6 +457,87 @@ internal static class TargetSourceTemplates
                         Content = tabContent,
                     });
                 }
+                RenderControls(form.FooterControls, runtimeContext, "Footer");
+            }
+
+            private void RenderCommands(FormDefinition form)
+            {
+                CommandBarHost.Clear();
+                foreach (var command in definition!.Commands
+                    .Where(candidate => string.Equals(
+                        candidate.Location,
+                        form.TableLogicalName,
+                        StringComparison.OrdinalIgnoreCase)
+                        || string.Equals(
+                            candidate.Location,
+                            "Form",
+                            StringComparison.OrdinalIgnoreCase))
+                    .OrderBy(candidate => candidate.Order))
+                {
+                    var button = new Button
+                    {
+                        Text = command.Label,
+                        CommandParameter = command.CommandId,
+                        Padding = new Thickness(14, 6),
+                    };
+                    button.Clicked += (_, _) => ExecuteCommand(command);
+                    CommandBarHost.Add(button);
+                }
+                if (CommandBarHost.Children.Count == 0)
+                {
+                    CommandBarHost.Add(new Label
+                    {
+                        Text = "No commands configured",
+                        TextColor = Color.FromArgb("#605E5C"),
+                        VerticalOptions = LayoutOptions.Center,
+                    });
+                }
+            }
+
+            private async void ExecuteCommand(CommandDefinition command)
+            {
+                if (command.Action.Kind is CommandActionKind.OpenUrl
+                    && Uri.TryCreate(command.Action.Target, UriKind.Absolute, out var uri))
+                {
+                    await Launcher.Default.OpenAsync(uri);
+                    return;
+                }
+
+                RenderMessage(
+                    $"{command.Label}: {command.Action.Kind} command is available in metadata but has no native action adapter.");
+            }
+
+            private void RenderControls(
+                IReadOnlyList<FormControlDefinition> controls,
+                FormRuntimeContext runtimeContext,
+                string region)
+            {
+                if (controls.Count == 0)
+                {
+                    return;
+                }
+
+                var panel = new VerticalStackLayout
+                {
+                    Spacing = 8,
+                };
+                panel.Add(new Label
+                {
+                    Text = region,
+                    FontAttributes = FontAttributes.Bold,
+                });
+                foreach (var control in controls.Where(control => control.IsVisible))
+                {
+                    panel.Add(CreateField(control, runtimeContext));
+                }
+                ContentHost.Insert(0, new Border
+                {
+                    Padding = 16,
+                    Stroke = Color.FromArgb("#E1DFDD"),
+                    StrokeShape = new RoundRectangle { CornerRadius = 8 },
+                    BackgroundColor = Colors.White,
+                    Content = panel,
+                });
             }
 
             private VerticalStackLayout CreateField(
