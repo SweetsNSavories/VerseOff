@@ -29,17 +29,20 @@ public sealed partial class DataverseSolutionImporter
     private readonly SolutionImportPolicy importPolicy;
     private readonly PublishedSchemaCatalog schemaCatalog;
     private readonly SchemaValidationBehavior schemaValidationBehavior;
+    private readonly IOOTBComponentResolver ootbResolver;
 
     public DataverseSolutionImporter(
         SolutionImportPolicy importPolicy,
         SchemaValidationBehavior schemaValidationBehavior =
             SchemaValidationBehavior.Strict,
-        PublishedSchemaCatalog? schemaCatalog = null)
+        PublishedSchemaCatalog? schemaCatalog = null,
+        IOOTBComponentResolver? ootbResolver = null)
     {
         this.importPolicy = importPolicy
             ?? throw new ArgumentNullException(nameof(importPolicy));
         this.schemaValidationBehavior = schemaValidationBehavior;
         this.schemaCatalog = schemaCatalog ?? PublishedSchemaCatalog.Default;
+        this.ootbResolver = ootbResolver ?? NullOOTBComponentResolver.Instance;
     }
 
     public SolutionImportResult Import(
@@ -107,6 +110,17 @@ public sealed partial class DataverseSolutionImporter
             selectedApp,
             tableNames,
             compatibilityIssues);
+
+        // If no navigation was found in solution, generate default from tables
+        if (navigation.Length == 0 && tables.Length > 0)
+        {
+            navigation = this.ootbResolver
+                .GenerateDefaultNavigation(
+                    tableNames.ToList(),
+                    tables)
+                .ToArray();
+        }
+
         var commands = ParseCommands(
             documents,
             identity,
