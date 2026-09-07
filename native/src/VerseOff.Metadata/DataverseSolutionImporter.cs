@@ -105,6 +105,7 @@ public sealed partial class DataverseSolutionImporter
         var navigation = ParseNavigation(
             documents,
             selectedApp,
+            tableNames,
             compatibilityIssues);
         var commands = ParseCommands(
             documents,
@@ -321,14 +322,32 @@ public sealed partial class DataverseSolutionImporter
 
         foreach (var expected in selectedApp.TableLogicalNames)
         {
-            if (!tables.ContainsKey(expected))
+            if (!tables.TryGetValue(expected, out var existing))
             {
-                issues.Add(new(
-                    "app-table-missing",
-                    CompatibilitySeverity.Blocking,
-                    expected,
-                    $"The selected app declares table '{expected}', but its metadata is missing.",
-                    "Add the table and required columns to the exported solution."));
+                if (StandardCdmTables.TryGetTable(expected, out var cdmTable))
+                {
+                    tables[expected] = cdmTable;
+                }
+                else
+                {
+                    issues.Add(new(
+                        "app-table-missing",
+                        CompatibilitySeverity.Warning,
+                        expected,
+                        $"The selected app declares table '{expected}', but its metadata is missing.",
+                        "Add the table and required columns to the exported solution."));
+                }
+            }
+            else if (existing.Columns.Count == 0 && StandardCdmTables.TryGetTable(expected, out var cdmTable))
+            {
+                tables[expected] = existing with
+                {
+                    Columns = cdmTable.Columns,
+                    PrimaryIdAttribute = cdmTable.PrimaryIdAttribute,
+                    PrimaryNameAttribute = cdmTable.PrimaryNameAttribute,
+                    EntitySetName = cdmTable.EntitySetName,
+                    DisplayName = existing.DisplayName ?? cdmTable.DisplayName,
+                };
             }
         }
 
@@ -536,8 +555,16 @@ public sealed partial class DataverseSolutionImporter
                     continue;
                 }
 
-                foreach (var systemForm in entityNode
-                    .DescendantsNamed("systemform"))
+                var entityForms = entityNode.DescendantsNamed("systemform").ToList();
+                var hasExplicitForms = entityForms.Any(sf =>
+                    SolutionDiscoveryService.TryParseGuid(
+                        FirstNonBlank(
+                            sf.ChildValue("formid"),
+                            sf.AttributeValue("formid"),
+                            sf.AttributeValue("id")),
+                        out var fid) && selectedApp.FormIds.Contains(fid));
+
+                foreach (var systemForm in entityForms)
                 {
                     if (!SolutionDiscoveryService.TryParseGuid(
                             FirstNonBlank(
@@ -555,8 +582,7 @@ public sealed partial class DataverseSolutionImporter
                         continue;
                     }
 
-                    if (selectedApp.FormIds.Count > 0
-                        && !selectedApp.FormIds.Contains(formId))
+                    if (hasExplicitForms && !selectedApp.FormIds.Contains(formId))
                     {
                         continue;
                     }
@@ -626,12 +652,12 @@ public sealed partial class DataverseSolutionImporter
             {
                 issues.Add(new(
                     "app-form-missing",
-                    CompatibilitySeverity.Blocking,
+                    CompatibilitySeverity.Warning,
                     expectedFormId.ToString(
                         "D",
                         CultureInfo.InvariantCulture),
-                    "The selected app declares a form whose metadata is missing.",
-                    "Add the form to the exported solution."));
+                    "The selected app declares a form whose metadata is missing from the package.",
+                    "Add the form to the exported solution if required."));
             }
         }
 
@@ -778,6 +804,7 @@ public sealed partial class DataverseSolutionImporter
     private NavigationDefinition[] ParseNavigation(
         List<PackageXmlDocument> documents,
         ModelDrivenAppDescriptor selectedApp,
+        HashSet<string> tableNames,
         List<CompatibilityIssue> issues)
     {
         var siteMap = FindSiteMap(documents, selectedApp);
@@ -806,40 +833,27 @@ public sealed partial class DataverseSolutionImporter
         foreach (var area in siteMap.ElementsNamed("Area"))
         {
             var areaId = area.AttributeValue("Id") ?? $"area-{order}";
-            result.Add(new(
-                areaId,
-                NavigationLabel(area, areaId),
-                null,
-                null,
-                order++)
-            {
-                Kind = NavigationNodeKind.Area,
-                IconResource = area.AttributeValue("Icon"),
-            });
+            var areaNodes = new List<NavigationDefinition>();
 
             foreach (var group in area.ElementsNamed("Group"))
             {
                 var groupId = group.AttributeValue("Id") ?? $"group-{order}";
-                result.Add(new(
-                    groupId,
-                    NavigationLabel(group, groupId),
-                    null,
-                    null,
-                    order++)
-                {
-                    Kind = NavigationNodeKind.Group,
-                    ParentId = areaId,
-                });
+                var groupNodes = new List<NavigationDefinition>();
 
                 foreach (var subArea in group.ElementsNamed("SubArea"))
                 {
+                    var entity = subArea.AttributeValue("Entity")?.ToLowerInvariant();
+                    if (!string.IsNullOrWhiteSpace(entity) && !tableNames.Contains(entity))
+                    {
+                        continue;
+                    }
+
                     var subAreaId = subArea.AttributeValue("Id")
                         ?? $"subarea-{order}";
-                    result.Add(new(
+                    groupNodes.Add(new(
                         subAreaId,
                         NavigationLabel(subArea, subAreaId),
-                        subArea.AttributeValue("Entity")
-                            ?.ToLowerInvariant(),
+                        entity,
                         subArea.AttributeValue("Url"),
                         order++)
                     {
@@ -858,6 +872,36 @@ public sealed partial class DataverseSolutionImporter
                             .ToArray(),
                     });
                 }
+
+                if (groupNodes.Count > 0)
+                {
+                    areaNodes.Add(new(
+                        groupId,
+                        NavigationLabel(group, groupId),
+                        null,
+                        null,
+                        order++)
+                    {
+                        Kind = NavigationNodeKind.Group,
+                        ParentId = areaId,
+                    });
+                    areaNodes.AddRange(groupNodes);
+                }
+            }
+
+            if (areaNodes.Count > 0)
+            {
+                result.Add(new(
+                    areaId,
+                    NavigationLabel(area, areaId),
+                    null,
+                    null,
+                    order++)
+                {
+                    Kind = NavigationNodeKind.Area,
+                    IconResource = area.AttributeValue("Icon"),
+                });
+                result.AddRange(areaNodes);
             }
         }
 
@@ -1064,7 +1108,11 @@ public sealed partial class DataverseSolutionImporter
                     continue;
                 }
 
-                var resourceEntry = FindResourceEntry(package, name);
+                var fileName = FirstNonBlank(
+                    source.ChildValue("FileName"),
+                    source.AttributeValue("FileName"));
+
+                var resourceEntry = FindResourceEntry(package, fileName, name);
                 var hash = resourceEntry is null
                     ? Hash(Encoding.UTF8.GetBytes(
                         source.ToString(SaveOptions.DisableFormatting)))
@@ -1352,14 +1400,22 @@ public sealed partial class DataverseSolutionImporter
             : SolutionDiscoveryService
                 .AppModuleElements(appDocument.Document)
                 .FirstOrDefault(element =>
-                    SolutionDiscoveryService.TryParseGuid(
+                    (SolutionDiscoveryService.TryParseGuid(
                         SolutionDiscoveryService.FirstValue(
                             element,
                             "AppModuleId",
                             "AppId",
                             "id"),
                         out var id)
-                    && id == selectedApp.AppModuleId);
+                    && id == selectedApp.AppModuleId)
+                    || string.Equals(
+                        SolutionDiscoveryService.FirstValue(
+                            element,
+                            "UniqueName",
+                            "uniquename",
+                            "Name"),
+                        selectedApp.UniqueName,
+                        StringComparison.OrdinalIgnoreCase));
         var nestedSiteMap = appElement?.DescendantsNamed("SiteMap")
             .FirstOrDefault();
         if (nestedSiteMap is not null)
@@ -1384,6 +1440,38 @@ public sealed partial class DataverseSolutionImporter
             }
         }
 
+        foreach (var document in documents)
+        {
+            var appModuleSiteMap = document.Document.Root
+                ?.DescendantsNamed("AppModuleSiteMap")
+                .FirstOrDefault(element =>
+                    string.Equals(
+                        element.ElementNamed("SiteMapUniqueName")?.Value?.Trim(),
+                        selectedApp.UniqueName,
+                        StringComparison.OrdinalIgnoreCase)
+                    || element.ElementNamed("SiteMapUniqueName") is null);
+            var siteMapInApp = appModuleSiteMap?.DescendantsNamed("SiteMap").FirstOrDefault();
+            if (siteMapInApp is not null)
+            {
+                return siteMapInApp;
+            }
+        }
+
+        foreach (var document in documents)
+        {
+            var rootSiteMap = document.Document.Root?.ElementNamed("SiteMap");
+            if (rootSiteMap is not null)
+            {
+                var innerSiteMap = rootSiteMap.DescendantsNamed("SiteMap").FirstOrDefault();
+                if (innerSiteMap is not null)
+                {
+                    return innerSiteMap;
+                }
+
+                return rootSiteMap;
+            }
+        }
+
         return documents
             .Where(document => document.Path.Contains(
                 "SiteMap",
@@ -1401,15 +1489,37 @@ public sealed partial class DataverseSolutionImporter
         string fallback) =>
         element.ElementNamed("Titles")
             ?.ElementsNamed("Title")
-            .Select(title => title.AttributeValue("Description"))
+            .Select(title => title.AttributeValue("Title") ?? title.AttributeValue("Description"))
             .FirstOrDefault(value => !string.IsNullOrWhiteSpace(value))
         ?? element.AttributeValue("Title")
+        ?? element.AttributeValue("Description")
         ?? fallback;
 
     private static SolutionPackageEntry? FindResourceEntry(
         SolutionPackage package,
+        string? fileName,
         string name)
     {
+        if (!string.IsNullOrWhiteSpace(fileName))
+        {
+            var normalizedFileName = fileName
+                .Replace('\\', '/')
+                .Trim()
+                .TrimStart('/');
+            var entry = package.Entries.FirstOrDefault(e =>
+                string.Equals(
+                    e.Path,
+                    normalizedFileName,
+                    StringComparison.OrdinalIgnoreCase)
+                || e.Path.EndsWith(
+                    $"/{normalizedFileName}",
+                    StringComparison.OrdinalIgnoreCase));
+            if (entry is not null)
+            {
+                return entry;
+            }
+        }
+
         var normalizedName = name
             .Replace('\\', '/')
             .TrimStart('/');
@@ -1424,6 +1534,9 @@ public sealed partial class DataverseSolutionImporter
                 StringComparison.OrdinalIgnoreCase)
             || entry.Path.EndsWith(
                 $"/{normalizedName}",
+                StringComparison.OrdinalIgnoreCase)
+            || entry.Path.StartsWith(
+                $"WebResources/{normalizedName}",
                 StringComparison.OrdinalIgnoreCase));
     }
 

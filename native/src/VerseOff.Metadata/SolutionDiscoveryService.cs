@@ -125,6 +125,19 @@ public static class SolutionDiscoveryService
         out ModelDrivenAppDescriptor descriptor,
         out string issue)
     {
+        var uniqueName = FirstValue(
+            appModule,
+            "UniqueName",
+            "uniquename",
+            "Name");
+        if (string.IsNullOrWhiteSpace(uniqueName))
+        {
+            descriptor = null!;
+            issue =
+                "An AppModule requires a valid app ID and unique name.";
+            return false;
+        }
+
         var idValue = FirstValue(
             appModule,
             "AppModuleId",
@@ -135,17 +148,9 @@ public static class SolutionDiscoveryService
             appModuleId = GuidFromPath(sourcePath);
         }
 
-        var uniqueName = FirstValue(
-            appModule,
-            "UniqueName",
-            "uniquename",
-            "Name");
-        if (appModuleId == Guid.Empty || string.IsNullOrWhiteSpace(uniqueName))
+        if (appModuleId == Guid.Empty)
         {
-            descriptor = null!;
-            issue =
-                "An AppModule requires a valid app ID and unique name.";
-            return false;
+            appModuleId = DeterministicGuid(uniqueName);
         }
 
         var displayName = LocalizedLabel(appModule)
@@ -226,6 +231,13 @@ public static class SolutionDiscoveryService
 
     internal static bool TryParseGuid(string? value, out Guid result) =>
         Guid.TryParse(value?.Trim().Trim('{', '}'), out result);
+
+    public static Guid DeterministicGuid(string input)
+    {
+        var hash = System.Security.Cryptography.SHA256.HashData(
+            System.Text.Encoding.UTF8.GetBytes(input));
+        return new Guid(hash.AsSpan(0, 16));
+    }
 
     private static Guid GuidFromPath(string path)
     {

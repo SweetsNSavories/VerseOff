@@ -53,6 +53,50 @@ public sealed class SolutionDiscoveryServiceTests
     }
 
     [TestMethod]
+    public async Task DiscoversAppModuleWithoutExplicitIdDeterministically()
+    {
+        var root = CreateTemporaryDirectory();
+        try
+        {
+            await File.WriteAllTextAsync(
+                Path.Combine(root, "customizations.xml"),
+                """
+                <ImportExportXml>
+                  <AppModules>
+                    <AppModule>
+                      <UniqueName>msauto_AutoHub</UniqueName>
+                      <LocalizedNames>
+                        <LocalizedName description="Auto Hub" />
+                      </LocalizedNames>
+                      <AppModuleComponents>
+                        <AppModuleComponent type="1" schemaName="account" />
+                      </AppModuleComponents>
+                    </AppModule>
+                  </AppModules>
+                </ImportExportXml>
+                """);
+            var package = await SolutionPackage.LoadAsync(root);
+
+            var result = SolutionDiscoveryService.Discover(package);
+
+            Assert.HasCount(1, result.Applications);
+            Assert.IsEmpty(result.Issues);
+            var app = result.Applications[0];
+            Assert.AreNotEqual(Guid.Empty, app.AppModuleId);
+            Assert.AreEqual("msauto_AutoHub", app.UniqueName);
+            Assert.AreEqual("Auto Hub", app.DisplayName);
+            CollectionAssert.Contains(app.TableLogicalNames.ToArray(), "account");
+
+            var expectedId = SolutionDiscoveryService.DeterministicGuid("msauto_AutoHub");
+            Assert.AreEqual(expectedId, app.AppModuleId);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [TestMethod]
     public async Task MissingApplicationIsReported()
     {
         var root = CreateTemporaryDirectory();
