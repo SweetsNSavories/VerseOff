@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using VerseOff.Customization.Customizations;
 using VerseOff.Customization.Forms;
 using VerseOff.Customization.Metadata;
+using VerseOff.Customization.Storage;
 
 namespace VerseOff.Gateway.Api;
 
@@ -36,15 +37,21 @@ public class CustomizationController : ControllerBase
 {
     private readonly AppCustomizer _appCustomizer;
     private readonly FormCustomizer _formCustomizer;
+    private readonly ICustomizationStore _store;
+    private readonly CustomizationApplier _applier;
     private readonly ILogger<CustomizationController> _logger;
 
     public CustomizationController(
         AppCustomizer appCustomizer,
         FormCustomizer formCustomizer,
+        ICustomizationStore store,
+        CustomizationApplier applier,
         ILogger<CustomizationController> logger)
     {
         _appCustomizer = appCustomizer ?? throw new ArgumentNullException(nameof(appCustomizer));
         _formCustomizer = formCustomizer ?? throw new ArgumentNullException(nameof(formCustomizer));
+        _store = store ?? throw new ArgumentNullException(nameof(store));
+        _applier = applier ?? throw new ArgumentNullException(nameof(applier));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
@@ -54,9 +61,10 @@ public class CustomizationController : ControllerBase
     /// Create or update form customizations (add/remove/reorder fields and sections).
     /// 
     /// Request body: FormCustomizationRequest with form details and section/field changes.
+    /// Customizations are persisted to the configured store (JSON file, database, etc.).
     /// </summary>
     [HttpPost("forms")]
-    public IActionResult CreateOrUpdateFormCustomization([FromBody] FormCustomizationRequest request)
+    public async Task<IActionResult> CreateOrUpdateFormCustomization([FromBody] FormCustomizationRequest request)
     {
         try
         {
@@ -106,13 +114,29 @@ public class CustomizationController : ControllerBase
             }
 
             var form = _formCustomizer.GetFormCustomization(request.FormId);
+
+            // Persist customizations to store
+            var customization = new CustomizationLayer
+            {
+                Version = "1.0.0",
+                CreatedAt = DateTime.UtcNow,
+                CreatedBy = "API",
+                FormCustomizations = form != null ? [form] : [],
+                FieldModifications = [],
+                EventHandlers = [],
+                Configuration = new Dictionary<string, object>()
+            };
+
+            await _store.SaveAsync(request.EntityLogicalName, customization);
+            _logger.LogInformation("Persisted customizations for entity {entity}", request.EntityLogicalName);
+
             return Ok(new FormCustomizationResponse
             {
                 FormId = form?.FormId ?? request.FormId,
                 EntityLogicalName = form?.EntityLogicalName ?? request.EntityLogicalName,
                 SectionChanges = form?.SectionChanges?.Count ?? 0,
                 TabChanges = form?.TabChanges?.Count ?? 0,
-                Message = "Form customization created/updated successfully"
+                Message = "Form customization created/updated and persisted successfully"
             });
         }
         catch (InvalidOperationException ex)

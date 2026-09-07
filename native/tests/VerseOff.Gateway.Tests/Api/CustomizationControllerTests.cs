@@ -9,6 +9,7 @@ using System.Globalization;
 using VerseOff.Customization.Customizations;
 using VerseOff.Customization.Forms;
 using VerseOff.Customization.Metadata;
+using VerseOff.Customization.Storage;
 using VerseOff.Domain;
 using VerseOff.Gateway.Api;
 
@@ -18,6 +19,8 @@ namespace VerseOff.Gateway.Tests.Api;
 public class CustomizationControllerTests
 {
     private readonly Mock<ILogger<CustomizationController>> _mockLogger = new();
+    private readonly Mock<ICustomizationStore> _mockStore = new();
+    private readonly CustomizationApplier _applier;
     private readonly AppCustomizer _appCustomizer;
     private readonly FormCustomizer _formCustomizer;
     private readonly CustomizationController _controller;
@@ -27,13 +30,15 @@ public class CustomizationControllerTests
         var baselineMetadata = CreateTestMetadata();
         _appCustomizer = new AppCustomizer(baselineMetadata);
         _formCustomizer = new FormCustomizer(baselineMetadata);
-        _controller = new CustomizationController(_appCustomizer, _formCustomizer, _mockLogger.Object);
+        var mockLoggerForApplier = new Mock<ILogger<CustomizationApplier>>();
+        _applier = new CustomizationApplier(mockLoggerForApplier.Object);
+        _controller = new CustomizationController(_appCustomizer, _formCustomizer, _mockStore.Object, _applier, _mockLogger.Object);
     }
 
     #region Form Customization Tests
 
     [Fact]
-    public void CreateOrUpdateFormCustomization_WithValidRequest_ReturnsOkResult()
+    public async Task CreateOrUpdateFormCustomization_WithValidRequest_ReturnsOkResult()
     {
         var request = new FormCustomizationRequest
         {
@@ -49,7 +54,7 @@ public class CustomizationControllerTests
             }
         };
 
-        var result = _controller.CreateOrUpdateFormCustomization(request);
+        var result = await _controller.CreateOrUpdateFormCustomization(request);
 
         var okResult = XunitAssert.IsType<OkObjectResult>(result);
         var response = XunitAssert.IsType<FormCustomizationResponse>(okResult.Value);
@@ -59,7 +64,7 @@ public class CustomizationControllerTests
     }
 
     [Fact]
-    public void CreateOrUpdateFormCustomization_WithMissingFormId_ReturnsBadRequest()
+    public async Task CreateOrUpdateFormCustomization_WithMissingFormId_ReturnsBadRequest()
     {
         var request = new FormCustomizationRequest
         {
@@ -67,7 +72,7 @@ public class CustomizationControllerTests
             SectionChanges = new()
         };
 
-        var result = _controller.CreateOrUpdateFormCustomization(request);
+        var result = await _controller.CreateOrUpdateFormCustomization(request);
 
         var badResult = XunitAssert.IsType<BadRequestObjectResult>(result);
         var error = XunitAssert.IsType<ErrorDto>(badResult.Value);
@@ -75,7 +80,7 @@ public class CustomizationControllerTests
     }
 
     [Fact]
-    public void CreateOrUpdateFormCustomization_WithInvalidEntity_ReturnsBadRequest()
+    public async Task CreateOrUpdateFormCustomization_WithInvalidEntity_ReturnsBadRequest()
     {
         var request = new FormCustomizationRequest
         {
@@ -91,7 +96,7 @@ public class CustomizationControllerTests
             }
         };
 
-        var result = _controller.CreateOrUpdateFormCustomization(request);
+        var result = await _controller.CreateOrUpdateFormCustomization(request);
 
         var badResult = XunitAssert.IsType<BadRequestObjectResult>(result);
         var error = XunitAssert.IsType<ErrorDto>(badResult.Value);
@@ -99,7 +104,7 @@ public class CustomizationControllerTests
     }
 
     [Fact]
-    public void CreateOrUpdateFormCustomization_WithInvalidField_ReturnsBadRequest()
+    public async Task CreateOrUpdateFormCustomization_WithInvalidField_ReturnsBadRequest()
     {
         var request = new FormCustomizationRequest
         {
@@ -115,7 +120,7 @@ public class CustomizationControllerTests
             }
         };
 
-        var result = _controller.CreateOrUpdateFormCustomization(request);
+        var result = await _controller.CreateOrUpdateFormCustomization(request);
 
         var badResult = XunitAssert.IsType<BadRequestObjectResult>(result);
         var error = XunitAssert.IsType<ErrorDto>(badResult.Value);
@@ -123,7 +128,7 @@ public class CustomizationControllerTests
     }
 
     [Fact]
-    public void GetFormCustomizationsForEntity_WithValidEntity_ReturnsFormsList()
+    public async Task GetFormCustomizationsForEntity_WithValidEntity_ReturnsFormsList()
     {
         // First add a customization
         var addRequest = new FormCustomizationRequest
@@ -139,7 +144,7 @@ public class CustomizationControllerTests
                 }
             }
         };
-        _controller.CreateOrUpdateFormCustomization(addRequest);
+        await _controller.CreateOrUpdateFormCustomization(addRequest);
 
         // Then retrieve
         var result = _controller.GetFormCustomizationsForEntity("account");
@@ -152,7 +157,7 @@ public class CustomizationControllerTests
     }
 
     [Fact]
-    public void GetFormCustomization_WithValidFormId_ReturnFormCustomization()
+    public async Task GetFormCustomization_WithValidFormId_ReturnFormCustomization()
     {
         // First add a customization
         var addRequest = new FormCustomizationRequest
@@ -168,7 +173,7 @@ public class CustomizationControllerTests
                 }
             }
         };
-        _controller.CreateOrUpdateFormCustomization(addRequest);
+        await _controller.CreateOrUpdateFormCustomization(addRequest);
 
         // Then retrieve specific form
         var result = _controller.GetFormCustomization("account", "account_form");
@@ -190,7 +195,7 @@ public class CustomizationControllerTests
     }
 
     [Fact]
-    public void DeleteFormCustomization_WithValidFormId_ReturnsSuccess()
+    public async Task DeleteFormCustomization_WithValidFormId_ReturnsSuccess()
     {
         // First add a customization
         var addRequest = new FormCustomizationRequest
@@ -206,7 +211,7 @@ public class CustomizationControllerTests
                 }
             }
         };
-        _controller.CreateOrUpdateFormCustomization(addRequest);
+        await _controller.CreateOrUpdateFormCustomization(addRequest);
 
         // Then delete
         var result = _controller.DeleteFormCustomization("account", "account_form");
