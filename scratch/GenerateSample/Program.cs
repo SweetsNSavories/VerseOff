@@ -280,12 +280,103 @@ var accountTabs = new List<FormTabDefinition>
         ]),
 };
 
+var accountScriptSource = """
+    var Contoso = {};
+    Contoso.onAccountLoad = function(executionContext) {
+        var formContext = executionContext.getFormContext();
+        var phoneAttr = formContext.getAttribute("telephone1");
+        if (phoneAttr && !phoneAttr.getValue()) {
+            phoneAttr.setValue("+1 (555) 019-2834");
+        }
+    };
+    Contoso.onPhoneChange = function(executionContext) {
+        var formContext = executionContext.getFormContext();
+        var phoneAttr = formContext.getAttribute("telephone1");
+        if (phoneAttr && phoneAttr.getValue()) {
+            var emailAttr = formContext.getAttribute("emailaddress1");
+            if (emailAttr && !emailAttr.getValue()) {
+                emailAttr.setValue("contact@contoso.example.com");
+            }
+        }
+    };
+    Contoso.onAccountSave = function(executionContext) {
+        var formContext = executionContext.getFormContext();
+        var nameAttr = formContext.getAttribute("name");
+        if (nameAttr && (!nameAttr.getValue() || nameAttr.getValue().toString().trim().length === 0)) {
+            executionContext.getEventArgs().preventDefault();
+        }
+    };
+    Contoso.quickAuditAction = function(executionContext, auditTag) {
+        var formContext = executionContext.getFormContext();
+        var nameAttr = formContext.getAttribute("name");
+        if (nameAttr) {
+            nameAttr.setValue(nameAttr.getValue() + " [" + auditTag + "]");
+        }
+        return "AUDIT_COMPLETED";
+    };
+    """;
+
+var accountScriptHash = Convert.ToHexString(
+        System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(accountScriptSource)))
+    .ToLowerInvariant();
+
+var accountScriptProvenance = new ComponentProvenance(
+    "webresource-account-logic",
+    "account_logic.js",
+    ComponentOrigin.CustomerOwned,
+    "contoso_solution",
+    "contoso",
+    accountScriptHash,
+    IsManaged: false,
+    OwnershipVerified: true);
+
+var webResourceAccountLogic = new WebResourceDefinition(
+    Guid.Parse("99999999-9999-9999-9999-999999999999"),
+    "account_logic.js",
+    WebResourceKind.JavaScript,
+    "WebResources/account_logic.js",
+    accountScriptHash,
+    accountScriptProvenance)
+{
+    Compatibility = CompatibilityDisposition.Native,
+};
+
+var accountOnLoadEvent = new FormEventDefinition(
+    "onload",
+    "evt_account_onload",
+    "Contoso.onAccountLoad",
+    "account_logic.js",
+    PassExecutionContext: true,
+    Order: 0,
+    accountScriptProvenance);
+
+var accountOnSaveEvent = new FormEventDefinition(
+    "onsave",
+    "evt_account_onsave",
+    "Contoso.onAccountSave",
+    "account_logic.js",
+    PassExecutionContext: true,
+    Order: 0,
+    accountScriptProvenance);
+
+var accountPhoneChangeEvent = new FormEventDefinition(
+    "onchange",
+    "evt_account_phone_change",
+    "Contoso.onPhoneChange",
+    "account_logic.js",
+    PassExecutionContext: true,
+    Order: 0,
+    accountScriptProvenance)
+{
+    TargetName = "telephone1",
+};
+
 var formAccount = new FormDefinition(
     Guid.Parse("2f3fdbf9-8d4e-48bc-bb0c-9bd9a6c1d3bd"),
     "Account Main Form",
     "account",
     2,
-    [],
+    [accountOnLoadEvent, accountOnSaveEvent, accountPhoneChangeEvent],
     provenance)
 {
     Tabs = accountTabs,
@@ -524,6 +615,10 @@ var commands = new List<CommandDefinition>
     // Account Commands
     new("cmd.account.save", "Save", "account", 0, new CommandActionDefinition(CommandActionKind.Native, "save", []), provenance),
     new("cmd.account.deactivate", "Deactivate", "account", 1, new CommandActionDefinition(CommandActionKind.Native, "deactivate", []), provenance),
+    new("cmd.account.audit", "Run BCDR Audit", "account", 2,
+        new CommandActionDefinition(CommandActionKind.CustomerJavaScript, "account_logic.js::Contoso.quickAuditAction",
+            [new HandlerParameterDefinition("OFFLINE_VERIFIED", HandlerParameterKind.Literal)]),
+        accountScriptProvenance),
 
     // Contact Commands
     new("cmd.contact.save", "Save", "contact", 0, new CommandActionDefinition(CommandActionKind.Native, "save", []), provenance),
@@ -606,10 +701,27 @@ var application = new ApplicationDefinition(
 {
     Commands = commands,
     BusinessProcessFlows = [bpfAccount, bpfCase, bpfOpportunity],
+    WebResources = [webResourceAccountLogic],
 };
 
+var assetProvider = new InMemoryAssetProvider(new Dictionary<string, byte[]>
+{
+    ["WebResources/account_logic.js"] = System.Text.Encoding.UTF8.GetBytes(accountScriptSource),
+});
+
 var generator = new NativeSourceGenerator();
-var result = await generator.GenerateAsync(application, output);
+var result = await generator.GenerateAsync(application, output, sourceAssets: assetProvider);
 Console.WriteLine($"Output: {result.OutputDirectory}");
 Console.WriteLine($"Project: {result.ProjectFile}");
 Console.WriteLine($"Generated files: {result.Files.Count}");
+
+internal sealed class InMemoryAssetProvider(IReadOnlyDictionary<string, byte[]> assets) : ISourceAssetProvider
+{
+    public ValueTask<ReadOnlyMemory<byte>?> ReadAsync(
+        string relativePath,
+        CancellationToken cancellationToken = default) =>
+        ValueTask.FromResult<ReadOnlyMemory<byte>?>(
+            assets.TryGetValue(relativePath, out var content)
+                ? content
+                : null);
+}

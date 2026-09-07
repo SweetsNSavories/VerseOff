@@ -83,6 +83,45 @@ public sealed class FormBindingManagerTests
         Assert.IsFalse(dirtyValues.ContainsKey("name"));
     }
 
+    private static readonly string[] ExpectedAttributeChanges = ["name", "name"];
+
+    [TestMethod]
+    public void AttributeChangedFiresWhenEditorOrSetValueChanges()
+    {
+        var manager = new FormBindingManager();
+        var nameAttr = new XrmAttribute("name", "string");
+        var nameEditor = new TestEditor("name");
+        var changedAttrs = new List<string>();
+
+        manager.Bind("name", nameEditor, nameAttr);
+        manager.AttributeChanged += (_, attrName) => changedAttrs.Add(attrName);
+
+        nameEditor.SimulateUserEdit("Modified 1");
+        manager.SetValue("name", "Modified 2");
+
+        CollectionAssert.AreEqual(
+            ExpectedAttributeChanges,
+            changedAttrs);
+    }
+
+    [TestMethod]
+    public void SyncFromAttributesUpdatesEditorValuesFromUnderlyingAttributes()
+    {
+        var manager = new FormBindingManager();
+        var nameAttr = new XrmAttribute("name", "string", "Initial");
+        var nameEditor = new TestEditor("name");
+
+        manager.Bind("name", nameEditor, nameAttr);
+        Assert.AreEqual("Initial", nameEditor.Value);
+
+        // Mutate attribute directly without going through editor (e.g. via customer script)
+        nameAttr.SetValue("Updated By Script");
+        Assert.AreEqual("Initial", nameEditor.Value);
+
+        manager.SyncFromAttributes();
+        Assert.AreEqual("Updated By Script", nameEditor.Value);
+    }
+
     private sealed class TestEditor(string attributeName) : IFormEditor
     {
         public string AttributeName { get; } = attributeName;

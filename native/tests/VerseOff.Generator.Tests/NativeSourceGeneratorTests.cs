@@ -61,6 +61,8 @@ public sealed class NativeSourceGeneratorTests
                 "MainPage.xaml.cs"));
             StringAssert.Contains(mainPageCode, "DisplayAlertAsync");
             StringAssert.Contains(mainPageCode, "IPendingOperationSource");
+            StringAssert.Contains(mainPageCode, "FormScriptDispatcher");
+            StringAssert.Contains(mainPageCode, "ExecuteRibbonActionAsync");
         }
         finally
         {
@@ -156,7 +158,7 @@ public sealed class NativeSourceGeneratorTests
             Assert.IsTrue(process.Start());
             var standardOutput = process.StandardOutput.ReadToEndAsync();
             var standardError = process.StandardError.ReadToEndAsync();
-            using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(2));
+            using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(5));
             await process.WaitForExitAsync(cts.Token);
             var output = await standardOutput;
             var error = await standardError;

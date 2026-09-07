@@ -19,6 +19,8 @@ public sealed class FormBindingManager
 
     public event EventHandler? StateChanged;
 
+    public event EventHandler<string>? AttributeChanged;
+
     public bool IsDirty => bindings.Values.Any(binding => binding.Attribute.IsDirty);
 
     public void Bind(
@@ -35,6 +37,7 @@ public sealed class FormBindingManager
         {
             attribute.SetValue(editor.Value);
             StateChanged?.Invoke(this, EventArgs.Empty);
+            AttributeChanged?.Invoke(this, attributeName);
         };
 
         if (attribute.GetValue() is not null)
@@ -92,6 +95,7 @@ public sealed class FormBindingManager
             binding.Attribute.SetValue(value);
             binding.Editor.Value = value;
             StateChanged?.Invoke(this, EventArgs.Empty);
+            AttributeChanged?.Invoke(this, attributeName);
         }
     }
 
@@ -111,6 +115,14 @@ public sealed class FormBindingManager
 
     public IReadOnlyDictionary<string, object?> GetValues(bool onlyDirty = false) =>
         ExtractValues(onlyDirty);
+
+    public void SyncFromAttributes()
+    {
+        foreach (var (_, (editor, attribute)) in bindings)
+        {
+            editor.Value = attribute.GetValue();
+        }
+    }
 
     public void ResetDirty()
     {

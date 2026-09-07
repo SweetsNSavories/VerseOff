@@ -195,6 +195,7 @@ internal static class TargetSourceTemplates
         using System.Text.Json;
         using Microsoft.Extensions.DependencyInjection;
         using Microsoft.Extensions.Logging;
+        using VerseOff.ClientApi;
         using VerseOff.Controls;
         using VerseOff.Domain;
         using VerseOff.Storage;
@@ -213,6 +214,8 @@ internal static class TargetSourceTemplates
                 builder.Services.AddSingleton<InMemoryLocalRecordStore>();
                 builder.Services.AddSingleton<ILocalRecordStore>(sp => sp.GetRequiredService<InMemoryLocalRecordStore>());
                 builder.Services.AddSingleton<IPendingOperationSource>(sp => sp.GetRequiredService<InMemoryLocalRecordStore>());
+                builder.Services.AddSingleton<ICustomerScriptRuntime, JintCustomerScriptRuntime>();
+                builder.Services.AddSingleton<ICustomerScriptResolver, InMemoryCustomerScriptResolver>();
                 builder.Services.AddTransient<MainPage>();
         #if DEBUG
                 builder.Logging.AddDebug();
@@ -511,6 +514,9 @@ internal static class TargetSourceTemplates
             private readonly ICommandRuleEvaluator? injectedCommandRuleEvaluator;
             private readonly ILocalRecordStore? injectedLocalRecordStore;
             private readonly IPendingOperationSource? injectedPendingOperationSource;
+            private readonly ICustomerScriptRuntime? injectedScriptRuntime;
+            private readonly ICustomerScriptResolver? injectedScriptResolver;
+            private FormScriptDispatcher? activeScriptDispatcher;
             private ApplicationDefinition? definition;
             private TableDefinition? currentTable;
             private FormDefinition? currentForm;
@@ -520,7 +526,7 @@ internal static class TargetSourceTemplates
             private NavigationDefinition? currentNavigationSelection;
             private bool isProgrammaticNavigation;
 
-            public MainPage() : this(null, null, null, null)
+            public MainPage() : this(null, null, null, null, null, null)
             {
             }
 
@@ -528,12 +534,16 @@ internal static class TargetSourceTemplates
                 ITimelineRecordProvider? timelineProvider,
                 ICommandRuleEvaluator? commandRuleEvaluator,
                 ILocalRecordStore? localRecordStore = null,
-                IPendingOperationSource? pendingOperationSource = null)
+                IPendingOperationSource? pendingOperationSource = null,
+                ICustomerScriptRuntime? scriptRuntime = null,
+                ICustomerScriptResolver? scriptResolver = null)
             {
                 injectedTimelineProvider = timelineProvider;
                 injectedCommandRuleEvaluator = commandRuleEvaluator;
                 injectedLocalRecordStore = localRecordStore;
                 injectedPendingOperationSource = pendingOperationSource;
+                injectedScriptRuntime = scriptRuntime;
+                injectedScriptResolver = scriptResolver;
                 InitializeComponent();
                 Loaded += OnLoaded;
             }
@@ -552,6 +562,42 @@ internal static class TargetSourceTemplates
                             JsonOptions)
                         ?? throw new InvalidDataException(
                             "The generated app definition is empty.");
+
+                    var resolver = injectedScriptResolver
+                        ?? Handler?.MauiContext?.Services.GetService<ICustomerScriptResolver>()
+                        ?? new InMemoryCustomerScriptResolver();
+
+                    if (resolver is InMemoryCustomerScriptResolver inMemoryResolver && definition.WebResources.Count > 0)
+                    {
+                        foreach (var webRes in definition.WebResources.Where(w => w.Kind is WebResourceKind.JavaScript))
+                        {
+                            try
+                            {
+                                Stream? resStream = null;
+                                try
+                                {
+                                    resStream = await FileSystem.OpenAppPackageFileAsync($"CustomerAssets/WebResources/{webRes.Name}");
+                                }
+                                catch
+                                {
+                                    resStream = await FileSystem.OpenAppPackageFileAsync($"CustomerAssets/{webRes.Name}");
+                                }
+
+                                await using (resStream)
+                                {
+                                    using var reader = new StreamReader(resStream);
+                                    var scriptContent = await reader.ReadToEndAsync();
+                                    var customerScript = new CustomerScript(webRes.Name, scriptContent, webRes.Provenance);
+                                    inMemoryResolver.AddOrUpdate(webRes.Name, customerScript);
+                                }
+                            }
+                            catch
+                            {
+                                // Fail closed / ignore missing package asset
+                            }
+                        }
+                    }
+
                     var navigation = definition.Navigation
                         .Where(item =>
                             item.Kind is NavigationNodeKind.SubArea)
@@ -564,7 +610,7 @@ internal static class TargetSourceTemplates
                         NavigationList.SelectedItem = navigation[0];
                         currentNavigationSelection = navigation[0];
                         isProgrammaticNavigation = false;
-                        RenderTable(navigation[0].TableLogicalName, navigation[0].Title);
+                        await RenderTableAsync(navigation[0].TableLogicalName, navigation[0].Title);
                     }
                     else
                     {
@@ -624,7 +670,7 @@ internal static class TargetSourceTemplates
                 currentNavigationSelection = selected;
                 try
                 {
-                    RenderTable(
+                    await RenderTableAsync(
                         selected.TableLogicalName,
                         selected.Title);
                 }
@@ -669,7 +715,7 @@ internal static class TargetSourceTemplates
                 NotificationHost.IsVisible = false;
             }
 
-            private void RenderTable(string? tableLogicalName, string title)
+            private async Task RenderTableAsync(string? tableLogicalName, string title)
             {
                 ContentHost.Clear();
                 ClearNotification();
@@ -715,6 +761,13 @@ internal static class TargetSourceTemplates
                     ?? Handler?.MauiContext?.Services.GetService<ICommandRuleEvaluator>()
                     ?? new CommandRuleEvaluator();
 
+                var runtime = injectedScriptRuntime
+                    ?? Handler?.MauiContext?.Services.GetService<ICustomerScriptRuntime>()
+                    ?? new JintCustomerScriptRuntime();
+                var resolver = injectedScriptResolver
+                    ?? Handler?.MauiContext?.Services.GetService<ICustomerScriptResolver>()
+                    ?? new InMemoryCustomerScriptResolver();
+
                 var runtimeContext = new FormRuntimeContext(
                     definition,
                     currentRecordId,
@@ -756,6 +809,28 @@ internal static class TargetSourceTemplates
                 activeBindingManager.StateChanged += (_, _) =>
                 {
                     UnsavedBadge.IsVisible = activeBindingManager.IsDirty;
+                };
+
+                activeScriptDispatcher = new FormScriptDispatcher(runtime, resolver);
+                activeBindingManager.AttributeChanged += async (_, attrName) =>
+                {
+                    if (activeScriptDispatcher is not null && activeFormContext is not null)
+                    {
+                        try
+                        {
+                            var changeResult = await activeScriptDispatcher.TriggerOnChangeAsync(activeFormContext, attrName);
+                            if (changeResult.Failures.Count > 0)
+                            {
+                                var failureMsg = string.Join("; ", changeResult.Failures.Select(f => f.Message));
+                                ShowNotification($"Field script error: {failureMsg}", isError: true);
+                            }
+                            activeBindingManager.SyncFromAttributes();
+                        }
+                        catch (Exception ex)
+                        {
+                            ShowNotification($"OnChange error: {ex.Message}", isError: true);
+                        }
+                    }
                 };
 
                 RenderCommands(form, commandEvaluator);
@@ -841,6 +916,43 @@ internal static class TargetSourceTemplates
                 RenderControls(form.FooterControls, runtimeContext, "Footer");
 
                 PopulateInitialRecord(tableLogicalName);
+
+                var formEvents = new List<FormEventDefinition>(form.Events);
+                foreach (var tab in form.Tabs)
+                {
+                    foreach (var col in tab.Columns)
+                    {
+                        foreach (var sec in col.Sections)
+                        {
+                            foreach (var row in sec.Rows)
+                            {
+                                foreach (var cell in row.Cells)
+                                {
+                                    if (cell.Control is not null && cell.Control.Events.Count > 0)
+                                    {
+                                        formEvents.AddRange(cell.Control.Events);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                await activeScriptDispatcher.RegisterEventsAsync(formEvents);
+
+                try
+                {
+                    var loadResult = await activeScriptDispatcher.TriggerOnLoadAsync(activeFormContext);
+                    if (loadResult.Failures.Count > 0)
+                    {
+                        var failureMsg = string.Join("; ", loadResult.Failures.Select(f => f.Message));
+                        ShowNotification($"OnLoad script error: {failureMsg}", isError: true);
+                    }
+                    activeBindingManager.SyncFromAttributes();
+                }
+                catch (Exception ex)
+                {
+                    ShowNotification($"Form load error: {ex.Message}", isError: true);
+                }
             }
 
             private void PopulateInitialRecord(string tableLogicalName)
@@ -1009,6 +1121,38 @@ internal static class TargetSourceTemplates
                     }
                 }
 
+                if (command.Action.Kind is CommandActionKind.CustomerJavaScript)
+                {
+                    if (activeScriptDispatcher is not null && activeFormContext is not null)
+                    {
+                        var parts = command.Action.Target.Split("::", 2, StringSplitOptions.RemoveEmptyEntries);
+                        if (parts.Length == 2)
+                        {
+                            var libraryName = parts[0];
+                            var functionName = parts[1];
+                            var parameters = command.Action.Parameters
+                                .Select(p => (object?)p.Value)
+                                .ToArray();
+                            try
+                            {
+                                await activeScriptDispatcher.ExecuteRibbonActionAsync(
+                                    libraryName,
+                                    functionName,
+                                    activeFormContext,
+                                    parameters);
+                                activeBindingManager?.SyncFromAttributes();
+                                ShowNotification($"Action '{command.Label}' executed successfully.", isError: false);
+                                return;
+                            }
+                            catch (Exception ex)
+                            {
+                                ShowNotification($"Action '{command.Label}' failed: {ex.Message}", isError: true);
+                                return;
+                            }
+                        }
+                    }
+                }
+
                 if (command.Action.Kind is CommandActionKind.OpenUrl
                     && Uri.TryCreate(command.Action.Target, UriKind.Absolute, out var uri))
                 {
@@ -1026,6 +1170,30 @@ internal static class TargetSourceTemplates
                 {
                     ShowNotification("Save failed: No active form session is loaded.", isError: true);
                     return;
+                }
+
+                if (activeScriptDispatcher is not null && activeFormContext is not null)
+                {
+                    try
+                    {
+                        var saveResult = await activeScriptDispatcher.TriggerOnSaveAsync(activeFormContext, saveMode: 1);
+                        if (saveResult.DefaultPrevented)
+                        {
+                            ShowNotification("Save was prevented by form script validation.", isError: true);
+                            return;
+                        }
+                        if (saveResult.Failures.Count > 0)
+                        {
+                            var failureMsg = string.Join("; ", saveResult.Failures.Select(f => f.Message));
+                            ShowNotification($"Save validation error: {failureMsg}", isError: true);
+                            return;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowNotification($"Save script execution failed: {ex.Message}", isError: true);
+                        return;
+                    }
                 }
 
                 var validation = FormValidationEngine.Validate(
