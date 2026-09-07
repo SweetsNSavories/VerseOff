@@ -5,11 +5,14 @@ public class MakerOptions
     public string? InputPath { get; set; }
     public string? OutputPath { get; set; }
     public string? ConfigPath { get; set; }
+    public string? CustomizationPath { get; set; }
     public OutputFormat Format { get; set; } = OutputFormat.Json;
     public CompressionLevel Compression { get; set; } = CompressionLevel.Optimal;
     public OOTBStrategy OOTBStrategy { get; set; } = OOTBStrategy.Static;
     public bool ValidateOnly { get; set; }
     public bool Verbose { get; set; }
+    public bool IncludeMetadata { get; set; } = true;
+    public bool ApplyCustomizations { get; set; } = true;
 }
 
 public enum OutputFormat

@@ -1,5 +1,7 @@
 using VerseOff.Metadata;
 using VerseOff.Domain;
+using VerseOff.Customization.Services;
+using VerseOff.Customization.Customizations;
 using System.Globalization;
 
 namespace VerseOff.Maker;
@@ -10,6 +12,8 @@ public class MakerCommand
     private readonly ConsoleFormatter _console;
     private ApplicationDefinition? _loadedApp;
     private SolutionIdentity? _solutionIdentity;
+    private Dictionary<string, VerseOff.Customization.Metadata.EntityMetadata>? _metadata;
+    private CustomizationLayer? _customizations;
 
     public MakerCommand(MakerOptions options, ConsoleFormatter console)
     {
@@ -43,6 +47,26 @@ public class MakerCommand
             if (!await LoadAndAnalyzeSolutionAsync())
             {
                 return 1;
+            }
+
+            if (_options.IncludeMetadata)
+            {
+                _console.BlankLine();
+                _console.Step("Extracting metadata schema...");
+                if (!ExtractMetadata())
+                {
+                    return 1;
+                }
+            }
+
+            if (_options.ApplyCustomizations && _options.CustomizationPath != null)
+            {
+                _console.BlankLine();
+                _console.Step("Loading customizations...");
+                if (!LoadCustomizations())
+                {
+                    return 1;
+                }
             }
 
             if (_options.ValidateOnly)
@@ -251,8 +275,86 @@ public class MakerCommand
         _console.Summary("Views", _loadedApp.Views.Count.ToString(CultureInfo.InvariantCulture));
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "CA1822:Mark members as static")]
-    private string FormatBytes(long bytes)
+    private bool ExtractMetadata()
+    {
+        try
+        {
+            if (_loadedApp == null)
+            {
+                _console.Error("No application loaded");
+                return false;
+            }
+
+            _console.Substep("Extracting entity metadata...");
+            _metadata = MetadataExtractor.ExtractEntityMetadata(_loadedApp);
+            _console.Substep($"Entities analyzed: {_metadata.Count}");
+            
+            var totalFields = _metadata.Values.Sum(e => e.Fields.Count);
+            _console.Substep($"Fields discovered: {totalFields}");
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _console.Error($"Failed to extract metadata: {ex.Message}");
+            if (_options.Verbose)
+            {
+                _console.Error($"Details: {ex.InnerException?.Message}");
+            }
+            return false;
+        }
+    }
+
+    private bool LoadCustomizations()
+    {
+        try
+        {
+            if (_options.CustomizationPath == null || !File.Exists(_options.CustomizationPath))
+            {
+                _console.Error($"Customization file not found: {_options.CustomizationPath}");
+                return false;
+            }
+
+            if (_metadata == null)
+            {
+                _console.Warning("Metadata not extracted; customizations may not be fully validated");
+            }
+
+            _console.Substep($"Loading from: {_options.CustomizationPath}");
+            var content = File.ReadAllText(_options.CustomizationPath);
+            
+            // For now, load as JSON; YAML support via YamlDotNet can be added later
+            _customizations = System.Text.Json.JsonSerializer.Deserialize<CustomizationLayer>(content)
+                ?? new CustomizationLayer();
+
+            if (_customizations.HasCustomizations)
+            {
+                _console.Substep($"Field modifications: {_customizations.FieldModifications?.Count ?? 0}");
+                _console.Substep($"Event handlers: {_customizations.EventHandlers?.Count ?? 0}");
+                _console.Substep($"Form customizations: {_customizations.FormCustomizations?.Count ?? 0}");
+            }
+            else
+            {
+                _console.Warning("No customizations found in file");
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _console.Error($"Failed to load customizations: {ex.Message}");
+            if (_options.Verbose)
+            {
+                _console.Error($"Details: {ex.InnerException?.Message}");
+            }
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Format bytes into human-readable size
+    /// </summary>
+    private static string FormatBytes(long bytes)
     {
         string[] sizes = { "B", "KB", "MB", "GB" };
         double len = bytes;

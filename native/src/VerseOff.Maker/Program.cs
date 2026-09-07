@@ -51,6 +51,21 @@ static MakerOptions ParseArguments(string[] args)
             case "--config":
                 options.ConfigPath = args[++i];
                 break;
+            case "--customizations":
+                options.CustomizationPath = args[++i];
+                break;
+            case "--include-metadata":
+                options.IncludeMetadata = true;
+                break;
+            case "--no-metadata":
+                options.IncludeMetadata = false;
+                break;
+            case "--apply-customizations":
+                options.ApplyCustomizations = true;
+                break;
+            case "--skip-customizations":
+                options.ApplyCustomizations = false;
+                break;
             case "--validate-only":
                 options.ValidateOnly = true;
                 break;
@@ -73,15 +88,27 @@ static void ShowHelp()
         verseoff-maker [OPTIONS]
     
     OPTIONS:
-        --input <path>, -i          Path to solution.zip (required)
-        --output <path>, -o         Output directory (default: ./dist)
-        --format <format>, -f       Output format: json|csharp|msix (default: json)
-        --compression <level>, -c   Compression: none|fast|optimal (default: optimal)
-        --ootb-strategy <strategy>  OOTB selection: static|runtime|domain|all (default: static)
-        --config <path>             Domain requirements YAML file
-        --validate-only             Validate only, don't generate
-        --verbose, -v               Show detailed output
-        --help, -h                  Show this help message
+        --input <path>, -i              Path to solution.zip (required)
+        --output <path>, -o             Output directory (default: ./dist)
+        --format <format>, -f           Output format: json|csharp|msix (default: json)
+        --compression <level>, -c       Compression: none|fast|optimal (default: optimal)
+        --ootb-strategy <strategy>      OOTB selection: static|runtime|domain|all (default: static)
+        --config <path>                 Domain requirements YAML file
+        --customizations <path>         App customizations YAML file (add/remove fields, handlers)
+        --include-metadata              Include baseline metadata schema (default: true)
+        --no-metadata                   Exclude metadata schema (smaller bundle)
+        --apply-customizations          Apply customizations if present (default: true)
+        --skip-customizations           Skip customization application
+        --validate-only                 Validate only, don't generate
+        --verbose, -v                   Show detailed output
+        --help, -h                      Show this help message
+    
+    CUSTOMIZATION FEATURES:
+        - Add/remove/modify entity fields
+        - Register new event handlers (pre/post events)
+        - Override existing event handlers
+        - Customize form sections and tabs
+        - Domain-specific configuration
     
     EXAMPLES:
         # Basic: Generate JSON package from solution
@@ -89,6 +116,12 @@ static void ShowHelp()
         
         # With domain configuration
         verseoff-maker --input myapp.zip --config requirements.yaml --format json
+        
+        # With customizations
+        verseoff-maker --input myapp.zip --customizations myapp-customizations.yaml
+        
+        # With metadata for runtime customization support
+        verseoff-maker --input myapp.zip --include-metadata --apply-customizations
         
         # Validation only
         verseoff-maker --input myapp.zip --validate-only --verbose
@@ -101,6 +134,8 @@ static void ShowHelp()
           --compression optimal \
           --ootb-strategy domain \
           --config domain-config.yaml \
+          --customizations customizations.yaml \
+          --include-metadata \
           --verbose
     """);
 }
