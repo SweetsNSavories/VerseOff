@@ -6,7 +6,7 @@ public sealed record TimelineDefinition(
     string? CustomControlName,
     string RawControlXml,
     IReadOnlyDictionary<string, string?> RawParameters,
-    IReadOnlySet<TimelineModule> EnabledModules,
+    IReadOnlyList<TimelineModule> EnabledModules,
     IReadOnlyList<string> EnabledActivityTypes,
     int RecordsPerPage,
     bool ShowFilterPane,

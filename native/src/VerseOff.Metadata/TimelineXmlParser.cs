@@ -64,7 +64,8 @@ internal static class TimelineXmlParser
         var modules = Split(Value(parameters, "UClientModules"))
             .Select(ParseModule)
             .OfType<TimelineModule>()
-            .ToHashSet();
+            .Distinct()
+            .ToArray();
         var enabledActivities = Split(
                 Value(parameters, "UClientActivities"))
             .Select(value => value.ToLowerInvariant())

@@ -58,7 +58,7 @@ public sealed record TimelineRecord(
 public sealed record TimelineQuery(
     Guid RegardingId,
     string RegardingTable,
-    IReadOnlySet<TimelineModule> Modules,
+    IReadOnlyList<TimelineModule> Modules,
     IReadOnlyList<string> ActivityTypes,
     string? SearchText,
     TimelineSortDirection SortDirection,

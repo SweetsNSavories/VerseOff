@@ -168,6 +168,18 @@ internal static class TargetSourceTemplates
         {
             public App()
             {
+                AppDomain.CurrentDomain.UnhandledException += (_, e) =>
+                {
+                    try
+                    {
+                        File.WriteAllText(
+                            Path.Combine(AppContext.BaseDirectory, "verseoff_unhandled.log"),
+                            e.ExceptionObject.ToString());
+                    }
+                    catch
+                    {
+                    }
+                };
                 InitializeComponent();
             }
 
@@ -427,17 +439,18 @@ internal static class TargetSourceTemplates
                             "This app has no generated SiteMap subareas.");
                     }
                 }
-                catch (InvalidDataException exception)
+                catch (Exception exception)
                 {
                     RenderLoadFailure(exception);
-                }
-                catch (JsonException exception)
-                {
-                    RenderLoadFailure(exception);
-                }
-                catch (IOException exception)
-                {
-                    RenderLoadFailure(exception);
+                    try
+                    {
+                        File.WriteAllText(
+                            System.IO.Path.Combine(AppContext.BaseDirectory, "verseoff_target_error.log"),
+                            exception.ToString());
+                    }
+                    catch
+                    {
+                    }
                 }
             }
 
@@ -449,9 +462,25 @@ internal static class TargetSourceTemplates
                     && args.CurrentSelection[0]
                         is NavigationDefinition selected)
                 {
-                    RenderTable(
-                        selected.TableLogicalName,
-                        selected.Title);
+                    try
+                    {
+                        RenderTable(
+                            selected.TableLogicalName,
+                            selected.Title);
+                    }
+                    catch (Exception exception)
+                    {
+                        RenderMessage($"Failed to render {selected.Title}: {exception.Message}");
+                        try
+                        {
+                            File.WriteAllText(
+                                System.IO.Path.Combine(AppContext.BaseDirectory, "verseoff_target_error.log"),
+                                exception.ToString());
+                        }
+                        catch
+                        {
+                        }
+                    }
                 }
             }
 

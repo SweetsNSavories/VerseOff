@@ -61,11 +61,10 @@ public sealed class TimelineViewModelTests
         null,
         "<control />",
         new Dictionary<string, string?>(),
-        new HashSet<TimelineModule>
-        {
+        [
             TimelineModule.Activities,
             TimelineModule.Notes,
-        },
+        ],
         ["email", "task"],
         10,
         ShowFilterPane: true,

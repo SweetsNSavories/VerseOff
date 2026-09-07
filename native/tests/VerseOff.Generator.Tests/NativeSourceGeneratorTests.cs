@@ -352,12 +352,11 @@ public sealed class NativeSourceGeneratorTests
             "Timeline",
             "<control />",
             new Dictionary<string, string?>(),
-            new HashSet<TimelineModule>
-            {
+            [
                 TimelineModule.Activities,
                 TimelineModule.Notes,
                 TimelineModule.Posts,
-            },
+            ],
             ["email", "phonecall", "task"],
             10,
             ShowFilterPane: true,
