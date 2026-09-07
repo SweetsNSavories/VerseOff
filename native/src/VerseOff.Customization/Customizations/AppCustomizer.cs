@@ -1,4 +1,5 @@
 using VerseOff.Customization.Metadata;
+using VerseOff.Customization.EventHandlers;
 using System.Text.Json;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
@@ -25,10 +26,15 @@ public class AppCustomizer
     private readonly List<FormCustomization> _formCustomizations = new();
     private readonly Dictionary<string, object> _configuration = new();
     private readonly Dictionary<string, EntityMetadata> _baselineMetadata;
+    private readonly Dictionary<string, EventHandlerCode> _handlerCodes = new();
+    private readonly EventHandlerValidator _handlerValidator;
+    private readonly EventHandlerExecutor _handlerExecutor;
 
     public AppCustomizer(Dictionary<string, EntityMetadata> baselineMetadata)
     {
         _baselineMetadata = baselineMetadata ?? throw new ArgumentNullException(nameof(baselineMetadata));
+        _handlerValidator = new EventHandlerValidator(baselineMetadata);
+        _handlerExecutor = new EventHandlerExecutor();
     }
 
     /// <summary>
@@ -164,6 +170,69 @@ public class AppCustomizer
         }
 
         return AddEventHandler(entityLogicalName, eventHook, handlerName, handlerCode);
+    }
+
+    /// <summary>
+    /// Register an event handler with code storage and validation
+    /// </summary>
+    public AppCustomizer AddEventHandlerWithCode(string entityLogicalName, string eventHook,
+        string handlerName, EventHandlerCode handlerCode,
+        EventHandlerType handlerType = EventHandlerType.JavaScript,
+        int executionOrder = 100,
+        EventExecutionPhase executionPhase = EventExecutionPhase.PostOperation)
+    {
+        if (!_baselineMetadata.TryGetValue(entityLogicalName, out var entity))
+            throw new InvalidOperationException($"Entity '{entityLogicalName}' not found in baseline metadata");
+
+        if (!entity.SupportsEventHandler(eventHook))
+            throw new InvalidOperationException($"Event hook '{eventHook}' not supported for entity '{entityLogicalName}'");
+
+        // Validate handler code
+        var codeValidation = EventHandlerValidator.ValidateHandlerCode(handlerCode, handlerType);
+        if (!codeValidation.IsValid)
+            throw new InvalidOperationException($"Handler code validation failed: {string.Join("; ", codeValidation.Issues)}");
+
+        // Create registration
+        var handler = new EventHandlerRegistration(
+            entityLogicalName,
+            eventHook,
+            handlerName,
+            handlerCode.GetCode(),
+            executionOrder,
+            handlerType,
+            executionPhase
+        );
+
+        // Validate registration
+        var validation = _handlerValidator.Validate(handler, _eventHandlers);
+        if (!validation.IsValid)
+            throw new InvalidOperationException($"Handler validation failed: {string.Join("; ", validation.Issues)}");
+
+        // Store code and register
+        var codeKey = $"{entityLogicalName}.{eventHook}.{handlerName}";
+        _handlerCodes[codeKey] = handlerCode;
+        _eventHandlers.Add(handler);
+        _handlerExecutor.Register(handler);
+
+        return this;
+    }
+
+    /// <summary>
+    /// Get event handler code
+    /// </summary>
+    public EventHandlerCode? GetHandlerCode(string entityLogicalName, string eventHook, string handlerName)
+    {
+        var key = $"{entityLogicalName}.{eventHook}.{handlerName}";
+        _handlerCodes.TryGetValue(key, out var code);
+        return code;
+    }
+
+    /// <summary>
+    /// Get all handlers for an entity/event, in execution order
+    /// </summary>
+    public IEnumerable<EventHandlerRegistration> GetHandlers(string entityLogicalName, string eventHook)
+    {
+        return _handlerExecutor.GetHandlers(entityLogicalName, eventHook);
     }
 
     /// <summary>
