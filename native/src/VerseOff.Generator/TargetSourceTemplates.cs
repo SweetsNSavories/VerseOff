@@ -191,12 +191,14 @@ internal static class TargetSourceTemplates
 
     private static string MauiProgram(string namespaceName) =>
         $$"""
+        using System.Runtime.CompilerServices;
         using System.Text.Json;
         using Microsoft.Extensions.DependencyInjection;
         using Microsoft.Extensions.Logging;
         using VerseOff.Controls;
         using VerseOff.Domain;
         using VerseOff.Storage;
+        using VerseOff.Sync;
 
         namespace {{namespaceName}};
 
@@ -208,7 +210,9 @@ internal static class TargetSourceTemplates
                 builder.UseMauiApp<App>();
                 builder.Services.AddSingleton<ITimelineRecordProvider, InMemoryTimelineRecordProvider>();
                 builder.Services.AddSingleton<ICommandRuleEvaluator, CommandRuleEvaluator>();
-                builder.Services.AddSingleton<ILocalRecordStore, InMemoryLocalRecordStore>();
+                builder.Services.AddSingleton<InMemoryLocalRecordStore>();
+                builder.Services.AddSingleton<ILocalRecordStore>(sp => sp.GetRequiredService<InMemoryLocalRecordStore>());
+                builder.Services.AddSingleton<IPendingOperationSource>(sp => sp.GetRequiredService<InMemoryLocalRecordStore>());
                 builder.Services.AddTransient<MainPage>();
         #if DEBUG
                 builder.Logging.AddDebug();
@@ -225,9 +229,10 @@ internal static class TargetSourceTemplates
                 ValueTask.FromResult(new TimelinePage([], null));
         }
 
-        public sealed class InMemoryLocalRecordStore : ILocalRecordStore
+        public sealed class InMemoryLocalRecordStore : ILocalRecordStore, IPendingOperationSource
         {
             private readonly Dictionary<(string, Guid), CachedRecordEntity> records = new();
+            private readonly List<DataverseOperation> outbox = new();
 
             public Task<CachedRecordEntity?> RetrieveAsync(
                 string tableLogicalName,
@@ -248,16 +253,31 @@ internal static class TargetSourceTemplates
                 string correlationId,
                 CancellationToken cancellationToken = default)
             {
+                var isNew = !records.ContainsKey((tableLogicalName, recordId));
                 var entity = new CachedRecordEntity
                 {
                     TableLogicalName = tableLogicalName,
                     RecordId = recordId,
                     DataJson = data.RootElement.GetRawText(),
                     SecuritySnapshotVersion = securitySnapshotVersion,
-                    SyncState = LocalSyncState.PendingUpdate,
+                    SyncState = isNew ? LocalSyncState.PendingCreate : LocalSyncState.PendingUpdate,
                     ModifiedAt = DateTimeOffset.UtcNow,
                 };
                 records[(tableLogicalName, recordId)] = entity;
+
+                outbox.RemoveAll(op => string.Equals(op.TableLogicalName, tableLogicalName, StringComparison.OrdinalIgnoreCase) && op.RecordId == recordId);
+                outbox.Add(new DataverseOperation(
+                    Guid.NewGuid(),
+                    isNew ? DataverseOperationType.Create : DataverseOperationType.Update,
+                    tableLogicalName,
+                    recordId,
+                    data.RootElement.Clone(),
+                    null,
+                    userObjectId,
+                    deviceId,
+                    DateTimeOffset.UtcNow,
+                    correlationId));
+
                 return Task.FromResult(entity);
             }
 
@@ -269,7 +289,20 @@ internal static class TargetSourceTemplates
                 string correlationId,
                 CancellationToken cancellationToken = default)
             {
-                return Task.FromResult(records.Remove((tableLogicalName, recordId)));
+                var removed = records.Remove((tableLogicalName, recordId));
+                outbox.RemoveAll(op => string.Equals(op.TableLogicalName, tableLogicalName, StringComparison.OrdinalIgnoreCase) && op.RecordId == recordId);
+                outbox.Add(new DataverseOperation(
+                    Guid.NewGuid(),
+                    DataverseOperationType.Delete,
+                    tableLogicalName,
+                    recordId,
+                    default,
+                    null,
+                    userObjectId,
+                    deviceId,
+                    DateTimeOffset.UtcNow,
+                    correlationId));
+                return Task.FromResult(removed);
             }
 
             public Task ApplyServerChangeAsync(
@@ -278,6 +311,26 @@ internal static class TargetSourceTemplates
                 CancellationToken cancellationToken = default)
             {
                 return Task.CompletedTask;
+            }
+
+            public async IAsyncEnumerable<DataverseOperation> ReadPendingAsync(
+                [EnumeratorCancellation]
+                CancellationToken cancellationToken = default)
+            {
+                foreach (var op in outbox.ToArray())
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    yield return op;
+                }
+                await Task.CompletedTask;
+            }
+
+            public ValueTask ApplyResultAsync(
+                SyncResult result,
+                CancellationToken cancellationToken = default)
+            {
+                outbox.RemoveAll(op => op.OperationId == result.OperationId);
+                return ValueTask.CompletedTask;
             }
         }
         """;
@@ -304,14 +357,38 @@ internal static class TargetSourceTemplates
                        FontSize="12"
                        TextColor="#605E5C" />
               </VerticalStackLayout>
-              <Border Grid.Column="1"
-                      Padding="10,5"
-                      StrokeShape="RoundRectangle 12"
-                      BackgroundColor="#DFF6DD"
-                      Stroke="#107C10">
-                <Label Text="Generated source"
-                       TextColor="#0B5A08" />
-              </Border>
+              <HorizontalStackLayout Grid.Column="1"
+                                     Spacing="10"
+                                     VerticalOptions="Center">
+                <Border x:Name="UnsavedBadge"
+                        IsVisible="False"
+                        Padding="10,5"
+                        StrokeShape="RoundRectangle 12"
+                        BackgroundColor="#FFF4CE"
+                        Stroke="#797673">
+                  <Label Text="* Unsaved Changes"
+                         TextColor="#797673"
+                         FontAttributes="Bold"
+                         FontSize="12" />
+                </Border>
+                <Border Padding="10,5"
+                        StrokeShape="RoundRectangle 12"
+                        BackgroundColor="#FFF0F0"
+                        Stroke="#D13438">
+                  <Label Text="BCDR Offline Mode"
+                         TextColor="#A80000"
+                         FontAttributes="Bold"
+                         FontSize="12" />
+                </Border>
+                <Button x:Name="OutboxButton"
+                        Text="Outbox: 0"
+                        Clicked="OnOutboxClicked"
+                        Padding="12,5"
+                        FontSize="12"
+                        BackgroundColor="#0F6CBD"
+                        TextColor="White"
+                        CornerRadius="12" />
+              </HorizontalStackLayout>
             </Grid>
 
             <Grid Grid.Row="1"
@@ -355,6 +432,52 @@ internal static class TargetSourceTemplates
                 </ScrollView>
               </Grid>
             </Grid>
+
+            <Grid x:Name="OutboxInspectorHost"
+                  Grid.Row="1"
+                  IsVisible="False"
+                  BackgroundColor="#80000000">
+              <Border HorizontalOptions="Center"
+                      VerticalOptions="Center"
+                      WidthRequest="720"
+                      HeightRequest="520"
+                      Padding="24"
+                      StrokeShape="RoundRectangle 8"
+                      BackgroundColor="White"
+                      Stroke="#E1DFDD">
+                <Grid RowDefinitions="Auto,*,Auto" RowSpacing="16">
+                  <Grid ColumnDefinitions="*,Auto">
+                    <VerticalStackLayout Spacing="2">
+                      <Label Text="Offline Sync Outbox Operations"
+                             FontSize="20"
+                             FontAttributes="Bold" />
+                      <Label Text="Queued local transactional mutations awaiting Dataverse push sync"
+                             FontSize="12"
+                             TextColor="#605E5C" />
+                    </VerticalStackLayout>
+                    <Button Grid.Column="1"
+                            Text="✕ Close"
+                            Clicked="OnCloseOutboxClicked"
+                            Padding="12,6"
+                            BackgroundColor="Transparent"
+                            TextColor="#605E5C" />
+                  </Grid>
+                  <ScrollView Grid.Row="1">
+                    <VerticalStackLayout x:Name="OutboxListHost" Spacing="10" />
+                  </ScrollView>
+                  <Border Grid.Row="2"
+                          Padding="12"
+                          BackgroundColor="#F5F5F5"
+                          StrokeShape="RoundRectangle 4"
+                          Stroke="#E1DFDD">
+                    <Label x:Name="OutboxSummaryLabel"
+                           Text="0 pending operations queued."
+                           FontSize="12"
+                           TextColor="#605E5C" />
+                  </Border>
+                </Grid>
+              </Border>
+            </Grid>
           </Grid>
         </ContentPage>
         """;
@@ -368,6 +491,7 @@ internal static class TargetSourceTemplates
         using VerseOff.Controls;
         using VerseOff.Domain;
         using VerseOff.Storage;
+        using VerseOff.Sync;
 
         namespace {{namespaceName}};
 
@@ -386,25 +510,30 @@ internal static class TargetSourceTemplates
             private readonly ITimelineRecordProvider? injectedTimelineProvider;
             private readonly ICommandRuleEvaluator? injectedCommandRuleEvaluator;
             private readonly ILocalRecordStore? injectedLocalRecordStore;
+            private readonly IPendingOperationSource? injectedPendingOperationSource;
             private ApplicationDefinition? definition;
             private TableDefinition? currentTable;
             private FormDefinition? currentForm;
             private Guid currentRecordId = Guid.Empty;
             private XrmFormContext? activeFormContext;
             private FormBindingManager? activeBindingManager;
+            private NavigationDefinition? currentNavigationSelection;
+            private bool isProgrammaticNavigation;
 
-            public MainPage() : this(null, null, null)
+            public MainPage() : this(null, null, null, null)
             {
             }
 
             public MainPage(
                 ITimelineRecordProvider? timelineProvider,
                 ICommandRuleEvaluator? commandRuleEvaluator,
-                ILocalRecordStore? localRecordStore = null)
+                ILocalRecordStore? localRecordStore = null,
+                IPendingOperationSource? pendingOperationSource = null)
             {
                 injectedTimelineProvider = timelineProvider;
                 injectedCommandRuleEvaluator = commandRuleEvaluator;
                 injectedLocalRecordStore = localRecordStore;
+                injectedPendingOperationSource = pendingOperationSource;
                 InitializeComponent();
                 Loaded += OnLoaded;
             }
@@ -431,13 +560,19 @@ internal static class TargetSourceTemplates
 
                     if (navigation.Length > 0)
                     {
+                        isProgrammaticNavigation = true;
                         NavigationList.SelectedItem = navigation[0];
+                        currentNavigationSelection = navigation[0];
+                        isProgrammaticNavigation = false;
+                        RenderTable(navigation[0].TableLogicalName, navigation[0].Title);
                     }
                     else
                     {
                         RenderMessage(
                             "This app has no generated SiteMap subareas.");
                     }
+
+                    await RefreshOutboxCountAsync();
                 }
                 catch (Exception exception)
                 {
@@ -454,32 +589,56 @@ internal static class TargetSourceTemplates
                 }
             }
 
-            private void OnNavigationChanged(
+            private async void OnNavigationChanged(
                 object? sender,
                 SelectionChangedEventArgs args)
             {
-                if (args.CurrentSelection.Count > 0
-                    && args.CurrentSelection[0]
-                        is NavigationDefinition selected)
+                if (isProgrammaticNavigation)
                 {
+                    return;
+                }
+
+                if (args.CurrentSelection.Count == 0
+                    || args.CurrentSelection[0] is not NavigationDefinition selected)
+                {
+                    return;
+                }
+
+                if (activeBindingManager is not null && activeBindingManager.IsDirty)
+                {
+                    var shouldDiscard = await DisplayAlertAsync(
+                        "Unsaved Changes",
+                        "You have unsaved changes on the current record. Do you want to discard your changes and switch views?",
+                        "Discard Changes",
+                        "Cancel");
+
+                    if (!shouldDiscard)
+                    {
+                        isProgrammaticNavigation = true;
+                        NavigationList.SelectedItem = currentNavigationSelection;
+                        isProgrammaticNavigation = false;
+                        return;
+                    }
+                }
+
+                currentNavigationSelection = selected;
+                try
+                {
+                    RenderTable(
+                        selected.TableLogicalName,
+                        selected.Title);
+                }
+                catch (Exception exception)
+                {
+                    RenderMessage($"Failed to render {selected.Title}: {exception.Message}");
                     try
                     {
-                        RenderTable(
-                            selected.TableLogicalName,
-                            selected.Title);
+                        File.WriteAllText(
+                            System.IO.Path.Combine(AppContext.BaseDirectory, "verseoff_target_error.log"),
+                            exception.ToString());
                     }
-                    catch (Exception exception)
+                    catch
                     {
-                        RenderMessage($"Failed to render {selected.Title}: {exception.Message}");
-                        try
-                        {
-                            File.WriteAllText(
-                                System.IO.Path.Combine(AppContext.BaseDirectory, "verseoff_target_error.log"),
-                                exception.ToString());
-                        }
-                        catch
-                        {
-                        }
                     }
                 }
             }
@@ -514,6 +673,7 @@ internal static class TargetSourceTemplates
             {
                 ContentHost.Clear();
                 ClearNotification();
+                UnsavedBadge.IsVisible = false;
                 ContentHost.Add(new Label
                 {
                     Text = title,
@@ -593,6 +753,10 @@ internal static class TargetSourceTemplates
                     attributes,
                     controls);
                 activeBindingManager = new FormBindingManager();
+                activeBindingManager.StateChanged += (_, _) =>
+                {
+                    UnsavedBadge.IsVisible = activeBindingManager.IsDirty;
+                };
 
                 RenderCommands(form, commandEvaluator);
 
@@ -699,6 +863,36 @@ internal static class TargetSourceTemplates
                     initialData["telephone1"] = "+1 (555) 019-2834";
                     initialData["revenue"] = 1250000m;
                     initialData["emailaddress1"] = "contact@contoso.example.com";
+                    initialData["statecode"] = 0;
+                }
+                else if (string.Equals(tableLogicalName, "contact", StringComparison.OrdinalIgnoreCase))
+                {
+                    initialData["fullname"] = "Yvonne McKay";
+                    initialData["firstname"] = "Yvonne";
+                    initialData["lastname"] = "McKay";
+                    initialData["jobtitle"] = "Chief Technology Officer";
+                    initialData["emailaddress1"] = "yvonne.mckay@contoso.example.com";
+                    initialData["mobilephone"] = "+1 (555) 019-8877";
+                    initialData["parentcustomerid"] = "Contoso Pharmaceuticals";
+                    initialData["statecode"] = 0;
+                }
+                else if (string.Equals(tableLogicalName, "incident", StringComparison.OrdinalIgnoreCase))
+                {
+                    initialData["title"] = "Network latency during disaster recovery failover";
+                    initialData["ticketnumber"] = "CAS-01042-M4K9";
+                    initialData["prioritycode"] = 1;
+                    initialData["statecode"] = 0;
+                    initialData["statuscode"] = 1;
+                    initialData["description"] = "Intermittent packet loss observed on standby gateway node during offline exercise.";
+                }
+                else if (string.Equals(tableLogicalName, "opportunity", StringComparison.OrdinalIgnoreCase))
+                {
+                    initialData["name"] = "Enterprise Disaster Recovery License Expansion";
+                    initialData["estimatedvalue"] = 350000m;
+                    initialData["closeprobability"] = 75;
+                    initialData["estimatedclosedate"] = DateTime.UtcNow.AddMonths(1);
+                    initialData["statecode"] = 0;
+                    initialData["statuscode"] = 1;
                 }
 
                 if (initialData.Count > 0)
@@ -764,6 +958,57 @@ internal static class TargetSourceTemplates
                     return;
                 }
 
+                if (string.Equals(command.CommandId, "cmd.deactivate", StringComparison.OrdinalIgnoreCase)
+                    || command.Label.Contains("Deactivate", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (activeBindingManager is not null)
+                    {
+                        activeBindingManager.SetValue("statecode", 1);
+                        await SaveActiveRecordAsync();
+                        ShowNotification("Record deactivated offline.", isError: false);
+                        return;
+                    }
+                }
+
+                if (string.Equals(command.CommandId, "cmd.resolve_case", StringComparison.OrdinalIgnoreCase)
+                    || command.Label.Contains("Resolve", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (activeBindingManager is not null)
+                    {
+                        activeBindingManager.SetValue("statecode", 1);
+                        activeBindingManager.SetValue("statuscode", 2);
+                        await SaveActiveRecordAsync();
+                        ShowNotification("Case marked as Resolved offline.", isError: false);
+                        return;
+                    }
+                }
+
+                if (string.Equals(command.CommandId, "cmd.close_won", StringComparison.OrdinalIgnoreCase)
+                    || command.Label.Contains("Won", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (activeBindingManager is not null)
+                    {
+                        activeBindingManager.SetValue("statecode", 1);
+                        activeBindingManager.SetValue("statuscode", 3);
+                        await SaveActiveRecordAsync();
+                        ShowNotification("Opportunity marked as Won offline.", isError: false);
+                        return;
+                    }
+                }
+
+                if (string.Equals(command.CommandId, "cmd.close_lost", StringComparison.OrdinalIgnoreCase)
+                    || command.Label.Contains("Lost", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (activeBindingManager is not null)
+                    {
+                        activeBindingManager.SetValue("statecode", 2);
+                        activeBindingManager.SetValue("statuscode", 4);
+                        await SaveActiveRecordAsync();
+                        ShowNotification("Opportunity marked as Lost offline.", isError: false);
+                        return;
+                    }
+                }
+
                 if (command.Action.Kind is CommandActionKind.OpenUrl
                     && Uri.TryCreate(command.Action.Target, UriKind.Absolute, out var uri))
                 {
@@ -815,6 +1060,8 @@ internal static class TargetSourceTemplates
                             correlationId: Guid.NewGuid().ToString("N"));
 
                         activeBindingManager.ResetDirty();
+                        UnsavedBadge.IsVisible = false;
+                        await RefreshOutboxCountAsync();
                         ShowNotification(
                             $"Saved {currentTable.DisplayName ?? currentTable.LogicalName} record ({currentRecordId:D}) successfully to encrypted offline store.",
                             isError: false);
@@ -827,10 +1074,130 @@ internal static class TargetSourceTemplates
                 else
                 {
                     activeBindingManager.ResetDirty();
+                    UnsavedBadge.IsVisible = false;
+                    await RefreshOutboxCountAsync();
                     ShowNotification(
                         $"Record saved locally ({values.Count} attributes updated).",
                         isError: false);
                 }
+            }
+
+            private async Task RefreshOutboxCountAsync()
+            {
+                var count = 0;
+                var pendingSource = injectedPendingOperationSource
+                    ?? Handler?.MauiContext?.Services.GetService<IPendingOperationSource>();
+                if (pendingSource is not null)
+                {
+                    await foreach (var _ in pendingSource.ReadPendingAsync())
+                    {
+                        count++;
+                    }
+                }
+                OutboxButton.Text = $"Outbox: {count}";
+            }
+
+            private async void OnOutboxClicked(object? sender, EventArgs args)
+            {
+                OutboxListHost.Clear();
+                var pendingSource = injectedPendingOperationSource
+                    ?? Handler?.MauiContext?.Services.GetService<IPendingOperationSource>();
+                var count = 0;
+                if (pendingSource is not null)
+                {
+                    await foreach (var op in pendingSource.ReadPendingAsync())
+                    {
+                        count++;
+                        var badgeColor = op.OperationType switch
+                        {
+                            DataverseOperationType.Create => Color.FromArgb("#DFF6DD"),
+                            DataverseOperationType.Delete => Color.FromArgb("#FDE7E9"),
+                            _ => Color.FromArgb("#FFF4CE"),
+                        };
+                        var badgeTextColor = op.OperationType switch
+                        {
+                            DataverseOperationType.Create => Color.FromArgb("#107C10"),
+                            DataverseOperationType.Delete => Color.FromArgb("#A80000"),
+                            _ => Color.FromArgb("#797673"),
+                        };
+
+                        var card = new Border
+                        {
+                            Padding = new Thickness(14, 10),
+                            StrokeShape = new RoundRectangle { CornerRadius = 6 },
+                            Stroke = Color.FromArgb("#E1DFDD"),
+                            BackgroundColor = Color.FromArgb("#FAFAFA"),
+                            Content = new VerticalStackLayout
+                            {
+                                Spacing = 4,
+                                Children =
+                                {
+                                    new HorizontalStackLayout
+                                    {
+                                        Spacing = 10,
+                                        Children =
+                                        {
+                                            new Border
+                                            {
+                                                Padding = new Thickness(6, 2),
+                                                StrokeShape = new RoundRectangle { CornerRadius = 4 },
+                                                BackgroundColor = badgeColor,
+                                                Stroke = Colors.Transparent,
+                                                Content = new Label
+                                                {
+                                                    Text = op.OperationType.ToString().ToUpperInvariant(),
+                                                    FontSize = 10,
+                                                    FontAttributes = FontAttributes.Bold,
+                                                    TextColor = badgeTextColor,
+                                                },
+                                            },
+                                            new Label
+                                            {
+                                                Text = op.TableLogicalName,
+                                                FontAttributes = FontAttributes.Bold,
+                                                FontSize = 13,
+                                                VerticalOptions = LayoutOptions.Center,
+                                            },
+                                            new Label
+                                            {
+                                                Text = $"ID: {op.RecordId:D}",
+                                                FontSize = 11,
+                                                TextColor = Color.FromArgb("#605E5C"),
+                                                VerticalOptions = LayoutOptions.Center,
+                                            },
+                                        },
+                                    },
+                                    new Label
+                                    {
+                                        Text = $"Queued: {op.CreatedAt:yyyy-MM-dd HH:mm:ss UTC} | Correlation: {op.CorrelationId}",
+                                        FontSize = 11,
+                                        TextColor = Color.FromArgb("#605E5C"),
+                                    },
+                                },
+                            },
+                        };
+                        OutboxListHost.Add(card);
+                    }
+                }
+
+                if (count == 0)
+                {
+                    OutboxListHost.Add(new Label
+                    {
+                        Text = "No pending outbox operations. All local mutations have synchronized or queue is empty.",
+                        TextColor = Color.FromArgb("#605E5C"),
+                        Padding = new Thickness(8),
+                    });
+                }
+
+                OutboxSummaryLabel.Text = $"{count} pending operation(s) queued for synchronization.";
+                OutboxButton.Text = $"Outbox: {count}";
+                OutboxInspectorHost.IsVisible = true;
+            }
+
+            private void OnCloseOutboxClicked(object? sender, EventArgs args)
+            {
+                OutboxInspectorHost.IsVisible = false;
             }
 
             private void RenderControls(

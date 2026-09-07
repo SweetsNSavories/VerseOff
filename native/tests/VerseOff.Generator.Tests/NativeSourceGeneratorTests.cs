@@ -53,6 +53,14 @@ public sealed class NativeSourceGeneratorTests
                 first.OutputDirectory,
                 "MainPage.xaml"));
             StringAssert.Contains(mainPage, "&lt;Unsafe &amp; App&gt;");
+            StringAssert.Contains(mainPage, "UnsavedBadge");
+            StringAssert.Contains(mainPage, "OutboxInspectorHost");
+
+            var mainPageCode = await File.ReadAllTextAsync(Path.Combine(
+                first.OutputDirectory,
+                "MainPage.xaml.cs"));
+            StringAssert.Contains(mainPageCode, "DisplayAlertAsync");
+            StringAssert.Contains(mainPageCode, "IPendingOperationSource");
         }
         finally
         {
