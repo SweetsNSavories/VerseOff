@@ -1,3 +1,5 @@
+using YamlDotNet.Serialization;
+
 namespace VerseOff.Customization.Customizations;
 
 /// <summary>
@@ -11,7 +13,10 @@ public record FieldModification(
     Dictionary<string, object>? PropertyChanges = null
 )
 {
+    [YamlIgnore]
     public string Id { get; } = $"{EntityLogicalName}.{FieldLogicalName}.{ModificationType}";
+
+    public FieldModification() : this("", "", FieldModificationType.Add) { }
 }
 
 /// <summary>
@@ -40,7 +45,10 @@ public record EventHandlerRegistration(
     bool SuppressInvalidPluginStepRegistration = false
 )
 {
+    [YamlIgnore]
     public string Id { get; } = $"{EntityLogicalName}.{EventHook}.{HandlerName}";
+
+    public EventHandlerRegistration() : this("", "", "") { }
 }
 
 /// <summary>
@@ -92,7 +100,10 @@ public record FormSectionChange(
     int Order = -1,
     List<string>? FieldsToAdd = null,
     List<string>? FieldsToRemove = null
-);
+)
+{
+    public FormSectionChange() : this("", FormSectionChangeType.Add) { }
+}
 
 public enum FormSectionChangeType
 {
@@ -111,7 +122,10 @@ public record FormTabChange(
     int Order = -1,
     List<string>? SectionsToAdd = null,
     List<string>? SectionsToRemove = null
-);
+)
+{
+    public FormTabChange() : this("", FormTabChangeType.Add) { }
+}
 
 public enum FormTabChangeType
 {
@@ -166,6 +180,7 @@ public record CustomizationLayer(
     /// <summary>
     /// Check if layer has any customizations
     /// </summary>
+    [YamlIgnore]
     public bool HasCustomizations =>
         (FieldModifications?.Count > 0) ||
         (EventHandlers?.Count > 0) ||

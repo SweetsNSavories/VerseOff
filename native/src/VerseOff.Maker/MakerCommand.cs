@@ -3,6 +3,8 @@ using VerseOff.Domain;
 using VerseOff.Customization.Services;
 using VerseOff.Customization.Customizations;
 using System.Globalization;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace VerseOff.Maker;
 
@@ -322,10 +324,29 @@ public class MakerCommand
 
             _console.Substep($"Loading from: {_options.CustomizationPath}");
             var content = File.ReadAllText(_options.CustomizationPath);
-            
-            // For now, load as JSON; YAML support via YamlDotNet can be added later
-            _customizations = System.Text.Json.JsonSerializer.Deserialize<CustomizationLayer>(content)
-                ?? new CustomizationLayer();
+
+            // Detect format from file extension
+            var fileExt = Path.GetExtension(_options.CustomizationPath).ToLowerInvariant();
+            var isYaml = fileExt is ".yaml" or ".yml";
+
+            try
+            {
+                _customizations = isYaml
+                    ? new YamlDotNet.Serialization.DeserializerBuilder()
+                        .WithNamingConvention(YamlDotNet.Serialization.NamingConventions.CamelCaseNamingConvention.Instance)
+                        .Build()
+                        .Deserialize<CustomizationLayer>(content)
+                    : System.Text.Json.JsonSerializer.Deserialize<CustomizationLayer>(content);
+
+                _customizations ??= new CustomizationLayer();
+            }
+            catch (Exception ex)
+            {
+                _console.Error($"Failed to deserialize customizations ({(isYaml ? "YAML" : "JSON")}): {ex.Message}");
+                if (_options.Verbose)
+                    _console.Error($"Details: {ex.InnerException?.Message}");
+                return false;
+            }
 
             if (_customizations.HasCustomizations)
             {

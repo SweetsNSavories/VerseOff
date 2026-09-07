@@ -1,5 +1,7 @@
 using VerseOff.Customization.Metadata;
 using System.Text.Json;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace VerseOff.Customization.Customizations;
 
@@ -10,6 +12,13 @@ namespace VerseOff.Customization.Customizations;
 public class AppCustomizer
 {
     private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
+    private static readonly ISerializer YamlSerializer = new SerializerBuilder()
+        .WithNamingConvention(CamelCaseNamingConvention.Instance)
+        .DisableAliases()
+        .Build();
+    private static readonly IDeserializer YamlDeserializer = new DeserializerBuilder()
+        .WithNamingConvention(CamelCaseNamingConvention.Instance)
+        .Build();
 
     private readonly List<FieldModification> _fieldModifications = new();
     private readonly List<EventHandlerRegistration> _eventHandlers = new();
@@ -27,8 +36,18 @@ public class AppCustomizer
     /// </summary>
     public AppCustomizer AddField(string entityLogicalName, FieldMetadata fieldDefinition)
     {
-        if (!_baselineMetadata.ContainsKey(entityLogicalName))
+        if (!_baselineMetadata.TryGetValue(entityLogicalName, out var entity))
             throw new InvalidOperationException($"Entity '{entityLogicalName}' not found in baseline metadata");
+
+        // Validate field doesn't already exist in baseline
+        if (entity.GetField(fieldDefinition.LogicalName) != null)
+            throw new InvalidOperationException($"Field '{fieldDefinition.LogicalName}' already exists in entity '{entityLogicalName}'. Use ModifyField instead.");
+
+        // Check for duplicate additions
+        if (_fieldModifications.Any(m => m.EntityLogicalName == entityLogicalName && 
+                                         m.FieldLogicalName == fieldDefinition.LogicalName && 
+                                         m.ModificationType == FieldModificationType.Add))
+            throw new InvalidOperationException($"Field '{fieldDefinition.LogicalName}' is already queued for addition in entity '{entityLogicalName}'");
 
         var modification = new FieldModification(
             entityLogicalName,
@@ -46,8 +65,27 @@ public class AppCustomizer
     /// </summary>
     public AppCustomizer RemoveField(string entityLogicalName, string fieldLogicalName)
     {
-        if (!_baselineMetadata.ContainsKey(entityLogicalName))
+        if (!_baselineMetadata.TryGetValue(entityLogicalName, out var entity))
             throw new InvalidOperationException($"Entity '{entityLogicalName}' not found in baseline metadata");
+
+        // Validate field exists
+        if (entity.GetField(fieldLogicalName) == null)
+            throw new InvalidOperationException($"Field '{fieldLogicalName}' does not exist in entity '{entityLogicalName}'");
+
+        // Check for duplicate removals
+        if (_fieldModifications.Any(m => m.EntityLogicalName == entityLogicalName && 
+                                         m.FieldLogicalName == fieldLogicalName && 
+                                         m.ModificationType == FieldModificationType.Remove))
+            throw new InvalidOperationException($"Field '{fieldLogicalName}' is already queued for removal in entity '{entityLogicalName}'");
+
+        // Check if field is being added and removed (conflict)
+        var addModification = _fieldModifications.FirstOrDefault(m => 
+            m.EntityLogicalName == entityLogicalName && 
+            m.FieldLogicalName == fieldLogicalName && 
+            m.ModificationType == FieldModificationType.Add);
+        
+        if (addModification != null)
+            throw new InvalidOperationException($"Cannot remove field '{fieldLogicalName}' that is queued for addition. Remove the add operation first.");
 
         var modification = new FieldModification(
             entityLogicalName,
@@ -211,7 +249,168 @@ public class AppCustomizer
     public string GenerateYaml()
     {
         var layer = Generate();
-        // TODO: Implement YAML serialization using YamlDotNet
-        return "# YAML export not yet implemented";
+        return YamlSerializer.Serialize(layer);
     }
+
+    /// <summary>
+    /// Validate customizations for conflicts and issues
+    /// </summary>
+    public ValidationResult Validate()
+    {
+        var issues = new List<string>();
+
+        // Check for field modifications on non-existent entities
+        foreach (var mod in _fieldModifications)
+        {
+            if (!_baselineMetadata.ContainsKey(mod.EntityLogicalName))
+            {
+                issues.Add($"Field modification references unknown entity: {mod.EntityLogicalName}");
+                continue;
+            }
+
+            var entity = _baselineMetadata[mod.EntityLogicalName];
+
+            // Check add operations
+            if (mod.ModificationType == FieldModificationType.Add)
+            {
+                if (entity.GetField(mod.FieldLogicalName) != null)
+                    issues.Add($"Field '{mod.FieldLogicalName}' already exists in entity '{mod.EntityLogicalName}'");
+            }
+
+            // Check remove operations
+            if (mod.ModificationType == FieldModificationType.Remove)
+            {
+                if (entity.GetField(mod.FieldLogicalName) == null)
+                    issues.Add($"Field '{mod.FieldLogicalName}' does not exist in entity '{mod.EntityLogicalName}'");
+            }
+        }
+
+        // Check for event handlers on non-existent entities
+        foreach (var handler in _eventHandlers)
+        {
+            if (!_baselineMetadata.ContainsKey(handler.EntityLogicalName))
+            {
+                issues.Add($"Event handler references unknown entity: {handler.EntityLogicalName}");
+                continue;
+            }
+
+            var entity = _baselineMetadata[handler.EntityLogicalName];
+            if (!entity.SupportsEventHandler(handler.EventHook))
+                issues.Add($"Event hook '{handler.EventHook}' not supported for entity '{handler.EntityLogicalName}'");
+        }
+
+        // Check for duplicate event handlers with same execution order/phase
+        var handlerGroups = _eventHandlers.GroupBy(h => new { h.EntityLogicalName, h.EventHook, h.ExecutionPhase, h.ExecutionOrder });
+        foreach (var group in handlerGroups.Where(g => g.Count() > 1))
+        {
+            issues.Add($"Multiple event handlers registered for {group.Key.EntityLogicalName}.{group.Key.EventHook} with same execution order {group.Key.ExecutionOrder} in phase {group.Key.ExecutionPhase}");
+        }
+
+        return new ValidationResult(issues.Count == 0, issues);
+    }
+
+    /// <summary>
+    /// Import customizations from JSON string
+    /// </summary>
+    public static AppCustomizer FromJson(string json, Dictionary<string, EntityMetadata> baselineMetadata)
+    {
+        var layer = JsonSerializer.Deserialize<CustomizationLayer>(json, JsonOptions)
+            ?? throw new InvalidOperationException("Failed to deserialize customizations from JSON");
+
+        var customizer = new AppCustomizer(baselineMetadata);
+
+        // Re-apply all customizations
+        if (layer.FieldModifications != null)
+        {
+            foreach (var mod in layer.FieldModifications)
+            {
+                if (mod.ModificationType == FieldModificationType.Add && mod.NewFieldDefinition != null)
+                    customizer.AddField(mod.EntityLogicalName, mod.NewFieldDefinition);
+                else if (mod.ModificationType == FieldModificationType.Remove)
+                    customizer.RemoveField(mod.EntityLogicalName, mod.FieldLogicalName);
+                else if (mod.ModificationType == FieldModificationType.Modify && mod.PropertyChanges != null)
+                    customizer.ModifyField(mod.EntityLogicalName, mod.FieldLogicalName, mod.PropertyChanges);
+            }
+        }
+
+        if (layer.EventHandlers != null)
+        {
+            foreach (var handler in layer.EventHandlers)
+            {
+                customizer.AddEventHandler(
+                    handler.EntityLogicalName,
+                    handler.EventHook,
+                    handler.HandlerName,
+                    handler.HandlerCode ?? string.Empty,
+                    handler.HandlerType,
+                    handler.ExecutionOrder
+                );
+            }
+        }
+
+        if (layer.Configuration != null)
+        {
+            foreach (var kvp in layer.Configuration)
+                customizer.SetConfig(kvp.Key, kvp.Value);
+        }
+
+        return customizer;
+    }
+
+    /// <summary>
+    /// Import customizations from YAML string
+    /// </summary>
+    public static AppCustomizer FromYaml(string yaml, Dictionary<string, EntityMetadata> baselineMetadata)
+    {
+        var layer = YamlDeserializer.Deserialize<CustomizationLayer>(yaml)
+            ?? throw new InvalidOperationException("Failed to deserialize customizations from YAML");
+
+        var customizer = new AppCustomizer(baselineMetadata);
+
+        // Re-apply all customizations
+        if (layer.FieldModifications != null)
+        {
+            foreach (var mod in layer.FieldModifications)
+            {
+                if (mod.ModificationType == FieldModificationType.Add && mod.NewFieldDefinition != null)
+                    customizer.AddField(mod.EntityLogicalName, mod.NewFieldDefinition);
+                else if (mod.ModificationType == FieldModificationType.Remove)
+                    customizer.RemoveField(mod.EntityLogicalName, mod.FieldLogicalName);
+                else if (mod.ModificationType == FieldModificationType.Modify && mod.PropertyChanges != null)
+                    customizer.ModifyField(mod.EntityLogicalName, mod.FieldLogicalName, mod.PropertyChanges);
+            }
+        }
+
+        if (layer.EventHandlers != null)
+        {
+            foreach (var handler in layer.EventHandlers)
+            {
+                customizer.AddEventHandler(
+                    handler.EntityLogicalName,
+                    handler.EventHook,
+                    handler.HandlerName,
+                    handler.HandlerCode ?? string.Empty,
+                    handler.HandlerType,
+                    handler.ExecutionOrder
+                );
+            }
+        }
+
+        if (layer.Configuration != null)
+        {
+            foreach (var kvp in layer.Configuration)
+                customizer.SetConfig(kvp.Key, kvp.Value);
+        }
+
+        return customizer;
+    }
+}
+
+/// <summary>
+/// Result of customization validation
+/// </summary>
+public record ValidationResult(bool IsValid, List<string> Issues)
+{
+    public override string ToString() =>
+        IsValid ? "✓ Customizations are valid" : $"✗ {Issues.Count} validation issue(s):\n  - " + string.Join("\n  - ", Issues);
 }

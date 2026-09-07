@@ -2,6 +2,8 @@ using VerseOff.Domain;
 using VerseOff.Customization.Metadata;
 using System.Text.Json;
 using System.Diagnostics.CodeAnalysis;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace VerseOff.Customization.Services;
 
@@ -116,6 +118,30 @@ public class MetadataExtractor
     public static Dictionary<string, EntityMetadata> ImportMetadataFromJson(string json)
     {
         return JsonSerializer.Deserialize<Dictionary<string, EntityMetadata>>(json, JsonOptions)
+            ?? new Dictionary<string, EntityMetadata>();
+    }
+
+    /// <summary>
+    /// Generate metadata schema as YAML
+    /// </summary>
+    public static string ExportMetadataAsYaml(Dictionary<string, EntityMetadata> metadata)
+    {
+        var serializer = new SerializerBuilder()
+            .WithNamingConvention(CamelCaseNamingConvention.Instance)
+            .DisableAliases()
+            .Build();
+        return serializer.Serialize(metadata);
+    }
+
+    /// <summary>
+    /// Load metadata from YAML schema
+    /// </summary>
+    public static Dictionary<string, EntityMetadata> ImportMetadataFromYaml(string yaml)
+    {
+        var deserializer = new DeserializerBuilder()
+            .WithNamingConvention(CamelCaseNamingConvention.Instance)
+            .Build();
+        return deserializer.Deserialize<Dictionary<string, EntityMetadata>>(yaml)
             ?? new Dictionary<string, EntityMetadata>();
     }
 }
