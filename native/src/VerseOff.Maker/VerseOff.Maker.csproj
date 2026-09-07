@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>verseoff-maker</AssemblyName>
+    <RootNamespace>VerseOff.Maker</RootNamespace>
+    <Version>1.0.0</Version>
+    <Description>VerseOff Maker - Model-Driven App to Offline Bundle Generator</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../VerseOff.Metadata/VerseOff.Metadata.csproj" />
+    <ProjectReference Include="../VerseOff.Generator/VerseOff.Generator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="YamlDotNet" Version="15.1.1" />
+  </ItemGroup>
+
+</Project>
