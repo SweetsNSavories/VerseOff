@@ -26,7 +26,7 @@ public class DataQueryService
     /// <summary>
     /// Execute a query with filtering, sorting, and pagination
     /// </summary>
-    public async Task<QueryResult> ExecuteQueryAsync(
+    public virtual async Task<QueryResult> ExecuteQueryAsync(
         string entityLogicalName,
         QueryFilter? filter = null,
         List<OrderByClause>? orderBy = null,
@@ -61,7 +61,7 @@ public class DataQueryService
     /// <summary>
     /// Get a single record by ID
     /// </summary>
-    public async Task<Dictionary<string, object>?> GetRecordAsync(
+    public virtual async Task<Dictionary<string, object>?> GetRecordAsync(
         string entityLogicalName,
         string recordId,
         List<string>? selectedFields = null,
@@ -96,7 +96,7 @@ public class DataQueryService
     /// <summary>
     /// Get related records for a parent record
     /// </summary>
-    public async Task<List<Dictionary<string, object>>> GetRelatedRecordsAsync(
+    public virtual async Task<List<Dictionary<string, object>>> GetRelatedRecordsAsync(
         string parentEntityLogicalName,
         string parentRecordId,
         string relationshipName,
@@ -126,7 +126,7 @@ public class DataQueryService
     /// <summary>
     /// Get records in a view
     /// </summary>
-    public async Task<QueryResult> GetViewRecordsAsync(
+    public virtual async Task<QueryResult> GetViewRecordsAsync(
         string entityLogicalName,
         string viewId,
         int pageNumber = 1,
@@ -147,7 +147,7 @@ public class DataQueryService
     /// <summary>
     /// Get or retrieve view definition (with caching)
     /// </summary>
-    public async Task<ViewDefinition?> GetViewDefinitionAsync(
+    public virtual async Task<ViewDefinition?> GetViewDefinitionAsync(
         string entityLogicalName,
         string viewId,
         CancellationToken cancellationToken = default)
