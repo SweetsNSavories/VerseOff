@@ -77,6 +77,9 @@ public sealed class XrmAttribute
         IsDirty = true;
     }
 
+    public void ResetDirty() => IsDirty = false;
+
+
     public void SetRequiredLevel(string level)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(level);

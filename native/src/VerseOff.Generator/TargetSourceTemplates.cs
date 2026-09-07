@@ -179,9 +179,12 @@ internal static class TargetSourceTemplates
 
     private static string MauiProgram(string namespaceName) =>
         $$"""
+        using System.Text.Json;
         using Microsoft.Extensions.DependencyInjection;
         using Microsoft.Extensions.Logging;
         using VerseOff.Controls;
+        using VerseOff.Domain;
+        using VerseOff.Storage;
 
         namespace {{namespaceName}};
 
@@ -193,6 +196,7 @@ internal static class TargetSourceTemplates
                 builder.UseMauiApp<App>();
                 builder.Services.AddSingleton<ITimelineRecordProvider, InMemoryTimelineRecordProvider>();
                 builder.Services.AddSingleton<ICommandRuleEvaluator, CommandRuleEvaluator>();
+                builder.Services.AddSingleton<ILocalRecordStore, InMemoryLocalRecordStore>();
                 builder.Services.AddTransient<MainPage>();
         #if DEBUG
                 builder.Logging.AddDebug();
@@ -207,6 +211,62 @@ internal static class TargetSourceTemplates
                 TimelineQuery query,
                 CancellationToken cancellationToken = default) =>
                 ValueTask.FromResult(new TimelinePage([], null));
+        }
+
+        public sealed class InMemoryLocalRecordStore : ILocalRecordStore
+        {
+            private readonly Dictionary<(string, Guid), CachedRecordEntity> records = new();
+
+            public Task<CachedRecordEntity?> RetrieveAsync(
+                string tableLogicalName,
+                Guid recordId,
+                CancellationToken cancellationToken = default)
+            {
+                records.TryGetValue((tableLogicalName, recordId), out var record);
+                return Task.FromResult(record);
+            }
+
+            public Task<CachedRecordEntity> SaveLocalAsync(
+                string tableLogicalName,
+                Guid recordId,
+                JsonDocument data,
+                Guid userObjectId,
+                string deviceId,
+                string securitySnapshotVersion,
+                string correlationId,
+                CancellationToken cancellationToken = default)
+            {
+                var entity = new CachedRecordEntity
+                {
+                    TableLogicalName = tableLogicalName,
+                    RecordId = recordId,
+                    DataJson = data.RootElement.GetRawText(),
+                    SecuritySnapshotVersion = securitySnapshotVersion,
+                    SyncState = LocalSyncState.PendingUpdate,
+                    ModifiedAt = DateTimeOffset.UtcNow,
+                };
+                records[(tableLogicalName, recordId)] = entity;
+                return Task.FromResult(entity);
+            }
+
+            public Task<bool> DeleteLocalAsync(
+                string tableLogicalName,
+                Guid recordId,
+                Guid userObjectId,
+                string deviceId,
+                string correlationId,
+                CancellationToken cancellationToken = default)
+            {
+                return Task.FromResult(records.Remove((tableLogicalName, recordId)));
+            }
+
+            public Task ApplyServerChangeAsync(
+                DataverseChange change,
+                string securitySnapshotVersion,
+                CancellationToken cancellationToken = default)
+            {
+                return Task.CompletedTask;
+            }
         }
         """;
 
@@ -266,13 +326,17 @@ internal static class TargetSourceTemplates
               </Border>
 
               <Grid Grid.Column="1"
-                    RowDefinitions="Auto,*">
+                    RowDefinitions="Auto,Auto,*">
                 <ScrollView HorizontalScrollBarVisibility="Never">
                   <HorizontalStackLayout x:Name="CommandBarHost"
                                          Padding="20,12"
                                          Spacing="8" />
                 </ScrollView>
-                <ScrollView Grid.Row="1">
+                <VerticalStackLayout x:Name="NotificationHost"
+                                     Grid.Row="1"
+                                     Padding="28,0,28,8"
+                                     IsVisible="False" />
+                <ScrollView Grid.Row="2">
                   <VerticalStackLayout x:Name="ContentHost"
                                        Padding="28"
                                        Spacing="16" />
@@ -288,8 +352,10 @@ internal static class TargetSourceTemplates
         using System.Text.Json;
         using System.Text.Json.Serialization;
         using Microsoft.Maui.Controls.Shapes;
+        using VerseOff.ClientApi;
         using VerseOff.Controls;
         using VerseOff.Domain;
+        using VerseOff.Storage;
 
         namespace {{namespaceName}};
 
@@ -307,18 +373,26 @@ internal static class TargetSourceTemplates
             private readonly NativeControlFactory controlFactory = new([]);
             private readonly ITimelineRecordProvider? injectedTimelineProvider;
             private readonly ICommandRuleEvaluator? injectedCommandRuleEvaluator;
+            private readonly ILocalRecordStore? injectedLocalRecordStore;
             private ApplicationDefinition? definition;
+            private TableDefinition? currentTable;
+            private FormDefinition? currentForm;
+            private Guid currentRecordId = Guid.Empty;
+            private XrmFormContext? activeFormContext;
+            private FormBindingManager? activeBindingManager;
 
-            public MainPage() : this(null, null)
+            public MainPage() : this(null, null, null)
             {
             }
 
             public MainPage(
                 ITimelineRecordProvider? timelineProvider,
-                ICommandRuleEvaluator? commandRuleEvaluator)
+                ICommandRuleEvaluator? commandRuleEvaluator,
+                ILocalRecordStore? localRecordStore = null)
             {
                 injectedTimelineProvider = timelineProvider;
                 injectedCommandRuleEvaluator = commandRuleEvaluator;
+                injectedLocalRecordStore = localRecordStore;
                 InitializeComponent();
                 Loaded += OnLoaded;
             }
@@ -381,9 +455,36 @@ internal static class TargetSourceTemplates
                 }
             }
 
+            private void ShowNotification(string message, bool isError)
+            {
+                NotificationHost.Clear();
+                NotificationHost.IsVisible = true;
+                NotificationHost.Add(new Border
+                {
+                    Padding = new Thickness(14, 10),
+                    StrokeShape = new RoundRectangle { CornerRadius = 6 },
+                    BackgroundColor = isError ? Color.FromArgb("#FDE7E9") : Color.FromArgb("#DFF6DD"),
+                    Stroke = isError ? Color.FromArgb("#A80000") : Color.FromArgb("#107C10"),
+                    Content = new Label
+                    {
+                        Text = message,
+                        TextColor = isError ? Color.FromArgb("#A80000") : Color.FromArgb("#0B5A08"),
+                        FontAttributes = FontAttributes.Bold,
+                        LineBreakMode = LineBreakMode.WordWrap,
+                    },
+                });
+            }
+
+            private void ClearNotification()
+            {
+                NotificationHost.Clear();
+                NotificationHost.IsVisible = false;
+            }
+
             private void RenderTable(string? tableLogicalName, string title)
             {
                 ContentHost.Clear();
+                ClearNotification();
                 ContentHost.Add(new Label
                 {
                     Text = title,
@@ -411,6 +512,14 @@ internal static class TargetSourceTemplates
                     return;
                 }
 
+                currentTable = definition.Tables.FirstOrDefault(candidate =>
+                    string.Equals(
+                        candidate.LogicalName,
+                        tableLogicalName,
+                        StringComparison.OrdinalIgnoreCase));
+                currentForm = form;
+                currentRecordId = Guid.NewGuid();
+
                 var timeline = injectedTimelineProvider
                     ?? Handler?.MauiContext?.Services.GetService<ITimelineRecordProvider>();
                 var commandEvaluator = injectedCommandRuleEvaluator
@@ -419,12 +528,43 @@ internal static class TargetSourceTemplates
 
                 var runtimeContext = new FormRuntimeContext(
                     definition,
-                    Guid.Empty,
+                    currentRecordId,
                     tableLogicalName,
                     TimelineProvider: timeline,
                     SubgridProvider: null,
                     BpfProvider: null,
                     Security: null);
+
+                var attributes = new List<XrmAttribute>();
+                if (currentTable is not null)
+                {
+                    foreach (var column in currentTable.Columns)
+                    {
+                        var req = column.RequiredLevel switch
+                        {
+                            ColumnRequiredLevel.Required or ColumnRequiredLevel.SystemRequired => "required",
+                            ColumnRequiredLevel.Recommended => "recommended",
+                            _ => "none",
+                        };
+                        attributes.Add(new XrmAttribute(
+                            column.LogicalName,
+                            column.AttributeType.ToLowerInvariant(),
+                            maximumLength: column.MaxLength,
+                            requiredLevel: req,
+                            minimum: column.MinimumValue,
+                            maximum: column.MaximumValue));
+                    }
+                }
+
+                var controls = new List<XrmControl>();
+                activeFormContext = new XrmFormContext(
+                    tableLogicalName,
+                    currentRecordId,
+                    2,
+                    attributes,
+                    controls);
+                activeBindingManager = new FormBindingManager();
+
                 RenderCommands(form, commandEvaluator);
 
                 var bpf = definition.BusinessProcessFlows.FirstOrDefault(candidate =>
@@ -438,7 +578,7 @@ internal static class TargetSourceTemplates
                     ContentHost.Add(new BusinessProcessFlowControl(
                         bpf,
                         provider: null,
-                        Guid.Empty,
+                        currentRecordId,
                         security: null));
                 }
 
@@ -506,6 +646,36 @@ internal static class TargetSourceTemplates
                     });
                 }
                 RenderControls(form.FooterControls, runtimeContext, "Footer");
+
+                PopulateInitialRecord(tableLogicalName);
+            }
+
+            private void PopulateInitialRecord(string tableLogicalName)
+            {
+                if (activeBindingManager is null || currentTable is null)
+                {
+                    return;
+                }
+
+                var initialData = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
+                if (!string.IsNullOrWhiteSpace(currentTable.PrimaryNameAttribute))
+                {
+                    initialData[currentTable.PrimaryNameAttribute] =
+                        $"Contoso {currentTable.DisplayName ?? tableLogicalName}";
+                }
+
+                if (string.Equals(tableLogicalName, "account", StringComparison.OrdinalIgnoreCase))
+                {
+                    initialData["name"] = "Contoso Pharmaceuticals";
+                    initialData["telephone1"] = "+1 (555) 019-2834";
+                    initialData["revenue"] = 1250000m;
+                    initialData["emailaddress1"] = "contact@contoso.example.com";
+                }
+
+                if (initialData.Count > 0)
+                {
+                    activeBindingManager.Populate(initialData);
+                }
             }
 
             private void RenderCommands(
@@ -515,8 +685,9 @@ internal static class TargetSourceTemplates
                 CommandBarHost.Clear();
                 var ruleContext = new CommandRuleEvaluationContext(
                     form.TableLogicalName,
-                    Guid.Empty,
-                    new Dictionary<string, object?>());
+                    currentRecordId,
+                    activeBindingManager?.GetValues(onlyDirty: false)
+                        ?? new Dictionary<string, object?>());
 
                 foreach (var command in definition!.Commands
                     .Where(candidate => string.Equals(
@@ -557,6 +728,13 @@ internal static class TargetSourceTemplates
 
             private async void ExecuteCommand(CommandDefinition command)
             {
+                if (string.Equals(command.CommandId, "cmd.save", StringComparison.OrdinalIgnoreCase)
+                    || command.Label.Contains("Save", StringComparison.OrdinalIgnoreCase))
+                {
+                    await SaveActiveRecordAsync();
+                    return;
+                }
+
                 if (command.Action.Kind is CommandActionKind.OpenUrl
                     && Uri.TryCreate(command.Action.Target, UriKind.Absolute, out var uri))
                 {
@@ -566,6 +744,64 @@ internal static class TargetSourceTemplates
 
                 RenderMessage(
                     $"{command.Label}: {command.Action.Kind} command is available in metadata but has no native action adapter.");
+            }
+
+            private async Task SaveActiveRecordAsync()
+            {
+                if (currentTable is null || currentForm is null || activeBindingManager is null)
+                {
+                    ShowNotification("Save failed: No active form session is loaded.", isError: true);
+                    return;
+                }
+
+                var validation = FormValidationEngine.Validate(
+                    currentTable,
+                    currentForm,
+                    activeBindingManager);
+                if (!validation.IsValid)
+                {
+                    var messages = string.Join("; ", validation.Errors.Select(e => e.Message));
+                    ShowNotification($"Validation failed: {messages}", isError: true);
+                    return;
+                }
+
+                var values = activeBindingManager.GetValues(onlyDirty: false);
+                var jsonBytes = JsonSerializer.SerializeToUtf8Bytes(values);
+                using var jsonDoc = JsonDocument.Parse(jsonBytes);
+
+                var recordStore = injectedLocalRecordStore
+                    ?? Handler?.MauiContext?.Services.GetService<ILocalRecordStore>();
+
+                if (recordStore is not null)
+                {
+                    try
+                    {
+                        await recordStore.SaveLocalAsync(
+                            currentTable.LogicalName,
+                            currentRecordId,
+                            jsonDoc,
+                            userObjectId: Guid.Empty,
+                            deviceId: "verseoff-device",
+                            securitySnapshotVersion: "1.0",
+                            correlationId: Guid.NewGuid().ToString("N"));
+
+                        activeBindingManager.ResetDirty();
+                        ShowNotification(
+                            $"Saved {currentTable.DisplayName ?? currentTable.LogicalName} record ({currentRecordId:D}) successfully to encrypted offline store.",
+                            isError: false);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowNotification($"Save failed while writing to offline store: {ex.Message}", isError: true);
+                    }
+                }
+                else
+                {
+                    activeBindingManager.ResetDirty();
+                    ShowNotification(
+                        $"Record saved locally ({values.Count} attributes updated).",
+                        isError: false);
+                }
             }
 
             private void RenderControls(
@@ -610,6 +846,21 @@ internal static class TargetSourceTemplates
                     runtimeContext);
                 editor.IsEnabled = !control.IsDisabled;
                 editor.IsVisible = control.IsVisible;
+
+                if (activeBindingManager is not null
+                    && activeFormContext is not null
+                    && !string.IsNullOrWhiteSpace(control.DataFieldName))
+                {
+                    var attr = activeFormContext.GetAttribute(control.DataFieldName);
+                    if (attr is not null)
+                    {
+                        var adapter = new MauiFormEditorAdapter(
+                            control.DataFieldName,
+                            editor,
+                            attr.AttributeType);
+                        activeBindingManager.Bind(control.DataFieldName, adapter, attr);
+                    }
+                }
 
                 return new VerticalStackLayout
                 {

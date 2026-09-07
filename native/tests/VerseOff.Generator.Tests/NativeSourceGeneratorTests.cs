@@ -136,7 +136,7 @@ public sealed class NativeSourceGeneratorTests
                 {
                     FileName = "dotnet",
                     Arguments =
-                        $"build \"{generated.ProjectFile}\" -c Release",
+                        $"build \"{generated.ProjectFile}\" -c Release /nodeReuse:false /p:UseSharedCompilation=false",
                     WorkingDirectory = generated.OutputDirectory,
                     RedirectStandardError = true,
                     RedirectStandardOutput = true,
@@ -148,7 +148,8 @@ public sealed class NativeSourceGeneratorTests
             Assert.IsTrue(process.Start());
             var standardOutput = process.StandardOutput.ReadToEndAsync();
             var standardError = process.StandardError.ReadToEndAsync();
-            await process.WaitForExitAsync();
+            using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(2));
+            await process.WaitForExitAsync(cts.Token);
             var output = await standardOutput;
             var error = await standardError;
 
