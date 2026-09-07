@@ -21,7 +21,7 @@ public static class StandardCdmTables
             ["campaign"] = CreateSimpleEntity("campaign", "Campaigns", "Campaign", "campaignid", "name"),
             ["contract"] = CreateSimpleEntity("contract", "Contracts", "Contract", "contractid", "title"),
             ["product"] = CreateSimpleEntity("product", "Products", "Product", "productid", "name"),
-            ["quote"] = CreateSimpleEntity("quote", "Quotes", "Quote", "quoteid", "name"),
+            ["quote"] = CreateQuote(),
             ["salesorder"] = CreateSimpleEntity("salesorder", "SalesOrders", "Order", "salesorderid", "name"),
             ["invoice"] = CreateSimpleEntity("invoice", "Invoices", "Invoice", "invoiceid", "name"),
             ["entitlement"] = CreateSimpleEntity("entitlement", "Entitlements", "Entitlement", "entitlementid", "name"),
@@ -33,6 +33,8 @@ public static class StandardCdmTables
             ["goal"] = CreateSimpleEntity("goal", "Goals", "Goal", "goalid", "title"),
             ["metric"] = CreateSimpleEntity("metric", "Metrics", "Metric", "metricid", "name"),
         };
+
+    public static IReadOnlyDictionary<string, TableDefinition> Definitions => Tables;
 
     public static bool TryGetTable(string logicalName, out TableDefinition table) =>
         Tables.TryGetValue(logicalName, out table!);
@@ -174,6 +176,34 @@ public static class StandardCdmTables
         {
             DisplayName = "Opportunity",
             DisplayCollectionName = "Opportunities",
+        };
+
+    private static TableDefinition CreateQuote() =>
+        new(
+            "quote",
+            "quotes",
+            "quoteid",
+            "name",
+            IsActivity: false,
+            [
+                new("quoteid", "Uniqueidentifier", CanRead: true, CanCreate: false, CanUpdate: false, IsSecured: false),
+                new("name", "String", CanRead: true, CanCreate: true, CanUpdate: true, IsSecured: false) { RequiredLevel = ColumnRequiredLevel.Required },
+                new("quotenumber", "String", CanRead: true, CanCreate: false, CanUpdate: false, IsSecured: false),
+                new("customerid", "Lookup", CanRead: true, CanCreate: true, CanUpdate: true, IsSecured: false) { LookupTargets = ["account", "contact"] },
+                new("totalamount", "Currency", CanRead: true, CanCreate: false, CanUpdate: false, IsSecured: false),
+                new("totallineitemamount", "Currency", CanRead: true, CanCreate: false, CanUpdate: false, IsSecured: false),
+                new("totaldiscountamount", "Currency", CanRead: true, CanCreate: true, CanUpdate: true, IsSecured: false),
+                new("totaltax", "Currency", CanRead: true, CanCreate: true, CanUpdate: true, IsSecured: false),
+                new("description", "Memo", CanRead: true, CanCreate: true, CanUpdate: true, IsSecured: false),
+                new("pricelevelid", "Lookup", CanRead: true, CanCreate: true, CanUpdate: true, IsSecured: false) { LookupTargets = ["pricelevel"] },
+                new("opportunityid", "Lookup", CanRead: true, CanCreate: true, CanUpdate: true, IsSecured: false) { LookupTargets = ["opportunity"] },
+                new("ownerid", "Lookup", CanRead: true, CanCreate: true, CanUpdate: true, IsSecured: false) { LookupTargets = ["systemuser"] },
+                new("statecode", "Integer", CanRead: true, CanCreate: false, CanUpdate: true, IsSecured: false),
+                new("statuscode", "Integer", CanRead: true, CanCreate: true, CanUpdate: true, IsSecured: false),
+            ])
+        {
+            DisplayName = "Quote",
+            DisplayCollectionName = "Quotes",
         };
 
     private static TableDefinition CreateIncident() =>

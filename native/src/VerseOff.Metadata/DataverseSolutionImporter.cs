@@ -42,7 +42,7 @@ public sealed partial class DataverseSolutionImporter
             ?? throw new ArgumentNullException(nameof(importPolicy));
         this.schemaValidationBehavior = schemaValidationBehavior;
         this.schemaCatalog = schemaCatalog ?? PublishedSchemaCatalog.Default;
-        this.ootbResolver = ootbResolver ?? NullOOTBComponentResolver.Instance;
+        this.ootbResolver = ootbResolver ?? BundledOOTBCatalog.Instance;
     }
 
     public SolutionImportResult Import(
@@ -352,14 +352,33 @@ public sealed partial class DataverseSolutionImporter
                         "Add the table and required columns to the exported solution."));
                 }
             }
-            else if (existing.Columns.Count == 0 && StandardCdmTables.TryGetTable(expected, out var cdmTable))
+            else if (StandardCdmTables.TryGetTable(expected, out var cdmTable))
             {
+                var existingColNames = existing.Columns
+                    .Select(c => c.LogicalName)
+                    .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+                var mergedColumns = existing.Columns.ToList();
+                foreach (var col in cdmTable.Columns)
+                {
+                    if (!existingColNames.Contains(col.LogicalName))
+                    {
+                        mergedColumns.Add(col);
+                    }
+                }
+
                 tables[expected] = existing with
                 {
-                    Columns = cdmTable.Columns,
-                    PrimaryIdAttribute = cdmTable.PrimaryIdAttribute,
-                    PrimaryNameAttribute = cdmTable.PrimaryNameAttribute,
-                    EntitySetName = cdmTable.EntitySetName,
+                    Columns = mergedColumns,
+                    PrimaryIdAttribute = string.IsNullOrWhiteSpace(existing.PrimaryIdAttribute)
+                        ? cdmTable.PrimaryIdAttribute
+                        : existing.PrimaryIdAttribute,
+                    PrimaryNameAttribute = string.IsNullOrWhiteSpace(existing.PrimaryNameAttribute)
+                        ? cdmTable.PrimaryNameAttribute
+                        : existing.PrimaryNameAttribute,
+                    EntitySetName = string.IsNullOrWhiteSpace(existing.EntitySetName)
+                        ? cdmTable.EntitySetName
+                        : existing.EntitySetName,
                     DisplayName = existing.DisplayName ?? cdmTable.DisplayName,
                 };
             }
@@ -664,14 +683,41 @@ public sealed partial class DataverseSolutionImporter
         {
             if (!forms.ContainsKey(expectedFormId))
             {
-                issues.Add(new(
-                    "app-form-missing",
-                    CompatibilitySeverity.Warning,
-                    expectedFormId.ToString(
-                        "D",
-                        CultureInfo.InvariantCulture),
-                    "The selected app declares a form whose metadata is missing from the package.",
-                    "Add the form to the exported solution if required."));
+                var resolved = false;
+                foreach (var table in tables)
+                {
+                    var ootbForm = this.ootbResolver.TryGetForm(expectedFormId, table.LogicalName);
+                    if (ootbForm is not null)
+                    {
+                        forms.TryAdd(ootbForm.FormId, ootbForm);
+                        resolved = true;
+                        break;
+                    }
+                }
+
+                if (!resolved)
+                {
+                    issues.Add(new(
+                        "app-form-missing",
+                        CompatibilitySeverity.Warning,
+                        expectedFormId.ToString(
+                            "D",
+                            CultureInfo.InvariantCulture),
+                        "The selected app declares a form whose metadata is missing from the package.",
+                        "Add the form to the exported solution if required."));
+                }
+            }
+        }
+
+        foreach (var table in tables)
+        {
+            if (!forms.Values.Any(f => string.Equals(f.TableLogicalName, table.LogicalName, StringComparison.OrdinalIgnoreCase)))
+            {
+                var ootbForm = this.ootbResolver.TryGetForm(Guid.Empty, table.LogicalName);
+                if (ootbForm is not null)
+                {
+                    forms.TryAdd(ootbForm.FormId, ootbForm);
+                }
             }
         }
 
@@ -779,6 +825,18 @@ public sealed partial class DataverseSolutionImporter
         }
 
         _ = selectedApp;
+        foreach (var tableName in tableNames)
+        {
+            if (!views.Values.Any(v => string.Equals(v.TableLogicalName, tableName, StringComparison.OrdinalIgnoreCase)))
+            {
+                var ootbView = this.ootbResolver.TryGetView(Guid.Empty, tableName);
+                if (ootbView is not null)
+                {
+                    views.TryAdd(ootbView.ViewId, ootbView);
+                }
+            }
+        }
+
         return views.Values
             .OrderBy(view => view.TableLogicalName, StringComparer.Ordinal)
             .ThenBy(view => view.Name, StringComparer.Ordinal)

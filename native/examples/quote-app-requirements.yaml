@@ -1,0 +1,36 @@
+# VerseOff Domain Requirements Configuration
+# Quote Management Application Sample
+#
+# This file allows Product Engineers to explicitly force-include standard OOTB tables,
+# forms, and views into the offline package even when solutions are exported as delta-only
+# customizations (omitting base metadata).
+
+# Tables that must be bundled with full schema into the offline SQLite database
+forceIncludeTables:
+  - quote
+  - quotedetail
+  - account
+  - contact
+  - product
+  - pricelevel
+
+# Specific Form IDs to force-include (e.g., standard Main Forms)
+forceIncludeForms:
+  # Quote Main Form
+  - "d8c368d1-d2c0-43e9-9a25-78e8b2bfdf2a"
+  # Account Main Form
+  - "2f3fdbf9-8d4e-48bc-bb0c-9bd9a6c1d3bd"
+  # Contact Main Form
+  - "b2053da5-74de-4d7a-8b8d-6b5895e69bf0"
+
+# Specific View IDs (SavedQuery IDs) to force-include
+forceIncludeViews:
+  # Active Quotes View
+  - "00000000-0000-0000-00aa-000010001004"
+  # Active Accounts View
+  - "00000000-0000-0000-00aa-000010001002"
+  # Active Contacts View
+  - "00000000-0000-0000-00aa-000010001003"
+
+# Minimum telemetry usage threshold (when App Insights telemetry is enabled)
+minimumUsageCount: 1
