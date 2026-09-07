@@ -26,6 +26,8 @@ public sealed record ApplicationDefinition(
 
     public CompatibilityReport Compatibility { get; init; } =
         CompatibilityReport.Empty;
+
+    public IReadOnlyList<BusinessProcessFlowDefinition> BusinessProcessFlows { get; init; } = [];
 }
 
 public sealed record TableDefinition(
@@ -419,3 +421,46 @@ public sealed record CodeComponentPropertyDefinition(
     string DataType,
     bool IsRequired,
     string? DefaultValue);
+
+public sealed record BusinessProcessFlowDefinition(
+    Guid ProcessId,
+    string UniqueName,
+    string DisplayName,
+    string PrimaryTableLogicalName,
+    IReadOnlyList<ProcessStageDefinition> Stages,
+    ComponentProvenance Provenance)
+{
+    public string? Description { get; init; }
+
+    public bool IsActive { get; init; } = true;
+
+    public int Order { get; init; }
+}
+
+public sealed record ProcessStageDefinition(
+    Guid StageId,
+    string StageName,
+    string TableLogicalName,
+    ProcessStageCategory Category,
+    int Order,
+    IReadOnlyList<ProcessStepDefinition> Steps);
+
+public enum ProcessStageCategory
+{
+    Qualify = 0,
+    Develop = 1,
+    Propose = 2,
+    Close = 3,
+    Identify = 4,
+    Research = 5,
+    Resolve = 6,
+    Approval = 7,
+    Custom = 8,
+}
+
+public sealed record ProcessStepDefinition(
+    Guid StepId,
+    string DisplayName,
+    string AttributeLogicalName,
+    bool IsRequired,
+    int Order);

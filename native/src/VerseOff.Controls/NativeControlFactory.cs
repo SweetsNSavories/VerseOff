@@ -6,7 +6,10 @@ public sealed record FormRuntimeContext(
     ApplicationDefinition Application,
     Guid RecordId,
     string TableLogicalName,
-    ITimelineRecordProvider? TimelineProvider);
+    ITimelineRecordProvider? TimelineProvider,
+    ISubgridRecordProvider? SubgridProvider = null,
+    IBusinessProcessFlowProvider? BpfProvider = null,
+    SecuritySnapshot? Security = null);
 
 public interface IVerseOffControlFactory
 {
@@ -87,9 +90,10 @@ public sealed class NativeControlFactory(
             FormControlKind.Timeline => CreateTimeline(
                 definition,
                 context),
-            FormControlKind.Subgrid => Unsupported(
+            FormControlKind.Subgrid => new SubgridControl(
                 definition,
-                "Native subgrid provider is not configured."),
+                context.SubgridProvider,
+                context),
             FormControlKind.WebResource
                 or FormControlKind.Iframe => Unsupported(
                 definition,

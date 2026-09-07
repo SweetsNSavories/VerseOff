@@ -179,7 +179,9 @@ internal static class TargetSourceTemplates
 
     private static string MauiProgram(string namespaceName) =>
         $$"""
+        using Microsoft.Extensions.DependencyInjection;
         using Microsoft.Extensions.Logging;
+        using VerseOff.Controls;
 
         namespace {{namespaceName}};
 
@@ -189,11 +191,22 @@ internal static class TargetSourceTemplates
             {
                 var builder = MauiApp.CreateBuilder();
                 builder.UseMauiApp<App>();
+                builder.Services.AddSingleton<ITimelineRecordProvider, InMemoryTimelineRecordProvider>();
+                builder.Services.AddSingleton<ICommandRuleEvaluator, CommandRuleEvaluator>();
+                builder.Services.AddTransient<MainPage>();
         #if DEBUG
                 builder.Logging.AddDebug();
         #endif
                 return builder.Build();
             }
+        }
+
+        public sealed class InMemoryTimelineRecordProvider : ITimelineRecordProvider
+        {
+            public ValueTask<TimelinePage> QueryAsync(
+                TimelineQuery query,
+                CancellationToken cancellationToken = default) =>
+                ValueTask.FromResult(new TimelinePage([], null));
         }
         """;
 
@@ -292,10 +305,20 @@ internal static class TargetSourceTemplates
             };
 
             private readonly NativeControlFactory controlFactory = new([]);
+            private readonly ITimelineRecordProvider? injectedTimelineProvider;
+            private readonly ICommandRuleEvaluator? injectedCommandRuleEvaluator;
             private ApplicationDefinition? definition;
 
-            public MainPage()
+            public MainPage() : this(null, null)
             {
+            }
+
+            public MainPage(
+                ITimelineRecordProvider? timelineProvider,
+                ICommandRuleEvaluator? commandRuleEvaluator)
+            {
+                injectedTimelineProvider = timelineProvider;
+                injectedCommandRuleEvaluator = commandRuleEvaluator;
                 InitializeComponent();
                 Loaded += OnLoaded;
             }
@@ -388,12 +411,37 @@ internal static class TargetSourceTemplates
                     return;
                 }
 
+                var timeline = injectedTimelineProvider
+                    ?? Handler?.MauiContext?.Services.GetService<ITimelineRecordProvider>();
+                var commandEvaluator = injectedCommandRuleEvaluator
+                    ?? Handler?.MauiContext?.Services.GetService<ICommandRuleEvaluator>()
+                    ?? new CommandRuleEvaluator();
+
                 var runtimeContext = new FormRuntimeContext(
                     definition,
                     Guid.Empty,
                     tableLogicalName,
-                    TimelineProvider: null);
-                RenderCommands(form);
+                    TimelineProvider: timeline,
+                    SubgridProvider: null,
+                    BpfProvider: null,
+                    Security: null);
+                RenderCommands(form, commandEvaluator);
+
+                var bpf = definition.BusinessProcessFlows.FirstOrDefault(candidate =>
+                    string.Equals(
+                        candidate.PrimaryTableLogicalName,
+                        tableLogicalName,
+                        StringComparison.OrdinalIgnoreCase)
+                    && candidate.IsActive);
+                if (bpf is not null)
+                {
+                    ContentHost.Add(new BusinessProcessFlowControl(
+                        bpf,
+                        provider: null,
+                        Guid.Empty,
+                        security: null));
+                }
+
                 RenderControls(form.HeaderControls, runtimeContext, "Header");
                 foreach (var tab in form.Tabs)
                 {
@@ -460,9 +508,16 @@ internal static class TargetSourceTemplates
                 RenderControls(form.FooterControls, runtimeContext, "Footer");
             }
 
-            private void RenderCommands(FormDefinition form)
+            private void RenderCommands(
+                FormDefinition form,
+                ICommandRuleEvaluator commandEvaluator)
             {
                 CommandBarHost.Clear();
+                var ruleContext = new CommandRuleEvaluationContext(
+                    form.TableLogicalName,
+                    Guid.Empty,
+                    new Dictionary<string, object?>());
+
                 foreach (var command in definition!.Commands
                     .Where(candidate => string.Equals(
                         candidate.Location,
@@ -474,11 +529,17 @@ internal static class TargetSourceTemplates
                             StringComparison.OrdinalIgnoreCase))
                     .OrderBy(candidate => candidate.Order))
                 {
+                    if (!commandEvaluator.CanDisplay(command, ruleContext))
+                    {
+                        continue;
+                    }
+
                     var button = new Button
                     {
                         Text = command.Label,
                         CommandParameter = command.CommandId,
                         Padding = new Thickness(14, 6),
+                        IsEnabled = commandEvaluator.CanEnable(command, ruleContext),
                     };
                     button.Clicked += (_, _) => ExecuteCommand(command);
                     CommandBarHost.Add(button);
