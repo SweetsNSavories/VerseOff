@@ -1,7 +1,10 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 using VerseOff.Gateway;
+using VerseOff.Customization;
+using VerseOff.Customization.Runtime;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +30,11 @@ builder.Services.AddSingleton<
     ClaimsGatewayReadAuthorizationService>();
 builder.Services.AddDataverseGateway(builder.Configuration);
 builder.Services.AddGraphMailGateway(builder.Configuration);
+
+var customizationStorePath = Path.Combine(
+    AppContext.BaseDirectory,
+    builder.Configuration["Customization:StorePath"] ?? "customizations");
+builder.Services.AddVerseOffCustomization(customizationStorePath);
 builder.Services.AddSingleton<IEntitlementLeaseIssuer>(services =>
 {
     var section = builder.Configuration.GetSection("EntitlementSigning");
@@ -207,6 +215,20 @@ app.MapPost(
             request.PageOrDeltaLink,
             cancellationToken));
     });
+
+// Initialize customization cache at startup
+try
+{
+    var runtimeCustomizationApp = app.Services.GetRequiredService<RuntimeCustomizationApplication>();
+    await runtimeCustomizationApp.InitializeAsync();
+}
+catch (Exception ex)
+{
+#pragma warning disable CA1848 // Use LoggerMessage delegates (acceptable for error logging)
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    logger.LogWarning(ex, "Customization cache initialization failed; running without customizations");
+#pragma warning restore CA1848
+}
 
 app.Run();
 

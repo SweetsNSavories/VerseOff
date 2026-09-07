@@ -38,15 +38,10 @@ public static class ServiceCollectionExtensions
 
         // Register business logic services
         services.AddScoped<CustomizationApplier>();
-        services.AddScoped<FormCustomizer>();
-        services.AddScoped<AppCustomizer>();
 
         // Register runtime application service (in-memory caching)
         // This service loads and caches customizations for performance
         services.AddScoped<RuntimeCustomizationApplication>();
-
-        // Register metadata extraction service
-        services.AddScoped(sp => sp);
 
         return services;
     }
