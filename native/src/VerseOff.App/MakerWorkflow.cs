@@ -93,11 +93,15 @@ public sealed class MakerWorkflow(
                 "Explicit customer ownership verification is required before source generation.");
         }
 
+        var publisherOrigin = SolutionPublisherClassifier.Classify(
+            loadedSolution.Identity.PublisherUniqueName);
         var publisherOrigins = new Dictionary<string, ComponentOrigin>(
             StringComparer.OrdinalIgnoreCase)
         {
             [loadedSolution.Identity.PublisherUniqueName] =
-                ComponentOrigin.CustomerOwned,
+                publisherOrigin == ComponentOrigin.Unknown
+                    ? ComponentOrigin.CustomerOwned
+                    : publisherOrigin,
         };
         var policy = new SolutionImportPolicy(
             [loadedSolution.Identity.UniqueName],
