@@ -1887,4 +1887,28 @@ public sealed partial class DataverseSolutionImporter
         string Path,
         XDocument Document,
         string Sha256);
+
+    /// <summary>
+    /// Exports an ApplicationDefinition to a JSON-driven offline package directory.
+    /// </summary>
+    public static Task<OfflinePackageManifest> ExportAsJsonAsync(
+        ApplicationDefinition app,
+        string outputDirectory,
+        CancellationToken cancellationToken = default) =>
+        ApplicationDefinitionSerializer.SerializeToPackageAsync(
+            app,
+            outputDirectory,
+            cancellationToken);
+
+    /// <summary>
+    /// Exports an ApplicationDefinition to a compressed .zip offline package.
+    /// </summary>
+    public static Task<PackageCompressionResult> ExportOfflinePackageAsync(
+        ApplicationDefinition app,
+        string outputZipPath,
+        CancellationToken cancellationToken = default) =>
+        OfflinePackageWriter.WriteCompressedPackageAsync(
+            app,
+            outputZipPath,
+            cancellationToken);
 }

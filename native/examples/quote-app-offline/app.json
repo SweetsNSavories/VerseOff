@@ -1,0 +1,1134 @@
+{
+  "appModuleId": "e84992dc-1296-41dc-a84e-39988b48ef72",
+  "uniqueName": "contoso_quotes",
+  "displayName": "Contoso Quote Manager",
+  "schemaVersion": "1.0",
+  "sourceHash": "f12172f5144ec02822c0b21fe727e920256c2ec93b35b6d648c1c9d1c8840929",
+  "tables": [
+    {
+      "logicalName": "account",
+      "entitySetName": "accounts",
+      "primaryIdAttribute": "accountid",
+      "primaryNameAttribute": "name",
+      "isActivity": false,
+      "columns": [
+        {
+          "logicalName": "accountid",
+          "attributeType": "Uniqueidentifier",
+          "canRead": true,
+          "canCreate": false,
+          "canUpdate": false,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "name",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "Required",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "telephone1",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "emailaddress1",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "websiteurl",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "revenue",
+          "attributeType": "Currency",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_line1",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_line2",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_city",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_stateorprovince",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_postalcode",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "ownerid",
+          "attributeType": "Lookup",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": [
+            "systemuser"
+          ]
+        },
+        {
+          "logicalName": "statecode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": false,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "statuscode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        }
+      ],
+      "displayName": "Account",
+      "displayCollectionName": "Accounts",
+      "objectTypeCode": 0,
+      "isCustomizable": false,
+      "relationships": [],
+      "alternateKeys": []
+    },
+    {
+      "logicalName": "contact",
+      "entitySetName": "contacts",
+      "primaryIdAttribute": "contactid",
+      "primaryNameAttribute": "fullname",
+      "isActivity": false,
+      "columns": [
+        {
+          "logicalName": "contactid",
+          "attributeType": "Uniqueidentifier",
+          "canRead": true,
+          "canCreate": false,
+          "canUpdate": false,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "fullname",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": false,
+          "canUpdate": false,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "firstname",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "lastname",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "Required",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "emailaddress1",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "telephone1",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "mobilephone",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "fax",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "jobtitle",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "gendercode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "familystatuscode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "spousesname",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "birthdate",
+          "attributeType": "DateTime",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "anniversary",
+          "attributeType": "DateTime",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "description",
+          "attributeType": "Memo",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "preferredcontactmethodcode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "parentcustomerid",
+          "attributeType": "Lookup",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": [
+            "account",
+            "contact"
+          ]
+        },
+        {
+          "logicalName": "originatingleadid",
+          "attributeType": "Lookup",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": [
+            "lead"
+          ]
+        },
+        {
+          "logicalName": "lastusedincampaign",
+          "attributeType": "DateTime",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "donotsendmm",
+          "attributeType": "Boolean",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "donotemail",
+          "attributeType": "Boolean",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "followemail",
+          "attributeType": "Boolean",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "donotbulkemail",
+          "attributeType": "Boolean",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "donotphone",
+          "attributeType": "Boolean",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "donotfax",
+          "attributeType": "Boolean",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "donotpostalmail",
+          "attributeType": "Boolean",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "transactioncurrencyid",
+          "attributeType": "Lookup",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": [
+            "transactioncurrency"
+          ]
+        },
+        {
+          "logicalName": "creditlimit",
+          "attributeType": "Currency",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "creditonhold",
+          "attributeType": "Boolean",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "paymenttermscode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_line1",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_line2",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_city",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_stateorprovince",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_postalcode",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_shippingmethodcode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "address1_freighttermscode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "ownerid",
+          "attributeType": "Lookup",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": [
+            "systemuser"
+          ]
+        },
+        {
+          "logicalName": "statecode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": false,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "statuscode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        }
+      ],
+      "displayName": "Contact",
+      "displayCollectionName": "Contacts",
+      "objectTypeCode": 0,
+      "isCustomizable": false,
+      "relationships": [],
+      "alternateKeys": []
+    },
+    {
+      "logicalName": "quote",
+      "entitySetName": "quotes",
+      "primaryIdAttribute": "quoteid",
+      "primaryNameAttribute": "name",
+      "isActivity": false,
+      "columns": [
+        {
+          "logicalName": "customerid",
+          "attributeType": "Customer",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "displayName": "customerid",
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "name",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "displayName": "name",
+          "requiredLevel": "Required",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "quoteid",
+          "attributeType": "Uniqueidentifier",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "displayName": "quoteid",
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "totalamount",
+          "attributeType": "Currency",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "displayName": "totalamount",
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "quotenumber",
+          "attributeType": "String",
+          "canRead": true,
+          "canCreate": false,
+          "canUpdate": false,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "totallineitemamount",
+          "attributeType": "Currency",
+          "canRead": true,
+          "canCreate": false,
+          "canUpdate": false,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "totaldiscountamount",
+          "attributeType": "Currency",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "totaltax",
+          "attributeType": "Currency",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "description",
+          "attributeType": "Memo",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "pricelevelid",
+          "attributeType": "Lookup",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": [
+            "pricelevel"
+          ]
+        },
+        {
+          "logicalName": "opportunityid",
+          "attributeType": "Lookup",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": [
+            "opportunity"
+          ]
+        },
+        {
+          "logicalName": "ownerid",
+          "attributeType": "Lookup",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": [
+            "systemuser"
+          ]
+        },
+        {
+          "logicalName": "statecode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": false,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        },
+        {
+          "logicalName": "statuscode",
+          "attributeType": "Integer",
+          "canRead": true,
+          "canCreate": true,
+          "canUpdate": true,
+          "isSecured": false,
+          "requiredLevel": "None",
+          "options": [],
+          "lookupTargets": []
+        }
+      ],
+      "displayName": "Quote",
+      "objectTypeCode": 0,
+      "isCustomizable": true,
+      "relationships": [],
+      "alternateKeys": []
+    }
+  ],
+  "forms": [
+    {
+      "formId": "2f3fdbf9-8d4e-48bc-bb0c-9bd9a6c1d3bd",
+      "name": "Account Main Form",
+      "tableLogicalName": "account",
+      "formType": 2,
+      "relativePath": "forms/account_2f3fdbf98d4e48bcbb0c9bd9a6c1d3bd.formxml",
+      "isDefault": true,
+      "provenance": {
+        "componentId": "2f3fdbf9-8d4e-48bc-bb0c-9bd9a6c1d3bd",
+        "uniqueName": "Account Main Form",
+        "origin": "VerseOffOwned",
+        "solutionId": "VerseOff.BundledOOTB",
+        "publisherId": "VerseOff",
+        "sha256": "c547c69fce16ea25556cd9449dc76d60c01cac413ace511b793f9e7e475b9fb1",
+        "isManaged": true,
+        "ownershipVerified": true
+      }
+    },
+    {
+      "formId": "b2053da5-74de-4d7a-8b8d-6b5895e69bf0",
+      "name": "Contact Main Form",
+      "tableLogicalName": "contact",
+      "formType": 2,
+      "relativePath": "forms/contact_b2053da574de4d7a8b8d6b5895e69bf0.formxml",
+      "isDefault": true,
+      "provenance": {
+        "componentId": "b2053da5-74de-4d7a-8b8d-6b5895e69bf0",
+        "uniqueName": "Contact Main Form",
+        "origin": "VerseOffOwned",
+        "solutionId": "VerseOff.BundledOOTB",
+        "publisherId": "VerseOff",
+        "sha256": "874543a74dae71ed7b06a8c379c8f4b10ad45890e08f01ace7f13f88129f221c",
+        "isManaged": true,
+        "ownershipVerified": true
+      }
+    },
+    {
+      "formId": "d8c368d1-d2c0-43e9-9a25-78e8b2bfdf2a",
+      "name": "Quote Main Form",
+      "tableLogicalName": "quote",
+      "formType": 2,
+      "relativePath": "forms/quote_d8c368d1d2c043e99a2578e8b2bfdf2a.formxml",
+      "isDefault": true,
+      "provenance": {
+        "componentId": "d8c368d1-d2c0-43e9-9a25-78e8b2bfdf2a",
+        "uniqueName": "Quote Main Form",
+        "origin": "VerseOffOwned",
+        "solutionId": "VerseOff.BundledOOTB",
+        "publisherId": "VerseOff",
+        "sha256": "8d2ae56d2ab89854c08ef4839ebe7f9ca1e5b698ea04325b4b62b1f1d081763d",
+        "isManaged": true,
+        "ownershipVerified": true
+      }
+    }
+  ],
+  "views": [
+    {
+      "viewId": "00000000-0000-0000-00aa-000010001004",
+      "name": "Active Quotes",
+      "tableLogicalName": "quote",
+      "relativePath": "views/quote_000000000000000000aa000010001004.fetchxml",
+      "isDefault": true,
+      "layoutXml": "\u003Cgrid name=\u0022result\u0022 jump=\u0022name\u0022 select=\u00221\u0022 preview=\u00221\u0022 icon=\u00221\u0022\u003E\r\n  \u003Crow name=\u0022result\u0022 id=\u0022quoteid\u0022\u003E\r\n    \u003Ccell name=\u0022name\u0022 width=\u0022250\u0022 /\u003E\r\n    \u003Ccell name=\u0022customerid\u0022 width=\u0022200\u0022 /\u003E\r\n    \u003Ccell name=\u0022totalamount\u0022 width=\u0022120\u0022 /\u003E\r\n    \u003Ccell name=\u0022statecode\u0022 width=\u0022120\u0022 /\u003E\r\n  \u003C/row\u003E\r\n\u003C/grid\u003E\r\n",
+      "columns": [
+        {
+          "logicalName": "name",
+          "width": 250,
+          "order": 0,
+          "isPrimary": true
+        },
+        {
+          "logicalName": "customerid",
+          "width": 200,
+          "order": 1,
+          "isPrimary": false
+        },
+        {
+          "logicalName": "totalamount",
+          "width": 120,
+          "order": 2,
+          "isPrimary": false
+        },
+        {
+          "logicalName": "statecode",
+          "width": 120,
+          "order": 3,
+          "isPrimary": false
+        }
+      ],
+      "provenance": {
+        "componentId": "00000000-0000-0000-00aa-000010001004",
+        "uniqueName": "Active Quotes",
+        "origin": "VerseOffOwned",
+        "solutionId": "VerseOff.BundledOOTB",
+        "publisherId": "VerseOff",
+        "sha256": "f424ecbc33b7b44a563b4f8572638815822c56eff412fbf5066d0f1f1d00b51a",
+        "isManaged": true,
+        "ownershipVerified": true
+      }
+    },
+    {
+      "viewId": "00000000-0000-0000-00aa-000010001002",
+      "name": "Active Accounts",
+      "tableLogicalName": "account",
+      "relativePath": "views/account_000000000000000000aa000010001002.fetchxml",
+      "isDefault": true,
+      "layoutXml": "\u003Cgrid name=\u0022result\u0022 jump=\u0022name\u0022 select=\u00221\u0022 preview=\u00221\u0022 icon=\u00221\u0022\u003E\r\n  \u003Crow name=\u0022result\u0022 id=\u0022accountid\u0022\u003E\r\n    \u003Ccell name=\u0022name\u0022 width=\u0022250\u0022 /\u003E\r\n    \u003Ccell name=\u0022telephone1\u0022 width=\u0022250\u0022 /\u003E\r\n    \u003Ccell name=\u0022emailaddress1\u0022 width=\u0022250\u0022 /\u003E\r\n    \u003Ccell name=\u0022address1_city\u0022 width=\u0022250\u0022 /\u003E\r\n  \u003C/row\u003E\r\n\u003C/grid\u003E\r\n",
+      "columns": [
+        {
+          "logicalName": "name",
+          "width": 250,
+          "order": 0,
+          "isPrimary": true
+        },
+        {
+          "logicalName": "telephone1",
+          "width": 250,
+          "order": 1,
+          "isPrimary": false
+        },
+        {
+          "logicalName": "emailaddress1",
+          "width": 250,
+          "order": 2,
+          "isPrimary": false
+        },
+        {
+          "logicalName": "address1_city",
+          "width": 250,
+          "order": 3,
+          "isPrimary": false
+        }
+      ],
+      "provenance": {
+        "componentId": "00000000-0000-0000-00aa-000010001002",
+        "uniqueName": "Active Accounts",
+        "origin": "VerseOffOwned",
+        "solutionId": "VerseOff.BundledOOTB",
+        "publisherId": "VerseOff",
+        "sha256": "e8454a0e1196ca84f4e363e49a721936b5e908c3ea982fb30c884b8d2ea17f91",
+        "isManaged": true,
+        "ownershipVerified": true
+      }
+    },
+    {
+      "viewId": "00000000-0000-0000-00aa-000010001003",
+      "name": "Active Contacts",
+      "tableLogicalName": "contact",
+      "relativePath": "views/contact_000000000000000000aa000010001003.fetchxml",
+      "isDefault": true,
+      "layoutXml": "\u003Cgrid name=\u0022result\u0022 jump=\u0022fullname\u0022 select=\u00221\u0022 preview=\u00221\u0022 icon=\u00221\u0022\u003E\r\n  \u003Crow name=\u0022result\u0022 id=\u0022contactid\u0022\u003E\r\n    \u003Ccell name=\u0022fullname\u0022 width=\u0022250\u0022 /\u003E\r\n    \u003Ccell name=\u0022emailaddress1\u0022 width=\u0022250\u0022 /\u003E\r\n    \u003Ccell name=\u0022telephone1\u0022 width=\u0022250\u0022 /\u003E\r\n    \u003Ccell name=\u0022parentcustomerid\u0022 width=\u0022200\u0022 /\u003E\r\n  \u003C/row\u003E\r\n\u003C/grid\u003E\r\n",
+      "columns": [
+        {
+          "logicalName": "fullname",
+          "width": 250,
+          "order": 0,
+          "isPrimary": true
+        },
+        {
+          "logicalName": "emailaddress1",
+          "width": 250,
+          "order": 1,
+          "isPrimary": false
+        },
+        {
+          "logicalName": "telephone1",
+          "width": 250,
+          "order": 2,
+          "isPrimary": false
+        },
+        {
+          "logicalName": "parentcustomerid",
+          "width": 200,
+          "order": 3,
+          "isPrimary": false
+        }
+      ],
+      "provenance": {
+        "componentId": "00000000-0000-0000-00aa-000010001003",
+        "uniqueName": "Active Contacts",
+        "origin": "VerseOffOwned",
+        "solutionId": "VerseOff.BundledOOTB",
+        "publisherId": "VerseOff",
+        "sha256": "e59bcd44c5edb99f88b8451e6137371fa3e7b3c703487be5669bad72393a99c9",
+        "isManaged": true,
+        "ownershipVerified": true
+      }
+    }
+  ],
+  "commands": [],
+  "webResources": [],
+  "codeComponents": [],
+  "businessProcessFlows": [],
+  "compatibility": {
+    "disposition": "Fallback",
+    "issues": [
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "customizations.xml",
+        "message": "The element \u0027ImportExportXml\u0027 has invalid child element \u0027SolutionManifest\u0027. List of possible elements expected: \u0027Entities, Roles, Workflows, FieldSecurityProfiles, Templates, RibbonDiffXml, IsvConfig, RelationshipRoles, ConnectionRoles, SiteMap, EntityMaps, EntityRelationships, OrganizationSettings, optionsets, Reports, RoutingRules, ChannelPropertyGroups, ConvertRules, MobileOfflineProfiles, Slas, ChannelAccessProfiles, ChannelAccessProfileRules, Dashboards, InteractionCentricDashboards, Dialogs, WebResources, CustomControls, SolutionPluginAssemblies, SdkMessageProcessingSteps, ServiceEndpoints, AppModuleSiteMaps, AppModules, EntityDataProviders, EntityDataSources, Languages, GlobalSearchConfigurations, StoredProcedures\u0027.",
+        "remediation": "Validate this file against CustomizationsSolution.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The \u0027Description\u0027 attribute is not declared.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The required attribute \u0027LCID\u0027 is missing.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The required attribute \u0027Title\u0027 is missing.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The \u0027Description\u0027 attribute is not declared.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The required attribute \u0027LCID\u0027 is missing.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The required attribute \u0027Title\u0027 is missing.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The \u0027Description\u0027 attribute is not declared.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The required attribute \u0027LCID\u0027 is missing.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The required attribute \u0027Title\u0027 is missing.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The \u0027Description\u0027 attribute is not declared.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The required attribute \u0027LCID\u0027 is missing.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The required attribute \u0027Title\u0027 is missing.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The \u0027Description\u0027 attribute is not declared.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The required attribute \u0027LCID\u0027 is missing.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      },
+      {
+        "code": "xsd-validation",
+        "severity": "Warning",
+        "componentId": "contoso_quotes",
+        "message": "The required attribute \u0027Title\u0027 is missing.",
+        "remediation": "Validate this component against SiteMap.xsd."
+      }
+    ],
+    "canActivate": true
+  }
+}

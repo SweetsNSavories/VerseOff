@@ -1,0 +1,12 @@
+<fetch mapping="logical">
+  <entity name="account">
+    <attribute name="accountid" />
+    <attribute name="name" />
+    <attribute name="telephone1" />
+    <attribute name="emailaddress1" />
+    <attribute name="address1_city" />
+    <filter>
+      <condition attribute="statecode" operator="eq" value="0" />
+    </filter>
+  </entity>
+</fetch>

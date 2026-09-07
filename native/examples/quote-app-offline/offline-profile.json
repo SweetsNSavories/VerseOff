@@ -1,0 +1,45 @@
+{
+  "profileId": "7a918e95-7762-4212-87c2-192518e7e174",
+  "name": "Contoso Quotes Offline Profile",
+  "items": [
+    {
+      "tableLogicalName": "quote",
+      "fetchXml": "\u003Cfetch\u003E\u003Centity name=\u0022quote\u0022\u003E\u003Cattribute name=\u0022quoteid\u0022 /\u003E\u003Cattribute name=\u0022name\u0022 /\u003E\u003Cattribute name=\u0022totalamount\u0022 /\u003E\u003C/entity\u003E\u003C/fetch\u003E",
+      "relationshipNames": [],
+      "includeAttachments": false,
+      "isReadOnly": false,
+      "syncPriority": 1,
+      "conflictStrategy": "ServerWins"
+    },
+    {
+      "tableLogicalName": "account",
+      "fetchXml": "\u003Cfetch\u003E\u003Centity name=\u0022account\u0022\u003E\u003Cattribute name=\u0022accountid\u0022 /\u003E\u003Cattribute name=\u0022name\u0022 /\u003E\u003C/entity\u003E\u003C/fetch\u003E",
+      "relationshipNames": [],
+      "includeAttachments": false,
+      "isReadOnly": false,
+      "syncPriority": 2,
+      "conflictStrategy": "ServerWins"
+    },
+    {
+      "tableLogicalName": "contact",
+      "fetchXml": "\u003Cfetch\u003E\u003Centity name=\u0022contact\u0022\u003E\u003Cattribute name=\u0022contactid\u0022 /\u003E\u003Cattribute name=\u0022fullname\u0022 /\u003E\u003C/entity\u003E\u003C/fetch\u003E",
+      "relationshipNames": [],
+      "includeAttachments": false,
+      "isReadOnly": false,
+      "syncPriority": 3,
+      "conflictStrategy": "ServerWins"
+    }
+  ],
+  "sourceHash": "sample-quote-hash",
+  "version": 1,
+  "generatedAt": "0001-01-01T00:00:00+00:00",
+  "overlay": {
+    "emergencyTableNames": [
+      "quote"
+    ],
+    "maximumSecuritySnapshotAge": "12:00:00",
+    "retentionPeriod": "14.00:00:00",
+    "requireWifi": false,
+    "requireCharging": false
+  }
+}

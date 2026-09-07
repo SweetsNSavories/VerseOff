@@ -1,0 +1,44 @@
+[
+  {
+    "id": "Sales",
+    "title": "Sales",
+    "order": 4,
+    "kind": "Area",
+    "privilegeNames": []
+  },
+  {
+    "id": "Collateral",
+    "title": "Collateral",
+    "order": 3,
+    "kind": "Group",
+    "parentId": "Sales",
+    "privilegeNames": []
+  },
+  {
+    "id": "Quotes",
+    "title": "Quotes",
+    "tableLogicalName": "quote",
+    "order": 0,
+    "kind": "SubArea",
+    "parentId": "Collateral",
+    "privilegeNames": []
+  },
+  {
+    "id": "Accounts",
+    "title": "Accounts",
+    "tableLogicalName": "account",
+    "order": 1,
+    "kind": "SubArea",
+    "parentId": "Collateral",
+    "privilegeNames": []
+  },
+  {
+    "id": "Contacts",
+    "title": "Contacts",
+    "tableLogicalName": "contact",
+    "order": 2,
+    "kind": "SubArea",
+    "parentId": "Collateral",
+    "privilegeNames": []
+  }
+]
