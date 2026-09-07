@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using VerseOff.Customization.Customizations;
 using VerseOff.Customization.Forms;
+using VerseOff.Customization.Metadata;
 using VerseOff.Customization.Runtime;
 using VerseOff.Customization.Services;
 using VerseOff.Customization.Storage;
@@ -43,6 +44,26 @@ public static class ServiceCollectionExtensions
         // This service loads and caches customizations for performance
         services.AddScoped<RuntimeCustomizationApplication>();
 
+        // Register customizable metadata service
+        // This wraps baseline metadata and transparently applies customizations on-demand
+        services.AddScoped<CustomizableMetadataService>(sp =>
+        {
+            // Get baseline metadata dictionary - this is a placeholder that loads empty metadata
+            // In production, this should load from app.json files or a metadata store
+            var baselineMetadata = new Dictionary<string, EntityMetadata>(StringComparer.OrdinalIgnoreCase)
+            {
+                // Placeholder: baseline metadata would be loaded from offline app packages here
+                // For now, providing an empty dictionary allows the service to work
+                // Controllers will need to populate this when they load app definitions
+            };
+
+            var runtime = sp.GetRequiredService<RuntimeCustomizationApplication>();
+            var applier = sp.GetRequiredService<CustomizationApplier>();
+
+            return new CustomizableMetadataService(baselineMetadata, runtime, applier);
+        });
+
         return services;
     }
 }
+
