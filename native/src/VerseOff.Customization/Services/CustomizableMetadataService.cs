@@ -89,4 +89,20 @@ public class CustomizableMetadataService
 
         return result;
     }
+
+    /// <summary>
+    /// Register or update baseline metadata for one or more entities.
+    /// Useful for loading metadata from offline packages after service initialization.
+    /// Later entries override earlier ones if they have the same entity logical name.
+    /// </summary>
+    /// <param name="newMetadata">Dictionary of entity logical names to baseline metadata to register</param>
+    public void RegisterBaselineMetadata(Dictionary<string, EntityMetadata> newMetadata)
+    {
+        ArgumentNullException.ThrowIfNull(newMetadata);
+
+        foreach (var kvp in newMetadata)
+        {
+            _baselineMetadata[kvp.Key] = kvp.Value;
+        }
+    }
 }

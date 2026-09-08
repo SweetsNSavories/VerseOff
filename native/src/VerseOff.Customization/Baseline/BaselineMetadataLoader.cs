@@ -6,6 +6,7 @@
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using VerseOff.Customization.Metadata;
+using VerseOff.Domain;
 
 namespace VerseOff.Customization.Baseline;
 
@@ -192,6 +193,36 @@ public class BaselineMetadataLoader
         _logger.LogInformation("Merged baseline metadata from {SourceCount} sources, total {EntityCount} entities",
             sources.Length, result.Count);
         return result;
+    }
+
+    /// <summary>
+    /// Extract baseline metadata directly from an ApplicationDefinition record.
+    /// Uses AppJsonBaselineMetadataExtractor to convert ApplicationDefinition to EntityMetadata.
+    /// Useful for loading metadata from offline packages or app.json files.
+    /// </summary>
+    /// <param name="appDefinition">The ApplicationDefinition to extract from</param>
+    /// <returns>Dictionary of entity logical names to EntityMetadata</returns>
+    public Dictionary<string, EntityMetadata> ExtractFromApplicationDefinition(
+        ApplicationDefinition appDefinition)
+    {
+        ArgumentNullException.ThrowIfNull(appDefinition);
+
+        try
+        {
+            _logger.LogInformation("Extracting baseline metadata from ApplicationDefinition: {AppName}",
+                appDefinition.DisplayName);
+            
+            var metadata = AppJsonBaselineMetadataExtractor.ExtractEntityMetadata(appDefinition);
+            
+            _logger.LogInformation("Extracted baseline metadata for {Count} entities from ApplicationDefinition",
+                metadata.Count);
+            return metadata;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to extract baseline metadata from ApplicationDefinition");
+            throw;
+        }
     }
 }
 
