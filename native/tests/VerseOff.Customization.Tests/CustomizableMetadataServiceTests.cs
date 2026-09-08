@@ -199,6 +199,38 @@ public class CustomizableMetadataServiceTests
     }
 
     [Fact]
+    public void ReplaceBaselineMetadata_RemovesStaleEntities()
+    {
+        var runtimeApp = CreateRuntimeApp();
+        var applier = CreateApplier();
+        var service = new CustomizableMetadataService(_baselineMetadata, runtimeApp, applier);
+
+        service.ReplaceBaselineMetadata(new Dictionary<string, EntityMetadata>
+        {
+            ["quote"] = new EntityMetadata(
+                "quote", "Quote", "Quotes", [], [], [], [])
+        });
+
+        var result = service.GetAllEntities();
+        XunitAssert.Single(result);
+        XunitAssert.True(result.ContainsKey("quote"));
+        XunitAssert.False(result.ContainsKey("account"));
+    }
+
+    [Fact]
+    public void ClearBaselineMetadata_ReturnsUnloadedState()
+    {
+        var runtimeApp = CreateRuntimeApp();
+        var applier = CreateApplier();
+        var service = new CustomizableMetadataService(_baselineMetadata, runtimeApp, applier);
+
+        service.ClearBaselineMetadata();
+
+        XunitAssert.Empty(service.GetAllEntities());
+        XunitAssert.Throws<InvalidOperationException>(() => service.GetCustomizedMetadata("account"));
+    }
+
+    [Fact]
     public void GetAllCustomizedEntities_NoCustomizations_ReturnsAllBaseline()
     {
         // Arrange

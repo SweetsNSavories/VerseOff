@@ -13,6 +13,7 @@ namespace VerseOff.Customization.Services;
 public class CustomizableMetadataService
 {
     private readonly Dictionary<string, EntityMetadata> _baselineMetadata;
+    private readonly object _baselineLock = new();
     private readonly RuntimeCustomizationApplication _runtime;
     private readonly CustomizationApplier _applier;
 
@@ -44,9 +45,13 @@ public class CustomizableMetadataService
             throw new ArgumentException("Entity logical name cannot be null or empty", nameof(entityLogicalName));
 
         // Get baseline metadata (case-insensitive)
-        var baselineMetadata = _baselineMetadata
-            .FirstOrDefault(x => x.Key.Equals(entityLogicalName, StringComparison.OrdinalIgnoreCase))
-            .Value;
+        EntityMetadata? baselineMetadata;
+        lock (_baselineLock)
+        {
+            baselineMetadata = _baselineMetadata
+                .FirstOrDefault(x => x.Key.Equals(entityLogicalName, StringComparison.OrdinalIgnoreCase))
+                .Value;
+        }
 
         if (baselineMetadata == null)
         {
@@ -70,7 +75,10 @@ public class CustomizableMetadataService
     /// <returns>Dictionary of entity logical names to metadata</returns>
     public Dictionary<string, EntityMetadata> GetAllEntities()
     {
-        return new Dictionary<string, EntityMetadata>(_baselineMetadata, StringComparer.OrdinalIgnoreCase);
+        lock (_baselineLock)
+        {
+            return new Dictionary<string, EntityMetadata>(_baselineMetadata, StringComparer.OrdinalIgnoreCase);
+        }
     }
 
     /// <summary>
@@ -81,7 +89,7 @@ public class CustomizableMetadataService
     {
         var result = new Dictionary<string, EntityMetadata>(StringComparer.OrdinalIgnoreCase);
 
-        foreach (var (entityName, baselineMetadata) in _baselineMetadata)
+        foreach (var entityName in GetEntityNames())
         {
             var customizedMetadata = GetCustomizedMetadata(entityName);
             result[entityName] = customizedMetadata;
@@ -100,9 +108,50 @@ public class CustomizableMetadataService
     {
         ArgumentNullException.ThrowIfNull(newMetadata);
 
-        foreach (var kvp in newMetadata)
+        lock (_baselineLock)
         {
-            _baselineMetadata[kvp.Key] = kvp.Value;
+            foreach (var kvp in newMetadata)
+            {
+                _baselineMetadata[kvp.Key] = kvp.Value;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Replace the active baseline atomically.
+    /// Baseline metadata is immutable between package loads; loading a new package
+    /// replaces the previous app rather than leaving stale entities available.
+    /// </summary>
+    public void ReplaceBaselineMetadata(Dictionary<string, EntityMetadata> newMetadata)
+    {
+        ArgumentNullException.ThrowIfNull(newMetadata);
+
+        lock (_baselineLock)
+        {
+            _baselineMetadata.Clear();
+            foreach (var kvp in newMetadata)
+            {
+                _baselineMetadata[kvp.Key] = kvp.Value;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Remove all active baseline metadata, returning the service to an unloaded state.
+    /// </summary>
+    public void ClearBaselineMetadata()
+    {
+        lock (_baselineLock)
+        {
+            _baselineMetadata.Clear();
+        }
+    }
+
+    private string[] GetEntityNames()
+    {
+        lock (_baselineLock)
+        {
+            return _baselineMetadata.Keys.ToArray();
         }
     }
 }

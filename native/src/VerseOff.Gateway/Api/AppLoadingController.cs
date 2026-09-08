@@ -89,8 +89,9 @@ public class AppLoadingController : ControllerBase
                 return BadRequest(new { error = "No entities found in app package" });
             }
 
-            // Register the baseline metadata in the metadata service
-            _metadataService.RegisterBaselineMetadata(baselineMetadata);
+            // A package load establishes the active app baseline. Replace any
+            // previous package so stale entities are not exposed after reload.
+            _metadataService.ReplaceBaselineMetadata(baselineMetadata);
 
             _logger.LogInformation("POST /api/v1/apps/load-offline-package - successfully loaded {EntityCount} entities",
                 baselineMetadata.Count);
