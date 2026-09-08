@@ -188,6 +188,41 @@ public sealed class FormXmlParserTests
         Assert.AreEqual(
             "contoso_timeline.js",
             timeline.RecordSources[0].WebResourceName);
+        var activityTable = new TableDefinition(
+            "email",
+            "emails",
+            "activityid",
+            "subject",
+            true,
+            []);
+        activityTable = activityTable with
+        {
+            Relationships =
+            [
+                new RelationshipDefinition(
+                    "email_account",
+                    "email",
+                    "regardingobjectid",
+                    "account",
+                    "accountid",
+                    RelationshipKind.ManyToOne,
+                    true),
+            ],
+        };
+        var relatedTable = new TableDefinition(
+            "account",
+            "accounts",
+            "accountid",
+            "name",
+            false,
+            []);
+        var applicationTables = new[] { activityTable, relatedTable };
+        var expandedDependencies = TimelineDependencyPlanner.BuildRequiredTables(
+            timeline,
+            applicationTables);
+        CollectionAssert.Contains(expandedDependencies.ToArray(), "account");
+        var requiredCards = TimelineDependencyPlanner.BuildRequiredCardForms(timeline);
+        CollectionAssert.Contains(requiredCards.ToArray(), cardFormId);
         var dependencies = TimelineDependencyPlanner.BuildRequiredTables(
             timeline);
         CollectionAssert.Contains(dependencies.ToArray(), "activitypointer");
