@@ -51,6 +51,12 @@ public interface ITimelineCacheStore
         string? searchText,
         int maximumRecords,
         CancellationToken cancellationToken = default);
+
+    Task<bool> SetPinnedAsync(
+        Guid recordId,
+        bool isPinned,
+        string securitySnapshotVersion,
+        CancellationToken cancellationToken = default);
 }
 
 public sealed class TimelineCacheStore(
@@ -241,6 +247,32 @@ public sealed class TimelineCacheStore(
         }
 
         return results;
+    }
+
+    public async Task<bool> SetPinnedAsync(
+        Guid recordId,
+        bool isPinned,
+        string securitySnapshotVersion,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentOutOfRangeException.ThrowIfEqual(recordId, Guid.Empty);
+        ArgumentException.ThrowIfNullOrWhiteSpace(securitySnapshotVersion);
+        await using var context =
+            await contextFactory.CreateDbContextAsync(cancellationToken);
+        var entity = await context.TimelineRecords.SingleOrDefaultAsync(
+            record => record.RecordId == recordId
+                && !record.IsDeleted
+                && record.SecuritySnapshotVersion
+                    == securitySnapshotVersion,
+            cancellationToken);
+        if (entity is null)
+        {
+            return false;
+        }
+
+        entity.IsPinned = isPinned;
+        await context.SaveChangesAsync(cancellationToken);
+        return true;
     }
 
     private TimelinePartyWrite ToParty(TimelinePartyEntity entity)

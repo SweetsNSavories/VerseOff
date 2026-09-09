@@ -180,6 +180,45 @@ public sealed class JintCustomerScriptRuntimeTests
     }
 
     [TestMethod]
+    public async Task TimelineControlSupportsDocumentedStateAndFocusMethods()
+    {
+        const string source = """
+            function configureTimeline(executionContext) {
+                const timeline = executionContext.getFormContext().getControl("Timeline");
+                timeline.setVisible(false);
+                timeline.setDisabled(true);
+                timeline.setLabel("Activity history");
+                timeline.setFocus();
+            }
+            """;
+        var timeline = new XrmTimelineControl("Timeline");
+        var focusCount = 0;
+        timeline.FocusRequested += (_, _) => focusCount++;
+        var context = new XrmExecutionContext(
+            new XrmFormContext(
+                "account",
+                Guid.NewGuid(),
+                2,
+                [],
+                [timeline]),
+            timeline,
+            null,
+            0,
+            new Dictionary<string, object?>(StringComparer.Ordinal));
+
+        await Runtime().InvokeAsync(
+            Script(source),
+            "configureTimeline",
+            context,
+            []);
+
+        Assert.IsFalse(timeline.IsVisible);
+        Assert.IsTrue(timeline.IsDisabled);
+        Assert.AreEqual("Activity history", timeline.Label);
+        Assert.AreEqual(1, focusCount);
+    }
+
+    [TestMethod]
     public async Task GridTabAndProcessStateRoundTripThroughShim()
     {
         const string source = """

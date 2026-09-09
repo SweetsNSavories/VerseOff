@@ -9,6 +9,7 @@ public sealed record FormRuntimeContext(
     ITimelineRecordProvider? TimelineProvider,
     ISubgridRecordProvider? SubgridProvider = null,
     IBusinessProcessFlowProvider? BpfProvider = null,
+    ITimelineActionSink? TimelineActionSink = null,
     SecuritySnapshot? Security = null);
 
 public interface IVerseOffControlFactory
@@ -158,7 +159,8 @@ public sealed class NativeControlFactory(
             definition.Timeline,
             context.TimelineProvider,
             context.RecordId,
-            context.TableLogicalName);
+            context.TableLogicalName,
+            context.TimelineActionSink);
     }
 
     private static Border Unsupported(

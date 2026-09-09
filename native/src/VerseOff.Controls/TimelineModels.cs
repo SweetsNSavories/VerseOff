@@ -53,7 +53,17 @@ public sealed record TimelineRecord(
     IReadOnlyList<TimelineParty> Parties,
     IReadOnlyList<TimelineAttachment> Attachments,
     string SecuritySnapshotVersion,
-    string? Etag);
+    string? Etag)
+{
+    public TimelineCardProjection? CardProjection { get; init; }
+}
+
+public sealed record TimelineCardProjection(
+    string? HeaderTitle = null,
+    string? HeaderSecondary = null,
+    string? DetailsSubheading = null,
+    string? DetailsSummary = null,
+    string? DetailsExpanded = null);
 
 public sealed record TimelineQuery(
     Guid RegardingId,
@@ -77,12 +87,41 @@ public interface ITimelineRecordProvider
         CancellationToken cancellationToken = default);
 }
 
+public enum TimelineActionKind
+{
+    CreateNote = 0,
+    CreatePost = 1,
+    SetPinned = 2,
+}
+
+public sealed record TimelineAction(
+    TimelineActionKind Kind,
+    Guid RegardingId,
+    string RegardingTable,
+    Guid? RecordId = null,
+    string? Subject = null,
+    string? Body = null,
+    bool? IsPinned = null);
+
+public sealed record TimelineActionResult(
+    bool Succeeded,
+    string? ErrorMessage = null,
+    Guid? RecordId = null);
+
+public interface ITimelineActionSink
+{
+    ValueTask<TimelineActionResult> ExecuteAsync(
+        TimelineAction action,
+        CancellationToken cancellationToken = default);
+}
+
 public sealed class TimelineViewModel : INotifyPropertyChanged
 {
     private readonly TimelineDefinition definition;
     private readonly ITimelineRecordProvider provider;
     private readonly Guid regardingId;
     private readonly string regardingTable;
+    private readonly ITimelineActionSink? actionSink;
     private string? continuationToken;
     private string? searchText;
     private string? errorMessage;
@@ -92,7 +131,8 @@ public sealed class TimelineViewModel : INotifyPropertyChanged
         TimelineDefinition definition,
         ITimelineRecordProvider provider,
         Guid regardingId,
-        string regardingTable)
+        string regardingTable,
+        ITimelineActionSink? actionSink = null)
     {
         this.definition = definition
             ?? throw new ArgumentNullException(nameof(definition));
@@ -101,11 +141,15 @@ public sealed class TimelineViewModel : INotifyPropertyChanged
         ArgumentException.ThrowIfNullOrWhiteSpace(regardingTable);
         this.regardingId = regardingId;
         this.regardingTable = regardingTable;
+        this.actionSink = actionSink;
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public ObservableCollection<TimelineRecord> Records { get; } = [];
+
+    public IReadOnlyList<TimelineActivityConfiguration> ActivityConfigurations =>
+        definition.ActivityConfigurations;
 
     public string? SearchText
     {
@@ -145,6 +189,94 @@ public sealed class TimelineViewModel : INotifyPropertyChanged
     public Task LoadMoreAsync(
         CancellationToken cancellationToken = default) =>
         LoadPageAsync(cancellationToken);
+
+    public Task<TimelineActionResult> CreateNoteAsync(
+        string subject,
+        string body,
+        CancellationToken cancellationToken = default) =>
+        ExecuteActionAsync(new(
+            TimelineActionKind.CreateNote,
+            regardingId,
+            regardingTable,
+            Subject: subject,
+            Body: body), cancellationToken);
+
+    public Task<TimelineActionResult> CreatePostAsync(
+        string body,
+        CancellationToken cancellationToken = default) =>
+        ExecuteActionAsync(new(
+            TimelineActionKind.CreatePost,
+            regardingId,
+            regardingTable,
+            Body: body), cancellationToken);
+
+    public async Task<TimelineActionResult> SetPinnedAsync(
+        TimelineRecord record,
+        bool isPinned,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(record);
+        var result = await ExecuteActionAsync(
+            new(
+                TimelineActionKind.SetPinned,
+                regardingId,
+                regardingTable,
+                record.RecordId,
+                IsPinned: isPinned),
+            cancellationToken);
+        if (result.Succeeded)
+        {
+            var index = Records.IndexOf(record);
+            if (index >= 0)
+            {
+                Records[index] = record with { IsPinned = isPinned };
+            }
+        }
+
+        return result;
+    }
+
+    private async Task<TimelineActionResult> ExecuteActionAsync(
+        TimelineAction action,
+        CancellationToken cancellationToken)
+    {
+        if (actionSink is null)
+        {
+            var unavailable = new TimelineActionResult(
+                false,
+                "Timeline actions are unavailable in this offline context.");
+            ErrorMessage = unavailable.ErrorMessage;
+            return unavailable;
+        }
+
+        try
+        {
+            var result = await actionSink.ExecuteAsync(
+                action,
+                cancellationToken);
+            if (!result.Succeeded)
+            {
+                ErrorMessage = result.ErrorMessage
+                    ?? "The Timeline action was rejected.";
+            }
+            else
+            {
+                ErrorMessage = null;
+            }
+
+            return result;
+        }
+        catch (SecurityException exception)
+        {
+            ErrorMessage = exception.Message;
+            return new(false, exception.Message);
+        }
+        catch (InvalidOperationException exception)
+        {
+            ErrorMessage = exception.Message;
+            return new(false, exception.Message);
+        }
+    }
 
     private async Task LoadPageAsync(CancellationToken cancellationToken)
     {

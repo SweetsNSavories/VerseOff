@@ -578,7 +578,9 @@ public sealed class JintCustomerScriptRuntime : ICustomerScriptRuntime
                 setDisabled: function(value) {
                     state.isDisabled = Boolean(value);
                 },
-                setFocus: function() {},
+                setFocus: function() {
+                    state.focusRequested = true;
+                },
                 setLabel: function(value) { state.label = String(value); },
                 setNotification: function(message, uniqueId) {
                     const id = uniqueId || String(message);
@@ -1484,6 +1486,7 @@ internal sealed class ScriptState
                         control.Notifications,
                         StringComparer.Ordinal),
                     RefreshRequested = false,
+                    FocusRequested = false,
                     Grid = control is XrmGridControl grid
                         ? ScriptGridState.Create(grid)
                         : null,
@@ -1540,6 +1543,10 @@ internal sealed class ScriptState
                 control.Value.IsDisabled,
                 control.Value.Notifications,
                 control.Value.RefreshRequested);
+            if (control.Value.FocusRequested && nativeControl is not null)
+            {
+                nativeControl.SetFocus();
+            }
             if (nativeControl is XrmGridControl grid
                 && control.Value.Grid is not null)
             {
@@ -1644,6 +1651,8 @@ internal sealed class ScriptControlState
     public required Dictionary<string, string> Notifications { get; init; }
 
     public bool RefreshRequested { get; init; }
+
+    public bool FocusRequested { get; init; }
 
     public ScriptGridState? Grid { get; init; }
 }

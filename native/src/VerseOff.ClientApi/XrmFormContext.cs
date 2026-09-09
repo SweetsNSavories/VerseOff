@@ -156,6 +156,8 @@ public class XrmControl
 
     public IReadOnlyDictionary<string, string> Notifications => notifications;
 
+    public event EventHandler? FocusRequested;
+
     public void SetLabel(string label)
     {
         ArgumentNullException.ThrowIfNull(label);
@@ -165,6 +167,9 @@ public class XrmControl
     public void SetVisible(bool visible) => IsVisible = visible;
 
     public void SetDisabled(bool disabled) => IsDisabled = disabled;
+
+    public virtual void SetFocus() =>
+        FocusRequested?.Invoke(this, EventArgs.Empty);
 
     public void SetNotification(string message, string uniqueId)
     {

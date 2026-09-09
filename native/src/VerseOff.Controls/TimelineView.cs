@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.Maui.Controls.Shapes;
 using VerseOff.Domain;
 
@@ -12,13 +13,15 @@ public sealed class TimelineView : ContentView
         TimelineDefinition definition,
         ITimelineRecordProvider provider,
         Guid regardingId,
-        string regardingTable)
+        string regardingTable,
+        ITimelineActionSink? actionSink = null)
     {
         viewModel = new(
             definition,
             provider,
             regardingId,
-            regardingTable);
+            regardingTable,
+            actionSink);
         BindingContext = viewModel;
 
         var search = new SearchBar
@@ -98,14 +101,16 @@ public sealed class TimelineView : ContentView
         CancellationToken cancellationToken = default) =>
         viewModel.RefreshAsync(cancellationToken);
 
-    private static Border CreateCard()
+    private Border CreateCard()
     {
         var subject = new Label
         {
             FontAttributes = FontAttributes.Bold,
             FontSize = 15,
         };
-        subject.SetBinding(Label.TextProperty, nameof(TimelineRecord.Subject));
+        subject.SetBinding(
+            Label.TextProperty,
+            nameof(TimelineRecord.Subject));
 
         var status = new Label
         {
@@ -117,13 +122,45 @@ public sealed class TimelineView : ContentView
             Label.TextProperty,
             nameof(TimelineRecord.StatusLabel));
 
-        var body = new Label
+        var subheading = new Label
+        {
+            FontSize = 12,
+            TextColor = Colors.DarkSlateGray,
+        };
+        subheading.SetBinding(
+            Label.TextProperty,
+            $"{nameof(TimelineRecord.CardProjection)}.{nameof(TimelineCardProjection.DetailsSubheading)}");
+
+        var summary = new Label
         {
             FontSize = 13,
             MaxLines = 3,
             LineBreakMode = LineBreakMode.TailTruncation,
         };
-        body.SetBinding(Label.TextProperty, nameof(TimelineRecord.Body));
+        summary.SetBinding(Label.TextProperty, nameof(TimelineRecord.Body));
+
+        var expanded = new Label
+        {
+            FontSize = 13,
+            IsVisible = false,
+        };
+        expanded.SetBinding(Label.TextProperty, nameof(TimelineRecord.Body));
+
+        var toggle = new Button
+        {
+            Text = "Show more",
+            FontSize = 12,
+            Padding = new Thickness(0),
+            HorizontalOptions = LayoutOptions.Start,
+            IsVisible = false,
+        };
+        toggle.Clicked += (_, _) =>
+        {
+            var showExpanded = !expanded.IsVisible;
+            expanded.IsVisible = showExpanded;
+            summary.IsVisible = !showExpanded;
+            toggle.Text = showExpanded ? "Show less" : "Show more";
+        };
 
         var timestamp = new Label
         {
@@ -162,16 +199,53 @@ public sealed class TimelineView : ContentView
                             status,
                         },
                     },
-                    body,
+                    subheading,
+                    summary,
+                    expanded,
+                    toggle,
                     timestamp,
                 },
             },
+        };
+        card.BindingContextChanged += (_, _) =>
+        {
+           if (card.BindingContext is not TimelineRecord record)
+           {
+               return;
+           }
+
+           var projection = record.CardProjection;
+           subject.Text = projection?.HeaderTitle ?? record.Subject;
+           subheading.Text = projection?.DetailsSubheading ?? record.OwnerDisplayName;
+           summary.Text = projection?.DetailsSummary ?? record.Body;
+           expanded.Text = projection?.DetailsExpanded ?? record.Body;
+           timestamp.Text = projection?.HeaderSecondary
+               ?? record.SortDate.ToString("g", CultureInfo.CurrentCulture);
+           toggle.IsVisible = !string.IsNullOrWhiteSpace(expanded.Text)
+               && expanded.Text != summary.Text;
+           status.IsVisible = ShouldShowStatus(record);
         };
         Grid.SetColumn(status, 1);
         SemanticProperties.SetDescription(
             card,
             "Timeline record card");
         return card;
+    }
+
+    private bool ShouldShowStatus(TimelineRecord record)
+    {
+        if (record.Kind != TimelineRecordKind.Activity)
+        {
+            return true;
+        }
+
+        var configuration = viewModel.ActivityConfigurations
+            .FirstOrDefault(item =>
+                string.Equals(
+                    item.ActivityLogicalName,
+                    record.TableLogicalName,
+                    StringComparison.OrdinalIgnoreCase));
+        return configuration?.ShowStatus ?? true;
     }
 
     private async void OnLoaded(object? sender, EventArgs args)

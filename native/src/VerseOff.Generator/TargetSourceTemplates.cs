@@ -511,6 +511,7 @@ internal static class TargetSourceTemplates
 
             private readonly NativeControlFactory controlFactory = new([]);
             private readonly ITimelineRecordProvider? injectedTimelineProvider;
+            private readonly ITimelineActionSink? injectedTimelineActionSink;
             private readonly ICommandRuleEvaluator? injectedCommandRuleEvaluator;
             private readonly ILocalRecordStore? injectedLocalRecordStore;
             private readonly IPendingOperationSource? injectedPendingOperationSource;
@@ -526,12 +527,13 @@ internal static class TargetSourceTemplates
             private NavigationDefinition? currentNavigationSelection;
             private bool isProgrammaticNavigation;
 
-            public MainPage() : this(null, null, null, null, null, null)
+            public MainPage() : this(null, null, null, null, null, null, null)
             {
             }
 
             public MainPage(
                 ITimelineRecordProvider? timelineProvider,
+                ITimelineActionSink? timelineActionSink,
                 ICommandRuleEvaluator? commandRuleEvaluator,
                 ILocalRecordStore? localRecordStore = null,
                 IPendingOperationSource? pendingOperationSource = null,
@@ -539,6 +541,7 @@ internal static class TargetSourceTemplates
                 ICustomerScriptResolver? scriptResolver = null)
             {
                 injectedTimelineProvider = timelineProvider;
+                injectedTimelineActionSink = timelineActionSink;
                 injectedCommandRuleEvaluator = commandRuleEvaluator;
                 injectedLocalRecordStore = localRecordStore;
                 injectedPendingOperationSource = pendingOperationSource;
@@ -757,6 +760,8 @@ internal static class TargetSourceTemplates
 
                 var timeline = injectedTimelineProvider
                     ?? Handler?.MauiContext?.Services.GetService<ITimelineRecordProvider>();
+                var actionSink = injectedTimelineActionSink
+                    ?? Handler?.MauiContext?.Services.GetService<ITimelineActionSink>();
                 var commandEvaluator = injectedCommandRuleEvaluator
                     ?? Handler?.MauiContext?.Services.GetService<ICommandRuleEvaluator>()
                     ?? new CommandRuleEvaluator();
@@ -775,6 +780,7 @@ internal static class TargetSourceTemplates
                     TimelineProvider: timeline,
                     SubgridProvider: null,
                     BpfProvider: null,
+                    TimelineActionSink: actionSink,
                     Security: null);
 
                 var attributes = new List<XrmAttribute>();

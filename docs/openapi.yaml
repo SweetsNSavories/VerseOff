@@ -1,0 +1,393 @@
+openapi: 3.0.3
+info:
+  title: VerseOff Gateway API
+  version: 1.0.0
+  description: Authenticated read-plane and metadata API for VerseOff native clients.
+servers:
+  - url: https://localhost:5001
+security:
+  - windowsAuth: []
+paths:
+  /health/live:
+    get:
+      security: []
+      summary: Liveness probe
+      responses:
+        '200':
+          description: Gateway is running.
+  /api/v1/session:
+    get:
+      summary: Current authenticated session
+      responses:
+        '200':
+          description: Authenticated identity summary.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user: { type: string, nullable: true }
+                  authenticationType: { type: string, nullable: true }
+                  authenticated: { type: boolean }
+  /api/v1/metadata:
+    get:
+      summary: List customized entity metadata
+      responses:
+        '200':
+          description: Entity metadata keyed by logical name.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/EntityMetadata'
+  /api/v1/metadata/{entity}:
+    get:
+      summary: Get customized entity metadata
+      parameters:
+        - $ref: '#/components/parameters/entity'
+      responses:
+        '200': { description: Entity metadata, content: { application/json: { schema: { $ref: '#/components/schemas/EntityMetadata' } } } }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/v1/metadata/{entity}/forms:
+    get:
+      summary: Get form metadata
+      parameters:
+        - $ref: '#/components/parameters/entity'
+      responses:
+        '200': { description: Form metadata, content: { application/json: { schema: { $ref: '#/components/schemas/FormMetadata' } } } }
+  /api/v1/metadata/{entity}/grids:
+    get:
+      summary: Get grid metadata
+      parameters:
+        - $ref: '#/components/parameters/entity'
+      responses:
+        '200': { description: Grid metadata, content: { application/json: { schema: { $ref: '#/components/schemas/GridMetadata' } } } }
+  /api/v1/data/{entity}:
+    get:
+      summary: Query entity records
+      parameters:
+        - $ref: '#/components/parameters/entity'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/pageNumber'
+      responses:
+        '200': { $ref: '#/components/responses/QueryResult' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/v1/data/{entity}/{id}:
+    get:
+      summary: Retrieve one record
+      parameters:
+        - $ref: '#/components/parameters/entity'
+        - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/select'
+      responses:
+        '200': { description: Record JSON object. }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/v1/data/{entity}/{id}/{relationship}:
+    get:
+      summary: Query related records
+      parameters:
+        - $ref: '#/components/parameters/entity'
+        - $ref: '#/components/parameters/id'
+        - name: relationship
+          in: path
+          required: true
+          schema: { type: string }
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/pageNumber'
+      responses:
+        '200': { $ref: '#/components/responses/QueryResult' }
+  /api/v1/data/{entity}/views/{viewId}:
+    get:
+      summary: Execute a saved view
+      parameters:
+        - $ref: '#/components/parameters/entity'
+        - name: viewId
+          in: path
+          required: true
+          schema: { type: string }
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/pageNumber'
+      responses:
+        '200': { $ref: '#/components/responses/QueryResult' }
+  /api/v1/apps/load-offline-package:
+    post:
+      summary: Load an offline app package
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [packagePath]
+              properties:
+                packagePath: { type: string }
+      responses:
+        '200': { description: Package loaded and baseline metadata replaced. }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/v1/apps/status:
+    get:
+      summary: Get loaded app status
+      responses:
+        '200': { description: Loaded package and entity summary. }
+  /api/v1/customizations/forms:
+    post:
+      summary: Create or update form customization
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '200': { description: Form customization persisted. }
+        '400': { $ref: '#/components/responses/BadRequest' }
+  /api/v1/customizations/forms/{entityLogicalName}:
+    get:
+      summary: List form customizations for an entity
+      parameters:
+        - name: entityLogicalName
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Form customization list. }
+  /api/v1/customizations/forms/{entityLogicalName}/{formId}:
+    get:
+      summary: Get one form customization
+      parameters:
+        - name: entityLogicalName
+          in: path
+          required: true
+          schema: { type: string }
+        - name: formId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Form customization. }
+        '404': { $ref: '#/components/responses/NotFound' }
+    delete:
+      summary: Delete one form customization
+      parameters:
+        - name: entityLogicalName
+          in: path
+          required: true
+          schema: { type: string }
+        - name: formId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '204': { description: Customization deleted. }
+  /api/v1/customizations/fields:
+    post:
+      summary: Add or remove field customization
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '200': { description: Field customization persisted. }
+  /api/v1/customizations/fields/{entityLogicalName}:
+    get:
+      summary: List field customizations
+      parameters:
+        - name: entityLogicalName
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Field customization list. }
+  /api/v1/customizations/handlers:
+    post:
+      summary: Register an event handler
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '200': { description: Event handler persisted. }
+  /api/v1/customizations/handlers/{entityLogicalName}/{eventHook}:
+    get:
+      summary: List event handlers for a hook
+      parameters:
+        - name: entityLogicalName
+          in: path
+          required: true
+          schema: { type: string }
+        - name: eventHook
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Event handler list. }
+  /api/v1/customizations/handlers/{entityLogicalName}/{eventHook}/{handlerName}:
+    delete:
+      summary: Remove an event handler
+      parameters:
+        - name: entityLogicalName
+          in: path
+          required: true
+          schema: { type: string }
+        - name: eventHook
+          in: path
+          required: true
+          schema: { type: string }
+        - name: handlerName
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '204': { description: Event handler deleted. }
+  /api/v1/customizations/export:
+    get:
+      summary: Export customizations
+      responses:
+        '200': { description: Customization document. }
+  /api/v1/customizations/import:
+    post:
+      summary: Import customizations
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '200': { description: Customizations imported. }
+  /api/v1/customizations/validate:
+    post:
+      summary: Validate customizations
+      requestBody:
+        required: true
+        content:
+          application/json: { schema: { type: object } }
+      responses:
+        '200': { description: Validation result. }
+  /api/v1/sync/changes:
+    post:
+      summary: Read an authorized Dataverse change page
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tableLogicalName]
+              properties:
+                tableLogicalName: { type: string }
+                pageOrDeltaLink: { type: string, nullable: true }
+      responses:
+        '200': { description: Change page. }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /api/v1/sync/operations:
+    post:
+      summary: Execute one authorized sync operation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200': { description: Operation result. }
+        '403': { $ref: '#/components/responses/Forbidden' }
+components:
+  securitySchemes:
+    windowsAuth:
+      type: http
+      scheme: negotiate
+  parameters:
+    entity:
+      name: entity
+      in: path
+      required: true
+      schema: { type: string }
+    id:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+    select:
+      name: $select
+      in: query
+      schema: { type: string }
+      description: Comma-separated field names.
+    filter:
+      name: $filter
+      in: query
+      schema: { type: string }
+      description: URL-encoded QueryFilter JSON.
+    orderby:
+      name: $orderby
+      in: query
+      schema: { type: string }
+      description: Comma-separated fields; append :desc for descending order.
+    top:
+      name: $top
+      in: query
+      schema: { type: integer, minimum: 1, maximum: 5000, default: 50 }
+    pageNumber:
+      name: $pageNumber
+      in: query
+      schema: { type: integer, minimum: 1, default: 1 }
+  responses:
+    BadRequest:
+      description: Invalid entity, query, or parameter.
+    Forbidden:
+      description: Authenticated caller is not authorized.
+    NotFound:
+      description: Entity, record, or view was not found.
+    QueryResult:
+      description: Paged record result.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/QueryResult' }
+  schemas:
+    FieldMetadata:
+      type: object
+      properties:
+        logicalName: { type: string }
+        displayName: { type: string }
+        attributeType: { type: string }
+        format: { type: string, nullable: true }
+        maxLength: { type: integer, nullable: true }
+        required: { type: boolean }
+        isCustom: { type: boolean }
+    EntityMetadata:
+      type: object
+      properties:
+        logicalName: { type: string }
+        displayName: { type: string }
+        pluralName: { type: string }
+        fields: { type: array, items: { $ref: '#/components/schemas/FieldMetadata' } }
+        availableEventHandlers: { type: array, items: { type: string } }
+        associatedForms: { type: array, items: { type: string } }
+        associatedViews: { type: array, items: { type: string } }
+    FormMetadata:
+      type: object
+      properties:
+        entityLogicalName: { type: string }
+        entityDisplayName: { type: string }
+        formFields: { type: array, items: { $ref: '#/components/schemas/FieldMetadata' } }
+        availableForms: { type: array, items: { type: string } }
+        supportedEventHandlers: { type: array, items: { type: string } }
+    GridMetadata:
+      type: object
+      properties:
+        entityLogicalName: { type: string }
+        entityDisplayName: { type: string }
+        columns: { type: array, items: { $ref: '#/components/schemas/FieldMetadata' } }
+        availableViews: { type: array, items: { type: string } }
+    QueryResult:
+      type: object
+      properties:
+        entityLogicalName: { type: string }
+        records: { type: array, items: { type: object, additionalProperties: true } }
+        pageNumber: { type: integer }
+        pageSize: { type: integer }
+        totalRecordCount: { type: integer }
+        totalPageCount: { type: integer }
+        hasMoreRecords: { type: boolean }

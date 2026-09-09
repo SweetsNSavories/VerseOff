@@ -104,6 +104,62 @@ public sealed class TimelineCacheStoreTests
             StringComparison.Ordinal));
     }
 
+    [TestMethod]
+    public async Task SetPinnedRequiresCurrentSecuritySnapshot()
+    {
+        await using var connection = new SqliteConnection(
+            "Data Source=:memory:");
+        await connection.OpenAsync();
+        var options = new DbContextOptionsBuilder<VerseOffDbContext>()
+            .UseSqlite(connection)
+            .Options;
+        await using (var setup = new VerseOffDbContext(options))
+        {
+            await setup.Database.EnsureCreatedAsync();
+        }
+
+        var protector = new AesGcmLocalDataProtector(
+            Enumerable.Range(1, 32).Select(value => (byte)value).ToArray());
+        var store = new TimelineCacheStore(
+            new TestDbContextFactory(options),
+            protector);
+        var recordId = Guid.NewGuid();
+        var regardingId = Guid.NewGuid();
+        using var payload = JsonDocument.Parse(
+            """{"subject":"Pinned"}""");
+        await store.UpsertAsync(new(
+            recordId,
+            "account",
+            regardingId,
+            "annotation",
+            1,
+            payload.RootElement.Clone(),
+            DateTimeOffset.UtcNow,
+            false,
+            "security-v1",
+            null,
+            false,
+            [],
+            []));
+
+        Assert.IsFalse(await store.SetPinnedAsync(
+            recordId,
+            true,
+            "security-old"));
+        Assert.IsTrue(await store.SetPinnedAsync(
+            recordId,
+            true,
+            "security-v1"));
+
+        var records = await store.QueryAsync(
+            "account",
+            regardingId,
+            "security-v1",
+            null,
+            10);
+        Assert.IsTrue(records[0].IsPinned);
+    }
+
     private static VerseOffDbContext Context(
         DbContextOptions<VerseOffDbContext> options) =>
         new(options);

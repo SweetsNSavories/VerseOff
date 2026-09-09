@@ -124,7 +124,33 @@ public sealed class CachedTimelineRecordProvider(
                 (TimelineAttachmentTransferState)
                     attachment.TransferState)).ToArray(),
             record.SecuritySnapshotVersion,
-            record.Etag);
+            record.Etag)
+        {
+            CardProjection = CardProjection(record.Payload),
+        };
+
+    private static TimelineCardProjection? CardProjection(JsonElement payload)
+    {
+        var projection = new TimelineCardProjection(
+            Text(payload, "cardHeaderTitle")
+                ?? Text(payload, "headerTitle"),
+            Text(payload, "cardHeaderSecondary")
+                ?? Text(payload, "headerSecondary"),
+            Text(payload, "cardDetailsSubheading")
+                ?? Text(payload, "detailsSubheading"),
+            Text(payload, "cardDetailsSummary")
+                ?? Text(payload, "detailsSummary"),
+            Text(payload, "cardDetailsExpanded")
+                ?? Text(payload, "detailsExpanded"));
+
+        return projection.HeaderTitle is not null
+            || projection.HeaderSecondary is not null
+            || projection.DetailsSubheading is not null
+            || projection.DetailsSummary is not null
+            || projection.DetailsExpanded is not null
+            ? projection
+            : null;
+    }
 
     private static string? Text(JsonElement payload, string name)
     {

@@ -15,6 +15,8 @@ Canonical documentation:
 - [Hybrid Data and Channel Integration](docs/HYBRID_DATA_AND_CHANNEL_INTEGRATION.md)
 - [Regulated Enterprise Acceptance](docs/REGULATED_ENTERPRISE_ACCEPTANCE.md)
 - [License-Bound Distribution and Authentication](docs/LICENSE_BOUND_DISTRIBUTION_AND_AUTHENTICATION.md)
+- [Gateway REST API](docs/GATEWAY_API.md)
+- [Gateway OpenAPI contract](docs/openapi.yaml)
 - [Prototype Session Worklog](docs/SESSION_WORKLOG_LAST_10_HOURS.md)
 
 ## Legacy prototype
