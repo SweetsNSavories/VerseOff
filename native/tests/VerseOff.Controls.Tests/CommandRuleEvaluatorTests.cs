@@ -141,6 +141,82 @@ public sealed class CommandRuleEvaluatorTests
     }
 
     [TestMethod]
+    public void RecordPrivilegeRuleHonorsExplicitPoaGrantWithoutTableAccess()
+    {
+        var now = DateTimeOffset.UtcNow;
+        var recordId = Guid.NewGuid();
+        var security = new SecuritySnapshot(
+            "security-v2",
+            Guid.NewGuid(),
+            Guid.NewGuid(),
+            Guid.NewGuid(),
+            now.AddMinutes(-1),
+            now.AddMinutes(5),
+            [],
+            RecordAccessGrants:
+            [
+                new RecordAccessGrant(
+                    "account",
+                    recordId,
+                    RecordAccessRights.Read | RecordAccessRights.Update),
+            ]);
+        var rule = new CommandRuleDefinition(
+            "RecordPrivilegeRule",
+            new Dictionary<string, string?>
+            {
+                ["EntityName"] = "account",
+                ["PrivilegeType"] = "Write",
+            },
+            InvertResult: false);
+        var context = new CommandRuleEvaluationContext(
+            "account",
+            recordId,
+            new Dictionary<string, object?>(),
+            security,
+            now);
+
+        Assert.IsTrue(evaluator.EvaluateRule(rule, context));
+    }
+
+    [TestMethod]
+    public void RecordPrivilegeRuleRejectsPoaGrantMissingRequestedOperation()
+    {
+        var now = DateTimeOffset.UtcNow;
+        var recordId = Guid.NewGuid();
+        var security = new SecuritySnapshot(
+            "security-v2",
+            Guid.NewGuid(),
+            Guid.NewGuid(),
+            Guid.NewGuid(),
+            now.AddMinutes(-1),
+            now.AddMinutes(5),
+            [],
+            RecordAccessGrants:
+            [
+                new RecordAccessGrant(
+                    "account",
+                    recordId,
+                    RecordAccessRights.Read),
+            ]);
+        var rule = new CommandRuleDefinition(
+            "RecordPrivilegeRule",
+            new Dictionary<string, string?>
+            {
+                ["EntityName"] = "account",
+                ["PrivilegeType"] = "Delete",
+            },
+            InvertResult: false);
+        var context = new CommandRuleEvaluationContext(
+            "account",
+            recordId,
+            new Dictionary<string, object?>(),
+            security,
+            now);
+
+        Assert.IsFalse(evaluator.EvaluateRule(rule, context));
+    }
+
+    [TestMethod]
     public void CustomRuleFailsClosedWhenNoHandlerProvided()
     {
         var rule = new CommandRuleDefinition(

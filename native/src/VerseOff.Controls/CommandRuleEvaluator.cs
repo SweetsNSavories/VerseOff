@@ -202,10 +202,10 @@ public sealed class CommandRuleEvaluator : ICommandRuleEvaluator
 
         return privilegeType?.ToLowerInvariant() switch
         {
-            "read" => grant.ReadDepth >= requiredDepth && grant.ReadDepth > AccessDepth.None,
-            "create" => grant.CreateDepth >= requiredDepth && grant.CreateDepth > AccessDepth.None,
-            "write" or "update" => grant.UpdateDepth >= requiredDepth && grant.UpdateDepth > AccessDepth.None,
-            "delete" => grant.DeleteDepth >= requiredDepth && grant.DeleteDepth > AccessDepth.None,
+            "read" => grant.AllowsRead(requiredDepth),
+            "create" => grant.AllowsCreate(requiredDepth),
+            "write" or "update" => grant.AllowsUpdate(requiredDepth),
+            "delete" => grant.AllowsDelete(requiredDepth),
             _ => false,
         };
     }
@@ -214,12 +214,27 @@ public sealed class CommandRuleEvaluator : ICommandRuleEvaluator
         CommandRuleDefinition rule,
         CommandRuleEvaluationContext context)
     {
-        if (context.RecordId == Guid.Empty)
+        if (context.RecordId == Guid.Empty || context.Security is null)
         {
             return false;
         }
 
-        return EvaluateEntityPrivilegeRule(rule, context);
+        var now = context.EvaluationTime ?? DateTimeOffset.UtcNow;
+        if (!context.Security.IsValidAt(now))
+        {
+            return false;
+        }
+
+        var entityName = GetParameter(rule, "EntityName", "entityLogicalName")
+            ?? context.TableLogicalName;
+        var privilegeType = GetParameter(rule, "PrivilegeType", "privilege");
+        var operation = ParseOperation(privilegeType);
+        return operation is not null
+            && context.Security.HasRecordAccess(
+                entityName,
+                context.RecordId,
+                operation.Value,
+                ParseDepth(GetParameter(rule, "PrivilegeDepth", "depth")));
     }
 
     private static bool EvaluateCustomRule(
@@ -285,4 +300,18 @@ public sealed class CommandRuleEvaluator : ICommandRuleEvaluator
             _ => AccessDepth.User,
         };
     }
+
+    private static AccessOperation? ParseOperation(string? privilegeType) =>
+        privilegeType?.ToLowerInvariant() switch
+        {
+            "read" => AccessOperation.Read,
+            "create" => AccessOperation.Create,
+            "write" or "update" => AccessOperation.Update,
+            "delete" => AccessOperation.Delete,
+            "append" => AccessOperation.Append,
+            "appendto" or "append-to" => AccessOperation.AppendTo,
+            "assign" => AccessOperation.Assign,
+            "share" => AccessOperation.Share,
+            _ => null,
+        };
 }

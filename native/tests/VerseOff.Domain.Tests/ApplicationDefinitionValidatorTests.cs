@@ -29,6 +29,40 @@ public sealed class ApplicationDefinitionValidatorTests
                 StringComparison.Ordinal)));
     }
 
+    [TestMethod]
+    public void SecuritySnapshotTracksBusinessUnitAndPrivilegeContext()
+    {
+        var businessUnitId = Guid.NewGuid();
+        var teamId = Guid.NewGuid();
+        var tableGrant = new TableAccessGrant(
+            "account",
+            AccessDepth.BusinessUnit,
+            AccessDepth.BusinessUnit,
+            AccessDepth.BusinessUnit,
+            AccessDepth.BusinessUnit,
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "name" },
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "name" });
+        var security = new SecuritySnapshot(
+            "security-v2",
+            Guid.NewGuid(),
+            Guid.NewGuid(),
+            Guid.NewGuid(),
+            DateTimeOffset.UtcNow.AddMinutes(-5),
+            DateTimeOffset.UtcNow.AddMinutes(5),
+            [tableGrant],
+            businessUnitId,
+            [teamId],
+            ["Sales Team"],
+            [new SecurityPrivilegeGrant("Read Account", "account", AccessDepth.BusinessUnit, "Read")]);
+
+        Assert.IsTrue(security.IsMemberOfTeam(teamId));
+        Assert.IsTrue(security.HasRole("sales team"));
+        Assert.IsTrue(security.HasPrivilege("read account"));
+        Assert.IsTrue(security.HasTableAccess("account", AccessOperation.Read, AccessDepth.BusinessUnit));
+        Assert.IsTrue(security.HasBusinessUnitAccess(businessUnitId, AccessDepth.BusinessUnit));
+        Assert.IsFalse(security.HasTableAccess("contact", AccessOperation.Read, AccessDepth.User));
+    }
+
     private static ApplicationDefinition CreateDefinition(
         string controlColumn)
     {
