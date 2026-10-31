@@ -72,6 +72,7 @@ indexing, throttling, and cache publication.
 | Azure read service | Azure SQL Database |
 | On-premises read service | Microsoft SQL Server |
 | Multicloud Microsoft database option | SQL Server on a supported VM/container, optionally Azure Arc-enabled |
+| PostgreSQL read-model projection | Azure Database for PostgreSQL or on-premises PostgreSQL (`PostgreSqlReadModelProvider`, `verseoff.read_projection` JSONB) fed from Fabric Link / OneLake |
 
 ### Device database
 

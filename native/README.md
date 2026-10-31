@@ -53,6 +53,21 @@ the canonical selected-app model, native form rendering source, approved
 hash-verified customer assets, and a deterministic generation manifest.
 Microsoft and unapproved partner bundles are never requested or copied.
 
+## Offline security projection
+
+The Gateway/read plane must create a short-lived, per-user security snapshot
+before data is synchronized to a device. It resolves the user's direct and
+team role assignments, business-unit context, role privileges, field-level
+column permissions, and explicit Dataverse `principalobjectaccess` (POA)
+grants. Effective record access is the union of role-derived table access and
+POA grants addressed to the user or one of the user's teams.
+
+Raw Dataverse security tables and raw POA rows are protected read-plane inputs;
+they must not be delivered to the generated application. The application
+receives only security-trimmed rows, permitted columns, and the corresponding
+versioned snapshot. Changes to role assignments, team membership, POA grants,
+or field-level security require a new snapshot and resynchronization.
+
 ## Gateway configuration
 
 The gateway fails closed when signing or Dataverse services are not configured.

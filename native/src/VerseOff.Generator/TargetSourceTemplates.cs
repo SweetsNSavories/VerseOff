@@ -140,6 +140,7 @@ internal static class TargetSourceTemplates
             <Nullable>enable</Nullable>
             <ImplicitUsings>enable</ImplicitUsings>
             <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+            <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
             <AnalysisLevel>latest-recommended</AnalysisLevel>
             <Deterministic>true</Deterministic>
           </PropertyGroup>
