@@ -1,0 +1,134 @@
+{
+  "packageVersion": "1.0.0",
+  "packageName": "VerseOff-Enterprise-Field-Operations-Sample-Package",
+  "sourceEnvironment": {
+    "friendlyName": "VerseOff Trial",
+    "environmentId": "f83183e7-5a0e-ed27-9943-6285cd8d261b",
+    "organizationId": "2adf6659-62d5-f111-84db-6045bd003100",
+    "instanceUrl": "https://verseofftrial.crm.dynamics.com/",
+    "azureRegion": "westus"
+  },
+  "fabricDestination": {
+    "workspaceId": "300dbabd-1e5d-4a2d-ac74-ce9df625cba7",
+    "workspaceName": "VerseOff-Fabric",
+    "adlsGen2Endpoint": "https://stverseofffabriclink.dfs.core.windows.net/dataverse-verseofftrial-unq2adf665962d5f11184db6045bd003",
+    "synapseLinkProfileId": "7f84d7be-56d6-f111-a05d-00224805ee15"
+  },
+  "entities": {
+    "accounts": [
+      {
+        "accountid": "0a5e7ad6-53d6-f111-a05d-00224805ee15",
+        "name": "Contoso Mobility Fleet",
+        "accountnumber": "VO-ACCT-1001",
+        "telephone1": "+1-425-555-0100",
+        "emailaddress1": "fleet@contoso.com",
+        "address1_city": "Redmond",
+        "address1_stateorprovince": "WA",
+        "revenue": 4850000.00,
+        "numberofemployees": 420,
+        "description": "Primary EV fleet and field service telemetry account"
+      },
+      {
+        "accountid": "2fa0fcdd-53d6-f111-a05d-00224805ee15",
+        "name": "Fabrikam Autonomous Logistics",
+        "accountnumber": "VO-ACCT-1002",
+        "telephone1": "+1-206-555-0199",
+        "emailaddress1": "ops@fabrikam.com",
+        "address1_city": "Seattle",
+        "address1_stateorprovince": "WA",
+        "revenue": 9200000.00,
+        "numberofemployees": 850,
+        "description": "Autonomous freight corridor & depot operations"
+      },
+      {
+        "accountid": "11111111-60d6-f111-a05d-00224805ee15",
+        "name": "Northwind Grid Infrastructure",
+        "accountnumber": "VO-ACCT-1003",
+        "telephone1": "+1-503-555-0134",
+        "emailaddress1": "grid-ops@northwindtraders.com",
+        "address1_city": "Portland",
+        "address1_stateorprovince": "OR",
+        "revenue": 14600000.00,
+        "numberofemployees": 1240,
+        "description": "High-voltage substation inspection and offline field maintenance"
+      },
+      {
+        "accountid": "22222222-60d6-f111-a05d-00224805ee15",
+        "name": "Adventure Works Industrial Robotics",
+        "accountnumber": "VO-ACCT-1004",
+        "telephone1": "+1-415-555-0177",
+        "emailaddress1": "robotics@adventure-works.com",
+        "address1_city": "San Francisco",
+        "address1_stateorprovince": "CA",
+        "revenue": 7350000.00,
+        "numberofemployees": 610,
+        "description": "Warehouse robotics commissioning and air-gapped diagnostics"
+      },
+      {
+        "accountid": "33333333-60d6-f111-a05d-00224805ee15",
+        "name": "Litware Aerospace Maintenance",
+        "accountnumber": "VO-ACCT-1005",
+        "telephone1": "+1-310-555-0188",
+        "emailaddress1": "mro@litwareinc.com",
+        "address1_city": "Los Angeles",
+        "address1_stateorprovince": "CA",
+        "revenue": 22400000.00,
+        "numberofemployees": 1950,
+        "description": "Flight-line MRO inspection with offline transactional outbox sync"
+      }
+    ],
+    "contacts": [
+      {
+        "contactid": "32a0fcdd-53d6-f111-a05d-00224805ee15",
+        "firstname": "Avery",
+        "lastname": "Vance",
+        "jobtitle": "VP of Fleet Operations",
+        "emailaddress1": "avery.vance@contoso.com",
+        "telephone1": "+1-425-555-0142",
+        "address1_city": "Redmond",
+        "parentAccountId": "0a5e7ad6-53d6-f111-a05d-00224805ee15"
+      },
+      {
+        "contactid": "44444444-60d6-f111-a05d-00224805ee15",
+        "firstname": "Marcus",
+        "lastname": "Chen",
+        "jobtitle": "Director of Autonomous Dispatch",
+        "emailaddress1": "marcus.chen@fabrikam.com",
+        "telephone1": "+1-206-555-0191",
+        "address1_city": "Seattle",
+        "parentAccountId": "2fa0fcdd-53d6-f111-a05d-00224805ee15"
+      },
+      {
+        "contactid": "55555555-60d6-f111-a05d-00224805ee15",
+        "firstname": "Elena",
+        "lastname": "Rostova",
+        "jobtitle": "Chief Substation Reliability Engineer",
+        "emailaddress1": "elena.rostova@northwindtraders.com",
+        "telephone1": "+1-503-555-0165",
+        "address1_city": "Portland",
+        "parentAccountId": "11111111-60d6-f111-a05d-00224805ee15"
+      },
+      {
+        "contactid": "66666666-60d6-f111-a05d-00224805ee15",
+        "firstname": "Devon",
+        "lastname": "Brooks",
+        "jobtitle": "Principal Robotics Field Lead",
+        "emailaddress1": "devon.brooks@adventure-works.com",
+        "telephone1": "+1-415-555-0123",
+        "address1_city": "San Francisco",
+        "parentAccountId": "22222222-60d6-f111-a05d-00224805ee15"
+      },
+      {
+        "contactid": "77777777-60d6-f111-a05d-00224805ee15",
+        "firstname": "Priya",
+        "lastname": "Natarajan",
+        "jobtitle": "Head of Avionics MRO Compliance",
+        "emailaddress1": "priya.natarajan@litwareinc.com",
+        "telephone1": "+1-310-555-0154",
+        "address1_city": "Los Angeles",
+        "parentAccountId": "33333333-60d6-f111-a05d-00224805ee15"
+      }
+    ]
+  }
+}
+
