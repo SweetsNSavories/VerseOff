@@ -30,6 +30,17 @@ builder.Services.AddSingleton<
     ClaimsGatewayReadAuthorizationService>();
 builder.Services.AddDataverseGateway(builder.Configuration);
 builder.Services.AddGraphMailGateway(builder.Configuration);
+builder.Services.AddSingleton<VerseOff.ReadModel.IPostgreSqlConnectionFactory>(services =>
+{
+    var cs = builder.Configuration["PostgreSqlReadModel:ConnectionString"]
+        ?? "Host=localhost;Port=5432;Database=verseoff_read;Username=postgres;SSL Mode=Require;Trust Server Certificate=false";
+    return new VerseOff.ReadModel.PostgreSqlConnectionFactory(
+        cs,
+        Npgsql.NpgsqlFactory.Instance);
+});
+builder.Services.AddSingleton<
+    VerseOff.ReadModel.IDataversePostgreSqlODataEngine,
+    VerseOff.ReadModel.DataversePostgreSqlODataEngine>();
 
 var customizationStorePath = Path.Combine(
     AppContext.BaseDirectory,
@@ -70,6 +81,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapHealthChecks("/health/live").AllowAnonymous();
+app.MapDataverseWebApiOData();
 app.MapGet("/api/v1/session", (ClaimsPrincipal user) =>
 {
     return Results.Ok(new
