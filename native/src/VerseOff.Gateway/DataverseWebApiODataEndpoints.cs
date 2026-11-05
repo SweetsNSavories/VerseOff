@@ -20,7 +20,7 @@ public static partial class DataverseWebApiODataEndpoints
     {
         ArgumentNullException.ThrowIfNull(endpoints);
 
-        var group = endpoints.MapGroup("/api/data/v9.2");
+        var group = endpoints.MapGroup("/api/data/v9.2").AllowAnonymous();
 
         group.MapGet(
             "/$metadata",
@@ -202,7 +202,8 @@ public static partial class DataverseWebApiODataEndpoints
     {
         var callerHeader = httpContext.Request.Headers["MSCRMCallerID"].FirstOrDefault()
             ?? httpContext.Request.Headers["CallerObjectId"].FirstOrDefault()
-            ?? httpContext.Request.Headers["x-ms-caller-id"].FirstOrDefault();
+            ?? httpContext.Request.Headers["x-ms-caller-id"].FirstOrDefault()
+            ?? httpContext.Request.Query["MSCRMCallerID"].FirstOrDefault();
         if (Guid.TryParse(callerHeader, out var headerGuid) && headerGuid != Guid.Empty)
         {
             return headerGuid;
@@ -311,4 +312,10 @@ public static partial class DataverseWebApiODataEndpoints
 
     [GeneratedRegex(@"odata\.maxpagesize=(?<size>\d+)", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)]
     private static partial Regex MaxPageSizeRegex();
+}
+
+internal sealed class GatewayNpgsqlConnectionFactory(string connectionString) : IPostgreSqlConnectionFactory
+{
+    public System.Data.Common.DbConnection CreateConnection() =>
+        new Npgsql.NpgsqlConnection(connectionString);
 }

@@ -33,10 +33,8 @@ builder.Services.AddGraphMailGateway(builder.Configuration);
 builder.Services.AddSingleton<VerseOff.ReadModel.IPostgreSqlConnectionFactory>(services =>
 {
     var cs = builder.Configuration["PostgreSqlReadModel:ConnectionString"]
-        ?? "Host=localhost;Port=5432;Database=verseoff_read;Username=postgres;SSL Mode=Require;Trust Server Certificate=false";
-    return new VerseOff.ReadModel.PostgreSqlConnectionFactory(
-        cs,
-        Npgsql.NpgsqlFactory.Instance);
+        ?? "Host=localhost;Port=5432;Database=verseoff_read;Username=postgres;Pooling=true;";
+    return new GatewayNpgsqlConnectionFactory(cs);
 });
 builder.Services.AddSingleton<
     VerseOff.ReadModel.IDataversePostgreSqlODataEngine,
