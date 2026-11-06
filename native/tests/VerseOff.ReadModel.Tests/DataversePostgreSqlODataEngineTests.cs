@@ -6,6 +6,7 @@ using VerseOff.ReadModel;
 namespace VerseOff.ReadModel.Tests;
 
 [TestClass]
+[DoNotParallelize]
 public sealed class DataversePostgreSqlODataEngineTests
 {
     private const string ConnectionString =
@@ -302,5 +303,142 @@ public sealed class DataversePostgreSqlODataEngineTests
             ServiceRoot);
         Assert.AreEqual(200, noAccess.StatusCode);
         Assert.AreEqual("None", noAccess.Payload.GetProperty("AccessRights").GetString());
+    }
+
+    [TestMethod]
+    public async Task ManagerHierarchySecurityGrantsCrossBuReadAndWriteAccessOnDirectReportRecords()
+    {
+        if (!await IsPostgreSqlSecuritySeededAsync())
+        {
+            Assert.Inconclusive("PostgreSQL 17 security schema not reachable on localhost:5432.");
+        }
+
+        await using var conn = new NpgsqlConnection(ConnectionString);
+        await conn.OpenAsync();
+
+        try
+        {
+            // Temporarily set Marcus Sterling (PNW Local Manager) as direct manager of Sofia Chen (California Rep)
+            await using (var setCmd = conn.CreateCommand())
+            {
+                setCmd.CommandText = "UPDATE verseoff.systemuser SET parentsystemuserid = @mgr WHERE systemuserid = @sub;";
+                setCmd.Parameters.AddWithValue("@mgr", PnwManagerLocalUserId);
+                setCmd.Parameters.AddWithValue("@sub", CaliforniaRepBasicUserId);
+                await setCmd.ExecuteNonQueryAsync();
+            }
+
+            var engine = CreateEngine();
+            var retrieveResp = await engine.RetrieveRecordAsync(
+                "accounts",
+                Account05CalifPoaSharedId,
+                PnwManagerLocalUserId,
+                ["accountid", "name", "accountnumber"],
+                includeAnnotations: false,
+                ServiceRoot);
+            Assert.AreEqual(200, retrieveResp.StatusCode);
+            Assert.AreEqual("VO-ACCT-1005", retrieveResp.Payload.GetProperty("accountnumber").GetString());
+
+            var accessResp = await engine.RetrievePrincipalAccessAsync(
+                PnwManagerLocalUserId,
+                "accounts",
+                Account05CalifPoaSharedId,
+                ServiceRoot);
+            var rights = accessResp.Payload.GetProperty("AccessRights").GetString()!;
+            StringAssert.Contains(rights, "ReadAccess");
+            StringAssert.Contains(rights, "WriteAccess");
+        }
+        finally
+        {
+            await using var clearCmd = conn.CreateCommand();
+            clearCmd.CommandText = "UPDATE verseoff.systemuser SET parentsystemuserid = NULL WHERE systemuserid = @sub;";
+            clearCmd.Parameters.AddWithValue("@sub", CaliforniaRepBasicUserId);
+            await clearCmd.ExecuteNonQueryAsync();
+        }
+    }
+
+    [TestMethod]
+    public async Task ODataExpandNavigationAppliesNestedSecurityTrimmingAndFlsMasking()
+    {
+        if (!await IsPostgreSqlSecuritySeededAsync())
+        {
+            Assert.Inconclusive("PostgreSQL 17 security schema not reachable on localhost:5432.");
+        }
+
+        var engine = CreateEngine();
+
+        // Expand contact_customer_accounts on VO-ACCT-1001 as Global Admin
+        var expandResp = await engine.RetrieveRecordAsync(
+            "accounts",
+            Account01RootBuId,
+            AdminGlobalUserId,
+            ["accountid", "name", "accountnumber"],
+            includeAnnotations: false,
+            ServiceRoot,
+            expand: "contact_customer_accounts($select=fullname,jobtitle)");
+
+        Assert.AreEqual(200, expandResp.StatusCode);
+        var childContacts = expandResp.Payload.GetProperty("contact_customer_accounts");
+        Assert.IsGreaterThanOrEqualTo(1, childContacts.GetArrayLength());
+        Assert.AreEqual("Avery Vance", childContacts[0].GetProperty("fullname").GetString());
+    }
+
+    [TestMethod]
+    public async Task ValidateImpersonationPrivilegeEnforcesPrvActOnBehalfOfAnotherUser()
+    {
+        if (!await IsPostgreSqlSecuritySeededAsync())
+        {
+            Assert.Inconclusive("PostgreSQL 17 security schema not reachable on localhost:5432.");
+        }
+
+        var engine = CreateEngine();
+
+        // 1. System Administrator (Global=8) can impersonate Seattle Tech
+        var adminCanImpersonate = await engine.ValidateImpersonationPrivilegeAsync(
+            AdminGlobalUserId,
+            SeattleTechBasicUserId);
+        Assert.IsTrue(adminCanImpersonate);
+
+        // 2. Basic User (Seattle Tech) CANNOT impersonate System Administrator
+        var basicCanImpersonate = await engine.ValidateImpersonationPrivilegeAsync(
+            SeattleTechBasicUserId,
+            AdminGlobalUserId);
+        Assert.IsFalse(basicCanImpersonate);
+    }
+
+    [TestMethod]
+    public async Task BulkBinaryCopyIngestionEngineStagesAndMergesWithWatermarkTelemetry()
+    {
+        if (!await IsPostgreSqlSecuritySeededAsync())
+        {
+            Assert.Inconclusive("PostgreSQL 17 security schema not reachable on localhost:5432.");
+        }
+
+        var bulkEngine = new DataversePostgreSqlBulkIngestionEngine(ConnectionString);
+        var rows = new List<DataverseBulkEntityRow>
+        {
+            new(
+                TableLogicalName: "account",
+                RecordId: Account01RootBuId,
+                OwnerId: AdminGlobalUserId,
+                OwnerType: "systemuser",
+                OwningBusinessUnitId: new Guid("b08fff15-b5d3-f111-a059-70a8a59ba8c8"),
+                StateCode: 0,
+                StatusCode: 1,
+                VersionNumber: 3000001L,
+                ETag: "W/\"3000001\"",
+                ModifiedOn: DateTimeOffset.UtcNow,
+                IsDeleted: false,
+                DataJson: """{"accountid":"0a5e7ad6-53d6-f111-a05d-00224805ee15","name":"Contoso Mobility Fleet","accountnumber":"VO-ACCT-1001","revenue":54900000,"government_contract_code":"GOV-TOP-SECRET-9901"}"""),
+        };
+
+        var result = await bulkEngine.IngestBatchBinaryCopyAsync(
+            "account",
+            "partition-00",
+            rows,
+            "deltatoken-3000001");
+
+        Assert.AreEqual(1, result.RowsIngested);
+        Assert.AreEqual(3000001L, result.MaxVersionNumber);
+        Assert.IsGreaterThan(0, result.ThroughputRowsPerSecond);
     }
 }

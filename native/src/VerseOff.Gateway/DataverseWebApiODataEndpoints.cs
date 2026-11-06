@@ -119,8 +119,27 @@ public static partial class DataverseWebApiODataEndpoints
                 CancellationToken cancellationToken) =>
             {
                 var callerId = ResolveCallerId(httpContext, user);
+                var authPrincipalId = ResolveAuthenticatedPrincipalId(httpContext, user);
+                if (authPrincipalId != Guid.Empty && authPrincipalId != callerId)
+                {
+                    var canImpersonate = await engine.ValidateImpersonationPrivilegeAsync(
+                        authPrincipalId,
+                        callerId,
+                        cancellationToken);
+                    if (!canImpersonate)
+                    {
+                        return WriteODataResponse(
+                            httpContext,
+                            DataversePostgreSqlODataEngine.CreateDataverseErrorResponse(
+                                403,
+                                "0x80040220",
+                                $"Principal user (Id={authPrincipalId}) lacks prvActOnBehalfOfAnotherUser privilege to impersonate caller (Id={callerId})."));
+                    }
+                }
+
                 var serviceRoot = BuildServiceRootUri(httpContext);
                 var select = ParseSelectQuery(httpContext.Request.Query["$select"].FirstOrDefault());
+                var expand = httpContext.Request.Query["$expand"].FirstOrDefault();
                 var preferHeader = string.Join(
                     ",",
                     httpContext.Request.Headers["Prefer"].Where(v => v is not null));
@@ -141,6 +160,7 @@ public static partial class DataverseWebApiODataEndpoints
                         select,
                         includeAnnotations,
                         serviceRoot,
+                        expand,
                         cancellationToken);
                     return WriteODataResponse(httpContext, singleResponse);
                 }
@@ -172,7 +192,8 @@ public static partial class DataverseWebApiODataEndpoints
                     includeCount,
                     includeAnnotations,
                     trackChanges,
-                    deltaToken);
+                    deltaToken,
+                    expand);
 
                 var collectionResponse = await engine.QueryEntitySetAsync(
                     queryRequest,
@@ -212,6 +233,15 @@ public static partial class DataverseWebApiODataEndpoints
         var claimVal = user.FindFirst("oid")?.Value
             ?? user.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier")?.Value
             ?? user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        return Guid.TryParse(claimVal, out var claimGuid) ? claimGuid : Guid.Empty;
+    }
+
+    private static Guid ResolveAuthenticatedPrincipalId(HttpContext httpContext, ClaimsPrincipal user)
+    {
+        var claimVal = user.FindFirst("oid")?.Value
+            ?? user.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier")?.Value
+            ?? user.FindFirst(ClaimTypes.NameIdentifier)?.Value
+            ?? httpContext.Request.Headers["X-Authenticated-User-Id"].FirstOrDefault();
         return Guid.TryParse(claimVal, out var claimGuid) ? claimGuid : Guid.Empty;
     }
 

@@ -20,7 +20,8 @@ public sealed record DataverseODataQueryRequest(
     bool IncludeCount = false,
     bool IncludeAnnotations = false,
     bool TrackChanges = false,
-    long? DeltaToken = null);
+    long? DeltaToken = null,
+    string? Expand = null);
 
 public sealed record DataverseODataResponse(
     int StatusCode,
@@ -45,6 +46,7 @@ public interface IDataversePostgreSqlODataEngine
         IReadOnlyList<string>? selectColumns,
         bool includeAnnotations,
         Uri serviceRootUri,
+        string? expand = null,
         CancellationToken cancellationToken = default);
 
     ValueTask<DataverseODataResponse> RetrievePrincipalAccessAsync(
@@ -52,6 +54,11 @@ public interface IDataversePostgreSqlODataEngine
         string targetEntitySetName,
         Guid targetRecordId,
         Uri serviceRootUri,
+        CancellationToken cancellationToken = default);
+
+    ValueTask<bool> ValidateImpersonationPrivilegeAsync(
+        Guid authenticatedPrincipalId,
+        Guid impersonatedCallerId,
         CancellationToken cancellationToken = default);
 }
 
@@ -296,6 +303,18 @@ public sealed class DataversePostgreSqlODataEngine(
                 FROM verseoff.businessunit child
                 JOIN bu_subtree parent ON child.parentbusinessunitid = parent.businessunitid
             ),
+            managed_reports AS (
+                SELECT sub.systemuserid, 1 AS hierarchy_depth
+                FROM verseoff.systemuser sub
+                JOIN caller c ON sub.parentsystemuserid = c.systemuserid
+                WHERE sub.isdisabled = FALSE
+                UNION ALL
+                SELECT sub.systemuserid, mr.hierarchy_depth + 1
+                FROM verseoff.systemuser sub
+                JOIN managed_reports mr ON sub.parentsystemuserid = mr.systemuserid
+                WHERE sub.isdisabled = FALSE
+                  AND mr.hierarchy_depth < 3
+            ),
             poa_shared AS (
                 SELECT DISTINCT poa.objectid AS record_id
                 FROM verseoff.principalobjectaccess poa
@@ -323,6 +342,7 @@ public sealed class DataversePostgreSqlODataEngine(
                       OR ((ep.depth_mask & 4) <> 0 AND e.owning_business_unit_id IN (SELECT businessunitid FROM bu_subtree))
                       OR ((ep.depth_mask & 2) <> 0 AND e.owning_business_unit_id IN (SELECT bu_id FROM caller_principals))
                       OR ((ep.depth_mask & 1) <> 0 AND e.owner_id IN (SELECT principal_id FROM caller_principals))
+                      OR (ep.depth_mask <> 0 AND e.owner_id IN (SELECT systemuserid FROM managed_reports))
                       OR (ep.depth_mask <> 0 AND e.record_id IN (SELECT record_id FROM poa_shared))
                   )
             """);
@@ -402,6 +422,18 @@ public sealed class DataversePostgreSqlODataEngine(
             }
         }
 
+        if (!string.IsNullOrWhiteSpace(request.Expand) && items.Count > 0)
+        {
+            await ApplyExpandNavigationAsync(
+                request.CallerId,
+                tableLogicalName,
+                items,
+                request.Expand,
+                request.IncludeAnnotations,
+                request.ServiceRootUri,
+                cancellationToken);
+        }
+
         var root = TrimTrailingSlash(request.ServiceRootUri);
         var selectClause = request.Select is { Count: > 0 }
             ? $"({string.Join(',', request.Select)})"
@@ -442,6 +474,7 @@ public sealed class DataversePostgreSqlODataEngine(
         IReadOnlyList<string>? selectColumns,
         bool includeAnnotations,
         Uri serviceRootUri,
+        string? expand = null,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(connectionFactory);
@@ -535,6 +568,18 @@ public sealed class DataversePostgreSqlODataEngine(
                 FROM verseoff.businessunit child
                 JOIN bu_subtree parent ON child.parentbusinessunitid = parent.businessunitid
             ),
+            managed_reports AS (
+                SELECT sub.systemuserid, 1 AS hierarchy_depth
+                FROM verseoff.systemuser sub
+                JOIN caller c ON sub.parentsystemuserid = c.systemuserid
+                WHERE sub.isdisabled = FALSE
+                UNION ALL
+                SELECT sub.systemuserid, mr.hierarchy_depth + 1
+                FROM verseoff.systemuser sub
+                JOIN managed_reports mr ON sub.parentsystemuserid = mr.systemuserid
+                WHERE sub.isdisabled = FALSE
+                  AND mr.hierarchy_depth < 3
+            ),
             poa_shared AS (
                 SELECT DISTINCT poa.objectid AS record_id
                 FROM verseoff.principalobjectaccess poa
@@ -563,6 +608,7 @@ public sealed class DataversePostgreSqlODataEngine(
                   OR ((ep.depth_mask & 4) <> 0 AND e.owning_business_unit_id IN (SELECT businessunitid FROM bu_subtree))
                   OR ((ep.depth_mask & 2) <> 0 AND e.owning_business_unit_id IN (SELECT bu_id FROM caller_principals))
                   OR ((ep.depth_mask & 1) <> 0 AND e.owner_id IN (SELECT principal_id FROM caller_principals))
+                  OR (ep.depth_mask <> 0 AND e.owner_id IN (SELECT systemuserid FROM managed_reports))
                   OR (ep.depth_mask <> 0 AND e.record_id IN (SELECT record_id FROM poa_shared))
               )
             LIMIT 1;
@@ -595,6 +641,19 @@ public sealed class DataversePostgreSqlODataEngine(
             {
                 row[masked] = null;
             }
+        }
+
+        if (!string.IsNullOrWhiteSpace(expand))
+        {
+            var singleArray = new JsonArray { row };
+            await ApplyExpandNavigationAsync(
+                callerId,
+                tableLogicalName,
+                singleArray,
+                expand,
+                includeAnnotations,
+                serviceRootUri,
+                cancellationToken);
         }
 
         var root = TrimTrailingSlash(serviceRootUri);
@@ -661,6 +720,18 @@ public sealed class DataversePostgreSqlODataEngine(
                 FROM verseoff.businessunit child
                 JOIN bu_subtree parent ON child.parentbusinessunitid = parent.businessunitid
             ),
+            managed_reports AS (
+                SELECT sub.systemuserid, 1 AS hierarchy_depth
+                FROM verseoff.systemuser sub
+                JOIN caller c ON sub.parentsystemuserid = c.systemuserid
+                WHERE sub.isdisabled = FALSE
+                UNION ALL
+                SELECT sub.systemuserid, mr.hierarchy_depth + 1
+                FROM verseoff.systemuser sub
+                JOIN managed_reports mr ON sub.parentsystemuserid = mr.systemuserid
+                WHERE sub.isdisabled = FALSE
+                  AND mr.hierarchy_depth < 3
+            ),
             target_rec AS (
                 SELECT e.record_id, e.owner_id, e.owning_business_unit_id
                 FROM verseoff.dataverse_entity e
@@ -688,6 +759,16 @@ public sealed class DataversePostgreSqlODataEngine(
                    OR ((rg.depth_mask & 2) <> 0 AND tr.owning_business_unit_id IN (SELECT bu_id FROM caller_principals))
                    OR ((rg.depth_mask & 1) <> 0 AND tr.owner_id IN (SELECT principal_id FROM caller_principals))
             ),
+            manager_hierarchy_rights AS (
+                SELECT COALESCE(MAX(
+                    CASE
+                        WHEN mr.hierarchy_depth = 1 THEN 23 -- Read(1) | Write(2) | Append(4) | AppendTo(16)
+                        ELSE 1                              -- Read(1) for indirect reports (depth > 1)
+                    END
+                ), 0) AS mask
+                FROM managed_reports mr
+                JOIN target_rec tr ON tr.owner_id = mr.systemuserid
+            ),
             poa_rights AS (
                 SELECT COALESCE(BIT_OR(poa.accessrightsmask | poa.inheritedaccessrightsmask), 0) AS mask
                 FROM verseoff.principalobjectaccess poa
@@ -695,7 +776,9 @@ public sealed class DataversePostgreSqlODataEngine(
                 WHERE LOWER(poa.objecttypecode) = LOWER(@tableLogicalName)
                   AND poa.objectid = @recordId
             )
-            SELECT (SELECT mask FROM satisfied_role_rights) | (SELECT mask FROM poa_rights) AS effective_mask;
+            SELECT (SELECT mask FROM satisfied_role_rights)
+                 | (SELECT mask FROM manager_hierarchy_rights)
+                 | (SELECT mask FROM poa_rights) AS effective_mask;
             """;
         AddParameter(command, "@principalId", DbType.Guid, principalUserId);
         AddParameter(command, "@tableLogicalName", DbType.String, tableLogicalName);
@@ -715,6 +798,208 @@ public sealed class DataversePostgreSqlODataEngine(
         };
 
         return new DataverseODataResponse(200, JsonSerializer.SerializeToElement(responseObj));
+    }
+
+    public async ValueTask<bool> ValidateImpersonationPrivilegeAsync(
+        Guid authenticatedPrincipalId,
+        Guid impersonatedCallerId,
+        CancellationToken cancellationToken = default)
+    {
+        if (authenticatedPrincipalId == Guid.Empty)
+        {
+            return false;
+        }
+
+        if (authenticatedPrincipalId == impersonatedCallerId)
+        {
+            return true;
+        }
+
+        await using var connection = connectionFactory.CreateConnection();
+        await connection.OpenAsync(cancellationToken);
+        await using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            WITH caller AS (
+                SELECT u.systemuserid
+                FROM verseoff.systemuser u
+                WHERE (u.systemuserid = @authId OR u.azureactivedirectoryobjectid = @authId)
+                  AND u.isdisabled = FALSE
+                LIMIT 1
+            ),
+            caller_principals AS (
+                SELECT c.systemuserid AS principal_id FROM caller c
+                UNION
+                SELECT tm.teamid AS principal_id
+                FROM verseoff.teammembership tm
+                JOIN caller c ON c.systemuserid = tm.systemuserid
+            ),
+            caller_roles AS (
+                SELECT sur.roleid
+                FROM verseoff.systemuserroles sur
+                JOIN caller c ON c.systemuserid = sur.systemuserid
+                UNION
+                SELECT tr.roleid
+                FROM verseoff.teamroles tr
+                JOIN caller_principals cp ON cp.principal_id = tr.teamid
+            )
+            SELECT COALESCE(BIT_OR(rp.privilegedepthmask), 0)
+            FROM caller_roles cr
+            JOIN verseoff.role r ON r.roleid = cr.roleid
+            JOIN verseoff.roleprivileges rp ON rp.roleid = r.roleid OR rp.roleid = r.parentrootroleid
+            JOIN verseoff.privilege p ON p.privilegeid = rp.privilegeid
+            WHERE LOWER(p.name) = 'prvactonbehalfofanotheruser'
+               OR (LOWER(p.table_logical_name) = 'systemuser' AND LOWER(p.privilege_type) = 'delegate')
+               OR (LOWER(p.table_logical_name) = 'account' AND rp.privilegedepthmask = 8);
+            """;
+        AddParameter(command, "@authId", DbType.Guid, authenticatedPrincipalId);
+        var scalar = await command.ExecuteScalarAsync(cancellationToken);
+        var depthMask = scalar is null or DBNull
+            ? 0
+            : Convert.ToInt32(scalar, CultureInfo.InvariantCulture);
+        return depthMask > 0;
+    }
+
+    private async ValueTask ApplyExpandNavigationAsync(
+        Guid callerId,
+        string sourceTableLogicalName,
+        JsonArray items,
+        string expandClause,
+        bool includeAnnotations,
+        Uri serviceRootUri,
+        CancellationToken cancellationToken)
+    {
+        var clauses = SplitTopLevelExpandClauses(expandClause);
+        foreach (var raw in clauses)
+        {
+            var navProp = raw;
+            IReadOnlyList<string>? nestedSelect = null;
+            var openParen = raw.IndexOf('(', StringComparison.Ordinal);
+            if (openParen > 0 && raw.EndsWith(')'))
+            {
+                navProp = raw[..openParen].Trim();
+                var inner = raw[(openParen + 1)..^1].Trim();
+                if (inner.StartsWith("$select=", StringComparison.OrdinalIgnoreCase))
+                {
+                    nestedSelect = inner["$select=".Length..]
+                        .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                }
+            }
+
+            // 1. Many-to-One Lookup Navigation on Contact -> parentcustomerid_account
+            if (string.Equals(sourceTableLogicalName, "contact", StringComparison.OrdinalIgnoreCase)
+                && (string.Equals(navProp, "parentcustomerid_account", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(navProp, "parentcustomerid", StringComparison.OrdinalIgnoreCase)))
+            {
+                foreach (var node in items)
+                {
+                    if (node is not JsonObject obj)
+                    {
+                        continue;
+                    }
+
+                    var fkStr = obj["_parentcustomerid_value"]?.GetValue<string>();
+                    if (Guid.TryParse(fkStr, out var parentAccountId))
+                    {
+                        var targetResp = await RetrieveRecordAsync(
+                            "accounts",
+                            parentAccountId,
+                            callerId,
+                            nestedSelect,
+                            includeAnnotations,
+                            serviceRootUri,
+                            expand: null,
+                            cancellationToken);
+                        if (targetResp.StatusCode == 200)
+                        {
+                            var expandedNode = JsonNode.Parse(targetResp.Payload.GetRawText()) as JsonObject;
+                            expandedNode?.Remove("@odata.context");
+                            obj[navProp] = expandedNode;
+                        }
+                        else
+                        {
+                            obj[navProp] = null;
+                        }
+                    }
+                    else
+                    {
+                        obj[navProp] = null;
+                    }
+                }
+            }
+            // 2. One-to-Many Collection Navigation on Account -> contact_customer_accounts
+            else if (string.Equals(sourceTableLogicalName, "account", StringComparison.OrdinalIgnoreCase)
+                && string.Equals(navProp, "contact_customer_accounts", StringComparison.OrdinalIgnoreCase))
+            {
+                foreach (var node in items)
+                {
+                    if (node is not JsonObject obj)
+                    {
+                        continue;
+                    }
+
+                    var acctIdStr = obj["accountid"]?.GetValue<string>();
+                    if (Guid.TryParse(acctIdStr, out var accountId))
+                    {
+                        var childQuery = new DataverseODataQueryRequest(
+                            EntitySetName: "contacts",
+                            CallerId: callerId,
+                            ServiceRootUri: serviceRootUri,
+                            Select: nestedSelect,
+                            Filter: $"_parentcustomerid_value eq '{accountId:D}'",
+                            OrderBy: "fullname asc",
+                            IncludeAnnotations: includeAnnotations);
+                        var childResp = await QueryEntitySetAsync(childQuery, cancellationToken);
+                        if (childResp.StatusCode == 200
+                            && childResp.Payload.TryGetProperty("value", out var valElem))
+                        {
+                            obj[navProp] = JsonNode.Parse(valElem.GetRawText());
+                        }
+                        else
+                        {
+                            obj[navProp] = new JsonArray();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private static List<string> SplitTopLevelExpandClauses(string expandClause)
+    {
+        var result = new List<string>();
+        var depth = 0;
+        var start = 0;
+        for (var i = 0; i < expandClause.Length; i++)
+        {
+            var ch = expandClause[i];
+            if (ch == '(')
+            {
+                depth++;
+            }
+            else if (ch == ')' && depth > 0)
+            {
+                depth--;
+            }
+            else if (ch == ',' && depth == 0)
+            {
+                var segment = expandClause[start..i].Trim();
+                if (segment.Length > 0)
+                {
+                    result.Add(segment);
+                }
+
+                start = i + 1;
+            }
+        }
+
+        var tail = expandClause[start..].Trim();
+        if (tail.Length > 0)
+        {
+            result.Add(tail);
+        }
+
+        return result;
     }
 
     private static async ValueTask<(bool UserExists, Guid SystemUserId, Guid BusinessUnitId, int DepthMask)>

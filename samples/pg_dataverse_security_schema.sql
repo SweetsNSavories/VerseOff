@@ -26,15 +26,22 @@ CREATE TABLE IF NOT EXISTS verseoff.systemuser (
     fullname TEXT NOT NULL,
     domainname TEXT NOT NULL,
     businessunitid UUID NOT NULL REFERENCES verseoff.businessunit(businessunitid),
+    parentsystemuserid UUID NULL REFERENCES verseoff.systemuser(systemuserid),
     organizationid UUID NOT NULL,
     isdisabled BOOLEAN NOT NULL DEFAULT FALSE,
     modifiedon TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+ALTER TABLE verseoff.systemuser
+    ADD COLUMN IF NOT EXISTS parentsystemuserid UUID NULL REFERENCES verseoff.systemuser(systemuserid);
+
 CREATE INDEX IF NOT EXISTS ix_verseoff_systemuser_aad
     ON verseoff.systemuser(azureactivedirectoryobjectid);
 CREATE INDEX IF NOT EXISTS ix_verseoff_systemuser_bu
     ON verseoff.systemuser(businessunitid);
+CREATE INDEX IF NOT EXISTS ix_verseoff_systemuser_manager
+    ON verseoff.systemuser(parentsystemuserid)
+    WHERE parentsystemuserid IS NOT NULL;
 
 CREATE TABLE IF NOT EXISTS verseoff.team (
     teamid UUID PRIMARY KEY,
@@ -173,3 +180,47 @@ CREATE INDEX IF NOT EXISTS ix_verseoff_dataverse_entity_lookup
 
 CREATE INDEX IF NOT EXISTS ix_verseoff_dataverse_entity_version
     ON verseoff.dataverse_entity(LOWER(table_logical_name), version_number);
+
+CREATE INDEX IF NOT EXISTS ix_verseoff_dataverse_entity_json_gin
+    ON verseoff.dataverse_entity USING GIN (data_json jsonb_path_ops);
+
+CREATE INDEX IF NOT EXISTS ix_verseoff_dataverse_entity_parentcustomer
+    ON verseoff.dataverse_entity(LOWER(table_logical_name), (data_json->>'_parentcustomerid_value'))
+    WHERE is_deleted = FALSE AND (data_json ? '_parentcustomerid_value');
+
+-- High-scale 10 TB Delta Sync Watermark & Telemetry Table
+CREATE TABLE IF NOT EXISTS verseoff.sync_watermark (
+    table_logical_name TEXT NOT NULL,
+    partition_id TEXT NOT NULL DEFAULT 'default',
+    last_delta_token TEXT NULL,
+    last_version_number BIGINT NOT NULL DEFAULT 0,
+    rows_synced_total BIGINT NOT NULL DEFAULT 0,
+    last_batch_rows INT NOT NULL DEFAULT 0,
+    last_batch_duration_ms BIGINT NOT NULL DEFAULT 0,
+    throughput_rows_per_sec DOUBLE PRECISION NOT NULL DEFAULT 0,
+    sync_source TEXT NOT NULL DEFAULT 'fabric-onelake-delta',
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (table_logical_name, partition_id)
+);
+
+-- Unlogged Binary COPY Staging Table for 10 TB High-Throughput Ingestion (Zero WAL overhead during stage)
+CREATE UNLOGGED TABLE IF NOT EXISTS verseoff.dataverse_entity_staging (
+    batch_id UUID NOT NULL,
+    table_logical_name TEXT NOT NULL,
+    record_id UUID NOT NULL,
+    owner_id UUID NOT NULL,
+    owner_type TEXT NOT NULL,
+    owning_business_unit_id UUID NOT NULL,
+    statecode INT NOT NULL,
+    statuscode INT NOT NULL,
+    version_number BIGINT NOT NULL,
+    etag TEXT NOT NULL,
+    modified_on TIMESTAMPTZ NOT NULL,
+    is_deleted BOOLEAN NOT NULL,
+    data_json JSONB NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS ix_verseoff_staging_batch
+    ON verseoff.dataverse_entity_staging(batch_id);
+
+
