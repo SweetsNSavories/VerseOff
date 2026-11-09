@@ -211,6 +211,7 @@ internal static class TargetSourceTemplates
                 var builder = MauiApp.CreateBuilder();
                 builder.UseMauiApp<App>();
                 builder.Services.AddSingleton<ITimelineRecordProvider, InMemoryTimelineRecordProvider>();
+                builder.Services.AddSingleton<IBusinessProcessFlowProvider, InMemoryBusinessProcessFlowProvider>();
                 builder.Services.AddSingleton<ICommandRuleEvaluator, CommandRuleEvaluator>();
                 builder.Services.AddSingleton<InMemoryLocalRecordStore>();
                 builder.Services.AddSingleton<ILocalRecordStore>(sp => sp.GetRequiredService<InMemoryLocalRecordStore>());
@@ -231,6 +232,30 @@ internal static class TargetSourceTemplates
                 TimelineQuery query,
                 CancellationToken cancellationToken = default) =>
                 ValueTask.FromResult(new TimelinePage([], null));
+        }
+
+        public sealed class InMemoryBusinessProcessFlowProvider : IBusinessProcessFlowProvider
+        {
+            private readonly Dictionary<(Guid, Guid), Guid> activeStages = new();
+            private readonly Dictionary<(Guid, Guid), HashSet<Guid>> completedStages = new();
+
+            public ValueTask<BusinessProcessFlowState?> GetStateAsync(Guid processId, Guid recordId, CancellationToken cancellationToken = default)
+            {
+                if (!activeStages.TryGetValue((processId, recordId), out var activeId)) return ValueTask.FromResult<BusinessProcessFlowState?>(null);
+                completedStages.TryGetValue((processId, recordId), out var completed);
+                return ValueTask.FromResult<BusinessProcessFlowState?>(new BusinessProcessFlowState(processId, activeId, completed ?? new HashSet<Guid>(), new Dictionary<string, object?>()));
+            }
+
+            public ValueTask<bool> SetActiveStageAsync(Guid processId, Guid recordId, Guid stageId, CancellationToken cancellationToken = default)
+            {
+                if (activeStages.TryGetValue((processId, recordId), out var prev) && prev != stageId)
+                {
+                    if (!completedStages.TryGetValue((processId, recordId), out var set)) { set = new HashSet<Guid>(); completedStages[(processId, recordId)] = set; }
+                    set.Add(prev);
+                }
+                activeStages[(processId, recordId)] = stageId;
+                return ValueTask.FromResult(true);
+            }
         }
 
         public sealed class InMemoryLocalRecordStore : ILocalRecordStore, IPendingOperationSource
@@ -774,15 +799,17 @@ internal static class TargetSourceTemplates
                     ?? Handler?.MauiContext?.Services.GetService<ICustomerScriptResolver>()
                     ?? new InMemoryCustomerScriptResolver();
 
+                var bpfProvider = Handler?.MauiContext?.Services.GetService<IBusinessProcessFlowProvider>() ?? new InMemoryBusinessProcessFlowProvider();
+                var securitySnapshot = BuildOfflineSecuritySnapshot(definition, tableLogicalName, currentRecordId);
                 var runtimeContext = new FormRuntimeContext(
                     definition,
                     currentRecordId,
                     tableLogicalName,
                     TimelineProvider: timeline,
                     SubgridProvider: null,
-                    BpfProvider: null,
+                    BpfProvider: bpfProvider,
                     TimelineActionSink: actionSink,
-                    Security: null);
+                    Security: securitySnapshot);
 
                 var attributes = new List<XrmAttribute>();
                 if (currentTable is not null)
@@ -852,9 +879,9 @@ internal static class TargetSourceTemplates
                 {
                     ContentHost.Add(new BusinessProcessFlowControl(
                         bpf,
-                        provider: null,
+                        provider: bpfProvider,
                         currentRecordId,
-                        security: null));
+                        security: securitySnapshot));
                 }
 
                 RenderControls(form.HeaderControls, runtimeContext, "Header");
@@ -1398,7 +1425,7 @@ internal static class TargetSourceTemplates
                 {
                     panel.Add(CreateField(control, runtimeContext));
                 }
-                ContentHost.Insert(0, new Border
+                ContentHost.Add(new Border
                 {
                     Padding = 16,
                     Stroke = Color.FromArgb("#E1DFDD"),
@@ -1406,6 +1433,13 @@ internal static class TargetSourceTemplates
                     BackgroundColor = Colors.White,
                     Content = panel,
                 });
+            }
+
+            private static SecuritySnapshot BuildOfflineSecuritySnapshot(ApplicationDefinition appDefinition, string activeTableLogicalName, Guid activeRecordId)
+            {
+                var now = DateTimeOffset.UtcNow;
+                var tableGrants = appDefinition.Tables.Select(table => new TableAccessGrant(table.LogicalName, AccessDepth.ParentChildBusinessUnit, AccessDepth.BusinessUnit, AccessDepth.ParentChildBusinessUnit, AccessDepth.BusinessUnit, table.Columns.Where(c => c.CanRead).Select(c => c.LogicalName).ToHashSet(StringComparer.OrdinalIgnoreCase), table.Columns.Where(c => c.CanCreate || c.CanUpdate).Select(c => c.LogicalName).ToHashSet(StringComparer.OrdinalIgnoreCase))).ToArray();
+                return new SecuritySnapshot("v9.2-bcdr-offline", Guid.NewGuid(), Guid.NewGuid(), appDefinition.AppModuleId, now.AddMinutes(-5), now.AddHours(24), tableGrants, Guid.NewGuid(), [Guid.NewGuid()], ["BCDR Offline Operator"], [], [new RecordAccessGrant(activeTableLogicalName, activeRecordId, RecordAccessRights.Read | RecordAccessRights.Update)]);
             }
 
             private VerticalStackLayout CreateField(

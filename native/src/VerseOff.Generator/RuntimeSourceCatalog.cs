@@ -62,7 +62,7 @@ internal static class RuntimeSourceCatalog
             Project(
                 "net10.0",
                 references: ["VerseOff.Domain", "VerseOff.Storage"],
-                packages: [("Microsoft.Data.SqlClient", "7.0.2")])),
+                packages: [("Microsoft.Data.SqlClient", "7.0.2"), ("Npgsql", "9.0.3")])),
         new(
             "Runtime/VerseOff.Sync/VerseOff.Sync.csproj",
             Project(
